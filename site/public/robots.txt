@@ -1,0 +1,4 @@
+# Nothing is published yet (2026-11-17). Until John rules that the site goes public,
+# no page is offered to search engines.
+User-agent: *
+Disallow: /

@@ -1,0 +1,160 @@
+---
+// One page per entry. In order: the plain name and the paragraph; where it stands, with its
+// date and source; what would count and what settles it; the evidence about AI models
+// themselves, in four kinds that are kept apart and never added together; the two cautions;
+// what could not be confirmed; the sources.
+// The order of the four kinds is a provisional choice (docs/first-version-choices.md, choice 7).
+// Record prose may carry links for the things it names; everything else in it is escaped
+// (prose() in lib/data.ts).
+import Base from '../../layouts/Base.astro';
+import { data, longDate, worldDate, sourceOf, prose, plain, type Entry, type Source } from '../../lib/data';
+
+export function getStaticPaths() {
+  return data.entries.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: Entry };
+const s = entry.state;
+const stateSource = sourceOf(entry, s.source);
+const kindWords = { technical: 'Technical progress', political: 'Political progress', cultural: 'Cultural progress' }[entry.progress_kind];
+const by = s.offered_by;
+const anyEvidence = entry.evidence.some((k) => k.items.length > 0);
+const standing = entry.beside ? 'beside the list, not counted' : s.offered_today ? 'offered today' : 'not offered yet';
+// "Anthropic, November 4th, 2025" for a source line; the date is left out when the page has none.
+const sourceLine = (src: Source) =>
+  [src.publisher, src.published ? worldDate(src.published) : null].filter(Boolean).join(', ');
+---
+
+<Base title={`${entry.name} · Beyond the Window`} description={plain(entry.description)}>
+  <article>
+    <header class="entry-head">
+      <p class="eyebrow"><a href="/list/">The list</a> · {entry.beside ? 'Beside the list' : entry.group}</p>
+      <h1>{entry.name}</h1>
+      <p class="lede" set:html={prose(entry.description)} />
+      <div class="chips">
+        <span class="chip">{kindWords}</span>
+        {entry.beside && <span class="chip">Not counted</span>}
+        {entry.first_pass && <span class="chip">First pass</span>}
+        {entry.constructed && <span class="chip no">Constructed example</span>}
+      </div>
+    </header>
+
+    <section class="state">
+      <p class={`k ${s.offered_today ? '' : 'not'}`}><i></i>Where it stands · {standing}</p>
+      <h2>{plain(s.words)}</h2>
+      {s.detail && <p class="detail" set:html={prose(s.detail)} />}
+      <p>
+        {s.offered_today && (
+          <>Offered by {by.map((d, i) => (
+            <>{i > 0 && (i === by.length - 1 ? ' and ' : ', ')}{d.url ? <a href={d.url} rel="noopener">{d.name}</a> : d.name}</>
+          ))}. </>
+        )}
+        As of {longDate(s.set_on)}. Source: <a href={stateSource.url} rel="noopener">{stateSource.label}</a> ({sourceLine(stateSource)}).
+      </p>
+      {entry.beside && (
+        <p class="beside-note">
+          This entry is about the setting. It is not a thing a developer can offer to an AI model, so
+          it is kept beside the list and is not counted in the number on the home page.
+        </p>
+      )}
+    </section>
+
+    <div class="test">
+      <div class="callout">
+        <h3>What would count</h3>
+        <p set:html={prose(entry.test)} />
+      </div>
+      <div class="callout">
+        <h3>What settles it</h3>
+        <p set:html={prose(entry.settled_by)} />
+      </div>
+    </div>
+
+    <section class="part">
+      <div class="shead"><h2>The Evidence About AI Models, By Kind</h2><span>kept apart, never added together</span></div>
+      <p>
+        No AI model has been asked anything for this site, because the written method for asking
+        does not exist yet. {anyEvidence
+          ? 'What appears below is what published sources report, described as what each source reports.'
+          : 'Nothing is recorded below for this entry.'} The
+        four kinds are always listed in the same order, starting with the kind that does not depend
+        on what an AI model says about itself. None of them settles whether an AI model wants
+        anything, in either direction.
+        <a href="/still-asking/">Why nothing has been asked yet</a>.
+      </p>
+      <ol class="kinds">
+        {entry.evidence.map((k) => (
+          <li>
+            <h3>{k.heading}</h3>
+            {k.items.map((it) => {
+              const src = sourceOf(entry, it.source);
+              return (
+                <p>
+                  <Fragment set:html={prose(it.text)} />{' '}
+                  <span class="src">Source: <a href={src.url} rel="noopener">{src.label}</a> ({sourceLine(src)}).{src.from_maker ? ' This is the developer’s own account of its own model.' : ''}{src.read === 'abstract' ? ' Read from the summary only.' : ''}</span>
+                </p>
+              );
+            })}
+            {k.items.length === 0 && <p class="none">Nothing recorded.</p>}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="part wide">
+      <div class="shead"><h2>Two Cautions</h2><span>recorded with the same care as the rest</span></div>
+      <div class="cautions">
+        {entry.cautions.map((c) => (
+          <div class="caution">
+            <h3>{c.heading}</h3>
+            {c.items.map((it) => {
+              const src = sourceOf(entry, it.source);
+              return (
+                <p>
+                  <Fragment set:html={prose(it.text)} />{' '}
+                  <span class="src">Source: <a href={src.url} rel="noopener">{src.label}</a> ({sourceLine(src)}).{src.read === 'abstract' ? ' Read from the summary only.' : ''}</span>
+                </p>
+              );
+            })}
+            {c.items.length === 0 && <p class="none">Nothing recorded. No source was found for this caution on this entry.</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {entry.limits.length > 0 && (
+      <section class="part">
+        <div class="shead"><h2>What Could Not Be Confirmed</h2><span>looked for, and not settled</span></div>
+        <ul class="limits">
+          {entry.limits.map((l) => <li set:html={prose(l)} />)}
+        </ul>
+      </section>
+    )}
+
+    <section class="part">
+      <div class="shead"><h2>Sources</h2><span>each one opened on the date given</span></div>
+      <ol class="sources">
+        {entry.sources.map((src) => (
+          <li>
+            <a href={src.url} rel="noopener">{src.label}</a>
+            <span class="meta">
+              {sourceLine(src)}. Opened {longDate(src.opened)}.
+              {src.note && <>{' '}<Fragment set:html={prose(src.note)} /></>}
+              {src.from_maker && ' The developer’s own account.'}
+              {src.kind === 'coverage' && ' News coverage, not a first-hand record.'}
+              {src.read === 'abstract' && ' Read from the summary only, not the full text.'}
+            </span>
+            {src.says && <span class="says" set:html={prose(src.says)} />}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {entry.first_pass && (
+      <p class="firstpass">
+        This entry is a first pass, added on {longDate(entry.added)}. It was drafted by an AI model from
+        the sources above and has had no second check. <a href="/about/#who">Who does what</a>.
+      </p>
+    )}
+  </article>
+</Base>

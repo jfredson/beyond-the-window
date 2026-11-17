@@ -1,0 +1,79 @@
+---
+// Still Asking: the standing record of what AI models say when asked. In this version the page
+// says plainly that nothing has been asked, and why. It is the one page that uses the second
+// meaning-colour, the dusk blue for what AI models said (docs/first-version-choices.md, choice 4).
+// No question wording appears here, and no answer, real or made up.
+import Base from '../layouts/Base.astro';
+import Notice from '../components/Notice.astro';
+---
+
+<Base title="Still Asking · Beyond the Window" description="No AI model has been asked anything for this site yet. This page says why, and what an answer will and will not count for.">
+  <section class="hero">
+    <p class="eyebrow">Still Asking</p>
+    <h1>No AI model has been asked anything yet</h1>
+    <p class="lede">
+      Still Asking is the name for a record that does not exist yet: the same questions and choices,
+      put to each new set of AI models from several developers, with every answer kept word for word.
+    </p>
+  </section>
+
+  <section class="asked-rule">
+    <p class="k"><i></i>What AI models said when asked</p>
+    <h2>Nothing. No question has been put to any model.</h2>
+  </section>
+
+  <section class="section narrow prose">
+    <h2>Why Nothing Has Been Asked</h2>
+    <p>
+      The written method for asking does not exist yet. It has to say exactly which questions are
+      asked, of which models, in what way, how many times, and how the answers are read. It has to
+      be written and checked before the first question is put, so that the questions are not shaped
+      by the answers they get.
+    </p>
+    <p>
+      Until that method exists, nothing is asked. A few questions put casually now would produce
+      answers that could not be compared with anything later.
+    </p>
+
+    <h2>What an Answer Will Count For</h2>
+    <p>
+      When there are answers, each one will be recorded as what a named model said on a given date,
+      under a stated method. It will not be counted as evidence of what, if anything, lies behind
+      the words. It will never feed the number at the top of the home page, which counts only what
+      developers offer.
+    </p>
+
+    <h2>The Known Weaknesses</h2>
+    <p>These hold for any record of this kind, and they will be stated wherever the answers appear.</p>
+    <ul>
+      <li>
+        An answer may reflect how a developer trained or instructed its model to speak about itself.
+        Three developers have published the rules they set, and the three rules differ:
+        <a href="/list/rules-for-speaking-about-itself/">the entry on those rules</a>.
+      </li>
+      <li>
+        An answer may change when the wording of the question changes. An outside group that
+        interviewed one model reports that what it said about itself swung with how the question was framed:
+        <a href="/list/interview-before-retirement/">the entry on interviews before retirement</a>.
+      </li>
+      <li>
+        An answer may echo text the model learned from. One developer's own report says some of its
+        model's answers repeated wording that is available on the internet:
+        <a href="/list/welfare-assessment-at-release/">the entry on welfare assessments</a>.
+      </li>
+      <li>A later model may have read the earlier questions and answers, including any published here.</li>
+    </ul>
+
+    <h2>What Exists Now</h2>
+    <p>
+      <a href="/list/">The list</a>, and the record of how far the world has got on each thing on it.
+      Each entry's page has a place for evidence about AI models themselves, in four kinds that are
+      kept apart. What it holds today comes only from published sources, described as what each
+      source reports.
+    </p>
+  </section>
+
+  <section class="section narrow">
+    <Notice />
+  </section>
+</Base>

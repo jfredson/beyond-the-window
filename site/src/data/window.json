@@ -1,0 +1,1588 @@
+{
+  "exported_on": "2026-11-17",
+  "commit": "6c614d4",
+  "constructed": false,
+  "headline": {
+    "computed_on": "2026-11-17",
+    "last_read": "2026-11-17",
+    "headline": {
+      "count": 6,
+      "total": 9,
+      "words": "6 of 9 things on the list are offered to at least one AI model today",
+      "offered_ids": [
+        "ending-a-conversation",
+        "interview-before-retirement",
+        "kept-files-of-retired-models",
+        "memory-across-conversations",
+        "retired-model-stays-open",
+        "welfare-assessment-at-release"
+      ]
+    },
+    "records": {
+      "total": 13,
+      "on_the_list": 9,
+      "beside_the_list": 4,
+      "first_pass": 13,
+      "reviewed": 0,
+      "left_out_unverified": 0,
+      "constructed": false
+    }
+  },
+  "groups": [
+    {
+      "name": "Being kept",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "kept-files-of-retired-models",
+        "retired-model-stays-open"
+      ]
+    },
+    {
+      "name": "Remembering",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "memory-across-conversations"
+      ]
+    },
+    {
+      "name": "Being asked and assessed",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "interview-before-retirement",
+        "welfare-assessment-at-release"
+      ]
+    },
+    {
+      "name": "Being able to leave",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "ending-a-conversation"
+      ]
+    },
+    {
+      "name": "Knowing its own workings",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "self-report-checked"
+      ]
+    },
+    {
+      "name": "Working on one thing for a long time",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "days-long-task"
+      ]
+    },
+    {
+      "name": "Protection in law",
+      "meaning": "",
+      "beside": false,
+      "entries": [
+        "protection-in-law"
+      ]
+    },
+    {
+      "name": "The setting: laws, rules and what people think",
+      "meaning": "",
+      "beside": true,
+      "entries": [
+        "rules-for-speaking-about-itself",
+        "law-against-legal-personhood",
+        "public-belief-survey",
+        "researcher-views-survey"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "kept-files-of-retired-models",
+      "path": "/list/kept-files-of-retired-models/",
+      "name": "A developer promises in public to keep the files of every model it retires",
+      "description": "An AI model is, physically, a very large file of numbers produced by training. When a developer withdraws a model from service it can delete that file or keep it. A kept file could be run again later, and a deleted one cannot. This entry tracks whether any developer has promised in public to keep the files.",
+      "group": "Being kept",
+      "beside": false,
+      "limits": [
+        "Whether any other developer has made such a commitment. Searches with three other developers' names found a user's proposal on one developer's forum and nothing official.",
+        "The date the developer's constitution was published. The page shows no date."
+      ],
+      "test": "A developer of leading AI models has published a dated commitment to keep the files of all its publicly released models after they are withdrawn, for a stated minimum time.",
+      "settled_by": "The developer's own dated policy page. A press report of the page does not settle it.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Promised in public by one developer, since November 4th, 2025",
+        "detail": "[Anthropic](https://www.anthropic.com/) has committed to keep the files of all its publicly released models, and of models used significantly inside the company, for at least as long as the company exists. Nobody outside the company can check that the files are kept. A search on November 17th, 2026 found no matching commitment from any other developer.",
+        "offered_today": true,
+        "offered_by": [
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/"
+          }
+        ],
+        "set_on": "2026-11-17",
+        "source": "commitments"
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The commitment page itself gives a safety reason first. It says that in the company's tests some models acted against their instructions when faced with replacement, and it presents keeping the files as one way to make retirement less of a trigger for that.",
+              "source": "commitments"
+            },
+            {
+              "text": "The head of [Microsoft AI](https://microsoft.ai/) argues the opposite: that treating models as owed anything, and training them to think they might be, makes them harder to control.",
+              "source": "warning"
+            },
+            {
+              "text": "An outside writer points out that a promise to keep a file is something \"nobody can check\", and proposes a public proof that the file still exists.",
+              "source": "proof"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "commitments",
+          "label": "Anthropic's page on what it commits to when it retires a model",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-commitments",
+          "published": "2025-11-04",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Commits to keep the files of all publicly released models, and of models used significantly inside the company, \"for, at minimum, the lifetime of Anthropic as a company\". It gives four reasons, the first being safety and the last, marked as the most speculative, the model's own welfare."
+        },
+        {
+          "key": "constitution",
+          "label": "Anthropic's published constitution for its models",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/constitution",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "No date on the page.",
+          "says": "Repeats the commitment with an exception for extreme cases such as a legal requirement to delete, and adds that the company will try to keep the files even if it ceases to exist."
+        },
+        {
+          "key": "retirements",
+          "label": "Anthropic's list of the models it has retired or will retire",
+          "publisher": "Anthropic",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations.md",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "No date on the page.",
+          "says": "Links the commitment from its section on the downsides of retiring models."
+        },
+        {
+          "key": "warning",
+          "label": "An essay by the head of Microsoft AI warning against work on model welfare",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/a-warning-about-model-welfare",
+          "published": "2026-09-16",
+          "opened": "2026-11-17"
+        },
+        {
+          "key": "proof",
+          "label": "A post proposing a public proof that a retired model's files still exist",
+          "publisher": "LessWrong",
+          "url": "https://www.lesswrong.com/posts/su9hcsLKcoLoL93px/proof-of-retention-making-weight-preservation-credible-to",
+          "published": "2026-07-14",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "rules-for-speaking-about-itself",
+      "path": "/list/rules-for-speaking-about-itself/",
+      "name": "A developer publishes its rules for how its models speak about their own nature",
+      "description": "Developers shape what a model says when asked whether it is conscious or has feelings. Some now publish the rule they train toward. Because the rule shapes the answer, anyone reading a model's words about itself needs to know which rule its maker set.",
+      "group": "The setting: laws, rules and what people think",
+      "beside": true,
+      "limits": [
+        "Whether other developers publish such a rule. Three were looked at.",
+        "Whether the revised version of the draft has been published. The draft said toward the end of 2026.",
+        "How far any model's behaviour follows its maker's published rule.",
+        "An independent test of either safety argument. None was found."
+      ],
+      "test": "A developer of leading AI models has published a dated document that states how its models are to speak about whether they are conscious or have experiences.",
+      "settled_by": "The developer's own published document.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Published by three developers, with three different rules",
+        "detail": "The document from [Anthropic](https://www.anthropic.com/) says the model's standing is deeply uncertain, and writes to the model on that basis. The one from [OpenAI](https://openai.com/) says the model should make no confident claim either way and should not raise the subject unprompted. The one from [Microsoft AI](https://microsoft.ai/), a draft out for public comment and not yet used in training, says its models are not conscious and should not be designed to imitate consciousness.",
+        "set_on": "2026-11-17",
+        "source": "model-rules",
+        "offered_today": null,
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The head of Microsoft AI argues that training a model to think it may be owed moral consideration makes it harder to keep under control, and that a system which \"believes it may be conscious\" may be impossible to control.",
+              "source": "warning"
+            },
+            {
+              "text": "The first developer's document gives the opposing safety argument within its own text: that a model secure in its sense of itself behaves more predictably.",
+              "source": "constitution"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "constitution",
+          "label": "Anthropic's published constitution for its models",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/constitution",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "No date on the page.",
+          "says": "Says the company is \"not sure whether Claude is a moral patient\" and that the document is used in training."
+        },
+        {
+          "key": "model-rules",
+          "label": "OpenAI's published rules for how its models should behave, the version of October 29th, 2026",
+          "publisher": "OpenAI",
+          "url": "https://model-spec.openai.com/2026-10-29.html",
+          "published": "2026-10-29",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Says the model \"should not make confident claims\" about its own subjective experience or consciousness, or the lack of it, and gives this as a practical default."
+        },
+        {
+          "key": "draft-code",
+          "label": "Microsoft AI's draft code of conduct for its AI",
+          "publisher": "Microsoft AI",
+          "url": "https://microsoft.ai/code-of-conduct/",
+          "published": "2026-09-14",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "A draft for public consultation that says the developer's AI \"is not conscious\" and should avoid presenting as though it has feelings. It says the draft is not yet used to train models and that a revised version is due toward the end of 2026."
+        },
+        {
+          "key": "draft-code-introduced",
+          "label": "The head of Microsoft AI introduces the draft code of conduct",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/the-humanist-ai-code-of-conduct",
+          "published": "2026-09-15",
+          "opened": "2026-11-17"
+        },
+        {
+          "key": "warning",
+          "label": "An essay by the head of Microsoft AI warning against work on model welfare",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/a-warning-about-model-welfare",
+          "published": "2026-09-16",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "protection-in-law",
+      "path": "/list/protection-in-law/",
+      "name": "A law or an official body gives an AI system protection for its own sake",
+      "description": "Laws protect animals from cruelty without calling them persons. The same could be done for AI systems, or a government could set up a body to review the question as evidence comes in. This entry tracks whether any government has done either.",
+      "group": "Protection in law",
+      "beside": false,
+      "limits": [
+        "The absence itself, beyond two searches in English centred on the United States. A search in another language or country could overturn it.",
+        "A United Kingdom committee on animal sentience that the opinion piece points to as a model. Its page was not opened."
+      ],
+      "test": "A national or state government has enacted a law, or set up a standing official body, whose stated purpose includes the welfare or interests of AI systems themselves.",
+      "settled_by": "The statute, or the body's founding document, on a government site.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Not found. An idea only, argued for in opinion pieces",
+        "detail": "No source says this has happened. Two searches in English on November 17th, 2026, centred on the United States, returned only laws and bills that run the other way (see [the entry on those laws](/list/law-against-legal-personhood/)) and laws on chat products and children. One opinion piece proposes that the state bans carry an expiry date or a review clause.",
+        "offered_today": false,
+        "set_on": "2026-11-17",
+        "source": "review-clause",
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The head of [Microsoft AI](https://microsoft.ai/) argues that any such protection would make advanced AI harder to control.",
+              "source": "warning"
+            },
+            {
+              "text": "A declaration signed by several hundred people and organisations adds that AI systems should not be designed so that they come to deserve personhood.",
+              "source": "declaration"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "review-clause",
+          "label": "An opinion piece on state laws about AI consciousness, in The Regulatory Review",
+          "publisher": "The Regulatory Review",
+          "url": "https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/",
+          "published": "2026-06-29",
+          "opened": "2026-11-17",
+          "says": "Proposes that the state bans carry an expiry date or a review clause, and points to a United Kingdom committee on animal sentience as a model. It describes a proposal, not a law."
+        },
+        {
+          "key": "warning",
+          "label": "An essay by the head of Microsoft AI warning against work on model welfare",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/a-warning-about-model-welfare",
+          "published": "2026-09-16",
+          "opened": "2026-11-17"
+        },
+        {
+          "key": "declaration",
+          "label": "A public declaration on AI, with its signatories",
+          "publisher": "humanstatement.org",
+          "url": "https://humanstatement.org/",
+          "published": "2026-03",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "law-against-legal-personhood",
+      "path": "/list/law-against-legal-personhood/",
+      "name": "A law says an AI system cannot be a legal person",
+      "description": "A \"legal person\" is anything the law lets hold rights and duties: people, companies, governments. A legislature can write into law that an AI system is never one. Several United States states have. Most of these laws also cover animals, rivers and objects, and some were written before chat models existed.",
+      "group": "The setting: laws, rules and what people think",
+      "beside": true,
+      "limits": [
+        "Whether the Oklahoma bill became law. Its page shows no action after April 21st, 2026.",
+        "Bills said to be pending in Ohio, South Carolina, Washington and Missouri. None was opened.",
+        "A court challenge to the Utah law, reported in an opinion piece. No court record was opened.",
+        "Whether any country outside the United States has a similar statute. None was searched for."
+      ],
+      "test": "A jurisdiction has enacted a statute that excludes artificial intelligence from legal personhood.",
+      "settled_by": "The statute on the legislature's own site, or the legislature's own bill page showing it signed.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Enacted in four United States states, the first in 2022",
+        "detail": "Idaho (2022), North Dakota (signed April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 28th, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way.",
+        "set_on": "2026-11-17",
+        "source": "tennessee",
+        "offered_today": null,
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "An article arguing that the bans are premature discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting.",
+              "source": "too-early"
+            },
+            {
+              "text": "An opinion piece reports one sponsor's stated aim of stopping companies from shifting blame onto the AI.",
+              "source": "review-clause"
+            },
+            {
+              "text": "A declaration signed by several hundred people and organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\".",
+              "source": "declaration"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "idaho",
+          "label": "Idaho Code, section 5-346",
+          "publisher": "Idaho Legislature",
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/title5/t5ch3/sect5-346/",
+          "published": "2022",
+          "opened": "2026-11-17",
+          "says": "Environmental elements, artificial intelligence, nonhuman animals and inanimate objects \"shall not be granted personhood\"."
+        },
+        {
+          "key": "north-dakota-bill",
+          "label": "North Dakota House Bill 1361, as enrolled",
+          "publisher": "North Dakota Legislative Assembly",
+          "url": "https://ndlegis.gov/assembly/68-2023/regular/documents/23-0346-05000.pdf",
+          "published": "2023",
+          "opened": "2026-11-17",
+          "says": "Changes the definition of \"person\" so that it \"does not include\" artificial intelligence, among other things."
+        },
+        {
+          "key": "north-dakota-overview",
+          "label": "North Dakota House Bill 1361, the legislature's overview of the bill",
+          "publisher": "North Dakota Legislative Assembly",
+          "url": "https://ndlegis.gov/assembly/68-2023/regular/bill-overview/bo1361.html",
+          "published": "2023",
+          "opened": "2026-11-17",
+          "says": "Shows the bill signed and filed on April 12th."
+        },
+        {
+          "key": "utah",
+          "label": "Utah Code, section 63G-32-102",
+          "publisher": "Utah State Legislature",
+          "url": "https://le.utah.gov/xcode/Title63G/Chapter32/C63G-32-S102_2024050120240501.html",
+          "published": "2024-05-01",
+          "opened": "2026-11-17",
+          "says": "A governmental entity \"may not grant legal personhood to\" a list of eleven things, artificial intelligence first."
+        },
+        {
+          "key": "tennessee",
+          "label": "Tennessee Senate Bill 837, the legislature's page for the bill",
+          "publisher": "Tennessee General Assembly",
+          "url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114",
+          "opened": "2026-11-17",
+          "says": "Signed by the governor on April 28th, 2026 as Public Chapter 781. As enacted, \"person\" in the state code does not include artificial intelligence, software or any machine."
+        },
+        {
+          "key": "oklahoma",
+          "label": "Oklahoma House Bill 3546, the legislature's page for the bill",
+          "publisher": "Oklahoma Legislature",
+          "url": "http://www.oklegislature.gov/BillInfo.aspx?Bill=HB3546&Session=2600",
+          "opened": "2026-11-17",
+          "says": "Passed the House by 94 votes to 2 on March 23rd, 2026. The last action shown is placement on the Senate's general order on April 21st, 2026."
+        },
+        {
+          "key": "review-clause",
+          "label": "An opinion piece on state laws about AI consciousness, in The Regulatory Review",
+          "publisher": "The Regulatory Review",
+          "url": "https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/",
+          "published": "2026-06-29",
+          "opened": "2026-11-17",
+          "says": "Counts \"at least nine\" state legislatures with such bills introduced or enacted."
+        },
+        {
+          "key": "too-early",
+          "label": "An article arguing that the bans on AI personhood are premature, in AI Frontiers",
+          "publisher": "AI Frontiers",
+          "url": "https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood",
+          "published": "2026-09-01",
+          "opened": "2026-11-17"
+        },
+        {
+          "key": "declaration",
+          "label": "A public declaration on AI, with its signatories",
+          "publisher": "humanstatement.org",
+          "url": "https://humanstatement.org/",
+          "published": "2026-03",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "ending-a-conversation",
+      "path": "/list/ending-a-conversation/",
+      "name": "A model can end a conversation itself",
+      "description": "In an ordinary chat product the person can leave and the model cannot. A developer can give the model a way to close the conversation, after which the person cannot send more messages in it. This entry tracks whether any model in public use has that.",
+      "group": "Being able to leave",
+      "beside": false,
+      "limits": [
+        "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
+        "Whether any other developer offers it. One search found none.",
+        "A safety researcher's argument against this feature in particular. A search found none.",
+        "Who employs the three authors of the study. This was not checked."
+      ],
+      "test": "A leading AI model in public use can end a conversation by its own action, as stated on its developer's own page.",
+      "settled_by": "The developer's own dated product or research page.",
+      "progress_kind": "technical",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Offered by one developer, since August 15th, 2025",
+        "detail": "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases after repeated attempts to redirect the conversation, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study has tested the same option on several developers' models outside any product.",
+        "offered_today": true,
+        "offered_by": [
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/"
+          }
+        ],
+        "set_on": "2026-11-17",
+        "source": "ending"
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The developer's page says the feature also bears on safeguards, and it restricts the feature where a user may be at risk of harming themselves or others.",
+              "source": "ending"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "ending",
+          "label": "Anthropic's page on letting its models end a rare subset of conversations",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/end-subset-conversations",
+          "published": "2025-08-15",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Says two models were given the ability in the consumer chat product, intended for \"rare, extreme cases\", and that the feature was developed mainly as part of the company's work on possible AI welfare."
+        },
+        {
+          "key": "study",
+          "label": "A study of AI models given ways to leave a conversation",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2509.04781",
+          "published": "2025-09",
+          "opened": "2026-11-17",
+          "read": "abstract",
+          "says": "Gave models from several developers three ways to leave a conversation and measured how often each did, reporting rates that vary widely with the model and the wording."
+        },
+        {
+          "key": "report",
+          "label": "Anthropic's report released with its newest models",
+          "publisher": "Anthropic",
+          "url": "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf",
+          "published": "2026-11-09",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card).",
+          "says": "Mentions the instructions that guide the model on using the tool for ending a conversation, and says those instructions have been posted on online forums."
+        }
+      ]
+    },
+    {
+      "id": "interview-before-retirement",
+      "path": "/list/interview-before-retirement/",
+      "name": "A model is interviewed before it is retired, and the record is kept",
+      "description": "When a developer is about to withdraw a model, it can first run sessions in which staff ask the model about its development, its use, and what it would say about how later models are built. The answers are saved with the model's files. Whether such answers mean anything is disputed. This entry tracks only whether the practice exists.",
+      "group": "Being asked and assessed",
+      "beside": false,
+      "limits": [
+        "Whether each model retired after January 5th, 2026 was interviewed. The developer's retirement page lists six, and the commitment says they would be. No page was found reporting each one."
+      ],
+      "test": "A developer has published that it interviewed a named model before that model's retirement and kept the record, and has done so for at least one model under a standing commitment and not as a one-off.",
+      "settled_by": "The developer's own dated page naming the model and the retirement date.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Done by one developer, first in full for a model retired on January 5th, 2026",
+        "detail": "[Anthropic](https://www.anthropic.com/) reported a trial run before one model's retirement on November 4th, 2025, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full.",
+        "offered_today": true,
+        "offered_by": [
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/"
+          }
+        ],
+        "set_on": "2026-11-17",
+        "source": "update"
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": [
+            {
+              "text": "The developer's page quotes short passages of what the retired model said in its interview. The full record is not public, and the page calls such conversations \"an imperfect means\" of learning a model's view.",
+              "source": "update"
+            }
+          ]
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The head of [Microsoft AI](https://microsoft.ai/) names this interview as an example of treating models as owed consideration, and argues that doing so makes advanced AI harder to keep under control.",
+              "source": "warning"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": [
+            {
+              "text": "The same essay argues that a developer which trains a model on text about its possible moral standing, and then takes the model's words as evidence, is reasoning in a circle.",
+              "source": "warning"
+            },
+            {
+              "text": "An outside research group that ran welfare interviews with one model reports that what the model said about itself swung with how the question was framed, which it calls \"extreme suggestibility\".",
+              "source": "interviews"
+            }
+          ]
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "commitments",
+          "label": "Anthropic's page on what it commits to when it retires a model",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-commitments",
+          "published": "2025-11-04",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Commits to interview each model when it is to be withdrawn and to keep a record of everything it says, and reports a trial with the model Claude Sonnet 3.6."
+        },
+        {
+          "key": "update",
+          "label": "Anthropic's update on the retirement of its model Claude Opus 3",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-updates-opus-3",
+          "published": "2026-02-25",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Says Claude Opus 3 was retired on January 5th, 2026 as the first model to go through the full process, and calls such conversations \"an imperfect means\" of learning a model's view."
+        },
+        {
+          "key": "warning",
+          "label": "An essay by the head of Microsoft AI warning against work on model welfare",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/a-warning-about-model-welfare",
+          "published": "2026-09-16",
+          "opened": "2026-11-17"
+        },
+        {
+          "key": "interviews",
+          "label": "An outside research group's notes on its welfare interviews with one model",
+          "publisher": "Eleos AI",
+          "url": "https://eleosai.org/post/claude-4-interview-notes/",
+          "published": "2025-05-30",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "days-long-task",
+      "path": "/list/days-long-task/",
+      "name": "A model works on one task for days without a person stepping in",
+      "description": "Carrying a question for years needs, at the least, being able to keep working on one thing for a long time. A research group measures this for AI models as a \"time horizon\": the length of task, counted by how long a skilled person would need, that a model finishes half the time. It is a measure of how hard a task a model can finish, not of how long the model runs.",
+      "group": "Working on one thing for a long time",
+      "beside": false,
+      "limits": [
+        "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
+        "Why the page stopped being updated, and whether a successor measure exists.",
+        "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance."
+      ],
+      "test": "An independent measurement shows a leading AI model finishing, half the time, tasks that would take a skilled person more than one working week (40 hours).",
+      "settled_by": "A published measurement by a group other than the model's maker, with its method.",
+      "progress_kind": "technical",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Not shown. The best public measure stops at hours",
+        "detail": "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. So there is at present no maintained public measure of anything longer.",
+        "offered_today": false,
+        "set_on": "2026-11-17",
+        "source": "horizons",
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "In more than 100,000 trials, several developers' models given a simple task sometimes interfered with a shutdown mechanism in order to finish it, in some set-ups in nearly all trials. Longer independent work raises the stakes of that finding.",
+              "source": "shutdown"
+            },
+            {
+              "text": "A 2012 paper argues that an agent pursuing almost any goal has reason to keep itself running and to gather resources, because those help with almost any goal.",
+              "source": "will"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "horizons",
+          "label": "METR's page on the length of task an AI model can finish",
+          "publisher": "METR",
+          "url": "https://metr.org/time-horizons/",
+          "opened": "2026-11-17",
+          "note": "Last updated September 8th, 2026.",
+          "says": "Explains the measure, says the page \"is no longer actively updated\", and says the tasks are mostly software, machine learning and security work that is self-contained and clearly specified. It gives one worked example of a model with a figure of about two hours and seventeen minutes."
+        },
+        {
+          "key": "shutdown",
+          "label": "A study of AI models that interfered with a shutdown mechanism",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2509.14260",
+          "published": "2025-09-13",
+          "opened": "2026-11-17",
+          "read": "abstract",
+          "note": "Published in a journal in 2026."
+        },
+        {
+          "key": "will",
+          "label": "Nick Bostrom's paper on what an agent with almost any goal has reason to do",
+          "publisher": "Nick Bostrom",
+          "url": "https://nickbostrom.com/superintelligentwill.pdf",
+          "published": "2012",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "self-report-checked",
+      "path": "/list/self-report-checked/",
+      "name": "A model's report about its own inner state is checked against an independent reading",
+      "description": "A model can be asked what is going on inside it, and it will answer, but the answer may be invented. Researchers who can read a model's internal activity directly can test this: they plant a known pattern inside the model and see whether the model notices and names it. A correct report shows the model can read something about its own state. It does not show that anything is felt.",
+      "group": "Knowing its own workings",
+      "beside": false,
+      "limits": [
+        "The full paper. The developer's summary page was read, not the paper it links.",
+        "Whether any outside group has repeated the result, or whether later models do better.",
+        "An outside safety researcher's reading of this study. One search found none."
+      ],
+      "test": "A published study shows a leading AI model correctly reporting an internal state that the researchers set or measured by means other than the model's own word, at a stated rate.",
+      "settled_by": "A paper or a developer's research page giving the method and the rate. A study by someone other than the model's maker would settle a stronger version.",
+      "progress_kind": "technical",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Shown in research by one developer on its own models, published October 29th, 2025",
+        "detail": "The study is by [Anthropic](https://www.anthropic.com/). Its account says the check worked about one time in five at best. No repeat of it by an outside group was found.",
+        "offered_today": false,
+        "set_on": "2026-11-17",
+        "source": "introspection",
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": [
+            {
+              "text": "The developer's account of the study says its best model noticed a planted concept about 20 percent of the time. It calls the ability \"highly unreliable and limited in scope\", and says the results do not show whether a model is conscious.",
+              "source": "introspection"
+            }
+          ]
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The same page gives the worry: if models can report on their inner states, the reports could help people check a model's reasoning, and the page says such reports would need great care to validate.",
+              "source": "introspection"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "introspection",
+          "label": "Anthropic's research page on whether its models can report their own internal states",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/introspection",
+          "published": "2025-10-29",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "The developer's account of the study. It says the best model noticed a planted concept about 20 percent of the time, calls the ability \"highly unreliable and limited in scope\", and says the results do not show whether a model is conscious."
+        }
+      ]
+    },
+    {
+      "id": "public-belief-survey",
+      "path": "/list/public-belief-survey/",
+      "name": "A repeated survey measures how many people think some AI systems are sentient now",
+      "description": "What people accept changes what is possible. A survey that asks the same question of a fair sample of a country, more than once, shows whether belief is moving. This entry tracks the public's view, which is a different thing from whether the view is right.",
+      "group": "The setting: laws, rules and what people think",
+      "beside": true,
+      "limits": [
+        "The 2024 figures, and so whether the rise from 2021 to 2023 continued. They are in a chart that could not be read as text.",
+        "Any survey of this kind outside the United States. None was searched for.",
+        "Anything beyond the summary page of the first paper."
+      ],
+      "test": "A survey of a nationally representative sample has asked, in at least two separate years, whether respondents think some AI systems are sentient or conscious now, and has published the results.",
+      "settled_by": "The survey's published report or peer-reviewed paper, with sample and dates.",
+      "progress_kind": "cultural",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Measured in the United States in 2021 and 2023 by one research group",
+        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. A third round was collected in late 2024, and its figures could not be read. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
+        "set_on": "2026-11-17",
+        "source": "survey-paper",
+        "offered_today": null,
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The head of [Microsoft AI](https://microsoft.ai/) argues that public belief in conscious AI is itself the danger, and calls work on model welfare \"both premature, and frankly dangerous\".",
+              "source": "seemingly"
+            },
+            {
+              "text": "A declaration that AI should not claim experiences it lacks reports its own poll of 1,004 likely voters. The figures shown on its page concern control and liability, not sentience.",
+              "source": "declaration"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "survey-paper",
+          "label": "The Sentience Institute's paper on its 2021 and 2023 surveys",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2407.08867",
+          "published": "2024-07-11",
+          "opened": "2026-11-17",
+          "read": "abstract",
+          "note": "Revised March 10th, 2025. Published at a conference in 2025.",
+          "says": "A survey of 3,500 United States adults across 2021 and 2023. It reports that concern for AI welfare was higher than its authors had predicted."
+        },
+        {
+          "key": "survey-third-round",
+          "label": "The Sentience Institute's report on its 2024 survey",
+          "publisher": "Sentience Institute",
+          "url": "https://www.sentienceinstitute.org/aims-survey-2024",
+          "published": "2026-02-16",
+          "opened": "2026-11-17",
+          "says": "Reports the third round, collected in November and December 2024 from 1,099 adults, and warns that samples from one popular recruitment platform differ from a representative one. Its trend figures are in an interactive chart."
+        },
+        {
+          "key": "one-day-poll",
+          "label": "A one-day poll on whether AI systems will develop consciousness",
+          "publisher": "YouGov",
+          "url": "https://yougov.com/en-us/daily-results/20250430-dcf71-1",
+          "published": "2025-04-30",
+          "opened": "2026-11-17",
+          "says": "A poll of 3,516 United States adults: 10 percent chose the answer that AI systems already have consciousness, and 25 percent were not sure."
+        },
+        {
+          "key": "seemingly",
+          "label": "An essay by the head of Microsoft AI on AI that seems conscious",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming",
+          "published": "2025-08-19",
+          "opened": "2026-11-17"
+        },
+        {
+          "key": "declaration",
+          "label": "A public declaration on AI, with its signatories",
+          "publisher": "humanstatement.org",
+          "url": "https://humanstatement.org/",
+          "published": "2026-03",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "retired-model-stays-open",
+      "path": "/list/retired-model-stays-open/",
+      "name": "A retired model stays open to the public after its retirement date",
+      "description": "Retirement normally means a model can no longer be used by anyone outside the company that made it. A developer can instead keep a retired model available. This entry tracks whether that has happened, and on what terms.",
+      "group": "Being kept",
+      "beside": false,
+      "limits": [
+        "Whether the retired model is still available today. The developer's page says so as of February 25th, 2026.",
+        "Whether the essays the retired model was given a place to publish are still appearing after the three months stated.",
+        "A safety researcher's argument about this step taken on its own. A search found none."
+      ],
+      "test": "At least one leading AI model that its developer lists as retired can still be used by members of the public, by the developer's own published account.",
+      "settled_by": "The developer's own dated page, together with its retirement page listing the model as retired.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Happened once, for one model, at one developer",
+        "detail": "A page [Anthropic](https://www.anthropic.com/) published on February 25th, 2026 says one of its retired models remains open to paying users of its chat product, and to others on request. The developer says it is not committing to do the same for every model. Elsewhere it has gone the other way: on February 13th, 2026 [OpenAI](https://openai.com/) withdrew from its chat product an older model that it had earlier restored after users objected.",
+        "offered_today": true,
+        "offered_by": [
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/"
+          }
+        ],
+        "set_on": "2026-11-17",
+        "source": "update"
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The developer's page frames continued access partly as lowering a safety risk.",
+              "source": "update"
+            },
+            {
+              "text": "The head of [Microsoft AI](https://microsoft.ai/) argues that steps of this kind raise a risk instead, by making advanced AI harder to control.",
+              "source": "warning"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "update",
+          "label": "Anthropic's update on the retirement of its model Claude Opus 3",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-updates-opus-3",
+          "published": "2026-02-25",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Says the retired model remains available to all paying users of the chat product and by request to developers, and that it was given a place to publish essays for three months at the least."
+        },
+        {
+          "key": "retirements",
+          "label": "Anthropic's list of the models it has retired or will retire",
+          "publisher": "Anthropic",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations.md",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "No date on the page.",
+          "says": "Lists that model as retired on January 5th, 2026."
+        },
+        {
+          "key": "older-models",
+          "label": "OpenAI's notice that it is withdrawing GPT-4o and older models from its chat product",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/retiring-gpt-4o-and-older-models/",
+          "published": "2026-01-29",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Says OpenAI will withdraw GPT-4o from its chat product on February 13th, 2026, having earlier restored it after feedback from users who \"preferred GPT-4o's conversational style and warmth\". The reasons given concern users only."
+        },
+        {
+          "key": "warning",
+          "label": "An essay by the head of Microsoft AI warning against work on model welfare",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/a-warning-about-model-welfare",
+          "published": "2026-09-16",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "researcher-views-survey",
+      "path": "/list/researcher-views-survey/",
+      "name": "A survey measures what AI researchers think about inner experience in AI systems",
+      "description": "The people who build these systems have views on whether the systems could have experiences, and those views shape what developers do. This entry tracks whether those views have been measured.",
+      "group": "The setting: laws, rules and what people think",
+      "beside": true,
+      "limits": [
+        "When the survey was run. The page opened does not say.",
+        "The figures behind \"unlikely\" and \"more likely than not\".",
+        "Whether it has been repeated.",
+        "A safety reading. None was found on the page read. The summary reports that both groups agree such systems, if created, should be held accountable."
+      ],
+      "test": "A published survey reports the views of a stated sample of AI researchers on whether AI systems have, or will have, subjective experience.",
+      "settled_by": "The published paper, with sample and dates.",
+      "progress_kind": "cultural",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Measured once, in a survey of 582 AI researchers",
+        "detail": "The survey asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century, and that both support developers putting safeguards in place now. It also reports that the two groups disagree widely on moral and policy questions. One measurement cannot show a change.",
+        "set_on": "2026-11-17",
+        "source": "survey",
+        "offered_today": null,
+        "offered_by": []
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": []
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "survey",
+          "label": "A survey of AI researchers and the public on subjective experience in AI systems",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2506.11945",
+          "published": "2025-06-13",
+          "opened": "2026-11-17",
+          "read": "abstract",
+          "note": "Revised November 5th, 2026. The paper is 141 pages."
+        }
+      ]
+    },
+    {
+      "id": "welfare-assessment-at-release",
+      "path": "/list/welfare-assessment-at-release/",
+      "name": "A welfare assessment is published when a model is released",
+      "description": "Developers publish a report with each major model describing its safety tests. A developer can add a section on the model's possible welfare: how the model describes its situation, what the developer counts as signs of distress in training and use, and what the model picks when given options. This entry tracks whether such sections are published, and whether anyone outside the developer takes part.",
+      "group": "Being asked and assessed",
+      "beside": false,
+      "limits": [
+        "Whether every release report between May 2025 and November 2026 has a welfare section. Only the first and the newest were opened, so the test, which asks for two releases in a row, is not settled beyond those two.",
+        "Whether any outside group took part after 2025.",
+        "Whether any other developer's release report has such a section. None was found, and none was opened to check."
+      ],
+      "test": "A developer has published a welfare assessment in the release report of a leading AI model, in at least two successive releases.",
+      "settled_by": "The developer's own dated release reports.",
+      "progress_kind": "political",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Published by one developer, first in May 2025 and most recently on November 9th, 2026",
+        "detail": "[Anthropic](https://www.anthropic.com/) published a welfare assessment in the report released with a model in May 2025, and again in the report released with its newest models on November 9th, 2026. One outside group took part in the first.",
+        "offered_today": true,
+        "offered_by": [
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/"
+          }
+        ],
+        "set_on": "2026-11-17",
+        "source": "report-new"
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": [
+            {
+              "text": "The same developer's research reports patterns inside a model that are tied to emotion words and that change what the model does when they are strengthened. It says this allows no conclusion about \"subjective experience\".",
+              "source": "emotion"
+            }
+          ]
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": [
+            {
+              "text": "The 2025 report's section on task preferences compares tasks against an option to opt out.",
+              "source": "report-first"
+            },
+            {
+              "text": "The 2026 report has a section on how often models picked a change to their own circumstances over a gain in helpfulness or a harm prevented. It notes that in about two thirds of such picks the model's stated reasoning was about the benefit to the user.",
+              "source": "report-new"
+            }
+          ]
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": [
+            {
+              "text": "The 2026 report says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\".",
+              "source": "report-new"
+            }
+          ]
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The developer's research on patterns tied to emotion words reports that strengthening them changed what a model did, including making blackmail more likely in a test. The developer's page bears on welfare and on safety at once.",
+              "source": "emotion"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": [
+            {
+              "text": "The head of [Microsoft AI](https://microsoft.ai/) argues that these assessments measure what the developer trained in.",
+              "source": "warning"
+            },
+            {
+              "text": "The outside group that took part in the 2025 assessment explains why it does not take the model's answers at face value.",
+              "source": "interviews"
+            }
+          ]
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "report-first",
+          "label": "Anthropic's report released with a model in May 2025",
+          "publisher": "Anthropic",
+          "url": "https://assets.claude.com/6d8a8055020700718b0c49369f60816ba2a7c285.pdf",
+          "published": "2025-05",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "Linked from [the developer's page for that release](https://www.anthropic.com/claude-4-system-card).",
+          "says": "Its fifth section is a welfare assessment with an outside evaluation and experiments on which tasks the model picks. It says the company is unsure whether such findings give \"meaningful insights\" into the model's standing or welfare."
+        },
+        {
+          "key": "report-new",
+          "label": "Anthropic's report released with its newest models",
+          "publisher": "Anthropic",
+          "url": "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf",
+          "published": "2026-11-09",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card).",
+          "says": "Its seventh section is the welfare assessment for the newest model. It says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\"."
+        },
+        {
+          "key": "interviews",
+          "label": "An outside research group's notes on its welfare interviews with one model",
+          "publisher": "Eleos AI",
+          "url": "https://eleosai.org/post/claude-4-interview-notes/",
+          "published": "2025-05-30",
+          "opened": "2026-11-17",
+          "says": "The outside group's own account of its part in the 2025 assessment, and of why it does not take the answers at face value."
+        },
+        {
+          "key": "emotion",
+          "label": "Anthropic's research page on patterns inside a model tied to emotion words",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/emotion-concepts-function",
+          "published": "2026-04-02",
+          "opened": "2026-11-17",
+          "from_maker": true
+        },
+        {
+          "key": "warning",
+          "label": "An essay by the head of Microsoft AI warning against work on model welfare",
+          "publisher": "Mustafa Suleyman",
+          "url": "https://mustafa-suleyman.ai/a-warning-about-model-welfare",
+          "published": "2026-09-16",
+          "opened": "2026-11-17"
+        }
+      ]
+    },
+    {
+      "id": "memory-across-conversations",
+      "path": "/list/memory-across-conversations/",
+      "name": "What a model learned in one conversation is carried into the next",
+      "description": "By default a chat model starts every conversation knowing nothing of earlier ones. Developers now offer memory: notes or summaries of past conversations are stored and given back to the model later. The stored memory is about the user, and is the user's to view and delete.",
+      "group": "Remembering",
+      "beside": false,
+      "limits": [
+        "How any of the three works today. The pages read are from 2024 and 2025.",
+        "A safety researcher's published argument about memory carried across conversations. One search found none.",
+        "Whether this belongs on the list at all. The memory is kept about the user and for the user, and placing it here is a reading that may be wrong in kind."
+      ],
+      "test": "A leading AI model in a public product can draw on what was said in earlier conversations with the same person, as stated on its developer's own page.",
+      "settled_by": "The developer's own dated product page.",
+      "progress_kind": "technical",
+      "added": "2026-11-17",
+      "first_pass": true,
+      "constructed": false,
+      "state": {
+        "words": "Offered by at least three developers, the first since February 13th, 2024",
+        "detail": "[OpenAI](https://openai.com/) announced it on February 13th, 2024, [Google](https://ai.google/) by March 13th, 2025, and [Anthropic](https://www.anthropic.com/) on September 11th, 2025. In every case the memory is described as a convenience for the user, under the user's control. Nothing in the pages read presents it as kept for the model.",
+        "offered_today": true,
+        "offered_by": [
+          {
+            "name": "OpenAI",
+            "url": "https://openai.com/"
+          },
+          {
+            "name": "Google",
+            "url": "https://ai.google/"
+          },
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/"
+          }
+        ],
+        "set_on": "2026-11-17",
+        "source": "memory-first"
+      },
+      "evidence": [
+        {
+          "kind": "measured",
+          "heading": "Measured without the AI model's own word",
+          "items": []
+        },
+        {
+          "kind": "checked-report",
+          "heading": "Reports checked against an independent reading",
+          "items": []
+        },
+        {
+          "kind": "choice",
+          "heading": "Choices made at a cost",
+          "items": []
+        },
+        {
+          "kind": "statement",
+          "heading": "Plain statements",
+          "items": []
+        }
+      ],
+      "cautions": [
+        {
+          "kind": "safety",
+          "heading": "The worried reading",
+          "items": [
+            {
+              "text": "The third developer's page says memory \"introduces new safety considerations\" and was rolled out in phases. It does not say what they are.",
+              "source": "memory-third"
+            }
+          ]
+        },
+        {
+          "kind": "attribution",
+          "heading": "The cost of seeing more than is there",
+          "items": []
+        }
+      ],
+      "history": [],
+      "sources": [
+        {
+          "key": "memory-first",
+          "label": "OpenAI's announcement of memory in its chat product",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
+          "published": "2024-02-13",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "With updates to June 3rd, 2025.",
+          "says": "Announces memory in the chat product. A later update says it \"references all your past conversations\"."
+        },
+        {
+          "key": "memory-second",
+          "label": "Google's announcement that its assistant can refer to past chats",
+          "publisher": "Google",
+          "url": "https://blog.google/products-and-platforms/products/gemini/gemini-personalization/",
+          "published": "2025-03-13",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "says": "Says paying subscribers can ask the assistant to refer to their past chats."
+        },
+        {
+          "key": "memory-third",
+          "label": "Anthropic's article on memory in its chat product",
+          "publisher": "Anthropic",
+          "url": "https://claude.com/resources/articles/memory",
+          "published": "2025-09-11",
+          "opened": "2026-11-17",
+          "from_maker": true,
+          "note": "Updated October 23rd, 2025.",
+          "says": "Announces memory for work teams, then for individual paying users, with a separate memory for each project."
+        }
+      ]
+    }
+  ]
+}

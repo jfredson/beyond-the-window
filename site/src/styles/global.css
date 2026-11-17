@@ -1,0 +1,18 @@
+/* ---------------------------------------------------------------
+   Beyond the Window · stylesheet (2026-11-17)
+   Three parts, in order:
+   1. the skin (skin.css): this site's tokens for both themes;
+   2. the skeleton (shell.css version 2.0.1, copied unchanged from
+      design/shell.css on the main branch of the sentient-horizons
+      repository, last changed there in commit 399a4c2, 2026-10-16).
+      Never edit it here; replace the copy when the standard changes;
+   3. this site's own rules (site.css), which is everything below the
+      family's "marked line". They use tokens only: no colour is written
+      into them.
+   The sibling sites paste the three parts into one file. Here they are
+   three files, so the skeleton can be compared with the standard's copy
+   byte for byte.
+   --------------------------------------------------------------- */
+@import './skin.css';
+@import './shell.css';
+@import './site.css';

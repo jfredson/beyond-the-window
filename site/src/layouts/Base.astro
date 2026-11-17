@@ -1,0 +1,84 @@
+---
+// The page shell, as the family's design standard sets it (sections 6 to 8): the theme set
+// before first paint, the top bar, and the footer with its lines. Adapted from The Upgrade
+// Tree's Base.astro (its main branch) on 2026-11-17.
+//
+// Three things differ from the siblings, each a provisional choice in
+// docs/first-version-choices.md:
+// - the theme follows the visitor's own light or dark setting, with no default (choice 4);
+// - the attribution line carries no licence words, because whether the family's licence suits
+//   this project has not been decided (choice 15);
+// - every page asks search engines not to list it, because nothing is published (choice 17).
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import { data, longDate, builtFrom, SITE_NAME } from '../lib/data';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_NAME,
+  description = 'A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.',
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* Set the theme before first paint so there is no flash. A stored choice wins; otherwise the visitor's own setting decides. */}
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+    <meta id="theme-color-meta" name="theme-color" content="#141826" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="John Andrew Fredrickson" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    {data.constructed && (
+      <div class="constructed-banner">Constructed example, not real data · every entry, state and source on this page is made up</div>
+    )}
+    <Nav />
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <span class="footer-brand">Beyond the Window</span>
+          <p class="footer-tag">A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.</p>
+          <p class="footer-links">
+            <a href="/list/">The list</a>
+            <a href="/still-asking/">Still Asking</a>
+            <a href="/about/">About</a>
+            <a href="/about/#not-known">What is not known yet</a>
+            <a href="/data/headline.json">The number as a file</a>
+          </p>
+          <p class="footer-meta">
+            © {currentYear} <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>. Last built {longDate(data.exported_on)}{data.commit ? ` (version ${data.commit})` : ''} from {builtFrom()}.
+          </p>
+          <p class="footer-parent"><a href="https://sentient-horizons.com/projects/" rel="noopener">A Sentient Horizons project.</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

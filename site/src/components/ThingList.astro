@@ -1,0 +1,35 @@
+---
+// The list in words: every thing on the list, group by group, with where it stands in the
+// plain words its record gives. The same entries as the window, for a reader who wants names.
+// With `beside`, it shows the entries that sit beside the list instead: they are about the
+// setting (laws, published rules, surveys), nobody can offer them to a model, and they are
+// never counted, so they carry no filled or outlined square.
+import { listGroups, besideGroups, entryById, longDate, plain } from '../lib/data';
+
+interface Props {
+  beside?: boolean;
+}
+const { beside = false } = Astro.props;
+const groups = beside ? besideGroups : listGroups;
+---
+
+{groups.map((g) => (
+  <div class="group">
+    {!beside && <h3>{g.name}</h3>}
+    <ul class={`things ${beside ? 'beside' : ''}`}>
+      {g.entries.map((id) => {
+        const e = entryById.get(id)!;
+        return (
+          <li>
+            {!beside && <span class={`mark ${e.state.offered_today ? 'lit' : 'out'}`} aria-hidden="true"></span>}
+            <a href={e.path}>{e.name}</a>
+            <span class="st">
+              {!beside && <b>{e.state.offered_today ? 'Offered today.' : 'Not offered yet.'}{' '}</b>}
+              {plain(e.state.words)}. <span class="dim">As of {longDate(e.state.set_on)}.</span>
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+))}

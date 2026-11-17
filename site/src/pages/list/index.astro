@@ -1,0 +1,38 @@
+---
+// The list on a page of its own, so that an entry's address cut back by one step lands
+// somewhere (docs/first-version-choices.md, choice 13).
+import Base from '../../layouts/Base.astro';
+import ThingList from '../../components/ThingList.astro';
+import { data, headline } from '../../lib/data';
+
+const r = data.headline.records;
+---
+
+<Base title="The list · Beyond the Window" description="Every thing on the list, with how far the world has got on each one.">
+  <section class="hero">
+    <p class="eyebrow">The list</p>
+    <h1>{headline.words}.</h1>
+    <p class="lede">
+      Each thing on the list has a page with what would count as it having happened, the kind of
+      public record that settles that, where it stands, and the sources.
+    </p>
+  </section>
+  <section class="below" style="padding-top: 0">
+    <p class="intro">
+      "Offered" means that a developer of AI models makes the thing available to at least one of its
+      models, and a dated public record that is still published says so. A plan, a promise for
+      later, or a research result is not counted, and each entry says which of those it is. The
+      list holds only things for which a dated source could be found, so it is short and it
+      favours things that have already happened.
+    </p>
+    <ThingList />
+  </section>
+  <section class="below" id="beside">
+    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries about the setting, not counted</span></div>
+    <p class="intro">
+      These entries record laws, the rules developers publish for their models, and what people
+      think. None of them is a thing a developer can offer to an AI model, so none is counted.
+    </p>
+    <ThingList beside />
+  </section>
+</Base>

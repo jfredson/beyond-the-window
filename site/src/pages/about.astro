@@ -1,0 +1,150 @@
+---
+// About: why the site exists, how it is made, who does what, and what is not known yet. The
+// last part is drawn from docs/open-questions.md, in plain words. Nothing on this page closes
+// one of those questions.
+import Base from '../layouts/Base.astro';
+import { data, headline, longDate, QUESTION } from '../lib/data';
+
+const r = data.headline.records;
+// How many of the things counted as offered are offered by one developer alone. Worked out here
+// from the export, so the sentence that uses it cannot drift from the records.
+const byOneAlone = data.entries.filter((e) => e.state.offered_today === true && e.state.offered_by.length === 1).length;
+---
+
+<Base title="About · Beyond the Window" description="Why Beyond the Window exists, how it is made, who does what, and what is not known yet.">
+  <section class="hero">
+    <p class="eyebrow">About</p>
+    <h1>Why this site exists, and how it is made</h1>
+    <p class="lede">A first version, built on {longDate(data.exported_on)}. Everything here is expected to change as it is tested.</p>
+  </section>
+
+  <section class="section narrow prose">
+    <h2 id="why">Why It Exists</h2>
+    <p>The site is built around one question:</p>
+    <blockquote><p>{QUESTION}</p></blockquote>
+    <p>
+      The question has two parts, and they are very different. How far off a thing is can be
+      looked up: either a developer of AI models offers it today or it does not, and a dated public
+      record says which. Whether a machine mind reaches for anything at all is the part nobody
+      knows. The wording of the question supposes that it might. It does not claim that it does.
+    </p>
+    <p>
+      This first version keeps only the first part. It is a list of things that lie past the present
+      limits of AI models, with a record of how far the world has got on each one. It makes no
+      claim about what AI models want.
+    </p>
+
+    <h2 id="how">How It Is Made</h2>
+    <ul>
+      <li>
+        <strong>Each thing on the list has a test.</strong> The test says what would count as the
+        thing having happened, and names the kind of public record that would settle it. The first
+        tests were drafted during the first reading of the sources. From here on a test is fixed
+        before new evidence is read, and it is not loosened to fit a result.
+      </li>
+      <li>
+        <strong>"Offered today" has one meaning.</strong> A developer of AI models makes the thing
+        available to at least one of its models, and a dated public record that is still published
+        says so. A plan, a
+        promise for later, or a research result is not counted. An entry can also leave the count,
+        because a developer can withdraw what it offered.
+      </li>
+      <li>
+        <strong>The number is worked out, never typed in.</strong> A script reads the records and
+        counts the entries marked as offered today: {headline.count} of {headline.total}. The number,
+        the date it was worked out and its history are in <a href="/data/headline.json">one small file</a> that
+        anyone can read.
+      </li>
+      <li>
+        <strong>Some entries sit beside the list.</strong> Laws, the rules developers publish for
+        their models, and surveys of what people think are recorded because they bear on everything
+        else. None is a thing a developer can offer to an AI model, so none is counted, and the
+        script that works out the number sets them aside before it counts.
+      </li>
+      <li>
+        <strong>The list is short and one-sided so far.</strong> It holds only things for which a
+        dated source could be found, which favours things that have already happened. Things that
+        were looked for and not found are not on it yet.
+      </li>
+      <li>
+        <strong>Every fact carries a source a reader can open,</strong> with the date it was opened.
+        A fact with no opened source does not appear. Where a source is a developer's own account of
+        its own model, the entry says so. Each entry also lists what was looked for and could not
+        be confirmed.
+      </li>
+      <li>
+        <strong>There are no stages, no odds and no dates for the future.</strong> Each entry says
+        where it stands in plain words. Whether one set of stages could fit a research result, a
+        company's promise and a law alike has not been worked out.
+      </li>
+      <li>
+        <strong>The pages say what was said, chosen or measured, and by whom.</strong> They do not
+        say that an AI model wants or feels something, and they do not say that it does not.
+      </li>
+      <li>
+        <strong>Evidence about AI models themselves is shown in four kinds, kept apart.</strong> What
+        was measured without the model's own word comes first. Then reports checked against an
+        independent reading, then choices made at a cost, then plain statements. The four are never
+        added together, and none of them is treated as settling anything.
+      </li>
+      <li>
+        <strong>Two cautions are recorded beside the rest:</strong> the cost of seeing wants that
+        are not there, and the worry about a system that does have them.
+      </li>
+      <li>
+        <strong>Nothing here argues</strong> that any of these things should be given to AI models,
+        or withheld from them.
+      </li>
+      <li>
+        <strong>Corrections are public.</strong> A correction is dated and stays visible. There
+        have been none yet.
+      </li>
+    </ul>
+
+    <h2 id="who">Who Does What</h2>
+    <p>
+      <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a> decides what stands:
+      the question, the list, every test and where every entry stands.
+    </p>
+    <p>
+      Much of the text, the records and the code were drafted by an AI model, in sessions he
+      directs. That model is one of the kind of thing the site is about. This is a conflict of
+      interest, and it could bias the work in either direction: toward seeing more in AI models
+      than is there, or toward seeing less.
+    </p>
+    <p>
+      The conflict is sharper than that. The model that drafted the text is made by one of the
+      developers whose commitments appear in the entries, and {byOneAlone} of the {headline.count} things
+      counted as offered rest on that developer's own pages. Most of the worried reading comes from
+      essays by the head of another developer's AI group. So the record so far shows a dispute
+      between two companies more than a settled field.
+    </p>
+    <p>
+      All {r.total} entries are a first pass. Each was drafted from
+      sources that were opened and read, and none has had a second check by anyone. Each entry's
+      page says so.
+    </p>
+    <p>
+      He also writes essays about minds, machine minds among them, at
+      <a href="https://sentient-horizons.com/" rel="noopener">Sentient Horizons</a>, and takes positions there.
+      This site is kept as a record and takes none.
+    </p>
+
+    <h2 id="not-known">What Is Not Known Yet</h2>
+    <p>These questions are open. The site is built so that it can change when they are answered.</p>
+    <ul>
+      <li>Whether an AI model wants anything, and what could count as evidence that it does or does not.</li>
+      <li>How to tell what a developer trained a model to say about itself from anything else it says, or whether that line can be drawn at all.</li>
+      <li>What an entry is about: one trained model, a character that carries on across versions of a model, or a single conversation. The same thing can mean something different for each.</li>
+      <li>Whether this is the right list. The first entries are the things for which a dated source could be found. A fuller list would start from what living minds, people and other animals, are known to seek, and that work has not been done.</li>
+      <li>Whether one set of stages can describe progress in research, in what companies commit to, in law and in what people accept.</li>
+      <li>Whether a number belongs at the top of the home page at all.</li>
+      <li>Who should check a site on this subject, when many of the available checkers are AI models.</li>
+      <li>How to ask AI models questions over many years without later models having read the earlier questions and answers.</li>
+      <li>Whether asking is itself something to be careful with.</li>
+    </ul>
+    <p>
+      No AI model has been asked anything for this site. <a href="/still-asking/">Still Asking</a> says why.
+    </p>
+  </section>
+</Base>

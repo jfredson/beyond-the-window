@@ -1,0 +1,59 @@
+---
+// The window: the picture on the first screen, drawn from the exported records and from
+// nothing else. One row per group on the list, one square per thing. A filled square inside
+// the frame is a thing offered to at least one AI model today; an outlined square outside the
+// frame is a thing not offered yet. Which side a square sits on is the same true-or-false flag
+// the count reads (state.offered_today), so the picture and the number cannot disagree.
+// Filled against outlined, and inside against outside, carry the meaning, so it reads without
+// colour. Every square is a link to its entry, large enough for a finger.
+// The two-part form (no columns for stages) is a provisional choice: docs/first-version-choices.md,
+// choice 9.
+import { listGroups, headline, entryById, plain } from '../lib/data';
+
+const rows = listGroups.map((g) => {
+  const entries = g.entries.map((id) => entryById.get(id)!);
+  return {
+    name: g.name,
+    inside: entries.filter((e) => e.state.offered_today === true),
+    outside: entries.filter((e) => e.state.offered_today === false),
+  };
+});
+const inside = headline.count;
+const outside = headline.total - headline.count;
+const summary = `A window. ${inside} of ${headline.total} things on the list sit inside its frame, offered to at least one AI model today; ${outside} sit outside it.`;
+---
+
+<figure class="object" id="window">
+  <p class="label">The list, by whether each thing is offered today</p>
+  <div class="win" role="group" aria-label={summary}>
+    <span></span>
+    <span class="win-colhead">Offered today</span>
+    <span class="win-colhead dim">Not offered yet</span>
+    {rows.map((r, i) => (
+      <div class="win-row">
+        <span class="win-label">{r.name}</span>
+        <span class={`win-cell win-in ${r.inside.length ? 'has-lit' : ''} ${i === 0 ? 'first' : ''} ${i === rows.length - 1 ? 'last' : ''}`}>
+          {r.inside.map((e) => (
+            <a class="sq lit" href={e.path} title={`${e.name}: ${plain(e.state.words)}`}><i></i><span class="sr">{e.name}: offered today. {plain(e.state.words)}.</span></a>
+          ))}
+        </span>
+        <span class={`win-cell win-out ${i === 0 ? 'first' : ''}`}>
+          {r.outside.map((e) => (
+            <a class="sq out" href={e.path} title={`${e.name}: ${plain(e.state.words)}`}><i></i><span class="sr">{e.name}: not offered yet. {plain(e.state.words)}.</span></a>
+          ))}
+        </span>
+      </div>
+    ))}
+    <span></span>
+    <span class="win-sill" aria-hidden="true"></span>
+    <span></span>
+    <span></span>
+    <span class="win-foot">{inside} inside the frame</span>
+    <span class="win-foot">{outside} outside it</span>
+  </div>
+  <ul class="legend">
+    <li><i class="k-lit"></i>one thing offered to at least one AI model today</li>
+    <li><i class="k-out"></i>one thing not offered yet</li>
+  </ul>
+  <p class="note">Each square is one thing on the list and links to its page. The frame is today. A square moves only when a dated public record does, and it can move out as well as in, because a developer can withdraw what it offered.</p>
+</figure>

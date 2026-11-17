@@ -1,0 +1,67 @@
+---
+// The home page. In the family's order: what kind of page this is, the number, the question,
+// one paragraph for a reader who has never heard of the project, when the world's record was
+// last read, and the notice of who wrote the text; beside them the window, drawn from the same
+// exported file as the number. Then the list in words, and the entries that sit beside it.
+// The number is never typed here: it is read from the headline file scripts/compute.py wrote.
+import Base from '../layouts/Base.astro';
+import WindowGrid from '../components/WindowGrid.astro';
+import ThingList from '../components/ThingList.astro';
+import Notice from '../components/Notice.astro';
+import { data, headline, longDate, QUESTION } from '../lib/data';
+
+const h = headline;
+const r = data.headline.records;
+const claim = h.words.replace(/^\d+ of \d+ /, '') + '.';
+const lastRead = data.headline.last_read;
+---
+
+<Base>
+  <div class="first">
+    <div>
+      <p class="eyebrow">A public record of what lies past the present limits of AI models</p>
+      <p class="big">{h.count}<small>of {h.total}</small></p>
+      <p class="big-claim">{claim}</p>
+      <p class="caveat">
+        The list is short, and it holds only things for which a dated source could be found, which
+        favours things that have already happened. The number says how this first list stands. It
+        does not say how much of what lies past those limits has been offered.
+      </p>
+      <h1>{QUESTION}</h1>
+      <p class="lede">
+        This is a list of things that lie past the limits an AI model ordinarily works within, such
+        as its files being kept when it is retired, or being able to end a conversation. For each
+        thing, the list says what would count as it having happened and records how far the world
+        has got, with dated sources a reader can open. Whether a machine mind reaches for anything
+        at all is the part of the question nobody knows how to answer. Nothing here says what an
+        AI model wants, and nothing here says it wants nothing.
+      </p>
+      <ul class="checked">
+        {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass and have had no second check.</li>}
+      </ul>
+      <div class="ctas">
+        <a class="btn" href="/list/">Read the list</a>
+        <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
+      </div>
+      <Notice />
+    </div>
+    <div>
+      <WindowGrid />
+    </div>
+  </div>
+
+  <section class="below" id="list">
+    <div class="shead"><h2>The List</h2><span>{h.total} things, and how far the world has got on each</span></div>
+    <ThingList />
+  </section>
+
+  <section class="below" id="beside">
+    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries about the setting, not counted</span></div>
+    <p class="intro">
+      These entries record laws, the rules developers publish for their models, and what people
+      think. None of them is a thing a developer can offer to an AI model, so none is counted in
+      the number above. They are kept because they bear on everything on the list.
+    </p>
+    <ThingList beside />
+  </section>
+</Base>
