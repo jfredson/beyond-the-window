@@ -4,7 +4,11 @@
 direction on 2026-11-17: asked "Which direction should the site take?", he answered "Glass, the
 window". Decided by: mixed (a session proposed it and John approved). That settles point 1 of
 section 9 and nothing else: the headline, where the site says an AI model wrote much of it, the
-default theme and the rest wait for his ruling, and nothing is built.
+default theme and the rest wait for his ruling, and nothing is built. He gave the same answer a
+second time that day, to the session that started this one, asked "Which direction for the
+site's look: Glass or Page?": "Glass". The ruling's own record is
+`docs/rulings/2026-11-17-design-direction.md`. His answer was about the direction: the skin's
+name (point 8) is not ruled, and neither is whether open question 11 is closed.
 
 Written by Claude (Fable 5.2), an AI model, in a session
 John asked for on 2026-11-17: "Can we spin up a design session to begin work on a design that
