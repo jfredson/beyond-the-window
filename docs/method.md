@@ -1,7 +1,13 @@
 # The method: a framework
 
-**PROPOSED 2026-11-17, not ruled.** Written by Claude (Fable 5.2). A framework only: nothing
-here has been run, and there is nothing yet to compute.
+**PROPOSED 2026-11-17. Ruled in part the same day.** John's rulings on the kickoff's seven
+decisions (`docs/rulings/2026-11-17-kickoff-decisions.md`) settle: the question (section 1);
+that there are two readings kept apart (sections 2 and 3.3); the five authorship rules and the
+cautions record (the first clause of 3.1, and 3.2, 3.5 and 3.6); and that Still Asking exists
+with nothing asked before its protocol is written, reviewed and costed, each spend needing his
+own go (section 8). Everything else here is still a proposal or a sketch, including clauses 2
+to 4 of section 3.1. Written by Claude (Fable 5.2). A framework only: nothing here has been
+run, and there is nothing yet to compute.
 
 As in `docs/record-schema.md`, each section is marked **framework** (a proposal, with
 confidence, standard practice or judgment, and the strongest alternative) or **sketch** (a

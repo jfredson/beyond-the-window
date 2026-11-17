@@ -5,8 +5,8 @@ Quiet Galaxy and The Upgrade Tree. Named by John on 2026-11-16.
 
 **Status on 2026-11-17: opening frameworks proposed, most of the design open.** There is no
 site and no data. John registered the address beyondthewindow.org on 2026-11-17; nothing is
-served there yet. Nothing in this repository has been ruled by John except the name, the
-address and what the documents quote as his words. The repository is local only: no GitHub repository,
+served there yet. John ruled the kickoff's seven decisions on 2026-11-17; everything else in
+this repository is a proposal or a sketch unless a document quotes his words. The repository is local only: no GitHub repository,
 no remote, nothing deployed.
 
 ## The question
@@ -82,12 +82,20 @@ How and where the public site declares this is not yet decided (open question 7)
 
 Settled: the name, and the address beyondthewindow.org.
 
+Ruled by John on 2026-11-17 (`docs/rulings/2026-11-17-kickoff-decisions.md`): the kickoff's
+seven decisions, as recommended in the walk-through. In short: the question as worded; inherit
+by default; two readings kept apart, with how wanting is recorded left open; Still Asking
+exists and nothing is asked before its protocol is written, reviewed and costed, each spend
+needing John's own go; the five authorship rules and the cautions record; and open questions
+explored and ruled before the matching part is built. Two additions to the authorship rules are
+not yet ruled.
+
 Stated by John as guidance for the opening phase: the starting list comes from biological
 minds; a questioning protocol is needed; progress is technological, political or cultural; and
 every rule here is an opening guideline to be questioned and tested as the project is built.
 
-For John to rule: the kickoff's seven decisions (`docs/2026-11-16-kickoff.md`, "Decisions"),
-with the review's comments on each.
+For John to rule next: whether the first authorship rule takes its full four-clause form, and
+where the site declares AI authorship and in whose voice.
 
 Open: everything in `docs/open-questions.md`.
 

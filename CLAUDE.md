@@ -1,6 +1,10 @@
 # Beyond the Window: guidelines for Claude
 
-**PROPOSED 2026-11-17, not ruled.** Written by Claude (Fable 5.2) from the kickoff and the
+**Ruled in part on 2026-11-17.** John ruled the kickoff's seven decisions that day
+(`docs/rulings/2026-11-17-kickoff-decisions.md`, decided by: mixed). That covers guidelines 1
+and 3 to 7 below, and the first clause of guideline 2. Still proposed and not ruled: the other
+three clauses of guideline 2, the public form of guideline 3, and the wording of everything
+under "Carried over from the family". Written by Claude (Fable 5.2) from the kickoff and the
 sibling projects' instruction files. The workspace instruction file in `~/Code` applies on top:
 plain language everywhere, no id without a plain phrase saying what it is, absolute
 year-month-day dates in files and commits, commas in place of long dashes.

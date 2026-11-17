@@ -1,6 +1,9 @@
 # The records: a framework
 
-**PROPOSED 2026-11-17, not ruled.** Written by Claude (Fable 5.2). This is a framework only. No
+**PROPOSED 2026-11-17. One part ruled the same day:** that every entry carries two readings
+kept apart (section 5), with how wanting is recorded left open
+(`docs/rulings/2026-11-17-kickoff-decisions.md`). The rest is not ruled. Written by Claude
+(Fable 5.2). This is a framework only. No
 record has been written, there is no validator, and no field name here is final.
 
 It has two kinds of section, marked in each heading:
