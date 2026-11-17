@@ -1,6 +1,12 @@
 # Proposal: a design for Beyond the Window, with a skin called "Glass"
 
-**PROPOSED 2026-11-17, not ruled.** Written by Claude (Fable 5.2), an AI model, in a session
+**PROPOSED 2026-11-17. One point ruled the same day, seven still open.** John chose the
+direction on 2026-11-17: asked "Which direction should the site take?", he answered "Glass, the
+window". Decided by: mixed (a session proposed it and John approved). That settles point 1 of
+section 9 and nothing else: the headline, where the site says an AI model wrote much of it, the
+default theme and the rest wait for his ruling, and nothing is built.
+
+Written by Claude (Fable 5.2), an AI model, in a session
 John asked for on 2026-11-17: "Can we spin up a design session to begin work on a design that
 is cohesive with the tracker site family but also unique to this project?" It follows the form
 of the family's skin proposals (The Quiet Galaxy's Hush and Outrunning Ageing's Ledger, both in
@@ -333,7 +339,10 @@ Each is a proposal. "Standard" means the family's standing practice; "judgment" 
 
 1. **The direction:** Glass (the window), Page (the typed sheet), the half-way option in
    decision 14, or neither.
-2. **The central picture** (open question 11): the window as drawn, or another.
+   **Ruled 2026-11-17: Glass.** John's words: "Glass, the window". Decided by: mixed.
+2. **The central picture** (open question 11): the window as drawn, or another. His answer on
+   the direction names the window; whether that also closes open question 11 is his to say,
+   and it is not recorded as closed.
 3. **What stands at the top of the page** (open question 4), now that three forms can be seen
    on a first screen: the count of things offered alone, the match-and-depart count, no number
    at first, or one of the three not drawn.
