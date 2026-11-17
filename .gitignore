@@ -1,0 +1,6 @@
+# private reference material (copyrighted papers, anything not for publishing)
+docs/private/
+.claude/
+_to_delete/
+*.env
+.DS_Store
