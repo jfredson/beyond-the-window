@@ -78,7 +78,9 @@ How and where the public site declares this is not yet decided (open question 7)
 | `docs/record-schema.md` | A proposed framework for the records, with the unsettled parts written as sketches. |
 | `docs/method.md` | A proposed framework for the method, with the unsettled parts written as sketches. |
 | `docs/still-asking-protocol.md` | An outline of what a protocol for Still Asking would have to cover. No question wording. |
-| `docs/verify-list.md` | Facts written from memory that nobody has yet checked against a source. |
+| `docs/verify-list.md` | Facts written from memory, with the ones a session has since checked against a source moved to "Cleared". |
+| `docs/research/2026-11-17-first-entries.md` | Fifteen draft entries for the world's record, each from sources that were opened, with what surprised the session and what the drafts suggest about the open questions. A research document, not data. |
+| `docs/research/2026-11-17-model-retirement-dates.md` | Each major developer's published dates for withdrawing its current models, as read on 2026-11-17. |
 | `docs/design/2026-11-17-design-proposal.md` | A proposed design, for John to rule on: a skin called Glass built on a window, the strongest alternative, and three forms the top of the page could take. Pictures in `docs/design/pictures/`, the mock-up pages they were photographed from in `docs/design/mockups/`. Every number in them is a constructed example. |
 | `CLAUDE.md` | Working guidelines for sessions in this repository. |
 | `docs/private/` | Kept out of the repository. For material that must not be published. |
