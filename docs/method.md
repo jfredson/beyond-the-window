@@ -13,6 +13,8 @@ confidence, standard practice or judgment, and the strongest alternative) or **s
 starting point to argue with, naming the open question it depends on). Every part is an opening
 guideline (John, 2026-11-17).
 
+> **A proposed change bears on this document.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` (PROPOSED 2026-11-17, not ruled) would reword the first rule into five parts, add a third reading on who is answering, set an order of evidence, and give Still Asking two tracks. Nothing below is changed until John rules.
+
 Row numbers such as "F1" point at `docs/inheritance.md`. Open question numbers are those in
 `docs/open-questions.md`.
 

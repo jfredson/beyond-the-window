@@ -18,6 +18,8 @@ It has two kinds of section, marked in each heading:
 Every part is an opening guideline (John, 2026-11-17) and is expected to change as the open
 questions are explored.
 
+> **A proposed change bears on this document.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` (PROPOSED 2026-11-17, not ruled) would add a record for the speaker's card and put the evidence table in a fixed order. Nothing below is changed until John rules.
+
 Row numbers such as "A8" point at `docs/inheritance.md`.
 
 ## 1. What a record is (framework)

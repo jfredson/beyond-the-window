@@ -47,6 +47,10 @@ So:
    exists to take a reading. Strongest alternative, not taken: part (a) alone, as the kickoff
    had it.*
 
+   *A proposed change, not ruled: `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md`
+   would make part (a) "on its own word" and add a fifth part, that the weight of a machine's
+   word rises as it meets conditions fixed in advance. Until John rules, the four parts stand.*
+
 3. **Machine authorship is declared, and the conflict named.** Documents in this repository say
    which were written by a model. Where and how the public site says it is open question 7,
    because it conflicts with three family rules (tools are not advertised; no "with Claude" in

@@ -9,6 +9,8 @@ A model wrote this outline of how models should be questioned. That is the proje
 of interest at its plainest, and it is one reason the outline ends with a list of things only
 John can rule.
 
+> **A proposed change bears on this document.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` (PROPOSED 2026-11-17, not ruled) would give Still Asking two tracks, attach a card on who is answering to every answer, and follow answers up against later choices. Nothing below is changed until John rules.
+
 Row numbers such as "H2" point at `docs/inheritance.md`. Open question numbers are those in
 `docs/open-questions.md`.
 

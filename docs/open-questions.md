@@ -675,6 +675,9 @@ it, shown by what it does at a cost; a point of view; self-reports with a checke
 and wants that hold across rewordings and time and predict costly choices. The positions' line
 for the gap: "What a model lacks is not ancestry but biography."
 
+**A proposal now exists.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md`
+(PROPOSED 2026-11-17, not ruled) sets out six changes built on the five conditions.
+
 **Options.** The five conditions as tracked things on the reach side, each with a test; the
 five as a separate reading beside reach and wanting; the five as the rule for how much weight a
 Still Asking answer is given; or none of these, with the conditions kept as an essay's argument
