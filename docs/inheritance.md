@@ -232,6 +232,7 @@ The six projects are named in full the first time in each section and then short
 | K10 | Plain language everywhere; no bare ids; absolute dates in files and commits; dates in public prose spelled out; commas in place of long dashes; public prose never says "I ruled". | The workspace rules; `sentient-horizons/editorial/dates-in-prose.md` and `no-rulings-in-prose.md` (main branch) | **As is.** |
 | K11 | A tracker is called by its name in public copy, never "my tracker". | The workspace rules, "Call the trackers by name" (2026-10-24) | **As is.** |
 | K12 | Titles: a stranger can say what the piece is about from the title; name the subject; no coined phrases; a piece that introduces a tracker leads with the question. | `sentient-horizons/editorial/title-rules.md` (main branch, 2026-10-21) | **As is.** "Still Asking" and "Beyond the Window" are names, not titles, and an introducing piece leads with the question. |
+| K14 | Every draft in this territory is read against the blog's positions record, and one that contradicts a published position does not go out until John chooses to revise the draft, revise the position, or note the gap. | `sentient-horizons/editorial/corpus-positions-ledger.md` and `editorial/working-positions-coherence.md` (main branch; John's priority of 2026-10-24) | **As is.** Missed by the kickoff and by the first pass of this inventory; found 2026-11-17. This site's entries will touch the positions on current AI, self-report, copies and endings on almost every page. See `docs/reviews/2026-11-17-positions-alignment.md`. |
 | K13 | A commit hook refuses a commit message with a month-name, slash or relative date. | Lessons ledger, lesson 29 | **As is.** Copied into this repository on 2026-11-17. |
 
 ### L. Pages, news and design
@@ -507,6 +508,8 @@ It is right as far as it goes. What it leaves out, in rough order of how much it
 14. **Two clocks for the last-checked line** (G14).
 15. **Self-imposed limits are always reviewable** (G11), and the family's own precedent for
     treating rules as things to test (part 2, item 5).
+17. **The blog's standing check of every draft against its positions record** (K14), found
+    later the same day when John asked how the founding ideas sit with the positions.
 16. **The recorded failures themselves** (part 2). The kickoff inherits practices; the brief
     for this session asked for the lessons too.
 

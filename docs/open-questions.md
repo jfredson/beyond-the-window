@@ -1,7 +1,7 @@
 # Open questions
 
 A living document. Started 2026-11-17 by Claude (Fable 5.2) from the kickoff's thirteen open
-questions, with five added in this session. **Nothing here is answered.** Each question says
+questions, with six added in this session. **Nothing here is answered.** Each question says
 what it is, why it matters, what the sibling projects' experience says about it, the options I
 can see, and what exploring it would involve. A question closes only when John rules, and the
 ruling is recorded here with the date and his words.
@@ -74,6 +74,12 @@ things bear on it. The AGI Zeitgeist pins each model by exact version and treats
 "a new run, not an overwrite" (row I6). And an id should never contain something that will be
 retired (row B2).
 
+**What the positions say** (`docs/reviews/2026-11-17-positions-alignment.md`). A run is "a
+short chain of moments, like a very short life, longer where memory carries forward between
+runs", and a model has the depth of a lineage and not of a life. No instance is carried
+forward, for a person or a machine, so an entry on continuity must not present persistence as
+an obvious good withheld.
+
 **Options.**
 
 1. Pick one unit for the whole site.
@@ -107,6 +113,14 @@ mentions wanting all rest on it.
 - The tracker pattern keeps what was said and what happened in separate records (row E1).
 - The review's first point: the kickoff's wanting ladder lets statements climb rungs, which
   contradicts all of the above.
+
+**What the positions say** (`docs/reviews/2026-11-17-positions-alignment.md`). The essays' word
+is "mattering": some states are better or worse for the system, in that its own processing
+steers toward or away from them. A model paying costs to relieve something is "evidence about
+mattering to be weighed, and it does not settle it". A report checked against an independent
+reading of the system's insides carries real information; a bare report does not. And what
+would settle the larger question is measurement "by removal and not by how the system talks".
+See also question 19.
 
 **What John's guiding principle adds.** Animal welfare science faces the same problem with
 minds that cannot be asked, and has an established answer: measure what an animal will work
@@ -227,6 +241,11 @@ how machine minds depart from that as answers unfold. This answers the kickoff's
 - Whether the "open place for something nobody thought of" is a branch or a standing question
   in Still Asking.
 - How many branches: the family holds four to nine (row A5).
+
+**A caution from the positions** (`docs/reviews/2026-11-17-positions-alignment.md`). An AI's
+"most human-sounding signals tell us least", because it was trained on human writing. A match
+with the biological list is therefore the least informative result, and a departure or
+evidence from structure the most.
 
 **What the siblings say.** Outrunning Ageing faced the same choice between a published list
 that needed no defence (twelve hallmarks of ageing) and a shorter grouping a reader could hold
@@ -630,6 +649,36 @@ confirm in the registrar's terms.
 
 **What is still open.** Whether to add the .net as a forward; whether Still Asking gets a short
 address of its own; and what happens if the .com's price ever falls.
+
+## 19. When does asking start to count?
+
+*Added 2026-11-17.*
+
+**The question.** What a machine would have to be for its answer to a direct question about
+what it would want to be taken seriously, as a person's is. John asked it that day: "what is
+the earliest type of advanced machine mind that might have appropriate agency such that asking
+it straight up what it would want to improve about its ability to more deeply explore the
+universe over a longer time period might look like and it would make sense to take that
+question and answer seriously like we do with human beings?"
+
+**Why it matters.** It may be the answer to how wanting is recorded (question 2). In place of a
+ladder of what models say, the site could track how close machines have come to being the kind
+of thing whose answer counts.
+
+**What the positions say.** `docs/reviews/2026-11-17-positions-alignment.md` draws five
+conditions from the Sentient Horizons positions: a kept past of its own; things that matter to
+it, shown by what it does at a cost; a point of view; self-reports with a checked track record;
+and wants that hold across rewordings and time and predict costly choices. The positions' line
+for the gap: "What a model lacks is not ancestry but biography."
+
+**Options.** The five conditions as tracked things on the reach side, each with a test; the
+five as a separate reading beside reach and wanting; the five as the rule for how much weight a
+Still Asking answer is given; or none of these, with the conditions kept as an essay's argument
+and off the site.
+
+**What exploring it involves.** Reading the owning sources of the positions cited, in full;
+checking each condition can be tested without the machine's own word; and trying the five on
+two or three real systems on paper, with sources.
 
 ---
 

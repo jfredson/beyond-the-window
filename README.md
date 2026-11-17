@@ -69,8 +69,10 @@ How and where the public site declares this is not yet decided (open question 7)
 |---|---|
 | `docs/2026-11-16-kickoff.md` | The kickoff, copied unchanged from TimeAssembler. The record of where the project started. |
 | `docs/reviews/2026-11-16-kickoff-review.md` | A review of the kickoff against the sibling projects: whether its approach is the best one, whether it fits the family, what to consider first. |
+| `docs/reviews/2026-11-17-positions-alignment.md` | The founding ideas read against the Sentient Horizons positions and The Calibration Problem: where they align, five places they pull apart, and when asking a machine would start to count. |
+| `docs/rulings/2026-11-17-kickoff-decisions.md` | John's rulings on the kickoff's seven decisions, and on the first rule's four-part form. |
 | `docs/inheritance.md` | Every practice, rule and lesson the sibling projects settled, where it is written, and whether it carries over here. Includes their recorded mistakes. |
-| `docs/open-questions.md` | Eighteen questions held open on purpose, each with options and what exploring it would involve. None is answered. |
+| `docs/open-questions.md` | Nineteen questions held open on purpose, each with options and what exploring it would involve. None is answered. |
 | `docs/record-schema.md` | A proposed framework for the records, with the unsettled parts written as sketches. |
 | `docs/method.md` | A proposed framework for the method, with the unsettled parts written as sketches. |
 | `docs/still-asking-protocol.md` | An outline of what a protocol for Still Asking would have to cover. No question wording. |
