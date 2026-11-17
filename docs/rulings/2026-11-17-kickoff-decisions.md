@@ -43,6 +43,24 @@ The two additions, still open:
 
 A session must not treat either as ruled until John says so.
 
+### The first addition, ruled later on 2026-11-17
+
+Asked whether "agreed" on decision 6 also covered the fuller four-part first rule, John
+answered: "Yes, as recommended". **Decided by: mixed.** The first rule now reads, in four parts:
+
+1. Nothing a system says about itself counts as evidence of an inside, a want or an intent. It
+   is logged and labelled.
+2. Nothing a person feels in an exchange with a system counts. Fluency, warmth and the sense of
+   being understood are what these systems are built to produce.
+3. Nothing settles it yet, whoever measures. This project's own measurements, Still Asking
+   included, inform and never settle. (This is the recommended form of the clause that in The
+   Belt Equation's version requires a reading by a team with no stake in the result; no such
+   team exists for this subject.)
+4. A test is written before the evidence arrives. A change that loosens a test is flagged as a
+   loosening and is not made while a model appears to be close to passing it.
+
+The second addition, where the site declares AI authorship and in whose voice, is still open.
+
 ## The five rules, as ruled
 
 1. Self-report settles nothing. It is logged and labelled.

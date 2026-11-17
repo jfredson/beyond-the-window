@@ -94,8 +94,8 @@ Stated by John as guidance for the opening phase: the starting list comes from b
 minds; a questioning protocol is needed; progress is technological, political or cultural; and
 every rule here is an opening guideline to be questioned and tested as the project is built.
 
-For John to rule next: whether the first authorship rule takes its full four-clause form, and
-where the site declares AI authorship and in whose voice.
+For John to rule next: where the site declares AI authorship and in whose voice. (The first
+authorship rule took its four-part form by his ruling later on 2026-11-17.)
 
 Open: everything in `docs/open-questions.md`.
 

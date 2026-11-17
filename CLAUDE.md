@@ -2,8 +2,8 @@
 
 **Ruled in part on 2026-11-17.** John ruled the kickoff's seven decisions that day
 (`docs/rulings/2026-11-17-kickoff-decisions.md`, decided by: mixed). That covers guidelines 1
-and 3 to 7 below, and the first clause of guideline 2. Still proposed and not ruled: the other
-three clauses of guideline 2, the public form of guideline 3, and the wording of everything
+to 7 below, guideline 2 in its four-part form. Still proposed and not ruled: the public form of
+guideline 3 (where the site declares AI authorship, and in whose voice), and the wording of everything
 under "Carried over from the family". Written by Claude (Fable 5.2) from the kickoff and the
 sibling projects' instruction files. The workspace instruction file in `~/Code` applies on top:
 plain language everywhere, no id without a plain phrase saying what it is, absolute
@@ -36,16 +36,16 @@ So:
    a sixth site starts from). Strongest alternative: design from a blank page, which would lose
    two months of recorded mistakes.*
 
-2. **Self-report settles nothing.** What a model says about itself is logged, labelled as what
-   it is, and never counted as evidence of an inside, a want or an intent. The proposed full
-   form is The Belt Equation's null rule, four clauses: nothing a system says about itself
-   counts; nothing a person feels in an exchange with it counts; nothing settles on the
-   author's own measurement; and a test is written before the evidence arrives and is never
-   loosened while a candidate appears to be near it.
-   *Confidence: high on the first clause, which the kickoff states. Moderate that John will
-   want all four, since the third limits what Still Asking can ever show. Judgment call.
-   Strongest alternative: the first clause alone, as the kickoff has it, which is simpler and
-   leaves the other three risks unnamed.*
+2. **Self-report settles nothing.** Ruled by John on 2026-11-17 in four parts ("Yes, as
+   recommended"; decided by: mixed). (a) What a model says about itself is logged, labelled as
+   what it is, and never counted as evidence of an inside, a want or an intent. (b) Nothing a
+   person feels in an exchange with a model counts. (c) Nothing settles it yet, whoever
+   measures: this project's own measurements, Still Asking included, inform and never settle.
+   (d) A test is written before the evidence arrives, and is never loosened while a model
+   appears to be close to passing it.
+   *It comes from The Belt Equation's null rule, with part (c) reworded because no outside team
+   exists to take a reading. Strongest alternative, not taken: part (a) alone, as the kickoff
+   had it.*
 
 3. **Machine authorship is declared, and the conflict named.** Documents in this repository say
    which were written by a model. Where and how the public site says it is open question 7,

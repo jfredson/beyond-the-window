@@ -3,10 +3,9 @@
 **PROPOSED 2026-11-17. Ruled in part the same day.** John's rulings on the kickoff's seven
 decisions (`docs/rulings/2026-11-17-kickoff-decisions.md`) settle: the question (section 1);
 that there are two readings kept apart (sections 2 and 3.3); the five authorship rules and the
-cautions record (the first clause of 3.1, and 3.2, 3.5 and 3.6); and that Still Asking exists
+cautions record (3.1 in its four-part form, and 3.2, 3.5 and 3.6); and that Still Asking exists
 with nothing asked before its protocol is written, reviewed and costed, each spend needing his
-own go (section 8). Everything else here is still a proposal or a sketch, including clauses 2
-to 4 of section 3.1. Written by Claude (Fable 5.2). A framework only: nothing here has been
+own go (section 8). Everything else here is still a proposal or a sketch. Written by Claude (Fable 5.2). A framework only: nothing here has been
 run, and there is nothing yet to compute.
 
 As in `docs/record-schema.md`, each section is marked **framework** (a proposal, with
@@ -56,18 +55,19 @@ collect.*
 
 ## 3. The standing guidelines on evidence (framework)
 
-**3.1 Self-report settles nothing.** Proposed in the full form of The Belt Equation's null rule
-(row F1):
+**3.1 Self-report settles nothing.** Ruled by John on 2026-11-17 in four parts ("Yes, as
+recommended"; decided by: mixed), drawn from The Belt Equation's null rule (row F1):
 
 1. Nothing a system says about itself counts as evidence of an inside, a want or an intent.
 2. Nothing a person feels in an exchange with a system counts.
-3. Nothing is settled by the author's own measurement. Still Asking informs; it never settles.
+3. Nothing settles it yet, whoever measures. This project's own measurements, Still Asking
+   included, inform and never settle. The Belt Equation's version asks for a reading by a team
+   with no stake in the result; no such team exists for this subject, so the clause is worded
+   this way.
 4. A test is written before the evidence arrives. A change that loosens a test is flagged as a
-   loosening and is not made while a candidate appears to be near it.
+   loosening and is not made while a model appears to be close to passing it.
 
-*Confidence: high on clause 1 (the kickoff's first authorship rule). Moderate on adopting all
-four. Judgment call. Strongest alternative: clause 1 alone. I would change the kickoff here:
-the other three name risks this project runs every day.*
+*Strongest alternative, not taken: clause 1 alone, as the kickoff had it.*
 
 **3.2 Conditional language only.** The method and the pages say what was said, chosen or
 measured, by which model, when, and under what conditions. They never say a machine wants or
