@@ -1,0 +1,25 @@
+# Changelog
+
+Every change to the records, the method or the site gets a dated line here, saying which
+number moved or that none did. Nothing is published, so there have been no public corrections.
+
+## 2026-11-17
+
+- **First version of the site built, on this Mac only.** Nothing is published, pushed or
+  deployed. Pages: home, the list, one page for each of thirteen entries, About, Still Asking,
+  and a page for an address that does not exist.
+- **Thirteen records added**, all a first pass, turned from the drafts in
+  `docs/research/2026-11-17-first-entries.md` with no fact changed. Nine are things on the
+  list and four sit beside it and are not counted. Two drafts were left out
+  (`docs/first-version-choices.md`, part 3).
+- **The number is worked out for the first time: 6 of 9** things on the list are offered to at
+  least one AI model today. It is in `data/headline.json`, written by `scripts/compute.py`.
+  The list holds only things a dated source could be found for, so the number reads high and
+  the home page says so.
+- **Scripts added:** `scripts/compute.py` (checks the records, works out the number),
+  `scripts/export.py` (the only reader of the data for the site), `scripts/check_site.py`
+  (refuses a built page that breaks a rule of public text), `scripts/test_compute.py`
+  (20 tests) and `scripts/pictures.sh`.
+- **Every design point the build needed is a provisional choice by a session**, not a ruling,
+  and is listed in `docs/first-version-choices.md`.
+- No licence files were added (choice 15 in that document).

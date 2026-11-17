@@ -3,8 +3,11 @@
 A tracker in the Sentient Horizons family, beside Outrunning Ageing, The Belt Equation, The
 Quiet Galaxy and The Upgrade Tree. Named by John on 2026-11-16.
 
-**Status on 2026-11-17: opening frameworks proposed, most of the design open.** There is no
-site and no data. John registered the address beyondthewindow.org on 2026-11-17; nothing is
+**Status on 2026-11-17: a first version of the site exists on this Mac only, built to be
+iterated on; most of the design is still open.** It is built from thirteen first-pass records
+(`data/entries/`), and every design point it needed is a provisional choice by a session, listed
+in `docs/first-version-choices.md`. Run it with `npm --prefix site run dev`; check the records
+with `python3 scripts/compute.py --check`. Nothing is published. John registered the address beyondthewindow.org on 2026-11-17; nothing is
 served there yet. John ruled the kickoff's seven decisions on 2026-11-17; everything else in
 this repository is a proposal or a sketch unless a document quotes his words. The repository is local only: no GitHub repository,
 no remote, nothing deployed.
@@ -82,6 +85,13 @@ How and where the public site declares this is not yet decided (open question 7)
 | `docs/research/2026-11-17-first-entries.md` | Fifteen draft entries for the world's record, each from sources that were opened, with what surprised the session and what the drafts suggest about the open questions. A research document, not data. |
 | `docs/research/2026-11-17-model-retirement-dates.md` | Each major developer's published dates for withdrawing its current models, as read on 2026-11-17. |
 | `docs/design/2026-11-17-design-proposal.md` | A proposed design, for John to rule on: a skin called Glass built on a window, the strongest alternative, and three forms the top of the page could take. Pictures in `docs/design/pictures/`, the mock-up pages they were photographed from in `docs/design/mockups/`. Every number in them is a constructed example. |
+| `docs/research/` | The research session's sourced drafts: fifteen first entries, when current models are due to be withdrawn, and people to ask. |
+| `docs/first-version-choices.md` | Every provisional choice the first version of the site was built on, each decided by a session and not ruled. |
+| `data/` | The records (`entries/`, one file each), the groups, the developers named, and `headline.json`, the number as worked out. |
+| `scripts/` | `compute.py` checks the records and works out the number; `export.py` writes the one file the site reads; `check_site.py` checks the built pages; `test_compute.py`; `pictures.sh`. |
+| `site/` | The site (Astro, static). |
+| `docs/site-pictures/` | Dated pictures of the site as built. |
+| `CHANGELOG.md` | A dated line for every change. |
 | `CLAUDE.md` | Working guidelines for sessions in this repository. |
 | `docs/private/` | Kept out of the repository. For material that must not be published. |
 
@@ -108,7 +118,7 @@ Open: everything in `docs/open-questions.md`.
 
 ## Not done, on purpose
 
-No model has been queried. No money has been spent. No data record has been written. No site
-has been built. No licence files have been added, because whether
+No model has been queried. No money has been spent. Nothing has been published, pushed or
+deployed. No licence files have been added, because whether
 model answers can be published under the family's usual licence depends on terms nobody has
 read yet.
