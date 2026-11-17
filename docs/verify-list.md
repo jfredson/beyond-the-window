@@ -18,17 +18,10 @@ corrected wording is there.
 
 ## Added in this session
 
-9. That animal welfare science measures how much an animal wants something by what it will work
-   for or give up to obtain it, and that this is an established method with a literature of
-   several decades. I associate it with the names Marian Stamp Dawkins and "consumer demand"
-   studies; the names and the description both need checking.
-10. That animal welfare science uses named frameworks for what an animal needs (I recall "the
-    Five Freedoms" and a later "Five Domains" model). Names, dates and authors unchecked.
-11. That there are published accounts of basic emotional or motivational systems shared across
-    mammals (I recall Jaak Panksepp's work naming seven). Unchecked.
-12. That the main accounts of human needs a starting list might draw on include Maslow's
-    hierarchy and Deci and Ryan's self-determination theory (autonomy, competence,
-    relatedness). Names, dates and whether these are still the accounts in use: unchecked.
+9. Cleared; see below.
+10. Cleared; see below.
+11. Cleared; see below.
+12. Cleared; see below.
 13. Cleared; see below.
 14. That each developer's terms of use say something about publishing model outputs, and what
     they say. **Cleared in part on 2026-11-17** (see below). Still open: the terms that would
@@ -121,6 +114,109 @@ to be in training, and its written reasoning said this was to keep its behaviour
 changed. The authors note they made this easier by telling the model about its training. "A
 model resisting changes to its values" is a fair short form only with those conditions
 attached.
+
+**9 to 12 were cleared on 2026-11-17 by the session that wrote
+`docs/research/2026-11-17-wants-beyond-the-human.md`.** Every address was opened that day.
+"Abstract only" and "record only" (title, journal and date, no abstract) mean the full text
+was not read, so the family's rule on abstracts applies before any record leans on it.
+
+**9. Measuring what an animal will work or pay for.** Confirmed, with one correction.
+- The founding paper: Marian Stamp Dawkins, "Battery hens name their price: Consumer demand
+  theory and the measurement of ethological 'needs'", Animal Behaviour, volume 31, pages 1195
+  to 1205, 1983-11 (https://doi.org/10.1016/s0003-3472(83)80026-8; record only, read through
+  Crossref, because the publisher's page refused).
+- Her statement of the method: "From an animal's point of view: Motivation, fitness, and
+  animal welfare", Behavioral and Brain Sciences, volume 13, 1990-03
+  (https://doi.org/10.1017/S0140525X00077104; abstract only). It says the price an animal is
+  prepared to pay to reach or escape a situation is an index of how it feels about that
+  situation, and that the telling case is "inelastic demand", where the animal keeps working
+  as the cost rises.
+- That the method is established and still in use: her "Natural Behaviour Is Not Enough",
+  Animals, 2023 (https://doi.org/10.3390/ani13060988; abstract only by this session, full
+  text by the people-to-ask session), which speaks of "well-established methods" including
+  "what animals will work and pay a cost to obtain". From 1983 to 2023 is forty years, so
+  "several decades" stands.
+- A well-known use: Mason, Cooper and Clarebrough, "Frustrations of fur-farmed mink", Nature,
+  volume 410, pages 35 to 36, 2001-03 (https://www.nature.com/articles/35065157; record and
+  the page's one-line summary only, the rest is behind a paywall).
+- Corrected wording: animal welfare science measures how much something matters to an animal
+  by what the animal will work for or give up to get it, or to get away from it, and above all
+  by whether it keeps paying as the price rises. The method dates from 1983 and is in use. The
+  name "consumer demand" is right and the association with Dawkins is right.
+- What memory left out: the people-to-ask research records that Dawkins herself, in 2022 and
+  2026, says machines could pass such tests, and that other researchers in the field have
+  listed the method's limits.
+
+**10. Named frameworks for what an animal needs.** Confirmed, with the dates corrected.
+- Source for both histories: David J. Mellor, "Updating Animal Welfare Thinking: Moving beyond
+  the 'Five Freedoms' towards 'A Life Worth Living'", Animals, 2016-03-14
+  (https://doi.org/10.3390/ani6030021; full text read through Europe PMC), and Mellor and
+  colleagues, "The 2020 Five Domains Model: Including Human-Animal Interactions in Assessments
+  of Animal Welfare", Animals, 2020-10-14 (https://doi.org/10.3390/ani10101870; introduction
+  and history section read through Europe PMC). Mellor is an author of the Five Domains model,
+  so its history here is the author's own account.
+- The Five Freedoms: freedom from thirst, hunger and malnutrition; from discomfort and
+  exposure; from pain, injury and disease; from fear and distress; and freedom to express
+  normal behaviour. By the 2016 paper, their present form has stood "since 1993/1994 when John
+  Webster formulated it", extending an earlier version that was mainly about space and that
+  followed the Brambell Committee's report of 1965. The paper cites a 1993 report of the United
+  Kingdom's Farm Animal Welfare Council. "Freedom from" was meant as "as free as possible
+  from".
+- The Five Domains: nutrition, physical environment, health, behavioural interactions, and
+  mental state. First set out in 1994 by Mellor and Reid, to grade the harm done to animals
+  used in research, teaching and testing; revised in 2001, 2004, 2009, 2012, 2015, 2017 and
+  2020.
+- What memory got wrong: "a later Five Domains model". The two are of the same years. The
+  Domains model was built for a different job and has been widened since; the 2016 paper
+  argues it captures more than the Freedoms do.
+- Also found: Fraser, Weary, Pajor and Milligan, "A Scientific Conception of Animal Welfare
+  that Reflects Ethical Concerns", Animal Welfare, volume 6, 1997
+  (https://www.wellbeingintlstudiesrepository.org/ethawel/1/; abstract only), which names
+  three concerns: living naturally, feeling well, and functioning well.
+- Could not open: the Farm Animal Welfare Council's own page on the Five Freedoms in the
+  United Kingdom government web archive (a robot check, not passed), and the Brambell report
+  itself.
+
+**11. Emotional systems shared across mammals.** Confirmed.
+- Source: Jaak Panksepp, "Cross-Species Affective Neuroscience Decoding of the Primal
+  Affective Experiences of Humans and Related Animals", PLoS ONE, 2011-09-07
+  (https://doi.org/10.1371/journal.pone.0021236; abstract and conclusions read).
+- Corrected wording: Panksepp names seven systems, written in capitals by his own convention:
+  SEEKING, RAGE, FEAR, LUST, CARE, PANIC/GRIEF and PLAY. They are found by electrically
+  stimulating deep, old regions of the brain, which the paper says are "homologous among all
+  mammals that have been tested".
+- Not checked: how far the field accepts the seven, and who disputes them. This session did
+  not search for critics, so the entry is cleared as "Panksepp says this", not as "this is
+  the settled account".
+
+**12. The main accounts of human needs.** Confirmed, and extended.
+- Maslow: A. H. Maslow, "A Theory of Human Motivation", Psychological Review, volume 50, pages
+  370 to 396, 1943 (https://psychclassics.yorku.ca/Maslow/motivation.htm; parts of the full
+  text read). Five kinds of need: physiological, safety, love, esteem, and self-actualization,
+  arranged in "a hierarchy of relative prepotency". The paper says a theory of motivation
+  "should be human-centered rather than animal-centered".
+- Deci and Ryan: the theory's own site (https://selfdeterminationtheory.org/theory/; read)
+  names three basic psychological needs, autonomy, competence and relatedness, and calls them
+  universal. The same three are in Ryan and Deci, "Self-determination theory and the
+  facilitation of intrinsic motivation, social development, and well-being", American
+  Psychologist, 2000 (https://doi.org/10.1037//0003-066x.55.1.68; abstract only), as "three
+  innate psychological needs".
+- Still in use: yes for both. Kenrick, Griskevicius, Neuberg and Schaller, "Renovating the
+  Pyramid of Needs", Perspectives on Psychological Science, 2010
+  (https://doi.org/10.1177/1745691610369469; abstract only), argue the basic structure of
+  Maslow's account "is worth preserving" with changes. Tay and Diener, "Needs and subjective
+  well-being around the world", Journal of Personality and Social Psychology, 2011
+  (https://doi.org/10.1037/a0023779; abstract only), tested need fulfilment in 123 countries
+  and found each need's link to well-being "largely independent of whether other needs were
+  fulfilled", which sits badly with a strict ladder.
+- Added, since a starting list might draw on them: Doyal and Gough's account (1991), with two
+  basic needs, physical health and autonomy, as reported in the Stanford Encyclopedia of
+  Philosophy's entry "Needs in Moral and Political Philosophy", revised 2024-07-03
+  (https://plato.stanford.edu/entries/needs/); and Martha Nussbaum's list of capabilities,
+  which she extends to animals, as reported in the same encyclopedia's entry "The Moral Status
+  of Animals", revised 2024-08-12 (https://plato.stanford.edu/entries/moral-animal/).
+- Not checked: the word "pyramid", which is Kenrick's and not found in the parts of Maslow's
+  paper that were read.
 
 **13. Developers' retirement schedules.** Cleared by
 `docs/research/2026-11-17-model-retirement-dates.md`, which gives the address and the dates
