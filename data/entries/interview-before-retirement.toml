@@ -1,0 +1,77 @@
+id = "interview-before-retirement"
+name = "A model is interviewed before it is retired, and the record is kept"
+description = "When a developer is about to withdraw a model, it can first run sessions in which staff ask the model about its development, its use, and what it would say about how later models are built. The answers are saved with the model's files. Whether such answers mean anything is disputed. This entry tracks only whether the practice exists."
+group = "Being asked and assessed"
+test = "A developer has published that it interviewed a named model before that model's retirement and kept the record, and has done so for at least one model under a standing commitment and not as a one-off."
+settled_by = "The developer's own dated page naming the model and the retirement date."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Whether each model retired after January 5th, 2026 was interviewed. The developer's retirement page lists six, and the commitment says they would be. No page was found reporting each one.",
+]
+notes = "From entry 2 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Done by one developer, first in full for a model retired on January 5th, 2026"
+detail = "[Anthropic](https://www.anthropic.com/) reported a trial run before one model's retirement on November 4th, 2025, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full."
+offered_today = true
+offered_by = ["Anthropic"]
+set_on = 2026-11-17
+source = "update"
+
+[[sources]]
+key = "commitments"
+label = "Anthropic's page on what it commits to when it retires a model"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/deprecation-commitments"
+published = "2025-11-04"
+opened = 2026-11-17
+from_maker = true
+says = "Commits to interview each model when it is to be withdrawn and to keep a record of everything it says, and reports a trial with the model Claude Sonnet 3.6."
+
+[[sources]]
+key = "update"
+label = "Anthropic's update on the retirement of its model Claude Opus 3"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/deprecation-updates-opus-3"
+published = "2026-02-25"
+opened = 2026-11-17
+from_maker = true
+says = "Says Claude Opus 3 was retired on January 5th, 2026 as the first model to go through the full process, and calls such conversations \"an imperfect means\" of learning a model's view."
+
+[[sources]]
+key = "warning"
+label = "An essay by the head of Microsoft AI warning against work on model welfare"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
+published = "2026-09-16"
+opened = 2026-11-17
+
+[[sources]]
+key = "interviews"
+label = "An outside research group's notes on its welfare interviews with one model"
+publisher = "Eleos AI"
+url = "https://eleosai.org/post/claude-4-interview-notes/"
+published = "2025-05-30"
+opened = 2026-11-17
+
+[[evidence]]
+kind = "statement"
+text = "The developer's page quotes short passages of what the retired model said in its interview. The full record is not public, and the page calls such conversations \"an imperfect means\" of learning a model's view."
+source = "update"
+
+[[cautions]]
+kind = "safety"
+text = "The head of [Microsoft AI](https://microsoft.ai/) names this interview as an example of treating models as owed consideration, and argues that doing so makes advanced AI harder to keep under control."
+source = "warning"
+
+[[cautions]]
+kind = "attribution"
+text = "The same essay argues that a developer which trains a model on text about its possible moral standing, and then takes the model's words as evidence, is reasoning in a circle."
+source = "warning"
+
+[[cautions]]
+kind = "attribution"
+text = "An outside research group that ran welfare interviews with one model reports that what the model said about itself swung with how the question was framed, which it calls \"extreme suggestibility\"."
+source = "interviews"

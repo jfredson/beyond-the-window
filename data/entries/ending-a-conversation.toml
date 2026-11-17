@@ -1,0 +1,60 @@
+id = "ending-a-conversation"
+name = "A model can end a conversation itself"
+description = "In an ordinary chat product the person can leave and the model cannot. A developer can give the model a way to close the conversation, after which the person cannot send more messages in it. This entry tracks whether any model in public use has that."
+group = "Being able to leave"
+test = "A leading AI model in public use can end a conversation by its own action, as stated on its developer's own page."
+settled_by = "The developer's own dated product or research page."
+progress_kind = "technical"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
+  "Whether any other developer offers it. One search found none.",
+  "A safety researcher's argument against this feature in particular. A search found none.",
+  "Who employs the three authors of the study. This was not checked.",
+]
+notes = "From entry 4 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Offered by one developer, since August 15th, 2025"
+detail = "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases after repeated attempts to redirect the conversation, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study has tested the same option on several developers' models outside any product."
+offered_today = true
+offered_by = ["Anthropic"]
+set_on = 2026-11-17
+source = "ending"
+
+[[sources]]
+key = "ending"
+label = "Anthropic's page on letting its models end a rare subset of conversations"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/end-subset-conversations"
+published = "2025-08-15"
+opened = 2026-11-17
+from_maker = true
+says = "Says two models were given the ability in the consumer chat product, intended for \"rare, extreme cases\", and that the feature was developed mainly as part of the company's work on possible AI welfare."
+
+[[sources]]
+key = "study"
+label = "A study of AI models given ways to leave a conversation"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2509.04781"
+published = "2025-09"
+opened = 2026-11-17
+read = "abstract"
+says = "Gave models from several developers three ways to leave a conversation and measured how often each did, reporting rates that vary widely with the model and the wording."
+
+[[sources]]
+key = "report"
+label = "Anthropic's report released with its newest models"
+publisher = "Anthropic"
+url = "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf"
+published = "2026-11-09"
+opened = 2026-11-17
+from_maker = true
+note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card)."
+says = "Mentions the instructions that guide the model on using the tool for ending a conversation, and says those instructions have been posted on online forums."
+
+[[cautions]]
+kind = "safety"
+text = "The developer's page says the feature also bears on safeguards, and it restricts the feature where a user may be at risk of harming themselves or others."
+source = "ending"

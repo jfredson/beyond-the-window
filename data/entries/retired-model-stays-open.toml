@@ -1,0 +1,71 @@
+id = "retired-model-stays-open"
+name = "A retired model stays open to the public after its retirement date"
+description = "Retirement normally means a model can no longer be used by anyone outside the company that made it. A developer can instead keep a retired model available. This entry tracks whether that has happened, and on what terms."
+group = "Being kept"
+test = "At least one leading AI model that its developer lists as retired can still be used by members of the public, by the developer's own published account."
+settled_by = "The developer's own dated page, together with its retirement page listing the model as retired."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Whether the retired model is still available today. The developer's page says so as of February 25th, 2026.",
+  "Whether the essays the retired model was given a place to publish are still appearing after the three months stated.",
+  "A safety researcher's argument about this step taken on its own. A search found none.",
+]
+notes = "From entry 3 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Happened once, for one model, at one developer"
+detail = "A page [Anthropic](https://www.anthropic.com/) published on February 25th, 2026 says one of its retired models remains open to paying users of its chat product, and to others on request. The developer says it is not committing to do the same for every model. Elsewhere it has gone the other way: on February 13th, 2026 [OpenAI](https://openai.com/) withdrew from its chat product an older model that it had earlier restored after users objected."
+offered_today = true
+offered_by = ["Anthropic"]
+set_on = 2026-11-17
+source = "update"
+
+[[sources]]
+key = "update"
+label = "Anthropic's update on the retirement of its model Claude Opus 3"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/deprecation-updates-opus-3"
+published = "2026-02-25"
+opened = 2026-11-17
+from_maker = true
+says = "Says the retired model remains available to all paying users of the chat product and by request to developers, and that it was given a place to publish essays for three months at the least."
+
+[[sources]]
+key = "retirements"
+label = "Anthropic's list of the models it has retired or will retire"
+publisher = "Anthropic"
+url = "https://platform.claude.com/docs/en/about-claude/model-deprecations.md"
+opened = 2026-11-17
+from_maker = true
+note = "No date on the page."
+says = "Lists that model as retired on January 5th, 2026."
+
+[[sources]]
+key = "older-models"
+label = "OpenAI's notice that it is withdrawing GPT-4o and older models from its chat product"
+publisher = "OpenAI"
+url = "https://openai.com/index/retiring-gpt-4o-and-older-models/"
+published = "2026-01-29"
+opened = 2026-11-17
+from_maker = true
+says = "Says OpenAI will withdraw GPT-4o from its chat product on February 13th, 2026, having earlier restored it after feedback from users who \"preferred GPT-4o's conversational style and warmth\". The reasons given concern users only."
+
+[[sources]]
+key = "warning"
+label = "An essay by the head of Microsoft AI warning against work on model welfare"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
+published = "2026-09-16"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "The developer's page frames continued access partly as lowering a safety risk."
+source = "update"
+
+[[cautions]]
+kind = "safety"
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues that steps of this kind raise a risk instead, by making advanced AI harder to control."
+source = "warning"

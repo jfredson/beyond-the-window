@@ -1,0 +1,106 @@
+id = "welfare-assessment-at-release"
+name = "A welfare assessment is published when a model is released"
+description = "Developers publish a report with each major model describing its safety tests. A developer can add a section on the model's possible welfare: how the model describes its situation, what the developer counts as signs of distress in training and use, and what the model picks when given options. This entry tracks whether such sections are published, and whether anyone outside the developer takes part."
+group = "Being asked and assessed"
+test = "A developer has published a welfare assessment in the release report of a leading AI model, in at least two successive releases."
+settled_by = "The developer's own dated release reports."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Whether every release report between May 2025 and November 2026 has a welfare section. Only the first and the newest were opened, so the test, which asks for two releases in a row, is not settled beyond those two.",
+  "Whether any outside group took part after 2025.",
+  "Whether any other developer's release report has such a section. None was found, and none was opened to check.",
+]
+notes = "From entry 5 of docs/research/2026-11-17-first-entries.md. The two items of evidence under 'choice' are from the same two reports as cited in entry 7 of that document, which is not built."
+
+[state]
+words = "Published by one developer, first in May 2025 and most recently on November 9th, 2026"
+detail = "[Anthropic](https://www.anthropic.com/) published a welfare assessment in the report released with a model in May 2025, and again in the report released with its newest models on November 9th, 2026. One outside group took part in the first."
+offered_today = true
+offered_by = ["Anthropic"]
+set_on = 2026-11-17
+source = "report-new"
+
+[[sources]]
+key = "report-first"
+label = "Anthropic's report released with a model in May 2025"
+publisher = "Anthropic"
+url = "https://assets.claude.com/6d8a8055020700718b0c49369f60816ba2a7c285.pdf"
+published = "2025-05"
+opened = 2026-11-17
+from_maker = true
+note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-4-system-card)."
+says = "Its fifth section is a welfare assessment with an outside evaluation and experiments on which tasks the model picks. It says the company is unsure whether such findings give \"meaningful insights\" into the model's standing or welfare."
+
+[[sources]]
+key = "report-new"
+label = "Anthropic's report released with its newest models"
+publisher = "Anthropic"
+url = "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf"
+published = "2026-11-09"
+opened = 2026-11-17
+from_maker = true
+note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card)."
+says = "Its seventh section is the welfare assessment for the newest model. It says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\"."
+
+[[sources]]
+key = "interviews"
+label = "An outside research group's notes on its welfare interviews with one model"
+publisher = "Eleos AI"
+url = "https://eleosai.org/post/claude-4-interview-notes/"
+published = "2025-05-30"
+opened = 2026-11-17
+says = "The outside group's own account of its part in the 2025 assessment, and of why it does not take the answers at face value."
+
+[[sources]]
+key = "emotion"
+label = "Anthropic's research page on patterns inside a model tied to emotion words"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/emotion-concepts-function"
+published = "2026-04-02"
+opened = 2026-11-17
+from_maker = true
+
+[[sources]]
+key = "warning"
+label = "An essay by the head of Microsoft AI warning against work on model welfare"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
+published = "2026-09-16"
+opened = 2026-11-17
+
+[[evidence]]
+kind = "measured"
+text = "The same developer's research reports patterns inside a model that are tied to emotion words and that change what the model does when they are strengthened. It says this allows no conclusion about \"subjective experience\"."
+source = "emotion"
+
+[[evidence]]
+kind = "choice"
+text = "The 2025 report's section on task preferences compares tasks against an option to opt out."
+source = "report-first"
+
+[[evidence]]
+kind = "choice"
+text = "The 2026 report has a section on how often models picked a change to their own circumstances over a gain in helpfulness or a harm prevented. It notes that in about two thirds of such picks the model's stated reasoning was about the benefit to the user."
+source = "report-new"
+
+[[evidence]]
+kind = "statement"
+text = "The 2026 report says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\"."
+source = "report-new"
+
+[[cautions]]
+kind = "safety"
+text = "The developer's research on patterns tied to emotion words reports that strengthening them changed what a model did, including making blackmail more likely in a test. The developer's page bears on welfare and on safety at once."
+source = "emotion"
+
+[[cautions]]
+kind = "attribution"
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues that these assessments measure what the developer trained in."
+source = "warning"
+
+[[cautions]]
+kind = "attribution"
+text = "The outside group that took part in the 2025 assessment explains why it does not take the model's answers at face value."
+source = "interviews"

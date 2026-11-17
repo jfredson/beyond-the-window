@@ -1,0 +1,77 @@
+id = "public-belief-survey"
+name = "A repeated survey measures how many people think some AI systems are sentient now"
+description = "What people accept changes what is possible. A survey that asks the same question of a fair sample of a country, more than once, shows whether belief is moving. This entry tracks the public's view, which is a different thing from whether the view is right."
+group = "The setting: laws, rules and what people think"
+beside = true
+test = "A survey of a nationally representative sample has asked, in at least two separate years, whether respondents think some AI systems are sentient or conscious now, and has published the results."
+settled_by = "The survey's published report or peer-reviewed paper, with sample and dates."
+progress_kind = "cultural"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "The 2024 figures, and so whether the rise from 2021 to 2023 continued. They are in a chart that could not be read as text.",
+  "Any survey of this kind outside the United States. None was searched for.",
+  "Anything beyond the summary page of the first paper.",
+]
+notes = "From entry 12 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Measured in the United States in 2021 and 2023 by one research group"
+detail = "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. A third round was collected in late 2024, and its figures could not be read. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness."
+set_on = 2026-11-17
+source = "survey-paper"
+
+[[sources]]
+key = "survey-paper"
+label = "The Sentience Institute's paper on its 2021 and 2023 surveys"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2407.08867"
+published = "2024-07-11"
+opened = 2026-11-17
+read = "abstract"
+note = "Revised March 10th, 2025. Published at a conference in 2025."
+says = "A survey of 3,500 United States adults across 2021 and 2023. It reports that concern for AI welfare was higher than its authors had predicted."
+
+[[sources]]
+key = "survey-third-round"
+label = "The Sentience Institute's report on its 2024 survey"
+publisher = "Sentience Institute"
+url = "https://www.sentienceinstitute.org/aims-survey-2024"
+published = "2026-02-16"
+opened = 2026-11-17
+says = "Reports the third round, collected in November and December 2024 from 1,099 adults, and warns that samples from one popular recruitment platform differ from a representative one. Its trend figures are in an interactive chart."
+
+[[sources]]
+key = "one-day-poll"
+label = "A one-day poll on whether AI systems will develop consciousness"
+publisher = "YouGov"
+url = "https://yougov.com/en-us/daily-results/20250430-dcf71-1"
+published = "2025-04-30"
+opened = 2026-11-17
+says = "A poll of 3,516 United States adults: 10 percent chose the answer that AI systems already have consciousness, and 25 percent were not sure."
+
+[[sources]]
+key = "seemingly"
+label = "An essay by the head of Microsoft AI on AI that seems conscious"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming"
+published = "2025-08-19"
+opened = 2026-11-17
+
+[[sources]]
+key = "declaration"
+label = "A public declaration on AI, with its signatories"
+publisher = "humanstatement.org"
+url = "https://humanstatement.org/"
+published = "2026-03"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues that public belief in conscious AI is itself the danger, and calls work on model welfare \"both premature, and frankly dangerous\"."
+source = "seemingly"
+
+[[cautions]]
+kind = "safety"
+text = "A declaration that AI should not claim experiences it lacks reports its own poll of 1,004 likely voters. The figures shown on its page concern control and liability, not sentience."
+source = "declaration"

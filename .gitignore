@@ -4,3 +4,13 @@ docs/private/
 _to_delete/
 *.env
 .DS_Store
+
+# added 2026-11-17 with the first version of the site
+__pycache__/
+*.pyc
+node_modules/
+dist/
+site/.astro/
+# the public copy of data/headline.json, written by scripts/export.py on every build and
+# served at /data/headline.json; the committed copy is the one in data/
+site/public/data/

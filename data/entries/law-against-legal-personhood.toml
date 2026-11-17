@@ -1,0 +1,115 @@
+id = "law-against-legal-personhood"
+name = "A law says an AI system cannot be a legal person"
+description = "A \"legal person\" is anything the law lets hold rights and duties: people, companies, governments. A legislature can write into law that an AI system is never one. Several United States states have. Most of these laws also cover animals, rivers and objects, and some were written before chat models existed."
+group = "The setting: laws, rules and what people think"
+beside = true
+test = "A jurisdiction has enacted a statute that excludes artificial intelligence from legal personhood."
+settled_by = "The statute on the legislature's own site, or the legislature's own bill page showing it signed."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Whether the Oklahoma bill became law. Its page shows no action after April 21st, 2026.",
+  "Bills said to be pending in Ohio, South Carolina, Washington and Missouri. None was opened.",
+  "A court challenge to the Utah law, reported in an opinion piece. No court record was opened.",
+  "Whether any country outside the United States has a similar statute. None was searched for.",
+]
+notes = "From entry 9 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Enacted in four United States states, the first in 2022"
+detail = "Idaho (2022), North Dakota (signed April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 28th, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way."
+set_on = 2026-11-17
+source = "tennessee"
+
+[[sources]]
+key = "idaho"
+label = "Idaho Code, section 5-346"
+publisher = "Idaho Legislature"
+url = "https://legislature.idaho.gov/statutesrules/idstat/title5/t5ch3/sect5-346/"
+published = "2022"
+opened = 2026-11-17
+says = "Environmental elements, artificial intelligence, nonhuman animals and inanimate objects \"shall not be granted personhood\"."
+
+[[sources]]
+key = "north-dakota-bill"
+label = "North Dakota House Bill 1361, as enrolled"
+publisher = "North Dakota Legislative Assembly"
+url = "https://ndlegis.gov/assembly/68-2023/regular/documents/23-0346-05000.pdf"
+published = "2023"
+opened = 2026-11-17
+says = "Changes the definition of \"person\" so that it \"does not include\" artificial intelligence, among other things."
+
+[[sources]]
+key = "north-dakota-overview"
+label = "North Dakota House Bill 1361, the legislature's overview of the bill"
+publisher = "North Dakota Legislative Assembly"
+url = "https://ndlegis.gov/assembly/68-2023/regular/bill-overview/bo1361.html"
+published = "2023"
+opened = 2026-11-17
+says = "Shows the bill signed and filed on April 12th."
+
+[[sources]]
+key = "utah"
+label = "Utah Code, section 63G-32-102"
+publisher = "Utah State Legislature"
+url = "https://le.utah.gov/xcode/Title63G/Chapter32/C63G-32-S102_2024050120240501.html"
+published = "2024-05-01"
+opened = 2026-11-17
+says = "A governmental entity \"may not grant legal personhood to\" a list of eleven things, artificial intelligence first."
+
+[[sources]]
+key = "tennessee"
+label = "Tennessee Senate Bill 837, the legislature's page for the bill"
+publisher = "Tennessee General Assembly"
+url = "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114"
+opened = 2026-11-17
+says = "Signed by the governor on April 28th, 2026 as Public Chapter 781. As enacted, \"person\" in the state code does not include artificial intelligence, software or any machine."
+
+[[sources]]
+key = "oklahoma"
+label = "Oklahoma House Bill 3546, the legislature's page for the bill"
+publisher = "Oklahoma Legislature"
+url = "http://www.oklegislature.gov/BillInfo.aspx?Bill=HB3546&Session=2600"
+opened = 2026-11-17
+says = "Passed the House by 94 votes to 2 on March 23rd, 2026. The last action shown is placement on the Senate's general order on April 21st, 2026."
+
+[[sources]]
+key = "review-clause"
+label = "An opinion piece on state laws about AI consciousness, in The Regulatory Review"
+publisher = "The Regulatory Review"
+url = "https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/"
+published = "2026-06-29"
+opened = 2026-11-17
+says = "Counts \"at least nine\" state legislatures with such bills introduced or enacted."
+
+[[sources]]
+key = "too-early"
+label = "An article arguing that the bans on AI personhood are premature, in AI Frontiers"
+publisher = "AI Frontiers"
+url = "https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood"
+published = "2026-09-01"
+opened = 2026-11-17
+
+[[sources]]
+key = "declaration"
+label = "A public declaration on AI, with its signatories"
+publisher = "humanstatement.org"
+url = "https://humanstatement.org/"
+published = "2026-03"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "An article arguing that the bans are premature discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting."
+source = "too-early"
+
+[[cautions]]
+kind = "safety"
+text = "An opinion piece reports one sponsor's stated aim of stopping companies from shifting blame onto the AI."
+source = "review-clause"
+
+[[cautions]]
+kind = "safety"
+text = "A declaration signed by several hundred people and organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\"."
+source = "declaration"

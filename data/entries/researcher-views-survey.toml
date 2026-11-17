@@ -1,0 +1,33 @@
+id = "researcher-views-survey"
+name = "A survey measures what AI researchers think about inner experience in AI systems"
+description = "The people who build these systems have views on whether the systems could have experiences, and those views shape what developers do. This entry tracks whether those views have been measured."
+group = "The setting: laws, rules and what people think"
+beside = true
+test = "A published survey reports the views of a stated sample of AI researchers on whether AI systems have, or will have, subjective experience."
+settled_by = "The published paper, with sample and dates."
+progress_kind = "cultural"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "When the survey was run. The page opened does not say.",
+  "The figures behind \"unlikely\" and \"more likely than not\".",
+  "Whether it has been repeated.",
+  "A safety reading. None was found on the page read. The summary reports that both groups agree such systems, if created, should be held accountable.",
+]
+notes = "From entry 13 of docs/research/2026-11-17-first-entries.md. Read from the paper's summary page only."
+
+[state]
+words = "Measured once, in a survey of 582 AI researchers"
+detail = "The survey asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century, and that both support developers putting safeguards in place now. It also reports that the two groups disagree widely on moral and policy questions. One measurement cannot show a change."
+set_on = 2026-11-17
+source = "survey"
+
+[[sources]]
+key = "survey"
+label = "A survey of AI researchers and the public on subjective experience in AI systems"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2506.11945"
+published = "2025-06-13"
+opened = 2026-11-17
+read = "abstract"
+note = "Revised November 5th, 2026. The paper is 141 pages."

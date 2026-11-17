@@ -1,0 +1,42 @@
+id = "self-report-checked"
+name = "A model's report about its own inner state is checked against an independent reading"
+description = "A model can be asked what is going on inside it, and it will answer, but the answer may be invented. Researchers who can read a model's internal activity directly can test this: they plant a known pattern inside the model and see whether the model notices and names it. A correct report shows the model can read something about its own state. It does not show that anything is felt."
+group = "Knowing its own workings"
+test = "A published study shows a leading AI model correctly reporting an internal state that the researchers set or measured by means other than the model's own word, at a stated rate."
+settled_by = "A paper or a developer's research page giving the method and the rate. A study by someone other than the model's maker would settle a stronger version."
+progress_kind = "technical"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "The full paper. The developer's summary page was read, not the paper it links.",
+  "Whether any outside group has repeated the result, or whether later models do better.",
+  "An outside safety researcher's reading of this study. One search found none.",
+]
+notes = "From entry 6 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Shown in research by one developer on its own models, published October 29th, 2025"
+detail = "The study is by [Anthropic](https://www.anthropic.com/). Its account says the check worked about one time in five at best. No repeat of it by an outside group was found."
+offered_today = false
+set_on = 2026-11-17
+source = "introspection"
+
+[[sources]]
+key = "introspection"
+label = "Anthropic's research page on whether its models can report their own internal states"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/introspection"
+published = "2025-10-29"
+opened = 2026-11-17
+from_maker = true
+says = "The developer's account of the study. It says the best model noticed a planted concept about 20 percent of the time, calls the ability \"highly unreliable and limited in scope\", and says the results do not show whether a model is conscious."
+
+[[evidence]]
+kind = "checked-report"
+text = "The developer's account of the study says its best model noticed a planted concept about 20 percent of the time. It calls the ability \"highly unreliable and limited in scope\", and says the results do not show whether a model is conscious."
+source = "introspection"
+
+[[cautions]]
+kind = "safety"
+text = "The same page gives the worry: if models can report on their inner states, the reports could help people check a model's reasoning, and the page says such reports would need great care to validate."
+source = "introspection"

@@ -1,0 +1,45 @@
+{
+  "computed_on": "2026-11-17",
+  "last_read": "2026-11-17",
+  "method": {
+    "document": "docs/first-version-choices.md",
+    "status": "provisional, 2026-11-17, decided by a session and not ruled by John Andrew Fredrickson: a thing on the list is counted when its record shows that at least one developer of AI models offers it today; no ladder, no probability and no year (docs/first-version-choices.md)"
+  },
+  "headline": {
+    "count": 6,
+    "total": 9,
+    "words": "6 of 9 things on the list are offered to at least one AI model today",
+    "offered_ids": [
+      "ending-a-conversation",
+      "interview-before-retirement",
+      "kept-files-of-retired-models",
+      "memory-across-conversations",
+      "retired-model-stays-open",
+      "welfare-assessment-at-release"
+    ]
+  },
+  "records": {
+    "total": 13,
+    "on_the_list": 9,
+    "beside_the_list": 4,
+    "first_pass": 13,
+    "reviewed": 0,
+    "left_out_unverified": 0,
+    "constructed": false
+  },
+  "history": [
+    {
+      "computed_on": "2026-11-17",
+      "count": 6,
+      "total": 9,
+      "offered_ids": [
+        "ending-a-conversation",
+        "interview-before-retirement",
+        "kept-files-of-retired-models",
+        "memory-across-conversations",
+        "retired-model-stays-open",
+        "welfare-assessment-at-release"
+      ]
+    }
+  ]
+}

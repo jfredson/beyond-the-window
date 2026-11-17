@@ -1,0 +1,32 @@
+# The groups on the list, in the order the window shows them. The names are a provisional
+# choice made by the build session on 2026-11-17 (docs/first-version-choices.md, choice 19):
+# they sort the first sourced entries by what is done to or for a model, as the research
+# document found the record sorts itself. They are not the starting list drawn from living
+# minds, which has not been made (open question 5).
+
+[[groups]]
+name = "Being kept"
+
+[[groups]]
+name = "Remembering"
+
+[[groups]]
+name = "Being asked and assessed"
+
+[[groups]]
+name = "Being able to leave"
+
+[[groups]]
+name = "Knowing its own workings"
+
+[[groups]]
+name = "Working on one thing for a long time"
+
+[[groups]]
+name = "Protection in law"
+
+# Entries in this group are about the setting. None is a thing anyone can offer to a model, so
+# none is counted, and the validator refuses one that carries an offered flag.
+[[groups]]
+name = "The setting: laws, rules and what people think"
+beside = true

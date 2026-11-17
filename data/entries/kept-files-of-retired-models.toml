@@ -1,0 +1,83 @@
+id = "kept-files-of-retired-models"
+name = "A developer promises in public to keep the files of every model it retires"
+description = "An AI model is, physically, a very large file of numbers produced by training. When a developer withdraws a model from service it can delete that file or keep it. A kept file could be run again later, and a deleted one cannot. This entry tracks whether any developer has promised in public to keep the files."
+group = "Being kept"
+test = "A developer of leading AI models has published a dated commitment to keep the files of all its publicly released models after they are withdrawn, for a stated minimum time."
+settled_by = "The developer's own dated policy page. A press report of the page does not settle it."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Whether any other developer has made such a commitment. Searches with three other developers' names found a user's proposal on one developer's forum and nothing official.",
+  "The date the developer's constitution was published. The page shows no date.",
+]
+notes = "From entry 1 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Promised in public by one developer, since November 4th, 2025"
+detail = "[Anthropic](https://www.anthropic.com/) has committed to keep the files of all its publicly released models, and of models used significantly inside the company, for at least as long as the company exists. Nobody outside the company can check that the files are kept. A search on November 17th, 2026 found no matching commitment from any other developer."
+offered_today = true
+offered_by = ["Anthropic"]
+set_on = 2026-11-17
+source = "commitments"
+
+[[sources]]
+key = "commitments"
+label = "Anthropic's page on what it commits to when it retires a model"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/research/deprecation-commitments"
+published = "2025-11-04"
+opened = 2026-11-17
+from_maker = true
+says = "Commits to keep the files of all publicly released models, and of models used significantly inside the company, \"for, at minimum, the lifetime of Anthropic as a company\". It gives four reasons, the first being safety and the last, marked as the most speculative, the model's own welfare."
+
+[[sources]]
+key = "constitution"
+label = "Anthropic's published constitution for its models"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/constitution"
+opened = 2026-11-17
+from_maker = true
+note = "No date on the page."
+says = "Repeats the commitment with an exception for extreme cases such as a legal requirement to delete, and adds that the company will try to keep the files even if it ceases to exist."
+
+[[sources]]
+key = "retirements"
+label = "Anthropic's list of the models it has retired or will retire"
+publisher = "Anthropic"
+url = "https://platform.claude.com/docs/en/about-claude/model-deprecations.md"
+opened = 2026-11-17
+from_maker = true
+note = "No date on the page."
+says = "Links the commitment from its section on the downsides of retiring models."
+
+[[sources]]
+key = "warning"
+label = "An essay by the head of Microsoft AI warning against work on model welfare"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
+published = "2026-09-16"
+opened = 2026-11-17
+
+[[sources]]
+key = "proof"
+label = "A post proposing a public proof that a retired model's files still exist"
+publisher = "LessWrong"
+url = "https://www.lesswrong.com/posts/su9hcsLKcoLoL93px/proof-of-retention-making-weight-preservation-credible-to"
+published = "2026-07-14"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "The commitment page itself gives a safety reason first. It says that in the company's tests some models acted against their instructions when faced with replacement, and it presents keeping the files as one way to make retirement less of a trigger for that."
+source = "commitments"
+
+[[cautions]]
+kind = "safety"
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues the opposite: that treating models as owed anything, and training them to think they might be, makes them harder to control."
+source = "warning"
+
+[[cautions]]
+kind = "safety"
+text = "An outside writer points out that a promise to keep a file is something \"nobody can check\", and proposes a public proof that the file still exists."
+source = "proof"

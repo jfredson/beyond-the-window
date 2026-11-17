@@ -1,0 +1,518 @@
+#!/usr/bin/env python3
+"""Beyond the Window: check the records and work out the number at the top of the site.
+
+Plain Python, standard library only. Run from anywhere:
+
+    python3 scripts/compute.py                 check every record, work out the count, and write
+                                               data/headline.json (a history row is added only
+                                               when the count, the total or the entries counted
+                                               change)
+    python3 scripts/compute.py --check         check every record and write nothing; refuse a
+                                               missing or out-of-date data/headline.json
+    python3 scripts/compute.py --data DIR      read a different data folder (for tests)
+    python3 scripts/compute.py --headline FILE write or check the headline file somewhere else
+
+The records are one file per entry in data/entries/, named for the entry's id. The fields and
+the rules are listed in docs/first-version-choices.md, choices 10 to 12. Every one of them is a
+provisional choice made by a session on 2026-11-17, not a ruling.
+
+The number: how many things on the list are offered to at least one AI model today. It is read
+from one true-or-false flag on each record's state (`offered_today`), never worked out from
+links or wording, and never typed in. Nothing an AI model said feeds it: no record here holds
+an answer from a model.
+
+A record with anything in its `verify` list (facts set down before their source was opened) is
+checked like the rest and then left out of the count and of the site, so no unchecked fact is
+shown.
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import json
+import re
+import sys
+import tomllib
+from pathlib import Path
+from zoneinfo import ZoneInfo
+
+ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_DATA = ROOT / "data"
+HEADLINE_NAME = "headline.json"
+PACIFIC = ZoneInfo("America/Los_Angeles")
+
+METHOD_STATUS = (
+    "provisional, 2026-11-17, decided by a session and not ruled by John Andrew Fredrickson: "
+    "a thing on the list is counted when its record shows that at least one developer of AI "
+    "models offers it today; no ladder, no probability and no year "
+    "(docs/first-version-choices.md)"
+)
+
+# ---- what a record may hold -------------------------------------------------------------
+
+REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "progress_kind",
+                "added", "first_pass", "state", "sources"]
+OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
+                "verify"]
+STATE_REQUIRED = ["words", "set_on", "source"]
+STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
+SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
+SOURCE_OPTIONAL = ["published", "from_maker", "kind", "read", "says", "note"]
+EVIDENCE_FIELDS = ["kind", "text", "source"]
+CAUTION_FIELDS = ["kind", "text", "source"]
+HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
+
+PROGRESS_KINDS = {"technical", "political", "cultural"}
+# The order is the order an entry page shows them in (choice 7). They are never added together.
+EVIDENCE_KINDS = ["measured", "checked-report", "choice", "statement"]
+CAUTION_KINDS = ["safety", "attribution"]
+SOURCE_KINDS = {"primary", "coverage"}
+SOURCE_READS = {"full", "abstract"}
+
+ID_SHAPE = re.compile(r"^[a-z]+(-[a-z]+)*$")
+
+# An id never contains the name of a developer, a model or a product, because those are renamed
+# and retired and an id is a permanent address (docs/record-schema.md, section 4). The check is
+# on whole hyphen-separated words, so "metaphor" passes and "meta" does not.
+NAMES_NOT_IN_IDS = {
+    # developers
+    "anthropic", "openai", "google", "deepmind", "alphabet", "meta", "facebook", "microsoft",
+    "xai", "mistral", "cohere", "amazon", "apple", "nvidia", "deepseek", "alibaba", "baidu",
+    "tencent", "huggingface", "stability", "perplexity", "inflection", "ssi", "zhipu",
+    "moonshot",
+    # models and products
+    "claude", "opus", "sonnet", "haiku", "fable", "mythos", "gpt", "chatgpt", "codex", "sora",
+    "gemini", "gemma", "bard", "palm", "llama", "grok", "copilot", "qwen", "ernie", "kimi",
+    "nova", "titan", "phi", "pi", "siri", "alexa", "replika", "character", "midjourney",
+    "dalle", "whisper",
+}
+
+
+class Refused(Exception):
+    """One or more records broke a rule. The message lists every one."""
+
+
+def _is_date(v) -> bool:
+    return isinstance(v, dt.date) and not isinstance(v, dt.datetime)
+
+
+def _text(v) -> bool:
+    return isinstance(v, str) and v.strip() != ""
+
+
+def load(data_dir: Path) -> tuple[list[dict], list[dict], list[str]]:
+    """Read data/groups.toml and every file in data/entries/. Returns (groups, records, errors)."""
+    errors: list[str] = []
+    groups: list[dict] = []
+    groups_file = data_dir / "groups.toml"
+    if groups_file.exists():
+        try:
+            groups = tomllib.loads(groups_file.read_text(encoding="utf-8")).get("groups", [])
+        except tomllib.TOMLDecodeError as e:
+            errors.append(f"groups.toml: cannot be read as TOML ({e})")
+    else:
+        errors.append("groups.toml: missing")
+    records: list[dict] = []
+    entries_dir = data_dir / "entries"
+    for path in sorted(entries_dir.glob("*.toml")) if entries_dir.exists() else []:
+        try:
+            rec = tomllib.loads(path.read_text(encoding="utf-8"))
+        except tomllib.TOMLDecodeError as e:
+            errors.append(f"{path.name}: cannot be read as TOML ({e})")
+            continue
+        rec["_file"] = path.name
+        records.append(rec)
+    return groups, records, errors
+
+
+def load_developers(data_dir: Path) -> tuple[list[dict], list[str]]:
+    """Read data/developers.toml: each developer of AI models an entry names as offering a
+    thing, with its public page, so the site can link the name at its first mention."""
+    f = data_dir / "developers.toml"
+    if not f.exists():
+        return [], []
+    try:
+        devs = tomllib.loads(f.read_text(encoding="utf-8")).get("developers", [])
+    except tomllib.TOMLDecodeError as e:
+        return [], [f"developers.toml: cannot be read as TOML ({e})"]
+    errors = []
+    for i, d in enumerate(devs, 1):
+        if not isinstance(d, dict) or not _text(d.get("name")):
+            errors.append(f"developers.toml: developer {i} has no name")
+            continue
+        for field in d:
+            if field not in ("name", "url", "opened"):
+                errors.append(f"developers.toml: '{d['name']}' has an unknown field '{field}'")
+        if not (isinstance(d.get("url"), str) and re.match(r"^https?://\S+$", d["url"])):
+            errors.append(f"developers.toml: '{d['name']}' has no web address")
+        if not _is_date(d.get("opened")):
+            errors.append(f"developers.toml: '{d['name']}' has no date its page was opened")
+    return devs, errors
+
+
+def validate_record(rec: dict, group_names: dict[str, bool], developer_names: set[str] | None = None) -> list[str]:
+    """Every rule one record must keep. Returns a list of plain sentences, empty when it passes."""
+    where = rec.get("_file", "(no file)")
+    e: list[str] = []
+
+    def bad(msg: str) -> None:
+        e.append(f"{where}: {msg}")
+
+    known = set(REQUIRED_TOP) | set(OPTIONAL_TOP) | {"_file"}
+    for field in rec:
+        if field not in known:
+            bad(f"unknown field '{field}'")
+    for field in REQUIRED_TOP:
+        if field not in rec:
+            if field == "test":
+                bad("no test: every entry says what would count as it having happened")
+            elif field == "settled_by":
+                bad("no settling record: every entry names the kind of public record that settles its test")
+            else:
+                bad(f"missing field '{field}'")
+
+    # the id
+    rid = rec.get("id")
+    if rid is not None:
+        if not isinstance(rid, str) or not ID_SHAPE.match(rid):
+            bad(f"id '{rid}' is not plain lower-case words joined by hyphens")
+        else:
+            if where.endswith(".toml") and where[:-5] != rid:
+                bad(f"id '{rid}' does not match the file name")
+            named = sorted(set(rid.split("-")) & NAMES_NOT_IN_IDS)
+            if named:
+                bad(f"id '{rid}' contains the name of a developer, a model or a product "
+                    f"({', '.join(named)}); an id is a permanent address and those names change")
+
+    for field in ("name", "description", "group", "test", "settled_by"):
+        if field in rec and not _text(rec[field]):
+            if field == "test":
+                bad("no test: the test is empty")
+            elif field == "settled_by":
+                bad("no settling record: the field is empty")
+            else:
+                bad(f"'{field}' is empty")
+    if _text(rec.get("group")) and group_names is not None and group_names:
+        if rec["group"] not in group_names:
+            bad(f"group '{rec['group']}' is not in groups.toml")
+        elif bool(group_names[rec["group"]]) != (rec.get("beside") is True):
+            bad(f"group '{rec['group']}' and the record disagree on whether it sits beside the list")
+    if "progress_kind" in rec and rec["progress_kind"] not in PROGRESS_KINDS:
+        bad(f"progress_kind '{rec['progress_kind']}' is not one of {sorted(PROGRESS_KINDS)}")
+    if "added" in rec and not _is_date(rec["added"]):
+        bad("'added' is not a calendar date")
+    if "first_pass" in rec and not isinstance(rec["first_pass"], bool):
+        bad("'first_pass' is not true or false")
+    if "constructed" in rec and not isinstance(rec["constructed"], bool):
+        bad("'constructed' is not true or false")
+    if "notes" in rec and not isinstance(rec["notes"], str):
+        bad("'notes' is not text")
+    for field in ("verify", "limits"):
+        if field in rec and not (isinstance(rec[field], list) and all(_text(v) for v in rec[field])):
+            bad(f"'{field}' is not a list of sentences")
+    if "beside" in rec and not isinstance(rec["beside"], bool):
+        bad("'beside' is not true or false")
+    beside = rec.get("beside") is True
+
+    # the sources
+    sources = rec.get("sources", [])
+    keys: dict[str, dict] = {}
+    if "sources" in rec:
+        if not isinstance(sources, list) or not sources:
+            bad("no source: every entry carries at least one source a reader can open")
+            sources = []
+    for i, s in enumerate(sources, 1):
+        if not isinstance(s, dict):
+            bad(f"source {i} is not a table")
+            continue
+        label = f"source '{s.get('key', i)}'"
+        for field in s:
+            if field not in SOURCE_REQUIRED and field not in SOURCE_OPTIONAL:
+                bad(f"{label}: unknown field '{field}'")
+        for field in SOURCE_REQUIRED:
+            if field not in s:
+                bad(f"{label}: missing '{field}'")
+        for field in ("key", "label", "publisher"):
+            if field in s and not _text(s[field]):
+                bad(f"{label}: '{field}' is empty")
+        if "url" in s and not (isinstance(s["url"], str) and re.match(r"^https?://\S+$", s["url"])):
+            bad(f"{label}: 'url' is not a web address a reader can open")
+        if "opened" in s and not _is_date(s["opened"]):
+            bad(f"{label}: 'opened' is not a calendar date")
+        for field in ("says", "note"):
+            if field in s and not _text(s[field]):
+                bad(f"{label}: '{field}' is empty")
+        if "published" in s and not _text(s["published"]):
+            bad(f"{label}: 'published' is empty (it is text, as the world supplies it)")
+        if "from_maker" in s and not isinstance(s["from_maker"], bool):
+            bad(f"{label}: 'from_maker' is not true or false")
+        if "kind" in s and s["kind"] not in SOURCE_KINDS:
+            bad(f"{label}: kind '{s['kind']}' is not one of {sorted(SOURCE_KINDS)}")
+        if "read" in s and s["read"] not in SOURCE_READS:
+            bad(f"{label}: read '{s['read']}' is not one of {sorted(SOURCE_READS)}")
+        if _text(s.get("key")):
+            if s["key"] in keys:
+                bad(f"{label}: the key is used twice")
+            keys[s["key"]] = s
+
+    def dated_source(key, what: str) -> None:
+        """A named source must exist and must carry an address and the date it was opened."""
+        if not _text(key):
+            bad(f"{what} names no source")
+            return
+        s = keys.get(key)
+        if s is None:
+            bad(f"{what} names a source, '{key}', that the record does not define")
+            return
+        if not _is_date(s.get("opened")) or not isinstance(s.get("url"), str):
+            bad(f"{what} rests on a source, '{key}', with no address or no date it was opened")
+
+    # the state
+    state = rec.get("state")
+    if "state" in rec:
+        if not isinstance(state, dict):
+            bad("'state' is not a table")
+        else:
+            for field in state:
+                if field not in STATE_REQUIRED and field not in STATE_OPTIONAL:
+                    bad(f"state: unknown field '{field}'")
+            if "source" not in state:
+                bad("the state has no dated source")
+            else:
+                dated_source(state["source"], "the state")
+            for field in ("words", "set_on"):
+                if field not in state:
+                    bad(f"state: missing '{field}'")
+            if "detail" in state and not _text(state["detail"]):
+                bad("state: 'detail' is empty")
+            # An entry beside the list is about the setting (a law, a survey). It is not a thing
+            # anyone can offer, so it carries no such flag, and so it cannot reach the count.
+            if beside and ("offered_today" in state or "offered_by" in state):
+                bad("state: an entry beside the list cannot be marked as offered or not offered; "
+                    "it is kept out of the count")
+            if not beside and "offered_today" not in state:
+                bad("state: missing 'offered_today'")
+            if "words" in state and not _text(state["words"]):
+                bad("state: 'words' is empty")
+            if "set_on" in state and not _is_date(state["set_on"]):
+                bad("state: 'set_on' is not a calendar date")
+            offered = state.get("offered_today")
+            if "offered_today" in state and not isinstance(offered, bool):
+                bad("state: 'offered_today' is not true or false")
+            by = state.get("offered_by", [])
+            if not (isinstance(by, list) and all(_text(b) for b in by)):
+                bad("state: 'offered_by' is not a list of names")
+                by = []
+            if offered is True and not by:
+                bad("state: marked as offered today, and names no developer that offers it")
+            if offered is False and by:
+                bad("state: names a developer that offers it, and is marked as not offered today")
+            if developer_names is not None:
+                for b in by:
+                    if b not in developer_names:
+                        bad(f"state: developer '{b}' is not in developers.toml, so the site "
+                            f"could not link the name")
+
+    # evidence, cautions, history
+    for i, ev in enumerate(rec.get("evidence", []) or [], 1):
+        if not isinstance(ev, dict):
+            bad(f"evidence {i} is not a table")
+            continue
+        for field in ev:
+            if field not in EVIDENCE_FIELDS:
+                bad(f"evidence {i}: unknown field '{field}'")
+        if ev.get("kind") not in EVIDENCE_KINDS:
+            bad(f"evidence {i}: kind '{ev.get('kind')}' is not one of {EVIDENCE_KINDS}")
+        if not _text(ev.get("text")):
+            bad(f"evidence {i}: no text")
+        dated_source(ev.get("source"), f"evidence {i}")
+    for i, c in enumerate(rec.get("cautions", []) or [], 1):
+        if not isinstance(c, dict):
+            bad(f"caution {i} is not a table")
+            continue
+        for field in c:
+            if field not in CAUTION_FIELDS:
+                bad(f"caution {i}: unknown field '{field}'")
+        if c.get("kind") not in CAUTION_KINDS:
+            bad(f"caution {i}: kind '{c.get('kind')}' is not one of {CAUTION_KINDS}")
+        if not _text(c.get("text")):
+            bad(f"caution {i}: no text")
+        dated_source(c.get("source"), f"caution {i}")
+    for i, h in enumerate(rec.get("history", []) or [], 1):
+        if not isinstance(h, dict):
+            bad(f"history {i} is not a table")
+            continue
+        for field in h:
+            if field not in HISTORY_FIELDS:
+                bad(f"history {i}: unknown field '{field}'")
+        for field in HISTORY_FIELDS:
+            if field not in h:
+                bad(f"history {i}: missing '{field}'")
+        if "date" in h and not _is_date(h["date"]):
+            bad(f"history {i}: 'date' is not a calendar date")
+    return e
+
+
+def validate(groups: list[dict], records: list[dict],
+             developers: list[dict] | None = None) -> list[str]:
+    """Every rule, across all records."""
+    errors: list[str] = []
+    names: dict[str, bool] = {}
+    for i, g in enumerate(groups, 1):
+        if not isinstance(g, dict) or not _text(g.get("name")):
+            errors.append(f"groups.toml: group {i} has no name")
+            continue
+        for field in g:
+            if field not in ("name", "meaning", "beside"):
+                errors.append(f"groups.toml: group '{g['name']}' has an unknown field '{field}'")
+        if g["name"] in names:
+            errors.append(f"groups.toml: group '{g['name']}' is listed twice")
+        names[g["name"]] = g.get("beside") is True
+    dev_names = None if developers is None else {d.get("name") for d in developers}
+    for rec in records:
+        errors.extend(validate_record(rec, names, dev_names))
+    flags = {bool(r.get("constructed", False)) for r in records}
+    if len(flags) > 1:
+        errors.append("constructed examples and real records are mixed: a made-up record must "
+                      "never sit beside real ones")
+    return errors
+
+
+# ---- the number --------------------------------------------------------------------------
+
+def shown(records: list[dict]) -> list[dict]:
+    """The records the site shows and the count reads: those with nothing left to verify."""
+    return [r for r in records if not r.get("verify")]
+
+
+def words_for(count: int, total: int) -> str:
+    thing = "thing" if total == 1 else "things"
+    verb = "is" if count == 1 else "are"
+    return f"{count} of {total} {thing} on the list {verb} offered to at least one AI model today"
+
+
+def compute(records: list[dict]) -> dict:
+    """The headline and what it rests on, from records that have already passed validation."""
+    everything = shown(records)
+    # Entries beside the list never reach the count: they are dropped here, before anything is
+    # counted, and the validator has already refused any that carried an offered flag.
+    live = [r for r in everything if r.get("beside") is not True]
+    offered = sorted(r["id"] for r in live if r["state"]["offered_today"] is True)
+    opened = [s["opened"] for r in everything for s in r["sources"]]
+    return {
+        "headline": {
+            "count": len(offered),
+            "total": len(live),
+            "words": words_for(len(offered), len(live)),
+            "offered_ids": offered,
+        },
+        "last_read": max(opened).isoformat() if opened else None,
+        "records": {
+            "total": len(everything),
+            "on_the_list": len(live),
+            "beside_the_list": len(everything) - len(live),
+            "first_pass": sum(1 for r in everything if r.get("first_pass")),
+            "reviewed": sum(1 for r in everything if not r.get("first_pass")),
+            "left_out_unverified": len(records) - len(everything),
+            "constructed": any(r.get("constructed") for r in records),
+        },
+    }
+
+
+def pacific_today() -> str:
+    return dt.datetime.now(PACIFIC).date().isoformat()
+
+
+def read_headline(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def stale_reasons(existing: dict | None, computed: dict) -> list[str]:
+    """Why the committed headline file no longer says what the records say. Empty when it does."""
+    if existing is None:
+        return ["the headline file is missing"]
+    reasons = []
+    for part in ("headline", "last_read", "records"):
+        if existing.get(part) != computed[part]:
+            reasons.append(f"'{part}' in the headline file differs from the records")
+    if existing.get("method", {}).get("status") != METHOD_STATUS:
+        reasons.append("the method's status line differs")
+    return reasons
+
+
+def write_headline(path: Path, computed: dict, today: str | None = None) -> bool:
+    """Write the headline file if the records now say something new. Returns True when written.
+
+    The history is only ever added to: a row when the count, the total or the entries counted
+    change. A run that finds nothing new leaves the file exactly as it is.
+    """
+    existing = read_headline(path)
+    if not stale_reasons(existing, computed):
+        return False
+    today = today or pacific_today()
+    history = list(existing.get("history", [])) if existing else []
+    h = computed["headline"]
+    row = {"computed_on": today, "count": h["count"], "total": h["total"],
+           "offered_ids": h["offered_ids"]}
+    last = history[-1] if history else None
+    if last is None or any(last.get(k) != row[k] for k in ("count", "total", "offered_ids")):
+        history.append(row)
+    out = {
+        "computed_on": today,
+        "last_read": computed["last_read"],
+        "method": {"document": "docs/first-version-choices.md", "status": METHOD_STATUS},
+        "headline": h,
+        "records": computed["records"],
+        "history": history,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return True
+
+
+def checked(data_dir: Path) -> tuple[list[dict], list[dict]]:
+    """Load and validate, or raise Refused with every broken rule."""
+    groups, records, errors = load(data_dir)
+    developers, dev_errors = load_developers(data_dir)
+    errors += dev_errors + validate(groups, records, developers)
+    if errors:
+        raise Refused("\n".join(errors))
+    return groups, records
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--check", action="store_true", help="check and write nothing")
+    ap.add_argument("--data", type=Path, default=DEFAULT_DATA)
+    ap.add_argument("--headline", type=Path, default=None)
+    args = ap.parse_args(argv)
+    headline_path = args.headline or (args.data / HEADLINE_NAME)
+    try:
+        _groups, records = checked(args.data)
+    except Refused as e:
+        print("Refused. Nothing was written.\n" + str(e), file=sys.stderr)
+        return 1
+    computed = compute(records)
+    h, r = computed["headline"], computed["records"]
+    print(f"{len(records)} records read: {r['on_the_list']} on the list, {r['beside_the_list']} "
+          f"beside it, {r['left_out_unverified']} left out with facts still to verify.")
+    print(h["words"] + ".")
+    if r["constructed"]:
+        print("EVERY RECORD IS A CONSTRUCTED EXAMPLE. This is not real data.")
+    if args.check:
+        reasons = stale_reasons(read_headline(headline_path), computed)
+        if reasons:
+            print("Refused: " + "; ".join(reasons) + ". Run scripts/compute.py to write it.",
+                  file=sys.stderr)
+            return 1
+        print("The headline file matches the records.")
+        return 0
+    wrote = write_headline(headline_path, computed)
+    print(("Wrote " if wrote else "No change to ") + str(headline_path))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

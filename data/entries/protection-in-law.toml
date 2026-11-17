@@ -1,0 +1,56 @@
+id = "protection-in-law"
+name = "A law or an official body gives an AI system protection for its own sake"
+description = "Laws protect animals from cruelty without calling them persons. The same could be done for AI systems, or a government could set up a body to review the question as evidence comes in. This entry tracks whether any government has done either."
+group = "Protection in law"
+test = "A national or state government has enacted a law, or set up a standing official body, whose stated purpose includes the welfare or interests of AI systems themselves."
+settled_by = "The statute, or the body's founding document, on a government site."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "The absence itself, beyond two searches in English centred on the United States. A search in another language or country could overturn it.",
+  "A United Kingdom committee on animal sentience that the opinion piece points to as a model. Its page was not opened.",
+]
+notes = "From entry 10 of docs/research/2026-11-17-first-entries.md. An absence: the state rests on searches run on 2026-11-17 and on one opened page that describes a proposal."
+
+[state]
+words = "Not found. An idea only, argued for in opinion pieces"
+detail = "No source says this has happened. Two searches in English on November 17th, 2026, centred on the United States, returned only laws and bills that run the other way (see [the entry on those laws](/list/law-against-legal-personhood/)) and laws on chat products and children. One opinion piece proposes that the state bans carry an expiry date or a review clause."
+offered_today = false
+set_on = 2026-11-17
+source = "review-clause"
+
+[[sources]]
+key = "review-clause"
+label = "An opinion piece on state laws about AI consciousness, in The Regulatory Review"
+publisher = "The Regulatory Review"
+url = "https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/"
+published = "2026-06-29"
+opened = 2026-11-17
+says = "Proposes that the state bans carry an expiry date or a review clause, and points to a United Kingdom committee on animal sentience as a model. It describes a proposal, not a law."
+
+[[sources]]
+key = "warning"
+label = "An essay by the head of Microsoft AI warning against work on model welfare"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
+published = "2026-09-16"
+opened = 2026-11-17
+
+[[sources]]
+key = "declaration"
+label = "A public declaration on AI, with its signatories"
+publisher = "humanstatement.org"
+url = "https://humanstatement.org/"
+published = "2026-03"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues that any such protection would make advanced AI harder to control."
+source = "warning"
+
+[[cautions]]
+kind = "safety"
+text = "A declaration signed by several hundred people and organisations adds that AI systems should not be designed so that they come to deserve personhood."
+source = "declaration"

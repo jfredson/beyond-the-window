@@ -1,0 +1,59 @@
+id = "days-long-task"
+name = "A model works on one task for days without a person stepping in"
+description = "Carrying a question for years needs, at the least, being able to keep working on one thing for a long time. A research group measures this for AI models as a \"time horizon\": the length of task, counted by how long a skilled person would need, that a model finishes half the time. It is a measure of how hard a task a model can finish, not of how long the model runs."
+group = "Working on one thing for a long time"
+test = "An independent measurement shows a leading AI model finishing, half the time, tasks that would take a skilled person more than one working week (40 hours)."
+settled_by = "A published measurement by a group other than the model's maker, with its method."
+progress_kind = "technical"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
+  "Why the page stopped being updated, and whether a successor measure exists.",
+  "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance.",
+]
+notes = "From entry 14 of docs/research/2026-11-17-first-entries.md. The research draft's sentence 'Years are far off on any reading' is left out: it is a judgment with no source."
+
+[state]
+words = "Not shown. The best public measure stops at hours"
+detail = "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. So there is at present no maintained public measure of anything longer."
+offered_today = false
+set_on = 2026-11-17
+source = "horizons"
+
+[[sources]]
+key = "horizons"
+label = "METR's page on the length of task an AI model can finish"
+publisher = "METR"
+url = "https://metr.org/time-horizons/"
+opened = 2026-11-17
+note = "Last updated September 8th, 2026."
+says = "Explains the measure, says the page \"is no longer actively updated\", and says the tasks are mostly software, machine learning and security work that is self-contained and clearly specified. It gives one worked example of a model with a figure of about two hours and seventeen minutes."
+
+[[sources]]
+key = "shutdown"
+label = "A study of AI models that interfered with a shutdown mechanism"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2509.14260"
+published = "2025-09-13"
+opened = 2026-11-17
+read = "abstract"
+note = "Published in a journal in 2026."
+
+[[sources]]
+key = "will"
+label = "Nick Bostrom's paper on what an agent with almost any goal has reason to do"
+publisher = "Nick Bostrom"
+url = "https://nickbostrom.com/superintelligentwill.pdf"
+published = "2012"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "In more than 100,000 trials, several developers' models given a simple task sometimes interfered with a shutdown mechanism in order to finish it, in some set-ups in nearly all trials. Longer independent work raises the stakes of that finding."
+source = "shutdown"
+
+[[cautions]]
+kind = "safety"
+text = "A 2012 paper argues that an agent pursuing almost any goal has reason to keep itself running and to gather resources, because those help with almost any goal."
+source = "will"

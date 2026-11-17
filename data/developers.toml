@@ -1,0 +1,18 @@
+# Developers of AI models that an entry names as offering a thing, each with its own public
+# page, so the site can link the name. An entry page names a developer because the developer is
+# the subject of the entry.
+
+[[developers]]
+name = "Anthropic"
+url = "https://www.anthropic.com/"
+opened = 2026-11-17
+
+[[developers]]
+name = "OpenAI"
+url = "https://openai.com/"
+opened = 2026-11-17
+
+[[developers]]
+name = "Google"
+url = "https://ai.google/"
+opened = 2026-11-17

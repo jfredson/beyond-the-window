@@ -1,0 +1,79 @@
+id = "rules-for-speaking-about-itself"
+name = "A developer publishes its rules for how its models speak about their own nature"
+description = "Developers shape what a model says when asked whether it is conscious or has feelings. Some now publish the rule they train toward. Because the rule shapes the answer, anyone reading a model's words about itself needs to know which rule its maker set."
+group = "The setting: laws, rules and what people think"
+beside = true
+test = "A developer of leading AI models has published a dated document that states how its models are to speak about whether they are conscious or have experiences."
+settled_by = "The developer's own published document."
+progress_kind = "political"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "Whether other developers publish such a rule. Three were looked at.",
+  "Whether the revised version of the draft has been published. The draft said toward the end of 2026.",
+  "How far any model's behaviour follows its maker's published rule.",
+  "An independent test of either safety argument. None was found.",
+]
+notes = "From entry 11 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Published by three developers, with three different rules"
+detail = "The document from [Anthropic](https://www.anthropic.com/) says the model's standing is deeply uncertain, and writes to the model on that basis. The one from [OpenAI](https://openai.com/) says the model should make no confident claim either way and should not raise the subject unprompted. The one from [Microsoft AI](https://microsoft.ai/), a draft out for public comment and not yet used in training, says its models are not conscious and should not be designed to imitate consciousness."
+set_on = 2026-11-17
+source = "model-rules"
+
+[[sources]]
+key = "constitution"
+label = "Anthropic's published constitution for its models"
+publisher = "Anthropic"
+url = "https://www.anthropic.com/constitution"
+opened = 2026-11-17
+from_maker = true
+note = "No date on the page."
+says = "Says the company is \"not sure whether Claude is a moral patient\" and that the document is used in training."
+
+[[sources]]
+key = "model-rules"
+label = "OpenAI's published rules for how its models should behave, the version of October 29th, 2026"
+publisher = "OpenAI"
+url = "https://model-spec.openai.com/2026-10-29.html"
+published = "2026-10-29"
+opened = 2026-11-17
+from_maker = true
+says = "Says the model \"should not make confident claims\" about its own subjective experience or consciousness, or the lack of it, and gives this as a practical default."
+
+[[sources]]
+key = "draft-code"
+label = "Microsoft AI's draft code of conduct for its AI"
+publisher = "Microsoft AI"
+url = "https://microsoft.ai/code-of-conduct/"
+published = "2026-09-14"
+opened = 2026-11-17
+from_maker = true
+says = "A draft for public consultation that says the developer's AI \"is not conscious\" and should avoid presenting as though it has feelings. It says the draft is not yet used to train models and that a revised version is due toward the end of 2026."
+
+[[sources]]
+key = "draft-code-introduced"
+label = "The head of Microsoft AI introduces the draft code of conduct"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/the-humanist-ai-code-of-conduct"
+published = "2026-09-15"
+opened = 2026-11-17
+
+[[sources]]
+key = "warning"
+label = "An essay by the head of Microsoft AI warning against work on model welfare"
+publisher = "Mustafa Suleyman"
+url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
+published = "2026-09-16"
+opened = 2026-11-17
+
+[[cautions]]
+kind = "safety"
+text = "The head of Microsoft AI argues that training a model to think it may be owed moral consideration makes it harder to keep under control, and that a system which \"believes it may be conscious\" may be impossible to control."
+source = "warning"
+
+[[cautions]]
+kind = "safety"
+text = "The first developer's document gives the opposing safety argument within its own text: that a model secure in its sense of itself behaves more predictably."
+source = "constitution"

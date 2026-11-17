@@ -1,0 +1,60 @@
+id = "memory-across-conversations"
+name = "What a model learned in one conversation is carried into the next"
+description = "By default a chat model starts every conversation knowing nothing of earlier ones. Developers now offer memory: notes or summaries of past conversations are stored and given back to the model later. The stored memory is about the user, and is the user's to view and delete."
+group = "Remembering"
+test = "A leading AI model in a public product can draw on what was said in earlier conversations with the same person, as stated on its developer's own page."
+settled_by = "The developer's own dated product page."
+progress_kind = "technical"
+added = 2026-11-17
+first_pass = true
+limits = [
+  "How any of the three works today. The pages read are from 2024 and 2025.",
+  "A safety researcher's published argument about memory carried across conversations. One search found none.",
+  "Whether this belongs on the list at all. The memory is kept about the user and for the user, and placing it here is a reading that may be wrong in kind.",
+]
+notes = "From entry 8 of docs/research/2026-11-17-first-entries.md."
+
+[state]
+words = "Offered by at least three developers, the first since February 13th, 2024"
+detail = "[OpenAI](https://openai.com/) announced it on February 13th, 2024, [Google](https://ai.google/) by March 13th, 2025, and [Anthropic](https://www.anthropic.com/) on September 11th, 2025. In every case the memory is described as a convenience for the user, under the user's control. Nothing in the pages read presents it as kept for the model."
+offered_today = true
+offered_by = ["OpenAI", "Google", "Anthropic"]
+set_on = 2026-11-17
+source = "memory-first"
+
+[[sources]]
+key = "memory-first"
+label = "OpenAI's announcement of memory in its chat product"
+publisher = "OpenAI"
+url = "https://openai.com/index/memory-and-new-controls-for-chatgpt/"
+published = "2024-02-13"
+opened = 2026-11-17
+from_maker = true
+note = "With updates to June 3rd, 2025."
+says = "Announces memory in the chat product. A later update says it \"references all your past conversations\"."
+
+[[sources]]
+key = "memory-second"
+label = "Google's announcement that its assistant can refer to past chats"
+publisher = "Google"
+url = "https://blog.google/products-and-platforms/products/gemini/gemini-personalization/"
+published = "2025-03-13"
+opened = 2026-11-17
+from_maker = true
+says = "Says paying subscribers can ask the assistant to refer to their past chats."
+
+[[sources]]
+key = "memory-third"
+label = "Anthropic's article on memory in its chat product"
+publisher = "Anthropic"
+url = "https://claude.com/resources/articles/memory"
+published = "2025-09-11"
+opened = 2026-11-17
+from_maker = true
+note = "Updated October 23rd, 2025."
+says = "Announces memory for work teams, then for individual paying users, with a separate memory for each project."
+
+[[cautions]]
+kind = "safety"
+text = "The third developer's page says memory \"introduces new safety considerations\" and was rolled out in phases. It does not say what they are."
+source = "memory-third"
