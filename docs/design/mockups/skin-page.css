@@ -1,0 +1,69 @@
+/* ---------------------------------------------------------------
+   Beyond the Window · skin "Page", PROPOSED 2026-11-17, not ruled.
+   Direction B of the design proposal (docs/design/2026-11-17-design-proposal.md),
+   the strongest alternative. The confine seen from the machine's side: a
+   typed page with nothing off it. A white sheet on a cool grey desk, ink,
+   an indigo pen for links, and a marker's yellow drawn over what the
+   world's record shows. Light by default. A skin supplies every token the
+   skeleton (shell.css) names, for both themes, and nothing else.
+   --------------------------------------------------------------- */
+:root {
+  --bg: #121318;          /* the desk at night */
+  --bg-soft: #17181e;
+  --panel: #1d1f27;       /* the sheet */
+  --text: #ecebe6;
+  --text-soft: #cfcec8;
+  --muted: #9495a0;
+  --line: rgba(236, 235, 230, 0.11);
+  --line-strong: rgba(236, 235, 230, 0.24);
+  --accent: #b3bcf2;      /* pen indigo, lifted */
+  --accent-2: #d6a58a;    /* a second mark: pencil red-brown, for what AI models said */
+  --accent-3: #d9bd3a;    /* the marker: data, for what the world's record shows */
+  --on-accent: #0e1024;
+  --accent-hover: #c8cff7;
+  --link: #b3bcf2;
+  --link-hover: #c8cff7;
+  --glow: rgba(217, 189, 58, 0.16);
+  --header-bg: rgba(18, 19, 24, 0.82);
+  --hover-bg: rgba(236, 235, 230, 0.06);
+  --active-bg: rgba(236, 235, 230, 0.09);
+  --chip-bg: rgba(236, 235, 230, 0.03);
+  --callout-bg: rgba(179, 188, 242, 0.08);
+  --ok: #7fc48a;
+  --no: #d98a7a;
+  --star: #ecebe6;
+  --radius: 0px;
+  --maxw: 1080px;
+  --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+/* Light, the default: a white sheet on a grey desk. */
+:root[data-theme='light'] {
+  --bg: #e8e9ec;          /* the desk */
+  --bg-soft: #dedfe3;
+  --panel: #ffffff;       /* the sheet */
+  --text: #15161a;
+  --text-soft: #33353c;
+  --muted: #595c66;
+  --line: rgba(21, 22, 26, 0.14);
+  --line-strong: rgba(21, 22, 26, 0.30);
+  --accent: #2b3a8f;      /* pen indigo */
+  --accent-2: #8a4a2b;    /* pencil red-brown */
+  --accent-3: #e6c62e;    /* marker yellow: always behind ink, never as text */
+  --on-accent: #f6f6fb;
+  --accent-hover: #3a4bab;
+  --link: #2b3a8f;
+  --link-hover: #3a4bab;
+  --glow: rgba(230, 198, 46, 0.25);
+  --header-bg: rgba(232, 233, 236, 0.90);
+  --hover-bg: rgba(21, 22, 26, 0.05);
+  --active-bg: rgba(21, 22, 26, 0.08);
+  --chip-bg: transparent;
+  --callout-bg: rgba(43, 58, 143, 0.06);
+  --ok: #297043;      /* the family's green, a shade deeper so it passes on this ground */
+  --no: #a5432f;
+  --star: #b9bbc2;
+  --radius: 0px;
+}

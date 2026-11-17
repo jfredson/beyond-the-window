@@ -414,6 +414,10 @@ tracked things placed by how far off they are. A grid with one row per aspiratio
 column per model generation, filled in as each is asked. A plain two-column table, reach
 against what was said, with no image at all.
 
+**Explored 2026-11-17, not ruled.** `docs/design/2026-11-17-design-proposal.md` draws two of
+these as pictures (a window, and a typed page seen from the machine's side) and shows three of
+question 4's headline forms on a first screen. The question stays open until John rules.
+
 **What exploring it involves.** A skin proposal on the family's form: the direction in a
 paragraph, pictures in both themes and on a phone, the strongest alternative as a variant, the
 colour values, and numbered decisions. It waits on question 4, since the picture and the

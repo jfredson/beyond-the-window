@@ -1,0 +1,9 @@
+<!doctype html>
+<!-- Shows a mock-up page at phone width: phone.html?page=glass-home-count.html&theme=light -->
+<html lang="en"><head><meta charset="utf-8"><title>Phone view of a mock-up</title>
+<style>html,body{margin:0;background:#888}iframe{display:block;border:0;width:390px;height:1500px}</style></head>
+<body><iframe id="f" title="The page at phone width"></iframe>
+<script>
+  var q = new URLSearchParams(location.search);
+  document.getElementById('f').src = (q.get('page') || 'glass-home-count.html') + '?theme=' + (q.get('theme') || 'light');
+</script></body></html>
