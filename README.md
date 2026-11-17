@@ -4,8 +4,9 @@ A tracker in the Sentient Horizons family, beside Outrunning Ageing, The Belt Eq
 Quiet Galaxy and The Upgrade Tree. Named by John on 2026-11-16.
 
 **Status on 2026-11-17: opening frameworks proposed, most of the design open.** There is no
-site, no data and no domain. Nothing in this repository has been ruled by John except the name
-and what the documents quote as his words. The repository is local only: no GitHub repository,
+site and no data. John registered the address beyondthewindow.org on 2026-11-17; nothing is
+served there yet. Nothing in this repository has been ruled by John except the name, the
+address and what the documents quote as his words. The repository is local only: no GitHub repository,
 no remote, nothing deployed.
 
 ## The question
@@ -79,7 +80,7 @@ How and where the public site declares this is not yet decided (open question 7)
 
 ## What is settled and what is not
 
-Settled: the name.
+Settled: the name, and the address beyondthewindow.org.
 
 Stated by John as guidance for the opening phase: the starting list comes from biological
 minds; a questioning protocol is needed; progress is technological, political or cultural; and
@@ -93,6 +94,6 @@ Open: everything in `docs/open-questions.md`.
 ## Not done, on purpose
 
 No model has been queried. No money has been spent. No data record has been written. No site
-has been built. No domain has been bought. No licence files have been added, because whether
+has been built. No licence files have been added, because whether
 model answers can be published under the family's usual licence depends on terms nobody has
 read yet.

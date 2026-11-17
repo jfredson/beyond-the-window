@@ -618,9 +618,9 @@ Horizons: it works and is free, but every record's page address is treated as pe
 this family, so moving later means forwarding every page; at this price, registering the .org
 first avoids that.
 
-**Where it stands.** John said later on 2026-11-17: "I'm ready to purchase the .org." Whether
-the purchase has been made is not recorded here; a session should confirm with him before
-writing the address anywhere. Questions a .org address is likely to draw, discussed in the
+**Settled in part, 2026-11-17.** John registered the address himself and reported: "the domain
+is registered at beyondthewindow.org". Decided by: John. The site's address is
+beyondthewindow.org. Nothing is served there yet. Questions a .org address is likely to draw, discussed in the
 session: whether this is a non-profit (no, one person's project); whether it is an AI rights
 group (no, the site does not campaign, and has to show that on its entries); who funds it and
 whether an AI company is behind it (self-funded, and the model's part in the drafting is
@@ -628,9 +628,8 @@ declared); whether it is affiliated or peer reviewed (no); why the siblings are 
 is held by a reseller). That .org needs no charity status is from memory and is for John to
 confirm in the registrar's terms.
 
-**What exploring it involves.** John's purchase, and then recording the address here as
-settled. Whether to add the .net as a forward, and a short address for Still Asking, stays
-open.
+**What is still open.** Whether to add the .net as a forward; whether Still Asking gets a short
+address of its own; and what happens if the .com's price ever falls.
 
 ---
 
