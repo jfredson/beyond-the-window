@@ -56,5 +56,5 @@ says = "Announces memory for work teams, then for individual paying users, with 
 
 [[cautions]]
 kind = "safety"
-text = "The third developer's page says memory \"introduces new safety considerations\" and was rolled out in phases. It does not say what they are."
+text = "The third developer's page says memory \"introduces new safety considerations\" and was rolled out in phases. Its update of October 23rd, 2025 says that before memory was offered to individual users it was tested for \"whether memory could reinforce harmful patterns in conversations, lead to over-accommodation, and enable attempts to bypass our safeguards\", and that the feature was adjusted as a result."
 source = "memory-third"

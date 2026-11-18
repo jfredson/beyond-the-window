@@ -11,12 +11,14 @@ limits = [
   "Whether the retired model is still available today. The developer's page says so as of February 25th, 2026.",
   "Whether the essays the retired model was given a place to publish are still appearing after the three months stated.",
   "A safety researcher's argument about this step taken on its own. A search found none.",
+  "Whether the other developer's withdrawal took place on February 13th, 2026. The page opened announces it in advance.",
+  "How the retired model is open to developers on request, when the developer's list of retired models says that requests to retired models fail. Both pages say what they say, and both may be true.",
 ]
 notes = "From entry 3 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Happened once, for one model, at one developer"
-detail = "A page [Anthropic](https://www.anthropic.com/) published on February 25th, 2026 says one of its retired models remains open to paying users of its chat product, and to others on request. The developer says it is not committing to do the same for every model. Elsewhere it has gone the other way: on February 13th, 2026 [OpenAI](https://openai.com/) withdrew from its chat product an older model that it had earlier restored after users objected."
+detail = "A page [Anthropic](https://www.anthropic.com/) published on February 25th, 2026 says one of its retired models remains open to paying users of its chat product, and to others on request. The developer says it is not committing to do the same for every model. Elsewhere it has gone the other way: on January 29th, 2026 [OpenAI](https://openai.com/) announced that on February 13th, 2026 it would withdraw from its chat product an older model that it had earlier restored after users objected. It said nothing would change for now in the service through which developers use its models."
 offered_today = true
 offered_by = ["Anthropic"]
 set_on = 2026-11-17
@@ -40,7 +42,7 @@ url = "https://platform.claude.com/docs/en/about-claude/model-deprecations.md"
 opened = 2026-11-17
 from_maker = true
 note = "No date on the page."
-says = "Lists that model as retired on January 5th, 2026."
+says = "Lists that model as retired on January 5th, 2026, and says that requests to retired models fail."
 
 [[sources]]
 key = "older-models"
@@ -66,6 +68,6 @@ text = "The developer's page frames continued access partly as lowering a safety
 source = "update"
 
 [[cautions]]
-kind = "safety"
-text = "The head of [Microsoft AI](https://microsoft.ai/) argues that steps of this kind raise a risk instead, by making advanced AI harder to control."
+kind = "attribution"
+text = "The head of [Microsoft AI](https://microsoft.ai/) cites the steps taken for this model as an example of treating models \"as though they have feelings, preferences, rights, or any entitlement to our welfare\", and argues that doing so will make advanced AI harder to keep under control."
 source = "warning"

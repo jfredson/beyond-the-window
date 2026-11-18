@@ -67,7 +67,7 @@ published = "2026-03"
 opened = 2026-11-17
 
 [[cautions]]
-kind = "safety"
+kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that public belief in conscious AI is itself the danger, and calls work on model welfare \"both premature, and frankly dangerous\"."
 source = "seemingly"
 

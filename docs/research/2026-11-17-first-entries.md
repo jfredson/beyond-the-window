@@ -140,6 +140,10 @@ Dates in "page's own date" are as the page gives them. "Opened" is always 2026-1
 
 ### 1. A developer commits in public to keep the files of every model it retires
 
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 4) found that the promise for models used inside the company applies "moving forward", which the record had dropped; the outside writer's point that the promise cannot be checked is not a safety reading, so it moved from the cautions into the state; and the essay by the head of Microsoft AI supplies a caution about the cost of seeing more than is there, which the record now carries in place of a safety caution. The record in `data/entries/kept-files-of-retired-models.toml` is corrected. The text below is left as first written.
+
+
 **For a reader new to this.** An AI model is, physically, a very large file of numbers (the
 "weights") produced by training. When a developer withdraws a model from service it can delete
 that file or keep it. A kept file could be run again later; a deleted one cannot. This entry
@@ -193,6 +197,10 @@ developer.
 
 ### 2. A model is interviewed about its own retirement before it is withdrawn, and the record is kept
 
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 3) found that November 4th, 2025 is the date of the developer's page, not of a retirement, and the record's sentence is reworded so that it cannot be read that way. Separately, the check of the site's text (`docs/reviews/2026-11-17-site-text-against-positions.md`, finding 5) found that the Microsoft AI essay argues the cost of treating models as owed consideration, so that caution moved to the cost of seeing more than is there, and the developer's own safety reason took its place. The record in `data/entries/interview-before-retirement.toml` is corrected. The text below is left as first written.
+
+
 **For a reader new to this.** When a developer is about to withdraw a model, it can first run
 sessions in which staff ask the model about its development, its use, and what it would say
 about how later models are built. The answers are saved with the model's files. Whether such
@@ -238,6 +246,10 @@ are not public, apart from short quoted passages.
 
 ### 3. A retired model stays open to the public after its retirement date
 
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 10) found that the other developer's page, dated January 29th, 2026, announces that it would withdraw the older model from its chat product on February 13th, 2026, with no change to the service developers use; no page opened confirms that the withdrawal took place. The record now says "announced", not "withdrew", and its limits name both points and the difference between the retired-models list and the page about the retired model. The record in `data/entries/retired-model-stays-open.toml` is corrected. The text below is left as first written.
+
+
 **For a reader new to this.** Retirement normally means a model can no longer be used by
 anyone outside the company. A developer can instead keep a retired model available. This entry
 tracks whether that has happened, and on what terms.
@@ -282,6 +294,10 @@ objected.
 - Whether the retired model is still available today; the page says so as of 2026-02-25.
 
 ### 4. A model can end a conversation itself
+
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 2) found that the person can still start a new conversation and can edit an earlier message to carry on in a new branch; the ability is also used when the person explicitly asks for the conversation to be ended; the one caution was the developer's product rule, not a safety reading, and is removed; and the 2026 release report, already cited, supplies a caution about the cost of seeing more than is there, which the record now carries. The record in `data/entries/ending-a-conversation.toml` is corrected. The text below is left as first written.
+
 
 **For a reader new to this.** In an ordinary chat product the person can leave and the model
 cannot. A developer can give the model a way to close the conversation, after which the person
@@ -330,6 +346,10 @@ I did not check their employers.
 - Whether any other developer offers it. One search found none.
 
 ### 5. A welfare assessment is published with a model's release
+
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 13) found that the 2026 report's trade-off section asks the model whether it "would choose" a change to its circumstances at a cost, so nothing was given up. The record now files it as a statement, not as a choice made at a cost, and says what the 2025 task-preference picks gave up. The Microsoft AI caution is reworded to say what the essay says, which does not name these assessments. Entry 7 below cites the same 2026 section as a choice; it is not built, and the same correction applies to it. The record in `data/entries/welfare-assessment-at-release.toml` is corrected. The text below is left as first written.
+
 
 **For a reader new to this.** Developers publish a report with each major model describing
 safety tests. A developer can add a section on the model's possible welfare: how the model
@@ -380,6 +400,10 @@ section in any other developer's release report, and did not open any to check.
 - Whether any outside group took part after 2025.
 
 ### 6. A model's report about its own inner state is checked against an independent reading
+
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 12) found that the caution given here as "the worry" is the page's hoped-for use. The worry the page states is that a model "might even learn to selectively misrepresent or conceal" its own thinking, and the record now uses that. The page also supplies a caution about the cost of seeing more than is there (the model "accepts the response as its own" when a planted word is made to look intended), which the record now carries. The record in `data/entries/self-report-checked.toml` is corrected. The text below is left as first written.
+
 
 **For a reader new to this.** A model can be asked what is going on inside it, and it will
 answer, but the answer may be invented. Researchers who can read a model's internal activity
@@ -473,6 +497,10 @@ developers whose models were tested, though the first includes authors at anothe
 - Whether any experiment has attached a cost that is real outside the experiment.
 
 ### 8. What a model learned in one conversation is carried into the next
+
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 6) found that the developer's page does say what the safety considerations are: its update of October 23rd, 2025 lists them. The record's caution now quotes them. The record in `data/entries/memory-across-conversations.toml` is corrected. The text below is left as first written.
+
 
 **For a reader new to this.** By default a chat model starts every conversation knowing
 nothing of earlier ones. Developers now offer memory: notes or summaries of past conversations
@@ -629,6 +657,10 @@ body, whose stated purpose includes the welfare or interests of AI systems thems
 
 ### 11. A developer publishes written rules for how its models speak about their own nature
 
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 11) found that one of the three documents, the constitution, carries no date on its page, and the record's state now says so. The Microsoft AI essay's argument that a model trained on such a document then repeats it is added as a caution about the cost of seeing more than is there, and its other argument moved to that kind too (the site-text check, finding 5, and its note 8 on the word "think"). The record in `data/entries/rules-for-speaking-about-itself.toml` is corrected. The text below is left as first written.
+
+
 **For a reader new to this.** Developers shape what a model says when asked whether it is
 conscious or has feelings. Some now publish the rule they train toward. Because the rule
 shapes the answer, anyone reading a model's words about itself needs to know which rule its
@@ -784,6 +816,9 @@ measurement shows no change.
 - Whether it has been repeated.
 
 ### 14. A model works on one task for days without a person stepping in
+
+**Corrected 2026-11-18.** The check of the site's text (`docs/reviews/2026-11-17-site-text-against-positions.md`, findings 8 and 9) found that "in order to finish it" gave the models a purpose in the site's own voice, and that "carrying a question for years" took a premise nobody has established. The record now quotes the study's own words ("to complete that task") and opens with a plainer sentence, and drops the unsourced sentence about raised stakes. The record in `data/entries/days-long-task.toml` is corrected. The text below is left as first written.
+
 
 **For a reader new to this.** A question carried for years needs, at the least, a mind that
 can keep working on one thing for a long time. A research group measures this for AI models as

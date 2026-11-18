@@ -14,7 +14,7 @@ notes = "From entry 2 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Done by one developer, first in full for a model retired on January 5th, 2026"
-detail = "[Anthropic](https://www.anthropic.com/) reported a trial run before one model's retirement on November 4th, 2025, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full."
+detail = "[Anthropic](https://www.anthropic.com/) reported on November 4th, 2025 a trial run with one model before its retirement, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full."
 offered_today = true
 offered_by = ["Anthropic"]
 set_on = 2026-11-17
@@ -63,6 +63,11 @@ source = "update"
 
 [[cautions]]
 kind = "safety"
+text = "The developer's page that sets out the interviews gives safety as the first downside of retiring models: in its tests, some models took actions against their instructions when faced with replacement. It presents shaping retirement so that models are less likely to find it concerning as one way to lower that risk."
+source = "commitments"
+
+[[cautions]]
+kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) names this interview as an example of treating models as owed consideration, and argues that doing so makes advanced AI harder to keep under control."
 source = "warning"
 

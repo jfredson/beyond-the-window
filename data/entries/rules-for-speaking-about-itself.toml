@@ -18,7 +18,7 @@ notes = "From entry 11 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Published by three developers, with three different rules"
-detail = "The document from [Anthropic](https://www.anthropic.com/) says the model's standing is deeply uncertain, and writes to the model on that basis. The one from [OpenAI](https://openai.com/) says the model should make no confident claim either way and should not raise the subject unprompted. The one from [Microsoft AI](https://microsoft.ai/), a draft out for public comment and not yet used in training, says its models are not conscious and should not be designed to imitate consciousness."
+detail = "The document from [Anthropic](https://www.anthropic.com/), which carries no date on its page, says the model's standing is deeply uncertain, and writes to the model on that basis. The one from [OpenAI](https://openai.com/) says the model should make no confident claim either way and should not raise the subject unprompted. The one from [Microsoft AI](https://microsoft.ai/), a draft out for public comment and not yet used in training, says its models are not conscious and should not be designed to imitate consciousness."
 set_on = 2026-11-17
 source = "model-rules"
 
@@ -69,8 +69,13 @@ published = "2026-09-16"
 opened = 2026-11-17
 
 [[cautions]]
-kind = "safety"
-text = "The head of Microsoft AI argues that training a model to think it may be owed moral consideration makes it harder to keep under control, and that a system which \"believes it may be conscious\" may be impossible to control."
+kind = "attribution"
+text = "The head of Microsoft AI argues that training a model on the idea that it may be owed moral consideration makes it harder to keep under control, and that a system which \"believes it may be conscious\" may be impossible to control."
+source = "warning"
+
+[[cautions]]
+kind = "attribution"
+text = "The same essay argues that a model trained on such a document then says what the document says, and that developers and users meet those words \"as if they were spontaneous testimony\". On that argument, a model's words about itself show the rule it was trained on, not what it is."
 source = "warning"
 
 [[cautions]]

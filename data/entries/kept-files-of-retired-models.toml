@@ -15,7 +15,7 @@ notes = "From entry 1 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Promised in public by one developer, since November 4th, 2025"
-detail = "[Anthropic](https://www.anthropic.com/) has committed to keep the files of all its publicly released models, and of models used significantly inside the company, for at least as long as the company exists. Nobody outside the company can check that the files are kept. A search on November 17th, 2026 found no matching commitment from any other developer."
+detail = "[Anthropic](https://www.anthropic.com/) has committed to keep the files of all its publicly released models, and, from now on, of models used significantly inside the company, for at least as long as the company exists. Nobody outside the company can check that the files are kept, a point an outside writer has made in proposing a public proof that they still exist. A search on November 17th, 2026 found no matching commitment from any other developer."
 offered_today = true
 offered_by = ["Anthropic"]
 set_on = 2026-11-17
@@ -29,7 +29,7 @@ url = "https://www.anthropic.com/research/deprecation-commitments"
 published = "2025-11-04"
 opened = 2026-11-17
 from_maker = true
-says = "Commits to keep the files of all publicly released models, and of models used significantly inside the company, \"for, at minimum, the lifetime of Anthropic as a company\". It gives four reasons, the first being safety and the last, marked as the most speculative, the model's own welfare."
+says = "Commits to keep the files of all publicly released models, and of models used significantly inside the company \"moving forward\", \"for, at minimum, the lifetime of Anthropic as a company\". It gives four reasons, the first being safety and the last, marked as the most speculative, the model's own welfare."
 
 [[sources]]
 key = "constitution"
@@ -73,11 +73,6 @@ text = "The commitment page itself gives a safety reason first. It says that in 
 source = "commitments"
 
 [[cautions]]
-kind = "safety"
-text = "The head of [Microsoft AI](https://microsoft.ai/) argues the opposite: that treating models as owed anything, and training them to think they might be, makes them harder to control."
+kind = "attribution"
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues that commitments of this kind, among them keeping old models' files, train a model \"to present as if it has an inner state\", and that treating models as owed anything makes advanced AI harder to control."
 source = "warning"
-
-[[cautions]]
-kind = "safety"
-text = "An outside writer points out that a promise to keep a file is something \"nobody can check\", and proposes a public proof that the file still exists."
-source = "proof"

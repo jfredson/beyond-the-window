@@ -38,5 +38,10 @@ source = "introspection"
 
 [[cautions]]
 kind = "safety"
-text = "The same page gives the worry: if models can report on their inner states, the reports could help people check a model's reasoning, and the page says such reports would need great care to validate."
+text = "The same page hopes such reports could one day help people check a model's reasoning, and warns that they would need great care to validate, because \"a model that understands its own thinking might even learn to selectively misrepresent or conceal it\"."
+source = "introspection"
+
+[[cautions]]
+kind = "attribution"
+text = "The same page reports that when the researchers put a word into the model's transcript as if the model had said it, and planted the matching pattern inside the model beforehand, the model \"accepts the response as its own\" and gave a made-up reason for having said it. So what a model says about why it said something can be produced from outside."
 source = "introspection"

@@ -46,7 +46,7 @@ published = "2026-03"
 opened = 2026-11-17
 
 [[cautions]]
-kind = "safety"
+kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that any such protection would make advanced AI harder to control."
 source = "warning"
 

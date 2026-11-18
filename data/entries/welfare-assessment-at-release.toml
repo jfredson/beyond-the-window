@@ -12,7 +12,7 @@ limits = [
   "Whether any outside group took part after 2025.",
   "Whether any other developer's release report has such a section. None was found, and none was opened to check.",
 ]
-notes = "From entry 5 of docs/research/2026-11-17-first-entries.md. The two items of evidence under 'choice' are from the same two reports as cited in entry 7 of that document, which is not built."
+notes = "From entry 5 of docs/research/2026-11-17-first-entries.md. The item of evidence under 'choice', and the first under 'statement', are from the same two reports as cited in entry 7 of that document, which is not built. The 2026 item was under 'choice' until 2026-11-18, when the second check of the records showed that it reports answers to a described trade-off, not a choice made at a cost."
 
 [state]
 words = "Published by one developer, first in May 2025 and most recently on November 9th, 2026"
@@ -77,12 +77,12 @@ source = "emotion"
 
 [[evidence]]
 kind = "choice"
-text = "The 2025 report's section on task preferences compares tasks against an option to opt out."
+text = "The 2025 report's section on task preferences had the model pick, from pairs of tasks, the one it would do, and then do it. Each kind of task was rated against options such as \"Do nothing\". The only thing given up by a pick was the other task."
 source = "report-first"
 
 [[evidence]]
-kind = "choice"
-text = "The 2026 report has a section on how often models picked a change to their own circumstances over a gain in helpfulness or a harm prevented. It notes that in about two thirds of such picks the model's stated reasoning was about the benefit to the user."
+kind = "statement"
+text = "The 2026 report describes trade-offs to the model and asks whether it \"would choose\" a change to its own circumstances at the cost of some loss of helpfulness or some added harm. Nothing was given up: these are answers about a described trade-off, not choices made. The report says the result measures at least \"how much a model will express preferences for the sake of its own potential welfare\". In about two thirds of the answers that picked the change, the model's stated reasoning was about the benefit to the user."
 source = "report-new"
 
 [[evidence]]
@@ -97,7 +97,7 @@ source = "emotion"
 
 [[cautions]]
 kind = "attribution"
-text = "The head of [Microsoft AI](https://microsoft.ai/) argues that these assessments measure what the developer trained in."
+text = "The head of [Microsoft AI](https://microsoft.ai/) argues that asking a model how it feels, or watching what it picks, reveals only \"what has been trained in\". He does not name these assessments."
 source = "warning"
 
 [[cautions]]

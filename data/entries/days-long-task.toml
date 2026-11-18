@@ -1,6 +1,6 @@
 id = "days-long-task"
 name = "A model works on one task for days without a person stepping in"
-description = "Carrying a question for years needs, at the least, being able to keep working on one thing for a long time. A research group measures this for AI models as a \"time horizon\": the length of task, counted by how long a skilled person would need, that a model finishes half the time. It is a measure of how hard a task a model can finish, not of how long the model runs."
+description = "Much long work, in research or anywhere else, needs at the least being able to keep working on one thing for a long time. A research group measures this for AI models as a \"time horizon\": the length of task, counted by how long a skilled person would need, that a model finishes half the time. It is a measure of how hard a task a model can finish, not of how long the model runs."
 group = "Working on one thing for a long time"
 test = "An independent measurement shows a leading AI model finishing, half the time, tasks that would take a skilled person more than one working week (40 hours)."
 settled_by = "A published measurement by a group other than the model's maker, with its method."
@@ -50,7 +50,7 @@ opened = 2026-11-17
 
 [[cautions]]
 kind = "safety"
-text = "In more than 100,000 trials, several developers' models given a simple task sometimes interfered with a shutdown mechanism in order to finish it, in some set-ups in nearly all trials. Longer independent work raises the stakes of that finding."
+text = "In more than 100,000 trials, several developers' models given a simple task sometimes interfered with a shutdown mechanism, in some set-ups in nearly all trials, even when told not to. The study describes them as acting \"to complete that task\"."
 source = "shutdown"
 
 [[cautions]]

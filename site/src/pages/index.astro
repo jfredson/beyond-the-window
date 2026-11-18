@@ -33,11 +33,11 @@ const lastRead = data.headline.last_read;
         as its files being kept when it is retired, or being able to end a conversation. For each
         thing, the list says what would count as it having happened and records how far the world
         has got, with dated sources a reader can open. Whether a machine mind reaches for anything
-        at all is the part of the question nobody knows how to answer. Nothing here says what an
+        at all is not known, and the work of measuring it has barely begun. Nothing here says what an
         AI model wants, and nothing here says it wants nothing.
       </p>
       <ul class="checked">
-        {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass and have had no second check.</li>}
+        {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
       </ul>
       <div class="ctas">
         <a class="btn" href="/list/">Read the list</a>

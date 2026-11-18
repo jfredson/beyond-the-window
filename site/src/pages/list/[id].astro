@@ -1,6 +1,6 @@
 ---
 // One page per entry. In order: the plain name and the paragraph; where it stands, with its
-// date and source; what would count and what settles it; the evidence about AI models
+// date and source; what would count and what settles it; what is on record about AI models
 // themselves, in four kinds that are kept apart and never added together; the two cautions;
 // what could not be confirmed; the sources.
 // The order of the four kinds is a provisional choice (docs/first-version-choices.md, choice 7).
@@ -71,7 +71,7 @@ const sourceLine = (src: Source) =>
     </div>
 
     <section class="part">
-      <div class="shead"><h2>The Evidence About AI Models, By Kind</h2><span>kept apart, never added together</span></div>
+      <div class="shead"><h2>What Is on Record About AI Models, By Kind</h2><span>kept apart, never added together</span></div>
       <p>
         No AI model has been asked anything for this site, because the written method for asking
         does not exist yet. {anyEvidence
@@ -153,7 +153,9 @@ const sourceLine = (src: Source) =>
     {entry.first_pass && (
       <p class="firstpass">
         This entry is a first pass, added on {longDate(entry.added)}. It was drafted by an AI model from
-        the sources above and has had no second check. <a href="/about/#who">Who does what</a>.
+        the sources above. A second check compared it with those sources on November 17th, 2026, and
+        the corrections it found were made on November 18th, 2026. Those corrections have not
+        themselves been checked yet. <a href="/about/#who">Who does what</a>.
       </p>
     )}
   </article>

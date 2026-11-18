@@ -3,6 +3,16 @@
 Every change to the records, the method or the site gets a dated line here, saying which
 number moved or that none did. Nothing is published, so there have been no public corrections.
 
+## 2026-11-18
+
+- **The remaining fixes from the two second checks are applied** to eight records and to the
+  site's text: the welfare-assessment record now files the 2026 trade-off answers as statements,
+  not choices made at a cost; two cautions now say what their pages say; the retired-model
+  record says the other developer announced a withdrawal, not that it made one; the Microsoft AI
+  arguments are filed as the cost of seeing more than is there; and the entry pages say a second
+  check was made. No number moved: 6 of 9 things on the list are still offered to at least one
+  AI model today. Notes are in `docs/research/2026-11-17-first-entries.md`.
+
 ## 2026-11-17
 
 - **First version of the site built, on this Mac only.** Nothing is published, pushed or
