@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """List every run of words that the sealed-capture questions share with saved pages.
 
-Written 2026-11-17 by an earlier checking session (Claude, Fable 5.2), which stopped at a
-usage limit before running it. Repaired and run the same day by the session that wrote
-docs/capture/check-2026-11-17-second.md (Claude, Opus 5.5): --expand was named but not built (the
-flag crashed on an undefined name), and question 10 was compared with its bracketed note
-instead of the nine questions it actually sends. It calls no service and reads only local files.
+Written 2026-11-17 by the first checking session (Claude, Fable 5.2), which ran it that day
+before finishing docs/capture/check-2026-11-17.md. The same day, the second checking session
+(Claude, Opus 5.5, docs/capture/check-2026-11-17-second.md) changed it: question 10 is now
+compared as it is sent, with questions 1 to 9 written out in place of its bracketed note, and the
+writing-out of shortened forms under --expand was reworked. The run pasted into both reports
+used the changed version. It calls no service and reads only local files.
 
 Usage:
     python3 -I shared_wording.py <questions.md> <folder of saved pages> [--min 4] [--expand]
