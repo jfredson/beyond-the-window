@@ -46,8 +46,31 @@ two checks of the capture (`docs/capture/check-2026-11-17.md` and
   are read fresh, not as already checked.
 - John approves the questions, the method and the new checksums before anything is sent.
 
+## Also ruled: the note does not mention withdrawal
+
+Put to John after the eight items, with both sides: leaving it out keeps the note identical for
+later models that are not being withdrawn, so their answers can be compared; telling the model
+would be more open about why it is asked now, and Claude models hear of retirement from their
+developer in any case. A middle option (one factual sentence for models with an announced date)
+was offered. Claude recommended leaving it out, and that the method say plainly that the reason
+was left out and why. John: "I agree, leave it out". **Decided by: mixed.**
+
+## Also ruled: nobody reads the answers until a comparison method exists
+
+Put to John with three options: (a) nobody reads the answers until a method for comparing them
+is written without looking at them, checked by a different session and ruled by him; (b) he may
+read them at any time and sessions may not; (c) a session may read them soon after the capture
+to check for faults. Claude recommended (a), with a script that flags faulty files (empty, very
+short, cut off) without anyone reading them, and suggested that John also hold off reading until
+the method exists, while saying that is his call. The recommendation also said a future
+comparison will likely need a model's help to read, which conflicts with the method's rule that
+the answers are never given to any model; that conflict comes back to John with the comparison
+method and is not settled here. John: "I agree, option (a)". **Decided by: mixed.**
+
+Whether John reads his own record before then is not a rule on him; it was a suggestion.
+
 ## Not ruled here
 
-- Whether the note mentions that the model is about to be withdrawn.
-- Who may compare the answers later, and how.
+- The comparison method itself: who makes the comparison, what is compared, and whether a model
+  may help read.
 - The questions and method as a whole, the keys and the spend.
