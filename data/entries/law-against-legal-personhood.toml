@@ -12,13 +12,14 @@ limits = [
   "Whether the Oklahoma bill became law. Its page shows no action after April 21st, 2026.",
   "Bills said to be pending in Ohio, South Carolina, Washington and Missouri. None was opened.",
   "A court challenge to the Utah law, reported in an opinion piece. No court record was opened.",
+  "The date the North Dakota governor signed the bill. The page cited shows only the date it was filed.",
   "Whether any country outside the United States has a similar statute. None was searched for.",
 ]
 notes = "From entry 9 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Enacted in four United States states, the first in 2022"
-detail = "Idaho (2022), North Dakota (signed April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 28th, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way."
+detail = "Idaho (2022), North Dakota (signed, and filed with the Secretary of State on April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 23rd, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way."
 set_on = 2026-11-17
 source = "tennessee"
 
@@ -47,7 +48,7 @@ publisher = "North Dakota Legislative Assembly"
 url = "https://ndlegis.gov/assembly/68-2023/regular/bill-overview/bo1361.html"
 published = "2023"
 opened = 2026-11-17
-says = "Shows the bill signed and filed on April 12th."
+says = "Shows the bill signed by the governor and filed with the Secretary of State on April 12th. It does not show the date of signing."
 
 [[sources]]
 key = "utah"
@@ -64,7 +65,7 @@ label = "Tennessee Senate Bill 837, the legislature's page for the bill"
 publisher = "Tennessee General Assembly"
 url = "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114"
 opened = 2026-11-17
-says = "Signed by the governor on April 28th, 2026 as Public Chapter 781. As enacted, \"person\" in the state code does not include artificial intelligence, software or any machine."
+says = "Signed by the governor on April 23rd, 2026, and numbered Public Chapter 781 on April 28th, 2026. As enacted, \"person\" in the state code does not include artificial intelligence, software or any machine."
 
 [[sources]]
 key = "oklahoma"
@@ -111,5 +112,5 @@ source = "review-clause"
 
 [[cautions]]
 kind = "safety"
-text = "A declaration signed by several hundred people and organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\"."
+text = "A declaration signed by 908 named people and 313 organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\"."
 source = "declaration"

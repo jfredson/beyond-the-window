@@ -517,6 +517,16 @@ the user, under the user's control. Nothing I read presents it as kept for the m
 
 ### 9. A law says an AI system cannot be a legal person
 
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 5) found two dates wrong here. The
+legislature's page shows Tennessee's bill signed by the governor on 2026-04-23; 2026-04-28 is the
+date it became Public Chapter 781. North Dakota's page shows the bill filed with the Secretary of
+State on 2023-04-12 and does not show the date of signing. The declaration below is signed by 908
+named people and 313 organisations, not "several hundred". The record in
+`data/entries/law-against-legal-personhood.toml` is corrected. The text below is left as first
+written.
+
+
 **For a reader new to this.** A "legal person" is anything the law lets hold rights and
 duties: people, companies, governments. A legislature can write into law that an AI system is
 never one. Several United States states have. Most of these laws also cover animals, rivers
@@ -671,6 +681,17 @@ its own rule.
 - How far any model's behaviour follows its maker's published rule.
 
 ### 12. A repeated survey measures what share of the public thinks some AI systems are sentient now
+
+**Corrected 2026-11-18.** The second check of the records
+(`docs/reviews/2026-11-17-records-second-check.md`, record 8) found that the 1,099 adults below
+were a second, comparison sample from an online recruitment site, not the third round's
+representative sample, and that the 2024 report gives some figures in text: 17 percent of the
+representative sample believed sentient AI systems already exist (11 percent of the comparison
+sample), and 66 percent supported a ban on developing sentient AI. Whether those are 2024 alone or
+pooled across the rounds is not clear from the page. The first paper calls concern for AI welfare
+"surprisingly high"; it does not mention a prediction. The record in
+`data/entries/public-belief-survey.toml` is corrected. The text below is left as first written.
+
 
 **For a reader new to this.** What people accept changes what is possible. A survey that asks
 the same question of a fair sample of a country, more than once, shows whether belief is

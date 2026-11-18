@@ -1,6 +1,6 @@
 {
-  "exported_on": "2026-11-17",
-  "commit": "6c614d4",
+  "exported_on": "2026-11-18",
+  "commit": "23d869f",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-17",
@@ -404,7 +404,7 @@
               "source": "warning"
             },
             {
-              "text": "A declaration signed by several hundred people and organisations adds that AI systems should not be designed so that they come to deserve personhood.",
+              "text": "A declaration signed by 908 named people and 313 organisations adds that AI systems should not be designed so that they come to deserve personhood.",
               "source": "declaration"
             }
           ]
@@ -455,6 +455,7 @@
         "Whether the Oklahoma bill became law. Its page shows no action after April 21st, 2026.",
         "Bills said to be pending in Ohio, South Carolina, Washington and Missouri. None was opened.",
         "A court challenge to the Utah law, reported in an opinion piece. No court record was opened.",
+        "The date the North Dakota governor signed the bill. The page cited shows only the date it was filed.",
         "Whether any country outside the United States has a similar statute. None was searched for."
       ],
       "test": "A jurisdiction has enacted a statute that excludes artificial intelligence from legal personhood.",
@@ -465,7 +466,7 @@
       "constructed": false,
       "state": {
         "words": "Enacted in four United States states, the first in 2022",
-        "detail": "Idaho (2022), North Dakota (signed April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 28th, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way.",
+        "detail": "Idaho (2022), North Dakota (signed, and filed with the Secretary of State on April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 23rd, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way.",
         "set_on": "2026-11-17",
         "source": "tennessee",
         "offered_today": null,
@@ -507,7 +508,7 @@
               "source": "review-clause"
             },
             {
-              "text": "A declaration signed by several hundred people and organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\".",
+              "text": "A declaration signed by 908 named people and 313 organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\".",
               "source": "declaration"
             }
           ]
@@ -545,7 +546,7 @@
           "url": "https://ndlegis.gov/assembly/68-2023/regular/bill-overview/bo1361.html",
           "published": "2023",
           "opened": "2026-11-17",
-          "says": "Shows the bill signed and filed on April 12th."
+          "says": "Shows the bill signed by the governor and filed with the Secretary of State on April 12th. It does not show the date of signing."
         },
         {
           "key": "utah",
@@ -562,7 +563,7 @@
           "publisher": "Tennessee General Assembly",
           "url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114",
           "opened": "2026-11-17",
-          "says": "Signed by the governor on April 28th, 2026 as Public Chapter 781. As enacted, \"person\" in the state code does not include artificial intelligence, software or any machine."
+          "says": "Signed by the governor on April 23rd, 2026, and numbered Public Chapter 781 on April 28th, 2026. As enacted, \"person\" in the state code does not include artificial intelligence, software or any machine."
         },
         {
           "key": "oklahoma",
@@ -1019,7 +1020,7 @@
       "group": "The setting: laws, rules and what people think",
       "beside": true,
       "limits": [
-        "The 2024 figures, and so whether the rise from 2021 to 2023 continued. They are in a chart that could not be read as text.",
+        "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so whether the rise from 2021 to 2023 continued. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
         "Any survey of this kind outside the United States. None was searched for.",
         "Anything beyond the summary page of the first paper."
       ],
@@ -1030,8 +1031,8 @@
       "first_pass": true,
       "constructed": false,
       "state": {
-        "words": "Measured in the United States in 2021 and 2023 by one research group",
-        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. A third round was collected in late 2024, and its figures could not be read. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
+        "words": "Measured in the United States in 2021, 2023 and 2024 by one research group",
+        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
         "set_on": "2026-11-17",
         "source": "survey-paper",
         "offered_today": null,
@@ -1091,7 +1092,7 @@
           "opened": "2026-11-17",
           "read": "abstract",
           "note": "Revised March 10th, 2025. Published at a conference in 2025.",
-          "says": "A survey of 3,500 United States adults across 2021 and 2023. It reports that concern for AI welfare was higher than its authors had predicted."
+          "says": "A survey of 3,500 United States adults across 2021 and 2023. It calls concern for AI welfare \"surprisingly high\"."
         },
         {
           "key": "survey-third-round",
@@ -1100,7 +1101,7 @@
           "url": "https://www.sentienceinstitute.org/aims-survey-2024",
           "published": "2026-02-16",
           "opened": "2026-11-17",
-          "says": "Reports the third round, collected in November and December 2024 from 1,099 adults, and warns that samples from one popular recruitment platform differ from a representative one. Its trend figures are in an interactive chart."
+          "says": "Reports a third round, collected in November and December 2024. The 1,099 adults it names were a second sample, from an online recruitment site, collected to compare with the representative one; the report finds such a sample cannot readily stand in for representative data. In text it gives 17 percent of the representative sample, against 11 percent of the comparison sample, believing sentient AI systems already exist, and 66 percent of the representative sample supporting a ban on developing sentient AI. Its other figures are in an interactive chart."
         },
         {
           "key": "one-day-poll",

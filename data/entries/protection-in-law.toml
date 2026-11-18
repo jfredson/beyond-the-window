@@ -52,5 +52,5 @@ source = "warning"
 
 [[cautions]]
 kind = "safety"
-text = "A declaration signed by several hundred people and organisations adds that AI systems should not be designed so that they come to deserve personhood."
+text = "A declaration signed by 908 named people and 313 organisations adds that AI systems should not be designed so that they come to deserve personhood."
 source = "declaration"
