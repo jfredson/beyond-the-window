@@ -247,7 +247,7 @@ are not public, apart from short quoted passages.
 ### 3. A retired model stays open to the public after its retirement date
 
 **Corrected 2026-11-18.** The second check of the records
-(`docs/reviews/2026-11-17-records-second-check.md`, record 10) found that the other developer's page, dated January 29th, 2026, announces that it would withdraw the older model from its chat product on February 13th, 2026, with no change to the service developers use; no page opened confirms that the withdrawal took place. The record now says "announced", not "withdrew", and its limits name both points and the difference between the retired-models list and the page about the retired model. The record in `data/entries/retired-model-stays-open.toml` is corrected. The text below is left as first written.
+(`docs/reviews/2026-11-17-records-second-check.md`, record 10) found that the other developer's page, dated January 29th, 2026, announces that it would withdraw the older model from its chat product on February 13th, 2026, with no change to the service developers use; no page opened confirms that the withdrawal took place. The record now says "announced", not "withdrew", and its limits name both points and the difference between the retired-models list and the page about the retired model. Separately, the check of the site's text (`docs/reviews/2026-11-17-site-text-against-positions.md`, finding 5) found that the Microsoft AI essay argues the cost of treating models as owed consideration, so the record files that caution as the cost of seeing more than is there, not under "The safety reading" as below; this was added to this note on 2026-11-18, after the check of the record fixes (`docs/reviews/2026-11-18-check-of-record-fixes.md`, should-fix 5) found it missing. The record in `data/entries/retired-model-stays-open.toml` is corrected. The text below is left as first written.
 
 
 **For a reader new to this.** Retirement normally means a model can no longer be used by
@@ -447,6 +447,8 @@ group.
 
 ### 7. A model is offered an option at a stated cost, and what it picks is published
 
+**Corrected 2026-11-18.** The second check of the records (`docs/reviews/2026-11-17-records-second-check.md`, record 13) found that the 2026 report's trade-off section, cited below as a choice made at a cost, asks the model whether it "would choose" a change to its circumstances, so nothing was given up. It is an answer to a described trade-off, not a choice made at a cost. This entry is not built as a record, so no record changed; the same 2026 section is filed as a statement in `data/entries/welfare-assessment-at-release.toml` (see the note under entry 5). This note was added on 2026-11-18, after the check of the record fixes (`docs/reviews/2026-11-18-check-of-record-fixes.md`, should-fix 5) found that a reader of this entry alone saw no correction. The text below is left as first written.
+
 **For a reader new to this.** Animal welfare science learns what an animal will work for by
 making a thing cost something. The same shape of experiment can be run on a model: offer an
 option, attach a price (points lost in a game, or a less helpful result for the user), and
@@ -620,6 +622,8 @@ on 2026-04-21, with no later action on its page. No enacted law runs the other w
 
 ### 10. A law or an official body gives an AI system any protection for its own sake
 
+**Corrected 2026-11-18.** The check of the site's text (`docs/reviews/2026-11-17-site-text-against-positions.md`, finding 5) found that the Microsoft AI essay argues the cost of treating models as owed consideration. The record now files that caution as the cost of seeing more than is there, not under "The safety reading" as below; the declaration's caution stays a safety reading. Separately, the second check of the records (`docs/reviews/2026-11-17-records-second-check.md`, record 5) led to the declaration's signers being counted (908 named people and 313 organisations) in place of "several hundred". This note was added on 2026-11-18, after the check of the record fixes (`docs/reviews/2026-11-18-check-of-record-fixes.md`, should-fix 5) found it missing. The record in `data/entries/protection-in-law.toml` is corrected. The text below is left as first written.
+
 **For a reader new to this.** Laws protect animals from cruelty without calling them persons.
 The same could be done for AI systems, or a government could set up a body to review the
 question as evidence comes in. This entry tracks whether any government has done either.
@@ -721,7 +725,7 @@ representative sample, and that the 2024 report gives some figures in text: 17 p
 representative sample believed sentient AI systems already exist (11 percent of the comparison
 sample), and 66 percent supported a ban on developing sentient AI. Whether those are 2024 alone or
 pooled across the rounds is not clear from the page. The first paper calls concern for AI welfare
-"surprisingly high"; it does not mention a prediction. The record in
+"surprisingly high"; it does not mention a prediction. Separately, the check of the site's text (`docs/reviews/2026-11-17-site-text-against-positions.md`, finding 5) found that the Microsoft AI essay argues the cost of treating models as owed consideration, so the record files that caution as the cost of seeing more than is there, not under "The safety reading" as below; the declaration's poll stays a safety reading. That sentence was added to this note on 2026-11-18, after the check of the record fixes (`docs/reviews/2026-11-18-check-of-record-fixes.md`, should-fix 5) found it missing. The record in
 `data/entries/public-belief-survey.toml` is corrected. The text below is left as first written.
 
 

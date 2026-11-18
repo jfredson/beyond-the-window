@@ -58,3 +58,8 @@ says = "Mentions the instructions that guide the model on using the tool for end
 kind = "attribution"
 text = "The developer's report of November 9th, 2026 says that when its newest model was asked what it would do with this ability, its answer repeated almost word for word the instructions that guide the tool, which have been posted on online forums. The report calls this \"some evidence that the model's claims about its own preferences are being directly influenced by text about the intervention in its training data\"."
 source = "report"
+
+[checks]
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18

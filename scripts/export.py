@@ -101,6 +101,7 @@ def entry_for_site(rec: dict, developers: dict[str, str]) -> dict:
         "added": _plain(rec["added"]),
         "first_pass": rec["first_pass"],
         "constructed": bool(rec.get("constructed", False)),
+        "checks": _plain(rec["checks"]) if "checks" in rec else None,
         "state": state,
         "evidence": evidence,
         "cautions": cautions,

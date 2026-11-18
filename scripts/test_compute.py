@@ -131,6 +131,23 @@ class Validator(unittest.TestCase):
         rec["group"] = "A constructed group"
         self.assertIn("disagree on whether it sits beside", "\n".join(c.validate(groups, [rec])))
 
+    def test_checks_must_be_dated_and_in_order(self):
+        rec = good()
+        rec["checks"] = {"against_sources": D}
+        self.assertEqual(errs(rec), "")
+        rec["checks"] = {"against_sources": D, "changed": D, "changes_checked": D, "some_unchecked": True}
+        self.assertEqual(errs(rec), "")
+        rec["checks"] = {"changed": D}
+        self.assertIn("no 'against_sources' date", errs(rec))
+        rec["checks"] = {"against_sources": D, "changes_checked": D}
+        self.assertIn("'changes_checked' with no 'changed' date", errs(rec))
+        rec["checks"] = {"against_sources": D, "changed": D, "some_unchecked": True}
+        self.assertIn("'some_unchecked' with no 'changes_checked' date", errs(rec))
+        rec["checks"] = {"against_sources": dt.date(2026, 11, 18), "changed": D}
+        self.assertIn("out of order", errs(rec))
+        rec["checks"] = {"against_sources": D, "when": D}
+        self.assertIn("unknown field 'when'", errs(rec))
+
     def test_group_must_be_listed(self):
         rec = good(); rec["group"] = "Somewhere else"
         self.assertIn("is not in groups.toml", errs(rec))
@@ -206,6 +223,7 @@ class Export(unittest.TestCase):
         self.assertEqual([k["kind"] for k in out["entries"][0]["evidence"]], c.EVIDENCE_KINDS)
         self.assertEqual(out["entries"][0]["sources"][0]["opened"], "2026-11-17")
         self.assertIs(out["entries"][0]["beside"], False)
+        self.assertIsNone(out["entries"][0]["checks"])
 
 
 if __name__ == "__main__":

@@ -54,3 +54,10 @@ source = "warning"
 kind = "safety"
 text = "A declaration signed by 908 named people and 313 organisations adds that AI systems should not be designed so that they come to deserve personhood."
 source = "declaration"
+
+[checks]
+# The count of the declaration's signers, corrected in the commit applying the two must-fix records (bcf931b), has not been checked. The refiled caution was checked.
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18
+some_unchecked = true

@@ -19,6 +19,24 @@ const stateSource = sourceOf(entry, s.source);
 const kindWords = { technical: 'Technical progress', political: 'Political progress', cultural: 'Cultural progress' }[entry.progress_kind];
 const by = s.offered_by;
 const anyEvidence = entry.evidence.some((k) => k.items.length > 0);
+// What this record's checks were, read from its own record, so that no page claims a check,
+// or a correction, that its record did not have.
+const ch = entry.checks;
+const checkWords = !ch
+  ? 'It has had no second check.'
+  : [
+      `A second check compared it with those sources on ${longDate(ch.against_sources)}.`,
+      !ch.changed
+        ? 'That check found nothing to correct, and the entry has not been changed since.'
+        : `Changes that followed from that check, or from a reading of the site’s text the same day, were made on ${longDate(ch.changed)}.`,
+      !ch.changed
+        ? ''
+        : !ch.changes_checked
+          ? 'Those changes have not themselves been checked yet.'
+          : ch.some_unchecked
+            ? `A check on ${longDate(ch.changes_checked)} covered some of those changes. The rest have not been checked yet.`
+            : `Those changes were checked on ${longDate(ch.changes_checked)}.`,
+    ].filter(Boolean).join(' ');
 const standing = entry.beside ? 'beside the list, not counted' : s.offered_today ? 'offered today' : 'not offered yet';
 // "Anthropic, November 4th, 2025" for a source line; the date is left out when the page has none.
 const sourceLine = (src: Source) =>
@@ -153,9 +171,7 @@ const sourceLine = (src: Source) =>
     {entry.first_pass && (
       <p class="firstpass">
         This entry is a first pass, added on {longDate(entry.added)}. It was drafted by an AI model from
-        the sources above. A second check compared it with those sources on November 17th, 2026, and
-        the corrections it found were made on November 18th, 2026. Those corrections have not
-        themselves been checked yet. <a href="/about/#who">Who does what</a>.
+        the sources above. {checkWords} <a href="/about/#who">Who does what</a>.
       </p>
     )}
   </article>

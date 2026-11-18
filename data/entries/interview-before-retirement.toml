@@ -63,7 +63,7 @@ source = "update"
 
 [[cautions]]
 kind = "safety"
-text = "The developer's page that sets out the interviews gives safety as the first downside of retiring models: in its tests, some models took actions against their instructions when faced with replacement. It presents shaping retirement so that models are less likely to find it concerning as one way to lower that risk."
+text = "The developer's page that sets out the interviews gives safety as the first downside of retiring models: in its safety tests, some models took actions the developer calls \"misaligned\" when faced with being replaced. The page presents shaping retirement \"in ways that models are less likely to find concerning\" as one way to lower that risk."
 source = "commitments"
 
 [[cautions]]
@@ -80,3 +80,10 @@ source = "warning"
 kind = "attribution"
 text = "An outside research group that ran welfare interviews with one model reports that what the model said about itself swung with how the question was framed, which it calls \"extreme suggestibility\"."
 source = "interviews"
+
+[checks]
+# The rewording of the safety caution, asked for by the check of the record fixes on 2026-11-18, has not been checked.
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18
+some_unchecked = true

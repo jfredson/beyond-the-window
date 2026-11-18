@@ -45,3 +45,8 @@ source = "introspection"
 kind = "attribution"
 text = "The same page reports that when the researchers put a word into the model's transcript as if the model had said it, and planted the matching pattern inside the model beforehand, the model \"accepts the response as its own\" and gave a made-up reason for having said it. So what a model says about why it said something can be produced from outside."
 source = "introspection"
+
+[checks]
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18

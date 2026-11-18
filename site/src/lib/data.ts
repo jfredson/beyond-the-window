@@ -37,6 +37,8 @@ export type Entry = {
   added: string;
   first_pass: boolean;
   constructed: boolean;
+  // What checks the record has had; null when it has had no second check.
+  checks: { against_sources: string; changed?: string; changes_checked?: string; some_unchecked?: boolean } | null;
   state: { words: string; detail: string; offered_today: boolean | null; offered_by: { name: string; url: string | null }[]; set_on: string; source: string };
   evidence: Kind[];
   cautions: Kind[];

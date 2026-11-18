@@ -31,3 +31,6 @@ published = "2025-06-13"
 opened = 2026-11-17
 read = "abstract"
 note = "Revised November 5th, 2026. The paper is 141 pages."
+
+[checks]
+against_sources = 2026-11-17

@@ -57,3 +57,8 @@ source = "shutdown"
 kind = "safety"
 text = "A 2012 paper argues that an agent pursuing almost any goal has reason to keep itself running and to gather resources, because those help with almost any goal."
 source = "will"
+
+[checks]
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18

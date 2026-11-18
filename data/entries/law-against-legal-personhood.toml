@@ -114,3 +114,8 @@ source = "review-clause"
 kind = "safety"
 text = "A declaration signed by 908 named people and 313 organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\"."
 source = "declaration"
+
+[checks]
+# Its corrections were made in the commit applying the two must-fix records (bcf931b), which no check has read yet.
+against_sources = 2026-11-17
+changed = 2026-11-18

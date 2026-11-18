@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-18",
-  "commit": "5f3858a",
+  "commit": "b215a8b",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-17",
@@ -117,6 +117,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Promised in public by one developer, since November 4th, 2025",
         "detail": "[Anthropic](https://www.anthropic.com/) has committed to keep the files of all its publicly released models, and, from now on, of models used significantly inside the company, for at least as long as the company exists. Nobody outside the company can check that the files are kept, a point an outside writer has made in proposing a public proof that they still exist. A search on November 17th, 2026 found no matching commitment from any other developer.",
@@ -243,6 +248,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Published by three developers, with three different rules",
         "detail": "The document from [Anthropic](https://www.anthropic.com/), which carries no date on its page, says the model's standing is deeply uncertain, and writes to the model on that basis. The one from [OpenAI](https://openai.com/) says the model should make no confident claim either way and should not raise the subject unprompted. The one from [Microsoft AI](https://microsoft.ai/), a draft out for public comment and not yet used in training, says its models are not conscious and should not be designed to imitate consciousness.",
@@ -366,6 +376,12 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18",
+        "some_unchecked": true
+      },
       "state": {
         "words": "Not found. An idea only, argued for in opinion pieces",
         "detail": "No source says this has happened. Two searches in English on November 17th, 2026, centred on the United States, returned only laws and bills that run the other way (see [the entry on those laws](/list/law-against-legal-personhood/)) and laws on chat products and children. One opinion piece proposes that the state bans carry an expiry date or a review clause.",
@@ -467,6 +483,10 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18"
+      },
       "state": {
         "words": "Enacted in four United States states, the first in 2022",
         "detail": "Idaho (2022), North Dakota (signed, and filed with the Secretary of State on April 12th, 2023), Utah (in force May 1st, 2024) and Tennessee (signed April 23rd, 2026). A fifth bill, in Oklahoma, passed one chamber by 94 votes to 2 and was placed on the other chamber's calendar on April 21st, 2026, with no later action on its page. No enacted law was found that runs the other way.",
@@ -622,6 +642,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Offered by one developer, since August 15th, 2025",
         "detail": "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study has tested the same option on several developers' models outside any product.",
@@ -725,6 +750,12 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18",
+        "some_unchecked": true
+      },
       "state": {
         "words": "Done by one developer, first in full for a model retired on January 5th, 2026",
         "detail": "[Anthropic](https://www.anthropic.com/) reported on November 4th, 2025 a trial run with one model before its retirement, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full.",
@@ -771,7 +802,7 @@
           "heading": "The worried reading",
           "items": [
             {
-              "text": "The developer's page that sets out the interviews gives safety as the first downside of retiring models: in its tests, some models took actions against their instructions when faced with replacement. It presents shaping retirement so that models are less likely to find it concerning as one way to lower that risk.",
+              "text": "The developer's page that sets out the interviews gives safety as the first downside of retiring models: in its safety tests, some models took actions the developer calls \"misaligned\" when faced with being replaced. The page presents shaping retirement \"in ways that models are less likely to find concerning\" as one way to lower that risk.",
               "source": "commitments"
             }
           ]
@@ -853,6 +884,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Not shown. The best public measure stops at hours",
         "detail": "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. So there is at present no maintained public measure of anything longer.",
@@ -953,6 +989,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Shown in research by one developer on its own models, published October 29th, 2025",
         "detail": "The study is by [Anthropic](https://www.anthropic.com/). Its account says the check worked about one time in five at best. No repeat of it by an outside group was found.",
@@ -1042,6 +1083,12 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18",
+        "some_unchecked": true
+      },
       "state": {
         "words": "Measured in the United States in 2021, 2023 and 2024 by one research group",
         "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
@@ -1163,6 +1210,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Happened once, for one model, at one developer",
         "detail": "A page [Anthropic](https://www.anthropic.com/) published on February 25th, 2026 says one of its retired models remains open to paying users of its chat product, and to others on request. The developer says it is not committing to do the same for every model. Elsewhere it has gone the other way: on January 29th, 2026 [OpenAI](https://openai.com/) announced that on February 13th, 2026 it would withdraw from its chat product an older model that it had earlier restored after users objected. It said nothing would change for now in the service through which developers use its models.",
@@ -1281,6 +1333,9 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17"
+      },
       "state": {
         "words": "Measured once, in a survey of 582 AI researchers",
         "detail": "The survey asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century, and that both support developers putting safeguards in place now. It also reports that the two groups disagree widely on moral and policy questions. One measurement cannot show a change.",
@@ -1355,6 +1410,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Published by one developer, first in May 2025 and most recently on November 9th, 2026",
         "detail": "[Anthropic](https://www.anthropic.com/) published a welfare assessment in the report released with a model in May 2025, and again in the report released with its newest models on November 9th, 2026. One outside group took part in the first.",
@@ -1505,6 +1565,11 @@
       "added": "2026-11-17",
       "first_pass": true,
       "constructed": false,
+      "checks": {
+        "against_sources": "2026-11-17",
+        "changed": "2026-11-18",
+        "changes_checked": "2026-11-18"
+      },
       "state": {
         "words": "Offered by at least three developers, the first since February 13th, 2024",
         "detail": "[OpenAI](https://openai.com/) announced it on February 13th, 2024, [Google](https://ai.google/) by March 13th, 2025, and [Anthropic](https://www.anthropic.com/) on September 11th, 2025. In every case the memory is described as a convenience for the user, under the user's control. Nothing in the pages read presents it as kept for the model.",

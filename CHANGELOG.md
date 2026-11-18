@@ -5,6 +5,17 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-18
 
+- **Four of the five small fixes from the check of the record fixes are applied**
+  (`docs/reviews/2026-11-18-check-of-record-fixes.md`). The retirement-interview caution uses its
+  page's word "misaligned" and quotes "in ways that models are less likely to find concerning".
+  Each record now carries a `[checks]` table saying when it was checked against its sources,
+  when it was changed, and when those changes were checked, and the entry page builds its
+  sentence from that table, because the fixed sentence in the page template was untrue for the
+  survey of AI researchers (nothing to correct) and would have been untrue for any later record;
+  `scripts/compute.py` refuses a table with missing or out-of-order dates. About no longer says
+  the corrections are unchecked. Three dated notes are added in the research draft. The finding
+  on who made the second check is left for John, with open question 7. No number moved: 6 of 9
+  things on the list are still offered to at least one AI model today.
 - **The remaining fixes from the two second checks are applied** to eight records and to the
   site's text: the welfare-assessment record now files the 2026 trade-off answers as statements,
   not choices made at a cost; two cautions now say what their pages say; the retired-model

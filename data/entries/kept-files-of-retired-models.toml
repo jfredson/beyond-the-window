@@ -76,3 +76,8 @@ source = "commitments"
 kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that commitments of this kind, among them keeping old models' files, train a model \"to present as if it has an inner state\", and that treating models as owed anything makes advanced AI harder to control."
 source = "warning"
+
+[checks]
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18

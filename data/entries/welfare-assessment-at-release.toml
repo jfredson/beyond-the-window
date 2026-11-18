@@ -104,3 +104,8 @@ source = "warning"
 kind = "attribution"
 text = "The outside group that took part in the 2025 assessment explains why it does not take the model's answers at face value."
 source = "interviews"
+
+[checks]
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18

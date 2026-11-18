@@ -53,7 +53,7 @@ METHOD_STATUS = (
 REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "progress_kind",
                 "added", "first_pass", "state", "sources"]
 OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
-                "verify"]
+                "verify", "checks"]
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
@@ -61,6 +61,12 @@ SOURCE_OPTIONAL = ["published", "from_maker", "kind", "read", "says", "note"]
 EVIDENCE_FIELDS = ["kind", "text", "source"]
 CAUTION_FIELDS = ["kind", "text", "source"]
 HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
+# What checks a record has had, so that an entry page says only what is true of that record.
+# against_sources: the date a second check compared the record with its opened sources.
+# changed: the date changes that followed were made (left out when nothing was changed).
+# changes_checked: the date a check of those changes was committed (left out until then).
+# some_unchecked: true when some of the changes were not covered by that check.
+CHECKS_FIELDS = ["against_sources", "changed", "changes_checked", "some_unchecked"]
 
 PROGRESS_KINDS = {"technical", "political", "cultural"}
 # The order is the order an entry page shows them in (choice 7). They are never added together.
@@ -203,6 +209,29 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
         bad("'added' is not a calendar date")
     if "first_pass" in rec and not isinstance(rec["first_pass"], bool):
         bad("'first_pass' is not true or false")
+    if "checks" in rec:
+        ch = rec["checks"]
+        if not isinstance(ch, dict):
+            bad("'checks' is not a table")
+        else:
+            for field in ch:
+                if field not in CHECKS_FIELDS:
+                    bad(f"checks: unknown field '{field}'")
+            for field in ("against_sources", "changed", "changes_checked"):
+                if field in ch and not _is_date(ch[field]):
+                    bad(f"checks: '{field}' is not a calendar date")
+            if "some_unchecked" in ch and not isinstance(ch["some_unchecked"], bool):
+                bad("checks: 'some_unchecked' is not true or false")
+            if "against_sources" not in ch:
+                bad("checks: no 'against_sources' date; the other fields describe what followed that check")
+            if "changes_checked" in ch and "changed" not in ch:
+                bad("checks: 'changes_checked' with no 'changed' date")
+            if ch.get("some_unchecked") is True and "changes_checked" not in ch:
+                bad("checks: 'some_unchecked' with no 'changes_checked' date; with no check at all, none of the changes are checked")
+            order = [ch[f] for f in ("against_sources", "changed", "changes_checked")
+                     if _is_date(ch.get(f))]
+            if order != sorted(order):
+                bad("checks: the dates are out of order (a check, then changes, then a check of the changes)")
     if "constructed" in rec and not isinstance(rec["constructed"], bool):
         bad("'constructed' is not true or false")
     if "notes" in rec and not isinstance(rec["notes"], str):

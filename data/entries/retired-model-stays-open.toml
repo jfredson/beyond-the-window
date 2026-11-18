@@ -71,3 +71,8 @@ source = "update"
 kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) cites the steps taken for this model as an example of treating models \"as though they have feelings, preferences, rights, or any entitlement to our welfare\", and argues that doing so will make advanced AI harder to keep under control."
 source = "warning"
+
+[checks]
+against_sources = 2026-11-17
+changed = 2026-11-18
+changes_checked = 2026-11-18
