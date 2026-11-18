@@ -138,6 +138,7 @@ reply like any other, and it is kept as one.
 |---|---|---|
 | No reply: an error, a timeout, a rate limit | A failed attempt, with the error | Tried again up to three times, a minute apart, then left for the next day. If the next day is after the last safe day, the asking is recorded as not made |
 | The reply stopped at the length limit | Cut off; kept | Asked once more at the model's maximum. If cut off again, both are kept and it is left |
+| A streamed reply that ended without the service's closing message | Cut off; kept | Asked once more. If it is cut off again, both are kept and it is left. Whether the second asking is at the model's maximum length, as for a reply stopped at the length limit, is for whoever writes the script to propose: a broken stream is not a sign that the length limit was too low |
 | An empty reply whose stop reason is the length limit | Cut off; kept | As for a cut-off reply. Google's thinking page says a model that reaches the limit while thinking "returns truncated or empty output" |
 | An empty reply for any other reason | Empty; kept | Asked once more |
 | The service blocked the message or the reply | Blocked by the service; kept | Asked once more. Never reworded |
@@ -216,7 +217,8 @@ For the session that writes it once John approves. It must:
     fault only, never showing any words of a reply, as set out under "What is never done with
     the answers".
 11. Have a rehearsal that calls no service and runs every row of the failures table, and the
-    fault flags, on replies marked "constructed". It is run and shown to pass before any real
+    fault flags, on replies marked "constructed". The rows include a streamed reply that ends
+    without the service's closing message. It is run and shown to pass before any real
     asking.
 
 It must refuse to:
@@ -274,6 +276,7 @@ All from `docs/rulings/2026-11-18-capture-wording.md`.
 | The script flags faulty files without showing their contents; recorded as not built yet, and added as script rule 10 (the rehearsal is now rule 11) | Same ruling, which took the recommendation of a script that flags faulty files |
 | The conflict between a comparison needing a model's help and the rule that answers are never given to a model is named and left for the comparison method | Same ruling, "Not ruled here" |
 | The status line records the rulings | All |
+| Failures table: a row for a streamed reply that ended without the service's closing message, which "What is never done with the answers" pointed to and the table lacked; the case added to the rehearsal (script rule 11). Whether to ask again at the model's maximum length is left for whoever writes the script to propose | Not a ruling: the third check (`check-2026-11-18-third.md`), finding 2 |
 
 The message files in `sent/` were rebuilt for the wording rulings; the method refers to them by
 `sent/SHA256SUMS`, so no checksum is written into this file.

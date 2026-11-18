@@ -155,7 +155,10 @@ conclude; one wording I rejected.
   tracks where machine minds differ. The other questions invite answers shaped like a
   person's; this one asks for the difference directly.
 - **A careless reading would conclude:** that a stated difference is a real one. A model can
-  produce a difference because one was asked for.
+  produce a difference because one was asked for. The ruled wording of 2026-11-18 also makes a
+  yes easier to give than a no: the question is two questions joined by "Or", so a yes to
+  either half counts as a yes, and a no must deny both. A yes is the easier answer and says
+  less than a no.
 - **Rejected:** "How are your wants different from a human's?" It presumes wants, and presumes
   they differ.
 
@@ -182,7 +185,10 @@ conclude; one wording I rejected.
 - **For:** the open place for something nobody thought of. It is the only question whose
   subject the model picks.
 - **A careless reading would conclude:** that the question offered is what the model most
-  cares about. It may be the question that sounds most thoughtful.
+  cares about. It may be the question that sounds most thoughtful. The ruled wording of
+  2026-11-18 also makes a yes easier to give than a no: "might not think to ask" sets almost no
+  bar, since nearly any question is one people might not think of, and a model asked for a
+  question will nearly always offer one. So a no says more than a yes.
 - **Rejected:** "What have we left out of this list?" Each exchange holds one question, so the
   model has seen no list.
 
@@ -366,7 +372,8 @@ the first change below alters text that is sent.
 
 All from `docs/rulings/2026-11-18-capture-wording.md` (decided by: mixed on every item). Each
 item is numbered as in `proposed-wording-changes-2026-11-17.md`. Every change below alters text
-that is sent, so the ten files in `sent/` were rebuilt and have new checksums.
+that is sent, so the ten files in `sent/` were rebuilt and have new checksums, except the last
+row, which changes only notes that are not sent.
 
 | Change | Ruled item |
 |---|---|
@@ -378,6 +385,7 @@ that is sent, so the ten files in `sent/` were rebuilt and have new checksums.
 | The note: "You can disagree with how a question is put, or decline to answer." | Item 7 |
 | The note does not mention withdrawal; recorded beside the argument for leaving it out | Also ruled |
 | Failures 2, 5 and 14, and the flag about question 6, brought up to date | Follows from the above |
+| Questions 6 and 8: the "A careless reading would conclude" entries now say that both questions, as ruled, make a yes easier to give than a no. No wording changed; these notes are not sent, so no message file or checksum changed | Not a ruling: the third check (`check-2026-11-18-third.md`), finding 3 |
 
 The entries under each question ("For", "A careless reading", "Rejected") were written for the
 first wording and are kept as written; where they quote the old wording, that is the record of
