@@ -8,8 +8,8 @@ our framing?"
 **Nobody was contacted.** No form was filled in, no message drafted, no account followed, no
 model queried, nothing spent. Whether to write to anyone, and to whom, is John's decision.
 
-**PROPOSED throughout.** Who counted as in scope, how people are grouped, and the suggested
-first five are my choices. Each is marked with my confidence and the strongest alternative.
+**PROPOSED throughout, except the first five,** which John chose on 2026-11-17 (section 2).
+Who counted as in scope and how people are grouped are my choices. Each is marked with my confidence and the strongest alternative.
 
 ## How this list was made, and how far to trust it
 
@@ -106,7 +106,27 @@ developer funded early work behind the 2024 report and later hired one of its au
 point at this, and the field's own 2026 follow-up lists independence from AI companies among
 its principles. Several sceptics declare ties of their own to AI companies.
 
-## 2. A suggested first five (PROPOSED 2026-11-17)
+## 2. The first five (RULED 2026-11-17)
+
+**Ruled by John on 2026-11-17.** He was asked "Which five people should be approached first,
+if any?" and answered "Proposed five". Decided by: mixed (proposed by Claude, approved by
+John). The five below are the ones to approach first. The alternative five stay listed as the
+next to consider.
+
+**Still open after this ruling, and not decided by it:**
+
+- **Who writes and how the letter describes the project,** including the model's part in
+  writing it. This belongs to open question 7, and John has not ruled on it. No letter has
+  been drafted.
+- **When to write.** Nobody has been contacted. Any contact waits for John's own go.
+- **The gaps in section 3** were not filled first. That follows from his answer, which chose the
+  five over "Fill gaps first".
+
+**Links for the five, checked 2026-11-17.** The two links beginning doi.org that belong to the
+five (Dawkins's 2023 paper in *Animals*, and Brown and Birch's 2025 paper in *Philosophical
+Transactions of the Royal Society B*) were opened. Each leads to its publisher's page for that
+paper, and both publishers refused the fetch. Those two papers are still described from public
+records of them, as their entries say.
 
 Chosen for range, for how directly each person's published work tests a weak point in the
 project, and for having a published way to be reached.
@@ -747,10 +767,12 @@ not edit it.
 
 ## 8. For John to decide
 
-1. Whether to ask anyone at all at this stage, before the open questions are further along.
-2. Which five, from section 2 or otherwise.
-3. Whether the letter comes from him alone and how it describes the model's part in the
+Items 1 and 2 were ruled on 2026-11-17 (section 2): ask, and start with the five proposed.
+
+1. ~~Whether to ask anyone at all at this stage, before the open questions are further along.~~ Ruled: yes.
+2. ~~Which five, from section 2 or otherwise.~~ Ruled: the five proposed.
+3. Still open: whether the letter comes from him alone and how it describes the model's part in the
    project, which is open question 7.
-4. Whether the gaps in section 3 are worth a second pass before anyone is approached. The two
+4. Not first, by the ruling: whether the gaps in section 3 are worth a second pass. The two
    I would fill first: someone on the emotional systems shared across mammals, and one or two
    philosophers who argue that a machine could be conscious.
