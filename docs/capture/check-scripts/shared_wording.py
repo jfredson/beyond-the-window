@@ -3,7 +3,7 @@
 
 Written 2026-11-17 by an earlier checking session (Claude, Fable 5.2), which stopped at a
 usage limit before running it. Repaired and run the same day by the session that wrote
-docs/capture/check-2026-11-17.md (Claude, Opus 5.5): --expand was named but not built (the
+docs/capture/check-2026-11-17-second.md (Claude, Opus 5.5): --expand was named but not built (the
 flag crashed on an undefined name), and question 10 was compared with its bracketed note
 instead of the nine questions it actually sends. It calls no service and reads only local files.
 
