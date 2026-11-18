@@ -704,7 +704,8 @@ is, and it adds a third source for the list of things tracked. It also risks tur
 poll of experts, or into advocacy, if who is entered is not fixed in advance.
 
 **A proposal exists.** `docs/proposals/2026-11-17-what-thinkers-propose.md` (PROPOSED
-2026-11-17, not ruled) sets out nine design choices and five things for John to rule.
+2026-11-17, second version after a check, not ruled) sets out nine design choices and six things
+for John to rule. It recommends a sister kind of file inside the claims log, not a record of its own.
 
 **Options.** A record of its own; a new kind of entry in the claims log sketched in
 `docs/record-schema.md`, section 10; context inside each entry only; or no such record.
