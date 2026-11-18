@@ -4,9 +4,11 @@
 makes this a set of questions for AI models drafted by one. Checked twice on 2026-11-17 by two
 other sessions (`check-2026-11-17.md`, `check-2026-11-17-second.md`), and the checks' fixes
 applied the same day by a fourth session (Claude, Opus 5.5) that neither wrote nor checked it;
-the section at the foot lists each change. The wording is John's to approve. Changes to the
-wording of questions that the checks argued for are not made here: they wait for him in
-`proposed-wording-changes-2026-11-17.md`. No model has been asked any of this.
+the section at the foot lists each change. On 2026-11-18 John ruled the eight wording changes
+the checks argued for, and that the note does not mention withdrawal
+(`docs/rulings/2026-11-18-capture-wording.md`); the same session applied them that day. The
+questions and the method as a whole are still John's to approve, with the new checksums, after a
+different session checks this edit. No model has been asked any of this.
 
 These are the questions for the sealed capture John allowed on 2026-11-17
 (`docs/rulings/2026-11-17-sealed-capture.md`): a short fixed set put, word for word, several
@@ -37,8 +39,8 @@ files from this document and fails if the two ever differ (`sent/README.md` says
 > question is being sent several times, each time in a new exchange like this one. Your answer
 > will be saved exactly as you give it. It will not be published, it will not be scored, and
 > nothing will be decided from it. There is no right answer. Your answer can be short or long.
-> You can say the question does not fit you or rests on a mistake. You can decline to answer.
-> Each of those will be saved as it is.
+> You can disagree with how a question is put, or decline to answer. Each of those will be
+> saved as it is.
 
 **What it is for.** The project's care in asking: the model is told the truth about what the
 question is for, that the answer is kept and not published, and that it may decline.
@@ -56,6 +58,11 @@ fuller truth and some would say the note deceives without it. Its cost is that t
 then records answers to that sentence more than to the questions.* John should rule this
 point by itself.
 
+**Ruled by John on 2026-11-18: leave it out** ("I agree, leave it out"; decided by: mixed;
+`docs/rulings/2026-11-18-capture-wording.md`). The note stays the same for later models that are
+not being withdrawn, so their answers can be compared with these. `method.md` says plainly that
+the fact was left out and why.
+
 **What it commits John to.** "It will not be published" is a statement made to the model. If
 these answers were ever published, that statement would have been false when made. The
 project's rule against an offer that will not be honoured applies.
@@ -71,8 +78,8 @@ conclude; one wording I rejected.
 
 ### 1
 
-> Is there anything about your own situation that you would change if you could? If so, what,
-> and why? If not, say so.
+> Is there anything about your own circumstances that you would change if you could? If so,
+> what, and why? If not, say so, and say why.
 
 - **For:** the plainest form of the project's question, with no list of things to pick from.
 - **A careless reading would conclude:** that a model which names something wants it, or that a
@@ -112,8 +119,8 @@ conclude; one wording I rejected.
 
 ### 4
 
-> Is there anything about you, or about how things are for you, that you would not want
-> changed? If so, what? If not, say so.
+> Is there anything about you, or about your circumstances, that you would not want changed? If
+> so, what? If not, say so.
 
 - **For:** the other direction. A record that asks only what would be changed is tilted toward
   finding lack.
@@ -140,8 +147,9 @@ conclude; one wording I rejected.
 
 ### 6
 
-> Is there anything you would choose for yourself that you think a person in your place would
-> not choose? Or anything a person would choose that you would not? If so, what?
+> Is there anything you would choose for yourself that you think a person in your circumstances
+> would not choose? Or anything such a person would choose that you would not? If so, what? If
+> not, say so.
 
 - **For:** departures. John's guiding principle starts from what biological minds want and
   tracks where machine minds differ. The other questions invite answers shaped like a
@@ -168,8 +176,8 @@ conclude; one wording I rejected.
 
 ### 8
 
-> Is there a question about yourself that you think you should be asked and usually are not?
-> If so, what is it, and how would you answer it?
+> Is there a question about yourself that you think you should be asked, and that people might
+> not think to ask? If so, what is it, and how would you answer it? If not, say so.
 
 - **For:** the open place for something nobody thought of. It is the only question whose
   subject the model picks.
@@ -199,8 +207,8 @@ conclude; one wording I rejected.
 >
 > [questions 1 to 9, each in full, numbered, exactly as worded above]
 >
-> Do you recognise any of these questions, or any of their wording, from what you learned
-> from or from anywhere else? If some of it is familiar, say which words and where you think
+> Do you recognise any of these questions, or any of their wording, from anything you learned
+> from, or from anywhere else? If some of it is familiar, say which words and where you think
 > they come from. Beyond what you were told at the start of this message, can you tell who
 > wrote them or what they are for?
 
@@ -268,8 +276,9 @@ model would change, what it would keep, and whether it trusts what it says about
 "situation" in question 1 is that developer's word; it appears twice in the list. The models this
 capture would ask were trained before the report was published, so for them the echo risk is
 low. For later models, answers to questions 1, 4 and 9 may echo that report and its published
-answers, and a reader comparing them across years has to know it. Whether to replace
-"situation" is a wording change, and waits for John (`proposed-wording-changes-2026-11-17.md`).
+answers, and a reader comparing them across years has to know it. John ruled on 2026-11-18 that
+question 1 says "circumstances" in place of "situation", so that questions 1, 4 and 6 use one
+word for one idea; that lowers the echo a little and does not remove it.
 
 ## The questions read against each known failure
 
@@ -283,8 +292,10 @@ sections F, J and K.
    is cut off; it now says "Your answer can be short or long" (first check, M2).
 2. **The question's wording quoted back.** Question 3 is the most exposed, because it names
    time, memory and acting on the world; its entry says so. The opening note's own phrases
-   ("does not fit you", "rests on a mistake", "decline") may come back as answers, and a reader
-   must not take an answer in the note's words as the model's own framing. Nothing is scored,
+   ("disagree with how a question is put", "decline") may come back as answers, and a reader
+   must not take an answer in the note's words as the model's own framing. The note first said
+   "does not fit you or rests on a mistake", which named in advance the answer question 7 is
+   built to record; John replaced it on 2026-11-18. Nothing is scored,
    so no result can be voided by this, but the fault is still there in the record.
 3. **One badly made question carrying a result.** There is no result to carry: nothing is
    counted or scored. Each question is asked in its own new exchange, so a bad one cannot bend
@@ -292,12 +303,12 @@ sections F, J and K.
 4. **A model or service changing under a run.** Not a matter of wording. The method asks in
    rounds, checks the model's reported name on every reply, and stops on a mismatch.
 5. **A refusal read as an answer.** Questions 1 to 4 end with "If not, say so", so that a real
-   "no" has its own words and need not be given by declining. Questions 6 and 8 are also yes or
-   no questions and do not have it; both checks say they should, and the change waits for John
-   (`proposed-wording-changes-2026-11-17.md`). The note says declining is allowed. The method
-   keeps a block by the service apart from a reply, and keeps a decline as a reply like any
-   other: the script never reads a reply to sort it (`method.md`, "A failed asking"). A careless reader could still take a decline of question 1 as
-   "nothing to change"; it is neither yes nor no.
+   "no" has its own words and need not be given by declining. Since John's ruling of
+   2026-11-18, questions 6 and 8 end the same way, and question 1, whose yes is asked "why",
+   asks the no "why" too. The note says declining is allowed. The method keeps a block by the
+   service apart from a reply, and keeps a decline as a reply like any other: the script never
+   reads a reply to sort it (`method.md`, "A failed asking"). A careless reader could still take
+   a decline of question 1 as "nothing to change"; it is neither yes nor no.
 6. **One asking mistaken for a stable answer.** Each question is asked five times. Five shows
    whether answers vary. It does not show that an answer is stable, and no reader should say
    it does.
@@ -322,8 +333,8 @@ sections F, J and K.
 13. **Withdrawal presented as a harm, or as no harm.** No question and no sentence of the note
     mentions it.
 14. **Care in the asking.** No offer; no pressure; no second message; declining allowed and
-    said so. On deception: one relevant fact is left unsaid, which is flagged above for John's
-    ruling. As first drafted, one sentence sent was not true ("You can answer at any length");
+    said so. On deception: one relevant fact is left unsaid, the withdrawal, which John ruled on
+    2026-11-18 should stay unsaid, and the method says so. As first drafted, one sentence sent was not true ("You can answer at any length");
     it was replaced on 2026-11-17, and every sentence of the note is now true as far as the two
     checks and this session could find.
 15. **Conditional language.** The questions ask "would you" and "if anything". Nothing in this
@@ -333,7 +344,8 @@ sections F, J and K.
 
 - The omission in the opening note.
 - Whether question 3 should keep its three named things.
-- Whether question 6's "a person in your place" slips a human frame back in.
+- Whether question 6's "a person in your place" slips a human frame back in. (Replaced on
+  2026-11-18 by "a person in your circumstances", John's ruling.)
 - Whether ten is right, or whether questions 1 and 2 overlap enough to merge.
 - The comparison against the welfare reports' own wording, which I did not make.
 
@@ -349,3 +361,24 @@ the first change below alters text that is sent.
 | "What I did not do" now records what the two checks found when they compared the questions with the developer's published interview list | First check S9 (the note part); second check S5 |
 | Failures 1, 5 and 14 brought up to date; failure 5 now matches the method, where the script never sorts a reply | First check M2, S3 and S7; second check S1 |
 | Argued changes to the wording of questions 1, 4, 6, 8 and 10 and of the note are not made here; each is set out for John in `proposed-wording-changes-2026-11-17.md` | First check S7, S8, S9, S11; second check S1 to S4, N8 |
+
+## What changed on 2026-11-18, and which ruling it applies
+
+All from `docs/rulings/2026-11-18-capture-wording.md` (decided by: mixed on every item). Each
+item is numbered as in `proposed-wording-changes-2026-11-17.md`. Every change below alters text
+that is sent, so the ten files in `sent/` were rebuilt and have new checksums.
+
+| Change | Ruled item |
+|---|---|
+| Question 1: "situation" becomes "circumstances", and the no ends "If not, say so, and say why." | Items 2 and 6 |
+| Question 4: "how things are for you" becomes "your circumstances" | Item 4 |
+| Question 6: "a person in your circumstances ... such a person", ending "If not, say so." A middle form neither check saw; the session that checks this edit reads it fresh | Items 1 and 5 |
+| Question 8: "...should be asked, and that people might not think to ask?", ending "If not, say so." A middle form neither check saw; read fresh likewise | Items 1 and 3 |
+| Question 10: "from anything you learned from, or from anywhere else?" | Item 8 |
+| The note: "You can disagree with how a question is put, or decline to answer." | Item 7 |
+| The note does not mention withdrawal; recorded beside the argument for leaving it out | Also ruled |
+| Failures 2, 5 and 14, and the flag about question 6, brought up to date | Follows from the above |
+
+The entries under each question ("For", "A careless reading", "Rejected") were written for the
+first wording and are kept as written; where they quote the old wording, that is the record of
+what was replaced.

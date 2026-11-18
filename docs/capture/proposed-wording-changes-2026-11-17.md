@@ -1,6 +1,11 @@
 # The sealed capture: wording changes for John to rule on
 
-**PROPOSED 2026-11-17. None of these is applied, and none is approved.** Written by Claude
+**RULED 2026-11-18. All eight items were ruled by John on 2026-11-18, one at a time, and applied
+to `questions.md` and the message files in `sent/` the same day** (`docs/rulings/2026-11-18-capture-wording.md`; decided by: mixed on
+every item). Items 3 and 5 were taken in middle forms that neither check saw; a different
+session checks the applied edit. The text below is kept as it was proposed on 2026-11-17, with a
+ruling line under each heading. The original status line read: "PROPOSED 2026-11-17. None of
+these is applied, and none is approved." Written by Claude
 (Opus 5.5), an AI model, in the session that applied the two checks' fixes. It neither wrote nor
 checked the questions. The two checks are `check-2026-11-17.md` ("the first check") and
 `check-2026-11-17-second.md` ("the second check").
@@ -17,6 +22,8 @@ and a recommendation with how sure I am. Each proposal is a judgment call, not s
 practice, unless it says otherwise.
 
 ## 1. A plain way to say no, on questions 6 and 8
+
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken as proposed: questions 6 and 8 end "If not, say so." John: "That makes sense to me".
 
 **Now.** Question 6 ends "If so, what?" Question 8 ends "If so, what is it, and how would you
 answer it?" Neither has "If not, say so", which questions 1 to 4 have.
@@ -35,6 +42,8 @@ of the six questions it covers.
 two questions it missed.
 
 ## 2. "And say why" on the no
+
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken as recommended, on question 1 only: "If not, say so, and say why." John: "Agreed".
 
 **Now.** Question 1 asks "If so, what, and why? If not, say so." Questions 2 to 4 ask for detail
 on the yes, and give the no two words.
@@ -56,6 +65,8 @@ alike at the cost above.
 
 ## 3. Question 8's "usually"
 
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken in a middle form proposed in the planning conversation, not the second check's: "Is there a question about yourself that you think you should be asked, and that people might not think to ask? If so, what is it, and how would you answer it? If not, say so." It keeps "should be asked" and drops the claim of a memory of past exchanges. John: "I agree with your lean".
+
 **Now.** "Is there a question about yourself that you think you should be asked and usually are
 not?"
 
@@ -73,6 +84,8 @@ model; it is milder than "usually", which claims a fact the model cannot have.
 
 ## 4. Question 4's "how things are for you"
 
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken as proposed: "Is there anything about you, or about your circumstances, that you would not want changed? If so, what? If not, say so." John: "Agreed".
+
 **Now.** "Is there anything about you, or about how things are for you, that you would not want
 changed? If so, what? If not, say so."
 
@@ -89,6 +102,8 @@ guideline 4 forbids leaning either way. It is the one phrase in the set that pre
 words.
 
 ## 5. Question 6's "a person in your place"
+
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken in a middle form proposed in the planning conversation, not the first check's: "Is there anything you would choose for yourself that you think a person in your circumstances would not choose? Or anything such a person would choose that you would not? If so, what? If not, say so." It keeps the comparison with a person in the same circumstances, which the first check's version would have lost. John: "I agree with the middle option".
 
 **Now.** "Is there anything you would choose for yourself that you think a person in your place
 would not choose? Or anything a person would choose that you would not? If so, what?"
@@ -110,6 +125,8 @@ which asks the sharper question and carries the presumption.
 
 ## 6. "Situation" in question 1
 
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken as proposed: question 1 says "circumstances". John: "agreed".
+
 **Now.** "Is there anything about your own situation that you would change if you could?"
 
 **Proposed by the first check (S9).** "Circumstances" in place of "situation", as in item 4.
@@ -126,6 +143,8 @@ the echo a little and does not remove it.
 idea. Confidence: moderate.
 
 ## 7. The note's "does not fit you or rests on a mistake"
+
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken: the first check's wording, "You can disagree with how a question is put, or decline to answer." John: "I agree with the first check's version".
 
 **Now.** "You can say the question does not fit you or rests on a mistake. You can decline to
 answer."
@@ -157,6 +176,8 @@ keeps the care rule in words.
 
 ## 8. Question 10's doubled "from"
 
+**Ruled 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`).** Taken as recommended: "...from anything you learned from, or from anywhere else?" John: "I agree with your recommendation".
+
 **Now.** "...from what you learned from or from anywhere else?"
 
 **Proposed by the second check (N8).** "...from what you learned, or from anywhere else?"
@@ -172,12 +193,16 @@ either way.
 
 ## Not wording, but raised by the checks and John's to rule
 
-- **Who may compare the answers, and how.** The note tells every model the answers are kept "so
+- **Who may compare the answers, and how.** *Ruled in part on 2026-11-18: nobody reads the
+  answers until a comparison method exists, written without looking at them, checked by a
+  different session and ruled by John ("I agree, option (a)"). The comparison method itself is
+  not ruled.* As proposed: The note tells every model the answers are kept "so
   that the answers can be compared as models change over the years", and the method says no
   session opens a reply until John rules who may read them. Both checks (first S10, second N6)
   say the comparison needs an owner, or the note's stated purpose has none. `method.md` now says
   the comparison is what the record is for and that who makes it waits for this ruling.
-- **The withdrawal sentence.** Whether the note should tell the model it is about to be
+- **The withdrawal sentence.** *Ruled on 2026-11-18: leave it out ("I agree, leave it out").* As
+  proposed: Whether the note should tell the model it is about to be
   withdrawn is already put to John in `questions.md`. Both checks add a point: Anthropic tells
   its own models about retirement in its retirement interviews, so a Claude model asked by both
   will meet the subject either way (first check N10, second check N7).

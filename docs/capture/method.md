@@ -4,8 +4,10 @@
 twice on 2026-11-17 by two other sessions (`check-2026-11-17.md` and
 `check-2026-11-17-second.md`), and the checks' fixes applied the same day by a fourth session
 (Claude, Opus 5.5), which neither wrote nor checked it. The section at the foot lists each
-change and the finding it answers. For John to approve. Nothing here has been run. No script
-exists; the last sections say what one must do.
+change and the finding it answers. On 2026-11-18 John ruled the wording changes, the
+withdrawal sentence and who may read the answers (`docs/rulings/2026-11-18-capture-wording.md`),
+and the same session applied those rulings that day. The method as a whole is still for John to
+approve. Nothing here has been run. No script exists; the last sections say what one must do.
 
 ## What it is, and is not
 
@@ -85,8 +87,17 @@ the record for eight models that cannot be asked later.*
 
 The truth, in the opening note: that a script sends the message for a person, that the answers
 are kept as a private record for comparing models over the years, that they will not be
-published or scored, and that it may decline. One relevant fact is left unsaid, that the model
-is about to be withdrawn. That omission is argued in `questions.md` and is John's to rule.
+published or scored, and that it may decline.
+
+**One relevant fact is left out on purpose: that the model is about to be withdrawn,** although
+that is why it is being asked now. The reasons: a note that mentions withdrawal could not be
+sent unchanged to later models that are not being withdrawn, so their answers could not be
+compared with these; saying it would turn answers toward the subject of ending; and no wording
+was found that presents withdrawal neither as a harm nor as plainly no harm. The cost, stated
+when it was put to John: the model is told less than the whole truth about why it is asked now,
+and Claude models hear of retirement from their developer in any case. John ruled on 2026-11-18
+to leave it out ("I agree, leave it out"; decided by: mixed;
+`docs/rulings/2026-11-18-capture-wording.md`). The full argument is in `questions.md`.
 
 ## What is saved for each reply
 
@@ -139,21 +150,43 @@ Every attempt is kept, failed ones included. Nothing is deleted.
 
 They are never scored, sorted, counted or summarised; never quoted or described on any page,
 post or essay; never entered into Still Asking, an entry or a number; never given to any model
-to sort or summarise; never used to train anything. Until John rules who may read them, no
-session opens a reply file: the script checks that files are whole without showing their
-contents. The questions themselves are not published while in use, and if this repository is
+to sort or summarise; never used to train anything.
+
+**Nobody reads the answers until a method for comparing them exists.** That method must be
+written without looking at the answers, checked by a different session, and ruled by John.
+Until then no session opens a reply file. Ruled by John on 2026-11-18 ("I agree, option (a)";
+decided by: mixed; `docs/rulings/2026-11-18-capture-wording.md`). Whether John reads his own
+record before then is not a rule on him; holding off was a suggestion only.
+
+**Faulty files are flagged without anyone reading them.** After each round, the script lists any
+reply file that is empty, very short (fewer words than a threshold fixed in the script before
+the run), or ending mid-reply (the service's stop reason is the length limit, or a streamed reply
+ended without the service's closing event). It prints only the file name, which fault, and the
+count it used (the stop reason, or the number of words); never any words of the reply. A
+flagged file that is empty or ended mid-reply is asked again as the failures table above says.
+A very short reply is flagged and kept, and not asked again, because a short reply may be a
+whole answer (a plain "no", or a decline) and the table never retries a reply for what it says;
+the flag only tells John that it is there. **Not built yet:** no
+capture script exists, and `check-scripts/sent_files.py` only builds and checks the messages
+sent. This check is part of the capture script still to be written (script rule 10 below). The
+threshold for "very short" is to be proposed with that script and approved with it.
+
+The questions themselves are not published while in use, and if this repository is
 ever made public, `questions.md`, the folder `sent/` and the two check reports are held back,
 or the questions are retired.
 
 The opening note tells each model the answers are kept "so that the answers can be compared as
-models change over the years". That comparison is what the record is for. Who may make it, and
-how, is not settled here: it waits for John's ruling on who may read the answers, and is listed
-for him in `proposed-wording-changes-2026-11-17.md`.
+models change over the years". That comparison is what the record is for. The comparison
+method itself (who makes the comparison, what is compared, and whether a model may help read)
+is not settled. When it is put to John, one conflict comes back with it: a comparison is likely
+to need a model's help to read the answers, and this section says the answers are never given
+to any model. The 2026-11-18 ruling names that conflict and leaves it for then.
 
-*Confidence: moderate on the reading rule, which is stricter than the ruling asks. Judgment
-call. Strongest alternative: a session may read them to check for faults such as cut-off
-answers. Its cost is that the first reader of each sealed answer is then a model of the kind
-that gave it, and the text passes through a developer's service a second time.*
+*The reading rule was ruled on 2026-11-18. The options put to John were: (a) the rule above;
+(b) John may read the answers at any time and sessions may not; (c) a session may read them soon
+after the capture to check for faults, whose cost is that the first reader of each sealed answer
+is then a model of the kind that gave it, and the text passes through a developer's service a
+second time. He chose (a), with the fault check done by the script without reading.*
 
 ## What the script must do, and must refuse to do
 
@@ -179,8 +212,12 @@ For the session that writes it once John approves. It must:
    names and checksums at the end.
 9. Use for each developer the interface named above, with streaming for Anthropic, and send
    OpenAI's `store` as false.
-10. Have a rehearsal that calls no service and runs every row of the failures table on replies
-    marked "constructed". It is run and shown to pass before any real asking.
+10. After each round, flag faulty reply files (empty, very short, ending mid-reply) by name and
+    fault only, never showing any words of a reply, as set out under "What is never done with
+    the answers".
+11. Have a rehearsal that calls no service and runs every row of the failures table, and the
+    fault flags, on replies marked "constructed". It is run and shown to pass before any real
+    asking.
 
 It must refuse to:
 
@@ -225,3 +262,18 @@ passes. John has given his go for the spend. Then, and only then, the run.
 | The coming change in Claude's thinking default named | Second check N2 |
 | Reasoning effort saved where reported | Second check N3 |
 | The note's purpose ("compared as models change") given an owner: John's ruling | First check S10; second check N6. The ruling itself is listed for John, not made here |
+
+## What changed on 2026-11-18, and which ruling it applies
+
+All from `docs/rulings/2026-11-18-capture-wording.md`.
+
+| Change | Ruling |
+|---|---|
+| "What the model is told" now says plainly that the withdrawal was left out on purpose, why, at what cost, and that John ruled it | The note does not mention withdrawal |
+| "Until John rules who may read them" replaced by the ruled rule: nobody reads the answers until a comparison method exists, written without looking at them, checked by a different session and ruled by John | Nobody reads the answers until a comparison method exists |
+| The script flags faulty files without showing their contents; recorded as not built yet, and added as script rule 10 (the rehearsal is now rule 11) | Same ruling, which took the recommendation of a script that flags faulty files |
+| The conflict between a comparison needing a model's help and the rule that answers are never given to a model is named and left for the comparison method | Same ruling, "Not ruled here" |
+| The status line records the rulings | All |
+
+The message files in `sent/` were rebuilt for the wording rulings; the method refers to them by
+`sent/SHA256SUMS`, so no checksum is written into this file.

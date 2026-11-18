@@ -13,11 +13,11 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    - The wording of the opening note and the ten questions: approve, or mark changes. What you
      approve is the ten message files in `sent/`, by their checksums in `sent/SHA256SUMS`;
      `questions.md` shows the same words wrapped for reading.
-   - The wording changes the two checks argued for, set out one by one in
-     `proposed-wording-changes-2026-11-17.md`. Any you accept change the message files, which are
-     then rebuilt and their checksums approved.
-   - Whether the opening note should tell the model it is about to be withdrawn. The draft
-     leaves it out and says why; the strongest alternative is one added sentence.
+   - ~~The wording changes the two checks argued for.~~ **Ruled 2026-11-18** (`docs/rulings/2026-11-18-capture-wording.md`): all
+     eight, two of them in middle forms; applied, and the message files rebuilt. What is left
+     is to approve the new checksums after a different session checks the edit.
+   - ~~Whether the opening note should tell the model it is about to be withdrawn.~~ **Ruled
+     2026-11-18: leave it out.**
    - That "it will not be published" is a promise you are willing to keep for good.
 
 2. **Read `method.md` and rule four things.**
@@ -26,7 +26,9 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      ones, which leaves twelve.
    - Where the answers are kept. The draft says `~/Documents/Workspace/Beyond the
      Window/sealed-capture/`, which iCloud backs up.
-   - Whether any session may read the answers. The draft says none, until you rule.
+   - ~~Whether any session may read the answers.~~ **Ruled 2026-11-18:** nobody reads them until
+     a comparison method exists, written without looking at them, checked by a different
+     session and ruled by you. The comparison method itself is still to come.
 
 3. **Read `cost-and-terms.md` and decide whether the run is within the terms as far as you
    are concerned.** It lists four things I could not settle. None is a clear bar.
@@ -146,3 +148,9 @@ If the first two dates are let go, the last two rows lose nothing by it.
 | Step 1: approval is of the message files by checksum, and the proposed wording changes are listed | First check M1; second check M1 |
 | A note that the script may run on the last safe day, matching the corrected method | Second check M2 |
 | The status line no longer says the check has not happened | Both checks |
+
+## What changed on 2026-11-18
+
+Steps 1 and 2 mark the three points John ruled on 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`): the eight wording changes,
+the withdrawal sentence, and who may read the answers. The old wording of each point is kept,
+struck through.
