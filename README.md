@@ -76,8 +76,9 @@ How and where the public site declares this is not yet decided (open question 7)
 | `docs/rulings/2026-11-17-kickoff-decisions.md` | John's rulings on the kickoff's seven decisions, and on the first rule's four-part form. |
 | `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` | Six proposed changes that bring the founding documents in line with the positions, so a machine's word can earn weight as it meets stated conditions. Not ruled. |
 | `docs/proposals/2026-11-17-statement-of-purpose.md` | A proposed statement of purpose: how the project could be useful to people and to machine minds, and six ways to build that in from the start. Not ruled. |
+| `docs/proposals/2026-11-17-what-thinkers-propose.md` | A proposed third record, beside the world's record and Still Asking: what named people propose should be done for or about machine minds, and how each person's view changes over time. Raised by John. Not ruled. |
 | `docs/inheritance.md` | Every practice, rule and lesson the sibling projects settled, where it is written, and whether it carries over here. Includes their recorded mistakes. |
-| `docs/open-questions.md` | Nineteen questions held open on purpose, each with options and what exploring it would involve. None is answered. |
+| `docs/open-questions.md` | Twenty questions held open on purpose, each with options and what exploring it would involve. None is answered. |
 | `docs/record-schema.md` | A proposed framework for the records, with the unsettled parts written as sketches. |
 | `docs/method.md` | A proposed framework for the method, with the unsettled parts written as sketches. |
 | `docs/still-asking-protocol.md` | An outline of what a protocol for Still Asking would have to cover. No question wording. |

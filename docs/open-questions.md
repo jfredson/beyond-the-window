@@ -687,6 +687,32 @@ and off the site.
 checking each condition can be tested without the machine's own word; and trying the five on
 two or three real systems on paper, with sources.
 
+## 20. What human thinkers propose for machine minds
+
+*Added 2026-11-17.*
+
+**The question.** Whether the project keeps a near-term record of what named people propose
+should be done for or about machine minds in the long term, and how each person's thinking
+changes over time. This would sit beside the records of what the world did and what models say.
+John raised it that day: "There is something of value for the long arm of machine intelligence
+in the wisdom and intelligence of the human species as it wrestles with these same questions of
+what is best for machine minds in the long term before those minds have complete agency to
+answer those questions for themselves." His full words are in the proposal.
+
+**Why it matters.** It gives the project evidence that does not depend on settling what a model
+is, and it adds a third source for the list of things tracked. It also risks turning into a
+poll of experts, or into advocacy, if who is entered is not fixed in advance.
+
+**A proposal exists.** `docs/proposals/2026-11-17-what-thinkers-propose.md` (PROPOSED
+2026-11-17, not ruled) sets out nine design choices and five things for John to rule.
+
+**Options.** A record of its own; a new kind of entry in the claims log sketched in
+`docs/record-schema.md`, section 10; context inside each entry only; or no such record.
+
+**What exploring it involves.** Drafting the rule for who is entered and having it reviewed;
+trying the entry layout on five people on paper, at least one of them a critic; and checking
+whether the layout shows one person's change of view clearly.
+
 ---
 
 ## Closed questions
