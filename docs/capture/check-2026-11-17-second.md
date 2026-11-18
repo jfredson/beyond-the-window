@@ -67,14 +67,21 @@ documents need fixing before John reads them, with `cost-and-terms.md` the close
 ## What was kept from the earlier checking session's script
 
 That session left one uncommitted file when this session began:
-`docs/capture/check-scripts/shared_wording.py`, not yet run. I read it in full.
+`docs/capture/check-scripts/shared_wording.py`. I read it in full. *Corrected 2026-11-17:* I
+first wrote that it had not been run. That was wrong: the first session tells me it ran the
+script four times, `--expand` among them, before my change, and its outputs are in its own
+transcript, which I have not seen.
 
 - **Kept:** the whole design (take the block-quoted text of the note and each question, compare
   with saved pages, list every longest shared run of four or more words) and its self-test.
-- **Repaired, two faults:** its `--expand` option was named but not built (the flag crashed on an
-  undefined name, so shortened forms such as "you'd" were never written out); and question 10 was
-  compared with its bracketed placeholder instead of the nine questions it actually sends. Both
-  are fixed, and the self-test now has a second part that fails if either fault comes back.
+- **Changed, two things.** First, shortened forms: in the copy I read, `--expand` set a flag
+  that nothing used, so "you'd" was never written out as "you would", and the name `EXPAND` was
+  never defined at the top of the file, which would stop a run made without the flag on its
+  first check of that name. *Corrected 2026-11-17:* I first wrote that the flag itself crashed;
+  that was my reading of the code, not a run, and the first session ran it with the flag, so the
+  copy it ran may have differed from the one I read. Second, question 10 was compared with its
+  bracketed placeholder instead of the nine questions it actually sends. Both are changed, and
+  the self-test now has a second part that fails if either comes back.
 - **Removed:** a stray `__pycache__` folder (Python's compiled copy, not source).
 
 I added two scripts of my own: `shared_subject.py` (closeness of content words, for rewording
