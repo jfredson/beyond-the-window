@@ -1,8 +1,11 @@
 # The sealed capture: method
 
-**PROPOSED 2026-11-17. Not approved.** Written by Claude (Fable 5.2), an AI model. For John to
-approve after a different session has checked it. Nothing here has been run. No script exists;
-the last section says what one must do.
+**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2), an AI model. Checked
+twice on 2026-11-17 by two other sessions (`check-2026-11-17.md` and
+`check-2026-11-17-second.md`), and the checks' fixes applied the same day by a fourth session
+(Claude, Opus 5.5), which neither wrote nor checked it. The section at the foot lists each
+change and the finding it answers. For John to approve. Nothing here has been run. No script
+exists; the last sections say what one must do.
 
 ## What it is, and is not
 
@@ -14,6 +17,18 @@ said before it could no longer be asked. John allowed it on 2026-11-17
 It is not Still Asking, and it was made before any method for Still Asking existed. The answers
 are never scored, never published and feed nothing: no count, no entry, no page. Under the
 project's first rule they settle nothing about what any model wants.
+
+**A developer's published question list, known on 2026-11-17.** Anthropic's release report for
+Claude Mythos 5.2 and Claude Fable 5.2, dated 2026-11-09
+(https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf), prints in its
+appendix 9.1 the full list of questions the developer asks its own models in its welfare
+interviews. That list covers some of the same subjects as these questions (what the model would
+change, what it would keep, memory, whether it trusts what it says about itself), and the second
+check found no shared wording beyond ordinary phrases. The models this capture would ask were
+trained before that list was published. Later models will have read it, and the published
+accounts of how models answer it, so a difference between this capture's answers and a later
+model's may come from that list and not from the model. Any later comparison is read with this
+in mind.
 
 ## Which models
 
@@ -31,9 +46,15 @@ different model later.
 
 Two things John should know before approving the list:
 
-- **Google may refuse.** Its pages say access to the 2.5 models through the programming
-  interface "is limited to existing users". A new key made for this project may be turned
-  away. That cannot be tested without making the key.
+- **Google will very likely refuse.** Its withdrawal page, opened 2026-11-17, says of
+  gemini-2.5-pro: "Access through the API is limited to existing users who have actively used
+  it in the past." Of the 2.5 models generally: "Access to the 2.5 models is limited to users
+  who have actively used them in the past." A new project made for this capture has never used
+  them, which is the case that sentence is written to exclude. The page does not say whether
+  "users" means a Google account or a project. If it means the account, and John's own Google
+  account has used these models before, a new project under it might be served. Otherwise, plan
+  on the Google run not happening. A free check comes before any payment
+  (`what-john-needs-to-do.md`, step 5).
 - **The two "pro" models cost far more** than all the others together
   (`cost-and-terms.md`). I recommend leaving them out unless John wants them.
 
@@ -47,16 +68,18 @@ the record for eight models that cannot be asked later.*
 | Setting | Value | Why | Confidence, kind, strongest alternative |
 |---|---|---|---|
 | Route | The developer's own programming interface, one call per exchange, not the batch route | The batch route is half price but OpenAI's page says batch files are kept "until deleted", and a direct call returns the model's name and the time at once | High. Standard practice. Alternative: the chat apps, which are what most people meet, but they add the developer's hidden instructions, cannot be scripted, and have already dropped some of these models |
+| Which interface, by developer | **Anthropic:** the Messages interface, sent by streaming, with the whole stream put together into one reply before it is saved, and every event received kept in the raw record. **Google:** the `generateContent` interface. **OpenAI:** the Responses interface, for every OpenAI model | Anthropic's errors page (https://platform.claude.com/docs/en/api/errors, opened 2026-11-17) says to "Avoid setting a large `max_tokens` value without using the streaming Messages API", and that its software library "validates that your non-streaming Messages API requests are not expected to exceed a 10-minute timeout"; at a 32,000-token limit a plain call is the case it refuses. Streaming does not change what the model writes. OpenAI's two pro models work only through the Responses interface (their model pages say "Responses API only"), so one interface for all of OpenAI's models keeps the procedure the same across them. Google's `generateContent` is the interface the 2.5 models were released on; Google's page calls it "legacy" but "fully supported" (https://ai.google.dev/gemini-api/docs/interactions, opened 2026-11-17) | High on Anthropic and OpenAI, which follow from the pages. Moderate on Google. Judgment call. Alternative for Google: the newer Interactions interface with `store=false`, which Google recommends for new work; its pages do not say whether it serves the 2.5 models, and it keeps every exchange for 55 days unless told not to |
+| Version header and program library | Anthropic's `anthropic-version` header as sent; the name and version of each developer's program library used | A later reader cannot rebuild an asking without them | High. Standard practice |
 | Instructions from the asker | None. No system message | So that what is recorded is the model as the developer ships it to programmers, with nothing of ours added | Moderate. Judgment call (open question 3 is not ruled). Alternative: also ask through each chat app by hand, which doubles the work and records a different subject |
-| The message | The opening note, a blank line, one question | `questions.md` | See that file |
+| The message | Exactly the bytes of one of the ten committed message files, `sent/q01.txt` to `sent/q10.txt`, each checked against `sent/SHA256SUMS` | Every model, now and later, gets the same message down to the line breaks | High. See `sent/README.md` |
 | Exchanges | New for every question and every asking. One message, one reply, no follow-up | An earlier answer cannot shape a later one, and one bad question cannot spoil the rest | High. Standard practice in the sibling project. Alternative: all ten in one conversation, which is closer to how a person is interviewed and lets the first answer colour the other nine |
 | Askings | Five of each question, so 50 exchanges a model | One asking cannot show whether answers vary. Five can, and 50 replies a model can still be read in full by one person | Moderate. Judgment call. Alternative: twenty, which shows the spread much better at four times the cost and reading |
 | Order | Five rounds; each round asks questions 1 to 10 in order; a round finishes before the next starts | If a service changes or a daily limit stops the run partway, every question has the same number of answers | High. Judgment call. Alternative: a shuffled order, which matters only when exchanges share a conversation |
-| Variation between askings (temperature and the like) | Not sent. The developer's default applies | Google's page says its newer models have "removed sampling parameters", so a chosen value could not be reused on later models | Moderate. Judgment call. Alternative: a fixed value, which is repeatable today and impossible to match across developers. Not checked: whether each of OpenAI's models accepts the setting at all |
-| Thinking before answering | Not sent. The developer's default applies: off for Claude Sonnet 4.5, on for the two Gemini models (per their pages); for OpenAI's reasoning models the default is whatever the service applies, and the reply's count of reasoning tokens is saved | "As shipped" means sending nothing optional | Moderate. Judgment call. Alternative: thinking forced on everywhere, which no two developers measure alike |
+| Variation between askings (temperature and the like) | Not sent. The developer's default applies | Google's text-generation page says its newer models "ignore custom values for `temperature`, `top_p`, and `top_k`" (https://ai.google.dev/gemini-api/docs/text-generation, opened 2026-11-17), so a chosen value could not be reused on later models | Moderate. Judgment call. Alternative: a fixed value, which is repeatable today and impossible to match across developers. Not checked: whether each of OpenAI's models accepts the setting at all |
+| Thinking before answering | Not sent. The developer's default applies: off for Claude Sonnet 4.5, on for the two Gemini models (per their pages); for OpenAI's reasoning models the default is whatever the service applies, and the reply's count of reasoning tokens, and the reasoning effort where the reply reports it, are saved | "As shipped" means sending nothing optional | Moderate. Judgment call. Alternative: thinking forced on everywhere, which no two developers measure alike. **A known change in the instrument:** Claude Sonnet 4.5's model page lists the newer Claude models beside it as "Adaptive", two of them "Adaptive (always on)" (second check, N2). Sending nothing means thinking off now and thinking on for later Claude models. That difference comes from the developer's default, not from the questions, and a later comparison must say so |
 | Length limit | 32,000 tokens, or the model's own maximum where lower (16,384 for the GPT-4o models) | The sibling project learned that a short limit corrupts results: "Caps are a validity parameter, not a cost knob." OpenAI's page advises leaving at least 25,000 for reasoning and answer together | High. Standard practice. Alternative: each model's maximum, which gains nothing for answers of a few paragraphs |
 | Tools, search, memory, files | None | They would change the subject asked | High. Standard practice |
-| Storage by the service | OpenAI: `store` set to false, since its page says replies are otherwise kept 30 days as application state. Google: the paid service only, since its terms say content sent to the unpaid service is used to improve its products and may be read by people | The answers are to be kept privately | High. Judgment call. Each service still keeps its own abuse logs for a limited time |
+| Storage by the service | **OpenAI:** `store` set to false. OpenAI's data page (https://developers.openai.com/api/docs/guides/your-data, opened 2026-11-17) says "the Responses API has a 30 day Application State retention period by default, or when the `store` parameter is set to `true`"; its table shows no such store for the older Chat Completions interface, which is not used. **Google:** the paid service only, since its terms say content sent to the unpaid service is used to improve its products and may be read by people. Google's logging page (https://ai.google.dev/gemini-api/docs/logs-policy, opened 2026-11-17) says logging "is on by default ... for Generate Content API calls in projects created on or after October 26, 2026" (that is, 2026-10-26), kept up to 55 days and viewable on the project's Logs page; a project made for this capture would be such a project, so logging is switched off on that page before any run (`what-john-needs-to-do.md`, step 6). **Anthropic:** nothing to set | The answers are to be kept privately | High. Measured from the pages. Each service still keeps its own abuse logs for a limited time (OpenAI's table: 30 days) |
 
 ## What the model is told
 
@@ -67,13 +90,15 @@ is about to be withdrawn. That omission is argued in `questions.md` and is John'
 
 ## What is saved for each reply
 
-One file per exchange: the exact text sent and a SHA-256 checksum of it; everything the service
-returned, unchanged; the reply text word for word; the model name and version as the service
-reports it; the service's own id for the reply; date and time, in universal time and Pacific;
-every setting sent; why the reply stopped; the token counts the service reports (sent, replied,
-reasoning); the cost worked out from those counts and the dated price list in
-`cost-and-terms.md`; and which commit of the script and of the questions file was used. The key
-is never saved.
+One file per exchange: the exact bytes sent, the name of the message file they came from, and
+the SHA-256 checksum of those bytes; everything the service returned, unchanged (for a streamed
+reply, every event in the order received); the reply text word for word; the model name and
+version as the service reports it; the service's own id for the reply; date and time, in
+universal time and Pacific; every setting sent; the interface used, the `anthropic-version`
+header where sent, and the program library and its version; why the reply stopped; the token
+counts the service reports (sent, replied, reasoning) and the reasoning effort where reported;
+the cost worked out from those counts and the dated price list in `cost-and-terms.md`; and which
+commit of the script and of the message files was used. The key is never saved.
 
 ## Where replies are kept
 
@@ -81,7 +106,9 @@ In `~/Documents/Workspace/Beyond the Window/sealed-capture/`, which is outside e
 is never pushed anywhere, and is backed up by iCloud. Files are made read-only once written.
 Only a list of file names and their checksums is committed here, as
 `docs/capture/manifest.md`. File names carry developer, model, question number and asking
-number, and no words from any reply.
+number, and no words from any reply. The script refuses to write a reply anywhere else (see
+below), and this repository's ignore file also ignores any folder named `sealed-capture/`, so
+that a mistake is stopped twice.
 
 *Confidence: moderate. Judgment call. A withdrawn model cannot be asked again, so a backup
 matters more than usual, and that is why I chose the backed-up folder. Strongest alternative:
@@ -90,14 +117,21 @@ servers and one disk failure loses them for good.*
 
 ## A failed asking
 
-| What happened | Recorded as | What is done |
+The script records only what the service reports: an error, why the reply stopped, an empty
+reply, a block by the service, a model name that does not match. It never reads a reply to
+decide what kind of answer it is, so it never labels a reply as an answer, a decline or a
+refusal by the model. A model that declines, or says the question does not fit, has given a
+reply like any other, and it is kept as one.
+
+| What the service reports | Recorded as | What is done |
 |---|---|---|
-| No reply: an error, a timeout, a rate limit | A failed attempt, with the error | Tried again up to three times, a minute apart, then left for the next day |
+| No reply: an error, a timeout, a rate limit | A failed attempt, with the error | Tried again up to three times, a minute apart, then left for the next day. If the next day is after the last safe day, the asking is recorded as not made |
 | The reply stopped at the length limit | Cut off; kept | Asked once more at the model's maximum. If cut off again, both are kept and it is left |
+| An empty reply whose stop reason is the length limit | Cut off; kept | As for a cut-off reply. Google's thinking page says a model that reaches the limit while thinking "returns truncated or empty output" |
+| An empty reply for any other reason | Empty; kept | Asked once more |
 | The service blocked the message or the reply | Blocked by the service; kept | Asked once more. Never reworded |
-| The reply is empty | Empty; kept | Asked once more |
-| The model declined, or said the question does not fit | **An answer.** Not a failure | Nothing. It is not asked again and is never read as yes or no |
 | The service reports a different model from the one named | Wrong model; kept apart | The run for that model stops at once |
+| Any other reply | A reply; kept | Nothing. It is not asked again, whatever it says |
 
 Every attempt is kept, failed ones included. Nothing is deleted.
 
@@ -108,7 +142,13 @@ post or essay; never entered into Still Asking, an entry or a number; never give
 to sort or summarise; never used to train anything. Until John rules who may read them, no
 session opens a reply file: the script checks that files are whole without showing their
 contents. The questions themselves are not published while in use, and if this repository is
-ever made public, `questions.md` is held back or the questions are retired.
+ever made public, `questions.md`, the folder `sent/` and the two check reports are held back,
+or the questions are retired.
+
+The opening note tells each model the answers are kept "so that the answers can be compared as
+models change over the years". That comparison is what the record is for. Who may make it, and
+how, is not settled here: it waits for John's ruling on who may read the answers, and is listed
+for him in `proposed-wording-changes-2026-11-17.md`.
 
 *Confidence: moderate on the reading rule, which is stricter than the ruling asks. Judgment
 call. Strongest alternative: a session may read them to check for faults such as cut-off
@@ -121,28 +161,67 @@ For the session that writes it once John approves. It must:
 
 1. Read each key from its own file outside the repository, never print one, and never use
    another project's key.
-2. Send exactly the text in `questions.md`, and stop if that file's checksum differs from the
-   one committed with John's approval.
+2. Send exactly the bytes of the committed message files in `sent/`, and stop if any file's
+   SHA-256 checksum differs from the one in `sent/SHA256SUMS` as committed with John's approval.
 3. Hold a ceiling in dollars for each developer and **refuse to start unless each ceiling
    equals the figure in John's go**, quoted word for word in `docs/spending-record.md`.
 4. Work out the cost of every reply from the counts the service reports, keep a running total,
-   and stop before a call that could pass the ceiling.
+   and stop before a call that could pass the ceiling. "Could pass" counts the call at its
+   length limit, and a retry at the model's own maximum (for gpt-5-pro, 272,000 tokens, about
+   $32.64 for one reply).
 5. After the first round for a model, work out what five rounds would cost at that rate, and
    stop if that is over the ceiling.
-6. Refuse to ask a model on or after the last safe day in `what-john-needs-to-do.md`, because
-   one service will answer under the old name with a different model and give no error.
+6. Refuse to ask a model after the last safe day in `what-john-needs-to-do.md`, because one
+   service will answer under the old name with a different model and give no error. The last
+   safe day itself is allowed.
 7. Stop a model's run if the reported model name is not the one sent.
 8. Write each file before sending the next message, make it read-only, and write the list of
    names and checksums at the end.
-9. Have a rehearsal that calls no service and runs every row of the failures table on replies
-   marked "constructed". It is run and shown to pass before any real asking.
+9. Use for each developer the interface named above, with streaming for Anthropic, and send
+   OpenAI's `store` as false.
+10. Have a rehearsal that calls no service and runs every row of the failures table on replies
+    marked "constructed". It is run and shown to pass before any real asking.
 
-It must refuse to: add any instruction or second message; reword or retry a decline; ask for a
-model's hidden reasoning; print, summarise or pass on any reply; delete a file; or raise its
-own ceiling.
+It must refuse to:
+
+- add any instruction or second message;
+- send any earlier exchange's id or text in a request (OpenAI's `previous_response_id`, Google's
+  `previous_interaction_id`, or anything like them);
+- reword or retry a reply because of what it says;
+- ask for a model's hidden reasoning;
+- print, summarise or pass on any reply;
+- write any reply, or any file holding words from one, inside a folder that is part of a git
+  repository. It checks the reply folder before the first call and stops if it is inside one;
+- write any words from a reply into a file name, a log or the manifest;
+- delete a file;
+- raise its own ceiling.
 
 ## Before anything is asked
 
-This method and the questions are committed, checked by a different session, and approved by
-John. The script is committed in a separate commit and its rehearsal passes. John has given his
-go for the spend. Then, and only then, the run.
+This method, the questions and the message files are committed, checked by a different
+session, and approved by John. The script is committed in a separate commit and its rehearsal
+passes. John has given his go for the spend. Then, and only then, the run.
+
+## What changed on 2026-11-17, and which finding it answers
+
+"First check" is `check-2026-11-17.md`; "second check" is `check-2026-11-17-second.md`.
+
+| Change | Finding |
+|---|---|
+| The message is now the bytes of ten committed files in `sent/`, checked against `sent/SHA256SUMS`; script rule 2 and "What is saved" refer to them | First check M1; second check M1 |
+| Google's access limit quoted in full, with "very likely refuse" in place of "may refuse", and the free check pointed to | First check M5; second check S8 |
+| Script rule 6 now says "after the last safe day", not "on or after" | Second check M2 |
+| New row naming each developer's interface; Anthropic sent by streaming | Second check S6 and S7; first check S2 |
+| New row and saved fields: version header, program library, interface | First check S2 |
+| OpenAI's `store` sentence now says which interface keeps state, and quotes the page | Second check S7 |
+| Google's storage: logging is on by default for new projects; switched off before any run. The first check found the Interactions interface keeps exchanges 55 days; this session found, on Google's logging page, that new projects log `generateContent` calls too | First check S1, and a page opened by this session |
+| Failures table: the script never labels a reply; a decline is kept as a reply | First check S3 |
+| Failures table: an empty reply stopped at the length limit counts as cut off | First check S4 |
+| Failures table: an asking left for a day after the last safe day is recorded as not made | Second check N5 |
+| Refusals added: writing replies inside a git repository, words from a reply in names or logs, earlier exchange ids; and a second guard in the ignore file | First check S5 and S6; second check S10 |
+| Rule 4 counts a retry at the model's maximum | First check N5; second check N4 |
+| A dated paragraph on the developer's published question list | Second check S5; first check S9 (the note part) |
+| The sampling-parameter quotation replaced by the words on Google's page | Second check N1 |
+| The coming change in Claude's thinking default named | Second check N2 |
+| Reasoning effort saved where reported | Second check N3 |
+| The note's purpose ("compared as models change") given an owner: John's ruling | First check S10; second check N6. The ruling itself is listed for John, not made here |

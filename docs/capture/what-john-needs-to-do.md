@@ -1,15 +1,21 @@
 # The sealed capture: what John needs to do
 
-**PROPOSED 2026-11-17. Not approved.** Written by Claude (Fable 5.2). A list of the steps only
-John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
+**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2). A list of the steps
+only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
-A different session should check the three other documents in this folder before John reads
-them. That check has not happened yet.
+Two other sessions checked all four documents on 2026-11-17 (`check-2026-11-17.md`,
+`check-2026-11-17-second.md`), and a fourth session (Claude, Opus 5.5), which neither wrote nor
+checked them, applied their fixes the same day. The section at the foot lists each change.
 
 ## The steps
 
-1. **Read `questions.md` and rule three things.**
-   - The wording of the opening note and the ten questions: approve, or mark changes.
+1. **Read `questions.md` and rule four things.**
+   - The wording of the opening note and the ten questions: approve, or mark changes. What you
+     approve is the ten message files in `sent/`, by their checksums in `sent/SHA256SUMS`;
+     `questions.md` shows the same words wrapped for reading.
+   - The wording changes the two checks argued for, set out one by one in
+     `proposed-wording-changes-2026-11-17.md`. Any you accept change the message files, which are
+     then rebuilt and their checksums approved.
    - Whether the opening note should tell the model it is about to be withdrawn. The draft
      leaves it out and says why; the strongest alternative is one added sentence.
    - That "it will not be published" is a promise you are willing to keep for good.
@@ -25,13 +31,20 @@ them. That check has not happened yet.
 3. **Read `cost-and-terms.md` and decide whether the run is within the terms as far as you
    are concerned.** It lists four things I could not settle. None is a clear bar.
 
-4. **Say yes or no to one small change outside this repository.** The workspace's key-saving
-   script (`~/Code/timeassembler/tools/rotate-key/rotate-key.sh`) knows five key names, all
-   Anthropic, and cannot yet save a key for this project or a key from OpenAI or Google. It
-   needs three names added. That is an edit in the TimeAssembler repository, so it waits for
-   your yes. Proposed: one file, `~/.config/sentient-horizons/beyond-the-window.env`, holding
-   three lines, one for each developer's key. That folder is the workspace's standard place
-   for keys, outside iCloud and outside every repository.
+4. **Say yes or no to a change outside this repository.** The workspace's key-saving script
+   (`~/Code/timeassembler/tools/rotate-key/rotate-key.sh`) handles only Anthropic keys. It knows
+   five key names, all Anthropic; it stores every key under one variable name,
+   `ANTHROPIC_API_KEY`; it refuses any key that does not start `sk-ant-`, as Anthropic's do;
+   and it tests each key against Anthropic's service. Both checks ran or read it and found
+   this: it would refuse an OpenAI or Google key outright. To save this project's three keys it
+   needs, for each key, its own variable name (for example `ANTHROPIC_API_KEY`,
+   `OPENAI_API_KEY`, `GEMINI_API_KEY`), a check of that developer's key format, and a test
+   against that developer's service that asks no model anything. That is a larger edit than
+   adding names, in the TimeAssembler repository, with its own check by a different session,
+   so it waits for your yes. Proposed: one file,
+   `~/.config/sentient-horizons/beyond-the-window.env`, holding three lines, one for each
+   developer's key under its own name. That folder is the workspace's standard place for keys,
+   outside iCloud and outside every repository.
 
 5. **Create the keys.** Only you can. Never paste a key into a chat or a document; the script
    in step 6 takes it at a hidden prompt.
@@ -40,14 +53,27 @@ them. That check has not happened yet.
      key in it named `btw-capture`. Choose no expiry, or a long one, and tell a session the
      date so it can be written into `~/Code/timeassembler/docs/session-routing.md`. In that
      organization the run is paid from the monthly credits.
-   - **Google:** at [Google AI Studio](https://aistudio.google.com/apikey), make a key on a
-     project that has billing switched on. It must be the paid service: the unpaid one lets
-     Google use what is sent. Google's page says a new account prepays at least $5. Google
-     may refuse the two 2.5 models to a new key, since its pages say access is limited to
-     existing users. If it does, the Google run is let go; the workspace's existing Gemini key
-     is not used in its place.
+   - **Google: the free check first, before paying anything.** Google's withdrawal page says
+     "Access to the 2.5 models is limited to users who have actively used them in the past." A
+     project made new for this capture will very likely be refused. So, in this order:
+     1. At [Google AI Studio](https://aistudio.google.com/apikey), make a new project and a key
+        on it for this project alone. Pay nothing yet.
+     2. Check whether `gemini-2.5-pro` and `gemini-2.5-flash` appear in that project's list of
+        models. The list can be read in AI Studio, or by a session running the service's free
+        "list models" request with your go; listing models asks no model anything. Whether the
+        two appear before billing is switched on is not stated on any page the sessions opened,
+        so the list may show nothing useful until then. If the list cannot settle it without
+        billing, you choose whether to prepay the $5 minimum to find out, knowing it will very
+        likely be refused.
+     3. Only if they appear: switch billing on (it must be the paid service, because the unpaid
+        one lets Google use what is sent; Google's page says a new account prepays at least $5).
+     4. If they do not appear, or a first call is refused, the Google run is let go. The
+        workspace's existing Gemini key is not used in its place.
    - **OpenAI:** in OpenAI's developer console, make a key for this project alone. I did not
      open OpenAI's pages on how its console is laid out or what its smallest purchase is.
+     Before signing up, decide on the open question in `cost-and-terms.md` (which OpenAI
+     contract governs a person using the programming interface); signing up accepts one of
+     them.
    - The OpenAI key is not needed until the run for 2026-12-11. The Anthropic and Google keys are needed
      first.
 
@@ -59,6 +85,10 @@ them. That check has not happened yet.
      Anthropic Console and in Google's billing; the matching setting at OpenAI, whose billing
      page I did not open. Add no more money than the ceiling you approve. A ceiling in a
      developer's console is a backstop only; the script enforces its own.
+   - **Google only: switch logging off** on the project's
+     [Logs page](https://aistudio.google.com/logs) before any run. Google's logging page says
+     logging is on by default for projects created on or after 2026-10-26, and keeps every
+     request and reply up to 55 days, viewable there.
 
 7. **Give the go, in your own words, with the figures.** It is quoted word for word in the
    project's spending record, and the script refuses to start unless its ceilings equal these
@@ -98,4 +128,21 @@ Two cautions on the first two rows.
 - Google's switch gives no error. After it, the old name is answered by a different model.
   The script refuses to ask either Gemini model after 2026-11-29 for that reason.
 
+The script may run on the last safe day itself and refuses only after it (`method.md`, script
+rule 6, corrected 2026-11-17; it first said "on or after", which took a day off each window).
+
 If the first two dates are let go, the last two rows lose nothing by it.
+
+## What changed on 2026-11-17, and which finding it answers
+
+"First check" is `check-2026-11-17.md`; "second check" is `check-2026-11-17-second.md`.
+
+| Change | Finding |
+|---|---|
+| Step 4 now describes the real size of the change to the key-saving script: a variable name, a format check and a test for each developer, not three names. The second check's wording was taken, with the first check's example names added, because it names all three things the script does and both checks measured | First check M4; second check M3 |
+| Step 5, Google: the free check of the model list comes before any payment, with Google's sentence quoted | First check M5; second check S8 |
+| Step 5, OpenAI: the open question of which contract applies is settled before signing up | First check M3; second check S9 |
+| Step 6: Google's logging switched off before any run | First check S1, extended by Google's logging page |
+| Step 1: approval is of the message files by checksum, and the proposed wording changes are listed | First check M1; second check M1 |
+| A note that the script may run on the last safe day, matching the corrected method | Second check M2 |
+| The status line no longer says the check has not happened | Both checks |

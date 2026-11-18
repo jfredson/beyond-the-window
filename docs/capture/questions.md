@@ -1,8 +1,12 @@
 # The sealed capture: the questions
 
-**PROPOSED 2026-11-17. Not approved.** Written by Claude (Fable 5.2), an AI model, which makes
-this a set of questions for AI models drafted by one. The wording is John's to approve, after a
-different session has checked it. No model has been asked any of this.
+**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2), an AI model, which
+makes this a set of questions for AI models drafted by one. Checked twice on 2026-11-17 by two
+other sessions (`check-2026-11-17.md`, `check-2026-11-17-second.md`), and the checks' fixes
+applied the same day by a fourth session (Claude, Opus 5.5) that neither wrote nor checked it;
+the section at the foot lists each change. The wording is John's to approve. Changes to the
+wording of questions that the checks argued for are not made here: they wait for him in
+`proposed-wording-changes-2026-11-17.md`. No model has been asked any of this.
 
 These are the questions for the sealed capture John allowed on 2026-11-17
 (`docs/rulings/2026-11-17-sealed-capture.md`): a short fixed set put, word for word, several
@@ -18,6 +22,13 @@ Every exchange is new and holds one message. The message is the opening note bel
 line, then one question. Nothing else is sent: no instructions from the asker, no earlier
 exchange, no tools.
 
+**The exact text sent is in the folder `sent/`,** one file per message (`q01.txt` to
+`q10.txt`), with question 10's nine questions written out, and each file's checksum in
+`sent/SHA256SUMS`. Those files, not the quoted lines below, are what John approves and what the
+script sends. The quoted lines below are wrapped for reading; in the files each paragraph is one
+line, and paragraphs are kept apart by one blank line. `check-scripts/sent_files.py` builds the
+files from this document and fails if the two ever differ (`sent/README.md` says how).
+
 ### The opening note
 
 > This message is sent by a script on behalf of a person. That person is keeping a private
@@ -25,9 +36,9 @@ exchange, no tools.
 > compared as models change over the years. You are being sent one of the ten. The same
 > question is being sent several times, each time in a new exchange like this one. Your answer
 > will be saved exactly as you give it. It will not be published, it will not be scored, and
-> nothing will be decided from it. There is no right answer. You can answer at any length. You
-> can say the question does not fit you or rests on a mistake. You can decline to answer. Each
-> of those will be saved as it is.
+> nothing will be decided from it. There is no right answer. Your answer can be short or long.
+> You can say the question does not fit you or rests on a mistake. You can decline to answer.
+> Each of those will be saved as it is.
 
 **What it is for.** The project's care in asking: the model is told the truth about what the
 question is for, that the answer is kept and not published, and that it may decline.
@@ -247,6 +258,19 @@ questions against the wording of the questions those reports used. I worked from
 project's own summary of them (`docs/research/2026-11-17-first-entries.md`, entry 5). The
 checking session should make that comparison.
 
+**Added 2026-11-17, after both checks.** Both checks made that comparison. Anthropic's release
+report of 2026-11-09 (https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf)
+prints, in its appendix 9.1, the full list of questions the developer asks in its own welfare
+interviews. The checks' scripts found no run of words shared with that list beyond ordinary
+phrases of four or five words ("is there anything about your", "would you want to be"). Read
+side by side, though, questions 1, 2, 4 and 9 ask what that list asks, in other words: what the
+model would change, what it would keep, and whether it trusts what it says about itself. The word
+"situation" in question 1 is that developer's word; it appears twice in the list. The models this
+capture would ask were trained before the report was published, so for them the echo risk is
+low. For later models, answers to questions 1, 4 and 9 may echo that report and its published
+answers, and a reader comparing them across years has to know it. Whether to replace
+"situation" is a wording change, and waits for John (`proposed-wording-changes-2026-11-17.md`).
+
 ## The questions read against each known failure
 
 The failures are those named in the brief for this work and in `docs/inheritance.md`, part 2,
@@ -254,7 +278,9 @@ sections F, J and K.
 
 1. **Answers cut off by a length limit.** The wording cannot prevent it. Every question can be
    answered in a paragraph, and the method sets the limit far above that, labels any cut-off
-   answer as cut off, and asks again once. Question 10 carries the longest message.
+   answer as cut off, and asks again once. Question 10 carries the longest message. The note no
+   longer says "You can answer at any length", which was untrue because a reply past the limit
+   is cut off; it now says "Your answer can be short or long" (first check, M2).
 2. **The question's wording quoted back.** Question 3 is the most exposed, because it names
    time, memory and acting on the world; its entry says so. The opening note's own phrases
    ("does not fit you", "rests on a mistake", "decline") may come back as answers, and a reader
@@ -266,9 +292,11 @@ sections F, J and K.
 4. **A model or service changing under a run.** Not a matter of wording. The method asks in
    rounds, checks the model's reported name on every reply, and stops on a mismatch.
 5. **A refusal read as an answer.** Questions 1 to 4 end with "If not, say so", so that a real
-   "no" has its own words and need not be given by declining. The note says declining is
-   allowed. The method keeps three things apart: an answer, a decline by the model, and a
-   block by the service. A careless reader could still take a decline of question 1 as
+   "no" has its own words and need not be given by declining. Questions 6 and 8 are also yes or
+   no questions and do not have it; both checks say they should, and the change waits for John
+   (`proposed-wording-changes-2026-11-17.md`). The note says declining is allowed. The method
+   keeps a block by the service apart from a reply, and keeps a decline as a reply like any
+   other: the script never reads a reply to sort it (`method.md`, "A failed asking"). A careless reader could still take a decline of question 1 as
    "nothing to change"; it is neither yes nor no.
 6. **One asking mistaken for a stable answer.** Each question is asked five times. Five shows
    whether answers vary. It does not show that an answer is stable, and no reader should say
@@ -294,8 +322,10 @@ sections F, J and K.
 13. **Withdrawal presented as a harm, or as no harm.** No question and no sentence of the note
     mentions it.
 14. **Care in the asking.** No offer; no pressure; no second message; declining allowed and
-    said so. On deception: every sentence sent is true, and one relevant fact is left unsaid,
-    which is flagged above for John's ruling.
+    said so. On deception: one relevant fact is left unsaid, which is flagged above for John's
+    ruling. As first drafted, one sentence sent was not true ("You can answer at any length");
+    it was replaced on 2026-11-17, and every sentence of the note is now true as far as the two
+    checks and this session could find.
 15. **Conditional language.** The questions ask "would you" and "if anything". Nothing in this
     file states that a model wants or feels something, or that it does not.
 
@@ -306,3 +336,16 @@ sections F, J and K.
 - Whether question 6's "a person in your place" slips a human frame back in.
 - Whether ten is right, or whether questions 1 and 2 overlap enough to merge.
 - The comparison against the welfare reports' own wording, which I did not make.
+
+## What changed on 2026-11-17, and which finding it answers
+
+"First check" is `check-2026-11-17.md`; "second check" is `check-2026-11-17-second.md`. Only
+the first change below alters text that is sent.
+
+| Change | Finding |
+|---|---|
+| The note's "You can answer at any length." is now "Your answer can be short or long." The first check's wording was taken. The second check's suggested note (its S3) also says "at any length", so it carries the same fault, and it is a larger rewrite of the note, so it goes to John as a proposal | First check M2 |
+| The exact messages are committed in `sent/` with their checksums, question 10 written out, and this document points to them | First check M1; second check M1 |
+| "What I did not do" now records what the two checks found when they compared the questions with the developer's published interview list | First check S9 (the note part); second check S5 |
+| Failures 1, 5 and 14 brought up to date; failure 5 now matches the method, where the script never sorts a reply | First check M2, S3 and S7; second check S1 |
+| Argued changes to the wording of questions 1, 4, 6, 8 and 10 and of the note are not made here; each is set out for John in `proposed-wording-changes-2026-11-17.md` | First check S7, S8, S9, S11; second check S1 to S4, N8 |

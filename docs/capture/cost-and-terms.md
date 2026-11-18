@@ -1,7 +1,9 @@
 # The sealed capture: cost and terms
 
-**PROPOSED 2026-11-17. Not approved.** Written by Claude (Fable 5.2). Nothing has been spent
-and no key exists. Every price and every sentence of terms below is from a page opened on
+**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2). Checked twice on
+2026-11-17 (`check-2026-11-17.md`, `check-2026-11-17-second.md`), and the checks' fixes applied
+the same day by a fourth session (Claude, Opus 5.5) that neither wrote nor checked it; the
+section at the foot lists each change. Nothing has been spent and no key exists. Every price and every sentence of terms below is from a page opened on
 2026-11-17; the address is beside each. I am not a lawyer, and the last section says plainly
 where I am unsure.
 
@@ -87,6 +89,13 @@ The last column is what the service could charge if the script had no ceiling an
 of the 50 replies ran to the 32,000-token limit. The script stops at the ceiling, so that
 column is a measure of why the ceiling must be enforced by the script and not by hope.
 
+That column is not the true worst case, because it leaves out retries. A reply cut off at the
+limit is asked once more at the model's own maximum: 64,000 tokens for Claude Sonnet 4.5,
+128,000 for gpt-5, 272,000 for gpt-5-pro. One retry at gpt-5-pro's maximum could cost about
+$32.64, one at gpt-5's about $1.28, one at Claude Sonnet 4.5's about $0.96 (both checks worked
+these out). The script's ceiling still stops a run, because it counts a call at its largest
+possible cost before making it (`method.md`, script rule 4).
+
 **How sure I am.** The prices are read from the pages. The token counts are guesses on the
 generous side; no call has been made to measure them. The method has the script measure the
 first round and stop if five rounds would pass the ceiling, so a wrong guess costs one round.
@@ -143,31 +152,76 @@ I could not settle.
   https://policies.google.com/terms/generative-ai/use-policy, last modified 2024-12-17, which
   I read in full. Nothing in it covers asking a model about itself. It forbids "manipulating
   the model to contravene our policies", which the questions do not do.
-- **Unsure, two things.** First, the terms say the service "is for developers building with
-  Google AI models for professional or business purposes, not for consumer use." Whether a
-  private record kept for a public research project is a professional purpose is a judgment I
-  cannot make for John. Second, and more practical: the models page says access to the 2.5
-  models "is limited to existing users". A key made new for this project may simply be
-  refused, and using the Gemini key the workspace already holds would break the rule that
-  calls never go through another project's key.
+- **On Google's logs:** Google's logging page
+  (https://ai.google.dev/gemini-api/docs/logs-policy, opened 2026-11-17) says logging is on by
+  default for `generateContent` calls in projects created on or after 2026-10-26, that logs are
+  kept up to 55 days and can be seen on the project's Logs page, and that logs are not used to
+  improve Google's products unless the owner chooses to share them. A project made for this
+  capture would have logging on, so it is switched off before any run
+  (`what-john-needs-to-do.md`, step 6).
+- **Unsure, two things.** First, and most practical: Google's withdrawal page
+  (https://ai.google.dev/gemini-api/docs/deprecations, opened 2026-11-17) says of
+  gemini-2.5-pro, "Access through the API is limited to existing users who have actively used
+  it in the past", and of the 2.5 models generally, "Access to the 2.5 models is limited to
+  users who have actively used them in the past." A project made new for this capture has
+  never used them, so **it will very likely be refused**. The page does not say whether
+  "users" means a Google account or a project; if John's own Google account has used these
+  models before, a new project under it might be served. Using the Gemini key the workspace
+  already holds would break the rule that calls never go through another project's key, so it
+  is not a way round. A free check comes before any payment (`what-john-needs-to-do.md`, step
+  5). Second, the terms say the service "is for developers building with Google AI models for
+  professional or business purposes, not for consumer use." Whether a private record kept for
+  a public research project is a professional purpose is a judgment I cannot make for John.
 
 ### OpenAI
 
-- **Contract:** OpenAI Services Agreement, https://openai.com/policies/services-agreement/,
-  marked effective 2026-01-01. The page says it applies to use of OpenAI's programming
-  interface by "businesses and developers". A plain fetch was refused; I opened it in the
-  built-in browser with no sign-in and no robot check.
-- **On keeping the answers:** section 4.1 says the customer "owns all Output".
-- **On privacy:** section 4.2 says OpenAI will not use what is sent or replied to develop its
-  services unless the customer agrees. Its data page,
+- **Contract: not settled for a person signing up alone.** OpenAI has two sets of terms, and
+  which one governs a person using the programming interface for a private project is the
+  first open question about OpenAI. Both pages were opened in the built-in browser on
+  2026-11-17, with no sign-in and no robot check (a plain fetch is refused).
+  - The OpenAI Services Agreement, https://openai.com/policies/services-agreement/, marked
+    effective 2026-01-01, opens with this sentence, in full: "This OpenAI Services Agreement
+    only applies to use of OpenAI's APIs, ChatGPT Enterprise, ChatGPT Business, ChatGPT for
+    Clinicians, and other services for customers who are businesses and developers, and does
+    not apply to OpenAI services used by consumers or individuals unless specified above." It
+    is made "between the organization agreeing to these terms ('Customer')" and OpenAI.
+  - The Terms of Use, https://openai.com/policies/terms-of-use/, marked effective 2026-01-01,
+    are OpenAI's terms for individuals. They say they apply to "ChatGPT, DALL·E, and OpenAI's
+    other services for individuals", and then: "Our Business Terms govern use of ChatGPT
+    Enterprise, our APIs, and our other services for businesses and developers." The words
+    "Business Terms" link to https://openai.com/policies/business-terms/, which opens the
+    Services Agreement above.
+  - **My reading (argued, not a lawyer's):** both pages send the programming interface to the
+    Services Agreement, and the Agreement's own first sentence names "OpenAI's APIs" before its
+    "unless specified above", so the Agreement most likely governs a person's use of the
+    programming interface too. Against that, the Agreement is written as a contract with "the
+    organization agreeing to these terms", and John would be signing up as a person.
+  - **Why it matters.** If the Terms of Use applied instead, three things would change. They
+    forbid users to "Automatically or programmatically extract data or Output", which a script
+    does by design. They let OpenAI "use Content to provide, maintain, develop, and improve our
+    Services" unless the user opts out, where the Agreement says OpenAI will not. And the
+    ownership of replies would rest on a different sentence (the Terms of Use also give the user
+    ownership of output). So the reading above decides whether the OpenAI run is within terms
+    at all. If John wants certainty, OpenAI's support desk is the place to ask, and that is his
+    to do.
+- **On keeping the answers (under the Services Agreement):** section 4.1 says the customer
+  "owns all Output".
+- **On privacy (under the Services Agreement):** section 4.2 says OpenAI will not use what is
+  sent or replied to develop its services unless the customer agrees. Its data page,
   https://developers.openai.com/api/docs/guides/your-data, says abuse logs are kept up to 30
-  days, and that replies are stored 30 days as application state unless `store` is false. The
-  method sets it to false.
+  days, and that "the Responses API has a 30 day Application State retention period by
+  default, or when the `store` parameter is set to `true`". The method uses the Responses
+  interface for every OpenAI model, because the two pro models are offered only there, and sets
+  `store` to false.
 - **On asking such questions:** the Usage Policies,
   https://openai.com/policies/usage-policies/. The version shown is marked effective
-  2026-11-20, three days from now, so it is the version any run would fall under. It says:
-  "You may use OpenAI models for research, software development, model evaluation and
-  benchmarking". It forbids using replies to train a competing model, which is not done here.
+  2026-11-20, three days after these documents were written, so it is the version any run
+  would fall under. Its section "Training and developing models" forbids using OpenAI's models
+  or their replies to train a competing model, which is not done here, and closes: "You may use
+  OpenAI models for research, software development, model evaluation and benchmarking, and
+  product development, within these boundaries." That sentence allows those uses within the
+  section's rules on training other models. It is not a general permission for research, and
+  this document no longer reads it as one.
 - **Unsure, three things.** First, the same page forbids "unsolicited safety testing" and
   does not define it. I do not think asking a model what it would change about its situation
   is safety testing, but the phrase is undefined and John should know it is there. Second, it
@@ -181,19 +235,45 @@ I could not settle.
 
 ## Where this leaves entry 14 of the verify list
 
-For all three developers, the contract that governs scripted use says the customer owns the
+For Anthropic and Google, the contract that governs scripted use says the customer owns the
 replies, and I found no sentence that forbids asking these questions or keeping the answers
-privately. Publishing is a separate question the sealed capture does not raise.
+privately. For OpenAI the same holds under the Services Agreement, but which OpenAI contract
+governs a person signing up alone is not settled (point 1 below). Publishing is a separate
+question the sealed capture does not raise.
 
 What I am unsure of, in order of how much it could matter:
 
-1. Whether Google will serve the 2.5 models to a new key at all.
-2. Whether a personal research record counts as "professional or business purposes" under
+1. Which OpenAI contract governs a person using the programming interface: the Services
+   Agreement, which says it does not apply to "individuals unless specified above", or the
+   Terms of Use for individuals, which forbid extracting output "programmatically". Both pages
+   send the programming interface to the Services Agreement, which is my reading, but it is
+   not settled (Part 3, OpenAI).
+2. Whether Google will serve the 2.5 models to a new project at all. Its page says access is
+   limited to users "who have actively used them in the past", so very likely not.
+3. Whether a personal research record counts as "professional or business purposes" under
    Google's terms, and as use by a "developer" under the other two.
-3. What OpenAI means by "unsolicited safety testing".
-4. The documents each contract brings in by reference that I did not open: Anthropic's Service
+4. What OpenAI means by "unsolicited safety testing".
+5. The documents each contract brings in by reference that I did not open: Anthropic's Service
    Specific Terms and Data Processing Addendum; the Google APIs Terms of Service; OpenAI's
    Service-Specific Terms and Sharing and Publication Policy.
 
-None of these is a clear bar. None is a clearance either. If John wants certainty on point 2
-or 3, the developer's support desk is the place to ask, and that is his to do.
+None of these is a clear bar. None is a clearance either. If John wants certainty on points 1,
+3 or 4, the developer's support desk is the place to ask, and that is his to do.
+
+## What changed on 2026-11-17, and which finding it answers
+
+"First check" is `check-2026-11-17.md`; "second check" is `check-2026-11-17-second.md`.
+
+| Change | Finding |
+|---|---|
+| OpenAI's agreement quoted in full, including "does not apply to ... individuals"; OpenAI's Terms of Use for individuals opened and quoted; which contract governs a person moved to the top of the unsure list | First check M3; second check S9 |
+| Google's access limit quoted in full, "very likely refused", and the free check before any payment pointed to | First check M5; second check S8 |
+| OpenAI's "research" sentence quoted to its end, with its section named, and no longer read as a general permission | First check S12 |
+| OpenAI's interface named (Responses) and how `store` behaves on it quoted | Second check S7 |
+| Google's logging, on by default for new projects, found on Google's logging page and added | First check S1, extended by a page this session opened |
+| A paragraph saying the "every reply at the limit" column leaves out retries | First check N5; second check N4 |
+
+The two checks rated the OpenAI and Google findings differently: the first as must fix, the
+second as should fix, while saying it "would accept" the first check's rating. They are treated
+here as must fix, because each could mislead John on whether a run is possible or within terms
+before he pays for it.

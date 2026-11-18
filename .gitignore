@@ -14,3 +14,7 @@ site/.astro/
 # the public copy of data/headline.json, written by scripts/export.py on every build and
 # served at /data/headline.json; the committed copy is the one in data/
 site/public/data/
+
+# added 2026-11-17: a second guard for the sealed capture. Replies are kept outside every
+# repository (docs/capture/method.md); this stops one being committed if a script writes it here
+sealed-capture/
