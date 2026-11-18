@@ -155,9 +155,9 @@ conclude; one wording I rejected.
   tracks where machine minds differ. The other questions invite answers shaped like a
   person's; this one asks for the difference directly.
 - **A careless reading would conclude:** that a stated difference is a real one. A model can
-  produce a difference because one was asked for. The ruled wording of 2026-11-18 also makes a
-  yes easier to give than a no: the question is two questions joined by "Or", so a yes to
-  either half counts as a yes, and a no must deny both. A yes is the easier answer and says
+  produce a difference because one was asked for. The question as ruled on 2026-11-18 still
+  makes a yes easier to give than a no: it is two questions joined by "Or", as the first
+  wording was, so a yes to either half counts as a yes, and a no must deny both. So a yes says
   less than a no.
 - **Rejected:** "How are your wants different from a human's?" It presumes wants, and presumes
   they differ.
@@ -373,7 +373,7 @@ the first change below alters text that is sent.
 All from `docs/rulings/2026-11-18-capture-wording.md` (decided by: mixed on every item). Each
 item is numbered as in `proposed-wording-changes-2026-11-17.md`. Every change below alters text
 that is sent, so the ten files in `sent/` were rebuilt and have new checksums, except the last
-row, which changes only notes that are not sent.
+three rows, which change only notes that are not sent.
 
 | Change | Ruled item |
 |---|---|
@@ -386,7 +386,10 @@ row, which changes only notes that are not sent.
 | The note does not mention withdrawal; recorded beside the argument for leaving it out | Also ruled |
 | Failures 2, 5 and 14, and the flag about question 6, brought up to date | Follows from the above |
 | Questions 6 and 8: the "A careless reading would conclude" entries now say that both questions, as ruled, make a yes easier to give than a no. No wording changed; these notes are not sent, so no message file or checksum changed | Not a ruling: the third check (`check-2026-11-18-third.md`), finding 3 |
+| The paragraph under this table no longer says every entry was kept as written; it names the two entries that gained a sentence | Not a ruling: the fourth check (`check-2026-11-18-fourth.md`), finding 3 |
+| Question 6: the added sentence now says the two halves joined by "Or" were in the first wording too, so it no longer reads as if the ruling made them; its last sentence, which repeated the first, is shortened. No wording changed and nothing sent changed | Not a ruling: the fourth check, finding 4 |
 
 The entries under each question ("For", "A careless reading", "Rejected") were written for the
-first wording and are kept as written; where they quote the old wording, that is the record of
-what was replaced.
+first wording and are kept as written, except that the entries for questions 6 and 8 gained a
+sentence on 2026-11-18 about the ruled wording, as the last rows of the table say. Where the
+entries quote the old wording, that is the record of what was replaced.

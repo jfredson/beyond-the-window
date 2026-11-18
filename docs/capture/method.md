@@ -138,12 +138,29 @@ reply like any other, and it is kept as one.
 |---|---|---|
 | No reply: an error, a timeout, a rate limit | A failed attempt, with the error | Tried again up to three times, a minute apart, then left for the next day. If the next day is after the last safe day, the asking is recorded as not made |
 | The reply stopped at the length limit | Cut off; kept | Asked once more at the model's maximum. If cut off again, both are kept and it is left |
-| A streamed reply that ended without the service's closing message | Cut off; kept | Asked once more. If it is cut off again, both are kept and it is left. Whether the second asking is at the model's maximum length, as for a reply stopped at the length limit, is for whoever writes the script to propose: a broken stream is not a sign that the length limit was too low |
+| A streamed reply that ended, after some reply text, without the service's signal that the reply is complete | Cut off; kept | Asked once more. If it is cut off again, both are kept and it is left. Whether the second asking is at the model's maximum length, as for a reply stopped at the length limit, is for whoever writes the script to propose: a broken stream is not a sign that the length limit was too low |
 | An empty reply whose stop reason is the length limit | Cut off; kept | As for a cut-off reply. Google's thinking page says a model that reaches the limit while thinking "returns truncated or empty output" |
 | An empty reply for any other reason | Empty; kept | Asked once more |
 | The service blocked the message or the reply | Blocked by the service; kept | Asked once more. Never reworded |
 | The service reports a different model from the one named | Wrong model; kept apart | The run for that model stops at once |
 | Any other reply | A reply; kept | Nothing. It is not asked again, whatever it says |
+
+**Which row, when a stream breaks.** A streamed reply can stop part way, because the service
+sends an error or the connection times out. Anthropic's streaming page
+(https://platform.claude.com/docs/en/build-with-claude/streaming, opened 2026-11-18) says each
+stream ends with a final `message_stop` event, which is the signal that the reply is complete,
+and that "The API might occasionally send errors in the event stream", with an overloaded
+service as its example. Which row applies then depends only on whether any reply text arrived
+before the break, never on what the text says:
+
+- **If some text arrived,** the row for a streamed reply that ended without the signal governs,
+  whatever error or timeout came with it. It is recorded as cut off and asked once more. The
+  first row does not apply, because that row is for an attempt that brought no reply text at
+  all.
+- **If no text arrived,** it is the first row: a failed attempt, with the error, tried again up
+  to three times. This holds whether the service sent an error or the connection simply
+  closed. It is not recorded as "Empty", because that label is kept for a reply the service
+  said was complete and that holds no text.
 
 Every attempt is kept, failed ones included. Nothing is deleted.
 
@@ -162,8 +179,8 @@ record before then is not a rule on him; holding off was a suggestion only.
 **Faulty files are flagged without anyone reading them.** After each round, the script lists any
 reply file that is empty, very short (fewer words than a threshold fixed in the script before
 the run), or ending mid-reply (the service's stop reason is the length limit, or a streamed reply
-ended without the service's closing event). It prints only the file name, which fault, and the
-count it used (the stop reason, or the number of words); never any words of the reply. A
+ended, after some text, without the service's signal that the reply is complete). It prints
+only the file name, which fault, and the count it used (the stop reason, or the number of words); never any words of the reply. A
 flagged file that is empty or ended mid-reply is asked again as the failures table above says.
 A very short reply is flagged and kept, and not asked again, because a short reply may be a
 whole answer (a plain "no", or a decline) and the table never retries a reply for what it says;
@@ -218,8 +235,11 @@ For the session that writes it once John approves. It must:
     the answers".
 11. Have a rehearsal that calls no service and runs every row of the failures table, and the
     fault flags, on replies marked "constructed". The rows include a streamed reply that ends
-    without the service's closing message. It is run and shown to pass before any real
-    asking.
+    without the service's signal that the reply is complete, and the two cases under "Which
+    row, when a stream breaks": a stream that breaks with an error or a timeout after some
+    text has arrived (cut off, asked once more), and one that breaks before any text has
+    arrived (a failed attempt, tried again up to three times). It is run and shown to pass
+    before any real asking.
 
 It must refuse to:
 
@@ -277,6 +297,8 @@ All from `docs/rulings/2026-11-18-capture-wording.md`.
 | The conflict between a comparison needing a model's help and the rule that answers are never given to a model is named and left for the comparison method | Same ruling, "Not ruled here" |
 | The status line records the rulings | All |
 | Failures table: a row for a streamed reply that ended without the service's closing message, which "What is never done with the answers" pointed to and the table lacked; the case added to the rehearsal (script rule 11). Whether to ask again at the model's maximum length is left for whoever writes the script to propose | Not a ruling: the third check (`check-2026-11-18-third.md`), finding 2 |
+| A paragraph under the failures table, "Which row, when a stream breaks": a stream that breaks with an error or a timeout after some text has arrived is cut off and asked once more; one that breaks before any text is a failed attempt under the first row, not "Empty". It cites Anthropic's streaming page, opened 2026-11-18, for the error that can arrive part way through a stream. Both cases added to the rehearsal (script rule 11) | Not a ruling: the fourth check (`check-2026-11-18-fourth.md`), finding 1 |
+| One phrase, "the service's signal that the reply is complete", in the failures table, under "What is never done with the answers" and in script rule 11, in place of "closing message" in two places and "closing event" in one. The row above this pair keeps the old phrase as the record of what it said | Not a ruling: the fourth check, finding 2 |
 
 The message files in `sent/` were rebuilt for the wording rulings; the method refers to them by
 `sent/SHA256SUMS`, so no checksum is written into this file.
