@@ -12,6 +12,19 @@ ten rebuilt files by their checksums on 2026-11-18** ("Approve, with both"; deci
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
+**A script now exists, and four points on it are ruled.** The capture script is at `capture/`.
+It was written on 2026-11-18, checked once by a different session
+(`check-2026-11-18-capture-script.md`), fixed, and is waiting for a second check. Nothing runs
+before that check and your go. On 2026-11-18 you ruled four points on how it applies the method
+("Approve all four"; decided by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`).
+Two of them change what you do, and are entered in the steps below: **the first Anthropic run
+is made no later than 2026-11-26**, and the key reaches the script through a setting in the
+Terminal window, set from the key's own file. The other two are in `method.md`: an error that
+trying again cannot cure stops the run without using up the day, and two settings (a reply of
+fewer than 20 words is listed as very short; a second asking after a broken connection uses
+the same length limit). The new section "The Anthropic run, step by step" is the list to
+follow on the day.
+
 Two other sessions checked all four documents on 2026-11-17 (`check-2026-11-17.md`,
 `check-2026-11-17-second.md`), and a fourth session (Claude, Opus 5.5), which neither wrote nor
 checked them, applied their fixes the same day. The section at the foot lists each change.
@@ -28,7 +41,9 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    - ~~The wording changes the two checks argued for.~~ **Ruled 2026-11-18** (`docs/rulings/2026-11-18-capture-wording.md`): all
      eight, two of them in middle forms; applied, and the message files rebuilt. ~~What is left
      is to approve the new checksums after a different session checks the edit.~~ The new
-     checksums were approved on 2026-11-18, after the fifth check.
+     checksums were approved on 2026-11-18, after the fifth check. (Those were the ten of the
+     first approval. They no longer name what is sent; see the first and fifth points of this
+     step.)
    - ~~Whether the opening note should tell the model it is about to be withdrawn.~~ **Ruled
      2026-11-18: leave it out.**
    - ~~That "it will not be published" is a promise you are willing to keep for good.~~ ~~**Still
@@ -85,14 +100,23 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    `ANTHROPIC_API_KEY`; it refuses any key that does not start `sk-ant-`, as Anthropic's do;
    and it tests each key against Anthropic's service. Both checks ran or read it and found
    this: it would refuse an OpenAI or Google key outright. To save this project's three keys it
-   needs, for each key, its own variable name (for example `ANTHROPIC_API_KEY`,
-   `OPENAI_API_KEY`, `GEMINI_API_KEY`), a check of that developer's key format, and a test
+   needs, for each key, its own variable name (~~for example `ANTHROPIC_API_KEY`,
+   `OPENAI_API_KEY`, `GEMINI_API_KEY`~~; corrected 2026-11-18, see the end of this step), a
+   check of that developer's key format, and a test
    against that developer's service that asks no model anything. That is a larger edit than
    adding names, in the TimeAssembler repository, with its own check by a different session,
    so it waits for your yes. Proposed: one file,
    `~/.config/sentient-horizons/beyond-the-window.env`, holding three lines, one for each
    developer's key under its own name. That folder is the workspace's standard place for keys,
    outside iCloud and outside every repository.
+
+   *Dated correction, 2026-11-18.* The three names are no longer examples. The capture script
+   reads only `BTW_CAPTURE_ANTHROPIC_API_KEY`, `BTW_CAPTURE_GOOGLE_API_KEY` and
+   `BTW_CAPTURE_OPENAI_API_KEY`, so each line of the file must begin with one of those names,
+   then an equals sign, then the key, with no quotation marks. The names are this project's
+   alone on purpose: a key another project left in a Terminal window under a common name such
+   as `ANTHROPIC_API_KEY` is then never picked up. The change to the key-saving script is still
+   not made and still waits for your yes.
 
 5. **Create the keys.** Only you can. Never paste a key into a chat or a document; the script
    in step 6 takes it at a hidden prompt.
@@ -129,6 +153,16 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    - Run the key-saving script once for each key, after step 4's change, and paste the key at
      its hidden prompt. A session can then run the script's check, which prints only a key's
      last four characters for you to match against the console.
+   - **Added 2026-11-18: how the key gets from its file to the script.** You ruled on
+     2026-11-18 that the key reaches the script through a setting in the shell, set from the
+     key's own file, and that the script never opens that file
+     ("Approve all four"; decided by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`).
+     The shell is the Terminal window where commands are typed; programmers call such a setting
+     an environment variable. So on the day of a run, one command in that window copies the key
+     out of its file into the setting, and the script takes it from there. The command is in
+     "The Anthropic run, step by step" below. It prints nothing, it reads only the one line it
+     names, and the setting is gone when the window is closed. Until this correction no
+     document said how the key gets there.
    - Switch off automatic top-up with each developer before any run: "auto-reload" in the
      Anthropic Console and in Google's billing; the matching setting at OpenAI, whose billing
      page I did not open. Add no more money than the ceiling you approve. A ceiling in a
@@ -149,12 +183,144 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    The draft's proposed ceilings are $5, $10, $15 without the pro models, and $10, against an
    estimate of $17.74 for all four. One go can cover all four runs, or each can have its own.
 
+   *Dated correction, 2026-11-18: what the script now needs of a go.* The script checks your
+   go by program before it sends anything, so its form matters more than it did.
+   - **For each run, your words must name the developer and carry one figure, written with a
+     dollar sign.** "Anthropic, up to $5" passes. "Anthropic, up to 5 dollars" is refused, and
+     so are words that name two figures for one run.
+   - **The commit you name is the whole repository as it stood then,** the script in `capture/`
+     included, although the form above names only `docs/capture/`. A session gives you the
+     commit id to put in the blank.
+   - **A session records it, you do not.** It writes `docs/spending-record.md`, which does not
+     exist yet: your words as a quotation and, directly under the quotation, a short block for
+     that run holding the run's name, the date, the commit, the ceiling, the piece of your
+     words for that run, and one checksum that ties the go to the ten approved message files.
+     The exact form is in `capture/README.md`, "John's go, in the spending record". If one go
+     covers several runs, the quotation is written again above each run's block. The record is
+     committed before the run.
+   - **If your figure is not the one in the script's plan** ($5 for Anthropic), a session
+     changes the plan, runs the rehearsal again and commits both. The script never changes
+     its own ceiling.
+   - **If you withdraw a go, say so,** and a session takes it out of the record. No program can
+     tell that you changed your mind.
+   - **Two things to know before you name the Anthropic figure.** Both come from the check of
+     the script (`check-2026-11-18-capture-script.md`). First, a call whose cost the service
+     did not report is counted at the most it could cost, $0.48 for Claude Sonnet 4.5. A
+     connection that breaks while a reply is arriving is such a call, and a Mac going to sleep
+     is enough to break one. Second, after the first round of ten questions the script
+     multiplies that round's cost by five and stops for good if the result is over the
+     ceiling. Together: at a ceiling of $5, two broken connections in the first round stop the
+     run, and it stops again on every restart. At $10 it survives three and stops at four. The
+     estimate for the whole run is $1.89 either way. The ceiling sets only how much room there
+     is for breaks.
+   - The two settings the script's author proposed (20 words; the same length limit) are
+     ruled, so a go does not need to mention them.
+
 8. **After each run, nothing.** The script writes the list of file names and checksums, a
    session commits it and records the measured cost. Nobody opens the answers unless you have
    ruled that someone may. That holds although the answers may now be published (ruled
    2026-11-18): publishing is allowed, not decided, and comes only after a comparison method is
    ruled and each developer's terms on publishing replies have been checked
    (`docs/verify-list.md`, entry 14).
+
+## The Anthropic run, step by step
+
+*Added 2026-11-18.* This follows `capture/README.md`, "The day of the first run", which the
+script's author wrote for this purpose. The script is waiting for a second check, so this list
+may change once more. Nothing here has been run against any service. The first real call is
+also the first time the script meets a real service, which is why it is made alone.
+
+**Do this no later than 2026-11-26** (ruled by you on 2026-11-18, "Approve all four";
+`docs/rulings/2026-11-18-capture-script-four-points.md`). The script will still run on
+2026-11-27 and 2026-11-28 and refuses after that. Those two days are spare, for whatever the
+first call shows.
+
+**Before the day,** all of these are true:
+
+- The second check of the script is done and says it may run.
+- Steps 3 to 6 above are done for Anthropic: the terms decided, the key made and saved, and
+  automatic top-up switched off.
+- Your go for the Anthropic run is in `docs/spending-record.md` and committed (step 7).
+
+**On the day,** in one Terminal window, with the Mac plugged in. You type the commands.
+Whether a session may run them in your place is not ruled, and a session that did would be
+handling the key.
+
+1. Go to the project folder.
+
+   ```bash
+   cd ~/Code/beyond-the-window
+   ```
+
+2. Copy the key from its file into the setting the script reads. Nothing is printed.
+
+   ```bash
+   export BTW_CAPTURE_ANTHROPIC_API_KEY="$(sed -n 's/^BTW_CAPTURE_ANTHROPIC_API_KEY=//p' ~/.config/sentient-horizons/beyond-the-window.env)"
+   ```
+
+   PROPOSED 2026-11-18, not ruled. It has been tried only on a constructed file holding no
+   real key, because the real file does not exist until step 4's change is made. *The choice:*
+   a command that reads the one line for Anthropic and nothing else. *Confidence:* moderate. It
+   depends on the file's lines being written as step 4 now says. *Judgment call.* *Strongest
+   alternative:* the workspace's usual command, which loads every line of a key file at once.
+   It is shorter, and it would also put the Google and OpenAI keys in the window, where they
+   are not needed.
+
+3. Show the run. Nothing is sent. Every line under "Checks made before a real run" must say
+   `pass`. If one does not, stop and tell a session what it says.
+
+   ```bash
+   python3 -I capture/capture.py show --run anthropic-2026-11-30
+   ```
+
+4. Make one call and stop. `caffeinate -i` keeps the Mac awake while the command runs.
+
+   ```bash
+   caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30 --stop-after 1
+   ```
+
+5. Read the one line it prints for that call. A good line says `a reply`, gives the stop reason
+   `end_turn`, says `model reported as named: yes`, and gives token counts and a cost of about
+   a cent. No word of the reply is shown. Any other line:
+
+   | The line says | What happened | What to do |
+   |---|---|---|
+   | `STOPPED: the service answered with status 401` (or 400, 402, 403, 404) | An error that trying again cannot cure: the key, billing, permission, or the request itself. The line says which. None of the day's tries is used | Fix it and run the same command again, the same day |
+   | `failed attempt`, then a wait | A timeout, a rate limit or an overloaded service. The script waits a minute and tries again, up to three more times, then leaves the question for the next day | Let it try. If the cause is on your side, such as no network, press Ctrl-C during the wait, fix it and run again. A try already made stays used |
+   | `wrong model` | The service reported a name that is not `claude-sonnet-4-5-20250929` to the letter. The reply is kept apart and the run stays stopped | Stop. It needs your ruling before anything more is asked |
+   | `a reply this script could not take apart` | The script failed on a real reply. Everything the service sent is saved | Do not run again. A session looks at the script |
+   | `model reported as named: NO`, or token counts of `none` | The reply was saved, but the script is not reading the service as expected | Stop, and have a session look before going on |
+
+6. If the line is good, a session may run the command that lists what each file was recorded
+   as, with the service's labels and no word of any reply.
+
+   ```bash
+   python3 -I capture/capture.py labels
+   ```
+
+7. Run the rest. The same command without `--stop-after` carries on from the files already
+   saved. Forty-nine more lines follow, probably over 15 to 30 minutes.
+
+   ```bash
+   caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30
+   ```
+
+8. Close the Terminal window, which removes the key from it. The last lines of the run give
+   the total counted and write the list of file names and checksums,
+   `docs/capture/manifest.md`. A session commits that list and records the cost. You compare
+   the total with the Usage page in Anthropic's console. Nobody opens the answers (step 8 of
+   the list above).
+
+**While it runs:**
+
+- Do not close the lid or let the Mac sleep. A broken connection is counted at $0.48, and two
+  in the first round can end the run for good at a $5 ceiling (step 7 above).
+- Do not run the command in a second window. The script refuses a second run on the same
+  folder.
+- Ctrl-C is safe at any time. What has arrived is saved and counted first.
+- If the screen says `A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED`, do not close the window
+  and do not press Ctrl-C. The reply folder could not be written to. Check that the folder
+  exists and the disk is not full. The script tries again every half minute for half an hour.
 
 ## The last safe day for each date
 
@@ -183,6 +349,21 @@ The script may run on the last safe day itself and refuses only after it (`metho
 rule 6, corrected 2026-11-17; it first said "on or after", which took a day off each window).
 
 If the first two dates are let go, the last two rows lose nothing by it.
+
+*Dated correction, 2026-11-18, after your ruling on four points*
+(`docs/rulings/2026-11-18-capture-script-four-points.md`, "Approve all four", decided by:
+mixed). Two things in this section are out of date. The table is left as it is, because the
+script reads its last safe days from it.
+
+- **The first Anthropic run is made no later than 2026-11-26.** For Claude Sonnet 4.5,
+  2026-11-28 stays the last safe day, as a limit the script enforces and not as the day to aim
+  for. So the steps before that run have to be finished earlier than the table's 2026-11-27:
+  by 2026-11-25, if the one day the table leaves between the steps and the run is kept. That
+  last date is this session's arithmetic from the ruling, and is not part of it.
+- **The first caution says time is needed "for a session to write the script, run its
+  rehearsal on constructed replies, and have that checked".** The script is written, at
+  `capture/`. It was written on 2026-11-18, checked once, fixed, and is waiting for a second
+  check.
 
 ## What changed on 2026-11-17, and which finding it answers
 
@@ -226,3 +407,18 @@ kept, struck through. The quotation of John's question in step 1 now runs to the
 sentence (the check of the earlier edit, `check-2026-11-18-note-edit.md`, finding 3). The paragraph above this one says the
 new checksums "need his approval by 2026-11-27"; it is left as written and is answered here.
 Steps 3 to 8 are unchanged and still his.
+
+**Dated correction, 2026-11-18, after John's ruling on four points of the capture script**
+(`docs/rulings/2026-11-18-capture-script-four-points.md`, "Approve all four", decided by:
+mixed). Made by the session (Claude, Fable 5.2) that made the two corrections above; a
+different session checks it. Nothing was deleted, and the table of last safe days is unchanged.
+
+| Change | Ruling, finding or source |
+|---|---|
+| The status says a script exists at `capture/`, written 2026-11-18, checked once, fixed and waiting for a second check, and names the four ruled points | The ruling; the list "Out of date because a capture script now exists" in the check of the earlier corrections (`check-2026-11-18-method-corrections.md`) |
+| Step 1, second point: a sentence saying "the new checksums" there were the ten of the first approval, which no longer name what is sent | That check's should-fix finding 3 |
+| Step 4: the three example variable names are struck through, and the names the script reads are given | The check of the script (`check-2026-11-18-capture-script.md`), should-fix finding 9 |
+| Step 6: how the key gets from its file to the script | The ruling, point 3; the script's README, which says this wording was owed |
+| Step 7: what the script needs of a go, where it is recorded, and two things to know about the ceiling before naming a figure | The script's README, "John's go, in the spending record" and "What the ceiling means in practice"; the earlier check's row on the form of the go |
+| A new section, "The Anthropic run, step by step" | The script's README, "The day of the first run"; the ruling, points 1 and 2 |
+| Under the table of last safe days: the first Anthropic run no later than 2026-11-26, and the first caution brought up to date | The ruling, point 2; the earlier check's row on the first caution |

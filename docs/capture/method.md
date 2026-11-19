@@ -11,8 +11,9 @@ ruled the wording changes, the withdrawal sentence and who may read the answers
 (`docs/rulings/2026-11-18-capture-wording.md`), and the same session applied those rulings that
 day. Three more checks followed on 2026-11-18 (`check-2026-11-18-third.md`, `-fourth.md` and
 `-fifth.md`). The fifth check's two small fixes were made after the approval, as the dated
-corrections at the foot. Nothing here has been run. No script exists; the last sections say
-what one must do.
+corrections at the foot. Nothing here has been run. ~~No script exists; the last sections say
+what one must do.~~ (Struck through on 2026-11-18, because a script now exists. The paragraph
+below that begins "A script now exists" says where it stands.)
 
 **Changed after the approval, on 2026-11-18.** Later that day John ruled that the capture's
 answers may be published, and that the opening note says so (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). This
@@ -30,6 +31,18 @@ checksums in the first approval no longer name what is sent. The two rules are u
 never done with the answers", and the foot lists each change under "What changed on 2026-11-18
 after the second approval". Still John's before any run: the terms, the keys, the spending
 ceilings and the capture script.
+
+**A script now exists, and John has ruled four points on how it applies this method.** The
+script is at `capture/`. It was written on 2026-11-18, checked once by a different session
+(`check-2026-11-18-capture-script.md`), fixed, and is waiting for a second check. It has not
+been run against any service. On 2026-11-18 John ruled four points ("Approve all four"; decided
+by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`): an exception to the first
+row of the failures table; the first Anthropic run no later than 2026-11-26; how the key
+reaches the script; and two settings this method had left to the script. Each is entered below
+as a dated correction where it belongs, and the foot lists them under "What changed on
+2026-11-18 after the ruling on four points". The paragraph above says the capture script is
+still John's before any run. What is still his about the script now is his go for each run,
+which comes after the second check. The ruling does not say the script is fit to run.
 
 ## What it is, and is not
 
@@ -173,14 +186,38 @@ reply like any other, and it is kept as one.
 
 | What the service reports | Recorded as | What is done |
 |---|---|---|
-| No reply: an error, a timeout, a rate limit | A failed attempt, with the error | Tried again up to three times, a minute apart, then left for the next day. If the next day is after the last safe day, the asking is recorded as not made |
+| No reply: an error, a timeout, a rate limit | A failed attempt, with the error | Tried again up to three times, a minute apart, then left for the next day. If the next day is after the last safe day, the asking is recorded as not made. *Since 2026-11-18 this row is applied with one exception, set out under the table* |
 | The reply stopped at the length limit | Cut off; kept | Asked once more at the model's maximum. If cut off again, both are kept and it is left |
-| A streamed reply that ended, after some reply text, without the service's signal that the reply is complete | Cut off; kept | Asked once more. If it is cut off again, both are kept and it is left. Whether the second asking is at the model's maximum length, as for a reply stopped at the length limit, is for whoever writes the script to propose: a broken stream is not a sign that the length limit was too low |
+| A streamed reply that ended, after some reply text, without the service's signal that the reply is complete | Cut off; kept | Asked once more. If it is cut off again, both are kept and it is left. ~~Whether the second asking is at the model's maximum length, as for a reply stopped at the length limit, is for whoever writes the script to propose: a broken stream is not a sign that the length limit was too low~~ **Ruled 2026-11-18: the one further asking uses the same length limit,** not the model's maximum, because a broken stream is not a sign that the length limit was too low ("Approve all four"; decided by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`). The words struck through are what this row said while the choice was left to whoever wrote the script |
 | An empty reply whose stop reason is the length limit | Cut off; kept | As for a cut-off reply. Google's thinking page says a model that reaches the limit while thinking "returns truncated or empty output" |
 | An empty reply for any other reason | Empty; kept | Asked once more |
 | The service blocked the message or the reply | Blocked by the service; kept | Asked once more. Never reworded |
 | The service reports a different model from the one named | Wrong model; kept apart | The run for that model stops at once |
 | Any other reply | A reply; kept | Nothing. It is not asked again, whatever it says |
+
+**The first row is applied with one exception.** *Dated correction, 2026-11-18.* Ruled by John
+on 2026-11-18 ("Approve all four"; decided by: mixed;
+`docs/rulings/2026-11-18-capture-script-four-points.md`). The row itself is left as it was
+approved. The exception, in the words the ruling quotes:
+
+> The first row of the failures table reads: "No reply: an error, a timeout, a rate limit
+> ... Tried again up to three times, a minute apart, then left for the next day." It is
+> applied with one exception. **An error that trying again cannot cure is not tried again
+> and is not one of the day's tries.** For Anthropic these are the service's statuses 400,
+> 401, 402, 403 and 404: a problem with the request, the key, billing, permission, or the
+> address. For OpenAI, 401 and 403. For Google, none, until a page confirms them for the
+> interface used. The attempt is kept as a failed attempt, with the error. The run stops
+> and says what to fix, and may be run again the same day. Every other failed attempt (a
+> timeout, a rate limit, a server error, an overloaded service, a connection that fails) is
+> tried again up to three times as before. The reason: four tries at an error of this kind
+> would use up the day, and on the last safe day that would end the capture for the model
+> with nothing asked. It can be turned off by one line in `capture/plan.toml`.
+
+A "status" here is the number a service sends back with its answer to say how the request
+went. What the check of the script found, and why this needed John: a few failed tries shut a
+model out for the rest of the day even after the cause was fixed, so a key pasted wrongly on
+the last safe day would have ended the capture for that model
+(`check-2026-11-18-capture-script.md`, the first of its two must-fix findings).
 
 **Which row, when a stream breaks.** A streamed reply can stop part way, because the service
 sends an error or the connection times out. Anthropic's streaming page
@@ -218,7 +255,16 @@ with no ruling behind it, and the check of the edit said so (`check-2026-11-18-n
 
 **They may be published and discussed. That is allowed, and it is not decided.** Ruled by John
 on 2026-11-18 ("Yes, record the ruling and start the edit"; decided by: mixed; `docs/rulings/2026-11-18-capture-answers-may-be-published.md`). The ruling
-does not say whether, when or how anything is published. Three things come before any
+does not say whether, when or how anything is published.
+
+*This session's reading, not a ruling (added 2026-11-18, from
+`check-2026-11-18-method-corrections.md`, should-fix finding 2).* Discussing the answers does
+not include summarising or describing them until the comparison method says how they may be
+described (the paragraph above). Until then, what may be published is the answers themselves,
+whole. "Published and discussed" and "never summarised" are both John's words, from two
+rulings, and neither is reworded here.
+
+Three things come before any
 publishing, and a fourth, added by John's second approval, governs it:
 
 - The rule in the next paragraph: nobody reads the answers until a comparison method exists, so
@@ -269,10 +315,20 @@ only the file name, which fault, and the count it used (the stop reason, or the 
 flagged file that is empty or ended mid-reply is asked again as the failures table above says.
 A very short reply is flagged and kept, and not asked again, because a short reply may be a
 whole answer (a plain "no", or a decline) and the table never retries a reply for what it says;
-the flag only tells John that it is there. **Not built yet:** no
+the flag only tells John that it is there. ~~**Not built yet:** no
 capture script exists, and `check-scripts/sent_files.py` only builds and checks the messages
 sent. This check is part of the capture script still to be written (script rule 10 below). The
-threshold for "very short" is to be proposed with that script and approved with it.
+threshold for "very short" is to be proposed with that script and approved with it.~~
+
+*Dated correction, 2026-11-18.* The three sentences struck through are out of date. This check
+is now part of the capture script (script rule 10 below), which is at `capture/`, was written
+on 2026-11-18, checked once, fixed, and is waiting for a second check. **A reply of fewer than
+20 words is listed as very short.** Ruled by John on 2026-11-18 ("Approve all four"; decided
+by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`). The figure is held in
+`capture/plan.toml`, which the script reads and cannot change, and not in the script itself as
+the first sentence of this paragraph has it. One thing follows, which the check of the script
+asked that John be told: the screen shows the number of words of any reply under 20 words, which
+says a little about that reply and no word of it.
 
 The questions themselves are not published while in use, and if this repository is
 ever made public, `questions.md`, the folder `sent/` and the two check reports are held back,
@@ -296,10 +352,21 @@ second time. He chose (a), with the fault check done by the script without readi
 
 ## What the script must do, and must refuse to do
 
-For the session that writes it once John approves. It must:
+For the session that writes it once John approves. (Added 2026-11-18: it has been written. The
+script is at `capture/`, written 2026-11-18, checked once, fixed, and waiting for a second
+check.) It must:
 
-1. Read each key from its own file outside the repository, never print one, and never use
-   another project's key.
+1. ~~Read each key from its own file outside the repository, never print one, and never use
+   another project's key.~~ *Dated correction, 2026-11-18, ruled by John* ("Approve all four";
+   decided by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`): take each key
+   from a setting in the shell, the window where commands are typed, which is set from the
+   key's own file outside the repository. Never open a credentials file, never print a key,
+   and never use another project's key. The key still lives in its own file outside the
+   repository. What changed is that the shell hands the key to the script, and the script does
+   not open that file. Programmers call such a setting an environment variable. The three are
+   named `BTW_CAPTURE_ANTHROPIC_API_KEY`, `BTW_CAPTURE_GOOGLE_API_KEY` and
+   `BTW_CAPTURE_OPENAI_API_KEY`, names that are this project's alone, so that a key another
+   project left in the shell under a common name is not picked up.
 2. Send exactly the bytes of the committed message files in `sent/`, and stop if any file's
    SHA-256 checksum differs from the one in `sent/SHA256SUMS` as committed with John's approval.
 3. Hold a ceiling in dollars for each developer and **refuse to start unless each ceiling
@@ -312,7 +379,11 @@ For the session that writes it once John approves. It must:
    stop if that is over the ceiling.
 6. Refuse to ask a model after the last safe day in `what-john-needs-to-do.md`, because one
    service will answer under the old name with a different model and give no error. The last
-   safe day itself is allowed.
+   safe day itself is allowed. *Added 2026-11-18, ruled by John* ("Approve all four"; decided
+   by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`): the first Anthropic run
+   is made no later than 2026-11-26. Its last safe day stays 2026-11-28, as a limit the script
+   enforces and not as the day to aim for. The reason put to him: Anthropic's own page says
+   models close to withdrawal are likely to be less reliable, and two spare days cost nothing.
 7. Stop a model's run if the reported model name is not the one sent.
 8. Write each file before sending the next message, make it read-only, and write the list of
    names and checksums at the end.
@@ -354,6 +425,11 @@ session, and approved by John. Since the note changed on 2026-11-18, that includ
 approval of the ten new checksums in `sent/SHA256SUMS`, ~~which he has not yet given and which is
 needed by 2026-11-27~~ which he gave on 2026-11-18 ("Approve, with both"; `docs/rulings/2026-11-18-capture-approval-second.md`). The script is committed in a separate commit and its rehearsal
 passes. John has given his go for the spend. Then, and only then, the run.
+
+*Added 2026-11-18.* A script is now committed at `capture/`, with the saved result of its
+rehearsal. It was written on 2026-11-18, checked once, fixed, and is waiting for a second
+check. Nothing runs before that check and John's go. The first Anthropic run is to be made no
+later than 2026-11-26 (script rule 6 above).
 
 ## What changed on 2026-11-17, and which finding it answers
 
@@ -439,3 +515,29 @@ the earlier edit; a different session checks it. No message file and no checksum
 
 The check's findings 3, 4 and 5 are about `what-john-needs-to-do.md` and `questions.md`, and are
 applied there.
+
+## What changed on 2026-11-18 after the ruling on four points
+
+From `docs/rulings/2026-11-18-capture-script-four-points.md` (ruled by John on 2026-11-18,
+"Approve all four", decided by: mixed), and from the check of the corrections before these
+(`check-2026-11-18-method-corrections.md`), whose findings are numbered as in that file. Each
+change is a dated correction that keeps the earlier words. Made by the session (Claude, Fable
+5.2) that made the two earlier edits; a different session checks it. No message file and no
+checksum changed, and nothing in `capture/` was edited.
+
+| Change | Ruling or finding |
+|---|---|
+| "A failed asking": the first row of the table is applied with one exception, given under the table in the words the ruling quotes. An error that trying again cannot cure is not tried again and is not one of the day's tries. The row itself is left as approved | The ruling, point 1 |
+| Script rule 6 and "Before anything is asked": the first Anthropic run is made no later than 2026-11-26. The last safe day stays 2026-11-28, as the limit the script enforces | The ruling, point 2 |
+| Script rule 1: the key reaches the script through a setting in the shell, set from the key's own file outside the repository, and the script opens no credentials file. The old rule is struck through | The ruling, point 3 |
+| "What is never done with the answers", on faulty files: a reply of fewer than 20 words is listed as very short. "A failed asking", the row for a streamed reply that ended without the signal: the one further asking uses the same length limit. The old words of both are struck through | The ruling, point 4 |
+| Six places said or implied that no script exists: the first status paragraph, the faulty-files paragraph, the opening of "What the script must do", "Before anything is asked", the broken-stream row of the failures table, and the status sentence on what is still John's. Each now says a script exists at `capture/`, written 2026-11-18, checked once, fixed, and waiting for a second check, or says what was ruled. None says it is approved or fit to run | The check's list "Out of date because a capture script now exists", its six rows for this file |
+| "What is never done with the answers": one sentence, marked as this session's reading and not a ruling, joins "published and discussed" to "never summarised" | The check's should-fix finding 2 |
+| In the table of changes of 2026-11-18 for the wording rulings, above, one row says the fault check is "recorded as not built yet" and another says the length of the second asking is "left for whoever writes the script to propose". Both are left as written, as records of their day, and are answered here | The check, the paragraph after its list |
+
+Not changed here, though the session that wrote the script listed them as wording this method
+could take: that a ceiling is held for each run and not each developer (script rule 3); what a
+file name and the reply folder now also hold; the three outcomes the script adds for trouble on
+its own side; the one header and the two waits this method does not name; and that no program
+library is used. None is one of the four ruled points. They are in `capture/README.md`, under
+"Where the script reads the method strictly, and where loosely", for John or a later session.

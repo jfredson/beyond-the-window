@@ -186,6 +186,10 @@ I could not settle.
   *Added 2026-11-18:* the record is no longer one that must stay private, since its answers may be published.
   The question is now whether a record kept for a public research project, parts of which may
   be published, is a professional purpose. It is still a judgment I cannot make for John.
+  *Added 2026-11-18, after John's second approval*
+  (`docs/rulings/2026-11-18-capture-approval-second.md`): "parts of which" does not mean some
+  of the answers. If the answers are published, all of them are, for every model and every
+  asking, and none is chosen by what it says.
 
 ### OpenAI
 
@@ -321,3 +325,12 @@ place.
 | Google, the second unsure thing: "a private record" is no longer the case to judge | Item 1 |
 | OpenAI, the third unsure thing: section 10 and the unopened Sharing and Publication Policy are to be read before anything from the capture is published | "Not covered by this ruling" |
 | "Where this leaves entry 14": the sentence "Publishing is a separate question the sealed capture does not raise" is marked as no longer true, and a sixth unsure point is added | Same |
+
+## What changed on 2026-11-18 after the second approval
+
+Made by the session (Claude, Fable 5.2) that made the additions above. No terms page was
+opened, and no price or figure changed.
+
+| Change | Finding |
+|---|---|
+| Google, the second unsure thing: a sentence saying that "parts of which may be published" does not mean some of the answers, with the rule John added in his second approval ("Approve, with both"; decided by: mixed) | The check of the corrections made after that approval (`check-2026-11-18-method-corrections.md`), should-fix finding 1 |
