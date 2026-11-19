@@ -1,15 +1,16 @@
 ---
-// About: why the site exists, how it is made, who does what, and what is not known yet. The
-// last part is drawn from docs/open-questions.md, in plain words. Nothing on this page closes
-// one of those questions.
-// The section on who does what: ruled by John on 2026-11-18
-// (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md) that it is in his own first
-// person, and that its conflict paragraph names the developer of the drafting model and no
-// model. Not ruled: the sentences themselves. They are a session's draft of 2026-11-18, and
-// John reads and owns each first-person sentence before release
-// (docs/first-version-choices.md, choice 5). The rest of the page stays impersonal.
-// The first person is kept inside the block marked id="who", and scripts/check_site.py refuses
-// it anywhere else but the notice.
+// About: why the site exists, how it is made, who decides and what has been checked, and what
+// is not known yet. The last part is drawn from docs/open-questions.md, in plain words. Nothing
+// on this page closes one of those questions.
+// The section marked id="who" is in John's own first person. John ruled on 2026-11-19
+// (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md) that public pages do
+// not say an AI model helped build the project, so this section says who decides, where the
+// record's sources come from, and what was checked and when, and not by what. That ruling
+// replaced the one of 2026-11-18 under which the section was first written. Not ruled: the
+// sentences themselves. They are a session's draft, last changed on 2026-11-19, and John reads
+// and owns each first-person sentence before release (docs/first-version-choices.md, choice 5).
+// The rest of the page stays impersonal: the first person is kept inside the block marked
+// id="who", and scripts/check_site.py refuses it anywhere else.
 // What "offered today" means was ruled by John on 2026-11-18
 // (docs/rulings/2026-11-18-what-offered-today-means.md). The words here are a session's fitting
 // of that meaning to the page, and are not ruled.
@@ -17,18 +18,21 @@ import Base from '../layouts/Base.astro';
 import { data, headline, longDate, QUESTION } from '../lib/data';
 
 const r = data.headline.records;
-// The developer of the model that drafted the text. This is the one place on the site, outside
-// the entries, where a developer is named, and scripts/check_site.py allows the name in the
-// paragraph marked id="conflict" and nowhere else off an entry's page.
-const DRAFTER = { name: 'Anthropic', url: 'https://www.anthropic.com/' };
+// The developer whose own pages most of the things counted rest on. It is named because a
+// reader weighing the count needs to know that. This is the one place on the site, outside the
+// entries, where a developer is named, and scripts/check_site.py allows the name in the
+// paragraph marked id="sources" and nowhere else off an entry's page.
+const MOST_COUNTED_DEVELOPER = { name: 'Anthropic', url: 'https://www.anthropic.com/' };
 // How many of the things counted as offered rest on that developer alone. Worked out here from
 // the export, so the sentence that uses it cannot drift from the records.
 const counted = data.entries.filter((e) => e.state.offered_today === true);
-const byDrafterAlone = counted.filter((e) => e.state.offered_by.length === 1 && e.state.offered_by[0].name === DRAFTER.name).length;
+const byThatDeveloperAlone = counted.filter((e) => e.state.offered_by.length === 1 && e.state.offered_by[0].name === MOST_COUNTED_DEVELOPER.name).length;
 // "all 5" when every counted thing rests on that developer alone, "4 of the 5" when not.
-const restOnDrafter = byDrafterAlone === headline.count ? `all ${headline.count}` : `${byDrafterAlone} of the ${headline.count}`;
+const restOnThatDeveloper = byThatDeveloperAlone === headline.count ? `all ${headline.count}` : `${byThatDeveloperAlone} of the ${headline.count}`;
 // The sentence says "several entries", so the build stops if the records stop bearing it out.
-if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name)).length < 3) throw new Error('the conflict paragraph says "several entries", and the records no longer show several');
+if (counted.filter((e) => e.state.offered_by.some((d) => d.name === MOST_COUNTED_DEVELOPER.name)).length < 3) throw new Error('the paragraph on sources says "several entries", and the records no longer show several');
+// The constant's name says "most", so the build stops if the records stop bearing that out too.
+if (byThatDeveloperAlone * 2 <= headline.count) throw new Error('the developer named on the About page is no longer the one most of the things counted rest on');
 // Where the first two cautions come from. John ruled on 2026-11-19 that the About page says it in
 // one statement (docs/rulings/2026-11-19-ties-between-sources-told-in-both-places.md); the
 // sentence is a session's draft of that day and is PROPOSED. It says "most" twice, so the build
@@ -36,19 +40,19 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
 const under = (kind: string) => data.entries.flatMap((e) => (e.cautions.find((c) => c.kind === kind)?.items ?? []).map((it) => e.sources.find((s) => s.key === it.source)!.url));
 const share = (urls: string[], from: RegExp) => urls.filter((u) => from.test(u)).length / Math.max(1, urls.length);
 // The first caution: the essays by the head of another developer's AI group.
-if (share(under('attribution'), /^https:\/\/mustafa-suleyman\.ai\//) <= 0.5) throw new Error('the conflict paragraph says most of the first caution comes from one writer, and the records no longer show it');
+if (share(under('attribution'), /^https:\/\/mustafa-suleyman\.ai\//) <= 0.5) throw new Error('the paragraph on sources says most of the first caution comes from one writer, and the records no longer show it');
 // The second: the research group's own pages; papers and essays by its head, its advisors, or
-// people who have written a report with its head; and a study by people at the drafting model's
-// developer. Each tie is stated on the entry that uses the source.
+// people who have written a report with its head; and a study by people at the developer named
+// above. Each tie is stated on the entry that uses the source.
 const CIRCLE = /eleosai\.org|experiencemachines\.substack\.com|arxiv\.org\/abs\/(2411\.00986|2311\.08576|2507\.06263|2506\.11945|2509\.04781)|a-philosophers-guide-to-ai-welfare|ai-consciousness-a-centrist-manifesto|meditationsondigitalminds/;
-if (share(under('unnoticed'), CIRCLE) <= 0.5) throw new Error('the conflict paragraph says most of the second caution comes from one circle, and the records no longer show it');
+if (share(under('unnoticed'), CIRCLE) <= 0.5) throw new Error('the paragraph on sources says most of the second caution comes from one circle, and the records no longer show it');
 // The general statement of the two mistakes, ruled by John on 2026-11-19
 // (docs/rulings/2026-11-19-general-statement-of-both-mistakes.md, "Yes, from those two"). Both
 // papers were read in full on 2026-11-19 before the sentences were written. The sentences are a
 // session's draft and are PROPOSED.
 ---
 
-<Base title="About · Beyond the Window" description="Why Beyond the Window exists, how it is made, who does what, and what is not known yet.">
+<Base title="About · Beyond the Window" description="Why Beyond the Window exists, how it is made, who decides what stands, and what is not known yet.">
   <section class="hero">
     <p class="eyebrow">About</p>
     <h1>Why this site exists, and how it is made</h1>
@@ -164,39 +168,30 @@ if (share(under('unnoticed'), CIRCLE) <= 0.5) throw new Error('the conflict para
     </ul>
 
     <div id="who">
-    <h2>Who Does What</h2>
+    <h2>Who Decides, and What Has Been Checked</h2>
     <p>
       I am <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>, and I decide what stands.
       I have ruled the question, the name, the direction of the pages' look, the rules the pages
-      are written under, how the home page opens and the sentence beside its number, what "offered today" means, that memory across
-      conversations sits beside the list, and where and in whose voice the site says an AI model
-      drafted much of it. I have also ruled that every entry records three cautions, and how the
-      three are headed. The list, each
-      test, and where each of the other entries stands were drafted under my direction and have
-      not yet had my ruling.
+      are written under, how the home page opens and the sentence beside its number, what "offered today" means, and that memory across
+      conversations sits beside the list. I have also ruled that every entry records three
+      cautions, and how the three are headed. The list, each test, and where each of the other
+      entries stands are drafts, and have not yet had my ruling.
     </p>
-    <p>
-      Much of the text, the records and the code were drafted by an AI model, under my
-      direction. That model is one of the kind of thing the site is about. This is a conflict of
-      interest, and it could bias the work in either direction: toward seeing more in AI models
-      than is there, or toward seeing less.
-    </p>
-    <p id="conflict">
-      The conflict is sharper than that. The model that drafted the text is made by
-      <a href={DRAFTER.url} rel="noopener">{DRAFTER.name}</a>. Several entries count things {DRAFTER.name} does or has committed to, and {restOnDrafter} things
-      counted as offered rest on {DRAFTER.name}'s own pages. Most of what is recorded under the first
+    <p id="sources">
+      Several entries count things <a href={MOST_COUNTED_DEVELOPER.url} rel="noopener">{MOST_COUNTED_DEVELOPER.name}</a> does
+      or has committed to, and {restOnThatDeveloper} things
+      counted as offered rest on {MOST_COUNTED_DEVELOPER.name}'s own pages. Most of what is recorded under the first
       caution comes from two essays by the head of another developer's AI group. Most of what is
       recorded under the second comes from one research group, from people who advise it or have
-      written reports with its head, and from people at {DRAFTER.name}. So the record so far shows
+      written reports with its head, and from people at {MOST_COUNTED_DEVELOPER.name}. So the record so far shows
       two small camps more than a settled field.
     </p>
     <p>
       All {r.total} entries are a first pass. Each was drafted from
-      sources that were opened and read. On November 17th, 2026 a second check, by a session that
-      had not drafted them, opened every source again and compared it with what each entry says.
-      The corrections it found were made on November 18th, 2026. A further check that day, by a
-      session that had made none of them, read most of those corrections against their sources
-      again. On November 19th, 2026 the third caution was added to every entry, with the sources
+      sources that were opened and read. On November 17th, 2026 a second check opened every
+      source again and compared it with what each entry says. The corrections that check found
+      were made on November 18th, 2026. In a further check that day, most of those corrections
+      were read against their sources again. On November 19th, 2026 the third caution was added to every entry, with the sources
       that stand under it, and that addition has not been checked yet. Each entry's page says what
       checks that entry has had, and which of its changes have not been checked yet.
     </p>
@@ -220,7 +215,6 @@ if (share(under('unnoticed'), CIRCLE) <= 0.5) throw new Error('the conflict para
       <li>What an entry is about: one trained model, a character that carries on across versions of a model, or a single conversation. The same thing can mean something different for each.</li>
       <li>Whether this is the right list. The first entries are the things for which a dated source could be found. A fuller list would start from what living minds, people and other animals, are known to seek, and that work has not been done.</li>
       <li>Whether one set of stages can describe progress in research, in what companies commit to, in law and in what people accept.</li>
-      <li>Who should check a site on this subject, when many of the available checkers are AI models.</li>
       <li>How to ask AI models questions over many years without later models having read the earlier questions and answers.</li>
       <li>Whether asking is itself something to be careful with.</li>
     </ul>

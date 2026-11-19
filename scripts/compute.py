@@ -73,7 +73,7 @@ METHOD_STATUS = (
     "(docs/rulings/2026-11-18-what-offered-today-means.md). Also ruled that day: the count "
     "stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Ruled on "
     "2026-11-19: the exact sentence beside the count "
-    "(docs/rulings/2026-11-19-home-page-sentence.md). Provisional, decided by a session and not "
+    "(docs/rulings/2026-11-19-home-page-sentence.md). Provisional and not "
     "ruled: no ladder, no probability and no year (docs/first-version-choices.md)"
 )
 

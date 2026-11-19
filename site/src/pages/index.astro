@@ -1,7 +1,7 @@
 ---
 // The home page. In the family's order: what kind of page this is, the number, the question,
 // one paragraph for a reader who has never heard of the project, when the world's record was
-// last read, and the notice of who wrote the text; beside them the window, drawn from the same
+// last read; beside them the window, drawn from the same
 // exported file as the number. Then the list in words, and the entries that sit beside it.
 // The number is never typed here: it is read from the headline file scripts/compute.py wrote.
 // It stands alone, with no total beside it: John ruled that form on 2026-11-18
@@ -11,7 +11,6 @@
 import Base from '../layouts/Base.astro';
 import WindowGrid from '../components/WindowGrid.astro';
 import ThingList from '../components/ThingList.astro';
-import Notice from '../components/Notice.astro';
 import { data, headline, longDate, QUESTION } from '../lib/data';
 
 const h = headline;
@@ -52,7 +51,6 @@ const lastRead = data.headline.last_read;
         <a class="btn" href="/list/">Read the list</a>
         <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
       </div>
-      <Notice />
     </div>
     <div>
       <WindowGrid />

@@ -27,10 +27,6 @@
 .checked .world::before { background: var(--accent-3); }
 .checked .asked::before { background: var(--accent-2); border-radius: 50%; }
 
-/* ---- the notice that an AI model drafted much of the text ---- */
-.notice { border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 11px 14px 12px; font: 13px/1.55 var(--sans); color: var(--text-soft); margin: 18px 0 0; max-width: 62ch; background: var(--panel); }
-.notice b { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 3px; }
-
 /* ---- the window ----
    A frame with a sill. Each row is one group on the list. A filled square inside the frame is
    one thing offered today by at least one developer. An outlined square outside the frame is one
@@ -134,7 +130,7 @@
   .first .eyebrow { order: 1; } .first .big { order: 2; } .first .big-claim { order: 3; } .first .unsettled { order: 3; }
   .first .object { order: 4; margin: 0 0 26px; }
   .first h1 { order: 6; } .first .lede { order: 7; }
-  .first .checked { order: 8; } .first .ctas { order: 9; } .first .notice { order: 10; }
+  .first .checked { order: 8; } .first .ctas { order: 9; }
   .test, .cautions { grid-template-columns: minmax(0, 1fr); }
   .big-claim { font-size: 18.5px; }
   .things li { grid-template-columns: 18px minmax(0, 1fr); }

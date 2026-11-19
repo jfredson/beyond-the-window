@@ -367,6 +367,29 @@ provisional, 2026-11-18**):
   excuses the notice only on the home page and the Still Asking page.
 - *Confidence:* high on findings 3, 5 and 8; moderate on 2 and 4, which are John's to read.
 
+**Replaced 2026-11-19 by John's ruling that public pages do not mention AI help in building the
+project** (`docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md`; decided by:
+John). Everything above in this choice is kept as the record of what stood before, and none of
+it describes the site now. What changed on the pages that day:
+
+- The notice is gone from the home page and the Still Asking page, and its component and its
+  styles are deleted.
+- The entry pages no longer say what drafted an entry.
+- The About page's section is headed "Who Decides, and What Has Been Checked". It says who
+  decides, what John has ruled, where the record's sources come from, and what was checked and
+  when. It does not say by what. The paragraph that named Anthropic as the maker of the
+  drafting model now names it only as the developer whose own pages the things counted rest on,
+  and its mark is `id="sources"` where it was `id="conflict"`. Choice 18's note on the one
+  allowed name should be read with that new mark.
+- The first person now stands in one place only, the About page's block marked `id="who"`.
+- `scripts/check_site.py` refuses a built page that carries one of the removed phrases (its
+  rule 10).
+
+The sentences are a session's wording and are not ruled. John reads and owns each first-person
+sentence before release. The hand-over note with every before and after is
+`docs/reviews/2026-11-19-authorship-mentions-removed.md`. *Decided by: agent, for the wording;
+John, for the removal.*
+
 ### 6. Voice
 
 Plain statements that say what was found, with as little first person as possible. The site is

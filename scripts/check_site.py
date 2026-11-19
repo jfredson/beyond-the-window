@@ -18,10 +18,11 @@ What it refuses (docs/first-version-choices.md, choice 18):
 4. The name of an AI model or its developer anywhere but on an entry's page, where it is the
    subject. The title of a source is a quotation and is not checked for rules 1 and 4: titles
    sit inside <cite> on every page.
-   One exception, ruled by John on 2026-11-18
-   (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md): the About page names the
-   developer of the model that drafted the text, in its conflict paragraph (the paragraph
-   marked id="conflict") and nowhere else. That one developer's name is allowed there. Every
+   One exception: the About page names the one developer whose own pages most of the things
+   counted rest on, in its paragraph on where the record's sources come from (the paragraph
+   marked id="sources") and nowhere else. John's ruling of 2026-11-19
+   (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md) keeps that fact on
+   the page as a fact about sources. That one developer's name is allowed there. Every
    other name is still refused there, the name is still refused everywhere else on the About
    page and on every other page, and no model's name is allowed anywhere off an entry's page.
 5. A page that does not ask search engines to leave it out, while nothing is published.
@@ -29,14 +30,20 @@ What it refuses (docs/first-version-choices.md, choice 18):
 7. The headline number on the home page differing from the headline file the site serves, or
    anything standing beside it in the large type.
 9. The first person ("I", "my", "mine", "me", "we", "our", "ours", "us") anywhere but the
-   notice (the paragraph of class "notice", on the home page and the Still Asking page only)
-   and the About page's block on who does what (the block marked id="who"). John
-   ruled on 2026-11-18 that those two places are in his first person and the rest of the site
-   stays impersonal (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md). Words
-   inside quotation marks are a source speaking and are not checked, as source titles are not.
+   About page's block on who decides and what has been checked (the block marked id="who"),
+   which is in John's own first person. The rest of the site stays impersonal. The notice that
+   once stood on the home page and the Still Asking page, and had the same allowance, was
+   removed on 2026-11-19. Words inside quotation marks are a source speaking and are not
+   checked, as source titles are not.
 8. The count written as a share of the things on the list ("6 of 9", "six of nine") on any
    page, or a total in the served headline. John ruled on 2026-11-18 that the count stands
    with no total beside it (docs/rulings/2026-11-18-home-page-count.md).
+10. A phrase saying that an AI model, or a working session of one, drafted or checked the site.
+   John ruled on 2026-11-19 that public pages do not mention AI help in building the project
+   (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md). The served headline
+   file is read for these phrases too. A page saying that an AI model was asked the questions
+   that make up the project's data is not refused: the same ruling says the pages state that
+   plainly.
 """
 from __future__ import annotations
 
@@ -66,15 +73,25 @@ SITE_AS_AGENT = (r"\b(the|this) (site|page|list|record|tracker) (does )?"
                  r"suspects?|takes? (a|the) view)\b")
 # Rule 9: where the first person may stand, and nowhere else.
 FIRST_PERSON = r"\b(I|[Mm]y|[Mm]ine|[Mm]e|[Ww]e|[Oo]urs?|us)\b"
-# The two pages that carry the notice. A notice written onto any other page gets no exception.
-NOTICE_PAGES = {"/", "/still-asking/"}
-FIRST_PERSON_PLACES = [r'(?is)<p\b[^>]*\bclass="notice"[^>]*>.*?</p>',
-                       r'(?is)<div\b[^>]*\bid="who"[^>]*>.*?</div>']
+ABOUT_PAGE = "/about/"
+FIRST_PERSON_PLACE = r'(?is)<div\b[^>]*\bid="who"[^>]*>.*?</div>'
 QUOTED = r'"[^"]*"|“[^”]*”'
-# Rule 4's one exception: this page, this paragraph, this name, and nothing wider.
-NAMED_DRAFTER_PAGE = "/about/"
-NAMED_DRAFTER_PARAGRAPH = r'(?is)<p\b[^>]*\bid="conflict"[^>]*>.*?</p>'
-NAMED_DRAFTER = r"\bAnthropic\b"
+# Rule 4's one exception: the About page, this paragraph, this name, and nothing wider.
+NAMED_DEVELOPER_PARAGRAPH = r'(?is)<p\b[^>]*\bid="sources"[^>]*>.*?</p>'
+NAMED_DEVELOPER = r"\bAnthropic\b"
+# Rule 10: the phrases removed on 2026-11-19 under John's ruling that public pages do not
+# mention AI help in building the project
+# (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md). Kept short on purpose:
+# it is there so that those sentences cannot come back unnoticed, and it is not a test of
+# whether a page keeps the ruling. "An AI model was asked" is allowed, and is not listed.
+BUILT_WITH_AI = [
+    (r"\bdrafted by an AI\b", "drafted by an AI"),
+    (r"\b(AI )?model (that )?(drafted|wrote|helped|checked)\b", "a model drafted, wrote, helped or checked"),
+    (r"\b(by|of) a session\b|\ba session(’|')s\b|\bsessions? (that|in which this)\b", "a working session"),
+    (r"\bunder my direction\b", "under my direction"),
+    (r"\bwho wrote this\b", "who wrote this"),
+    (r"\bcheckers?\b", "checkers"),
+]
 MODEL_NAMES = (r"\b(claude|anthropic|openai|chatgpt|gpt|gemini|deepmind|google|llama|grok|xai|"
                r"mistral|copilot|microsoft|deepseek|opus|sonnet|haiku)\b")
 
@@ -135,22 +152,22 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
         flag(SITE_AS_AGENT, "the site written as its own agent", everything)
         if not is_entry:
             names_text = text
-            if rel == NAMED_DRAFTER_PAGE:
-                without = re.sub(NAMED_DRAFTER_PARAGRAPH,
-                                 lambda m: re.sub(NAMED_DRAFTER, " ", m.group(0)), raw, count=1)
+            if rel == ABOUT_PAGE:
+                without = re.sub(NAMED_DEVELOPER_PARAGRAPH,
+                                 lambda m: re.sub(NAMED_DEVELOPER, " ", m.group(0)), raw, count=1)
                 names_text = visible_text(without, keep_cites=False)
             flag(MODEL_NAMES, "an AI model or developer named off an entry's page", names_text)
+        for pattern, label in BUILT_WITH_AI:
+            flag(pattern, f"says how the site was built ('{label}')")
         outside_places = raw
-        for i, place in enumerate(FIRST_PERSON_PLACES):
-            # the notice on its two pages only; the block on About only; once each
-            if (i == 0 and rel in NOTICE_PAGES) or (i == 1 and rel == NAMED_DRAFTER_PAGE):
-                outside_places = re.sub(place, " ", outside_places, count=1)
+        if rel == ABOUT_PAGE:  # the block on About only, and once
+            outside_places = re.sub(FIRST_PERSON_PLACE, " ", outside_places, count=1)
         unquoted = re.sub(QUOTED, " ", visible_text(outside_places, keep_cites=False))
         for m in re.finditer(FIRST_PERSON, unquoted):
             start = max(0, m.start() - 40)
             snippet = " ".join(unquoted[start:m.end() + 40].split())
-            problems.append(f"{rel}: the first person outside the notice and the block on who "
-                            f"does what: \"...{snippet}...\"")
+            problems.append(f"{rel}: the first person outside the About page's block marked "
+                            f"id=\"who\": \"...{snippet}...\"")
         if not re.search(r'<meta name="robots" content="noindex', raw):
             problems.append(f"{rel}: does not ask search engines to leave it out")
         for href in re.findall(r'<a\b[^>]*\bhref="([^"]+)"', raw):
@@ -171,7 +188,13 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     if not served.is_file():
         problems.append("/data/headline.json is not served")
     elif home.is_file():
-        file = json.loads(served.read_text(encoding="utf-8"))
+        served_text = served.read_text(encoding="utf-8")
+        for pattern, label in BUILT_WITH_AI:
+            for m in re.finditer(pattern, served_text, re.I):
+                snippet = " ".join(served_text[max(0, m.start() - 40):m.end() + 40].split())
+                problems.append(f"/data/headline.json: says how the site was built ('{label}'): "
+                                f"\"...{snippet}...\"")
+        file = json.loads(served_text)
         h = file["headline"]
         m = re.search(r'<p class="big"[^>]*>\s*(\d+)\s*</p>', home.read_text(encoding="utf-8"))
         if not m or int(m.group(1)) != h["count"]:
