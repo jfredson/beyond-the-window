@@ -5,6 +5,10 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-19
 
+- **The fixes after the full check were checked**
+  (`docs/reviews/2026-11-19-check-of-the-last-fixes.md`). All eight entries with fixes are
+  right against their sources, and each now carries the date its fixes were checked. No
+  sentence changed. No number moved: the count is 5. Nothing is published or pushed.
 - **Fixes after the full check before the first release**
   (`docs/reviews/2026-11-19-full-check-before-publishing.md`). Eight sentences were mended so
   that each says what its source says: the public survey (which of the 2024 report's two

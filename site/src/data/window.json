@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-19",
-  "commit": "e14693d",
+  "commit": "c167905",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-19",
@@ -123,7 +123,8 @@
         "additions_checked": "2026-11-19",
         "corrected": "2026-11-19",
         "corrections_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Promised in public by one developer, since November 4th, 2025",
@@ -493,7 +494,8 @@
         "corrected": "2026-11-19",
         "additions_checked": "2026-11-19",
         "corrections_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Not found. An idea only, argued for in opinion pieces",
@@ -847,7 +849,8 @@
         "corrected": "2026-11-19",
         "additions_checked": "2026-11-19",
         "corrections_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Offered by one developer, since August 15th, 2025",
@@ -1024,7 +1027,8 @@
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Done by one developer, first in full for a model retired on January 5th, 2026",
@@ -1170,7 +1174,8 @@
         "corrected": "2026-11-19",
         "additions_checked": "2026-11-19",
         "corrections_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Not shown. The best public measure stops at hours",
@@ -1409,7 +1414,8 @@
         "additions_checked": "2026-11-19",
         "corrected": "2026-11-19",
         "corrections_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Measured in the United States in 2021, 2023 and 2024 by one research group",
@@ -1806,7 +1812,8 @@
         "corrected": "2026-11-19",
         "additions_checked": "2026-11-19",
         "corrections_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Published by one developer, first in May 2025 and most recently on November 9th, 2026",
@@ -2003,7 +2010,8 @@
         "some_unchecked": true,
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "fixed": "2026-11-19"
+        "fixed": "2026-11-19",
+        "fixes_checked": "2026-11-19"
       },
       "state": {
         "words": "Offered by at least three developers, the first since February 13th, 2024",
