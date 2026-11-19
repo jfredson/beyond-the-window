@@ -63,6 +63,15 @@ const checkWords = !ch
         : !ch.corrections_checked
           ? 'Those corrections have not been checked yet.'
           : `Those corrections were checked on ${longDate(ch.corrections_checked)}.`,
+      // Fixes made after the full check before the first release. PROPOSED 2026-11-19.
+      !ch.fixed
+        ? ''
+        : `A full check of the site on ${longDate(ch.fixed)} found more to fix in this entry, and the fixes were made that day.`,
+      !ch.fixed
+        ? ''
+        : !ch.fixes_checked
+          ? 'Those fixes have not been checked yet.'
+          : `Those fixes were checked on ${longDate(ch.fixes_checked)}.`,
     ].filter(Boolean).join(' ');
 // Why an entry sits beside the list is its group's own sentence (data/groups.toml), so an entry
 // about the setting and an entry that is offered but kept for the user each give their reason.

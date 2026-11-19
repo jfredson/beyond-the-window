@@ -9,14 +9,14 @@ progress_kind = "cultural"
 added = 2026-11-17
 first_pass = true
 limits = [
-  "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so how they compare with the 2023 round. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
+  "Whether the changes between the 2023 round and the 2024 round are more than chance. The report does not say.",
   "Any survey of this kind outside the United States. None was searched for.",
 ]
 notes = "From entry 12 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Measured in the United States in 2021, 2023 and 2024 by one research group"
-detail = "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time. Its paper says the answers to that question did not differ significantly between 2021 and 2023, while several of its other measures rose. Of those who gave an opinion in 2023, 38 percent supported legal rights for sentient AI. In the main 2023 round, 61.5 percent supported a ban on building sentient AI. Among a separate group of people asked later in 2023, 69.5 percent did. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness."
+detail = "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time. Its paper says the answers to that question did not differ significantly between 2021 and 2023, while several of its other measures rose. Of those who gave an opinion in 2023, 38 percent supported legal rights for sentient AI. In the main 2023 round, 61.5 percent supported a ban on building sentient AI. Among a separate group of people asked later in 2023, 69.5 percent did. Its report on a third round, collected in late 2024, gives 17 percent of its representative sample believing that sentient AI systems already exist, and 66 percent supporting a ban on building sentient AI. Both figures are for the 2024 round alone. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness."
 set_on = 2026-11-17
 source = "survey-paper"
 
@@ -37,8 +37,8 @@ label = "The Sentience Institute's report on its 2024 survey"
 publisher = "Sentience Institute"
 url = "https://www.sentienceinstitute.org/aims-survey-2024"
 published = "2026-02-16"
-opened = 2026-11-17
-says = "Reports a third round, collected in November and December 2024. The 1,099 adults it names were a second sample, from an online recruitment site, collected to compare with the representative one; the report finds such a sample cannot readily stand in for representative data. In text it gives 17 percent of the representative sample, against 11 percent of the comparison sample, believing sentient AI systems already exist, and 66 percent of the representative sample supporting a ban on developing sentient AI. Its other figures are in an interactive chart."
+opened = 2026-11-19
+says = "Reports a third round, collected in November and December 2024. It surveyed 1,099 adults in a representative sample and 1,510 more from an online recruitment site, to compare the two; the report finds that a sample of the second kind cannot readily stand in for representative data. It gives 17 percent of the representative sample, against 11 percent of the comparison sample, believing sentient AI systems already exist, and 66 percent of the representative sample supporting a ban on developing sentient AI. Its first table sets the 2021, 2023 and 2024 rounds side by side."
 
 [[sources]]
 key = "one-day-poll"
@@ -119,3 +119,5 @@ some_unchecked = true
 added_to = 2026-11-19
 additions_checked = 2026-11-19
 corrected = 2026-11-19
+corrections_checked = 2026-11-19
+fixed = 2026-11-19

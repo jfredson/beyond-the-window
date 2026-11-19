@@ -29,7 +29,12 @@ What it refuses (docs/first-version-choices.md, choice 18):
    there. Every other name is still refused there, both are still refused everywhere else on
    the About page and on every other page, and no model's name is allowed anywhere off an
    entry's page.
-5. A page that does not ask search engines to leave it out, while nothing is published.
+5. Since 2026-11-19, when the site was made listable as the sibling sites are: a page that asks
+   search engines to leave it out, other than the page for a missing address; a page that does
+   not give its own address at beyondthewindow.org; a robots file that turns search engines
+   away or does not name the sitemap; and a sitemap that does not list exactly the built pages
+   other than the page for a missing address. Until that day the rule was the opposite: every
+   page had to ask to be left out, because nothing was published.
 6. A link inside the site that leads to no page.
 7. The headline number on the home page differing from the headline file the site serves, or
    anything standing beside it in the large type.
@@ -82,6 +87,9 @@ SITE_AS_AGENT = (r"\b(the|this) (site|page|list|record|tracker) (does )?"
 # Rule 9: where the first person may stand, and nowhere else.
 FIRST_PERSON = r"\b(I|[Mm]y|[Mm]ine|[Mm]e|[Ww]e|[Oo]urs?|us)\b"
 ABOUT_PAGE = "/about/"
+# Rule 5: the site's address, and the one page search engines are asked to leave out.
+SITE_ADDRESS = "https://beyondthewindow.org"
+NOT_FOUND_PAGE = "/404.html"
 FIRST_PERSON_PLACE = r'(?is)<div\b[^>]*\bid="who"[^>]*>.*?</div>'
 QUOTED = r'"[^"]*"|“[^”]*”'
 # Rule 4's one exception: the About page, this paragraph, this name, and nothing wider.
@@ -188,8 +196,14 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
             snippet = " ".join(unquoted[start:m.end() + 40].split())
             problems.append(f"{rel}: the first person outside the About page's block marked "
                             f"id=\"who\": \"...{snippet}...\"")
-        if not re.search(r'<meta name="robots" content="noindex', raw):
-            problems.append(f"{rel}: does not ask search engines to leave it out")
+        asks_out = re.search(r'<meta name="robots" content="noindex', raw) is not None
+        if asks_out != (rel == NOT_FOUND_PAGE):
+            problems.append(f"{rel}: " + ("asks search engines to leave it out" if asks_out else
+                                          "the page for a missing address does not ask search "
+                                          "engines to leave it out"))
+        own = SITE_ADDRESS + rel
+        if rel != NOT_FOUND_PAGE and f'<link rel="canonical" href="{own}"' not in raw:
+            problems.append(f"{rel}: does not give its own address ({own})")
         for href in re.findall(r'<a\b[^>]*\bhref="([^"]+)"', raw):
             href = html.unescape(href)
             if href.startswith(("http://", "https://")):
@@ -201,6 +215,22 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
                     problems.append(f"{rel}: links to {href}, which is not a page")
             elif not href.startswith(("#", "mailto:")):
                 problems.append(f"{rel}: a link that is neither a full address nor from the root: {href}")
+
+    # rule 5: the robots file and the sitemap
+    robots = dist / "robots.txt"
+    robots_text = robots.read_text(encoding="utf-8") if robots.is_file() else ""
+    if re.search(r"(?m)^Disallow: */ *$", robots_text) or "Allow: /" not in robots_text:
+        problems.append("/robots.txt: turns search engines away, or is missing")
+    if f"Sitemap: {SITE_ADDRESS}/sitemap.xml" not in robots_text:
+        problems.append("/robots.txt: does not name the sitemap")
+    sitemap = dist / "sitemap.xml"
+    listed = set(re.findall(r"<loc>([^<]+)</loc>", sitemap.read_text(encoding="utf-8"))) \
+        if sitemap.is_file() else set()
+    built = {SITE_ADDRESS + "/" + str(p.relative_to(dist)).replace("index.html", "")
+             for p in pages if "/" + str(p.relative_to(dist)) != NOT_FOUND_PAGE}
+    if listed != built:
+        problems.append("/sitemap.xml: does not list exactly the built pages: "
+                        + ", ".join(sorted(listed ^ built) or ["it is missing"]))
 
     # the number on the home page is the number in the served file
     served = dist / "data" / "headline.json"

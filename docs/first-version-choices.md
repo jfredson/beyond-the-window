@@ -567,6 +567,12 @@ News, which the design proposal puts in the bar, have no pages yet.
 
 ### 15. No licence words in the footer, and no licence files
 
+*Changed 2026-11-19:* the repository now carries `LICENSE` (MIT, for the code) and
+`LICENSE-DATA` (Creative Commons Attribution 4.0, for the records and the site's text), copied
+in form from The Quiet Galaxy, because John's ruling that the repository is public says it
+needs the licence files the siblings carry. The footer still carries no licence words. What
+follows is kept as the record of what stood before.
+
 The footer's attribution line leaves out the family's "free to reuse with credit" words, and
 the repository has no licence files. Whether the family's data licence suits this project is
 open (row M9; it depends on what developers' terms say about publishing model answers, which
@@ -593,6 +599,14 @@ two. *Confidence:* low. *Judgment.*
 - The skin has no rule for a visitor with scripts turned off who has a light setting: they get
   the evening theme. A skin may define tokens and nothing else, and the fix belongs in the
   family's theme script.
+
+- *Changed 2026-11-19, before the first release:* the pages no longer ask search engines to
+  leave them out, the robots file allows crawling and names a sitemap, and the site check
+  enforces the new rule in place of the old one. This copies The Quiet Galaxy, under John's
+  standing principle of 2026-11-19 to copy the sibling sites wherever possible
+  (`docs/rulings/2026-11-19-three-points-on-the-first-release.md`). Only the page for a missing
+  address still asks to be left out. Detail in `docs/reviews/2026-11-19-site-fixes-written.md`,
+  the section on the second commit.
 
 ### 18. A check of the built site
 

@@ -5,6 +5,19 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-19
 
+- **Fixes after the full check before the first release**
+  (`docs/reviews/2026-11-19-full-check-before-publishing.md`). Eight sentences were mended so
+  that each says what its source says: the public survey (which of the 2024 report's two
+  samples has 1,099 people, and that its 17 and 66 percent are for the 2024 round alone), the
+  interview before retirement, the days-long task, the kept files, memory across conversations,
+  two links that led to a file, and the tie of one writer of the Guardian essay on three
+  entries. Each source was opened again on 2026-11-19. The About page's paragraph on the name
+  now paraphrases John's own words, and its part on what has been checked is three sentences.
+  The pages can now be listed by search engines, with a sitemap, each page's own address and
+  the text a link preview reads, in The Quiet Galaxy's form. The repository has its two licence
+  files and a README written for a public reader. Eight entries say on their pages that fixes
+  were made on 2026-11-19 and have not been checked yet. No number moved: the count is 5.
+  Nothing is published or pushed.
 - **Corrections after the check of the day's changes and the second search pass**
   (`docs/reviews/2026-11-19-check-of-site-changes.md`,
   `docs/research/2026-11-19-second-search-pass.md`). Ten entries were corrected so that each

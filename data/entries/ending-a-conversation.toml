@@ -51,7 +51,6 @@ url = "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf"
 published = "2026-11-09"
 opened = 2026-11-17
 from_maker = true
-note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card)."
 says = "Mentions the instructions that guide the model on using the tool for ending a conversation, and says those instructions have been posted on online forums."
 
 [[sources]]
@@ -118,7 +117,7 @@ source = "interventions"
 
 [[cautions]]
 kind = "unnoticed"
-text = "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
+text = "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and the group's page lists a third as a member of its staff."
 source = "safe-bets"
 
 [checks]
@@ -127,3 +126,6 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 corrected = 2026-11-19
+additions_checked = 2026-11-19
+corrections_checked = 2026-11-19
+fixed = 2026-11-19

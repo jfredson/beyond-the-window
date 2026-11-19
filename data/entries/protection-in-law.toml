@@ -91,7 +91,7 @@ source = "mythology"
 
 [[cautions]]
 kind = "unnoticed"
-text = "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
+text = "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and the group's page lists a third as a member of its staff."
 source = "safe-bets"
 
 [[cautions]]
@@ -107,3 +107,6 @@ changes_checked = 2026-11-18
 some_unchecked = true
 added_to = 2026-11-19
 corrected = 2026-11-19
+additions_checked = 2026-11-19
+corrections_checked = 2026-11-19
+fixed = 2026-11-19

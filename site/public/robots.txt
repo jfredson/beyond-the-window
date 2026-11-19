@@ -1,4 +1,6 @@
-# Nothing is published yet (2026-11-17). Until John rules that the site goes public,
-# no page is offered to search engines.
+# The site is public. Crawling is allowed. The sitemap is built from the records at every build
+# (site/src/pages/sitemap.xml.ts) and lists every page at its stable address.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://beyondthewindow.org/sitemap.xml

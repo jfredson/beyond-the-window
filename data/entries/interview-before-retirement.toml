@@ -15,7 +15,7 @@ only_the_developer = ["unnoticed"]
 
 [state]
 words = "Done by one developer, first in full for a model retired on January 5th, 2026"
-detail = "[Anthropic](https://www.anthropic.com/) reported on November 4th, 2025 a trial run with one model before its retirement, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full."
+detail = "[Anthropic](https://www.anthropic.com/) reported on November 4th, 2025 a trial run with one model before its retirement, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The developer has published short quoted passages and not the full records. Neither page says whether anyone outside the developer has read them."
 offered_today = true
 offered_by = ["Anthropic"]
 set_on = 2026-11-17
@@ -37,7 +37,7 @@ label = "Anthropic's update on the retirement of its model Claude Opus 3"
 publisher = "Anthropic"
 url = "https://www.anthropic.com/research/deprecation-updates-opus-3"
 published = "2026-02-25"
-opened = 2026-11-17
+opened = 2026-11-19
 from_maker = true
 says = "Says Claude Opus 3 was retired on January 5th, 2026 as the first model to go through the full process, and calls such conversations \"an imperfect means\" of learning a model's view."
 
@@ -91,3 +91,4 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+fixed = 2026-11-19

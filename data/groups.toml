@@ -45,5 +45,5 @@ beside = true
 # this is something developers offer. It sits here because it is kept for the user.
 [[groups]]
 name = "Offered, and kept for the user"
-meaning = "Developers offer memory across conversations, and by their own pages it is kept for the user: the stored memory is about the user, and is the user's to view and delete. The list is about what an AI model might reach for."
+meaning = "Developers offer memory across conversations, and by their own pages it is kept for the user: the stored memory is about the user, and is under the user's control. The list is about what an AI model might reach for."
 beside = true

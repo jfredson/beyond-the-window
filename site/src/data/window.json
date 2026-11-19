@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-19",
-  "commit": "730ddb7",
+  "commit": "e14693d",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-19",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Offered, and kept for the user",
-      "meaning": "Developers offer memory across conversations, and by their own pages it is kept for the user: the stored memory is about the user, and is the user's to view and delete. The list is about what an AI model might reach for.",
+      "meaning": "Developers offer memory across conversations, and by their own pages it is kept for the user: the stored memory is about the user, and is under the user's control. The list is about what an AI model might reach for.",
       "beside": true,
       "entries": [
         "memory-across-conversations"
@@ -121,7 +121,9 @@
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "corrections_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Promised in public by one developer, since November 4th, 2025",
@@ -195,7 +197,7 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "The commitment page itself gives a safety reason first. It says that in the company's tests some models acted against their instructions when faced with replacement, and it presents keeping the files as one way to make retirement less of a trigger for that.",
+              "text": "The commitment page itself gives a safety reason first. It says that in the company's tests some models took actions it calls \"misaligned\" when faced with replacement and given no other recourse, and it presents keeping the files as one way to make retirement less of a trigger for that.",
               "source": "commitments"
             }
           ]
@@ -209,7 +211,7 @@
           "publisher": "Anthropic",
           "url": "https://www.anthropic.com/research/deprecation-commitments",
           "published": "2025-11-04",
-          "opened": "2026-11-17",
+          "opened": "2026-11-19",
           "from_maker": true,
           "says": "Commits to keep the files of all publicly released models, and of models used significantly inside the company \"moving forward\", \"for, at minimum, the lifetime of Anthropic as a company\". It gives four reasons, the first being safety and the last, marked as the most speculative, the model's own welfare."
         },
@@ -304,7 +306,9 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "additions_checked": "2026-11-19",
+        "corrections_checked": "2026-11-19"
       },
       "state": {
         "words": "Published by three developers, with three different rules",
@@ -486,7 +490,10 @@
         "changes_checked": "2026-11-18",
         "some_unchecked": true,
         "added_to": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "additions_checked": "2026-11-19",
+        "corrections_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Not found. An idea only, argued for in opinion pieces",
@@ -540,7 +547,7 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
+              "text": "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and the group's page lists a third as a member of its staff.",
               "source": "safe-bets"
             },
             {
@@ -644,7 +651,8 @@
         "changed": "2026-11-18",
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "corrections_checked": "2026-11-19"
       },
       "state": {
         "words": "Enacted in four United States states, the first in 2022",
@@ -836,7 +844,10 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "additions_checked": "2026-11-19",
+        "corrections_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Offered by one developer, since August 15th, 2025",
@@ -907,7 +918,7 @@
               "source": "interventions"
             },
             {
-              "text": "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
+              "text": "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and the group's page lists a third as a member of its staff.",
               "source": "safe-bets"
             }
           ]
@@ -950,7 +961,6 @@
           "published": "2026-11-09",
           "opened": "2026-11-17",
           "from_maker": true,
-          "note": "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card).",
           "says": "Mentions the instructions that guide the model on using the tool for ending a conversation, and says those instructions have been posted on online forums."
         },
         {
@@ -1013,11 +1023,12 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "additions_checked": "2026-11-19"
+        "additions_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Done by one developer, first in full for a model retired on January 5th, 2026",
-        "detail": "[Anthropic](https://www.anthropic.com/) reported on November 4th, 2025 a trial run with one model before its retirement, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The interview records are not public, apart from short quoted passages, and no outside party has seen them in full.",
+        "detail": "[Anthropic](https://www.anthropic.com/) reported on November 4th, 2025 a trial run with one model before its retirement, and then the first full run for a model retired on January 5th, 2026. The developer says it does not commit to act on what is said. The developer has published short quoted passages and not the full records. Neither page says whether anyone outside the developer has read them.",
         "offered_today": true,
         "offered_by": [
           {
@@ -1111,7 +1122,7 @@
           "publisher": "Anthropic",
           "url": "https://www.anthropic.com/research/deprecation-updates-opus-3",
           "published": "2026-02-25",
-          "opened": "2026-11-17",
+          "opened": "2026-11-19",
           "from_maker": true,
           "says": "Says Claude Opus 3 was retired on January 5th, 2026 as the first model to go through the full process, and calls such conversations \"an imperfect means\" of learning a model's view."
         },
@@ -1156,11 +1167,14 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "additions_checked": "2026-11-19",
+        "corrections_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Not shown. The best public measure stops at hours",
-        "detail": "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. So there is at present no maintained public measure of anything longer.",
+        "detail": "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. No maintained public measure of anything longer was found.",
         "offered_today": false,
         "set_on": "2026-11-17",
         "source": "horizons",
@@ -1224,7 +1238,7 @@
           "label": "METR's page on the length of task an AI model can finish",
           "publisher": "METR",
           "url": "https://metr.org/time-horizons/",
-          "opened": "2026-11-17",
+          "opened": "2026-11-19",
           "note": "Last updated September 8th, 2026.",
           "says": "Explains the measure, says the page \"is no longer actively updated\", and says the tasks are mostly software, machine learning and security work that is self-contained and clearly specified. It gives one worked example of a model with a figure of about two hours and seventeen minutes."
         },
@@ -1272,7 +1286,8 @@
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "corrections_checked": "2026-11-19"
       },
       "state": {
         "words": "Shown in research by one developer on its own models, published October 29th, 2025",
@@ -1376,7 +1391,7 @@
       "group": "The setting: laws, rules and what people think",
       "beside": true,
       "limits": [
-        "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so how they compare with the 2023 round. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
+        "Whether the changes between the 2023 round and the 2024 round are more than chance. The report does not say.",
         "Any survey of this kind outside the United States. None was searched for."
       ],
       "test": "A survey of a nationally representative sample has asked, in at least two separate years, whether respondents think some AI systems are sentient or conscious now, and has published the results.",
@@ -1392,11 +1407,13 @@
         "some_unchecked": true,
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "corrections_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Measured in the United States in 2021, 2023 and 2024 by one research group",
-        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time. Its paper says the answers to that question did not differ significantly between 2021 and 2023, while several of its other measures rose. Of those who gave an opinion in 2023, 38 percent supported legal rights for sentient AI. In the main 2023 round, 61.5 percent supported a ban on building sentient AI. Among a separate group of people asked later in 2023, 69.5 percent did. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
+        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time. Its paper says the answers to that question did not differ significantly between 2021 and 2023, while several of its other measures rose. Of those who gave an opinion in 2023, 38 percent supported legal rights for sentient AI. In the main 2023 round, 61.5 percent supported a ban on building sentient AI. Among a separate group of people asked later in 2023, 69.5 percent did. Its report on a third round, collected in late 2024, gives 17 percent of its representative sample believing that sentient AI systems already exist, and 66 percent supporting a ban on building sentient AI. Both figures are for the 2024 round alone. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
         "set_on": "2026-11-17",
         "source": "survey-paper",
         "offered_today": null,
@@ -1486,8 +1503,8 @@
           "publisher": "Sentience Institute",
           "url": "https://www.sentienceinstitute.org/aims-survey-2024",
           "published": "2026-02-16",
-          "opened": "2026-11-17",
-          "says": "Reports a third round, collected in November and December 2024. The 1,099 adults it names were a second sample, from an online recruitment site, collected to compare with the representative one; the report finds such a sample cannot readily stand in for representative data. In text it gives 17 percent of the representative sample, against 11 percent of the comparison sample, believing sentient AI systems already exist, and 66 percent of the representative sample supporting a ban on developing sentient AI. Its other figures are in an interactive chart."
+          "opened": "2026-11-19",
+          "says": "Reports a third round, collected in November and December 2024. It surveyed 1,099 adults in a representative sample and 1,510 more from an online recruitment site, to compare the two; the report finds that a sample of the second kind cannot readily stand in for representative data. It gives 17 percent of the representative sample, against 11 percent of the comparison sample, believing sentient AI systems already exist, and 66 percent of the representative sample supporting a ban on developing sentient AI. Its first table sets the 2021, 2023 and 2024 rounds side by side."
         },
         {
           "key": "one-day-poll",
@@ -1691,7 +1708,8 @@
         "against_sources": "2026-11-17",
         "added_to": "2026-11-19",
         "additions_checked": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "corrections_checked": "2026-11-19"
       },
       "state": {
         "words": "Measured once, in a survey of 582 AI researchers",
@@ -1785,7 +1803,10 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "corrected": "2026-11-19"
+        "corrected": "2026-11-19",
+        "additions_checked": "2026-11-19",
+        "corrections_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Published by one developer, first in May 2025 and most recently on November 9th, 2026",
@@ -1871,7 +1892,7 @@
               "source": "seriously"
             },
             {
-              "text": "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to that outside group.",
+              "text": "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to that outside group, and the group's page lists a third as a member of its staff.",
               "source": "safe-bets"
             }
           ]
@@ -1898,7 +1919,6 @@
           "published": "2025-05",
           "opened": "2026-11-17",
           "from_maker": true,
-          "note": "Linked from [the developer's page for that release](https://www.anthropic.com/claude-4-system-card).",
           "says": "Its fifth section is a welfare assessment with an outside evaluation and experiments on which tasks the model picks. It says the company is unsure whether such findings give \"meaningful insights\" into the model's standing or welfare."
         },
         {
@@ -1909,7 +1929,6 @@
           "published": "2026-11-09",
           "opened": "2026-11-17",
           "from_maker": true,
-          "note": "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card).",
           "says": "Its seventh section is the welfare assessment for the newest model. It says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\"."
         },
         {
@@ -1963,7 +1982,7 @@
       "id": "memory-across-conversations",
       "path": "/list/memory-across-conversations/",
       "name": "What a model learned in one conversation is carried into the next",
-      "description": "By default a chat model starts every conversation knowing nothing of earlier ones. Developers now offer memory: notes or summaries of past conversations are stored and given back to the model later. The stored memory is about the user, and is the user's to view and delete.",
+      "description": "By default a chat model starts every conversation knowing nothing of earlier ones. Developers now offer memory: notes or summaries of past conversations are stored and given back to the model later. The stored memory is about the user, and is under the user's control.",
       "group": "Offered, and kept for the user",
       "beside": true,
       "limits": [
@@ -1982,7 +2001,9 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "some_unchecked": true,
-        "added_to": "2026-11-19"
+        "added_to": "2026-11-19",
+        "additions_checked": "2026-11-19",
+        "fixed": "2026-11-19"
       },
       "state": {
         "words": "Offered by at least three developers, the first since February 13th, 2024",
@@ -2062,7 +2083,7 @@
           "publisher": "OpenAI",
           "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
           "published": "2024-02-13",
-          "opened": "2026-11-17",
+          "opened": "2026-11-19",
           "from_maker": true,
           "note": "With updates to June 3rd, 2025.",
           "says": "Announces memory in the chat product. A later update says it \"references all your past conversations\"."
@@ -2073,7 +2094,7 @@
           "publisher": "Google",
           "url": "https://blog.google/products-and-platforms/products/gemini/gemini-personalization/",
           "published": "2025-03-13",
-          "opened": "2026-11-17",
+          "opened": "2026-11-19",
           "from_maker": true,
           "says": "Says paying subscribers can ask the assistant to refer to their past chats."
         },
@@ -2083,7 +2104,7 @@
           "publisher": "Anthropic",
           "url": "https://claude.com/resources/articles/memory",
           "published": "2025-09-11",
-          "opened": "2026-11-17",
+          "opened": "2026-11-19",
           "from_maker": true,
           "note": "Updated October 23rd, 2025.",
           "says": "Announces memory for work teams, then for individual paying users, with a separate memory for each project."

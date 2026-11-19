@@ -27,7 +27,7 @@ label = "Anthropic's page on what it commits to when it retires a model"
 publisher = "Anthropic"
 url = "https://www.anthropic.com/research/deprecation-commitments"
 published = "2025-11-04"
-opened = 2026-11-17
+opened = 2026-11-19
 from_maker = true
 says = "Commits to keep the files of all publicly released models, and of models used significantly inside the company \"moving forward\", \"for, at minimum, the lifetime of Anthropic as a company\". It gives four reasons, the first being safety and the last, marked as the most speculative, the model's own welfare."
 
@@ -98,7 +98,7 @@ read = "part"
 
 [[cautions]]
 kind = "safety"
-text = "The commitment page itself gives a safety reason first. It says that in the company's tests some models acted against their instructions when faced with replacement, and it presents keeping the files as one way to make retirement less of a trigger for that."
+text = "The commitment page itself gives a safety reason first. It says that in the company's tests some models took actions it calls \"misaligned\" when faced with replacement and given no other recourse, and it presents keeping the files as one way to make retirement less of a trigger for that."
 source = "commitments"
 
 [[cautions]]
@@ -128,3 +128,5 @@ changes_checked = 2026-11-18
 added_to = 2026-11-19
 additions_checked = 2026-11-19
 corrected = 2026-11-19
+corrections_checked = 2026-11-19
+fixed = 2026-11-19

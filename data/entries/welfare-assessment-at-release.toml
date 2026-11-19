@@ -30,7 +30,6 @@ url = "https://assets.claude.com/6d8a8055020700718b0c49369f60816ba2a7c285.pdf"
 published = "2025-05"
 opened = 2026-11-17
 from_maker = true
-note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-4-system-card)."
 says = "Its fifth section is a welfare assessment with an outside evaluation and experiments on which tasks the model picks. It says the company is unsure whether such findings give \"meaningful insights\" into the model's standing or welfare."
 
 [[sources]]
@@ -41,7 +40,6 @@ url = "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf"
 published = "2026-11-09"
 opened = 2026-11-17
 from_maker = true
-note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card)."
 says = "Its seventh section is the welfare assessment for the newest model. It says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\"."
 
 [[sources]]
@@ -136,7 +134,7 @@ source = "seriously"
 
 [[cautions]]
 kind = "unnoticed"
-text = "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to that outside group."
+text = "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to that outside group, and the group's page lists a third as a member of its staff."
 source = "safe-bets"
 
 [checks]
@@ -145,3 +143,6 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 corrected = 2026-11-19
+additions_checked = 2026-11-19
+corrections_checked = 2026-11-19
+fixed = 2026-11-19

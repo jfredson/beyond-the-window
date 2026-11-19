@@ -108,8 +108,14 @@ HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
 # reason: a record whose addition was checked, and was then corrected, must be able to say that
 # the corrections have not been checked. They are kept apart from the two before them because a
 # check of the addition may be dated after the corrections were made.
+# fixed: the date fixes were made after the full check before the first release
+#   (docs/reviews/2026-11-19-full-check-before-publishing.md). Left out when there were none.
+# fixes_checked: the date a check of those fixes was committed (left out until then).
+# PROPOSED 2026-11-19, for the same reason as the two before them: the full check confirmed the
+# additions and the corrections, and the fixes it asked for are newer text that no check has read.
 CHECKS_FIELDS = ["against_sources", "changed", "changes_checked", "some_unchecked",
-                 "added_to", "additions_checked", "corrected", "corrections_checked"]
+                 "added_to", "additions_checked", "corrected", "corrections_checked",
+                 "fixed", "fixes_checked"]
 
 PROGRESS_KINDS = {"technical", "political", "cultural"}
 # The order is the order an entry page shows them in (choice 7). They are never added together.
@@ -309,6 +315,18 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                         "it corrects")
                 if _is_date(ch.get("corrections_checked")) and ch["corrections_checked"] < ch["corrected"]:
                     bad("checks: 'corrections_checked' is earlier than 'corrected'")
+            for field in ("fixed", "fixes_checked"):
+                if field in ch and not _is_date(ch[field]):
+                    bad(f"checks: '{field}' is not a calendar date")
+            if "fixes_checked" in ch and "fixed" not in ch:
+                bad("checks: 'fixes_checked' with no 'fixed' date")
+            if _is_date(ch.get("fixed")):
+                before = [ch[f] for f in ("against_sources", "changed", "added_to", "corrected")
+                          if _is_date(ch.get(f))]
+                if before and ch["fixed"] < max(before):
+                    bad("checks: 'fixed' is earlier than something it comes after")
+                if _is_date(ch.get("fixes_checked")) and ch["fixes_checked"] < ch["fixed"]:
+                    bad("checks: 'fixes_checked' is earlier than 'fixed'")
             if _is_date(rec.get("added")) and _is_date(ch.get("against_sources")) \
                     and ch["against_sources"] < rec["added"]:
                 bad("checks: 'against_sources' is earlier than the record's 'added' date; a record cannot "

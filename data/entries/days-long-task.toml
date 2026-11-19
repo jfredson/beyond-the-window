@@ -16,7 +16,7 @@ notes = "From entry 14 of docs/research/2026-11-17-first-entries.md. The researc
 
 [state]
 words = "Not shown. The best public measure stops at hours"
-detail = "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. So there is at present no maintained public measure of anything longer."
+detail = "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. No maintained public measure of anything longer was found."
 offered_today = false
 set_on = 2026-11-17
 source = "horizons"
@@ -26,7 +26,7 @@ key = "horizons"
 label = "METR's page on the length of task an AI model can finish"
 publisher = "METR"
 url = "https://metr.org/time-horizons/"
-opened = 2026-11-17
+opened = 2026-11-19
 note = "Last updated September 8th, 2026."
 says = "Explains the measure, says the page \"is no longer actively updated\", and says the tasks are mostly software, machine learning and security work that is self-contained and clearly specified. It gives one worked example of a model with a figure of about two hours and seventeen minutes."
 
@@ -64,3 +64,6 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 corrected = 2026-11-19
+additions_checked = 2026-11-19
+corrections_checked = 2026-11-19
+fixed = 2026-11-19

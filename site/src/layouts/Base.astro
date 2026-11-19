@@ -8,7 +8,12 @@
 // - the theme follows the visitor's own light or dark setting, with no default (choice 4);
 // - the attribution line carries no licence words, because whether the family's licence suits
 //   this project has not been decided (choice 15);
-// - every page asks search engines not to list it, because nothing is published (choice 17).
+// Until 2026-11-19 every page also asked search engines not to list it. That line is gone, so
+// that the site can be listed as the sibling sites are (John's standing principle of that day is
+// to copy the siblings wherever possible, docs/rulings/2026-11-19-three-points-on-the-first-release.md).
+// Only the page for a missing address still asks to be left out, as on The Quiet Galaxy. The
+// page's own address and the text a link preview reads were added the same day, in The Quiet
+// Galaxy's form. There is no preview picture yet, so the card is the small kind with no picture.
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import { data, longDate, builtFrom, SITE_NAME } from '../lib/data';
@@ -16,12 +21,16 @@ import { data, longDate, builtFrom, SITE_NAME } from '../lib/data';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean; // the page for a missing address only
 }
 
 const {
   title = SITE_NAME,
   description = 'A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.',
+  noindex = false,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
 const currentYear = new Date().getFullYear();
 ---
@@ -50,8 +59,16 @@ const currentYear = new Date().getFullYear();
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="John Andrew Fredrickson" />
-    <meta name="robots" content="noindex, nofollow" />
+    <link rel="author" href="https://johnandrewfredrickson.com/" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
   </head>
   <body>
     {data.constructed && (

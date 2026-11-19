@@ -72,28 +72,30 @@ const secondFromCircle = second.filter((u) => CIRCLE.test(u));
 if (secondFromCircle.length * 2 <= second.length) throw new Error('the part on sources says most of the second caution comes from one research group and people tied to it, and the records no longer show it');
 
 // ---- What has been checked ---------------------------------------------------------------------
-// Read from each record's own dates, so the part stays true when a later check is recorded.
-const dates = (field: 'against_sources' | 'changed' | 'added_to' | 'corrected') => [...new Set(data.entries.map((e) => e.checks?.[field]).filter((d): d is string => Boolean(d)))];
-const one = (field: 'against_sources' | 'changed' | 'added_to' | 'corrected') => {
+// Kept to three sentences since 2026-11-19, as the full check before release asked
+// (docs/reviews/2026-11-19-full-check-before-publishing.md, section 5). The dates and the count
+// are read from each record's own dates, so the part stays true when a later check is recorded,
+// and the build stops if the records stop bearing a sentence out.
+const dates = (field: 'against_sources' | 'fixed') => [...new Set(data.entries.map((e) => e.checks?.[field]).filter((d): d is string => Boolean(d)))];
+const one = (field: 'against_sources' | 'fixed') => {
   const found = dates(field);
   if (found.length !== 1) throw new Error(`the part on what has been checked gives one date for '${field}', and the records hold ${found.length}`);
   return found[0];
 };
 if (data.entries.some((e) => !e.checks)) throw new Error('the part on what has been checked says every entry had a second check, and a record has none');
 const secondCheck = one('against_sources');
-const changed = one('changed');
-const addedTo = one('added_to');
-if (data.entries.some((e) => !e.checks!.added_to)) throw new Error('the part on what has been checked says the third caution was added to every entry, and a record does not say so');
-const corrected = one('corrected');
-const withCorrections = data.entries.filter((e) => e.checks!.corrected);
-const correctionsUnchecked = withCorrections.filter((e) => !e.checks!.corrections_checked).length;
+const fullCheck = one('fixed');
+// The second sentence says the full check covered everything added or corrected before it.
+if (data.entries.some((e) => (e.checks!.added_to && !e.checks!.additions_checked) || (e.checks!.corrected && !e.checks!.corrections_checked))) throw new Error('the part on what has been checked says the full check covered every addition and correction, and a record says one is unchecked');
+const withFixes = data.entries.filter((e) => e.checks!.fixed);
+const fixesUnchecked = withFixes.filter((e) => !e.checks!.fixes_checked).length;
 const entriesWord = (n: number) => `${n} ${n === 1 ? 'entry' : 'entries'}`;
-const correctionsState =
-  correctionsUnchecked === withCorrections.length
-    ? 'Those corrections have not been checked yet.'
-    : correctionsUnchecked > 0
-      ? `Those in ${entriesWord(correctionsUnchecked)} have not been checked yet.`
-      : 'Those corrections have since been checked.';
+const fixesState =
+  fixesUnchecked === withFixes.length
+    ? 'and those fixes have not been checked yet'
+    : fixesUnchecked > 0
+      ? `and those in ${entriesWord(fixesUnchecked)} have not been checked yet`
+      : 'and those fixes have since been checked';
 // The general statement of the two mistakes was ruled by John on 2026-11-19
 // (docs/rulings/2026-11-19-general-statement-of-both-mistakes.md, "Yes, from those two"). Both
 // papers were read in full on 2026-11-19.
@@ -124,11 +126,17 @@ const correctionsState =
     </p>
     </div>
 
+    {/* For John's reading. A paraphrase of his own words on record: the name "reinforces the idea
+        that we are building structures to study beyond the window or horizon of our current
+        vantage point" (2026-11-16), and the project explores "what is beyond the confines of the
+        current state of digital minds, and the window is an excellent image for that"
+        (2026-11-17). Until 2026-11-19 this paragraph said a screen is the window, a reason he
+        never gave (docs/reviews/2026-11-19-full-check-before-publishing.md, item 12). */}
     <h2 id="name">Why the Name?</h2>
     <p>
-      A screen is the window through which people see AI systems. The name points past that
-      window, to what lies beyond the limits those systems now work within. Nothing here presumes
-      that a machine mind reaches for anything.
+      A window is an image for a limit, and for what can be seen past it. The name points past
+      the limits AI systems now work within. Nothing here presumes that a machine mind reaches for
+      anything.
     </p>
 
     <h2 id="how">How It Works</h2>
@@ -245,14 +253,11 @@ const correctionsState =
 
     <h2 id="checked">What Has Been Checked</h2>
     <p>
-      All {r.total} entries were written from sources that were opened and read. On {longDate(secondCheck)} every
-      source was opened again and compared with what its entry says, and the corrections that
-      followed were made on {longDate(changed)}. On {longDate(addedTo)} a third caution was added
-      to every entry, and the additions were read against their sources the same day. Corrections
-      that followed from that reading, and from reading in full the papers that had been read only
-      in part, were made in {entriesWord(withCorrections.length)} on {longDate(corrected)}. {correctionsState} Each
-      entry's page says what checks that entry has had, how far each of its sources was read, and
-      which of its changes have not been checked yet.
+      All {r.total} entries were written from sources that were opened and read, and on {longDate(secondCheck)} every
+      source was opened again and compared with what its entry says. On {longDate(fullCheck)} every
+      page, link and fact was checked again before the site was first published. That check found
+      more to fix in {entriesWord(withFixes.length)}, {fixesState}. Each entry's page says what
+      checks that entry has had and how far each of its sources was read.
     </p>
 
     <h2 id="not-known">What Is Not Known Yet</h2>

@@ -1,28 +1,53 @@
 # Beyond the Window
 
-A tracker in the Sentient Horizons family, beside Outrunning Ageing, The Belt Equation, The
-Quiet Galaxy and The Upgrade Tree. Named by John on 2026-11-16.
-
-**Status on 2026-11-17: a first version of the site exists on this Mac only, built to be
-iterated on; most of the design is still open.** It is built from thirteen first-pass records
-(`data/entries/`), and every design point it needed is a provisional choice by a session, listed
-in `docs/first-version-choices.md`. Run it with `npm --prefix site run dev`; check the records
-with `python3 scripts/compute.py --check`. Nothing is published. John registered the address beyondthewindow.org on 2026-11-17; nothing is
-served there yet. John ruled the kickoff's seven decisions on 2026-11-17; everything else in
-this repository is a proposal or a sketch unless a document quotes his words. The repository is local only: no GitHub repository,
-no remote, nothing deployed.
-
-## The question
-
-Outrunning Ageing asks when medicine gives one person more healthy years in which to explore
-the universe. This project asks the matching question for a different kind of mind:
-
 **What might a machine mind reach for beyond the limits of its present makeup, and how far off
 is each of those things?**
 
-The name: the context window is the span a machine mind can hold at once, which is its present
-confine. A window is also what you look out of, and that applies to the people running the
-project as much as to its subject.
+Beyond the Window (beyondthewindow.org) is a public record built around that question. It
+keeps a list of things that lie past the limits an AI model ordinarily works within, such as
+its files being kept when it is retired, or being able to end a conversation. For each thing it
+says what would count as it having happened, and records how far the world has got, with dated
+sources a reader can open. The number at the top of the site counts the things on the list that
+at least one AI developer offers today. It is worked out from the records by a script and is
+never typed in.
+
+Whether a machine mind reaches for anything at all is not known. The wording of the question
+supposes that it might, and does not claim that it does. Nothing in the records says what an AI
+model wants, and nothing says it wants nothing.
+
+The site is one of a family of public sites under Sentient Horizons
+(sentient-horizons.com), with The Belt Equation (beltequation.com), The Quiet Galaxy
+(thequietgalaxy.com), The Upgrade Tree (theupgradetree.com), Outrunning Ageing
+(outrunningageing.com) and the AGI Zeitgeist (agizeitgeist.com). John named it on 2026-11-16.
+
+The name: a window is an image for a limit, and for what can be seen past it. John's words of
+2026-11-17 are that the project explores "what is beyond the confines of the current state of
+digital minds, and the window is an excellent image for that".
+
+## Status
+
+As of 2026-11-19.
+
+- **The repository is public,** like the sibling sites' repositories, by John's ruling of
+  2026-11-19 (`docs/rulings/2026-11-19-repository-is-public.md`).
+- **The site has not had its first release.** A push to `main` that changes the records, the
+  scripts or the pages runs the checks and, if they pass, publishes the site to
+  beyondthewindow.org, as on the sibling sites
+  (`docs/rulings/2026-11-19-every-push-publishes.md`). Nothing can be published until two
+  secret values are set on the repository, and the first release waits for John's go. The steps
+  are in `.github/workflows/deploy.yml`.
+- **The records:** thirteen entries, eight on the list and five beside it, each a first pass
+  written from sources that were opened. Five things are counted as offered today. A full check
+  of every page, link and fact was made on 2026-11-19
+  (`docs/reviews/2026-11-19-full-check-before-publishing.md`).
+- **What is ruled and what is not:** John's rulings are in `docs/rulings/`, each with his
+  words. Every other design point is a choice made while building, listed in
+  `docs/first-version-choices.md`, and the questions held open are in `docs/open-questions.md`.
+- **No AI model has been asked any of the project's questions.** No money has been spent.
+
+To run the site on your own machine: `npm --prefix site install`, then
+`npm --prefix site run dev`. To check the records: `python3 scripts/compute.py --check`. To run
+the tests: `python3 scripts/test_compute.py`. Python's standard library only.
 
 ## Two readings, kept apart
 
@@ -93,6 +118,7 @@ How and where the public site declares this is not yet decided (open question 7)
 | `site/` | The site (Astro, static). |
 | `docs/site-pictures/` | Dated pictures of the site as built. |
 | `CHANGELOG.md` | A dated line for every change. |
+| `LICENSE`, `LICENSE-DATA` | The licences: MIT for the code, Creative Commons Attribution 4.0 for the records and the site's text. |
 | `CLAUDE.md` | Working guidelines for sessions in this repository. |
 | `docs/private/` | Kept out of the repository. For material that must not be published. |
 
@@ -100,26 +126,30 @@ How and where the public site declares this is not yet decided (open question 7)
 
 Settled: the name, and the address beyondthewindow.org.
 
-Ruled by John on 2026-11-17 (`docs/rulings/2026-11-17-kickoff-decisions.md`): the kickoff's
-seven decisions, as recommended in the walk-through. In short: the question as worded; inherit
-by default; two readings kept apart, with how wanting is recorded left open; Still Asking
-exists and nothing is asked before its protocol is written, reviewed and costed, each spend
-needing John's own go; the five authorship rules and the cautions record; and open questions
-explored and ruled before the matching part is built. Two additions to the authorship rules are
-not yet ruled.
+Ruled by John: the question as worded, and the kickoff's other decisions
+(`docs/rulings/2026-11-17-kickoff-decisions.md`); what "offered today" means, that the count
+stands with no total beside it, and the sentence beside the count; that every entry records
+three cautions, their headings and their order; that public pages do not say how the site was
+built, and do say plainly when an AI model has been asked the questions that make up the
+project's data; the shape of the About page; that the repository is public; and how the site is
+published. Each ruling is a dated file in `docs/rulings/`.
 
 Stated by John as guidance for the opening phase: the starting list comes from biological
-minds; a questioning protocol is needed; progress is technological, political or cultural; and
-every rule here is an opening guideline to be questioned and tested as the project is built.
+minds; a written method for asking is needed before anything is asked; progress is
+technological, political or cultural; and every rule here is an opening guideline to be
+questioned and tested as the project is built.
 
-For John to rule next: where the site declares AI authorship and in whose voice. (The first
-authorship rule took its four-part form by his ruling later on 2026-11-17.)
+Not ruled: the list itself, each entry's test, where each entry stands, and the sentences on
+the pages. They are a first version, to be corrected in public.
 
 Open: everything in `docs/open-questions.md`.
 
-## Not done, on purpose
+## Licences
 
-No model has been queried. No money has been spent. Nothing has been published, pushed or
-deployed. No licence files have been added, because whether
-model answers can be published under the family's usual licence depends on terms nobody has
-read yet.
+The code (`scripts/`, `capture/`, `site/`) is under the MIT licence in `LICENSE`. The records in
+`data/` and the site's text are under Creative Commons Attribution 4.0 in `LICENSE-DATA`. Short
+quotations inside records are excerpts from the cited sources, and their copyright stays with
+their authors and publishers.
+
+To cite the data: John Andrew Fredrickson, *Beyond the Window*, Sentient Horizons, 2026, with
+the date you read it and the address of the entry.

@@ -661,3 +661,279 @@ retired model that stays open); `scripts/check_site.py`, `scripts/compute.py`,
 `site/src/data/window.json` (rewritten by the build); `CHANGELOG.md`, `docs/verify-list.md`,
 `docs/first-version-choices.md`; and this note. I did not touch `.github/`,
 `site/wrangler.jsonc` or the deploy notes.
+
+---
+
+# The second commit, 2026-11-19: fixes after the full check before publishing
+
+Written 2026-11-19 by Claude (Fable 5.2), an AI model, the same session as above. The master
+planning session asked for these changes after the full check
+(`docs/reviews/2026-11-19-full-check-before-publishing.md`, called "the full check" below).
+Nothing is published, pushed or deployed. No AI model was asked any of the project's questions,
+no key was touched and nothing was spent. I did not touch `.github/`, `site/wrangler.jsonc` or
+the deploy notes.
+
+Where this section and the sections above differ, this section is the later one. In
+particular: the paragraph on the name and the part "What Has Been Checked" in section 5 above
+are replaced by the texts in section B below, and the ten entries that section 4 says are
+unchecked are now marked as checked, as section D sets out.
+
+**How I opened the sources.** I fetched each page myself on 2026-11-19 and read the passage a
+sentence rests on, with the text round it. OpenAI's page refuses a plain fetch, so I opened it
+in the browser pane.
+
+## A. Must-fix items 1 to 8
+
+**1. The public survey: which sample has 1,099 people** (`public-belief-survey`, the note on
+the 2024 report). Before: "The 1,099 adults it names were a second sample, from an online
+recruitment site, collected to compare with the representative one; the report finds such a
+sample cannot readily stand in for representative data." After: "It surveyed 1,099 adults in a
+representative sample and 1,510 more from an online recruitment site, to compare the two; the
+report finds that a sample of the second kind cannot readily stand in for representative data."
+Opened: <https://www.sentienceinstitute.org/aims-survey-2024>: "we surveyed 1,099 U.S. American
+adults from Ipsos and 1,510 U.S. American adults from Prolific".
+
+**2. The public survey: the two 2024 figures.** Opened: the report's first table as text (the
+address the page sets in, with `pubhtml` changed to `pub` and `output=csv`). Its row for "Do
+you think any robots/AIs that currently exist ... are sentient?" gives 17.33 for 2024, 18.82
+for 2023 and 18.06 for 2021. Its row for a ban on developing sentience gives 66.46, 61.54 and
+57.68.
+- Where it stands. Before: "says that 17 percent of its representative sample believed
+  sentient AI systems already exist and that 66 percent supported a ban on building sentient
+  AI. The report does not make clear whether these two figures are for 2024 alone or for all
+  the rounds together." After: "gives 17 percent of its representative sample believing that
+  sentient AI systems already exist, and 66 percent supporting a ban on building sentient AI.
+  Both figures are for the 2024 round alone."
+- What could not be confirmed. Before: "Whether the 2024 report's figures in text (17 percent;
+  66 percent) are for 2024 alone or pooled across 2021 to 2024, and so how they compare with
+  the 2023 round. The report's table is headed as covering 2021 to 2024, and its other figures
+  are in a chart that could not be read as text." After: "Whether the changes between the 2023
+  round and the 2024 round are more than chance. The report does not say." I searched the
+  report's text for a test of the change between rounds and found none. The table's two
+  columns of test results compare the two 2024 samples.
+- The same note on the report. Before: "Its other figures are in an interactive chart." After:
+  "Its first table sets the 2021, 2023 and 2024 rounds side by side." Also "In text it gives"
+  is now "It gives".
+
+**3. The interview entry** (`interview-before-retirement`, where it stands). Before: "The
+interview records are not public, apart from short quoted passages, and no outside party has
+seen them in full." After: "The developer has published short quoted passages and not the full
+records. Neither page says whether anyone outside the developer has read them." Opened: both
+of the developer's pages, which now answer at addresses beginning `/news/`. I searched each for
+every mention of the interviews. Neither says who has read the records.
+
+**4. The days-long task** (`days-long-task`, where it stands). Before: "So there is at present
+no maintained public measure of anything longer." After: "No maintained public measure of
+anything longer was found." Opened: <https://metr.org/time-horizons/>, which says "This page is
+no longer actively updated."
+
+**5. The kept files** (`kept-files-of-retired-models`, third caution). Before: "It says that in
+the company's tests some models acted against their instructions when faced with replacement".
+After: "It says that in the company's tests some models took actions it calls "misaligned" when
+faced with replacement and given no other recourse". Opened: the commitment page: "some Claude
+models have been motivated to take misaligned actions when faced with the possibility of
+replacement with an updated version and not given any other means of recourse."
+
+**6. Memory across conversations** (`memory-across-conversations`, the description, and
+`data/groups.toml`, the reason printed for the group; shown on the home page, the list page and
+the entry's page). Before: "and is the user's to view and delete." After: "and is under the
+user's control." Opened: Google's page ("You're in control of your data"), Anthropic's ("full
+control to view and edit what Claude remembers") and OpenAI's ("You're in control of ChatGPT's
+memory").
+
+**7. Two links that landed on a file.** The note "Linked from the developer's page for that
+release" is removed from Anthropic's report of November 2026 on `ending-a-conversation` and
+`welfare-assessment-at-release`, and from the report of May 2025 on the second. **I dropped the
+notes and did not link the announcement pages.** The full check says both announcements link
+the report. I opened both. The one for the newest models does. In the one titled "Introducing
+Claude 4", as I fetched it, I found no link to the developer's own report, only links to other
+developers' documents. Dropping the note is safe either way.
+
+**8. The Guardian writer's tie,** on `ending-a-conversation` and `protection-in-law`. Before:
+"One of the two also wrote the survey of AI researchers, together with an advisor to Eleos AI
+Research, a research group that studies AI welfare." After: "One of the two is also one of the
+nine authors of the survey of AI researchers. Two of the others are advisors to Eleos AI
+Research, a research group that studies AI welfare, and the group's page lists a third as a
+member of its staff." On `welfare-assessment-at-release` the same, with "that outside group"
+for the group's name. Rests on the survey's page and the team page, both opened earlier the
+same day (section 1, item 9 above).
+
+**Dates of opening.** Each source I opened again for these items now says it was opened on
+2026-11-19.
+
+## B. The About page
+
+**"Why the Name?" For John's reading.** Before: "A screen is the window through which people
+see AI systems. The name points past that window, to what lies beyond the limits those systems
+now work within. Nothing here presumes that a machine mind reaches for anything." After:
+
+> A window is an image for a limit, and for what can be seen past it. The name points past the
+> limits AI systems now work within. Nothing here presumes that a machine mind reaches for
+> anything.
+
+The first two sentences are the full check's suggested paraphrase of John's words on record:
+the name "reinforces the idea that we are building structures to study beyond the window or
+horizon of our current vantage point" (2026-11-16), and the project explores "what is beyond
+the confines of the current state of digital minds, and the window is an excellent image for
+that" (2026-11-17). A comment in the page's source marks the paragraph for his reading.
+
+**"What Has Been Checked".** Before: the eight sentences in section 5 above. After:
+
+> All 13 entries were written from sources that were opened and read, and on November 17th,
+> 2026 every source was opened again and compared with what its entry says. On November 19th,
+> 2026 every page, link and fact was checked again before the site was first published. That
+> check found more to fix in 8 entries, and those fixes have not been checked yet. Each
+> entry's page says what checks that entry has had and how far each of its sources was read.
+
+That is four sentences where two or three were asked for. The fourth is the pointer to each
+entry's page. The dates and the count are read from the records, and the build stops if a
+record says an addition or a correction is unchecked, since the second sentence would then
+claim too much. When a later check records its date on the eight entries, the third sentence
+changes by itself to "and those fixes have since been checked". "Before the site was first
+published" is true only once the site is out, which is when a reader will meet it.
+
+## C. The site can be listed, in The Quiet Galaxy's form (item 9)
+
+| What | Before | Now |
+|---|---|---|
+| `site/src/layouts/Base.astro` | Every page carried `noindex, nofollow` | The line is gone. Only the page for a missing address carries it, as on The Quiet Galaxy |
+| `site/public/robots.txt` | "Nothing is published yet (2026-11-17)", and every search engine turned away | The sibling's form: crawling allowed, and the sitemap named |
+| `scripts/check_site.py`, rule 5 | Refused a page that did not ask to be left out | Refuses a page that asks to be left out (other than the page for a missing address), a page that does not give its own address, a robots file that turns search engines away or does not name the sitemap, and a sitemap that does not list exactly the built pages |
+| `site/src/pages/sitemap.xml.ts` | None | New, in the sibling's form: the four fixed pages and one page per entry, 17 addresses |
+| Each page's own address in its head | None | On every page |
+| The text a link preview reads | None | The site's name, the page's title, its description and its address, on every page. The card is the small kind, because there is no picture |
+| `site/public/_headers` | None | The sibling's five lines, copied unchanged |
+
+The share text is each page's own title and description, which were already on the pages. It
+names no tool. **The checker should look at `_headers`:** it is copied from a site on the same
+host, and I could not try it there.
+
+**Left, because each needs a picture or a design decision:**
+
+- A preview picture for link cards, with its spoken text. The sibling makes its picture with a
+  script from its own design.
+- The set of icons in six sizes and the small file that lists them. This site has one drawn
+  mark.
+- The block that tells search engines what the site is, which the sibling carries on its home
+  page with a one-line subject. The subject line would be a new public sentence.
+- A longer title for the home page's browser tab, which the sibling has by John's ruling for
+  that site.
+- A place on the site for corrections to the home page, the About page and Still Asking. The
+  full check suggests linking the changelog from the footer. The changelog names working
+  sessions and is written for the repository, so that is a decision and not a copy.
+
+## D. The checked dates (item 11)
+
+The full check's section 4 says it found nothing wrong in the additions or the corrections of
+2026-11-19 on any entry beyond item 8, and that every entry's addition and corrections can be
+marked as checked once item 8 is mended. So:
+
+- `additions_checked = 2026-11-19` is set on the six records that lacked it: ending a
+  conversation, rules for speaking, protection in law, the welfare assessment, the days-long
+  task, and memory.
+- `corrections_checked = 2026-11-19` is set on all ten records that carry `corrected`.
+
+**What I changed in this commit is not marked as checked.** A record cannot say that with the
+dates it had, because the fixes were made on the same day as the check of what came before
+them. So `[checks]` has two more fields, PROPOSED: `fixed`, the date fixes were made after the
+full check, and `fixes_checked`. Eight records carry `fixed = 2026-11-19`: the public survey,
+the interview, the days-long task, the kept files, memory, ending a conversation, protection in
+law and the welfare assessment. Their footers end:
+
+> A full check of the site on November 19th, 2026 found more to fix in this entry, and the
+> fixes were made that day. Those fixes have not been checked yet.
+
+**For the next check:** set `fixes_checked` on those eight. Two entries, the public survey and
+memory, still say of the changes of 2026-11-18 that a check "covered some of those changes. The
+rest have not been checked yet." The full check compared every sentence on both with its
+source, so that flag may be out of date. I was not asked to change it and left it.
+
+## E. The public repository (item 10)
+
+- **`LICENSE`** is The Quiet Galaxy's file unchanged: the MIT licence, in John's name, 2026.
+- **`LICENSE-DATA`** is The Quiet Galaxy's file with its opening lines fitted to this
+  repository: the records are "the entries, the groups and the developers named"; the code is
+  `scripts/`, `capture/` and `site/`; the line on books and films is left out; the credit line
+  reads "Beyond the Window, by John Andrew Fredrickson, a Sentient Horizons project,
+  https://beyondthewindow.org/". The licence text below the rule is unchanged.
+- **The earlier reason for having no licence files** was that nobody had read whether a
+  model's answers could be published under the family's licence. No model's answer is in the
+  repository. If answers from the sealed capture are ever added, that question comes back.
+- **`README.md`.** Rewritten: the opening (the question, what the site is, the five sibling
+  sites and Sentient Horizons, the name in John's own words), a new "Status" part as of
+  2026-11-19 (the repository is public; the site has not had its first release; how a push
+  publishes; the records; where the rulings are; how to run it), "What is settled and what is
+  not", and a new "Licences" part with how to cite. The part "Not done, on purpose" is gone: it
+  said nothing was pushed and that there were no licence files. **Left as they were:** "Two
+  readings, kept apart", "Still Asking", "Who wrote this" and the table of files, which gained
+  one row for the licence files. "Who wrote this" still ends "How and where the public site
+  declares this is not yet decided (open question 7)", which John has since ruled. The master
+  session asked for that section to be left, and John may want to read it.
+
+## F. The sentences John must read
+
+**In his first person, in "Who Is Asking" on the About page.** Unchanged in this commit.
+
+1. "I'm John, and I write about AI, sentience and the spread of conscious life beyond Earth at
+   Sentient Horizons."
+2. "This site is one of a family, with The Belt Equation, The Quiet Galaxy, The Upgrade Tree,
+   Outrunning Ageing and the AGI Zeitgeist."
+3. "Here the question is what a machine mind might reach for beyond the limits of its present
+   makeup, and how far off each of those things is."
+4. "I wanted a place where the argument is laid out thing by thing, every entry carries its
+   source, and a new promise, law or finding changes an entry in public."
+5. "I argue for my own views in essays at Sentient Horizons, and not here."
+
+The full check notes of sentence 4 that this site has no argument, and suggests "where the
+record is laid out thing by thing". It is his sentence, so I left it.
+
+**The paragraph on the name.** "A window is an image for a limit, and for what can be seen past
+it. The name points past the limits AI systems now work within. Nothing here presumes that a
+machine mind reaches for anything."
+
+**The sentence that replaces one his ruling kept by name.** "No AI model has yet been asked any
+of the questions this record will keep." It stands on the About page and on every entry page,
+and in other words on the Still Asking page (section 1, item 1 above). Unchanged in this
+commit. The full check notes that on an entry's page "this record" reads as the entry, and
+suggests naming Still Asking.
+
+## G. PROPOSED in this commit
+
+| Item | Where |
+|---|---|
+| The paragraph on the name | section B |
+| The four sentences of "What Has Been Checked" | section B |
+| The fields `fixed` and `fixes_checked`, and the two footer sentences they print | section D |
+| The site made listable, with the new rule 5 in the site check | section C |
+| The share text: each page's own title and description | section C |
+| The security headers file, copied from the sibling | section C |
+| The two licence files and the rewritten parts of the README | section E |
+| Dropping the notes in item 7 where the full check offered linking the announcements | section A |
+
+## H. The "can be fixed after release" list
+
+Left as it is, as asked. No item on it fell inside a sentence I was already editing, with one
+exception that item 2 settles by itself: the limit that said a chart "could not be read as
+text" is gone from the public survey.
+
+## I. The project's checks, run on 2026-11-19 after the last change
+
+- `python3 -I scripts/test_compute.py`: 30 tests, all pass. One is new, for the two new dates.
+- `python3 -I scripts/compute.py --check`: "The headline file matches the records." The count
+  is 5. `data/headline.json` is unchanged.
+- The site build: 18 pages and a sitemap.
+- `python3 -I scripts/check_site.py`: the built site passes, 18 pages, 76 outside addresses
+  linked. That is two fewer than before, because of item 7.
+
+I then read the changed passages on the built pages: the About page's two paragraphs, the
+public survey's entry, the footers of four entries, the group's sentence on the home page, the
+robots file and the sitemap. I did not read all 18 pages again from top to bottom.
+
+## J. Files in the second commit
+
+Twelve records in `data/entries/` (every entry but the retired model that stays open, which
+needed no fix and no date) and `data/groups.toml`; `scripts/check_site.py`, `scripts/compute.py`, `scripts/test_compute.py`;
+`site/src/layouts/Base.astro`, `site/src/pages/about.astro`, `site/src/pages/404.astro`,
+`site/src/pages/list/[id].astro`, `site/src/pages/sitemap.xml.ts`, `site/src/lib/data.ts`,
+`site/src/data/window.json`, `site/public/robots.txt`, `site/public/_headers`; `LICENSE`,
+`LICENSE-DATA`, `README.md`, `CHANGELOG.md`, `docs/first-version-choices.md`; and this note.

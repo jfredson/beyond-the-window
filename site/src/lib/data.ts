@@ -40,7 +40,7 @@ export type Entry = {
   first_pass: boolean;
   constructed: boolean;
   // What checks the record has had; null when it has had no second check.
-  checks: { against_sources: string; changed?: string; changes_checked?: string; some_unchecked?: boolean; added_to?: string; additions_checked?: string; corrected?: string; corrections_checked?: string } | null;
+  checks: { against_sources: string; changed?: string; changes_checked?: string; some_unchecked?: boolean; added_to?: string; additions_checked?: string; corrected?: string; corrections_checked?: string; fixed?: string; fixes_checked?: string } | null;
   state: { words: string; detail: string; offered_today: boolean | null; offered_by: { name: string; url: string | null }[]; set_on: string; source: string };
   evidence: Kind[];
   cautions: Kind[];

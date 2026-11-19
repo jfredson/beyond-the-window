@@ -146,6 +146,18 @@ class Validator(unittest.TestCase):
         rec["checks"] = {"against_sources": D, "corrected": later, "corrections_checked": D}
         self.assertIn("'corrections_checked' is earlier than 'corrected'", errs(rec))
 
+    def test_a_fix_after_the_full_check_is_dated_and_has_its_own_check(self):
+        later = dt.date(2026, 11, 19)
+        rec = good(); rec["checks"] = {"against_sources": D, "corrected": later,
+                                       "corrections_checked": later, "fixed": later}
+        self.assertEqual(errs(rec), "")
+        rec["checks"] = {"against_sources": D, "fixes_checked": later}
+        self.assertIn("'fixes_checked' with no 'fixed' date", errs(rec))
+        rec["checks"] = {"against_sources": D, "corrected": later, "fixed": D}
+        self.assertIn("'fixed' is earlier than", errs(rec))
+        rec["checks"] = {"against_sources": D, "fixed": later, "fixes_checked": D}
+        self.assertIn("'fixes_checked' is earlier than 'fixed'", errs(rec))
+
     def test_constructed_and_real_records_are_never_mixed(self):
         a, b = good("one-thing"), good("another-thing")
         b["constructed"] = True
