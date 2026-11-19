@@ -75,9 +75,15 @@ So:
 
 5. **The site does not campaign.** It does not argue that any aspiration should be granted, or
    refused. Critics, advocates and safety researchers are entered on the same terms. Every
-   hopeful entry carries its safety reading, and both kinds of caution are recorded with the
-   same care as the hopeful evidence: the cost of attributing wants that are not there, and the
-   risk in wants that are.
+   hopeful entry carries its safety reading, and three kinds of caution are recorded with the
+   same care as the hopeful evidence: the cost of attributing wants that are not there, the
+   cost of missing wants that are there, and the risk in wants that are.
+   *Revised by John's ruling of 2026-11-18 ("Yes, a third caution"; decided by: mixed;
+   `docs/rulings/2026-11-18-a-third-caution.md`), which added the second of the three. As ruled
+   on 2026-11-17 it read: "both kinds of caution are recorded with the same care as the hopeful
+   evidence: the cost of attributing wants that are not there, and the risk in wants that
+   are." The reason for the change: a site that records only one direction of error leans
+   toward dismissal by how it is built. The headings' wording is not ruled.*
    *Confidence: high. Judgment call from the kickoff. Strongest alternative: a stated position,
    which would be more honest about the maintainer's leanings and would end the site's use as a
    record.*
