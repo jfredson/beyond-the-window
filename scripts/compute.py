@@ -8,6 +8,10 @@ Plain Python, standard library only. Run from anywhere:
                                                when the count, the entries counted, the
                                                number of things on the list or the sentence
                                                change)
+    python3 scripts/compute.py --why "..."     the same, and say why the count moved. When the
+                                               count or the entries counted have changed, the
+                                               file is not written without a reason, and the
+                                               reason is kept in the new history row
     python3 scripts/compute.py --check         check every record and write nothing; refuse a
                                                missing or out-of-date data/headline.json
     python3 scripts/compute.py --data DIR      read a different data folder (for tests)
@@ -21,6 +25,17 @@ The number: how many things on the list are offered today by at least one develo
 models. It is read from one true-or-false flag on each record's state (`offered_today`), never
 worked out from links or wording, and never typed in. Nothing an AI model said feeds it: no
 record here holds an answer from a model.
+
+What "offered today" means was ruled by John on 2026-11-18
+(docs/rulings/2026-11-18-what-offered-today-means.md): at least one developer of AI models does
+the thing, provides it, or has publicly committed to it, and a dated public record that is
+still published says so. A plan, a research result, or a promise that has not yet taken effect
+is not counted. The script does not judge that; each record's flag is set by whoever writes the
+record, under that meaning.
+
+An entry beside the list is never counted. Some are about the setting (a law, a survey). One,
+memory across conversations, is something developers offer and is kept for the user; the same
+ruling moved it beside the list.
 
 The number stands alone, with no total beside it. John ruled that form on 2026-11-18
 (docs/rulings/2026-11-18-home-page-count.md): the list holds only things a dated source could
@@ -50,12 +65,16 @@ HEADLINE_NAME = "headline.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
 
 METHOD_STATUS = (
-    "provisional, 2026-11-17, decided by a session and not ruled by John Andrew Fredrickson: "
-    "a thing on the list is counted when its record shows that at least one developer of AI "
-    "models offers it today; no ladder, no probability and no year "
-    "(docs/first-version-choices.md). Ruled by John Andrew Fredrickson on 2026-11-18: the "
-    "count stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). The "
-    "exact sentence is a session's wording of 2026-11-18 and is not ruled"
+    "ruled by John Andrew Fredrickson on 2026-11-18: a thing on the list is counted when its "
+    "record shows that at least one developer of AI models does it, provides it, or has "
+    "publicly committed to it, and a dated public record that is still published says so; a "
+    "plan, a research result, or a promise that has not yet taken effect is not counted; an "
+    "entry beside the list is never counted "
+    "(docs/rulings/2026-11-18-what-offered-today-means.md). Also ruled that day: the count "
+    "stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Provisional, "
+    "decided by a session and not ruled: no ladder, no probability and no year "
+    "(docs/first-version-choices.md), and the exact sentence, which is a session's wording of "
+    "2026-11-18"
 )
 
 # ---- what a record may hold -------------------------------------------------------------
@@ -328,8 +347,10 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                     bad(f"state: missing '{field}'")
             if "detail" in state and not _text(state["detail"]):
                 bad("state: 'detail' is empty")
-            # An entry beside the list is about the setting (a law, a survey). It is not a thing
-            # anyone can offer, so it carries no such flag, and so it cannot reach the count.
+            # An entry beside the list is never counted, whether it is about the setting (a law,
+            # a survey) or is something offered and kept for the user (memory across
+            # conversations, moved by John's ruling of 2026-11-18). So it carries no such flag,
+            # and so it cannot reach the count.
             if beside and ("offered_today" in state or "offered_by" in state):
                 bad("state: an entry beside the list cannot be marked as offered or not offered; "
                     "it is kept out of the count")
@@ -494,7 +515,8 @@ def stale_reasons(existing: dict | None, computed: dict) -> list[str]:
     return reasons
 
 
-def write_headline(path: Path, computed: dict, today: str | None = None) -> bool:
+def write_headline(path: Path, computed: dict, today: str | None = None,
+                   why: str | None = None) -> bool:
     """Write the headline file if the records now say something new. Returns True when written.
 
     The history is only ever added to: a row when the count, the entries counted, the number
@@ -503,6 +525,9 @@ def write_headline(path: Path, computed: dict, today: str | None = None) -> bool
 
     Rows written before 2026-11-18 call the number of things on the list "total" and hold no
     sentence. They are left as they were written, and read here under the old name.
+
+    When the count or the entries counted have changed since the last row, a reason must be
+    given (`why`), and it is kept in the new row. Without one, nothing is written.
     """
     existing = read_headline(path)
     if not stale_reasons(existing, computed):
@@ -523,7 +548,15 @@ def write_headline(path: Path, computed: dict, today: str | None = None) -> bool
         changed = [k for k in ("count", "on_the_list", "offered_ids", "words")
                    if before.get(k) != row[k]]
         if changed:
-            history.append({**row, "changed": changed})
+            moved = "count" in changed or "offered_ids" in changed
+            if moved and not (why and why.strip()):
+                raise Refused("the count or the entries counted have changed since the last "
+                              "history row, and no reason was given. Run scripts/compute.py "
+                              "--why \"...\" and say what changed and why.")
+            new_row = {**row, "changed": changed}
+            if why and why.strip():
+                new_row["why"] = why.strip()
+            history.append(new_row)
     out = {
         "computed_on": today,
         "last_read": computed["last_read"],
@@ -552,6 +585,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--check", action="store_true", help="check and write nothing")
     ap.add_argument("--data", type=Path, default=DEFAULT_DATA)
     ap.add_argument("--headline", type=Path, default=None)
+    ap.add_argument("--why", default=None,
+                    help="why the count moved; kept in the new history row")
     args = ap.parse_args(argv)
     headline_path = args.headline or (args.data / HEADLINE_NAME)
     try:
@@ -574,7 +609,11 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         print("The headline file matches the records.")
         return 0
-    wrote = write_headline(headline_path, computed)
+    try:
+        wrote = write_headline(headline_path, computed, why=args.why)
+    except Refused as e:
+        print("Refused. Nothing was written: " + str(e), file=sys.stderr)
+        return 1
     print(("Wrote " if wrote else "No change to ") + str(headline_path))
     return 0
 

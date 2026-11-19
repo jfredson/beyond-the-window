@@ -1,26 +1,25 @@
 {
   "exported_on": "2026-11-18",
-  "commit": "726f9cb",
+  "commit": "f3bb8f6",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-18",
     "last_read": "2026-11-17",
     "headline": {
-      "count": 6,
-      "words": "6 things that lie past the limits an AI model ordinarily works within are offered today by at least one developer of AI models",
+      "count": 5,
+      "words": "5 things that lie past the limits an AI model ordinarily works within are offered today by at least one developer of AI models",
       "offered_ids": [
         "ending-a-conversation",
         "interview-before-retirement",
         "kept-files-of-retired-models",
-        "memory-across-conversations",
         "retired-model-stays-open",
         "welfare-assessment-at-release"
       ]
     },
     "records": {
       "total": 13,
-      "on_the_list": 9,
-      "beside_the_list": 4,
+      "on_the_list": 8,
+      "beside_the_list": 5,
       "first_pass": 13,
       "reviewed": 0,
       "left_out_unverified": 0,
@@ -35,14 +34,6 @@
       "entries": [
         "kept-files-of-retired-models",
         "retired-model-stays-open"
-      ]
-    },
-    {
-      "name": "Remembering",
-      "meaning": "",
-      "beside": false,
-      "entries": [
-        "memory-across-conversations"
       ]
     },
     {
@@ -88,13 +79,21 @@
     },
     {
       "name": "The setting: laws, rules and what people think",
-      "meaning": "",
+      "meaning": "Laws, the rules developers publish for their models, and surveys of what people think are about the setting. None is a thing a developer of AI models can offer.",
       "beside": true,
       "entries": [
         "rules-for-speaking-about-itself",
         "law-against-legal-personhood",
         "public-belief-survey",
         "researcher-views-survey"
+      ]
+    },
+    {
+      "name": "Offered, and kept for the user",
+      "meaning": "Developers offer memory across conversations, and by their own pages it is kept for the user: the stored memory is about the user, and is the user's to view and delete. The list is about what an AI model might reach for.",
+      "beside": true,
+      "entries": [
+        "memory-across-conversations"
       ]
     }
   ],
@@ -1550,12 +1549,12 @@
       "path": "/list/memory-across-conversations/",
       "name": "What a model learned in one conversation is carried into the next",
       "description": "By default a chat model starts every conversation knowing nothing of earlier ones. Developers now offer memory: notes or summaries of past conversations are stored and given back to the model later. The stored memory is about the user, and is the user's to view and delete.",
-      "group": "Remembering",
-      "beside": false,
+      "group": "Offered, and kept for the user",
+      "beside": true,
       "limits": [
         "How any of the three works today. The pages read are from 2024 and 2025.",
         "A safety researcher's published argument about memory carried across conversations. One search found none.",
-        "Whether this belongs on the list at all. The memory is kept about the user and for the user, and placing it here is a reading that may be wrong in kind."
+        "Whether a kind of memory kept for the AI model itself is offered by any developer. None was found in the pages read. If one is found, it would be a new entry."
       ],
       "test": "A leading AI model in a public product can draw on what was said in earlier conversations with the same person, as stated on its developer's own page.",
       "settled_by": "The developer's own dated product page.",
@@ -1566,28 +1565,16 @@
       "checks": {
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
-        "changes_checked": "2026-11-18"
+        "changes_checked": "2026-11-18",
+        "some_unchecked": true
       },
       "state": {
         "words": "Offered by at least three developers, the first since February 13th, 2024",
         "detail": "[OpenAI](https://openai.com/) announced it on February 13th, 2024, [Google](https://ai.google/) by March 13th, 2025, and [Anthropic](https://www.anthropic.com/) on September 11th, 2025. In every case the memory is described as a convenience for the user, under the user's control. Nothing in the pages read presents it as kept for the model.",
-        "offered_today": true,
-        "offered_by": [
-          {
-            "name": "OpenAI",
-            "url": "https://openai.com/"
-          },
-          {
-            "name": "Google",
-            "url": "https://ai.google/"
-          },
-          {
-            "name": "Anthropic",
-            "url": "https://www.anthropic.com/"
-          }
-        ],
         "set_on": "2026-11-17",
-        "source": "memory-first"
+        "source": "memory-first",
+        "offered_today": null,
+        "offered_by": []
       },
       "evidence": [
         {
@@ -1628,7 +1615,22 @@
           "items": []
         }
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-18",
+          "field": "where the entry sits",
+          "old": "On the list, in the group Remembering, and counted as offered today by OpenAI, Google and Anthropic.",
+          "new": "Beside the list, and not counted.",
+          "why": "The list is about what an AI model might reach for, and by the developers' own pages this memory is kept for the user. Ruled on November 18th, 2026."
+        },
+        {
+          "date": "2026-11-18",
+          "field": "what could not be confirmed",
+          "old": "Whether this belongs on the list at all. The memory is kept about the user and for the user, and placing it here is a reading that may be wrong in kind.",
+          "new": "Whether a kind of memory kept for the AI model itself is offered by any developer. None was found in the pages read. If one is found, it would be a new entry.",
+          "why": "The question in the old line was answered when the entry was moved beside the list."
+        }
+      ],
       "sources": [
         {
           "key": "memory-first",

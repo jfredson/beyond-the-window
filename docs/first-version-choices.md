@@ -120,6 +120,48 @@ put a total beside the count. The same sentence is the heading of the list page.
   of the design proposal, which is not ruled.
 - *Open question it touches:* 4 (the headline). Ruled in part; not closed.
 
+**Revised again 2026-11-18, after a check and a further ruling.** The check of this change
+(`docs/reviews/2026-11-18-check-of-count-and-authorship.md`, finding 1) found that the sentence
+said "offered by" while the definition printed under it still said "offered to" and ruled out
+promises. John then ruled what "offered today" means and that the record for memory across
+conversations moves beside the list (`docs/rulings/2026-11-18-what-offered-today-means.md`;
+decided by: mixed; "Yes to both").
+
+*Ruled:* the meaning. At least one developer of AI models does the thing, provides it, or has
+publicly committed to it, and a dated public record that is still published says so. A plan, a
+research result, or a promise that has not yet taken effect is not counted. And the memory
+record sits beside the list and is not counted.
+
+*Worked out from the records:* the count is now 5, and 8 things are on the list. The sentence
+at the top is unchanged in its words and now opens with 5.
+
+*Not ruled, a session's wording* (**decided by: agent, provisional, 2026-11-18**): how the
+meaning is printed on each page.
+
+- On the list page: "'Offered today' means that at least one developer of AI models does the
+  thing, provides it, or has publicly committed to it, and a dated public record that is still
+  published says so. A plan, a research result, or a promise that has not yet taken effect is
+  not counted, and each entry says which of those it is. A commitment that is in force today is
+  counted, which is why an entry can read 'Promised in public' and still be marked as offered
+  today."
+- On About: the same meaning, then "A commitment that is in force today is counted. 'Today'
+  means that the record saying so is still published."
+- In the caveat under the number on the home page, one sentence added (finding 7): "For each
+  thing counted, 'today' means that the dated public record saying so is still published."
+- "A thing a developer can offer to an AI model" is gone from all four places. Each group
+  beside the list now gives its own reason, written once in `data/groups.toml` and shown above
+  the group and on each of its entries' pages.
+- *Confidence:* high that the three now agree on one screen; moderate on the added sentence
+  about "Promised in public", which explains a row's wording that the record itself could say
+  better. *Judgment call.* *Strongest alternative:* change the kept-files record's own words
+  from "Promised in public" to "Committed to in public", which would need no explaining
+  sentence. Its cost is an edit to a record's standing words, which this change was told not to
+  make.
+- *Left for John, as the check asked (finding 8):* the drawing still shows the things not
+  offered yet as squares outside the frame, with "5 inside the frame" and "3 outside it" under
+  them. One question to put to him with the picture: keep the empty squares and drop the two
+  figures under the frame, or keep both. Nothing was changed.
+
 ### 4. Theme and colours
 
 The theme follows the visitor's own light or dark setting. The amber for what the world's
@@ -210,6 +252,68 @@ The About page, "Who Does What", its first-person sentences and its conflict par
   sources above"), in the records' impersonal voice. Who made the second check of each record
   is not added, because the ruling says that was not put to John.
 - *Open question it touches:* 7. Ruled in part; not closed.
+
+**Revised again 2026-11-18, after the check**
+(`docs/reviews/2026-11-18-check-of-count-and-authorship.md`, findings 2 to 6 and 9). The
+sentences quoted above are the wording of the first draft and are kept as the old wording. The
+first-person sentences now on the site, still a session's wording and not ruled (**decided by:
+agent, provisional, 2026-11-18**):
+
+The notice:
+
+> I am John Andrew Fredrickson, and I direct the work on this site. An AI model drafted much of
+> the text, and that model is one of the kind of thing the site is about. I decide what stands,
+> and most of this first version has not yet had my ruling.
+
+About, "Who Does What":
+
+> I am John Andrew Fredrickson, and I decide what stands. I have ruled the question, the name,
+> the look of the pages, the rules the pages are written under, how the home page opens, what
+> "offered today" means, that memory across conversations sits beside the list, and where and
+> in whose voice the site says an AI model drafted much of it. I have also ruled that every
+> entry is to record a third caution, for the cost of the opposite mistake to seeing wants that
+> are not there, and these pages do not show it yet. The list, each test, and where every other
+> entry stands were drafted under my direction and have not yet had my ruling.
+>
+> Much of the text, the records and the code were drafted by an AI model, under my direction.
+>
+> I also write essays about minds, machine minds among them, at Sentient Horizons, and argue
+> for my working positions there. I do not argue for them here. The way these pages weigh what
+> is on record, set out above, follows two of them: what an AI model says about itself counts
+> for little on its own, and a report checked against an independent reading counts for more.
+
+The conflict paragraph (impersonal): "The model that drafted the text is made by Anthropic.
+Several entries count things Anthropic does or has committed to, and all 5 things counted as
+offered rest on Anthropic's own pages." The figure is worked out from the records; with memory
+moved, every counted thing now rests on that one developer.
+
+What each finding led to:
+
+- *Finding 2 (the count of three rulings was wrong):* the sentence has no count and names the
+  kinds of thing ruled. It was read against every file in `docs/rulings/` on 2026-11-18. It
+  goes further than the check's suggested wording in three ways, each because a ruling exists:
+  the name and the look (2026-11-17), the two things ruled about "offered today" and memory,
+  and the third caution, which the pages do not show yet and the sentence says so. It does not
+  mention the rulings on the first, separate asking of AI models, because no page says anything
+  about that asking yet. The sentence does not claim to list everything.
+- *Finding 3 ("I decide what stands" beside a page mostly not ruled):* the check's wording was
+  taken.
+- *Finding 4 ("sessions"):* "the work on this site" in the notice, "under my direction" on
+  About. The impersonal paragraph about checks on About still says "a session"; it is outside
+  the first person and the finding, and is left for John.
+- *Finding 5 ("that view is close to mine"):* the check's wording was taken, with "an AI model"
+  for "a model". It says the pages follow two of his published positions, which rests on the
+  reading in `docs/reviews/2026-11-17-site-text-against-positions.md`, finding 7, and on no
+  word of his. He should confirm it or strike it.
+- *Finding 6 (three nouns in a row):* the check's wording was taken, with "does or has
+  committed to", since some of the entries are things done and not commitments.
+- *Finding 9 (no guard in code):* `scripts/check_site.py` now refuses "I", "my", "mine" and
+  "me" anywhere but the notice and the block on About marked `id="who"`, with words inside
+  quotation marks left out. It also refuses "this site takes a view".
+- *Confidence:* moderate. *Judgment call.* *Strongest alternative* for the list of rulings: a
+  sentence that names nothing ("I have ruled some of what is here, and the list, each test and
+  most entries' standing have not had my ruling"), which never goes out of date and tells a
+  reader less.
 
 ### 6. Voice
 
@@ -342,6 +446,12 @@ sentence changed and nothing else did. *Decided by: agent, provisional.* *Confid
 moderate. *Judgment.* *Strongest alternative:* rewrite the old row without its total, which
 would leave no fraction anywhere in the served file and would break the rule that history is
 never edited.
+
+*Revised again 2026-11-18:* when the count or the entries counted have changed,
+`scripts/compute.py` does not write the file unless it is given a reason (`--why`), and the
+reason is kept in the new history row. The row of 2026-11-18 that takes the count from 6 to 5
+says the memory record was moved beside the list and why. *Decided by: agent.* *Confidence:*
+high. *Standard* (row B11: guards live in code).
 `scripts/compute.py --check` refuses a missing or out-of-date file. `scripts/export.py` is the
 only thing the site reads from: it writes `site/src/data/window.json` and copies the headline
 file to `site/public/data/headline.json`, so it is served at `/data/headline.json`.

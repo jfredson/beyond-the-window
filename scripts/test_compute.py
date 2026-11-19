@@ -194,6 +194,21 @@ class Count(unittest.TestCase):
         b["state"]["offered_today"] = True
         self.assertEqual(c.compute([a, b])["headline"]["offered_ids"], ["one-thing"])
 
+    def test_a_thing_offered_and_kept_for_the_user_sits_beside_the_list_and_is_not_counted(self):
+        # Ruled 2026-11-18 (docs/rulings/2026-11-18-what-offered-today-means.md): the record
+        # for memory across conversations moves beside the list. A record moved there loses
+        # its flag, the count falls by one, and the list is one shorter.
+        a, b = good("one-thing", offered=True), good("a-memory-thing", offered=True)
+        before = c.compute([a, b])
+        self.assertEqual((before["headline"]["count"], before["records"]["on_the_list"]), (2, 2))
+        b["beside"] = True
+        self.assertIn("cannot be marked as offered or not offered", errs(b))  # the flag must go
+        del b["state"]["offered_today"]; b["state"].pop("offered_by", None)
+        after = c.compute([a, b])
+        self.assertEqual(after["headline"]["offered_ids"], ["one-thing"])
+        self.assertEqual((after["headline"]["count"], after["records"]["on_the_list"],
+                          after["records"]["beside_the_list"]), (1, 1, 1))
+
     def test_what_was_said_cannot_move_the_count(self):
         # Evidence of any kind, including a plain statement, changes nothing in the number.
         a = good("one-thing")
@@ -216,8 +231,14 @@ class HeadlineFile(unittest.TestCase):
             two = c.compute([good("one-thing", offered=True)])
             self.assertEqual(c.stale_reasons(json.loads(first), two)[0],
                              "'headline' in the headline file differs from the records")
-            self.assertTrue(c.write_headline(path, two, today="2026-11-19"))
+            # the count moved, so the file is not written until a reason is given
+            with self.assertRaises(c.Refused):
+                c.write_headline(path, two, today="2026-11-19")
+            self.assertEqual(path.read_text(), first)
+            self.assertTrue(c.write_headline(path, two, today="2026-11-19",
+                                             why="A developer began to offer the thing."))
             hist = json.loads(path.read_text())["history"]
+            self.assertEqual(hist[1]["why"], "A developer began to offer the thing.")
             self.assertEqual([(h["computed_on"], h["count"]) for h in hist],
                              [("2026-11-17", 0), ("2026-11-19", 1)])
             self.assertEqual(hist[0], json.loads(first)["history"][0])

@@ -5,6 +5,29 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-18
 
+- **The count moved from 6 to 5.** John ruled on 2026-11-18
+  (`docs/rulings/2026-11-18-what-offered-today-means.md`, "Yes to both") what "offered today"
+  means and that the record for memory across conversations moves beside the list. The record
+  keeps its sources and its text, loses its offered flag, and sits in a new group beside the
+  list, "Offered, and kept for the user"; its page says why and shows the change, dated. One
+  line of its "could not be confirmed" list, which asked whether it belonged on the list, was
+  replaced, with the old line kept in the record's history. No other record changed. Eight
+  things are now on the list and five entries sit beside it. `scripts/compute.py` worked the
+  count out, and now refuses to write a moved count without a reason; the reason is in the new
+  history row of `data/headline.json`.
+- **The printed meaning of "offered today" is the ruled one** on the list page and on About:
+  a developer does the thing, provides it, or has publicly committed to it, and a dated public
+  record still published says so. "A thing a developer can offer to an AI model" is gone from
+  the four places that said it. The caveat under the number says what "today" means.
+- **The fixes from the check of the count and the authorship wording are applied**
+  (`docs/reviews/2026-11-18-check-of-count-and-authorship.md`). About no longer says "I have
+  ruled three things" and names what has been ruled as of every ruling to date; the notice says
+  most of this first version has not had a ruling; "sessions" is gone from the first-person
+  sentences; "that view is close to mine" is replaced; the conflict paragraph is plainer and
+  now says all 5 counted things rest on Anthropic's own pages. `scripts/check_site.py` refuses
+  the first person outside the notice and About's block on who does what. Finding 8, the
+  drawing's "inside" and "outside" figures, is left for John. The sentences are still a
+  session's wording, not ruled (`docs/first-version-choices.md`, choices 3 and 5).
 - **The notice and the About page's section on who does what are in John's first person, and
   About names the developer of the drafting model**, as John ruled on 2026-11-18
   (`docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md`): "As recommended". The

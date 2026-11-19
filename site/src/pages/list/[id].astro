@@ -37,6 +37,10 @@ const checkWords = !ch
             ? `A check on ${longDate(ch.changes_checked)} covered some of those changes. The rest have not been checked yet.`
             : `Those changes were checked on ${longDate(ch.changes_checked)}.`,
     ].filter(Boolean).join(' ');
+// Why an entry sits beside the list is its group's own sentence (data/groups.toml), so an entry
+// about the setting and an entry that is offered but kept for the user each give their reason.
+const whyBeside = entry.beside ? data.groups.find((g) => g.name === entry.group)?.meaning ?? '' : '';
+if (entry.beside && !whyBeside) throw new Error(`${entry.id}: its group gives no reason for sitting beside the list`);
 const standing = entry.beside ? 'beside the list, not counted' : s.offered_today ? 'offered today' : 'not offered yet';
 // "Anthropic, November 4th, 2025" for a source line; the date is left out when the page has none.
 const sourceLine = (src: Source) =>
@@ -71,8 +75,8 @@ const sourceLine = (src: Source) =>
       </p>
       {entry.beside && (
         <p class="beside-note">
-          This entry is about the setting. It is not a thing a developer can offer to an AI model, so
-          it is kept beside the list and is not counted in the number on the home page.
+          {whyBeside} So this entry is kept beside the list and is not counted in the number on
+          the home page.
         </p>
       )}
     </section>
@@ -145,6 +149,19 @@ const sourceLine = (src: Source) =>
         <div class="shead"><h2>What Could Not Be Confirmed</h2><span>looked for, and not settled</span></div>
         <ul class="limits">
           {entry.limits.map((l) => <li set:html={prose(l)} />)}
+        </ul>
+      </section>
+    )}
+
+    {entry.history.length > 0 && (
+      <section class="part">
+        <div class="shead"><h2>Changes to This Entry</h2><span>dated, and kept</span></div>
+        <ul class="limits">
+          {entry.history.map((h) => (
+            <li>
+              <strong>{longDate(h.date)}, {h.field}.</strong> Before: {plain(h.old)} Now: {plain(h.new)} Why: {plain(h.why)}
+            </li>
+          ))}
         </ul>
       </section>
     )}

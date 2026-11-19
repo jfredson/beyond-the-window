@@ -1,9 +1,10 @@
 ---
 // The list in words: every thing on the list, group by group, with where it stands in the
 // plain words its record gives. The same entries as the window, for a reader who wants names.
-// With `beside`, it shows the entries that sit beside the list instead: they are about the
-// setting (laws, published rules, surveys), nobody can offer them to a model, and they are
-// never counted, so they carry no filled or outlined square.
+// With `beside`, it shows the entries that sit beside the list instead. They are never
+// counted, so they carry no filled or outlined square. Each group beside the list gives its own
+// reason, read from data/groups.toml: most are about the setting (laws, published rules,
+// surveys), and one is something developers offer that is kept for the user.
 import { listGroups, besideGroups, entryById, longDate, plain } from '../lib/data';
 
 interface Props {
@@ -15,7 +16,8 @@ const groups = beside ? besideGroups : listGroups;
 
 {groups.map((g) => (
   <div class="group">
-    {!beside && <h3>{g.name}</h3>}
+    <h3>{g.name}</h3>
+    {beside && g.meaning && <p class="why-beside">{g.meaning} So {g.entries.length === 1 ? 'this entry is' : 'these entries are'} kept beside the list and {g.entries.length === 1 ? 'is' : 'are'} not counted.</p>}
     <ul class={`things ${beside ? 'beside' : ''}`}>
       {g.entries.map((id) => {
         const e = entryById.get(id)!;

@@ -8,6 +8,11 @@
 // model. Not ruled: the sentences themselves. They are a session's draft of 2026-11-18, and
 // John reads and owns each first-person sentence before release
 // (docs/first-version-choices.md, choice 5). The rest of the page stays impersonal.
+// The first person is kept inside the block marked id="who", and scripts/check_site.py refuses
+// it anywhere else but the notice.
+// What "offered today" means was ruled by John on 2026-11-18
+// (docs/rulings/2026-11-18-what-offered-today-means.md). The words here are a session's fitting
+// of that meaning to the page, and are not ruled.
 import Base from '../layouts/Base.astro';
 import { data, headline, longDate, QUESTION } from '../lib/data';
 
@@ -20,6 +25,8 @@ const DRAFTER = { name: 'Anthropic', url: 'https://www.anthropic.com/' };
 // the export, so the sentence that uses it cannot drift from the records.
 const counted = data.entries.filter((e) => e.state.offered_today === true);
 const byDrafterAlone = counted.filter((e) => e.state.offered_by.length === 1 && e.state.offered_by[0].name === DRAFTER.name).length;
+// "all 5" when every counted thing rests on that developer alone, "4 of the 5" when not.
+const restOnDrafter = byDrafterAlone === headline.count ? `all ${headline.count}` : `${byDrafterAlone} of the ${headline.count}`;
 // The sentence says "several entries", so the build stops if the records stop bearing it out.
 if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name)).length < 3) throw new Error('the conflict paragraph says "several entries", and the records no longer show several');
 ---
@@ -56,11 +63,12 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
         before new evidence is read, and it is not loosened to fit a result.
       </li>
       <li>
-        <strong>"Offered today" has one meaning.</strong> A developer of AI models makes the thing
-        available to at least one of its models, and a dated public record that is still published
-        says so. A plan, a
-        promise for later, or a research result is not counted. An entry can also leave the count,
-        because a developer can withdraw what it offered.
+        <strong>"Offered today" has one meaning.</strong> At least one developer of AI models
+        does the thing, provides it, or has publicly committed to it, and a dated public record
+        that is still published says so. A plan, a research result, or a promise that has not yet
+        taken effect is not counted. A commitment that is in force today is counted. "Today" means
+        that the record saying so is still published. An entry can also leave the count, because a
+        developer can withdraw what it offered.
       </li>
       <li>
         <strong>The number is worked out, never typed in.</strong> A script reads the records and
@@ -71,8 +79,12 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
       <li>
         <strong>Some entries sit beside the list.</strong> Laws, the rules developers publish for
         their models, and surveys of what people think are recorded because they bear on everything
-        else. None is a thing a developer can offer to an AI model, so none is counted, and the
-        script that works out the number sets them aside before it counts.
+        else. None of those is a thing a developer can offer. One more entry,
+        <a href="/list/memory-across-conversations/">memory across conversations</a>, is something developers
+        do offer. It sits beside the list because the list is about what an AI model might
+        reach for, and by the developers' own pages that memory is kept for the user. No entry beside
+        the list is counted, and the script that works out the number sets them aside before it
+        counts.
       </li>
       <li>
         <strong>The list is short and one-sided so far.</strong> It holds only things for which a
@@ -114,23 +126,27 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
       </li>
     </ul>
 
-    <h2 id="who">Who Does What</h2>
+    <div id="who">
+    <h2>Who Does What</h2>
     <p>
       I am <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>, and I decide what stands.
-      In this first version I have ruled three things: the question, that the home page opens with
-      a count that has no total beside it, and where and in whose voice the site says an AI model
-      drafted much of it. The list, each test, and where each entry stands were drafted in
-      sessions I direct and have not yet had my ruling.
+      I have ruled the question, the name, the look of the pages, the rules the pages are written
+      under, how the home page opens, what "offered today" means, that memory across
+      conversations sits beside the list, and where and in whose voice the site says an AI model
+      drafted much of it. I have also ruled that every entry is to record a third caution, for
+      the cost of the opposite mistake to seeing wants that are not there, and these pages do not
+      show it yet. The list, each test, and where every other entry stands were drafted under my
+      direction and have not yet had my ruling.
     </p>
     <p>
-      Much of the text, the records and the code were drafted by an AI model, in sessions I
-      direct. That model is one of the kind of thing the site is about. This is a conflict of
+      Much of the text, the records and the code were drafted by an AI model, under my
+      direction. That model is one of the kind of thing the site is about. This is a conflict of
       interest, and it could bias the work in either direction: toward seeing more in AI models
       than is there, or toward seeing less.
     </p>
     <p id="conflict">
       The conflict is sharper than that. The model that drafted the text is made by
-      <a href={DRAFTER.url} rel="noopener">{DRAFTER.name}</a>, a developer whose commitments several entries count, and {byDrafterAlone} of the {headline.count} things
+      <a href={DRAFTER.url} rel="noopener">{DRAFTER.name}</a>. Several entries count things {DRAFTER.name} does or has committed to, and {restOnDrafter} things
       counted as offered rest on {DRAFTER.name}'s own pages. Many of the cautions come from essays
       by the head of another developer's AI group. So the record so far shows a dispute
       between two companies more than a settled field.
@@ -148,9 +164,11 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
       I also write essays about minds, machine minds among them, at
       <a href="https://sentient-horizons.com/" rel="noopener">Sentient Horizons</a>, and argue for
       <a href="https://sentient-horizons.com/positions/" rel="noopener">my working positions</a> there.
-      This site does not argue for them. It does take a view on how to weigh what is on record,
-      set out above, and that view is close to mine.
+      I do not argue for them here. The way these pages weigh what is on record, set out above,
+      follows two of them: what an AI model says about itself counts for little on its own, and a
+      report checked against an independent reading counts for more.
     </p>
+    </div>
 
     <h2 id="not-known">What Is Not Known Yet</h2>
     <p>These questions are open. The site is built so that it can change when they are answered.</p>
@@ -160,7 +178,7 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
       <li>What an entry is about: one trained model, a character that carries on across versions of a model, or a single conversation. The same thing can mean something different for each.</li>
       <li>Whether this is the right list. The first entries are the things for which a dated source could be found. A fuller list would start from what living minds, people and other animals, are known to seek, and that work has not been done.</li>
       <li>Whether one set of stages can describe progress in research, in what companies commit to, in law and in what people accept.</li>
-      <li>What the sentence at the top of the home page should say, and whether memory across conversations belongs in the count.</li>
+      <li>What the sentence at the top of the home page should say.</li>
       <li>Who should check a site on this subject, when many of the available checkers are AI models.</li>
       <li>How to ask AI models questions over many years without later models having read the earlier questions and answers.</li>
       <li>Whether asking is itself something to be careful with.</li>

@@ -54,8 +54,8 @@ phone 3-home-phone        /                                   3400
 shot  4-entry-light       /list/kept-files-of-retired-models/ light 1280 2700
 shot  5-entry-dark        /list/welfare-assessment-at-release/ dark 1280 3300
 shot  6-entry-beside-light /list/law-against-legal-personhood/ light 1280 3000
-shot  7-about-light       /about/                             light 1280 2900
-shot  8-still-asking-dark /still-asking/                      dark  1280 1700
+shot  7-about-light       /about/                             light 1280 3400
+shot  8-still-asking-dark /still-asking/                      dark  1280 2300
 phone 9-entry-phone       /list/ending-a-conversation/        3900
 # Added 2026-11-18, so the sentence at the top can be seen on the home page and the list page in
 # both themes at both widths.
@@ -64,4 +64,6 @@ shot  11-list-light       /list/                              light 1280 2100
 shot  12-list-dark        /list/                              dark  1280 2100
 phone 13-list-phone       /list/                              3300
 phone 14-list-phone-dark  /list/                              3300 dark
+# 15 and 16 are close-ups cut by hand from pictures 1 and 7.
+shot  17-memory-beside-light /list/memory-across-conversations/ light 1280 3300
 rm -rf "$TMP"

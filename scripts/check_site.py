@@ -28,6 +28,11 @@ What it refuses (docs/first-version-choices.md, choice 18):
 6. A link inside the site that leads to no page.
 7. The headline number on the home page differing from the headline file the site serves, or
    anything standing beside it in the large type.
+9. The first person ("I", "my", "mine", "me") anywhere but the notice (the paragraph of class
+   "notice") and the About page's block on who does what (the block marked id="who"). John
+   ruled on 2026-11-18 that those two places are in his first person and the rest of the site
+   stays impersonal (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md). Words
+   inside quotation marks are a source speaking and are not checked, as source titles are not.
 8. The count written as a share of the things on the list ("6 of 9", "six of nine") on any
    page, or a total in the served headline. John ruled on 2026-11-18 that the count stands
    with no total beside it (docs/rulings/2026-11-18-home-page-count.md).
@@ -55,8 +60,14 @@ WORKING_WORDS = [
     (r"\bwanting\b", "wanting"),
     (r"\breach(es|ed|ing)?\b(?! for\b)", "reach"),
 ]
-SITE_AS_AGENT = (r"\b(the|this) (site|page|list|record|tracker) "
-                 r"(expects|believes|thinks|hopes|wants|feels|fears|knows|judges|doubts|suspects)\b")
+SITE_AS_AGENT = (r"\b(the|this) (site|page|list|record|tracker) (does )?"
+                 r"(expects?|believes?|thinks?|hopes?|wants?|feels?|fears?|knows?|judges?|doubts?|"
+                 r"suspects?|takes? (a|the) view)\b")
+# Rule 9: where the first person may stand, and nowhere else.
+FIRST_PERSON = r"\b(I|[Mm]y|[Mm]ine|[Mm]e)\b"
+FIRST_PERSON_PLACES = [r'(?is)<p\b[^>]*\bclass="notice"[^>]*>.*?</p>',
+                       r'(?is)<div\b[^>]*\bid="who"[^>]*>.*?</div>']
+QUOTED = r'"[^"]*"|“[^”]*”'
 # Rule 4's one exception: this page, this paragraph, this name, and nothing wider.
 NAMED_DRAFTER_PAGE = "/about/"
 NAMED_DRAFTER_PARAGRAPH = r'(?is)<p\b[^>]*\bid="conflict"[^>]*>.*?</p>'
@@ -126,6 +137,17 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
                                  lambda m: re.sub(NAMED_DRAFTER, " ", m.group(0)), raw, count=1)
                 names_text = visible_text(without, keep_cites=False)
             flag(MODEL_NAMES, "an AI model or developer named off an entry's page", names_text)
+        outside_places = raw
+        for i, place in enumerate(FIRST_PERSON_PLACES):
+            # the notice on any page that carries it; the block on About only; once each
+            if i == 0 or rel == NAMED_DRAFTER_PAGE:
+                outside_places = re.sub(place, " ", outside_places, count=1)
+        unquoted = re.sub(QUOTED, " ", visible_text(outside_places, keep_cites=False))
+        for m in re.finditer(FIRST_PERSON, unquoted):
+            start = max(0, m.start() - 40)
+            snippet = " ".join(unquoted[start:m.end() + 40].split())
+            problems.append(f"{rel}: the first person outside the notice and the block on who "
+                            f"does what: \"...{snippet}...\"")
         if not re.search(r'<meta name="robots" content="noindex', raw):
             problems.append(f"{rel}: does not ask search engines to leave it out")
         for href in re.findall(r'<a\b[^>]*\bhref="([^"]+)"', raw):

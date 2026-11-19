@@ -68,6 +68,7 @@
 .below .shead { margin-bottom: 6px; }
 .below > p.intro { font-size: 15.5px; line-height: 1.6; color: var(--text-soft); max-width: 68ch; margin: 12px 0 0; }
 .group { margin: 22px 0 0; }
+.group .why-beside { font: 13px/1.55 var(--sans); color: var(--text-soft); margin: 4px 0 6px; max-width: 78ch; }
 .group h3 { font: 600 11px/1.4 var(--sans); letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
 .things { list-style: none; margin: 0; padding: 0; }
 .things li { display: grid; grid-template-columns: 18px minmax(0, 1fr) minmax(0, 1fr); gap: 4px 14px; padding: 11px 0; border-top: 1px solid var(--line); align-items: baseline; }

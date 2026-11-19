@@ -25,8 +25,20 @@ name = "Working on one thing for a long time"
 [[groups]]
 name = "Protection in law"
 
-# Entries in this group are about the setting. None is a thing anyone can offer to a model, so
-# none is counted, and the validator refuses one that carries an offered flag.
+# Groups beside the list. No entry in them is counted, and the validator refuses one that
+# carries an offered flag. Each group's `meaning` is the sentence its entries' pages give for
+# why they sit beside the list.
+
+# Entries in this group are about the setting. None is a thing a developer can offer.
 [[groups]]
 name = "The setting: laws, rules and what people think"
+meaning = "Laws, the rules developers publish for their models, and surveys of what people think are about the setting. None is a thing a developer of AI models can offer."
+beside = true
+
+# Added 2026-11-18, for John's ruling that the record for memory across conversations moves
+# beside the list (docs/rulings/2026-11-18-what-offered-today-means.md). Unlike the setting,
+# this is something developers offer. It sits here because it is kept for the user.
+[[groups]]
+name = "Offered, and kept for the user"
+meaning = "Developers offer memory across conversations, and by their own pages it is kept for the user: the stored memory is about the user, and is the user's to view and delete. The list is about what an AI model might reach for."
 beside = true

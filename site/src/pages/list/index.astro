@@ -20,19 +20,21 @@ const r = data.headline.records;
   </section>
   <section class="below" style="padding-top: 0">
     <p class="intro">
-      "Offered" means that a developer of AI models makes the thing available to at least one of its
-      models, and a dated public record that is still published says so. A plan, a promise for
-      later, or a research result is not counted, and each entry says which of those it is. The
+      "Offered today" means that at least one developer of AI models does the thing, provides it,
+      or has publicly committed to it, and a dated public record that is still published says so.
+      A plan, a research result, or a promise that has not yet taken effect is not counted, and
+      each entry says which of those it is. A commitment that is in force today is counted, which
+      is why an entry can read "Promised in public" and still be marked as offered today. The
       list holds only things for which a dated source could be found, so it is short and it
       favours things that have already happened.
     </p>
     <ThingList />
   </section>
   <section class="below" id="beside">
-    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries about the setting, not counted</span></div>
+    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries, not counted</span></div>
     <p class="intro">
-      These entries record laws, the rules developers publish for their models, and what people
-      think. None of them is a thing a developer can offer to an AI model, so none is counted.
+      These entries are kept because they bear on everything on the list. None is counted, and
+      each group says why.
     </p>
     <ThingList beside />
   </section>
