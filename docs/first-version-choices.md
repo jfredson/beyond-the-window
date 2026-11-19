@@ -145,6 +145,72 @@ one of the kind of thing the site is about; John Andrew Fredrickson decides what
   reaches a reader who arrives on an entry page and never sees the home page.
 - *Open question it touches:* 7. Not closed.
 
+**Revised 2026-11-18. The placement, the voice and the naming of the developer are now ruled;
+the sentences are a session's wording and are not.** John ruled on 2026-11-18
+(`docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md`; decided by: mixed): "As
+recommended".
+
+*Ruled:* the site says an AI model drafted much of it in three places (the notice on the home
+page and the Still Asking page, the About page's section on who does what, and a line on every
+entry page); the About page's conflict paragraph names Anthropic as the maker of the drafting
+model, and no model is named anywhere; the notice and that About section are in John's first
+person, and the records and the rest of the site stay impersonal.
+
+*Not ruled:* the sentences. They are below, as now on the site. **Decided by: agent (the
+session that applied the ruling), provisional, 2026-11-18, not ruled by John.** He reads and
+owns every first-person sentence before release, and a different session checks them first.
+
+The notice (home page and Still Asking page):
+
+> I am John Andrew Fredrickson, and I direct the sessions in which this site is made. An AI
+> model drafted much of the text, and that model is one of the kind of thing the site is about.
+> I decide what stands.
+
+The About page, "Who Does What", its first-person sentences and its conflict paragraph:
+
+> I am John Andrew Fredrickson, and I decide what stands. In this first version I have ruled
+> three things: the question, that the home page opens with a count that has no total beside
+> it, and where and in whose voice the site says an AI model drafted much of it. The list, each
+> test, and where each entry stands were drafted in sessions I direct and have not yet had my
+> ruling.
+>
+> Much of the text, the records and the code were drafted by an AI model, in sessions I direct.
+>
+> The conflict is sharper than that. The model that drafted the text is made by Anthropic, a
+> developer whose commitments several entries count, and 5 of the 6 things counted as offered
+> rest on Anthropic's own pages.
+>
+> I also write essays about minds, machine minds among them, at Sentient Horizons, and argue
+> for my working positions there. This site does not argue for them. It does take a view on how
+> to weigh what is on record, set out above, and that view is close to mine.
+
+- *The choice:* the passages as they stood, moved into the first person with every fact kept.
+  First person covers only what John does and decides. Two facts were brought up to date and
+  no further: what he has ruled now lists the count's form and this ruling beside the question,
+  and the conflict paragraph names the developer where it said "one of the developers". His
+  name, with the link to his page, opens each passage, so a reader knows who "I" is. The "5"
+  and the "6" are worked out from the records at build time, and the build stops if the records
+  no longer show several entries resting on that developer.
+- *Confidence:* moderate. The facts are unchanged and checked against the records. Two
+  sentences are the ones John is most likely to want to reword: "that view is close to mine",
+  which is the old "close to his" and is the one place the section touches his views, and the
+  list of what he has ruled, which goes out of date with each ruling.
+- *Standard or judgment:* judgment call. The nearest family practice is the notice Minimum
+  Viable Mind carries.
+- *Strongest alternative:* the starting point shown to John as one sentence ("I direct the
+  sessions, an AI model drafted much of the text, and I decide what stands"), with his name
+  given only in the footer. It is shorter. Its cost is that the notice would not say who "I"
+  is, and would drop the fact that the drafting model is one of the kind of thing the site is
+  about.
+- *Changed with it:* on About's list of what is not known, the line "Whether a number belongs
+  at the top of the home page at all" became "What the sentence at the top of the home page
+  should say, and whether memory across conversations belongs in the count", because the
+  ruling on the count settled the first and left those two open.
+- *Left as it was:* the line on every entry page ("It was drafted by an AI model from the
+  sources above"), in the records' impersonal voice. Who made the second check of each record
+  is not added, because the ruling says that was not put to John.
+- *Open question it touches:* 7. Ruled in part; not closed.
+
 ### 6. Voice
 
 Plain statements that say what was found, with as little first person as possible. The site is
@@ -334,6 +400,14 @@ two. *Confidence:* low. *Judgment.*
 working word, a long dash, a phrase that writes the site as its own agent, or the name of an AI
 model or its developer anywhere other than an entry page or a source's title. *Confidence:*
 high. *Standard* (rows K6, K7, B11).
+
+*Added 2026-11-18, a second change that day:* the rule against naming an AI model or its
+developer has one exception, for the ruling on how the site declares AI authorship. The name
+Anthropic is allowed in the About page's conflict paragraph (the paragraph marked
+`id="conflict"`) and nowhere else. Every other name is still refused in that paragraph, the
+name is still refused elsewhere on About and on every other page, and no model's name is
+allowed off an entry's page. Each of those three refusals was tried on a copy of the built
+site. *Decided by: agent.* *Confidence:* high. *Standard* (row B11).
 
 *Added 2026-11-18:* it also refuses anything standing beside the number in the large type on
 the home page, a total in the headline part of the served file, and the count written as a

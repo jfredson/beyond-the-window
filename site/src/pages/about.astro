@@ -2,13 +2,26 @@
 // About: why the site exists, how it is made, who does what, and what is not known yet. The
 // last part is drawn from docs/open-questions.md, in plain words. Nothing on this page closes
 // one of those questions.
+// The section on who does what: ruled by John on 2026-11-18
+// (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md) that it is in his own first
+// person, and that its conflict paragraph names the developer of the drafting model and no
+// model. Not ruled: the sentences themselves. They are a session's draft of 2026-11-18, and
+// John reads and owns each first-person sentence before release
+// (docs/first-version-choices.md, choice 5). The rest of the page stays impersonal.
 import Base from '../layouts/Base.astro';
 import { data, headline, longDate, QUESTION } from '../lib/data';
 
 const r = data.headline.records;
-// How many of the things counted as offered are offered by one developer alone. Worked out here
-// from the export, so the sentence that uses it cannot drift from the records.
-const byOneAlone = data.entries.filter((e) => e.state.offered_today === true && e.state.offered_by.length === 1).length;
+// The developer of the model that drafted the text. This is the one place on the site, outside
+// the entries, where a developer is named, and scripts/check_site.py allows the name in the
+// paragraph marked id="conflict" and nowhere else off an entry's page.
+const DRAFTER = { name: 'Anthropic', url: 'https://www.anthropic.com/' };
+// How many of the things counted as offered rest on that developer alone. Worked out here from
+// the export, so the sentence that uses it cannot drift from the records.
+const counted = data.entries.filter((e) => e.state.offered_today === true);
+const byDrafterAlone = counted.filter((e) => e.state.offered_by.length === 1 && e.state.offered_by[0].name === DRAFTER.name).length;
+// The sentence says "several entries", so the build stops if the records stop bearing it out.
+if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name)).length < 3) throw new Error('the conflict paragraph says "several entries", and the records no longer show several');
 ---
 
 <Base title="About · Beyond the Window" description="Why Beyond the Window exists, how it is made, who does what, and what is not known yet.">
@@ -103,20 +116,22 @@ const byOneAlone = data.entries.filter((e) => e.state.offered_today === true && 
 
     <h2 id="who">Who Does What</h2>
     <p>
-      <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a> decides what stands.
-      In this first version he has ruled the question. The list, each test, and where each entry
-      stands were drafted in sessions he directs and have not yet had his ruling.
+      I am <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>, and I decide what stands.
+      In this first version I have ruled three things: the question, that the home page opens with
+      a count that has no total beside it, and where and in whose voice the site says an AI model
+      drafted much of it. The list, each test, and where each entry stands were drafted in
+      sessions I direct and have not yet had my ruling.
     </p>
     <p>
-      Much of the text, the records and the code were drafted by an AI model, in sessions he
-      directs. That model is one of the kind of thing the site is about. This is a conflict of
+      Much of the text, the records and the code were drafted by an AI model, in sessions I
+      direct. That model is one of the kind of thing the site is about. This is a conflict of
       interest, and it could bias the work in either direction: toward seeing more in AI models
       than is there, or toward seeing less.
     </p>
-    <p>
-      The conflict is sharper than that. The model that drafted the text is made by one of the
-      developers whose commitments appear in the entries, and {byOneAlone} of the {headline.count} things
-      counted as offered rest on that developer's own pages. Many of the cautions come from essays
+    <p id="conflict">
+      The conflict is sharper than that. The model that drafted the text is made by
+      <a href={DRAFTER.url} rel="noopener">{DRAFTER.name}</a>, a developer whose commitments several entries count, and {byDrafterAlone} of the {headline.count} things
+      counted as offered rest on {DRAFTER.name}'s own pages. Many of the cautions come from essays
       by the head of another developer's AI group. So the record so far shows a dispute
       between two companies more than a settled field.
     </p>
@@ -130,11 +145,11 @@ const byOneAlone = data.entries.filter((e) => e.state.offered_today === true && 
       not been checked yet.
     </p>
     <p>
-      He also writes essays about minds, machine minds among them, at
-      <a href="https://sentient-horizons.com/" rel="noopener">Sentient Horizons</a>, and argues for
-      <a href="https://sentient-horizons.com/positions/" rel="noopener">his working positions</a> there.
+      I also write essays about minds, machine minds among them, at
+      <a href="https://sentient-horizons.com/" rel="noopener">Sentient Horizons</a>, and argue for
+      <a href="https://sentient-horizons.com/positions/" rel="noopener">my working positions</a> there.
       This site does not argue for them. It does take a view on how to weigh what is on record,
-      set out above, and that view is close to his.
+      set out above, and that view is close to mine.
     </p>
 
     <h2 id="not-known">What Is Not Known Yet</h2>
@@ -145,7 +160,7 @@ const byOneAlone = data.entries.filter((e) => e.state.offered_today === true && 
       <li>What an entry is about: one trained model, a character that carries on across versions of a model, or a single conversation. The same thing can mean something different for each.</li>
       <li>Whether this is the right list. The first entries are the things for which a dated source could be found. A fuller list would start from what living minds, people and other animals, are known to seek, and that work has not been done.</li>
       <li>Whether one set of stages can describe progress in research, in what companies commit to, in law and in what people accept.</li>
-      <li>Whether a number belongs at the top of the home page at all.</li>
+      <li>What the sentence at the top of the home page should say, and whether memory across conversations belongs in the count.</li>
       <li>Who should check a site on this subject, when many of the available checkers are AI models.</li>
       <li>How to ask AI models questions over many years without later models having read the earlier questions and answers.</li>
       <li>Whether asking is itself something to be careful with.</li>

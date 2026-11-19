@@ -5,6 +5,16 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-18
 
+- **The notice and the About page's section on who does what are in John's first person, and
+  About names the developer of the drafting model**, as John ruled on 2026-11-18
+  (`docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md`): "As recommended". The
+  conflict paragraph on About now says the model that drafted the text is made by Anthropic,
+  with a link to Anthropic's site. No model is named anywhere. The line on every entry page is
+  unchanged. The sentences are a session's wording, not ruled; John reads and owns each
+  first-person sentence before release (`docs/first-version-choices.md`, choice 5).
+  `scripts/check_site.py` allows that one name in that one paragraph and nowhere else. About's
+  account of what John has ruled now lists the count's form and this ruling, and its list of
+  what is not known no longer says the number at the top is undecided. No number moved.
 - **The top of the home page is a count with no fraction**, as John ruled on 2026-11-18
   (`docs/rulings/2026-11-18-home-page-count.md`): "Count, no fraction". The large "6 of 9" is
   now "6", and the sentence under it reads "things that lie past the limits an AI model

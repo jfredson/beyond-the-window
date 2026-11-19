@@ -18,6 +18,12 @@ What it refuses (docs/first-version-choices.md, choice 18):
 4. The name of an AI model or its developer anywhere but on an entry's page, where it is the
    subject. The title of a source is a quotation and is not checked for rules 1 and 4: titles
    sit inside <cite> on every page.
+   One exception, ruled by John on 2026-11-18
+   (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md): the About page names the
+   developer of the model that drafted the text, in its conflict paragraph (the paragraph
+   marked id="conflict") and nowhere else. That one developer's name is allowed there. Every
+   other name is still refused there, the name is still refused everywhere else on the About
+   page and on every other page, and no model's name is allowed anywhere off an entry's page.
 5. A page that does not ask search engines to leave it out, while nothing is published.
 6. A link inside the site that leads to no page.
 7. The headline number on the home page differing from the headline file the site serves, or
@@ -51,6 +57,10 @@ WORKING_WORDS = [
 ]
 SITE_AS_AGENT = (r"\b(the|this) (site|page|list|record|tracker) "
                  r"(expects|believes|thinks|hopes|wants|feels|fears|knows|judges|doubts|suspects)\b")
+# Rule 4's one exception: this page, this paragraph, this name, and nothing wider.
+NAMED_DRAFTER_PAGE = "/about/"
+NAMED_DRAFTER_PARAGRAPH = r'(?is)<p\b[^>]*\bid="conflict"[^>]*>.*?</p>'
+NAMED_DRAFTER = r"\bAnthropic\b"
 MODEL_NAMES = (r"\b(claude|anthropic|openai|chatgpt|gpt|gemini|deepmind|google|llama|grok|xai|"
                r"mistral|copilot|microsoft|deepseek|opus|sonnet|haiku)\b")
 
@@ -110,7 +120,12 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
         flag("[—–]", "long dash", everything)
         flag(SITE_AS_AGENT, "the site written as its own agent", everything)
         if not is_entry:
-            flag(MODEL_NAMES, "an AI model or developer named off an entry's page")
+            names_text = text
+            if rel == NAMED_DRAFTER_PAGE:
+                without = re.sub(NAMED_DRAFTER_PARAGRAPH,
+                                 lambda m: re.sub(NAMED_DRAFTER, " ", m.group(0)), raw, count=1)
+                names_text = visible_text(without, keep_cites=False)
+            flag(MODEL_NAMES, "an AI model or developer named off an entry's page", names_text)
         if not re.search(r'<meta name="robots" content="noindex', raw):
             problems.append(f"{rel}: does not ask search engines to leave it out")
         for href in re.findall(r'<a\b[^>]*\bhref="([^"]+)"', raw):
