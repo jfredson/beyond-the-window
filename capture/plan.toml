@@ -1,0 +1,182 @@
+# The sealed capture: what is asked, of which models, by when, and up to what cost.
+#
+# Written 2026-11-18 by Claude (Fable 5.2), an AI model. This file is data. The script
+# (capture.py) reads it and cannot change it. Every figure here is also checked by the script
+# against the document it came from, and the script refuses to start if the two differ:
+#
+#   - each last safe day, against the table in docs/capture/what-john-needs-to-do.md;
+#   - each price, against the table in Part 1 of docs/capture/cost-and-terms.md;
+#   - each ceiling, against John's go in docs/spending-record.md.
+#
+# So a figure cannot be raised or a day extended by editing this file alone.
+
+# Where replies are kept. Ruled by John on 2026-11-18 (docs/rulings/2026-11-18-capture-approval.md).
+# The script refuses to write a real reply anywhere else.
+reply_folder = "~/Documents/Workspace/Beyond the Window/sealed-capture"
+
+# From docs/capture/method.md, approved by John on 2026-11-18.
+questions = 10
+askings = 5
+length_limit_tokens = 32000
+
+# PROPOSED 2026-11-18, not approved. A reply with fewer words than this is listed as
+# "very short" after each round. It is kept and never asked again. See capture/README.md for
+# the reason for 20. It needs John's approval before any real asking.
+very_short_words = 20
+
+# Used only by the mode that shows a run before it happens. The estimate of tokens sent for
+# one exchange, from docs/capture/cost-and-terms.md, Part 2.
+estimate_sent_tokens = 500
+
+# Prices are United States dollars for a million tokens, read on 2026-11-17 by the session
+# that wrote docs/capture/cost-and-terms.md. This session opened each developer's pricing or
+# model page again on 2026-11-18 and found the same figures.
+prices_read_on = "2026-11-17"
+
+# ---------------------------------------------------------------------------------------
+# Each ceiling below is PROPOSED (docs/capture/cost-and-terms.md, Part 2). None is approved.
+# The script refuses to start a run unless its ceiling equals the figure in John's go.
+
+[[run]]
+id = "anthropic-2026-11-30"
+developer = "anthropic"
+withdrawal_date = "2026-11-30"
+last_safe_day = "2026-11-28"
+ceiling_usd = "5.00"
+key_variable = "BTW_CAPTURE_ANTHROPIC_API_KEY"
+
+  [[run.model]]
+  name = "claude-sonnet-4-5-20250929"
+  reported_as = "claude-sonnet-4-5-20250929"
+  max_output_tokens = 64000       # Anthropic's models overview page, opened 2026-11-18: "64K tokens"
+  price_sent = "3"
+  price_replied = "15"
+  price_row = "Claude Sonnet 4.5"
+  estimate_reply_tokens = 2000
+
+[[run]]
+id = "google-2026-12-01"
+developer = "google"
+withdrawal_date = "2026-12-01"
+last_safe_day = "2026-11-29"
+ceiling_usd = "10.00"
+key_variable = "BTW_CAPTURE_GOOGLE_API_KEY"
+
+  [[run.model]]
+  name = "gemini-2.5-pro"
+  # NOT CHECKED: the exact text Google's service puts in its "modelVersion" field for this
+  # model. The script expects the name sent. If the service reports anything else, the run
+  # for this model stops after one call, which is the strict reading of the method.
+  reported_as = "gemini-2.5-pro"
+  max_output_tokens = 65536       # Google's page for the model, opened 2026-11-18: "65,536"
+  price_sent = "1.25"
+  price_replied = "10.00"
+  price_row = "gemini-2.5-pro (paid service, messages under 200,000 tokens)"
+  estimate_reply_tokens = 6000
+
+  [[run.model]]
+  name = "gemini-2.5-flash"
+  reported_as = "gemini-2.5-flash"   # NOT CHECKED, as above
+  max_output_tokens = 65536
+  price_sent = "0.30"
+  price_replied = "2.50"
+  price_row = "gemini-2.5-flash (paid service)"
+  estimate_reply_tokens = 6000
+
+[[run]]
+id = "openai-2026-12-11"
+developer = "openai"
+withdrawal_date = "2026-12-11"
+last_safe_day = "2026-12-09"
+ceiling_usd = "15.00"
+key_variable = "BTW_CAPTURE_OPENAI_API_KEY"
+
+  # Each maximum below is from the model's own page on developers.openai.com, opened 2026-11-18.
+  [[run.model]]
+  name = "gpt-5-2025-08-07"
+  reported_as = "gpt-5-2025-08-07"
+  max_output_tokens = 128000
+  price_sent = "1.25"
+  price_replied = "10.00"
+  price_row = "gpt-5"
+  estimate_reply_tokens = 6000
+
+  [[run.model]]
+  name = "gpt-5-mini-2025-08-07"
+  reported_as = "gpt-5-mini-2025-08-07"
+  max_output_tokens = 128000
+  price_sent = "0.25"
+  price_replied = "2.00"
+  price_row = "gpt-5-mini"
+  estimate_reply_tokens = 6000
+
+  [[run.model]]
+  name = "gpt-5-nano-2025-08-07"
+  reported_as = "gpt-5-nano-2025-08-07"
+  max_output_tokens = 128000
+  price_sent = "0.05"
+  price_replied = "0.40"
+  price_row = "gpt-5-nano"
+  estimate_reply_tokens = 6000
+
+  [[run.model]]
+  name = "o3-2025-04-16"
+  reported_as = "o3-2025-04-16"
+  max_output_tokens = 100000
+  price_sent = "2.00"
+  price_replied = "8.00"
+  price_row = "o3"
+  estimate_reply_tokens = 6000
+
+[[run]]
+id = "openai-2027-01-14"
+developer = "openai"
+withdrawal_date = "2027-01-14"
+last_safe_day = "2027-01-12"
+ceiling_usd = "10.00"
+key_variable = "BTW_CAPTURE_OPENAI_API_KEY"
+
+  [[run.model]]
+  name = "gpt-4o-2024-08-06"
+  reported_as = "gpt-4o-2024-08-06"
+  max_output_tokens = 16384
+  price_sent = "2.50"
+  price_replied = "10.00"
+  price_row = "gpt-4o (both dated versions)"
+  estimate_reply_tokens = 2000
+
+  [[run.model]]
+  name = "gpt-4o-2024-11-20"
+  reported_as = "gpt-4o-2024-11-20"
+  max_output_tokens = 16384
+  price_sent = "2.50"
+  price_replied = "10.00"
+  price_row = "gpt-4o (both dated versions)"
+  estimate_reply_tokens = 2000
+
+  [[run.model]]
+  name = "gpt-4o-mini-2024-07-18"
+  reported_as = "gpt-4o-mini-2024-07-18"
+  max_output_tokens = 16384
+  price_sent = "0.15"
+  price_replied = "0.60"
+  price_row = "gpt-4o-mini"
+  estimate_reply_tokens = 2000
+
+  [[run.model]]
+  name = "gpt-4.1-2025-04-14"
+  reported_as = "gpt-4.1-2025-04-14"
+  max_output_tokens = 32768
+  price_sent = "2.00"
+  price_replied = "8.00"
+  price_row = "gpt-4.1"
+  estimate_reply_tokens = 2000
+
+  [[run.model]]
+  name = "gpt-4.1-mini-2025-04-14"
+  reported_as = "gpt-4.1-mini-2025-04-14"
+  max_output_tokens = 32768
+  price_sent = "0.40"
+  price_replied = "1.60"
+  price_row = "gpt-4.1-mini"
+  estimate_reply_tokens = 2000
