@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-18",
-  "commit": "f3bb8f6",
+  "commit": "c8be944",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-18",
@@ -79,7 +79,7 @@
     },
     {
       "name": "The setting: laws, rules and what people think",
-      "meaning": "Laws, the rules developers publish for their models, and surveys of what people think are about the setting. None is a thing a developer of AI models can offer.",
+      "meaning": "Laws, the rules developers publish for their models, and surveys of what people think are about the setting in which the things on the list happen. None is itself a thing that lies past the limits an AI model ordinarily works within.",
       "beside": true,
       "entries": [
         "rules-for-speaking-about-itself",

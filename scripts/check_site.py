@@ -28,8 +28,9 @@ What it refuses (docs/first-version-choices.md, choice 18):
 6. A link inside the site that leads to no page.
 7. The headline number on the home page differing from the headline file the site serves, or
    anything standing beside it in the large type.
-9. The first person ("I", "my", "mine", "me") anywhere but the notice (the paragraph of class
-   "notice") and the About page's block on who does what (the block marked id="who"). John
+9. The first person ("I", "my", "mine", "me", "we", "our", "ours", "us") anywhere but the
+   notice (the paragraph of class "notice", on the home page and the Still Asking page only)
+   and the About page's block on who does what (the block marked id="who"). John
    ruled on 2026-11-18 that those two places are in his first person and the rest of the site
    stays impersonal (docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md). Words
    inside quotation marks are a source speaking and are not checked, as source titles are not.
@@ -64,7 +65,9 @@ SITE_AS_AGENT = (r"\b(the|this) (site|page|list|record|tracker) (does )?"
                  r"(expects?|believes?|thinks?|hopes?|wants?|feels?|fears?|knows?|judges?|doubts?|"
                  r"suspects?|takes? (a|the) view)\b")
 # Rule 9: where the first person may stand, and nowhere else.
-FIRST_PERSON = r"\b(I|[Mm]y|[Mm]ine|[Mm]e)\b"
+FIRST_PERSON = r"\b(I|[Mm]y|[Mm]ine|[Mm]e|[Ww]e|[Oo]urs?|us)\b"
+# The two pages that carry the notice. A notice written onto any other page gets no exception.
+NOTICE_PAGES = {"/", "/still-asking/"}
 FIRST_PERSON_PLACES = [r'(?is)<p\b[^>]*\bclass="notice"[^>]*>.*?</p>',
                        r'(?is)<div\b[^>]*\bid="who"[^>]*>.*?</div>']
 QUOTED = r'"[^"]*"|“[^”]*”'
@@ -139,8 +142,8 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
             flag(MODEL_NAMES, "an AI model or developer named off an entry's page", names_text)
         outside_places = raw
         for i, place in enumerate(FIRST_PERSON_PLACES):
-            # the notice on any page that carries it; the block on About only; once each
-            if i == 0 or rel == NAMED_DRAFTER_PAGE:
+            # the notice on its two pages only; the block on About only; once each
+            if (i == 0 and rel in NOTICE_PAGES) or (i == 1 and rel == NAMED_DRAFTER_PAGE):
                 outside_places = re.sub(place, " ", outside_places, count=1)
         unquoted = re.sub(QUOTED, " ", visible_text(outside_places, keep_cites=False))
         for m in re.finditer(FIRST_PERSON, unquoted):

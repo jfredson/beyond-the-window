@@ -5,6 +5,17 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-18
 
+- **The fixes from the second check of the count and the authorship wording are applied**
+  (`docs/reviews/2026-11-18-second-check-of-count-and-authorship.md`). The reason printed for
+  the entries about the setting no longer says a developer cannot offer them, which was untrue
+  of the entry on developers publishing their rules; it now says they are about the setting in
+  which the things on the list happen, and that none is itself a thing that lies past the
+  limits an AI model ordinarily works within. That entry was not moved. On About, "follows two
+  of them" is gone: the sentence now points to one essay, linked and opened, that argues the
+  same weighing. Four smaller wordings were changed as the check suggested, and
+  `scripts/check_site.py` now also refuses "we" and "our" outside the two first-person places
+  and excuses the notice only on its two pages. The figures under the drawing are still left
+  for John. No number moved: the count is 5.
 - **The count moved from 6 to 5.** John ruled on 2026-11-18
   (`docs/rulings/2026-11-18-what-offered-today-means.md`, "Yes to both") what "offered today"
   means and that the record for memory across conversations moves beside the list. The record

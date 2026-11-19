@@ -157,6 +157,17 @@ meaning is printed on each page.
   from "Promised in public" to "Committed to in public", which would need no explaining
   sentence. Its cost is an edit to a record's standing words, which this change was told not to
   make.
+- *Changed after the second check, 2026-11-18*
+  (`docs/reviews/2026-11-18-second-check-of-count-and-authorship.md`, findings 1 and 6). The
+  reason printed for the entries about the setting said "None is a thing a developer of AI
+  models can offer", which is untrue of the entry on developers publishing their rules under
+  the ruled meaning. It now reads: "Laws, the rules developers publish for their models, and
+  surveys of what people think are about the setting in which the things on the list happen.
+  None is itself a thing that lies past the limits an AI model ordinarily works within." About
+  says the same. That entry was not moved: whether any other record moves has not been put to
+  John. On the list page, "each entry says which of those it is" became "each entry that is
+  not counted says where it stands", because only one of the three rows names a plan, a
+  research result or a promise.
 - *Left for John, as the check asked (finding 8):* the drawing still shows the things not
   offered yet as squares outside the frame, with "5 inside the frame" and "3 outside it" under
   them. One question to put to him with the picture: keep the empty squares and drop the two
@@ -314,6 +325,33 @@ What each finding led to:
   sentence that names nothing ("I have ruled some of what is here, and the list, each test and
   most entries' standing have not had my ruling"), which never goes out of date and tells a
   reader less.
+
+**Revised a third time 2026-11-18, after the second check**
+(`docs/reviews/2026-11-18-second-check-of-count-and-authorship.md`). The wording above is kept
+as it was. What changed, still a session's wording and not ruled (**decided by: agent,
+provisional, 2026-11-18**):
+
+- *Finding 2 ("follows two of them"):* the linked positions page does not hold those two
+  positions, so the count is gone. The sentence now reads: "The way these pages weigh what is
+  on record, set out above, is the way I weigh it in one of those essays, *What a Report Is
+  Evidence Of*: what an AI model says about itself counts for little on its own, and a report
+  checked against an independent reading counts for more." The essay
+  (`https://sentient-horizons.com/essays/what-a-report-is-evidence-of/`, dated June 21st, 2026
+  on its page) was opened on 2026-11-18. It says "The bare report, on its own, is screened
+  off", and that where a model's account of its own inner state matches what an independent
+  reading finds, on a fact its training text never held, the report "carries real information".
+  One difference for John to weigh: the essay says the bare report is worth nothing as evidence
+  of an inside, and the sentence says "counts for little on its own". This is the one sentence
+  that states a view of his, so it is the one he most needs to read.
+- *Finding 3:* "the look of the pages" is now "the direction of the pages' look", which is what
+  the design ruling covers.
+- *Finding 4:* the third caution is now named in the ruling's own words, "the cost of missing
+  wants that are there".
+- *Finding 5:* "where every other entry stands" is now "where each of the other entries
+  stands".
+- *Finding 8:* the guard on the first person now also refuses "we", "our", "ours" and "us", and
+  excuses the notice only on the home page and the Still Asking page.
+- *Confidence:* high on findings 3, 5 and 8; moderate on 2 and 4, which are John's to read.
 
 ### 6. Voice
 

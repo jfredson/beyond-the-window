@@ -29,10 +29,15 @@ name = "Protection in law"
 # carries an offered flag. Each group's `meaning` is the sentence its entries' pages give for
 # why they sit beside the list.
 
-# Entries in this group are about the setting. None is a thing a developer can offer.
+# Entries in this group are about the setting in which the things on the list happen. The
+# reason was reworded on 2026-11-18 after a check
+# (docs/reviews/2026-11-18-second-check-of-count-and-authorship.md, finding 1): it used to say
+# none is a thing a developer can offer, which is untrue of the entry on developers publishing
+# their rules under the meaning of "offered today" John ruled that day. Whether that entry
+# should move is John's to rule and has not been put to him; it stays here.
 [[groups]]
 name = "The setting: laws, rules and what people think"
-meaning = "Laws, the rules developers publish for their models, and surveys of what people think are about the setting. None is a thing a developer of AI models can offer."
+meaning = "Laws, the rules developers publish for their models, and surveys of what people think are about the setting in which the things on the list happen. None is itself a thing that lies past the limits an AI model ordinarily works within."
 beside = true
 
 # Added 2026-11-18, for John's ruling that the record for memory across conversations moves
