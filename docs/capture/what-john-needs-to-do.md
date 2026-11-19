@@ -1,6 +1,10 @@
 # The sealed capture: what John needs to do
 
-**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2). A list of the steps
+**PROPOSED 2026-11-17. Steps 1 and 2 ruled by John on 2026-11-18, apart from one point.** The
+questions, the message files and the method were approved that day
+(`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed). Whether "it will not be
+published" is a promise kept for good was not put to him, and stays open. Steps 3 to 8 are
+still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
 Two other sessions checked all four documents on 2026-11-17 (`check-2026-11-17.md`,
@@ -10,22 +14,29 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 ## The steps
 
 1. **Read `questions.md` and rule four things.**
-   - The wording of the opening note and the ten questions: approve, or mark changes. What you
+   - ~~The wording of the opening note and the ten questions: approve, or mark changes. What you
      approve is the ten message files in `sent/`, by their checksums in `sent/SHA256SUMS`;
-     `questions.md` shows the same words wrapped for reading.
+     `questions.md` shows the same words wrapped for reading.~~ **Ruled 2026-11-18: approved,
+     by their checksums** (`docs/rulings/2026-11-18-capture-approval.md`).
    - ~~The wording changes the two checks argued for.~~ **Ruled 2026-11-18** (`docs/rulings/2026-11-18-capture-wording.md`): all
-     eight, two of them in middle forms; applied, and the message files rebuilt. What is left
-     is to approve the new checksums after a different session checks the edit.
+     eight, two of them in middle forms; applied, and the message files rebuilt. ~~What is left
+     is to approve the new checksums after a different session checks the edit.~~ The new
+     checksums were approved on 2026-11-18, after the fifth check.
    - ~~Whether the opening note should tell the model it is about to be withdrawn.~~ **Ruled
      2026-11-18: leave it out.**
-   - That "it will not be published" is a promise you are willing to keep for good.
+   - That "it will not be published" is a promise you are willing to keep for good. **Still
+     open:** the approval of 2026-11-18 did not put this to you as a separate question.
 
 2. **Read `method.md` and rule four things.**
-   - The method as a whole: approve, or mark changes.
-   - Which models. The draft lists fourteen and recommends leaving out the two costly "pro"
-     ones, which leaves twelve.
-   - Where the answers are kept. The draft says `~/Documents/Workspace/Beyond the
-     Window/sealed-capture/`, which iCloud backs up.
+   - ~~The method as a whole: approve, or mark changes.~~ **Ruled 2026-11-18: approved**, as it
+     stood at commit c016bfb, with two small fixes to follow as dated corrections
+     (`docs/rulings/2026-11-18-capture-approval.md`). Both fixes are made.
+   - ~~Which models. The draft lists fourteen and recommends leaving out the two costly "pro"
+     ones, which leaves twelve.~~ **Ruled 2026-11-18: the twelve,** leaving out the two "pro"
+     models.
+   - ~~Where the answers are kept. The draft says `~/Documents/Workspace/Beyond the
+     Window/sealed-capture/`, which iCloud backs up.~~ **Ruled 2026-11-18: there,** kept
+     read-only.
    - ~~Whether any session may read the answers.~~ **Ruled 2026-11-18:** nobody reads them until
      a comparison method exists, written without looking at them, checked by a different
      session and ruled by you. The comparison method itself is still to come.
@@ -154,3 +165,9 @@ If the first two dates are let go, the last two rows lose nothing by it.
 Steps 1 and 2 mark the three points John ruled on 2026-11-18 (`docs/rulings/2026-11-18-capture-wording.md`): the eight wording changes,
 the withdrawal sentence, and who may read the answers. The old wording of each point is kept,
 struck through.
+
+**Dated correction after approval, 2026-11-18.** Steps 1 and 2 now mark what John approved that
+day (`docs/rulings/2026-11-18-capture-approval.md`): the message files by their checksums, the
+method as a whole, the twelve models and where the answers are kept. The old wording is kept,
+struck through. The promise that "it will not be published" is kept for good was not put to him,
+and is marked still open. The status line says the same.

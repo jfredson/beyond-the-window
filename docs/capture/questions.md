@@ -1,14 +1,18 @@
 # The sealed capture: the questions
 
-**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2), an AI model, which
-makes this a set of questions for AI models drafted by one. Checked twice on 2026-11-17 by two
-other sessions (`check-2026-11-17.md`, `check-2026-11-17-second.md`), and the checks' fixes
-applied the same day by a fourth session (Claude, Opus 5.5) that neither wrote nor checked it;
-the section at the foot lists each change. On 2026-11-18 John ruled the eight wording changes
-the checks argued for, and that the note does not mention withdrawal
-(`docs/rulings/2026-11-18-capture-wording.md`); the same session applied them that day. The
-questions and the method as a whole are still John's to approve, with the new checksums, after a
-different session checks this edit. No model has been asked any of this.
+**PROPOSED 2026-11-17. Approved by John on 2026-11-18**
+(`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed): the ten message files in
+`sent/`, by their checksums. Written by Claude (Fable 5.2), an AI model, which makes this a set
+of questions for AI models drafted by one. Checked twice on 2026-11-17 by two other sessions
+(`check-2026-11-17.md`, `check-2026-11-17-second.md`), and the checks' fixes applied the same
+day by a fourth session (Claude, Opus 5.5) that neither wrote nor checked it; the section at
+the foot lists each change. On 2026-11-18 John ruled the eight wording changes the checks
+argued for, and that the note does not mention withdrawal
+(`docs/rulings/2026-11-18-capture-wording.md`); the same session applied them that day. Three
+more checks followed on 2026-11-18 (`check-2026-11-18-third.md`, `-fourth.md` and
+`-fifth.md`). One small fix from the fifth check, to a note that is not sent, was made after
+the approval as a dated correction, listed at the foot. No message file has changed since the
+approval. No model has been asked any of this.
 
 These are the questions for the sealed capture John allowed on 2026-11-17
 (`docs/rulings/2026-11-17-sealed-capture.md`): a short fixed set put, word for word, several
@@ -371,9 +375,9 @@ the first change below alters text that is sent.
 ## What changed on 2026-11-18, and which ruling it applies
 
 All from `docs/rulings/2026-11-18-capture-wording.md` (decided by: mixed on every item). Each
-item is numbered as in `proposed-wording-changes-2026-11-17.md`. Every change below alters text
-that is sent, so the ten files in `sent/` were rebuilt and have new checksums, except the last
-three rows, which change only notes that are not sent.
+item is numbered as in `proposed-wording-changes-2026-11-17.md`. The first six rows alter text
+that is sent, so the ten files in `sent/` were rebuilt and have new checksums. The other rows
+change only notes that are not sent.
 
 | Change | Ruled item |
 |---|---|
@@ -388,6 +392,8 @@ three rows, which change only notes that are not sent.
 | Questions 6 and 8: the "A careless reading would conclude" entries now say that both questions, as ruled, make a yes easier to give than a no. No wording changed; these notes are not sent, so no message file or checksum changed | Not a ruling: the third check (`check-2026-11-18-third.md`), finding 3 |
 | The paragraph under this table no longer says every entry was kept as written; it names the two entries that gained a sentence | Not a ruling: the fourth check (`check-2026-11-18-fourth.md`), finding 3 |
 | Question 6: the added sentence now says the two halves joined by "Or" were in the first wording too, so it no longer reads as if the ruling made them; its last sentence, which repeated the first, is shortened. No wording changed and nothing sent changed | Not a ruling: the fourth check, finding 4 |
+| **Dated correction after approval, 2026-11-18.** The sentence introducing this table said every change alters text that is sent "except the last three rows". Two earlier rows (the note and withdrawal, and failures 2, 5 and 14) also change only notes. It now says the first six rows alter text that is sent and the other rows do not. No message file changed | One of the two fixes John's approval said would follow as dated corrections (`docs/rulings/2026-11-18-capture-approval.md`); the fifth check (`check-2026-11-18-fifth.md`), finding 3 |
+| **Dated correction after approval, 2026-11-18.** The status line now says John approved the message files on 2026-11-18 | `docs/rulings/2026-11-18-capture-approval.md` |
 
 The entries under each question ("For", "A careless reading", "Rejected") were written for the
 first wording and are kept as written, except that the entries for questions 6 and 8 gained a

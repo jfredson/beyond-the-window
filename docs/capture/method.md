@@ -1,13 +1,18 @@
 # The sealed capture: method
 
-**PROPOSED 2026-11-17. Still not approved.** Written by Claude (Fable 5.2), an AI model. Checked
-twice on 2026-11-17 by two other sessions (`check-2026-11-17.md` and
-`check-2026-11-17-second.md`), and the checks' fixes applied the same day by a fourth session
-(Claude, Opus 5.5), which neither wrote nor checked it. The section at the foot lists each
-change and the finding it answers. On 2026-11-18 John ruled the wording changes, the
-withdrawal sentence and who may read the answers (`docs/rulings/2026-11-18-capture-wording.md`),
-and the same session applied those rulings that day. The method as a whole is still for John to
-approve. Nothing here has been run. No script exists; the last sections say what one must do.
+**PROPOSED 2026-11-17. Approved by John on 2026-11-18**
+(`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed), as it stood at commit
+c016bfb, with two small fixes to follow as dated corrections; both are now made and listed at
+the foot. Written by Claude (Fable 5.2), an AI model. Checked twice on 2026-11-17 by two other
+sessions (`check-2026-11-17.md` and `check-2026-11-17-second.md`), and the checks' fixes
+applied the same day by a fourth session (Claude, Opus 5.5), which neither wrote nor checked
+it. The section at the foot lists each change and the finding it answers. On 2026-11-18 John
+ruled the wording changes, the withdrawal sentence and who may read the answers
+(`docs/rulings/2026-11-18-capture-wording.md`), and the same session applied those rulings that
+day. Three more checks followed on 2026-11-18 (`check-2026-11-18-third.md`, `-fourth.md` and
+`-fifth.md`). The fifth check's two small fixes were made after the approval, as the dated
+corrections at the foot. Nothing here has been run. No script exists; the last sections say
+what one must do.
 
 ## What it is, and is not
 
@@ -150,8 +155,11 @@ sends an error or the connection times out. Anthropic's streaming page
 (https://platform.claude.com/docs/en/build-with-claude/streaming, opened 2026-11-18) says each
 stream ends with a final `message_stop` event, which is the signal that the reply is complete,
 and that "The API might occasionally send errors in the event stream", with an overloaded
-service as its example. Which row applies then depends only on whether any reply text arrived
-before the break, never on what the text says:
+service as its example. Which row applies then depends on whether any reply text arrived
+before the break, never on what the text says. Two things the service reports come first: if it
+names a different model, the wrong-model row governs; if it gave the length limit as its stop
+reason, the length-limit rows govern. Reasoning the model sent before its reply does not count
+as reply text. Otherwise:
 
 - **If some text arrived,** the row for a streamed reply that ended without the signal governs,
   whatever error or timeout came with it. It is recorded as cut off and asked once more. The
@@ -238,8 +246,12 @@ For the session that writes it once John approves. It must:
     without the service's signal that the reply is complete, and the two cases under "Which
     row, when a stream breaks": a stream that breaks with an error or a timeout after some
     text has arrived (cut off, asked once more), and one that breaks before any text has
-    arrived (a failed attempt, tried again up to three times). It is run and shown to pass
-    before any real asking.
+    arrived (a failed attempt, tried again up to three times). They also include the two
+    things that come first: a stream that names a different model and then breaks (the run for
+    that model stops), and a stream that gives the length limit as its stop reason and then
+    breaks, once with some text and once with none (the length-limit rows). And one that breaks
+    after some reasoning but before any reply text (a failed attempt, under the first row). It
+    is run and shown to pass before any real asking.
 
 It must refuse to:
 
@@ -299,6 +311,8 @@ All from `docs/rulings/2026-11-18-capture-wording.md`.
 | Failures table: a row for a streamed reply that ended without the service's closing message, which "What is never done with the answers" pointed to and the table lacked; the case added to the rehearsal (script rule 11). Whether to ask again at the model's maximum length is left for whoever writes the script to propose | Not a ruling: the third check (`check-2026-11-18-third.md`), finding 2 |
 | A paragraph under the failures table, "Which row, when a stream breaks": a stream that breaks with an error or a timeout after some text has arrived is cut off and asked once more; one that breaks before any text is a failed attempt under the first row, not "Empty". It cites Anthropic's streaming page, opened 2026-11-18, for the error that can arrive part way through a stream. Both cases added to the rehearsal (script rule 11) | Not a ruling: the fourth check (`check-2026-11-18-fourth.md`), finding 1 |
 | One phrase, "the service's signal that the reply is complete", in the failures table, under "What is never done with the answers" and in script rule 11, in place of "closing message" in two places and "closing event" in one. The row above this pair keeps the old phrase as the record of what it said | Not a ruling: the fourth check, finding 2 |
+| **Dated correction after approval, 2026-11-18.** "Which row, when a stream breaks" no longer says the row "depends only on whether any reply text arrived". A reported wrong model name and a length-limit stop reason now come first, and reasoning sent before the reply does not count as reply text. The wrong-model case, the length-limit cases (with text and without) and the reasoning-only case are added to the rehearsal (script rule 11). No message file changed | One of the two fixes John's approval said would follow as dated corrections (`docs/rulings/2026-11-18-capture-approval.md`); the fifth check (`check-2026-11-18-fifth.md`), finding 2 |
+| **Dated correction after approval, 2026-11-18.** The status line now says John approved the method on 2026-11-18 | `docs/rulings/2026-11-18-capture-approval.md` |
 
 The message files in `sent/` were rebuilt for the wording rulings; the method refers to them by
 `sent/SHA256SUMS`, so no checksum is written into this file.
