@@ -82,8 +82,9 @@ text = "An outside research group that ran welfare interviews with one model rep
 source = "interviews"
 
 [checks]
-# The rewording of the safety caution, asked for by the check of the record fixes on 2026-11-18, has not been checked.
+# The rewording of the safety caution, asked for by the check of the record fixes on 2026-11-18,
+# was itself checked the same day (docs/reviews/2026-11-18-check-of-small-record-fixes.md, finding 1),
+# so every change to this record has now been checked.
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
-some_unchecked = true

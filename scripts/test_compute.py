@@ -147,6 +147,9 @@ class Validator(unittest.TestCase):
         self.assertIn("out of order", errs(rec))
         rec["checks"] = {"against_sources": D, "when": D}
         self.assertIn("unknown field 'when'", errs(rec))
+        rec["checks"] = {"against_sources": D}
+        rec["added"] = dt.date(2026, 12, 1)
+        self.assertIn("earlier than the record's 'added' date", errs(rec))
 
     def test_group_must_be_listed(self):
         rec = good(); rec["group"] = "Somewhere else"

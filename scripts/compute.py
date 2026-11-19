@@ -232,6 +232,10 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                      if _is_date(ch.get(f))]
             if order != sorted(order):
                 bad("checks: the dates are out of order (a check, then changes, then a check of the changes)")
+            if _is_date(rec.get("added")) and _is_date(ch.get("against_sources")) \
+                    and ch["against_sources"] < rec["added"]:
+                bad("checks: 'against_sources' is earlier than the record's 'added' date; a record cannot "
+                    "have been checked before it existed (perhaps the table was copied from another record)")
     if "constructed" in rec and not isinstance(rec["constructed"], bool):
         bad("'constructed' is not true or false")
     if "notes" in rec and not isinstance(rec["notes"], str):

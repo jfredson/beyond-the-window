@@ -5,6 +5,15 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-18
 
+- **The three small fixes from the check of the four small record fixes are applied**
+  (`docs/reviews/2026-11-18-check-of-small-record-fixes.md`). `scripts/compute.py` now refuses a
+  record whose `[checks]` table claims a check of its sources earlier than the date the record
+  was added, as a copied table would, with one more test. The retirement-interview record no
+  longer says its reworded caution is unchecked, because that check read the rewording and
+  passed it, so its page now says its changes were checked on 2026-11-18. The line below on
+  the research draft's notes gave the wrong count and is corrected. Who made the second check is
+  left for John, with open question 7. No number moved: 6 of 9 things on the list are still
+  offered to at least one AI model today.
 - **Four of the five small fixes from the check of the record fixes are applied**
   (`docs/reviews/2026-11-18-check-of-record-fixes.md`). The retirement-interview caution uses its
   page's word "misaligned" and quotes "in ways that models are less likely to find concerning".
@@ -13,7 +22,9 @@ number moved or that none did. Nothing is published, so there have been no publi
   sentence from that table, because the fixed sentence in the page template was untrue for the
   survey of AI researchers (nothing to correct) and would have been untrue for any later record;
   `scripts/compute.py` refuses a table with missing or out-of-order dates. About no longer says
-  the corrections are unchecked. Three dated notes are added in the research draft. The finding
+  the corrections are unchecked. Dated notes are added under two entries in the research draft,
+  and completed under two more (corrected 2026-11-18: this line first said "three dated notes are
+  added"). The finding
   on who made the second check is left for John, with open question 7. No number moved: 6 of 9
   things on the list are still offered to at least one AI model today.
 - **The remaining fixes from the two second checks are applied** to eight records and to the

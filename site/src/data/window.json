@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-18",
-  "commit": "b215a8b",
+  "commit": "913776f",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-17",
@@ -753,8 +753,7 @@
       "checks": {
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
-        "changes_checked": "2026-11-18",
-        "some_unchecked": true
+        "changes_checked": "2026-11-18"
       },
       "state": {
         "words": "Done by one developer, first in full for a model retired on January 5th, 2026",
