@@ -74,3 +74,14 @@ pages.
   new shape.
 
 Nothing is published.
+
+## Added the same day: the opening gives no personal reason
+
+The session asked whether John wanted to give a sentence or two, in his own words, on why the
+question matters to him, as The Belt Equation's page does, and said that otherwise the opening
+would follow The Quiet Galaxy's, which says what the question is and what he wanted a place
+for. John: "Follow The Quiet Galaxy's opening, no personal reason". **Decided by: mixed.**
+
+So part 1, "Who is asking", is modelled on The Quiet Galaxy's About page
+(`~/Code/quiet-galaxy/site/src/pages/about.astro`): who John is and what he writes about, the
+family of sites, the question, and what he wanted a place for. It states no personal motive.
