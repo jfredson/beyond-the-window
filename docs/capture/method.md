@@ -32,6 +32,13 @@ never done with the answers", and the foot lists each change under "What changed
 after the second approval". Still John's before any run: the terms, the keys, the spending
 ceilings and the capture script.
 
+**Where the capture script stands now.** *Dated correction, 2026-11-18.* The script has been
+checked three times by a session that did not write it. The third check
+(`check-2026-11-18-capture-script-third.md`) says the Anthropic run is fit to go ahead. It still
+needs John's key and his go. Google and OpenAI are not ready. The two paragraphs after this one
+were written earlier the same day and are kept as records. Wherever this document says the
+script is checked once and waiting for a second check, this paragraph is what holds.
+
 **A script now exists, and John has ruled four points on how it applies this method.** The
 script is at `capture/`. It was written on 2026-11-18, checked once by a different session
 (`check-2026-11-18-capture-script.md`), fixed, and is waiting for a second check. It has not
@@ -56,17 +63,21 @@ ready". It does not approve a run. What allows a run is John's go.
 The paragraph above also says that what is still John's about the script "is his go for each
 run". After the second check that is too little. Two more things are his:
 
-- Whether the check's first should-fix finding is fixed before the first run: a reply that
+- ~~Whether the check's first should-fix finding is fixed before the first run: a reply that
   holds half of a two-part symbol can never be saved. Any change to the script means the
-  rehearsal is run again, its result committed, and that difference checked.
+  rehearsal is run again, its result committed, and that difference checked.~~ Corrected
+  2026-11-18: that finding is fixed, with the check's other six, in commit 3dda42d; the
+  rehearsal was run again (commit b0c5bf7, 299 checks); and a third check found the fix sound
+  (`check-2026-11-18-capture-script-third.md`). It is no longer left for John.
 - Three things the script adds that this method has no words for, which he should know and may
   object to: three outcomes with no row in the failures table, each counted at the most its
   call could cost; a folder of markers and a lock file in the answers folder; and a command,
   `labels`, that shows the number of words of every reply and no word of any, where this method
   speaks only of a faulty file's count.
 
-When this was written, the script's author had changes answering the seven findings in the
-working folder, not yet committed and not yet checked.
+~~When this was written, the script's author had changes answering the seven findings in the
+working folder, not yet committed and not yet checked.~~ (Out of date since later on
+2026-11-18: those changes are committed, rehearsed and checked.)
 
 ## What it is, and is not
 
@@ -346,7 +357,8 @@ threshold for "very short" is to be proposed with that script and approved with 
 
 *Dated correction, 2026-11-18.* The three sentences struck through are out of date. This check
 is now part of the capture script (script rule 10 below), which is at `capture/`, was written
-on 2026-11-18, checked once, fixed, and is waiting for a second check. **A reply of fewer than
+on 2026-11-18, checked once, fixed, and is waiting for a second check (since then checked
+three times; see "Where the capture script stands now" near the top). **A reply of fewer than
 20 words is listed as very short.** Ruled by John on 2026-11-18 ("Approve all four"; decided
 by: mixed; `docs/rulings/2026-11-18-capture-script-four-points.md`). The figure is held in
 `capture/plan.toml`, which the script reads and cannot change, and not in the script itself as
@@ -378,7 +390,8 @@ second time. He chose (a), with the fault check done by the script without readi
 
 For the session that writes it once John approves. (Added 2026-11-18: it has been written. The
 script is at `capture/`, written 2026-11-18, checked once, fixed, and waiting for a second
-check.) It must:
+check. Since then it has been checked three times; see "Where the capture script stands now"
+near the top.) It must:
 
 1. ~~Read each key from its own file outside the repository, never print one, and never use
    another project's key.~~ *Dated correction, 2026-11-18, ruled by John* ("Approve all four";
@@ -452,7 +465,9 @@ passes. John has given his go for the spend. Then, and only then, the run.
 
 *Added 2026-11-18.* A script is now committed at `capture/`, with the saved result of its
 rehearsal. It was written on 2026-11-18, checked once, fixed, and is waiting for a second
-check. Nothing runs before that check and John's go. The first Anthropic run is to be made no
+check. Nothing runs before that check and John's go. (Since then it has been checked three times;
+see "Where the capture script stands now" near the top. What it still needs is John's key and
+his go.) The first Anthropic run is to be made no
 later than 2026-11-26 (script rule 6 above).
 
 ## What changed on 2026-11-17, and which finding it answers
@@ -573,3 +588,12 @@ paragraph says the second check of the script is done, gives its verdict in its 
 names the two further things it leaves for John. The other places that say "waiting for a second
 check" are left as written and answered there. Made by the session (Claude, Fable 5.2) that
 made the corrections above; a different session checks it.
+
+## What changed on 2026-11-18 after the third check of the script
+
+From `check-2026-11-18-capture-script-third.md`. A status paragraph near the top says where the
+script stands: checked three times, the third check says the Anthropic run is fit to go ahead,
+it still needs John's key and his go, and Google and OpenAI are not ready. The three later
+places that say "checked once" point to it, and the point that left the half-symbol finding for
+John is struck through, because the finding is fixed. Made by the session (Claude, Fable 5.2)
+that made the corrections above; a different session checks it.

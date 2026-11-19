@@ -12,6 +12,14 @@ ten rebuilt files by their checksums on 2026-11-18** ("Approve, with both"; deci
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
+**Where the capture script stands now.** *Dated correction, 2026-11-18.* The script has been
+checked three times by a session that did not write it. The third check
+(`check-2026-11-18-capture-script-third.md`) says the Anthropic run is fit to go ahead. It still
+needs your key and your go. Google and OpenAI are not ready. The two paragraphs after this one
+were written earlier the same day and are kept as records. Where they say the script is waiting
+for a check, this paragraph is what holds. One thing in them is still yours: to know the three
+things the script adds that the method has no words for, and to say if you object.
+
 **A script now exists, and four points on it are ruled.** The capture script is at `capture/`.
 It was written on 2026-11-18, checked once by a different session
 (`check-2026-11-18-capture-script.md`), fixed, and is waiting for a second check. Nothing runs
@@ -34,18 +42,25 @@ Anthropic run: yes. Nothing must be fixed." It lists seven things that should be
 says Google and OpenAI are "still not ready". It does not approve a run. What allows a run is
 your go. What it leaves for you, besides the steps below:
 
-- **Decide whether its first should-fix finding is fixed before the first run.** The finding: a
+- ~~**Decide whether its first should-fix finding is fixed before the first run.** The finding: a
   reply that holds half of a two-part symbol (most emoji are sent as two halves) can never be
   saved. The check would fix it first. Any change to the script means the rehearsal is run
-  again, its result committed, and that difference checked by a different session.
+  again, its result committed, and that difference checked by a different session.~~
+  Corrected 2026-11-18, in the third check's words: the second check's first should-fix
+  finding (a reply holding half of a two-part symbol could not be saved) is fixed, with its
+  other six, in commit 3dda42d. The rehearsal was run again (commit b0c5bf7, 299 checks) and a
+  third check found the fix sound and nothing that must be fixed
+  (`check-2026-11-18-capture-script-third.md`). Nothing here is left for you to decide.
 - **Know three things the script adds that the method has no words for, and say if you
   object:** three outcomes with no row in the method's failures table, each counted at the most
   its call could cost; a folder of markers and a lock file in the answers folder; and a command,
   `labels`, that shows the number of words of every reply and no word of any.
 
-When this was written, the script's author had changes answering the seven findings in the
+~~When this was written, the script's author had changes answering the seven findings in the
 working folder, not yet committed and not yet checked. Until they are committed with a new
-rehearsal result, the script's own start checks fail, as designed.
+rehearsal result, the script's own start checks fail, as designed.~~ (Out of date since later
+on 2026-11-18: those changes are committed, rehearsed and checked, as the correction above
+says.)
 
 Two other sessions checked all four documents on 2026-11-17 (`check-2026-11-17.md`,
 `check-2026-11-17-second.md`), and a fourth session (Claude, Opus 5.5), which neither wrote nor
@@ -210,9 +225,16 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    - **For each run, your words must name the developer and carry one figure, written with a
      dollar sign.** "Anthropic, up to $5" passes. "Anthropic, up to 5 dollars" is refused, and
      so are words that name two figures for one run.
+   - *Added 2026-11-18, from the third check of the script:* for OpenAI, which has two runs,
+     your words for each run must also carry that run's withdrawal date, as the form above does
+     ("OpenAI's models due 2026-12-11, up to $15").
    - **The commit you name is the whole repository as it stood then,** the script in `capture/`
      included, although the form above names only `docs/capture/`. A session gives you the
-     commit id to put in the blank.
+     commit id to put in the blank. *Added 2026-11-18, from the third check of the script:* it
+     is the latest commit in the repository at the moment you give the go, and before giving it
+     to you the session confirms that nothing in `capture/` or the message files has changed
+     since the third check, and that the script's `show` command passes every check except the
+     go and the key.
    - **A session records it, you do not.** It writes `docs/spending-record.md`, which does not
      exist yet: your words as a quotation and, directly under the quotation, a short block for
      that run holding the run's name, the date, the commit, the ceiling, the piece of your
@@ -247,12 +269,14 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 
 ## The Anthropic run, step by step
 
-*Added 2026-11-18.* This follows `capture/README.md`, "The day of the first run", which the
-script's author wrote for this purpose. ~~The script is waiting for a second check, so this list
-may change once more.~~ (Corrected 2026-11-18: the second check is done, and the status at the
-top of this document says what it found. The list may still change once more, when the script's
-author commits the changes that answer that check.) Nothing here has been run against any service. The first real call is
-also the first time the script meets a real service, which is why it is made alone.
+*Added 2026-11-18, and written out clean later that day after the third check of the script,
+so that it can be followed in order.* By then three rounds of corrections had left struck-out
+sentences inside the steps. Every sentence taken out is kept, word for word, under "Earlier
+wording of the run's step list" at the end of this section. The list follows
+`capture/README.md`, "The day of the first run". The third check of the script
+(`check-2026-11-18-capture-script-third.md`) read these commands against the script as it now
+stands and found them right. Nothing here has been run against any service. The first real
+call is also the first time the script meets a real service, which is why it is made alone.
 
 **Do this no later than 2026-11-26** (ruled by you on 2026-11-18, "Approve all four";
 `docs/rulings/2026-11-18-capture-script-four-points.md`). The script will still run on
@@ -261,30 +285,33 @@ first call shows.
 
 **Before the day,** all of these are true:
 
-- ~~The second check of the script is done and says it may run.~~ Corrected 2026-11-18: the
-  second check of the script (`check-2026-11-18-capture-script-second.md`) is done. Its
-  findings are dealt with as you decide; if the script changed, the rehearsal was run again and
-  its result committed.
-- You have ruled the command in step 2, which is still only proposed.
-- In the Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older
-  one the script stops at once with an error about a missing part named `tomllib`.
 - Steps 3 to 6 above are done for Anthropic: the terms decided, the key made and saved, and
   automatic top-up switched off.
-- Your go for the Anthropic run is in `docs/spending-record.md` and committed (step 7).
+- You have ruled the command in step 2 below, which is still only proposed.
+- Your go for the Anthropic run is in `docs/spending-record.md` and committed (step 7 above).
+- In the Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older
+  one the script stops at once with an error about a missing part named `tomllib`.
+- The script has been checked three times, and the third check says the Anthropic run is fit
+  to go ahead. No finding is left for you to decide. You know the three things the script adds
+  that the method has no words for (the status at the top of this document), and have said if
+  you object.
 
 **On the day,** in one Terminal window, with the Mac plugged in. Use the Mac's own Terminal
 app, not the Terminal panel in the Claude app, because a session can start commands in that
-panel and the window will hold the key. You type the commands.
-Whether a session may run them in your place is not ruled, and a session that did would be
-handling the key.
+panel and the window will hold the key. You type the commands. Whether a session may run them
+in your place is not ruled, and a session that did would be handling the key.
 
-1. Go to the project folder.
+No session edits this document, `cost-and-terms.md` or anything in `capture/` on the day. The
+script refuses to run if any of them has a change that is not committed.
+
+1. Go to the project folder. Every command below is run from there.
 
    ```bash
    cd ~/Code/beyond-the-window
    ```
 
-2. Copy the key from its file into the setting the script reads. Nothing is printed.
+2. Copy the key from its file into the setting the script reads. Nothing is printed. Once is
+   enough for all the commands that follow.
 
    ```bash
    export BTW_CAPTURE_ANTHROPIC_API_KEY="$(sed -n 's/^BTW_CAPTURE_ANTHROPIC_API_KEY=//p' ~/.config/sentient-horizons/beyond-the-window.env)"
@@ -299,12 +326,13 @@ handling the key.
    are not needed.
 
    *Added 2026-11-18, the judgment of a session that did not write it*
-   (`check-2026-11-18-method-corrections-second.md`): the command is safe, it puts the
-   key neither in the shell's history nor on the screen, and that session recommends you approve
+   (`check-2026-11-18-method-corrections-second.md`): the command is safe, it puts the key
+   neither in the shell's history nor on the screen, and that session recommends you approve
    it as written. It is still proposed, and not ruled.
 
 3. Show the run. Nothing is sent. Every line under "Checks made before a real run" must say
-   `pass`. If one does not, stop and tell a session what it says.
+   `pass`, the one about the key's setting included. If one does not, stop and tell a session
+   what it says.
 
    ```bash
    python3 -I capture/capture.py show --run anthropic-2026-11-30
@@ -316,12 +344,13 @@ handling the key.
    caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30 --stop-after 1
    ```
 
-5. ~~Read the one line it prints for that call.~~ Corrected 2026-11-18: four lines are printed:
-   the model's name, the line for the call, a line saying the script stopped as asked, and the
-   total. Read the second. A line beginning NOTICE is about an earlier run's call counted at its
-   highest possible cost; tell a session what it says. A good line for the call says `a reply`, gives the stop reason
-   `end_turn`, says `model reported as named: yes`, and gives token counts and a cost of about
-   a cent. No word of the reply is shown. Any other line:
+5. Read what it prints. Four lines: the model's name, the line for the call, a line beginning
+   STOPPED that says the script stopped after 1 call as asked, and the total. That STOPPED line
+   is expected. Read the second line, the one for the call. A good one says `a reply`, gives
+   the stop reason `end_turn`, says `model reported as named: yes`, and gives token counts and
+   a cost of about a cent. No word of the reply is shown. A line beginning NOTICE is about an
+   earlier run's call counted at its highest possible cost; tell a session what it says. If the
+   line for the call says anything else:
 
    | The line says | What happened | What to do |
    |---|---|---|
@@ -332,27 +361,25 @@ handling the key.
    | `model reported as named: NO`, or token counts of `none` | The reply was saved, but the script is not reading the service as expected | Stop, and have a session look before going on |
 
 6. If the line is good, a session may run the command that lists what each file was recorded
-   as, with the service's labels and no word of any reply.
+   as, with the service's labels and no word of any reply. This step can be left out.
 
    ```bash
    python3 -I capture/capture.py labels
    ```
 
 7. Run the rest. The same command without `--stop-after` carries on from the files already
-   saved. Forty-nine more lines follow, probably over 15 to 30 minutes.
+   saved. Forty-nine more lines follow, probably over 15 to 30 minutes. After every ten the
+   script says the round is complete and lists any faulty file by name and count only.
 
    ```bash
    caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30
    ```
 
-8. ~~Close the Terminal window, which removes the key from it. The last lines of the run give
-   the total counted and write the list of file names and checksums,
-   `docs/capture/manifest.md`.~~ Corrected 2026-11-18, because the step had the closing before
-   the reading: read the last lines, which give the total counted and say that the list of file
-   names and checksums (`docs/capture/manifest.md`) was written. Note the total. Then close the
-   Terminal window, which removes the key from it. A session commits that list and records the
-   cost. You compare the total with the Usage page in Anthropic's console. Nobody opens the
-   answers (step 8 of the list above).
+8. Read the last lines, which give the total counted and say that the list of file names and
+   checksums (`docs/capture/manifest.md`) was written. Note the total. Then close the Terminal
+   window, which removes the key from it. A session commits that list and records the cost.
+   You compare the total with the Usage page in Anthropic's console. Nobody opens the answers
+   (step 8 of the list above).
 
 **While it runs:**
 
@@ -360,17 +387,48 @@ handling the key.
   in the first round can end the run for good at a $5 ceiling (step 7 above).
 - Do not run the command in a second window. The script refuses a second run on the same
   folder.
-- ~~Ctrl-C is safe at any time. What has arrived is saved and counted first.~~ Corrected
-  2026-11-18: Ctrl-C is safe between calls and during the minute's wait after a failed attempt.
-  While a reply is arriving it loses nothing already received, but that call is counted at
-  $0.48 and uses one of that question's two askings
-  (`check-2026-11-18-capture-script-second.md`, finding S2). Do not press it while a reply
-  is arriving unless you must. The script's author has a change in the working folder, not yet
-  committed, under which a reply cut short by hand would no longer use an asking; the $0.48
-  would stay. If it is committed, this line is corrected again to match.
+- Ctrl-C is safe between calls and during the minute's wait after a failed attempt. While a
+  reply is arriving it loses nothing already received, and the cut-short reply does not use up
+  either of that question's two askings, but that call is counted at $0.48 of the ceiling, and
+  two calls counted that way in the first round can end the run for good at $5. Do not press it
+  while a reply is arriving unless you must.
 - If the screen says `A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED`, do not close the window
   and do not press Ctrl-C. The reply folder could not be written to. Check that the folder
   exists and the disk is not full. The script tries again every half minute for half an hour.
+
+### Earlier wording of the run's step list
+
+Kept as a record. None of it is to be followed. Each entry gives the words that stood in the
+list and what replaced them.
+
+- **The opening.** First: "The script is waiting for a second check, so this list may change
+  once more." Then, struck through and followed by: "(Corrected 2026-11-18: the second check is
+  done, and the status at the top of this document says what it found. The list may still
+  change once more, when the script's author commits the changes that answer that check.)"
+  Those changes are committed (3dda42d), so neither sentence holds.
+- **Before the day, on the check.** First: "The second check of the script is done and says it
+  may run." Then, struck through and followed by: "Corrected 2026-11-18: the second check of
+  the script (`check-2026-11-18-capture-script-second.md`) is done. Its findings are dealt with
+  as you decide; if the script changed, the rehearsal was run again and its result committed."
+  Replaced by the last point of "Before the day", after the third check.
+- **Step 5.** First: "Read the one line it prints for that call." Four lines are printed, so it
+  was replaced.
+- **Step 8.** First: "Close the Terminal window, which removes the key from it. The last lines
+  of the run give the total counted and write the list of file names and checksums,
+  `docs/capture/manifest.md`." That had the closing before the reading.
+- **While it runs, Ctrl-C.** First: "Ctrl-C is safe at any time. What has arrived is saved and
+  counted first." Then, struck through and followed by: "Corrected 2026-11-18: Ctrl-C is safe
+  between calls and during the minute's wait after a failed attempt. While a reply is arriving
+  it loses nothing already received, but that call is counted at $0.48 and uses one of that
+  question's two askings (`check-2026-11-18-capture-script-second.md`, finding S2). Do not
+  press it while a reply is arriving unless you must. The script's author has a change in the
+  working folder, not yet committed, under which a reply cut short by hand would no longer use
+  an asking; the $0.48 would stay. If it is committed, this line is corrected again to match."
+  That change is committed (3dda42d) and was tested by the third check, so the line now says a
+  cut-short reply does not use an asking.
+- **The order of "Before the day".** The points are the same as before with two changes: the
+  point on the check is replaced as above, and a paragraph was added saying that no session
+  edits this document, `cost-and-terms.md` or `capture/` on the day.
 
 ## The last safe day for each date
 
@@ -412,8 +470,9 @@ script reads its last safe days from it.
   last date is this session's arithmetic from the ruling, and is not part of it.
 - **The first caution says time is needed "for a session to write the script, run its
   rehearsal on constructed replies, and have that checked".** The script is written, at
-  `capture/`. It was written on 2026-11-18, checked once, fixed, and is waiting for a second
-  check.
+  `capture/`. It was written on 2026-11-18, ~~checked once, fixed, and is waiting for a second
+  check~~ and, as corrected later that day, has been checked three times; the status at the top
+  of this document says where it stands.
 
 ## What changed on 2026-11-17, and which finding it answers
 
@@ -487,3 +546,15 @@ checks it. The earlier words are struck through beside each change.
 | Step 5 of the run: four lines are printed, and what a line beginning NOTICE means | Should fix 4 |
 | "Before the day": `python3 --version` says 3.11 or higher | Should fix 5 |
 | Step 2 of the run: one line giving that check's judgment of the key-loading command, which stays proposed. "On the day": use the Mac's own Terminal app | The check's section "The key-loading command" |
+
+**Dated correction, 2026-11-18, after the third check of the script**
+(`check-2026-11-18-capture-script-third.md`, section "The step list"). Made by the session
+(Claude, Fable 5.2) that made the corrections above; a different session checks it.
+
+| Change | Source |
+|---|---|
+| "While it runs": a reply cut short with Ctrl-C does not use up either of the question's two askings; it is still counted at $0.48 | The third check, place 1 |
+| The status at the top: the half-symbol finding is fixed, rehearsed and checked, and no finding is left for John to decide. The same is said in "Before the day" | The third check, place 2 |
+| Step 7: for OpenAI, the words for each run must also carry that run's withdrawal date. Which commit a go names, and what a session confirms first | The third check, place 3 and "Which commit John's go should name" |
+| A status paragraph at the top says where the script stands: checked three times, the third check says the Anthropic run is fit to go ahead, it still needs John's key and his go, and Google and OpenAI are not ready. The sentence under the table of last safe days is corrected to match | The third check's verdict |
+| "The Anthropic run, step by step" is written out clean so that it reads in order, with every sentence taken out kept under "Earlier wording of the run's step list". Added: no session edits this document, `cost-and-terms.md` or `capture/` on the day | The planning session's request to read the list as John would on the day; the third check, the paragraph after its three places |
