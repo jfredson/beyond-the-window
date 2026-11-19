@@ -458,7 +458,14 @@ checked them, applied their fixes the same day. The section at the foot lists ea
         `Stopped: unknown key name "beyond-the-window-capture"`. If you see that, the folder
         is not up to date yet: go back to point 2 and do not go on.
 
-     4. **Save the key.** Copy the key in the Console first, then:
+     4. **Save the key.** Copy the key in the Console first, then run the command below.
+        *Added 2026-11-19, from the check of this step*
+        (`check-2026-11-19-step-list-after-key-check.md`): copying it may no longer be
+        possible, because the Console is believed to show a key's value only once, when the
+        key is made. That is written from the checking session's memory and is not confirmed
+        on Anthropic's page. If the value can no longer be had, make a new key in the same
+        workspace, copy it at once, and remove the first one. Nothing else changes, because
+        no document depends on which key it is.
 
         ```bash
         ~/Code/timeassembler/tools/rotate-key/rotate-key.sh beyond-the-window-capture
@@ -1082,3 +1089,9 @@ unchanged.
 | The list near the top is written out again, with the check's verdict quoted and the earlier first two points kept under it. "Before the day" has its first three points written again, with the earlier words kept under "Earlier wording of the run's step list" | Both checks |
 | The run, step 2: the planning session's condition on the command is met | The key-saving check, question 2 |
 | Left as it is: whether a session may run the key check for this project's key. It is with John to rule, and until he does the check is his | The key-saving check, should-fix 1 |
+
+**Dated correction, 2026-11-19, after the check of the commit above**
+(`check-2026-11-19-step-list-after-key-check.md`, its one should-fix finding). Step 6, "Saving
+the Anthropic key, in order", point 4: a sentence saying the Console may show a key's value
+only once, which is from the checker's memory and not confirmed, and what to do if the value
+can no longer be had. Made by the session (Claude, Fable 5.2) that made the corrections above.
