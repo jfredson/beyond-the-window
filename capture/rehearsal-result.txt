@@ -1,7 +1,7 @@
 THE REHEARSAL OF THE SEALED CAPTURE SCRIPT
 Every reply below is CONSTRUCTED. No service is called and no model is asked anything.
-script: capture/capture.py sha256 9f8f330e1e7d521cefb62f65fac9868e84aa7122d687cc1f2ae5de232004b6cd
-plan:   capture/plan.toml  sha256 8880ca40552be2dd5b9d6e6c15371316fb947fc8462f43816d7c6fc6e5a9f93b
+script: capture/capture.py sha256 d21f4a46cfbb31a8adc324b1b9383e248a158bcfa51593f9321c08d24747dc38
+plan:   capture/plan.toml  sha256 1cc4e0a1b12b43122072e7c2bd3ad01916bbc6258fb09d3178b3a0c397e2ae84
 
 TRIPWIRE. No code path may reach the network (rule 11: the rehearsal calls no service)
     pass  the tripwire stops a connection to this machine's own address
@@ -10,17 +10,18 @@ TRIPWIRE. No code path may reach the network (rule 11: the rehearsal calls no se
     pass  exactly these three deliberate attempts were counted
 
 THE SOURCE. What the script's code can and cannot do, read from its syntax tree
-    pass  only the Python standard library is imported (19 modules, none else)
+    pass  only the Python standard library is imported (21 modules, none else)
     pass  no other way to reach the network, and no module for removing folders, is imported
     pass  refusal 'delete a file': no call that removes, renames or empties a file exists
     pass  exactly one line opens a connection
     pass  and that line is inside the class HttpsTransport
     pass  the key is turned back into text in one place only, for the request header
-    pass  files are written in two places only: one attempt file (created new), and the list of names and checksums
+    pass  files are written in three places only: a new read-only file (an attempt or its marker), the lock, and the list of names and checksums
+    pass  in a real run the key is taken out of the environment before the start checks, which are what start git
     pass  an attempt file is created new and read-only
     pass  nothing is printed except through the one guarded print function
 
-temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-vxzptlh5
+temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-4x7l6f3z
     pass  the temporary folder is outside every git repository
 
 START CHECKS (rules 1, 2, 3, 6, 11). Everything checked before the first call
@@ -57,8 +58,8 @@ START CHECKS (rules 1, 2, 3, 6, 11). Everything checked before the first call
 THE KEY (rule 1). Read from this project's own variable, never printed, never saved
     pass  the key comes from BTW_CAPTURE_ANTHROPIC_API_KEY
     pass  the variable is removed from the environment once read
-    pass  a key another project left in ANTHROPIC_API_KEY is not used
-    pass  refused: a run with the variable not set
+    pass  a key another project left in ANTHROPIC_API_KEY is not used when this project's variable is set
+    pass  refused: a run with this project's variable not set, while ANTHROPIC_API_KEY still holds another project's key
     pass  printing the key object shows a fixed phrase, never the key
     pass  a printed line holding the key is withheld
 
@@ -74,7 +75,8 @@ ANTHROPIC, an ordinary run (rules 2, 4, 8, 9; table row 'Any other reply')
     pass  rule 2: each record holds the exact message bytes, their file name and checksum
     pass  each record holds every item under 'What is saved for each reply', with every stream event received
     pass  rule 4: each reply's cost is worked out from the reported counts, and the running total is their sum ($0.0765)
-    pass  rule 8: the list written at the end holds each file's name and checksum, and no word of any reply
+    pass  rule 8: the list written at the end holds each file's name and checksum (50 attempts and their 50 markers), and no word of any reply
+    pass  a small read-only marker was written before each call, holding nothing from any reply
     pass  the folder matches that list
     pass  run again on the same folder: nothing is asked twice
     pass  an existing file cannot be written over (the attempt raises an error)
@@ -142,6 +144,8 @@ ROW 6. The service blocked the message or the reply: kept, asked once more, neve
 ROW 7. The service reports a different model from the one named: kept apart, the run stops at once
     pass  rule 7: one call, one file kept apart, nothing more asked
     pass  the name the service reported is saved
+    pass  the cost of the reply kept apart is in the running total
+    pass  a reply that names a different model and also stopped at the length limit: the wrong-model row comes first
 
 ROW 8. Any other reply: kept, and not asked again, whatever it says
     pass  a constructed reply that declines is recorded as 'a reply' like any other and is not asked again
@@ -243,7 +247,6 @@ REFUSALS. Where a reply may be written
 REFUSALS. Print, summarise or pass on any reply; words from a reply in a file name, a log or the list
     pass  a reply turned into text, in any of the usual ways, gives a fixed phrase and never its words
     pass  a printed line holding words from a reply is withheld
-    pass  refused: words from a reply in the list of names and checksums
     pass  refused: a file name that is not developer, model, question, asking and attempt
 
 THE KEY, again. If a service ever sent the key back, it is not saved
@@ -252,14 +255,122 @@ THE KEY, again. If a service ever sent the key back, it is not saved
 THE MODE THAT SHOWS A RUN FIRST. It prints what would be sent, to which model, how often and at what cost, and stops
     pass  address, headers, the exact body, 50 exchanges, the estimate and the ceiling are shown; the key is not
 
+M1. An error that trying again cannot cure stops the run, is saved, and does not use up one of the day's tries
+    pass  a wrong key (status 401) at the first call: one call, no minute's wait, no second try, the run stops
+    pass  the attempt is saved as a failed attempt, marked as one that trying again cannot cure and not one of the day's tries
+    pass  the stop is one plain line: the status, what to fix, and that the same command can be run again the same day
+    pass  the same command later the same day, with the cause fixed: all 50 askings are made (the check's own test, which stopped at once before)
+    pass  five such stops in one day, then the cause fixed: the question is still asked that day, never 'left for the next day'
+    pass  status 400 (invalid_request_error): the run stops at once and says what to fix
+    pass  status 402 (billing_error): the run stops at once and says what to fix
+    pass  status 403 (permission_error): the run stops at once and says what to fix
+    pass  status 404 (not_found_error): the run stops at once and says what to fix
+
+M1. A timeout, a rate limit, a server error and an overloaded service keep the three tries, as the method wrote it
+    pass  a rate limit (429), four times: one try and three more a minute apart, then left for the next day
+    pass  a server error (500), four times: one try and three more a minute apart, then left for the next day
+    pass  a timeout reported by the service (504), four times: one try and three more a minute apart, then left for the next day
+    pass  an overloaded service (529), four times: one try and three more a minute apart, then left for the next day
+    pass  a connection that could not be made, four times: one try and three more a minute apart, then left for the next day
+
+M1, turned off by its one line in the plan: the method's first row as it reads word for word
+    pass  the plan as committed has it on; one changed line turns it off
+    pass  a wrong key, four times: tried again three times a minute apart, then left for the next day
+    pass  and the same command later the same day makes no call, which is what the check found
+    pass  the next day it carries on
+
+M1 for the other two developers: only where a status was confirmed on a page opened
+    pass  Google: no status is confirmed for the interface used, so a refusal (403) keeps the three tries
+    pass  OpenAI: a wrong key (401) stops the run at once
+    pass  OpenAI: 'not found' (404) has no confirmed status on its page, so it keeps the three tries
+
+M2, row 1 of the check's table. The stream's first event has a shape the script does not expect
+    pass  one call made, and one file written: the reply is recorded as one the script could not take apart
+    pass  everything the service sent is in the file, whole; the kind of problem is named
+    pass  the call is counted at the most it could cost ($0.4804), not at nothing
+    pass  the run stops with a plain line, so the script can be looked at before more is spent
+    pass  run again: that question is asked once more and the run carries on
+
+M2, row 2. A token count arrives as text and not a number
+    pass  the reply is saved as a reply, with its text, and the run carries on
+    pass  its cost could not be worked out, so the most the call could cost is counted
+
+M2, row 3. The folder cannot be written to when a reply is in hand
+    pass  the folder is put right while the script waits: the reply is saved at the eighth try, under a name that says so, and the run carries on
+    pass  five quick tries, then a plain statement that a reply is held and unsaved, then a try every half minute
+    pass  the saved file holds the reply, and its cost is counted once
+    pass  the folder is never put right: 65 tries over half an hour, then the run stops and says plainly that a reply was held and lost
+    pass  on the next start the marker written before that call is found: the call is counted at the most it could cost
+    pass  its attempt number is not used again, and the asking is made afresh
+
+M2, row 4. The reply's words are also part of the file name, of the list's heading, or of its own fault line
+    pass  all three constructed replies are saved as replies and the run finishes: no guard stops a run for what a reply says
+    pass  the list of names and checksums is still written by the run
+    pass  the one fault line that would have repeated a reply's own words is withheld, and nothing else changes
+
+M2, row 5. Ctrl-C while a reply is on its way
+    pass  Ctrl-C with nothing handed back: the run stops with one file and two markers on disk
+    pass  on the next start the call with no file is counted at the most it could cost (it was counted as nothing before)
+    pass  51 calls were made for 50 askings, as the check found, and now all 51 are counted; attempt number 1 is not reused
+    pass  Ctrl-C caught by the network code with some text in hand: what had arrived is saved, counted, and the run stops
+    pass  the stop says it was by hand
+    pass  run again: the cut-off reply is asked once more; a Ctrl-C before anything arrived is saved and is not one of the day's tries
+    pass  and a third run finishes, with no minute's wait
+
+M2. Ctrl-C in the moment between a reply arriving and its file being written
+    pass  the interrupt waits: the third reply's file is written first, then the run stops. Three calls, three files
+    pass  the stop says so
+    pass  and Ctrl-C works as usual again afterwards
+
+S1. A half-written file from a run that died does not stop every later run
+    pass  it is named in a notice and counted at the most its call could cost ($0.9604, the model's maximum, since no marker says what limit was sent)
+    pass  the run carries on: the asking is made again as attempt 02, the number of the damaged file is not reused
+    pass  the notice is printed at the start of the run
+    pass  the fault list names it too
+
+S2. John's go cannot be matched to words that were about something else
+    pass  the constructed go in the stricter form passes: a quotation directly above its block, with date and commit
+    pass  refused: words that are only the figure, in a quotation about something else
+    pass  refused: a go quoted for Google used for the Anthropic run
+    pass  refused: words that run across two separate quotations
+    pass  refused: a go that is not the quotation directly above its block (for example one later withdrawn in a second quotation)
+    pass  refused: a quotation of $50 matched by words ending 'up to $5'
+    pass  refused: quoted words that carry a second, larger figure
+    pass  refused: a go with no date
+    pass  refused: a go with no commit
+    pass  refused: a go that names a commit this repository does not have
+    pass  refused: docs/spending-record.md edited and not committed
+    pass  refused: docs/capture/what-john-needs-to-do.md edited and not committed
+    pass  refused: docs/capture/cost-and-terms.md edited and not committed
+
+S3. One real call, then stop
+    pass  with --stop-after 1: one call, one file, and the run stops between calls, where nothing is in flight
+    pass  the line for that call gives what is needed to judge it: recorded as a reply, the stop reason, the model name matched, the token counts, the cost
+    pass  the 'labels' command lists the same for every file on disk, and no word of the reply
+    pass  the same command without the option then makes the other 49
+
+S7. Two runs at once on one folder
+    pass  refused: a second run while the first holds the folder
+    pass  and the second run made no call
+    pass  once the first has finished, a run goes ahead
+
+S8. Four things the first rehearsal did not prove, which the check found by changing the script
+    pass  refused: the engine itself, handed a request with an instruction added, before anything is sent
+    pass  so the engine does call the last check before every send: the stand-in service received nothing, and no marker was written
+    pass  refused: rule 6, part way through a run: the first call after midnight on the last safe day
+    pass  14 calls were made before midnight and none after
+    pass  refused: a reply folder that becomes part of a git repository after the run has started
+    pass  the check inside the writing code caught it before anything was sent
+
 AT THE END. Across everything above
-    pass  all 989 attempt files written are marked constructed in their names
-    pass  the constructed key is in none of the 1258 files written
-    pass  the constructed key is in none of the 1291 lines the script printed
+    pass  all 3469 attempt files written are marked constructed in their names
+    pass  the constructed key is in none of the 4028 files written
+    pass  the constructed key is in none of the 2344 lines the script printed
     pass  no word of any constructed reply is in any line the script printed
+    pass  nor the first word of any constructed reply
     pass  no word of any constructed reply is in any file name
-    pass  exactly the two lines withheld on purpose were withheld
+    pass  exactly the three lines withheld on purpose were withheld
     pass  the tripwire was touched 3 times, all three deliberate: no other code path tried to reach the network
 
-193 checks, 0 failed.
-REHEARSAL PASSED 2026-11-18 capture.py=9f8f330e1e7d521cefb62f65fac9868e84aa7122d687cc1f2ae5de232004b6cd plan.toml=8880ca40552be2dd5b9d6e6c15371316fb947fc8462f43816d7c6fc6e5a9f93b
+274 checks, 0 failed.
+REHEARSAL PASSED 2026-11-18 capture.py=d21f4a46cfbb31a8adc324b1b9383e248a158bcfa51593f9321c08d24747dc38 plan.toml=1cc4e0a1b12b43122072e7c2bd3ad01916bbc6258fb09d3178b3a0c397e2ae84
