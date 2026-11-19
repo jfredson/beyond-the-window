@@ -1,20 +1,16 @@
 {
   // Cloudflare Workers config for beyondthewindow.org: a static-assets deployment, the same
-  // pattern as thequietgalaxy.com and the other sibling sites. Written 2026-11-19. Nothing is
-  // deployed: this file is only read when the deploy workflow is started by hand, on John's go
-  // (docs/rulings/2026-11-19-hosting-private-and-by-hand.md).
+  // pattern as thequietgalaxy.com, beltequation.com and the other sibling sites. Written
+  // 2026-11-19. This file is read each time the deploy workflow runs, which is on every push
+  // to main that could change the site (docs/rulings/2026-11-19-every-push-publishes.md).
   //
   // There is no code in front of the pages (no "main"), as on The Belt Equation. The Quiet
   // Galaxy has a small redirect script because it forwards a second domain; this site has no
   // second domain. Cloudflare serves the files in dist/ as they are.
   "name": "beyondthewindow",
   "compatibility_date": "2026-11-01",
-  // No second public address at workers.dev, and no preview addresses for uploaded versions,
-  // so the site has one public home. A session's choice (2026-11-19), not ruled by John. The
-  // Quiet Galaxy, The Upgrade Tree and Outrunning Ageing keep the workers.dev address on, and
-  // this can be switched to match them at no cost.
-  "workers_dev": false,
-  "preview_urls": false,
+  // Keep the workers.dev preview address alongside the custom domains, as The Quiet Galaxy does.
+  "workers_dev": true,
   // The address John registered at Cloudflare, with and without www, as The Belt Equation
   // has its own. The first deploy points both names at the site: Cloudflare makes the DNS
   // records and certificates itself. A run started from GitHub does not stop or ask if a

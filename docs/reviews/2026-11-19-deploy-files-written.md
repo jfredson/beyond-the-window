@@ -1,120 +1,120 @@
 # Hand-over note: the files that build the site and put it on Cloudflare
 
-Written by Claude (Fable 5.2), an AI model, on 2026-11-19, as the writing session. It follows
-John's ruling of 2026-11-19 on hosting
-(`docs/rulings/2026-11-19-hosting-private-and-by-hand.md`).
+Written by Claude (Fable 5.2), an AI model, on 2026-11-19, as the writing session.
 
-**Revised the same day**, after a different session checked the files
-(`docs/reviews/2026-11-19-check-of-deploy-files.md`) and John ruled three points
-(`docs/rulings/2026-11-19-three-points-on-the-first-release.md`). His principle, in his words:
-"Copy them as much as possible since they seem to be working fine. If there is a need to
-deviate, please explain why". The last section lists what the revision changed. The first
-version of this note is in the commit that added the deploy files (`024ac7d`).
+**This is the third version, all of the same day.** The first followed John's hosting ruling as
+it then stood (the commit that added the deploy files, `024ac7d`). The second followed a
+check by a different session (`docs/reviews/2026-11-19-check-of-deploy-files.md`) and John's
+ruling on three points about the first release (the commit that revised the deploy files,
+`136197f`). This one follows two more rulings by John:
+
+- `docs/rulings/2026-11-19-repository-is-public.md`. John: "I see no reason to make any of
+  this private. Let's follow the standard we have already set on the other sites". Decided by:
+  John.
+- `docs/rulings/2026-11-19-every-push-publishes.md`. Asked "Does every push publish the site,
+  as on the sibling sites?", John: "Yes, like the siblings". Decided by: mixed.
+
+His principle from the earlier ruling stands: "Copy them as much as possible since they seem to
+be working fine. If there is a need to deviate, please explain why". The last section lists
+what this version changed.
 
 **Nothing is published.** No deploy was run, no secret or token was read or set, and nothing
 was changed in Cloudflare or in the GitHub repository's settings. This session pushed nothing.
 
 ## What each file does
 
-- **`.github/workflows/deploy.yml`** is the list of steps GitHub runs when a person starts a
-  release. In order: it takes a copy of the repository, sets up Python 3.12 and Node 22, checks
-  the records and the headline file (`scripts/compute.py --check`), runs the tests
-  (`scripts/test_compute.py`), installs the site's packages and builds the site, checks the
-  built pages against the rules of public text (`scripts/check_site.py`), and then hands the
-  built pages to Cloudflare. If any step fails, the steps after it do not run, so a failed
-  check means nothing is put up.
+- **`.github/workflows/deploy.yml`** is the list of steps GitHub runs. It runs on every push to
+  `main` that changes the records (`data/`), the scripts (`scripts/`), the site (`site/`) or
+  the file itself, and it can also be started by hand. In order: it takes a copy of the
+  repository, sets up Python 3.12 and Node 22, checks the records and the headline file
+  (`scripts/compute.py --check`), runs the tests (`scripts/test_compute.py`), installs the
+  site's packages and builds the site, checks the built pages against the rules of public text
+  (`scripts/check_site.py`), hands the built pages to Cloudflare, and last tells the Sentient
+  Horizons site to rebuild its Projects page. If a step fails, the steps after it do not run,
+  so a push that fails a check publishes nothing.
 - **`site/wrangler.jsonc`** tells Cloudflare what to serve and where: the built pages in
   `site/dist`, at beyondthewindow.org and www.beyondthewindow.org, with the site's own "not
   found" page (`dist/404.html`) for an address that has no page. There is no code in front of
   the pages.
 - **`site/package.json` and `site/package-lock.json` were not changed.**
 
-## The first run does two things at once
+## When the site first goes public
+
+A push publishes only once the two secret values are on the repository. Until they exist, a run
+goes through every check and then fails at the deploy step, and nothing is published. So **the
+first release is John setting the two values and giving his go.** The ruling records how the
+master planning session applies that: once the values are set, it pushes nothing until John
+has said go.
 
 The first run that succeeds puts the pages on Cloudflare **and** points beyondthewindow.org and
-www.beyondthewindow.org at them. There is no in-between state where the pages are up but the
-address is not. Within a few minutes of a green tick, anyone who types either address sees the
-site. John ruled on 2026-11-19 that one go from him covers both ("Yes, one go"; decided by:
-mixed). That ruling is not itself the go.
+www.beyondthewindow.org at them, in one step. Within a few minutes of a green tick, anyone who
+types either address sees the site. John ruled on 2026-11-19 that one go covers both ("Yes, one
+go"; `docs/rulings/2026-11-19-three-points-on-the-first-release.md`).
 
-## Every difference from the sibling sites, with its reason
+After that, every push to `main` that touches the records, the scripts or the site and passes
+the checks goes live without anyone pressing anything.
+
+## What is still different from the sibling sites
 
 The five sibling sites compared are The Belt Equation, The Quiet Galaxy, The Upgrade Tree,
 Outrunning Ageing and the AGI Zeitgeist. I read each one's workflow and settings file on this
-Mac on 2026-11-19. Everything not listed here is the same as theirs, including the deploy step
-itself (`cloudflare/wrangler-action@v3`, which all five use and which is left as it is) and
-the two permissions on the key.
+Mac on 2026-11-19. The workflow here was fitted from The Quiet Galaxy's. The triggers, the
+cancelling of an older run by a newer one, the deploy step (`cloudflare/wrangler-action@v3`,
+left as all five have it), the two permissions on the key, the plain Cloudflare address being
+on, and the step that tells Sentient Horizons to rebuild are now the same as theirs.
 
-The first six are the ones the ruling lists.
+One difference is of substance:
 
-1. **The repository is private.** It holds the ten sealed questions. Ruled by John.
-2. **A release starts by hand, not on every push.** So that a push is never a release. Ruled by
-   John.
-3. **A second press waits for the first to finish** (`cancel-in-progress: false`). On the
-   siblings a newer push cancels an older run, which is right when pushes publish. With
-   releases started by hand, cancelling could stop a run halfway through sending pages.
-4. **The plain Cloudflare address is switched off** (`workers_dev: false`, and
-   `preview_urls: false` with it). With it on, the site would have a second public address
-   ending in `workers.dev` that nobody chose and no page mentions. This is a session's choice,
-   not John's, and the weakest of the differences: it can be switched to match the siblings at
-   no cost, by changing one word in the settings file. Three siblings set it on (The Quiet
-   Galaxy, The Upgrade Tree, Outrunning Ageing). The Belt Equation's file does not set it
-   either way; Cloudflare's page on the settings file says that then means off when addresses
-   are listed, as they are there.
-5. **The step that tells Sentient Horizons to rebuild its Projects page is left out.** This
-   site is not on that page yet. It is added when John puts it there.
-6. **No small script for the `www` address.** The Quiet Galaxy has one because it forwards a
-   second domain. This site has no second domain. The settings here are the same shape as The
-   Belt Equation's, which also lists its plain and `www` addresses with no script.
+1. **No small script in front of the pages.** The Quiet Galaxy, The Upgrade Tree and
+   Outrunning Ageing each have one because each forwards a second domain. This site has no
+   second domain. The settings here are the same shape as The Belt Equation's, which also
+   lists its plain and `www` addresses with no script. One effect to know: on the three sites
+   with a script, `www` is sent on to the plain address; here, as on The Belt Equation, `www`
+   shows the same pages with no redirect.
 
-Four smaller ones the ruling does not list:
+Four are small, and each is here because this repository differs, not because the setup does:
 
-7. **The deploy tool's exact version is named in the workflow** (wrangler 4.151.1). Three
-   siblings list the tool in `site/package.json`, which fixes the version through the lock
-   file; the AGI Zeitgeist names "4" in its workflow. Naming it in the workflow follows the AGI
-   Zeitgeist and left the package files alone while other sessions were working in `site/`.
-   The exact number, where the AGI Zeitgeist has "4", is so that the release tool is the one
-   the checking session read and tried. It can be changed to "4" at no cost.
-8. **A run started from any branch but `main` does nothing.** On the siblings only a push to
-   `main` deploys, so the question does not arise there. Here GitHub's menu lets a person pick
-   a branch, and a wrong pick should not publish unfinished work.
-9. **The job is told it may only read the repository** (`permissions: contents: read`). The
-   siblings do not say. It takes nothing away that the steps need.
-10. **There is no check of news posts.** The Quiet Galaxy has one. This project has no news
-    posts and no such script.
+2. **The deploy tool's version is named in the workflow** (wrangler 4.151.1). Three siblings
+   list the tool in `site/package.json`, where the lock file fixes its version; the AGI
+   Zeitgeist names "4" in its workflow, as this one names its version. I was asked to touch
+   three files only, and another session is working in `site/`, so the package files are
+   unchanged. The number is the one in The Quiet Galaxy's lock file, so both sites deploy with
+   the same tool. To match the three siblings exactly, a later session adds the tool to
+   `site/package.json` and removes this line.
+3. **`CHANGELOG.md` is not among the paths that start a run.** It is on The Quiet Galaxy's
+   list because that site's pages read it. Nothing in this site's build reads this
+   repository's changelog, so a push that changes only the changelog would rebuild the same
+   pages.
+4. **There is no check of news posts.** The Quiet Galaxy has one. This project has no news
+   posts and no such script. The other checks are this project's own scripts under their own
+   names.
+5. **The job is told it may only read the repository** (`permissions: contents: read`). No
+   sibling's workflow says this. It changes nothing the steps do. The reason to keep it is
+   that the repository is now public and one step is another party's code; the line means that
+   step cannot write to the repository. It can be removed at no cost if John would rather the
+   file matched line for line.
 
-**Who can start a release.** No extra guard is added, following the ruling. Once the two
-secrets are set, anyone with write access to the repository, a session on this Mac included,
-could start a release with one command. On the sibling sites any push already publishes, so
-this site is still the more guarded arrangement, and the project's guideline that a release
-needs John's go stands. The first version of this note suggested a box where a word must be
-typed; the check found that would not stop a session, and the suggestion is withdrawn.
+**Removed in this version** because the ruling leaves no reason for them: the rule that a run
+does nothing from any branch but `main`, the second run waiting for the first, the plain
+Cloudflare address being off, and `preview_urls` (no sibling sets it).
 
-## About `www`
-
-Both addresses show the same pages, with no redirect from one to the other. That is what The
-Belt Equation does.
-
-The first version of this note said that sending `www` on to the plain address needs a script.
-That was wrong. Cloudflare's page on custom domains describes doing it with a redirect rule set
-in the Cloudflare dashboard, with no code. For that, `www` is set up as an ordinary record
-passed through Cloudflare (the page gives a placeholder record for the purpose) and is **not**
-attached to the site, so the second line under `routes` would come out of the settings file.
-That is the alternative if John ever wants one address only. Its cost is a rule kept in the
-dashboard, where no file in this repository records it.
+**A note on the plain Cloudflare address.** With `workers_dev` on, the site also answers at an
+address ending in `workers.dev`, which Cloudflare forms from the name `beyondthewindow` and the
+account's own name. It shows the same pages. The Belt Equation's settings file does not set
+this either way; the others set it on, and this file follows them.
 
 ## What John does himself
 
-Once, in this order, before the first release. Nothing is published until step 5.
+Once, in this order. Nothing is published until both values are set and a run succeeds.
 
 1. **Look at the records for the address.** In the Cloudflare dashboard, open
    beyondthewindow.org and its DNS records. Look for any record named `beyondthewindow.org` or
-   `www`. A run started from GitHub does not stop and does not ask: it **replaces** a clashing
-   record for either of those two names, and takes the name away from any other Cloudflare
-   site that holds it. So look first, to be sure nothing wanted is replaced without warning.
-   Records for other names, mail records included, are not touched. (How this is known: the
-   checking session read the deploy tool's own code at the version the workflow names.
-   Cloudflare's page does not say.)
+   `www`. A run on GitHub does not stop and does not ask: it **replaces** a clashing record for
+   either of those two names, and takes the name away from any other Cloudflare site that
+   holds it. So look first, to be sure nothing wanted is replaced without warning. Records for
+   other names, mail records included, are not touched. (How this is known: the checking
+   session read the deploy tool's own code at the version the workflow names. Cloudflare's
+   page does not say.)
 2. **Make the key.** Cloudflare calls it an API token. The checking session found that
    Cloudflare's screens for this have changed and may not match any click-by-click steps, so
    here is what to end up with, whatever the screen looks like. Start from a custom or blank
@@ -138,38 +138,50 @@ Once, in this order, before the first release. Nothing is published until step 5
    Settings, then Secrets and variables, then Actions, then New repository secret. Add one
    named exactly `CLOUDFLARE_API_TOKEN` holding the key, and one named exactly
    `CLOUDFLARE_ACCOUNT_ID` holding the id. (This path through GitHub's settings is from memory.)
-5. **Start a release, when one is wanted.** On github.com open the repository, the Actions tab,
-   "Deploy site (by hand only)" in the list at the left, the "Run workflow" button at the
-   right, leave the branch as `main`, and press the green "Run workflow". The run takes a
-   minute or two.
+   **From the moment both are set, the next push that touches the records, the scripts or the
+   site publishes the site.** So set them when the first release is wanted, not before.
+5. **Give the go.** The first release is then either the next push, or a run started by hand:
+   on github.com open the repository, the Actions tab, "Deploy site" in the list at the left,
+   the "Run workflow" button at the right, leave the branch as `main`, and press the green "Run
+   workflow". Started by hand, the run uses whichever branch is chosen there, so leave it as
+   `main`. A run takes a minute or two.
 6. **Look at both addresses in a browser afterwards.** The certificates can take a few minutes,
    so a warning in the first minutes is not a failure.
+
+**Optional, later: the third value.** The last step tells the Sentient Horizons site to rebuild
+its Projects page. It needs a repository secret named `CLOUDFLARE_DEPLOY_HOOK`, the same value
+the sibling repositories hold. Without it the step prints a warning and the release is not
+held up. This site is not on that page yet, so the value does nothing useful until John puts
+it there.
 
 **One thing never to do: do not connect this repository to the site inside Cloudflare.**
 Cloudflare has its own way to build a site straight from a GitHub repository. Its page says a
 connected repository will "automatically deploy your code every time you push a change". That
-would make every push a release, which is what the hosting ruling rules out. The connection is
-made in the dashboard under Workers & Pages, the site's name, Settings, Builds, Connect, and
-it is made only if a person presses that. If it is ever found on, the same place has
-Disconnect.
+would publish every push **without running this project's checks**, which are what keep a
+broken record or a rule-breaking page off the site. The connection is made in the dashboard
+under Workers & Pages, the site's name, Settings, Builds, Connect, and only if a person presses
+that. If it is ever found on, the same place has Disconnect.
 
 ## What the tick and the cross mean
 
-- **A green tick:** every check passed and Cloudflare accepted the pages. The site is at both
-  addresses.
+A run now appears in the repository's Actions tab after every push that touches the records,
+the scripts or the site.
+
+- **A green tick:** every check passed and Cloudflare accepted the pages. The site shows the
+  pushed version.
 - **A red cross on an early step** (the record check, the tests, the build, the check of the
-  built pages): nothing was sent to Cloudflare and the public site is exactly as it was. The
-  name of the failed step says which check stopped it.
-- **A red cross on the last step, "Deploy to Cloudflare Workers":** this does **not** always
-  mean nothing changed. If the key is missing or refused outright, nothing changed. But the
-  last step does several things in turn (sends the pages, then attaches the addresses), and if
-  it fails partway, the new pages can be live under a red cross. After a red cross on the last
-  step, look at the site in a browser before assuming either way. On the very first release, a
-  failure partway most likely leaves pages on Cloudflare that no address reaches, because the
-  plain Cloudflare address is off.
-- **Neither a tick nor a cross, shown as "skipped":** the run was started from a branch other
-  than `main`. Nothing happened. Start it again from `main`.
-- **A second run started while one is going** shows as waiting, and runs when the first ends.
+  built pages): nothing was sent to Cloudflare and the public site is exactly as it was before
+  the push. The name of the failed step says which check stopped it.
+- **A red cross on the step "Deploy to Cloudflare Workers":** this does **not** always mean
+  nothing changed. If the key is missing or refused outright, nothing changed; that is what
+  every run shows until the two values are set. But this step does several things in turn
+  (sends the pages, then attaches the addresses), and if it fails partway, the new pages can be
+  live under a red cross. After a red cross on this step, look at the site in a browser before
+  assuming either way.
+- **A yellow warning with a green tick:** the last step found no `CLOUDFLARE_DEPLOY_HOOK`
+  value. The site was published; only the Sentient Horizons page was not told.
+- **"Cancelled":** a newer push arrived while this run was going, and the newer run took over.
+  The newer run publishes the newer pages, so look at that one.
 
 ## How to take the site down
 
@@ -177,23 +189,28 @@ Written from Cloudflare's own pages, opened on 2026-11-19 through a reading sess
 reported what each page says. Where a page does not give a step, this says so. Cloudflare
 calls the site a "Worker"; this one is named `beyondthewindow`.
 
-**To take the site off its address, keeping everything else.** The two addresses are listed in
+**First, stop pushes putting it back.** Any later push that touches the records, the scripts or
+the site would publish again and attach both addresses again. So before taking the site down,
+delete the `CLOUDFLARE_API_TOKEN` value from the repository (the same place as step 4 above),
+after which every run fails at the deploy step and publishes nothing. (From memory, not from
+an opened page: GitHub also lets a workflow be switched off from the Actions tab.)
+
+**To take the site off its addresses, keeping everything else.** The addresses are listed in
 the dashboard under Workers & Pages, then `beyondthewindow`, then Settings, then Domains &
 Routes. Cloudflare's page on custom domains gives that place for adding an address and for
 deleting a route. It does **not** give click-by-click steps for removing an address, so the
 exact button is not something I can quote: expect a remove or delete choice beside each of the
-two addresses there. Remove both. Because the plain Cloudflare address is off, the site then
-has no address at all and nobody can reach it. Two things the page says or leaves unsaid:
+two addresses there. Remove both. The plain Cloudflare address is listed in the same place;
+Cloudflare's page on it says to press "Disable" beside `workers.dev` there and confirm, and
+that a later deploy turns it back on while the settings file says `workers_dev` is on. With
+all three gone, nobody can reach the site. Two things the pages say or leave unsaid:
 
 - The certificate is left behind: "When you delete a Custom Domain, the associated Advanced
   Certificate is not automatically deleted." It can be removed under SSL/TLS, then Edge
   Certificates. Leaving it does no harm.
-- The page does not say whether the DNS record Cloudflare made for the address is removed with
+- The page does not say whether the DNS record Cloudflare made for an address is removed with
   it. After removing the addresses, look at the DNS records for beyondthewindow.org and delete
   any left for the two names.
-
-The next release would attach both addresses again, so taking the site down lasts only until
-someone starts another run.
 
 **To remove the site from Cloudflare altogether.** Cloudflare's pages document this as a
 command, not as dashboard steps: `wrangler delete`, which its page describes as "Delete your
@@ -208,14 +225,14 @@ rollbacks gives the steps: Workers & Pages, then `beyondthewindow`, then Deploym
 three-dot menu on the earlier version, then Rollback. The page says a rollback "applies to your
 Worker's routes and domains", and that only the 100 most recent versions can be gone back to.
 It does not plainly say that the older set of pages comes back with the older version, so look
-at the site afterwards. The surer way to put back earlier pages is to start a new release from
-`main` with the fault corrected.
+at the site afterwards. The next push replaces whatever a rollback put back. The surer way to
+put back earlier pages is a push to `main` that undoes the fault.
 
 ## The trial run
 
-Run again on 2026-11-19 after the revision, on a fresh copy of the repository at the last
-commit (`ecdc1a9`, the ruling that the deploy setup copies the sibling sites) with the two
-revised files added. The deploy step was not run.
+Run again on 2026-11-19 for this version, on a fresh copy of the repository at the last commit
+(`00d8ae4`, the ruling that every push publishes) with the two changed files added. The deploy
+step and the step after it were not run.
 
 | Step | Result |
 |---|---|
@@ -225,20 +242,22 @@ revised files added. The deploy step was not run.
 | Build, with its own checks before and after | Passed: 18 pages |
 | Check of the built site | Passed: 18 pages, 67 outside addresses linked |
 
-The Python steps were run under Python 3.12, the workflow's version. Both revised files still
-read as valid files of their kind, and the revised workflow still has one way to start (by
-hand) and now has `cancel-in-progress` set to false.
+The Python steps were run under Python 3.12, the workflow's version. Both files still read as
+valid files of their kind. Read back by a program, the workflow starts on a push to `main`
+touching `data/`, `scripts/`, `site/` or the workflow file, and by hand; a newer run cancels an
+older one; and the step that tells Sentient Horizons to rebuild appears once and is the same,
+character for character, as the first copy in The Quiet Galaxy's file.
 
 What this trial did not cover:
 
-- **The deploy step itself.** It cannot be tried without the key.
+- **The deploy step and the step after it.** Neither can be tried without the secret values.
 - **The deploy tool's trial mode and Node 22.** I ran neither (this Mac has Node 26, and I was
-  told not to run `wrangler deploy` in any form). The checking session ran both on the first
-  version of the files and both passed. Since then the settings file has changed only in its
-  comments, and the workflow in its comments and the one word `false`.
+  told to deploy nothing, which I read as covering `wrangler deploy` in any form). The
+  checking session ran both on the first version and both passed. **Since then the settings
+  file has changed in substance:** `workers_dev` is now on and `preview_urls` is gone. The
+  trial mode is worth running again on this version.
 
-When I started the revision, the only uncommitted changes in the working copy were my own, so
-nothing here failed, or passed, because of another session's work.
+When I started this version, the only uncommitted changes in the working copy were my own.
 
 ## Outside these files, before a first release
 
@@ -252,36 +271,36 @@ nothing here failed, or passed, because of another session's work.
      built page that lacks the `noindex` line.
 
    Whether the first release is listed by search engines is John's to rule. Listing it means
-   changing all three, or the check will stop the release. The checking session found two more
-   things here, set out in section 7 of its note: the two instructions work against each other,
-   and the comment in `robots.txt` becomes a public file that says "Nothing is published yet".
+   changing all three, or the check will stop every push from publishing. The checking session
+   found two more things here, set out in section 7 of its note: the two instructions work
+   against each other, and the comment in `robots.txt` becomes a public file that says "Nothing
+   is published yet".
 2. **`README.md` is out of date.** Its status paragraph says there is no GitHub repository and
-   no remote.
-3. **No page names its one real address.** While both addresses show the same pages, a line in
-   the head of `Base.astro` naming the page's address at beyondthewindow.org would tell search
-   engines that the `www` copy is the same page. It only matters once the site is listed.
+   no remote. The repository is now public, so that paragraph is public too.
+3. **No page names its one real address.** The same pages will answer at three addresses (the
+   plain one, `www`, and the one ending in `workers.dev`). A line in the head of `Base.astro`
+   naming the page's address at beyondthewindow.org would tell search engines the other two
+   are copies. It only matters once the site is listed.
 4. **The public copy of the headline file** is served at `/data/headline.json`. That is by
    design (`scripts/export.py` writes it).
-5. **Build time on GitHub.** The repository is private, so runs count against the account's
-   free monthly allowance (2,000 minutes on the free plan, from memory). A run is a minute or
-   two.
 
-## Not for this project
+## For John's other repository, not this one
 
-The Quiet Galaxy's `.github/workflows/deploy.yml` has its last step, the one that tells the
-parent site to rebuild, written twice. It is harmless (the parent is told twice) and I changed
-nothing there.
+The Quiet Galaxy's `.github/workflows/deploy.yml` has its last step, the one that tells
+Sentient Horizons to rebuild, written twice. It is harmless (the parent is told twice on every
+release). I copied it here once and changed nothing there.
 
 ## Facts here that no opened page backs
 
-- The path through GitHub's settings for adding a secret (step 4).
-- GitHub's free allowance of 2,000 build minutes a month.
+- The path through GitHub's settings for adding or deleting a secret, and that a workflow can
+  be switched off from the Actions tab.
 - That the two permissions are enough to attach the two addresses on a first release. The
   siblings' workflows say their keys have those two.
 - The exact button for removing an address from the site, and whether the dashboard can delete
   the site. Cloudflare's pages give neither.
 - That Cloudflare's building from GitHub is off unless someone connects a repository. Its pages
   describe connecting as a step a person takes and do not say "off by default" in those words.
+- The exact form of the address ending in `workers.dev`.
 
 ## Sources
 
@@ -298,26 +317,27 @@ and [connecting one](https://developers.cloudflare.com/workers/ci-cd/builds/git-
 and [the deploy step's own page](https://github.com/cloudflare/wrangler-action).
 
 Read directly on this Mac: the workflow and settings file of each of the five sibling sites,
-the check of the deploy files, and the two rulings.
+the check of the deploy files, and the rulings named above.
 
-## What the revision changed
+## What this version changed
 
-1. **Records that already exist for the address** (the check's must-fix 1). The first version
-   said the first deploy fails if a record exists. For a run on GitHub the opposite is true: it
-   replaces the record without asking. Corrected in step 1 above and in the comment in
-   `site/wrangler.jsonc`.
-2. **The key** is the siblings' two permissions and not Cloudflare's template, and the steps
-   say what to end up with (the check's should-fix 1, 2 and 8; John's principle).
-3. **One go covers the first release and pointing the address**, said plainly.
-4. **`cancel-in-progress` is false**, with the reason in the workflow.
-5. **Added:** how to take the site down, what the tick and cross mean, and the warning about
-   connecting the repository inside Cloudflare (the check's should-fix 4, 5 and 10).
-6. **The `www` choice corrected** (the check's should-fix 7).
-7. **Added:** the list of differences from the sibling sites.
-8. **No extra guard on who can start a release**, and the typed-word suggestion withdrawn. The
-   deploy step stays `wrangler-action@v3`, as the siblings have it.
+1. **A run starts on every push to `main`** that touches the records, the scripts, the site or
+   the workflow file, and can still be started by hand. Before, by hand only.
+2. **A newer run cancels an older one** again, as on the siblings, since pushes now publish.
+3. **The plain Cloudflare address is on,** with the sibling's comment, and `preview_urls` is
+   removed because no sibling sets it.
+4. **The step that tells Sentient Horizons to rebuild is copied in,** once, with its comment.
+5. **The rule that only `main` is published from the button is removed,** as no sibling has it.
+6. **The workflow is named "Deploy site"** again, as on the siblings.
+7. **Everything that said a push never publishes, or that the repository is private, is
+   gone** from the two files and from this note.
+8. **Kept from the second version:** the correction that a clashing record is replaced without
+   asking, the two-permission key, the take-down steps, what a tick and a cross mean, and the
+   warning not to connect the repository inside Cloudflare. The take-down steps gained a first
+   step (stop pushes putting the site back) and the plain Cloudflare address; the warning's
+   reason changed, since a push now publishes anyway: the danger is publishing without the
+   checks.
 
-The first version's seven numbered choices are replaced by the list of differences. Those that
-John has not ruled are decided by: agent. They are differences 4 and 7 to 10, and the name
+Decided by: agent, and not ruled by John: differences 2 to 5 above, and the name
 `beyondthewindow` on Cloudflare, which follows the siblings' way of naming and is hard to
 change after the first release.

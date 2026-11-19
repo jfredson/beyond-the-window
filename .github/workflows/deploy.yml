@@ -1,46 +1,36 @@
-# THIS WORKFLOW PUBLISHES THE SITE. It builds Beyond the Window, runs the project's checks and
-# puts the result on Cloudflare at beyondthewindow.org. It is started only by hand, and only on
-# John's go: John ruled on 2026-11-19 that a push never publishes and each release is his
-# (docs/rulings/2026-11-19-hosting-private-and-by-hand.md). So there is no "push" trigger and no
-# schedule below, and none is to be added without a new ruling.
+# Deploys beyondthewindow.org on every push to main that could change the site, the same
+# pattern as The Quiet Galaxy and The Belt Equation (added there 2026-09-19). John ruled this
+# on 2026-11-19 (docs/rulings/2026-11-19-every-push-publishes.md). Needs two repository
+# secrets, which John sets himself: CLOUDFLARE_API_TOKEN (Workers Scripts: Edit, plus the
+# zone's Workers Routes: Edit) and CLOUDFLARE_ACCOUNT_ID. Until they exist the workflow fails
+# at the deploy step and nothing is published. The first release is John setting them and
+# giving his go.
 #
-# Adapted from The Quiet Galaxy's workflow, which deploys on every push. The steps and their
-# order are the same; the trigger is the difference, and the step that tells the parent site to
-# rebuild is left out, because that is a later decision for John.
-#
-# Needs two repository secrets, which John sets himself and no session reads or handles:
-#   CLOUDFLARE_API_TOKEN   a Cloudflare key with the same two permissions the sibling sites'
-#                          keys have: "Workers Scripts: Edit" on the account, and "Workers
-#                          Routes: Edit" on the zone beyondthewindow.org. Not Cloudflare's
-#                          ready-made template "Edit Cloudflare Workers", which allows eight
-#                          things where the site needs two.
-#   CLOUDFLARE_ACCOUNT_ID  the id of the Cloudflare account the site goes on
-# Until both exist a run fails at the last step and nothing is published.
-#
-# Any check that fails stops the run before the deploy step, so a site that breaks a rule of
-# the records or of public text is never put up.
-name: Deploy site (by hand only)
+# Any check that fails stops the run before the deploy step, so a push that breaks a rule of
+# the records or of public text publishes nothing and the site simply stays as it was.
+name: Deploy site
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "scripts/**"
+      - "site/**"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 # The job reads the repository and nothing else.
 permissions:
   contents: read
 
-# One run at a time. If a second run is started while one is going, the second waits for the
-# first to finish. The sibling sites cancel the older run instead, which is right for them: a
-# newer push should replace an older one. Here a run is a release started by hand, and
-# cancelling could stop it halfway through sending pages to Cloudflare.
 concurrency:
   group: deploy-site
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # A run can be started from any branch in GitHub's menu. Only main is ever published.
-    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -65,9 +55,9 @@ jobs:
       - name: Check the built site against the rules of public text
         run: python3 scripts/check_site.py --dist site/dist
       # The step itself is "wrangler-action@v3", as on all five sibling sites. The version of
-      # Cloudflare's deploy tool (wrangler) is named here, as the AGI Zeitgeist's workflow names
-      # its own, so that a release does not change because the tool did. It is the version in
-      # The Quiet Galaxy's lock file on 2026-11-19, and the one the checking session tried.
+      # Cloudflare's deploy tool (wrangler) is named here because this site's package files do
+      # not list the tool. It is the version in The Quiet Galaxy's lock file on 2026-11-19, so
+      # both sites deploy with the same tool.
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
@@ -76,3 +66,18 @@ jobs:
           workingDirectory: site
           wranglerVersion: "4.151.1"
           command: deploy
+      # Tells the parent site (sentient-horizons.com) to rebuild, so its Projects page reads this
+      # site's new headline straight away instead of at the next build or the Monday refresh
+      # (ruled by John 2026-10-19). Needs the repository secret CLOUDFLARE_DEPLOY_HOOK, the
+      # address of the parent's Cloudflare deploy hook. Without it the step only warns, so the
+      # deploy above is never held up by it.
+      - name: Rebuild the Projects page on sentient-horizons.com
+        env:
+          CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$CLOUDFLARE_DEPLOY_HOOK" ]; then
+            echo "::warning::The repository secret CLOUDFLARE_DEPLOY_HOOK is not set, so the Projects page on sentient-horizons.com was not told to rebuild. It will show this site's new number at its next build or the Monday refresh."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 30 --request POST "$CLOUDFLARE_DEPLOY_HOOK" > /dev/null
+          echo "Called the parent's deploy hook; sentient-horizons.com is rebuilding its Projects page."
