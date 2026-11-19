@@ -20,6 +20,16 @@ were written earlier the same day and are kept as records. Where they say the sc
 for a check, this paragraph is what holds. One thing in them is still yours: to know the three
 things the script adds that the method has no words for, and to say if you object.
 
+**The ceiling for the Anthropic run is ruled: $10.** *Dated correction, 2026-11-18.* A ceiling
+is the most a run may cost before the script stops itself. The draft proposed $5 for the
+Anthropic run. Asked "Set the Anthropic ceiling at $10 in place of $5?", you answered "Yes, $10"
+(decided by: mixed; `docs/rulings/2026-11-18-anthropic-ceiling.md`). So the part of step 7 that names
+the Anthropic figure is done. The ruling sets the limit. It is not your go to spend: your answer
+names no developer, so it is not recorded as the go, and the go in step 7 is still yours to
+give. The other three ceilings (Google $10, OpenAI $15 and $10) stay proposed. The script's
+plan was changed to $10.00 and its rehearsal run again (commit a57a212), and a different
+session checks that change.
+
 **A script now exists, and four points on it are ruled.** The capture script is at `capture/`.
 It was written on 2026-11-18, checked once by a different session
 (`check-2026-11-18-capture-script.md`), fixed, and is waiting for a second check. Nothing runs
@@ -220,10 +230,21 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    The draft's proposed ceilings are $5, $10, $15 without the pro models, and $10, against an
    estimate of $17.74 for all four. One go can cover all four runs, or each can have its own.
 
+   *Dated correction, 2026-11-18: the Anthropic ceiling is ruled.* The first figure in the
+   sentence above is no longer the one that holds. You ruled the ceiling for the Anthropic run
+   at $10 ("Yes, $10"; decided by: mixed; `docs/rulings/2026-11-18-anthropic-ceiling.md`), so
+   naming that figure is done. The ruling sets the limit and is not your go to spend. The go is
+   still this step, and still yours: the script starts only when your own words naming
+   Anthropic and the figure are in the spending record. The other three ceilings ($10, $15
+   without the pro models, and $10) stay proposed.
+
    *Dated correction, 2026-11-18: what the script now needs of a go.* The script checks your
    go by program before it sends anything, so its form matters more than it did.
    - **For each run, your words must name the developer and carry one figure, written with a
-     dollar sign.** "Anthropic, up to $5" passes. "Anthropic, up to 5 dollars" is refused, and
+     dollar sign.** ~~"Anthropic, up to $5" passes.~~ *Corrected 2026-11-18, after the ceiling
+     was ruled at $10:* "Anthropic, up to $10" passes. "Anthropic, up to $5" has the right form
+     and is now refused, because the figure must equal the plan's, which is $10.00.
+     "Anthropic, up to 5 dollars" is refused, and
      so are words that name two figures for one run.
    - *Added 2026-11-18, from the third check of the script:* for OpenAI, which has two runs,
      your words for each run must also carry that run's withdrawal date, as the form above does
@@ -242,9 +263,12 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      The exact form is in `capture/README.md`, "John's go, in the spending record". If one go
      covers several runs, the quotation is written again above each run's block. The record is
      committed before the run.
-   - **If your figure is not the one in the script's plan** ($5 for Anthropic), a session
+   - **If your figure is not the one in the script's plan** (~~$5 for Anthropic~~ $10.00 for
+     Anthropic, corrected 2026-11-18 after your ruling), a session
      changes the plan, runs the rehearsal again and commits both. The script never changes
-     its own ceiling.
+     its own ceiling. For Anthropic that would also go against the ruled ceiling, so a
+     different figure there needs a new ruling first (this session's reading of the ruling,
+     which does not say so itself).
    - **If you withdraw a go, say so,** and a session takes it out of the record. No program can
      tell that you changed your mind.
    - **Two things to know before you name the Anthropic figure.** Both come from the check of
@@ -257,6 +281,16 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      run, and it stops again on every restart. At $10 it survives three and stops at four. The
      estimate for the whole run is $1.89 either way. The ceiling sets only how much room there
      is for breaks.
+
+     *Dated correction, 2026-11-18.* These two things are what the ceiling was ruled on, and
+     the figure is now named: $10 (`docs/rulings/2026-11-18-anthropic-ceiling.md`). So the
+     sentence that holds is the one for $10. The sums, from the script's README ("What the
+     ceiling means in practice") and worked again by this session: three broken connections in
+     the first round count 3 x $0.48 = $1.44, the seven replies that arrived count about $0.18,
+     and 5 x (1.44 + 0.18) = $8.10, which is under $10, so the run goes on. Four count
+     5 x (1.92 + 0.15) = $10.35, which is over $10, so the run stops, and stops again on every
+     restart. At the $5 first proposed, two were enough: 5 x (0.96 + 0.20) = $5.80. The ruling
+     sets the limit and is not your go to spend.
    - The two settings the script's author proposed (20 words; the same length limit) are
      ruled, so a go does not need to mention them.
 
@@ -383,15 +417,16 @@ script refuses to run if any of them has a change that is not committed.
 
 **While it runs:**
 
-- Do not close the lid or let the Mac sleep. A broken connection is counted at $0.48, and two
-  in the first round can end the run for good at a $5 ceiling (step 7 above).
+- Do not close the lid or let the Mac sleep. A broken connection is counted at $0.48. At the
+  ruled ceiling of $10 the run goes on after three of them in the first round, and four end it
+  for good (step 7 above).
 - Do not run the command in a second window. The script refuses a second run on the same
   folder.
 - Ctrl-C is safe between calls and during the minute's wait after a failed attempt. While a
   reply is arriving it loses nothing already received, and the cut-short reply does not use up
   either of that question's two askings, but that call is counted at $0.48 of the ceiling, and
-  two calls counted that way in the first round can end the run for good at $5. Do not press it
-  while a reply is arriving unless you must.
+  four calls counted that way in the first round end the run for good at the ruled ceiling of
+  $10. Do not press it while a reply is arriving unless you must.
 - If the screen says `A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED`, do not close the window
   and do not press Ctrl-C. The reply folder could not be written to. Check that the folder
   exists and the disk is not full. The script tries again every half minute for half an hour.
@@ -426,6 +461,12 @@ list and what replaced them.
   an asking; the $0.48 would stay. If it is committed, this line is corrected again to match."
   That change is committed (3dda42d) and was tested by the third check, so the line now says a
   cut-short reply does not use an asking.
+- **While it runs, the ceiling.** First, in the point on the lid: "A broken connection is
+  counted at $0.48, and two in the first round can end the run for good at a $5 ceiling (step 7
+  above)." And in the point on Ctrl-C: "two calls counted that way in the first round can end
+  the run for good at $5." Both were written when $5 was the proposed ceiling. You ruled it at
+  $10 on 2026-11-18 (`docs/rulings/2026-11-18-anthropic-ceiling.md`), so both now give the sum for
+  $10: the run goes on after three, and four end it.
 - **The order of "Before the day".** The points are the same as before with two changes: the
   point on the check is replaced as above, and a paragraph was added saying that no session
   edits this document, `cost-and-terms.md` or `capture/` on the day.
@@ -558,3 +599,18 @@ checks it. The earlier words are struck through beside each change.
 | Step 7: for OpenAI, the words for each run must also carry that run's withdrawal date. Which commit a go names, and what a session confirms first | The third check, place 3 and "Which commit John's go should name" |
 | A status paragraph at the top says where the script stands: checked three times, the third check says the Anthropic run is fit to go ahead, it still needs John's key and his go, and Google and OpenAI are not ready. The sentence under the table of last safe days is corrected to match | The third check's verdict |
 | "The Anthropic run, step by step" is written out clean so that it reads in order, with every sentence taken out kept under "Earlier wording of the run's step list". Added: no session edits this document, `cost-and-terms.md` or `capture/` on the day | The planning session's request to read the list as John would on the day; the third check, the paragraph after its three places |
+
+**Dated correction, 2026-11-18, after John's ruling on the Anthropic ceiling**
+(`docs/rulings/2026-11-18-anthropic-ceiling.md`, "Yes, $10", decided by: mixed). Made by the session
+(Claude, Fable 5.2) that made the corrections above; a different session checks it. The Google
+lines on a $5 prepayment are a different matter and are unchanged, and so is the table of last
+safe days.
+
+| Change | Source |
+|---|---|
+| A status paragraph at the top: the ceiling for the Anthropic run is ruled at $10, naming that figure is done, and the ruling is not the go | The ruling, "What is ruled" item 1 and "Not covered by this ruling" |
+| Step 7, under the proposed ceilings: the Anthropic figure is ruled at $10, the other three stay proposed, and the go is still John's | The same |
+| Step 7, the example go: "Anthropic, up to $10" passes; "Anthropic, up to $5" is struck through and now refused, because the figure must equal the plan's | The plan (`capture/plan.toml`, commit a57a212) |
+| Step 7, "If your figure is not the one in the script's plan": $10.00 in place of $5 | The same |
+| Step 7, "Two things to know": the sums for $10 written out, three broken connections go on at $8.10 and four stop at $10.35 | The script's README, "What the ceiling means in practice" |
+| "While it runs", the points on the lid and on Ctrl-C: four in the first round end the run at $10, in place of two at $5. The earlier words are under "Earlier wording of the run's step list" | The same |

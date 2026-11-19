@@ -87,12 +87,20 @@ used to improve Google's products (Part 3).
 
 | Run | Models | Estimate | With one fifth added | Proposed ceiling | If every reply ran to the length limit |
 |---|---|---|---|---|---|
-| Anthropic, before 2026-11-30 | 1 | $1.58 | $1.89 | **$5** | $24 |
+| Anthropic, before 2026-11-30 | 1 | $1.58 | $1.89 | ~~**$5**~~ **$10, ruled 2026-11-18** | $24 |
 | Google, before 2026-12-01 | 2 | $3.79 | $4.55 | **$10** | $20 |
 | OpenAI, before 2026-12-11, without the two pro models | 4 | $6.21 | $7.45 | **$15** | $33 |
 | OpenAI, before 2027-01-14 | 5 | $3.21 | $3.85 | **$10** | $32 |
 | **All four** | 12 | $14.78 | **$17.74** | **$40** | $109 |
 | The two pro models, if John wants them | 2 | $150.88 | $181.05 | $200 | $321 |
+
+*Dated correction, 2026-11-18.* The ceiling for the Anthropic run is no longer proposed. John
+ruled it at $10 in place of the $5 first proposed: asked "Set the Anthropic ceiling at $10 in
+place of $5?", he answered "Yes, $10" (decided by: mixed;
+`docs/rulings/2026-11-18-anthropic-ceiling.md`). The ruling sets the limit. It is not his go to
+spend, which is still his to give and is recorded in the spending record when he gives it. The
+other three ceilings ($10, $15 and $10) stay proposed. With Anthropic at $10 the four ceilings
+come to $45, where the row "All four" says $40. No price or estimate changed.
 
 The last column is what the service could charge if the script had no ceiling and every one
 of the 50 replies ran to the 32,000-token limit. The script stops at the ceiling, so that
@@ -334,3 +342,12 @@ opened, and no price or figure changed.
 | Change | Finding |
 |---|---|
 | Google, the second unsure thing: a sentence saying that "parts of which may be published" does not mean some of the answers, with the rule John added in his second approval ("Approve, with both"; decided by: mixed) | The check of the corrections made after that approval (`check-2026-11-18-method-corrections.md`), should-fix finding 1 |
+
+## What changed on 2026-11-18 after the ruling on the Anthropic ceiling
+
+Made by the session (Claude, Fable 5.2) that made the additions above; a different session
+checks it. No terms page was opened, and no price or estimate changed.
+
+| Change | Ruling |
+|---|---|
+| The table "By developer and date": the Anthropic row's ceiling shows $5 struck through and $10 as ruled, and a note under the table says the ruling sets the limit and is not John's go, that the other three stay proposed, and that the four ceilings now come to $45 | `docs/rulings/2026-11-18-anthropic-ceiling.md`, "What is ruled" item 1 and "Not covered by this ruling" |
