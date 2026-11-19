@@ -12,6 +12,32 @@ ten rebuilt files by their checksums on 2026-11-18** ("Approve, with both"; deci
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
+**What is left before the Anthropic run, in order.** *Dated correction, later on 2026-11-19,
+after two more rulings and your word that the key is made.* This list is what holds. The status
+under it was written earlier the same day, and its list of things left is corrected where it
+has changed.
+
+1. **The check of the change to the key-saving script.** The change now exists as
+   [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142), in the
+   TimeAssembler repository. A different session is checking it, and its findings will be in
+   `check-2026-11-19-key-saving-change.md`, which is not written yet.
+2. **Your two merges.** The older pull request
+   ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141)
+   first, then the new one, which is open against the older one's branch. Neither is merged.
+   Both merges are yours, and nobody makes them for you.
+3. **You save the key on this Mac and switch automatic top-up off** (step 6). The key exists
+   in the Console, by your word ("Done, no expiry"). It is not yet saved on the Mac, and
+   automatic top-up being off is not confirmed.
+4. **Your go,** naming Anthropic and $10 with the dollar sign. A session records it in
+   `docs/spending-record.md` and commits it (step 7).
+5. **The run, no later than 2026-11-26** ("The Anthropic run, step by step").
+
+Done since the status below was written: the command that loads the key is ruled ("Approve
+it"; decided by: mixed; `docs/rulings/2026-11-19-command-that-loads-the-key.md`); the
+Console workspace and its key are made, by your word; and the key-saving script's test of a key
+is allowed as it is ("Yes, keep the test"; decided by: mixed;
+`docs/rulings/2026-11-19-key-test-stays.md`).
+
 **Where the Anthropic run stands on 2026-11-19.** *Dated correction, 2026-11-19.* You made
 three more rulings on 2026-11-19, and two checks landed. This paragraph and the two lists under
 it are what holds. The paragraphs after them were written on 2026-11-18 and are kept as records.
@@ -38,15 +64,20 @@ Left, all yours unless it says otherwise:
 - **The change to the key-saving script (step 4).** You said yes to the small change, for this
   project's Anthropic key only ("Yes, Anthropic only"; decided by: mixed;
   `docs/rulings/2026-11-19-key-saving-script-anthropic-only.md`). A session in the TimeAssembler
-  repository is making it on its own branch and will open a pull request. As this is written
-  the change is not made, not checked and not merged. Two merges are yours: the open pull
+  repository is making it on its own branch and will open a pull request. ~~As this is written
+  the change is not made, not checked and not merged.~~ *Corrected later on 2026-11-19:* the
+  change is made and is an open pull request. It is being checked and is not merged (the list
+  above). Two merges are yours: the open pull
   request ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141),
   which holds the key-saving script, and the new one when it exists.
-- **The Console workspace and the key (step 5).** No key exists for this project yet.
+- ~~**The Console workspace and the key (step 5).** No key exists for this project yet.~~
+  *Corrected later on 2026-11-19:* done, by your word ("Done, no expiry"). The key is not yet
+  saved on this Mac.
 - **Saving the key and switching off automatic top-up (step 6).** Saving waits for the two
   merges.
-- **The command that loads the key** (step 2 of "The Anthropic run, step by step"). Still
-  proposed, not ruled.
+- ~~**The command that loads the key** (step 2 of "The Anthropic run, step by step"). Still
+  proposed, not ruled.~~ *Corrected later on 2026-11-19:* ruled ("Approve it"; decided by:
+  mixed; `docs/rulings/2026-11-19-command-that-loads-the-key.md`).
 - **Your go (step 7),** naming Anthropic and $10, recorded by a session in the spending record.
 
 Google and OpenAI are not ready, and nothing above is for them.
@@ -241,13 +272,36 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      the key's form and its own test against that developer's service. It is needed only when
      those runs come near, and it will need its own yes.
    - **Where the change stands.** A session in the TimeAssembler repository is making it on its
-     own branch and will open a pull request. As this is written (2026-11-19) the change is not
-     made, not checked by a different session, and not merged. The last sentence of the
+     own branch and will open a pull request. ~~As this is written (2026-11-19) the change is not
+     made, not checked by a different session, and not merged.~~ (Corrected later on
+     2026-11-19: it is made, and is being checked; it is not merged. See the next point.) The last sentence of the
      correction above, "still waits for your yes", is answered; "still not made" still holds.
+   - *Added later on 2026-11-19: the change now exists.* It is
+     [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142),
+     open against the branch of the older pull request named in the next point, which is
+     itself not merged. A different session is checking the change, and its findings will be in
+     `check-2026-11-19-key-saving-change.md`, which is not written yet. Neither pull request is merged, and
+     both merges are yours. The planning session reports that the changed script knows this key
+     under the name `beyond-the-window-capture`. The session that keeps this document did not
+     open the pull request, so that name and everything else about the change is as reported,
+     until the check lands.
+   - *Added later on 2026-11-19: what the script's test of a key really does.* The first
+     paragraph of this step says the script "tests each key against Anthropic's service", and
+     that what is needed is a test "that asks no model anything". The test is not a listing of
+     models, as had been assumed. When a key is saved or checked, the script makes one free
+     call to Anthropic's token counter, a service that reports how long a message is. It sends
+     the two letters "hi" and names the model `claude-haiku-4-5`. The service answers with a
+     number, and no model writes a reply. Because this project sends nothing to any model
+     without your go, it was put to you: asked "Is the key test acceptable as it is, sending
+     'hi' to Anthropic's token counter?", you answered "Yes, keep the test" (decided by: mixed;
+     `docs/rulings/2026-11-19-key-test-stays.md`). You allowed this one named call only. It is
+     not a go for any other message to any model, it is not the go to spend on the capture,
+     and tests of Google or OpenAI keys are put to you when they exist.
    - **Two merges are yours, and nobody makes them for you.** The key-saving script itself
      exists only on the branch of the open pull request
      ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141).
-     The new pull request will sit on top of it. You did not say to merge either.
+     ~~The new pull request will sit on top of it.~~ The new pull request now sits on top of
+     it (corrected later on 2026-11-19). You did not say to merge either.
 
 5. **Create the keys.** Only you can. Never paste a key into a chat or a document; the script
    in step 6 takes it at a hidden prompt.
@@ -256,6 +310,14 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      key in it named `btw-capture`. Choose no expiry, or a long one, and tell a session the
      date so it can be written into `~/Code/timeassembler/docs/session-routing.md`. In that
      organization the run is paid from the monthly credits.
+
+     **Done for Anthropic, 2026-11-19, by your word.** You said you have made the "Beyond the
+     Window" workspace and its key in the Claude Console with no expiry: "Done, no expiry". No
+     session saw the Console, so this rests on your word. You have not confirmed the key's
+     name, so whether it is `btw-capture` as this step asked is not known here. With no expiry
+     there is no date to write down. The key is not yet saved on this Mac, and automatic top-up
+     being switched off is not confirmed; both are step 6 and both are still yours. The Google
+     and OpenAI keys are not made.
    - **Google: the free check first, before paying anything.** Google's withdrawal page says
      "Access to the 2.5 models is limited to users who have actively used them in the past." A
      project made new for this capture will very likely be refused. So, in this order:
@@ -286,6 +348,27 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      means after that change is made, checked and merged by you, with the pull request under
      it. Until then the script cannot save this key.) A session can then run the script's check, which prints only a key's
      last four characters for you to match against the console.
+
+     *Added later on 2026-11-19, for the Anthropic key.*
+     - **Where it stands.** The change is [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142).
+       It is being checked (`check-2026-11-19-key-saving-change.md`, not written yet) and is not merged, and
+       neither is the older pull request under it. Both merges are yours. So the exact
+       commands for saving this key are not written here yet. They are added, as a dated
+       correction, when that check has landed, and nothing in this point is to be typed
+       before then.
+     - **What the script does when it saves or checks a key.** It makes one free call to
+       Anthropic's token counter, sending the two letters "hi" and naming `claude-haiku-4-5`.
+       The service answers with a number, and no model writes a reply. You allowed that one
+       named call and no other ("Yes, keep the test"; decided by: mixed;
+       `docs/rulings/2026-11-19-key-test-stays.md`).
+     - **Who runs it.** That ruling says you run the key-saving script and paste the key at
+       its hidden prompt, and that no session handles the key. The sentence above, "A session
+       can then run the script's check", was written before that ruling. Whether a session
+       may run the check, which reads the key's file and makes the same call, is not settled
+       by it. Until you say, the check is yours to run too. This last sentence is this
+       session's reading, not a ruling.
+     - **Still yours, and not confirmed:** saving the key on this Mac, and switching automatic
+       top-up off in the Console (the point below).
    - **Added 2026-11-18: how the key gets from its file to the script.** You ruled on
      2026-11-18 that the key reaches the script through a setting in the shell, set from the
      key's own file, and that the script never opens that file
@@ -427,9 +510,9 @@ call is also the first time the script meets a real service, which is why it is 
 2026-11-27 and 2026-11-28 and refuses after that. Those two days are spare, for whatever the
 first call shows.
 
-**Before the day.** *Written out again on 2026-11-19, after three rulings of that day, so that
-it says which things are done and which are left. The earlier list is kept under "Earlier
-wording of the run's step list".*
+**Before the day.** *Written out again later on 2026-11-19, after two more rulings and your
+word that the key is made, so that it says which things are done and which are left. The two
+earlier lists are kept under "Earlier wording of the run's step list".*
 
 Done:
 
@@ -439,25 +522,28 @@ Done:
 - You accepted the three things the script adds beyond the method's words ("Accept all
   three"; the status at the top of this document).
 - You said yes to the small change to the key-saving script, for this project's Anthropic key
-  only ("Yes, Anthropic only"; step 4 above). The yes is done. The change is not: see the
-  first point below.
+  only ("Yes, Anthropic only"; step 4 above), and you allowed its test of a key as it is ("Yes,
+  keep the test"). The change exists as an open pull request. It is not checked and not
+  merged: see the first two points below.
+- The Console workspace and its key are made, by your word ("Done, no expiry"; step 5 above).
+- The command in step 2 below is ruled ("Approve it").
 - The script has been checked three times, and a further check says its yes for the Anthropic
   run stands at the $10 ceiling. No finding is left for you to decide.
 
-Left, and every one must be true before the day:
+Left, in order, and every one must be true before the day:
 
-- **The change to the key-saving script is made, checked and merged.** A session in the
-  TimeAssembler repository is making it on its own branch. Until it exists, a different session
-  has checked it, and you have merged both it and the open pull request under it (step 4
-  above), the key cannot be saved the usual way.
-- **The Console workspace and the key exist** (step 5 above): a workspace named "Beyond the
-  Window" and one key in it named `btw-capture`. Only you can make them.
-- **The key is saved, and automatic top-up is switched off** (step 6 above).
-- **You have ruled the command in step 2 below,** which is still only proposed.
-- **Your go for the Anthropic run is in `docs/spending-record.md` and committed** (step 7
-  above). Your words name Anthropic and carry $10 with the dollar sign.
-- In the Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older
-  one the script stops at once with an error about a missing part named `tomllib`.
+1. **The change to the key-saving script is checked.** A different session is checking it
+   (`check-2026-11-19-key-saving-change.md`, not written yet). If that check finds the script writes
+   the key's line any other way than step 2's command expects, the difference comes back to
+   you before the run (step 2 below).
+2. **You have merged both pull requests** (step 4 above): the older one first, then the one
+   that holds the change.
+3. **You have saved the key on this Mac, and automatic top-up is switched off** (step 6
+   above). Neither is done or confirmed as this is written.
+4. **Your go for the Anthropic run is in `docs/spending-record.md` and committed** (step 7
+   above). Your words name Anthropic and carry $10 with the dollar sign.
+5. In the Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older
+   one the script stops at once with an error about a missing part named `tomllib`.
 
 **On the day,** in one Terminal window, with the Mac plugged in. Use the Mac's own Terminal
 app, not the Terminal panel in the Claude app, because a session can start commands in that
@@ -480,7 +566,31 @@ script refuses to run if any of them has a change that is not committed.
    export BTW_CAPTURE_ANTHROPIC_API_KEY="$(sed -n 's/^BTW_CAPTURE_ANTHROPIC_API_KEY=//p' ~/.config/sentient-horizons/beyond-the-window.env)"
    ```
 
-   PROPOSED 2026-11-18, not ruled. It has been tried only on a constructed file holding no
+   **Ruled by you on 2026-11-19.** Asked "Approve the proposed command that loads only the
+   Anthropic key into the Terminal window?", you answered "Approve it" (decided by: mixed;
+   `docs/rulings/2026-11-19-command-that-loads-the-key.md`). This is the command you type to load
+   the key for the Anthropic run. The ruling does not cover the matching commands for the
+   Google and OpenAI runs, or who types it: you do, in the Mac's own Terminal, and a session
+   that did would be handling the key.
+
+   What was put to you, as the ruling records it. *The choice:* approve the command as
+   written. *Confidence:* moderate to high. It has been tried only on a constructed file
+   holding no real key, because the real file does not exist yet. *Standard practice or
+   judgment call:* judgment call. *Strongest alternative:* the workspace's usual command, which
+   loads every line of a key file at once. It is shorter and familiar, and once the file also
+   holds the Google and OpenAI keys it would put all three in the window during a run that
+   needs one. You were also told that if the command picks up nothing, because the file or the
+   line is missing, the capture script stops at its first check with a plain message and makes
+   no call.
+
+   **A condition the planning session attached, which is that session's and not yours**
+   (decided by: agent). The command depends on the key file's line being written as
+   `BTW_CAPTURE_ANTHROPIC_API_KEY=` followed by the key, with no quotation marks. If the check
+   of the changed key-saving script finds that it writes the line any other way, the command
+   or the script is corrected, and the difference is put to you before the run.
+
+   ~~PROPOSED 2026-11-18, not ruled.~~ (Ruled 2026-11-19, as above. What follows is the
+   proposal as it was first written, kept as a record.) It has been tried only on a constructed file holding no
    real key, because the real file does not exist until step 4's change is made. *The choice:*
    a command that reads the one line for Anthropic and nothing else. *Confidence:* moderate. It
    depends on the file's lines being written as step 4 now says. *Judgment call.* *Strongest
@@ -491,7 +601,7 @@ script refuses to run if any of them has a change that is not committed.
    *Added 2026-11-18, the judgment of a session that did not write it*
    (`check-2026-11-18-method-corrections-second.md`): the command is safe, it puts the key
    neither in the shell's history nor on the screen, and that session recommends you approve
-   it as written. It is still proposed, and not ruled.
+   it as written. ~~It is still proposed, and not ruled.~~
 
 3. Show the run. Nothing is sent. Every line under "Checks made before a real run" must say
    `pass`, the one about the key's setting included. If one does not, stop and tell a session
@@ -617,6 +727,19 @@ list and what replaced them.
   method has no words for (the status at the top of this document), and have said if you
   object." Replaced by two lists, done and left, because three of those things were ruled on
   2026-11-19 and the first point ran four steps together.
+- **Before the day, as it stood earlier on 2026-11-19.** The list of things done had five
+  points, and the fourth ended: "The yes is done. The change is not: see the first point
+  below." The list of things left had six points. First: "**The change to the key-saving
+  script is made, checked and merged.** A session in the TimeAssembler repository is making it
+  on its own branch. Until it exists, a different session has checked it, and you have merged
+  both it and the open pull request under it (step 4 above), the key cannot be saved the usual
+  way." Second: "**The Console workspace and the key exist** (step 5 above): a workspace named
+  "Beyond the Window" and one key in it named `btw-capture`. Only you can make them." Third:
+  "**The key is saved, and automatic top-up is switched off** (step 6 above)." Fourth: "**You
+  have ruled the command in step 2 below,** which is still only proposed." The fifth and sixth,
+  on the go and on `python3`, are unchanged. Replaced later the same day, because the change
+  then existed as a pull request, the workspace and key were made by your word, and the
+  command was ruled.
 - **The order of "Before the day".** The points are the same as before with two changes: the
   point on the check is replaced as above, and a paragraph was added saying that no session
   edits this document, `cost-and-terms.md` or `capture/` on the day.
@@ -783,3 +906,20 @@ the corrections above; a different session checks it. The table of last safe day
 | Step 7, "Two things to know": the sums for broken connections are struck through and given again, about 70 cents higher: $6.36 for two, $8.77 for three, $11.18 for four. A sentence says longer replies leave less room | The check of the plan change, section 4; the other check, should-fix 1 |
 | "While it runs", the points on the lid and on Ctrl-C: "if the replies are about the size expected", and that longer replies leave less room. The earlier words are under "Earlier wording of the run's step list" | The check of this document's change, should-fix 1 |
 | "Before the day" is written out again as two lists, done and left. The earlier five points are kept word for word under "Earlier wording of the run's step list" | The planning session's request that the list say truthfully what is done and what is left |
+
+**Dated correction, later on 2026-11-19, after two more rulings and John's word on the key.**
+The rulings, both by John on 2026-11-19 and both decided by: mixed: "Approve it"
+(`docs/rulings/2026-11-19-command-that-loads-the-key.md`) and "Yes, keep the test" (`docs/rulings/2026-11-19-key-test-stays.md`). John's word on the workspace and key, as the planning
+session relayed it: "Done, no expiry". The state of the two pull requests and the name
+`beyond-the-window-capture` are as the planning session reported them; this session did not
+open either pull request. Made by the session (Claude, Fable 5.2) that made the corrections
+above; a different session checks it. The table of last safe days is unchanged.
+
+| Change | Source |
+|---|---|
+| A list at the top, "What is left before the Anthropic run, in order": the check of the key-saving change, the two merges, saving the key and switching top-up off, the go, the run by 2026-11-26. Three points of the earlier status are struck through and corrected | The planning session's request; the two rulings; John's word |
+| Step 4: the change exists as a pull request open against the unmerged branch of the older one, it is being checked, neither is merged, and both merges are John's. What the script's test of a key really does, and that John allowed that one named call only | The planning session's report; the ruling "Yes, keep the test" |
+| Step 5: done for Anthropic by John's word, with what is not confirmed: the key's name, the key saved on the Mac, automatic top-up off | John's word, "Done, no expiry" |
+| Step 6: where the change stands, that the saving commands are not written until the check lands, what the test does, and who runs it. One sentence there is marked as this session's reading | The same ruling, "Not covered by this ruling" |
+| The run, step 2: the command is marked ruled, with the four things put to John and the planning session's condition (decided by: agent). The first proposal is kept under it | The ruling "Approve it" |
+| The run, "Before the day": written out again as done and left, in order, with the command off the list of things left. The earlier points are kept word for word under "Earlier wording of the run's step list" | The planning session's request |
