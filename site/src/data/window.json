@@ -1,14 +1,13 @@
 {
   "exported_on": "2026-11-18",
-  "commit": "913776f",
+  "commit": "2e60e3b",
   "constructed": false,
   "headline": {
-    "computed_on": "2026-11-17",
+    "computed_on": "2026-11-18",
     "last_read": "2026-11-17",
     "headline": {
       "count": 6,
-      "total": 9,
-      "words": "6 of 9 things on the list are offered to at least one AI model today",
+      "words": "6 things that lie past the limits an AI model ordinarily works within are offered today by at least one developer of AI models",
       "offered_ids": [
         "ending-a-conversation",
         "interview-before-retirement",

@@ -5,6 +5,19 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-18
 
+- **The top of the home page is a count with no fraction**, as John ruled on 2026-11-18
+  (`docs/rulings/2026-11-18-home-page-count.md`): "Count, no fraction". The large "6 of 9" is
+  now "6", and the sentence under it reads "things that lie past the limits an AI model
+  ordinarily works within are offered today by at least one developer of AI models." That
+  sentence is a session's wording, not ruled, and the page says under it that the wording is
+  not settled (`docs/first-version-choices.md`, choice 3, with two alternatives). The caveat
+  under the number is rewritten for a count. The headline part of `data/headline.json` no
+  longer holds a total; the number of things on the list stays in the file's `records` part.
+  The window's spoken summary and key, the list page's heading and About follow.
+  `scripts/check_site.py` now refuses the count written as a share of the list on any page.
+  Pictures are in `docs/site-pictures/2026-11-18/`. No number moved: the count is still 6, and
+  the record for memory across conversations stays where it is until John rules on it. Earlier
+  lines in this file keep the old wording, as written at the time.
 - **The three small fixes from the check of the four small record fixes are applied**
   (`docs/reviews/2026-11-18-check-of-small-record-fixes.md`). `scripts/compute.py` now refuses a
   record whose `[checks]` table claims a check of its sources earlier than the date the record

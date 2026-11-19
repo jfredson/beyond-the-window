@@ -53,7 +53,10 @@ export type Window = {
   headline: {
     computed_on: string;
     last_read: string | null;
-    headline: { count: number; total: number; words: string; offered_ids: string[] };
+    // The count and its sentence. There is no total here: the count stands alone (ruled
+    // 2026-11-18, docs/rulings/2026-11-18-home-page-count.md). How many things are on the list
+    // is records.on_the_list, a plain fact about the records, never shown beside the count.
+    headline: { count: number; words: string; offered_ids: string[] };
     records: { total: number; on_the_list: number; beside_the_list: number; first_pass: number; reviewed: number; left_out_unverified: number; constructed: boolean };
   };
   groups: Group[];

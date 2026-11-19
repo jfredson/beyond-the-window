@@ -5,7 +5,8 @@ Plain Python, standard library only. Run from anywhere:
 
     python3 scripts/compute.py                 check every record, work out the count, and write
                                                data/headline.json (a history row is added only
-                                               when the count, the total or the entries counted
+                                               when the count, the entries counted, the
+                                               number of things on the list or the sentence
                                                change)
     python3 scripts/compute.py --check         check every record and write nothing; refuse a
                                                missing or out-of-date data/headline.json
@@ -16,10 +17,17 @@ The records are one file per entry in data/entries/, named for the entry's id. T
 the rules are listed in docs/first-version-choices.md, choices 10 to 12. Every one of them is a
 provisional choice made by a session on 2026-11-17, not a ruling.
 
-The number: how many things on the list are offered to at least one AI model today. It is read
-from one true-or-false flag on each record's state (`offered_today`), never worked out from
-links or wording, and never typed in. Nothing an AI model said feeds it: no record here holds
-an answer from a model.
+The number: how many things on the list are offered today by at least one developer of AI
+models. It is read from one true-or-false flag on each record's state (`offered_today`), never
+worked out from links or wording, and never typed in. Nothing an AI model said feeds it: no
+record here holds an answer from a model.
+
+The number stands alone, with no total beside it. John ruled that form on 2026-11-18
+(docs/rulings/2026-11-18-home-page-count.md): the list holds only things a dated source could
+be found for, so nobody knows the total a fraction would imply. How many things are on the list
+is still written down, as a plain fact about the records (`records.on_the_list`), and it is
+never part of the headline or its sentence. The exact sentence is a session's wording of
+2026-11-18 and is not ruled (docs/first-version-choices.md, choice 3).
 
 A record with anything in its `verify` list (facts set down before their source was opened) is
 checked like the rest and then left out of the count and of the site, so no unchecked fact is
@@ -45,7 +53,9 @@ METHOD_STATUS = (
     "provisional, 2026-11-17, decided by a session and not ruled by John Andrew Fredrickson: "
     "a thing on the list is counted when its record shows that at least one developer of AI "
     "models offers it today; no ladder, no probability and no year "
-    "(docs/first-version-choices.md)"
+    "(docs/first-version-choices.md). Ruled by John Andrew Fredrickson on 2026-11-18: the "
+    "count stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). The "
+    "exact sentence is a session's wording of 2026-11-18 and is not ruled"
 )
 
 # ---- what a record may hold -------------------------------------------------------------
@@ -418,10 +428,20 @@ def shown(records: list[dict]) -> list[dict]:
     return [r for r in records if not r.get("verify")]
 
 
-def words_for(count: int, total: int) -> str:
-    thing = "thing" if total == 1 else "things"
-    verb = "is" if count == 1 else "are"
-    return f"{count} of {total} {thing} on the list {verb} offered to at least one AI model today"
+def words_for(count: int) -> str:
+    """The sentence at the top of the site: the count and no total (ruled 2026-11-18).
+
+    The wording is a session's, of 2026-11-18, and is not ruled. It never takes the number of
+    things on the list, so it cannot put a total beside the count.
+    """
+    if count == 1:
+        start = "1 thing that lies"
+        verb = "is"
+    else:
+        start = f"{count} things that lie"
+        verb = "are"
+    return (f"{start} past the limits an AI model ordinarily works within {verb} offered today "
+            "by at least one developer of AI models")
 
 
 def compute(records: list[dict]) -> dict:
@@ -435,8 +455,7 @@ def compute(records: list[dict]) -> dict:
     return {
         "headline": {
             "count": len(offered),
-            "total": len(live),
-            "words": words_for(len(offered), len(live)),
+            "words": words_for(len(offered)),
             "offered_ids": offered,
         },
         "last_read": max(opened).isoformat() if opened else None,
@@ -478,8 +497,12 @@ def stale_reasons(existing: dict | None, computed: dict) -> list[str]:
 def write_headline(path: Path, computed: dict, today: str | None = None) -> bool:
     """Write the headline file if the records now say something new. Returns True when written.
 
-    The history is only ever added to: a row when the count, the total or the entries counted
-    change. A run that finds nothing new leaves the file exactly as it is.
+    The history is only ever added to: a row when the count, the entries counted, the number
+    of things on the list or the sentence change, and the row names which of them changed. A
+    run that finds nothing new leaves the file exactly as it is.
+
+    Rows written before 2026-11-18 call the number of things on the list "total" and hold no
+    sentence. They are left as they were written, and read here under the old name.
     """
     existing = read_headline(path)
     if not stale_reasons(existing, computed):
@@ -487,11 +510,20 @@ def write_headline(path: Path, computed: dict, today: str | None = None) -> bool
     today = today or pacific_today()
     history = list(existing.get("history", [])) if existing else []
     h = computed["headline"]
-    row = {"computed_on": today, "count": h["count"], "total": h["total"],
-           "offered_ids": h["offered_ids"]}
+    row = {"computed_on": today, "count": h["count"],
+           "on_the_list": computed["records"]["on_the_list"],
+           "offered_ids": h["offered_ids"], "words": h["words"]}
     last = history[-1] if history else None
-    if last is None or any(last.get(k) != row[k] for k in ("count", "total", "offered_ids")):
+    if last is None:
         history.append(row)
+    else:
+        before = dict(last)
+        if "on_the_list" not in before:
+            before["on_the_list"] = before.get("total")
+        changed = [k for k in ("count", "on_the_list", "offered_ids", "words")
+                   if before.get(k) != row[k]]
+        if changed:
+            history.append({**row, "changed": changed})
     out = {
         "computed_on": today,
         "last_read": computed["last_read"],

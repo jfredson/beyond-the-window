@@ -16,8 +16,9 @@
 .first { display: grid; grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr); gap: 46px; padding: 34px 0 6px; align-items: start; }
 .first .eyebrow { margin-bottom: 14px; }
 .big { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: clamp(68px, 9vw, 108px); line-height: 0.92; letter-spacing: -0.04em; color: var(--text); margin: 0; font-weight: 400; }
-.big small { font-size: 0.40em; color: var(--muted); letter-spacing: -0.01em; margin-left: 0.25em; }
-.big-claim { font-family: var(--sans); font-size: 20.5px; line-height: 1.32; color: var(--text); margin: 14px 0 12px; max-width: 31ch; }
+.big-claim { font-family: var(--sans); font-size: 20.5px; line-height: 1.32; color: var(--text); margin: 14px 0 8px; max-width: 31ch; }
+/* the line that says the count is a first one and the sentence's wording is not settled */
+.unsettled { font: 10.5px/1.5 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; max-width: 46ch; }
 .first h1 { font-size: clamp(22px, 2.4vw, 27px); line-height: 1.24; margin-bottom: 12px; border-top: 1px solid var(--line); padding-top: 18px; }
 .first .lede { font-size: 15.5px; line-height: 1.62; margin: 0; font-style: normal; color: var(--text-soft); }
 .checked { list-style: none; padding: 0; margin: 18px 0 16px; font: 12.5px/1.5 var(--sans); color: var(--text-soft); }
@@ -32,7 +33,7 @@
 
 /* ---- the window ----
    A frame with a sill. Each row is one group on the list. A filled square inside the frame is
-   one thing offered to at least one AI model today. An outlined square outside the frame is one
+   one thing offered today by at least one developer. An outlined square outside the frame is one
    thing not offered yet. Filled against outlined, and inside against outside, carry the meaning,
    so the picture reads without colour. Each square is a link to its entry. */
 .object { margin: 0; }
@@ -129,7 +130,7 @@
   /* one column, and the picture comes straight after the number, before the long paragraph */
   .first { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 22px; }
   .first > div { display: contents; }
-  .first .eyebrow { order: 1; } .first .big { order: 2; } .first .big-claim { order: 3; }
+  .first .eyebrow { order: 1; } .first .big { order: 2; } .first .big-claim { order: 3; } .first .unsettled { order: 3; }
   .first .object { order: 4; margin: 0 0 26px; }
   .first h1 { order: 6; } .first .lede { order: 7; }
   .first .checked { order: 8; } .first .ctas { order: 9; } .first .notice { order: 10; }

@@ -57,6 +57,69 @@ same computed file.
   record was last read (form 5). It claims least and gives a reader nothing to repeat.
 - *Open question it touches:* 4 (the headline). Not closed.
 
+**Revised 2026-11-18. The form is now ruled; the sentence is a session's wording and is not.**
+John ruled the form on 2026-11-18 (`docs/rulings/2026-11-18-home-page-count.md`; decided by:
+mixed): "Count, no fraction". The home page opens with the count of the things on the list
+that are offered today, with no total beside it. The wording above ("N of M things on the list
+are offered to at least one AI model today") is kept here as the old wording and is no longer
+on the site.
+
+The ruling leaves the exact sentence open. The sentence now on the page is this session's.
+**Decided by: agent (the session that applied the ruling), provisional, 2026-11-18, not ruled
+by John.** He sees it on the page before it stands, and the page says under the sentence that
+its wording is not settled.
+
+> **6** things that lie past the limits an AI model ordinarily works within are offered today
+> by at least one developer of AI models.
+
+The count is large and the rest of the sentence sits under it. `scripts/compute.py` writes the
+sentence (`words_for`), and it is never given the number of things on the list, so it cannot
+put a total beside the count. The same sentence is the heading of the list page.
+
+- *The choice:* that sentence. Against the starting point shown to John ("Six things lie past
+  the ordinary limits of an AI model and are now offered by at least one developer"), it keeps
+  "offered by at least one developer", which answers the review's point that "offered to an AI
+  model" fits a product better than a law or a promise: the sentence now says who offers and
+  no longer says the model is the one offered to. That also stops the sentence claiming more
+  than the memory record does, since that record says the memory is the user's to view and
+  delete. It uses the wording of the paragraph lower on the page ("the limits an AI model
+  ordinarily works within") so the two say the same thing, says "developer of AI models" so a
+  stranger knows what kind of developer, and says "today" where the starting point said "now",
+  because "offered today" is the phrase the rest of the site defines and uses.
+- *The stranger test:* a stranger can say it back as "six things that AI models do not
+  ordinarily get are offered today by at least one company that builds them". Two soft spots
+  remain. "The limits an AI model ordinarily works within" is abstract until the examples two
+  paragraphs lower. And "offered" still leaves a reader asking "offered to whom?"; for a
+  welfare assessment or kept files, "done" would be the natural word.
+- *Confidence:* moderate. The form is ruled and the number is unchanged. The verb is the weak
+  point.
+- *Standard or judgment:* judgment call. The nearest family practice is The Upgrade Tree's
+  count with no total.
+- *Strongest alternative:* "6 things that lie past the limits an AI model ordinarily works
+  within are in place today at one or more developers of AI models." "In place" fits every one
+  of the six, where "offered" fits some awkwardly, and it leaves no "to whom?". Its cost: the
+  rest of the site says "offered today" (the window's heading, every row of the list, each
+  entry page, the definition on About), so either the top of the page uses a different word
+  from everything under it, or the word changes across the site and in how the records are
+  described, which is a larger change than the ruling asked for.
+- *A second alternative:* "6 things on this list are offered today by at least one developer
+  of AI models." It is the shortest and a stranger can repeat it word for word. Its cost: "this
+  list" is used before the page has said what the list is, and with the word "list" in the
+  sentence a reader is one step from asking "out of how many?", which is the question the
+  ruling removed.
+- *What was changed with it:* the caveat under the number was rewritten for a count (the list
+  is short, it holds only things a dated source could be found for, nobody knows how long a
+  full list would be, so the count is not a measure of how much lies past those limits). The
+  window's spoken summary and its key no longer say "N of M" or "offered to at least one AI
+  model". A sentence was added under the window saying the squares outside the frame are only
+  the things found so far. About gives the count alone.
+- *Left as it was, for John:* the window still draws the things not offered yet as squares
+  outside the frame, with "3 outside it" under them, and the list's own heading says "9
+  things". Both are plain facts about the list as it stands, and neither is a total written
+  beside the count, but a reader can add them up. Whether the drawing should show them is part
+  of the design proposal, which is not ruled.
+- *Open question it touches:* 4 (the headline). Ruled in part; not closed.
+
 ### 4. Theme and colours
 
 The theme follows the visitor's own light or dark setting. The amber for what the world's
@@ -142,6 +205,9 @@ entries sits under it.
   offered today and not yet.
 - *Strongest alternative:* the mock-up's five columns as one drawing, which shows more at a
   glance and whose squares are about seven pixels wide on a phone.
+- *Revised 2026-11-18:* the window's words no longer say "offered to at least one AI model" or
+  give the squares inside as a share of all the squares; see the revision under choice 3. The
+  drawing itself is unchanged.
 
 ### 10. What a record holds in this version
 
@@ -198,6 +264,18 @@ count, the total, the sentence, the ids counted, the date computed (Pacific time
 date any source in the records was opened (shown on the home page as when the world's record
 was last read), how many records are a first pass, and a history. A history row is appended
 when the count, the total or the ids counted change, and no row is ever edited.
+
+*Revised 2026-11-18, after John's ruling that the count stands with no total beside it
+(`docs/rulings/2026-11-18-home-page-count.md`).* The headline part of the file no longer holds
+a total. How many things are on the list stays in the file's `records` part (`on_the_list`),
+as a plain fact about the records. A history row now also holds the sentence and names what
+changed, and a row is added when the count, the ids counted, the number of things on the list
+or the sentence change. The row written on 2026-11-17 is left exactly as it was, with its old
+field name "total", because no row is ever edited; a row dated 2026-11-18 records that the
+sentence changed and nothing else did. *Decided by: agent, provisional.* *Confidence:*
+moderate. *Judgment.* *Strongest alternative:* rewrite the old row without its total, which
+would leave no fraction anywhere in the served file and would break the rule that history is
+never edited.
 `scripts/compute.py --check` refuses a missing or out-of-date file. `scripts/export.py` is the
 only thing the site reads from: it writes `site/src/data/window.json` and copies the headline
 file to `site/public/data/headline.json`, so it is served at `/data/headline.json`.
@@ -256,6 +334,11 @@ two. *Confidence:* low. *Judgment.*
 working word, a long dash, a phrase that writes the site as its own agent, or the name of an AI
 model or its developer anywhere other than an entry page or a source's title. *Confidence:*
 high. *Standard* (rows K6, K7, B11).
+
+*Added 2026-11-18:* it also refuses anything standing beside the number in the large type on
+the home page, a total in the headline part of the served file, and the count written as a
+share of the things on the list ("6 of 9", "six of the nine") on any page, so the ruling of
+2026-11-18 is kept by code. *Decided by: agent.* *Confidence:* high. *Standard* (row B11).
 
 ### 19. The groups on the list
 

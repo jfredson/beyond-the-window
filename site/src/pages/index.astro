@@ -4,6 +4,10 @@
 // last read, and the notice of who wrote the text; beside them the window, drawn from the same
 // exported file as the number. Then the list in words, and the entries that sit beside it.
 // The number is never typed here: it is read from the headline file scripts/compute.py wrote.
+// It stands alone, with no total beside it: John ruled that form on 2026-11-18
+// (docs/rulings/2026-11-18-home-page-count.md). The sentence after the number is a session's
+// wording and is not ruled, and the line under it says so (docs/first-version-choices.md,
+// choice 3).
 import Base from '../layouts/Base.astro';
 import WindowGrid from '../components/WindowGrid.astro';
 import ThingList from '../components/ThingList.astro';
@@ -12,7 +16,10 @@ import { data, headline, longDate, QUESTION } from '../lib/data';
 
 const h = headline;
 const r = data.headline.records;
-const claim = h.words.replace(/^\d+ of \d+ /, '') + '.';
+// The sentence in the headline file opens with the count. The page shows the count large and
+// the rest of the sentence under it, and the build stops if the two ever part.
+if (!h.words.startsWith(`${h.count} `)) throw new Error('the headline sentence does not open with the count');
+const claim = h.words.slice(`${h.count} `.length) + '.';
 const lastRead = data.headline.last_read;
 ---
 
@@ -20,12 +27,14 @@ const lastRead = data.headline.last_read;
   <div class="first">
     <div>
       <p class="eyebrow">A public record of what lies past the present limits of AI models</p>
-      <p class="big">{h.count}<small>of {h.total}</small></p>
+      <p class="big">{h.count}</p>
       <p class="big-claim">{claim}</p>
+      <p class="unsettled">A first count. The wording of the sentence above is not settled yet.</p>
       <p class="caveat">
-        The list is short, and it holds only things for which a dated source could be found, which
-        favours things that have already happened. The number says how this first list stands. It
-        does not say how much of what lies past those limits has been offered.
+        The count comes from a short list. The list holds only things for which a dated source
+        could be found, which favours things that have already happened. Nobody knows how long a
+        full list would be, so the count is not a measure of how much lies past those limits, or
+        of how much of it has been offered.
       </p>
       <h1>{QUESTION}</h1>
       <p class="lede">
@@ -51,7 +60,7 @@ const lastRead = data.headline.last_read;
   </div>
 
   <section class="below" id="list">
-    <div class="shead"><h2>The List</h2><span>{h.total} things, and how far the world has got on each</span></div>
+    <div class="shead"><h2>The List</h2><span>{r.on_the_list} things, and how far the world has got on each</span></div>
     <ThingList />
   </section>
 

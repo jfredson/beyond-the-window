@@ -160,21 +160,35 @@ class Count(unittest.TestCase):
     def test_counts_the_flag_and_nothing_else(self):
         recs = [good("one-thing", offered=True), good("another-thing"), good("a-third-thing")]
         h = c.compute(recs)["headline"]
-        self.assertEqual((h["count"], h["total"], h["offered_ids"]), (1, 3, ["one-thing"]))
-        self.assertEqual(h["words"], "1 of 3 things on the list is offered to at least one AI model today")
+        self.assertEqual((h["count"], h["offered_ids"]), (1, ["one-thing"]))
+        self.assertEqual(h["words"], "1 thing that lies past the limits an AI model ordinarily "
+                                     "works within is offered today by at least one developer of AI models")
+
+    def test_the_headline_carries_no_total(self):
+        # Ruled 2026-11-18 (docs/rulings/2026-11-18-home-page-count.md): a count, no fraction.
+        recs = [good("one-thing", offered=True), good("another-thing", offered=True),
+                good("a-third-thing"), good("a-fourth-thing"), good("a-fifth-thing")]
+        out = c.compute(recs)
+        h = out["headline"]
+        self.assertEqual(sorted(h), ["count", "offered_ids", "words"])
+        self.assertTrue(h["words"].startswith("2 things that lie past "))
+        self.assertNotIn("5", h["words"])
+        self.assertNotRegex(h["words"], r"\d+ of \d+")
+        # how many things are on the list stays, as a plain fact about the records
+        self.assertEqual(out["records"]["on_the_list"], 5)
 
     def test_a_record_with_facts_to_verify_is_left_out(self):
         a, b = good("one-thing", offered=True), good("another-thing", offered=True)
         b["verify"] = ["A fact nobody has opened a source for."]
         out = c.compute([a, b])
-        self.assertEqual((out["headline"]["count"], out["headline"]["total"]), (1, 1))
+        self.assertEqual((out["headline"]["count"], out["records"]["on_the_list"]), (1, 1))
         self.assertEqual(out["records"]["left_out_unverified"], 1)
 
     def test_an_entry_beside_the_list_is_never_counted(self):
         a = good("one-thing", offered=True)
         b = good("a-law-somewhere"); b["beside"] = True; del b["state"]["offered_today"]
         out = c.compute([a, b])
-        self.assertEqual((out["headline"]["count"], out["headline"]["total"]), (1, 1))
+        self.assertEqual((out["headline"]["count"], out["records"]["on_the_list"]), (1, 1))
         self.assertEqual(out["records"]["beside_the_list"], 1)
         # even if a flag were smuggled past the validator, the count would not read it
         b["state"]["offered_today"] = True
@@ -207,6 +221,24 @@ class HeadlineFile(unittest.TestCase):
             self.assertEqual([(h["computed_on"], h["count"]) for h in hist],
                              [("2026-11-17", 0), ("2026-11-19", 1)])
             self.assertEqual(hist[0], json.loads(first)["history"][0])
+            self.assertEqual(hist[1]["changed"], ["count", "offered_ids", "words"])
+            self.assertNotIn("total", hist[1])
+
+    def test_a_row_written_before_the_ruling_is_kept_and_the_new_sentence_gets_its_own_row(self):
+        # The file as it stood on 2026-11-17: the old row calls the size of the list "total"
+        # and holds no sentence. The first run after the ruling adds one row and edits none.
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "headline.json"
+            now = c.compute([good("one-thing", offered=True), good("another-thing")])
+            old_row = {"computed_on": "2026-11-17", "count": 1, "total": 2,
+                       "offered_ids": ["one-thing"]}
+            path.write_text(json.dumps({"computed_on": "2026-11-17", "history": [old_row]}))
+            self.assertTrue(c.write_headline(path, now, today="2026-11-18"))
+            hist = json.loads(path.read_text())["history"]
+            self.assertEqual(hist[0], old_row)
+            self.assertEqual(len(hist), 2)
+            self.assertEqual(hist[1]["changed"], ["words"])
+            self.assertEqual((hist[1]["count"], hist[1]["on_the_list"]), (1, 2))
 
     def test_check_refuses_a_missing_file(self):
         self.assertEqual(c.stale_reasons(None, c.compute([good()])), ["the headline file is missing"])

@@ -20,7 +20,11 @@ What it refuses (docs/first-version-choices.md, choice 18):
    sit inside <cite> on every page.
 5. A page that does not ask search engines to leave it out, while nothing is published.
 6. A link inside the site that leads to no page.
-7. The headline number on the home page differing from the headline file the site serves.
+7. The headline number on the home page differing from the headline file the site serves, or
+   anything standing beside it in the large type.
+8. The count written as a share of the things on the list ("6 of 9", "six of nine") on any
+   page, or a total in the served headline. John ruled on 2026-11-18 that the count stands
+   with no total beside it (docs/rulings/2026-11-18-home-page-count.md).
 """
 from __future__ import annotations
 
@@ -59,6 +63,27 @@ def visible_text(page: str, keep_cites: bool) -> str:
     attrs = re.findall(r'(?is)\b(?:content|title|aria-label|alt)="([^"]*)"', page)
     body = re.sub(r"(?s)<[^>]+>", " ", page)
     return html.unescape(" ".join([body] + attrs))
+
+
+NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                "seventeen", "eighteen", "nineteen", "twenty"]
+
+
+def fraction_problems(dist: Path, pages: list[Path], count: int, on_the_list: int) -> list[str]:
+    """Rule 8: no page gives the count as a share of the things on the list."""
+    def forms(n: int) -> str:
+        names = [str(n)] + ([NUMBER_WORDS[n]] if n < len(NUMBER_WORDS) else [])
+        return "(?:" + "|".join(names) + ")"
+    pattern = rf"\b{forms(count)} (?:out )?of (?:the |all )?{forms(on_the_list)}\b"
+    found = []
+    for page in pages:
+        rel = "/" + str(page.relative_to(dist)).replace("index.html", "")
+        text = " ".join(visible_text(page.read_text(encoding="utf-8"), keep_cites=False).split())
+        for m in re.finditer(pattern, text, re.I):
+            snippet = text[max(0, m.start() - 40):m.end() + 40]
+            found.append(f"{rel}: the count written as a share of the list: \"...{snippet}...\"")
+    return found
 
 
 def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
@@ -106,10 +131,15 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     if not served.is_file():
         problems.append("/data/headline.json is not served")
     elif home.is_file():
-        h = json.loads(served.read_text(encoding="utf-8"))["headline"]
-        m = re.search(r'<p class="big"[^>]*>(\d+)<small[^>]*>of (\d+)</small>', home.read_text(encoding="utf-8"))
-        if not m or (int(m.group(1)), int(m.group(2))) != (h["count"], h["total"]):
-            problems.append("/: the number at the top is not the number in /data/headline.json")
+        file = json.loads(served.read_text(encoding="utf-8"))
+        h = file["headline"]
+        m = re.search(r'<p class="big"[^>]*>\s*(\d+)\s*</p>', home.read_text(encoding="utf-8"))
+        if not m or int(m.group(1)) != h["count"]:
+            problems.append("/: the number at the top is not the number in /data/headline.json, "
+                            "or something stands beside it")
+        if "total" in h:
+            problems.append("/data/headline.json: the headline holds a total beside the count")
+        problems += fraction_problems(dist, pages, h["count"], file["records"]["on_the_list"])
     return problems, outside
 
 

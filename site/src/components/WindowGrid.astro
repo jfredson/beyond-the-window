@@ -1,13 +1,16 @@
 ---
 // The window: the picture on the first screen, drawn from the exported records and from
 // nothing else. One row per group on the list, one square per thing. A filled square inside
-// the frame is a thing offered to at least one AI model today; an outlined square outside the
-// frame is a thing not offered yet. Which side a square sits on is the same true-or-false flag
+// the frame is a thing offered today by at least one developer of AI models; an outlined square
+// outside the frame is a thing not offered yet. Which side a square sits on is the same true-or-false flag
 // the count reads (state.offered_today), so the picture and the number cannot disagree.
 // Filled against outlined, and inside against outside, carry the meaning, so it reads without
 // colour. Every square is a link to its entry, large enough for a finger.
 // The two-part form (no columns for stages) is a provisional choice: docs/first-version-choices.md,
 // choice 9.
+// The words never give the squares inside as a share of all the squares: John ruled on
+// 2026-11-18 that the count stands with no total beside it
+// (docs/rulings/2026-11-18-home-page-count.md).
 import { listGroups, headline, entryById, plain } from '../lib/data';
 
 const rows = listGroups.map((g) => {
@@ -19,8 +22,9 @@ const rows = listGroups.map((g) => {
   };
 });
 const inside = headline.count;
-const outside = headline.total - headline.count;
-const summary = `A window. ${inside} of ${headline.total} things on the list sit inside its frame, offered to at least one AI model today; ${outside} sit outside it.`;
+const outside = rows.reduce((n, r) => n + r.outside.length, 0);
+const things = (n: number) => `${n} ${n === 1 ? 'thing sits' : 'things sit'}`;
+const summary = `A window. ${things(inside)} inside its frame, offered today by at least one developer of AI models. ${things(outside)} outside it, not offered yet.`;
 ---
 
 <figure class="object" id="window">
@@ -52,8 +56,8 @@ const summary = `A window. ${inside} of ${headline.total} things on the list sit
     <span class="win-foot">{outside} outside it</span>
   </div>
   <ul class="legend">
-    <li><i class="k-lit"></i>one thing offered to at least one AI model today</li>
+    <li><i class="k-lit"></i>one thing offered today by at least one developer of AI models</li>
     <li><i class="k-out"></i>one thing not offered yet</li>
   </ul>
-  <p class="note">Each square is one thing on the list and links to its page. The frame is today. A square moves only when a dated public record does, and it can move out as well as in, because a developer can withdraw what it offered.</p>
+  <p class="note">Each square is one thing on the list and links to its page. The frame is today. A square moves only when a dated public record does, and it can move out as well as in, because a developer can withdraw what it offered. The squares outside the frame are only the things found so far for this short list. How many more belong there is not known.</p>
 </figure>

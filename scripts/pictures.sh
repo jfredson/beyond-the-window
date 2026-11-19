@@ -35,9 +35,10 @@ im.save(sys.argv[2], quality=88)
 PY
   echo "  $OUT/$1.jpg"
 }
-phone() { # name path height
+phone() { # name path height theme (light when the theme is left off)
+  DARK="--blink-settings=preferredColorScheme=1"; [ "$4" = dark ] && DARK="--blink-settings=preferredColorScheme=0"
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
-    --blink-settings=preferredColorScheme=1 --user-data-dir="$TMP/profile-phone" --window-size=600,"$3" --virtual-time-budget=4000 \
+    $DARK --user-data-dir="$TMP/profile-phone-${4:-light}" --window-size=600,"$3" --virtual-time-budget=4000 \
     --screenshot="$TMP/$1.png" "file://$TMP/phone.html#$BASE$2" >/dev/null 2>&1
   python3 - "$TMP/$1.png" "$OUT/$1.jpg" <<'PY'
 import sys
@@ -56,4 +57,11 @@ shot  6-entry-beside-light /list/law-against-legal-personhood/ light 1280 3000
 shot  7-about-light       /about/                             light 1280 2900
 shot  8-still-asking-dark /still-asking/                      dark  1280 1700
 phone 9-entry-phone       /list/ending-a-conversation/        3900
+# Added 2026-11-18, so the sentence at the top can be seen on the home page and the list page in
+# both themes at both widths.
+phone 10-home-phone-dark  /                                   3400 dark
+shot  11-list-light       /list/                              light 1280 2100
+shot  12-list-dark        /list/                              dark  1280 2100
+phone 13-list-phone       /list/                              3300
+phone 14-list-phone-dark  /list/                              3300 dark
 rm -rf "$TMP"
