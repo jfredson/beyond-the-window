@@ -336,6 +336,14 @@ recommended". Not ruled: the exact sentences, whether entry pages say who made t
 check, and the parts of this question on checking, maintenance, other developers' models and
 whether AI models can put entries forward. The question stays open for those.
 
+**The declaration replaced by John's ruling of 2026-11-19**
+(`docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md`; decided by: John). His
+words: "When it comes to our collaboration on building the project, we don't need to mention
+that publicly. The only place where disclosure of discussion with any AI Is relevant is when it
+is in actually asking the questions that make up the data of this project." The public pages do
+not say that an AI model helped build the site. The parts of this question on checking,
+maintenance, other developers' models and whether AI models can put entries forward stay open.
+
 ## 8. The family boundaries
 
 **The question.** Where this project ends and its relatives begin: Minimum Viable Mind (is

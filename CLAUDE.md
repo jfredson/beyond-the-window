@@ -61,6 +61,14 @@ So:
    notice on the home page and the Still Asking page, on the About page and on every entry
    page; the About page names the developer and no model; the notice and that About section are
    in John's first person. The exact sentences and the rest of open question 7 are not ruled.*
+   *Replaced by John's ruling of 2026-11-19 (decided by: John;
+   `docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md`): "When it comes to our
+   collaboration on building the project, we don't need to mention that publicly. The only place
+   where disclosure of discussion with any AI Is relevant is when it is in actually asking the
+   questions that make up the data of this project." So public pages do not say an AI model
+   helped build the site, and they do say plainly when a model has been asked the questions that
+   make up the data. Documents inside the repository still say which were written by a model. No
+   page ever denies that a model took part.*
    *Confidence: high that the repository documents declare it. Low on the public form, which is
    John's. Strongest alternative: the family's present practice, a line in the method account
    only.*
