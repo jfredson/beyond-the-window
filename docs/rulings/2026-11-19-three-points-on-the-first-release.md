@@ -85,3 +85,35 @@ and every difference is explained.
    second domain. This site has no second domain.
 
 Nothing is published, and no key has been made, read or handled.
+
+## Correction, the same day: the sibling sites' keys are Cloudflare's template, not the narrow key
+
+**Decided by: agent** (the master session correcting its own application of John's principle).
+
+The section above says the five tracker sites use a key with two permissions, on the evidence
+of the opening comment in each site's deploy file. That evidence was wrong. On 2026-11-19 John
+signed in to Cloudflare in the browser pane and the master session read the list of his keys
+and the summary of one (names and permissions only; no key's value is shown there, and none
+was read).
+
+- There is one key per site, named for the site: `quiet-galaxy`, `upgrade-tree`,
+  `outrunning-ageing`, `agi-zeitgeist`.
+- The summary of the `quiet-galaxy` key shows thirteen permissions, on all accounts and all
+  zones: Workers Routes: Edit; Memberships: Read; User Details: Read; Workers Agents
+  Configuration: Edit; Containers: Edit; Workers Observability: Edit; Workers Builds
+  Configuration: Edit; Cloudflare Pages: Edit; Workers R2 Storage: Edit; Workers Tail: Read;
+  Workers KV Storage: Edit; Workers Scripts: Edit; Account Settings: Read. That is Cloudflare's
+  ready-made template "Edit Cloudflare Workers" with its defaults.
+- The list shows the other three trackers' keys with the same count of permissions.
+
+So the comments in the siblings' deploy files describe a key none of them has, and nothing
+shows that a two-permission key works. John's principle is to copy the siblings because they
+are working. Applied to what the siblings in fact use:
+
+- **The key for this site is made from the template "Edit Cloudflare Workers", with its
+  defaults, and named `beyond-the-window`.** This replaces "the same two permissions" above.
+- The deploy note's step 2 is corrected to match, and the wrong comments in the sibling
+  repositories are listed for John as something to correct there; nothing is changed in them.
+
+Also read the same day: the records for beyondthewindow.org. There are none ("No DNS records
+found", 0 of 200 used), so the first release replaces nothing.
