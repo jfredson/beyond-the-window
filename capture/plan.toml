@@ -45,7 +45,12 @@ estimate_sent_tokens = 500
 prices_read_on = "2026-11-17"
 
 # ---------------------------------------------------------------------------------------
-# Each ceiling below is PROPOSED (docs/capture/cost-and-terms.md, Part 2). None is approved.
+# The ceiling for the Anthropic run (anthropic-2026-11-30) was ruled by John on 2026-11-18:
+# 10 dollars, in place of the 5 first proposed. Asked "Set the Anthropic ceiling at $10 in place
+# of $5?", he answered "Yes, $10" (decided by: mixed; docs/rulings/2026-11-18-anthropic-ceiling.md).
+# That ruling sets the limit and is not his go to spend.
+# The other three ceilings (Google, and the two OpenAI runs) are still PROPOSED
+# (docs/capture/cost-and-terms.md, Part 2) and are not approved.
 # The script refuses to start a run unless its ceiling equals the figure in John's go.
 
 [[run]]
@@ -53,7 +58,7 @@ id = "anthropic-2026-11-30"
 developer = "anthropic"
 withdrawal_date = "2026-11-30"
 last_safe_day = "2026-11-28"
-ceiling_usd = "5.00"
+ceiling_usd = "10.00"
 key_variable = "BTW_CAPTURE_ANTHROPIC_API_KEY"
 
   [[run.model]]

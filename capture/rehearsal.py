@@ -600,12 +600,12 @@ def part_start_checks(bench, root):
     v = variant(root, bench.repo, "v-no-record", lambda r: shutil.move(spending(r), r / "docs" / "moved-away.md"))
     refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: no spending record at all", "no docs/spending-record.md")
     v = variant(root, bench.repo, "v-go-lower", lambda r: spending(r).write_text(go_block(run, sums_checksum, ceiling="4.00")))
-    refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: a go for $4 when the plan's ceiling is $5", "must be equal")
+    refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: a go for $4 when the plan's ceiling is $10", "must be equal")
     v = variant(root, bench.repo, "v-go-higher", lambda r: spending(r).write_text(go_block(run, sums_checksum, ceiling="50.00")))
-    refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: a go for $50 when the plan's ceiling is $5", "must be equal")
-    plan_raised = bench.plan_with('ceiling_usd = "5.00"', 'ceiling_usd = "500.00"')
+    refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: a go for $50 when the plan's ceiling is $10", "must be equal")
+    plan_raised = bench.plan_with('ceiling_usd = "10.00"', 'ceiling_usd = "500.00"')
     refuses(lambda: capture.check_go(bench.paths, plan_raised.run(run.id)),
-            "rule 3 and 'raise its own ceiling': a plan edited to $500 against a go for $5", "must be equal")
+            "rule 3 and 'raise its own ceiling': a plan edited to $500 against a go for $10", "must be equal")
     v = variant(root, bench.repo, "v-go-unquoted", lambda r: spending(r).write_text(
         go_block(run, sums_checksum).replace("> CONSTRUCTED go", "> CONSTRUCTED different words")))
     refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: words given as the go that are not quoted in the record", "word for word")
@@ -743,14 +743,17 @@ def part_anthropic(bench):
     refuses(lambda: eng_early.record_not_made(), "recording askings as not made before the last safe day has passed", "only after")
 
     case("ROW 2. The reply stopped at the length limit: cut off, kept, asked once more at the model's maximum")
-    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "length"}], 2: [{"kind": "length"}, {"kind": "length"}]})
+    # At a constructed ceiling of $5, so that rule 5 stops this run after round one, as it did
+    # when the plan's ceiling was $5. At the plan's $10 the run would go on to round two.
+    five = bench.plan_with('ceiling_usd = "10.00"', 'ceiling_usd = "5.00"')
+    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "length"}], 2: [{"kind": "length"}, {"kind": "length"}]}, plan=five)
     eng.run_all()
     check(outcomes(folder, 1) == [capture.CUT_OFF_LENGTH, capture.REPLY] and limits(standin, 1)[:2] == [limit, top],
           f"cut off at {limit}, kept, asked once more at {top}")
     check(outcomes(folder, 2) == [capture.CUT_OFF_LENGTH] * 2 and limits(standin, 2) == [limit, top],
           "cut off again at the maximum: both kept, and it is left; no third asking is made")
     check(any("stopped after the first round" in line for line in SAID[-8:]),
-          "and, with three replies of 32,000 tokens or more in round one, rule 5 then stops this run at the $5 ceiling")
+          "and, with three replies of 32,000 tokens or more in round one, rule 5 then stops this run at a constructed ceiling of $5")
     check(clock.sleeps == [], "no wait: a cut-off reply is not a failed attempt")
 
     case("ROW 3. A streamed reply that ended, after some text, without the signal that it was complete")
@@ -850,7 +853,7 @@ def part_anthropic(bench):
 
 def part_faults(bench):
     case("FAULT FLAGS (rule 10). Empty, very short and ended mid-reply, listed by name, fault and count, never any words")
-    roomy = bench.plan_with('ceiling_usd = "5.00"', 'ceiling_usd = "20.00"')     # so that rule 5 does not stop it after round one
+    roomy = bench.plan_with('ceiling_usd = "10.00"', 'ceiling_usd = "20.00"')     # so that rule 5 does not stop it after round one
     eng, standin, clock, folder = bench.engine("anthropic-2026-11-30", plan=roomy, faults={
         1: [{"kind": "empty"}, {"kind": "empty"}], 2: [{"kind": "text", "text": SHORT}],
         3: [{"kind": "length"}], 4: [{"kind": "nosignal"}], 5: [{"kind": "length_empty"}],
@@ -876,12 +879,12 @@ def part_faults(bench):
 def part_money(bench):
     run_id = "anthropic-2026-11-30"
     case("THE CEILING (rules 3, 4, 5). The script stops before a call that could pass it")
-    tiny = bench.plan_with('ceiling_usd = "5.00"', 'ceiling_usd = "1.00"')
+    tiny = bench.plan_with('ceiling_usd = "10.00"', 'ceiling_usd = "1.00"')
     eng, standin, clock, folder = bench.engine(run_id, plan=tiny)
     clean = eng.run_all()
     check(not clean and len(standin.calls) == 0,
           "ceiling $1: one call at its limit ($0.48) and its one possible repeat at the model's maximum ($0.96) could pass it, so nothing is asked")
-    mid = bench.plan_with('ceiling_usd = "5.00"', 'ceiling_usd = "1.50"')
+    mid = bench.plan_with('ceiling_usd = "10.00"', 'ceiling_usd = "1.50"')
     eng, standin, clock, folder = bench.engine(run_id, plan=mid)
     before = len(SAID)
     clean = eng.run_all()
@@ -904,7 +907,7 @@ def part_money(bench):
     before = len(SAID)
     clean = eng.run_all()
     check(not clean and len(standin.calls) == 10 and len(records(folder)) == 10,
-          "replies of 20,000 tokens: the first round costs about $3.01, five would cost about $15, over $5; stopped after round one")
+          "replies of 20,000 tokens: the first round costs about $3.01, five would cost about $15, over $10; stopped after round one")
     check(any("stopped after the first round" in line for line in SAID[before:]), "the stop says why")
     eng, standin, _, _ = bench.engine(run_id, folder=folder, out_tokens=20000)
     eng.run_all()
@@ -1087,7 +1090,7 @@ def part_refusals(bench, root):
     shown = "\n".join(SAID[before:])
     check("Nothing is sent by this command" in shown and "POST https://api.anthropic.com/v1/messages" in shown
           and '"stream": true' in shown and "10 messages x 5 askings = 50" in shown and "estimated cost: $1.5750" in shown
-          and "ceiling $5.0000" in shown and "not shown]" in shown and CONSTRUCTED_KEY not in shown,
+          and "ceiling $10.0000" in shown and "not shown]" in shown and CONSTRUCTED_KEY not in shown,
           "address, headers, the exact body, 50 exchanges, the estimate and the ceiling are shown; the key is not")
 
 
@@ -1338,21 +1341,21 @@ def part_should_fix(bench, root):
     case("S2. John's go cannot be matched to words that were about something else")
     capture.check_go(bench.paths, run)
     check(True, "the constructed go in the stricter form passes: a quotation directly above its block, with date and commit")
-    refuses(lambda: capture.check_go(go("s2-only-figure", go_block(run, sums_checksum, words="$5.00",
-            quoted="> CONSTRUCTED: the coffee for the meeting cost $5.00")), run),
+    refuses(lambda: capture.check_go(go("s2-only-figure", go_block(run, sums_checksum, words="$10.00",
+            quoted="> CONSTRUCTED: the coffee for the meeting cost $10.00")), run),
             "words that are only the figure, in a quotation about something else", "do not name the developer")
-    refuses(lambda: capture.check_go(go("s2-other-developer", go_block(run, sums_checksum, words="CONSTRUCTED go. Google, up to $5.00")), run),
+    refuses(lambda: capture.check_go(go("s2-other-developer", go_block(run, sums_checksum, words="CONSTRUCTED go. Google, up to $10.00")), run),
             "a go quoted for Google used for the Anthropic run", "do not name the developer")
-    refuses(lambda: capture.check_go(go("s2-two-quotations", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5.00",
-            quoted="> CONSTRUCTED go. Anthropic,\n\nSome CONSTRUCTED words between.\n\n> up to $5.00")), run),
+    refuses(lambda: capture.check_go(go("s2-two-quotations", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $10.00",
+            quoted="> CONSTRUCTED go. Anthropic,\n\nSome CONSTRUCTED words between.\n\n> up to $10.00")), run),
             "words that run across two separate quotations", "directly above")
     refuses(lambda: capture.check_go(go("s2-far-above", go_block(run, sums_checksum,
-            quoted="> CONSTRUCTED go. Anthropic, up to $5.00\n\nCONSTRUCTED: John later withdrew this.\n\n> CONSTRUCTED: no, stop.")), run),
+            quoted="> CONSTRUCTED go. Anthropic, up to $10.00\n\nCONSTRUCTED: John later withdrew this.\n\n> CONSTRUCTED: no, stop.")), run),
             "a go that is not the quotation directly above its block (for example one later withdrawn in a second quotation)", "directly above")
-    refuses(lambda: capture.check_go(go("s2-fifty", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5",
-            quoted="> CONSTRUCTED go. Anthropic, up to $50")), run),
-            "a quotation of $50 matched by words ending 'up to $5'", "word for word")
-    refuses(lambda: capture.check_go(go("s2-two-figures", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5.00, or $500 if needed")), run),
+    refuses(lambda: capture.check_go(go("s2-fifty", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $10",
+            quoted="> CONSTRUCTED go. Anthropic, up to $100")), run),
+            "a quotation of $100 matched by words ending 'up to $10'", "word for word")
+    refuses(lambda: capture.check_go(go("s2-two-figures", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $10.00, or $500 if needed")), run),
             "quoted words that carry a second, larger figure", "only that figure")
     refuses(lambda: capture.check_go(go("s2-no-date", go_block(run, sums_checksum, date=None)), run), "a go with no date", "missing")
     refuses(lambda: capture.check_go(go("s2-no-commit", go_block(run, sums_checksum, commit="")), run), "a go with no commit", "missing")
@@ -1566,11 +1569,11 @@ def part_second_check(bench, root):
 
     def go(name, text):
         return capture.Paths(variant(root, bench.repo, name, lambda r: (r / "docs" / "spending-record.md").write_text(text)))
-    for name, quoted in (("c2-thousands", "> CONSTRUCTED go. Anthropic, up to $5,000"), ("c2-k", "> CONSTRUCTED go. Anthropic, up to $5k")):
-        refuses(lambda: capture.check_go(go(name, go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5", quoted=quoted)), run, bench.plan),
-                f"a quotation of {quoted.split()[-1]} matched by words ending 'up to $5'", "word for word")
-    capture.check_go(go("c2-comma-after", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5",
-                                                   quoted="> CONSTRUCTED go. Anthropic, up to $5, and no more.")), run, bench.plan)
+    for name, quoted in (("c2-thousands", "> CONSTRUCTED go. Anthropic, up to $10,000"), ("c2-k", "> CONSTRUCTED go. Anthropic, up to $10k")):
+        refuses(lambda: capture.check_go(go(name, go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $10", quoted=quoted)), run, bench.plan),
+                f"a quotation of {quoted.split()[-1]} matched by words ending 'up to $10'", "word for word")
+    capture.check_go(go("c2-comma-after", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $10",
+                                                   quoted="> CONSTRUCTED go. Anthropic, up to $10, and no more.")), run, bench.plan)
     check(True, "a figure followed by a comma and more words is still accepted")
     january = bench.plan.run("openai-2027-01-14")
     december_words = "CONSTRUCTED go. Openai, models due 2026-12-11, up to $10.00"

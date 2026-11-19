@@ -1,7 +1,7 @@
 THE REHEARSAL OF THE SEALED CAPTURE SCRIPT
 Every reply below is CONSTRUCTED. No service is called and no model is asked anything.
 script: capture/capture.py sha256 2c38f8af0e7d2e8b613855b536df76b112e4fb8599ec5250cd3f53f4216909e4
-plan:   capture/plan.toml  sha256 b08f8dee2521a657af446a568ce44487e2c9f6933ab6124e40d069c251b33332
+plan:   capture/plan.toml  sha256 0b8d32d676af8b0dc200f8656645166f4b65aae48637fc28a3d26fe6c846580f
 
 TRIPWIRE. No code path may reach the network (rule 11: the rehearsal calls no service)
     pass  the tripwire stops a connection to this machine's own address
@@ -21,7 +21,7 @@ THE SOURCE. What the script's code can and cannot do, read from its syntax tree
     pass  an attempt file is created new and read-only
     pass  nothing is printed except through the one guarded print function
 
-temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-q3p8glfa
+temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-f7iooc_9
     pass  the temporary folder is outside every git repository
 
 START CHECKS (rules 1, 2, 3, 6, 11). Everything checked before the first call
@@ -43,9 +43,9 @@ START CHECKS (rules 1, 2, 3, 6, 11). Everything checked before the first call
     pass  refused: rule 11: a saved rehearsal result that is not a pass
     pass  refused: rule 3: a spending record with no go for the run
     pass  refused: rule 3: no spending record at all
-    pass  refused: rule 3: a go for $4 when the plan's ceiling is $5
-    pass  refused: rule 3: a go for $50 when the plan's ceiling is $5
-    pass  refused: rule 3 and 'raise its own ceiling': a plan edited to $500 against a go for $5
+    pass  refused: rule 3: a go for $4 when the plan's ceiling is $10
+    pass  refused: rule 3: a go for $50 when the plan's ceiling is $10
+    pass  refused: rule 3 and 'raise its own ceiling': a plan edited to $500 against a go for $10
     pass  refused: rule 3: words given as the go that are not quoted in the record
     pass  refused: rule 3: quoted words that do not carry the figure
     pass  refused: rule 2: a go that names other message checksums than the repository's
@@ -100,7 +100,7 @@ ROW 1, continued. Four tries with no reply: left for the next day; after the las
 ROW 2. The reply stopped at the length limit: cut off, kept, asked once more at the model's maximum
     pass  cut off at 32000, kept, asked once more at 64000
     pass  cut off again at the maximum: both kept, and it is left; no third asking is made
-    pass  and, with three replies of 32,000 tokens or more in round one, rule 5 then stops this run at the $5 ceiling
+    pass  and, with three replies of 32,000 tokens or more in round one, rule 5 then stops this run at a constructed ceiling of $5
     pass  no wait: a cut-off reply is not a failed attempt
 
 ROW 3. A streamed reply that ended, after some text, without the signal that it was complete
@@ -169,7 +169,7 @@ THE CEILING (rules 3, 4, 5). The script stops before a call that could pass it
     pass  assigning to the last safe day raises an error
 
 RULE 5. After the first round, stop if five rounds at that rate would pass the ceiling
-    pass  replies of 20,000 tokens: the first round costs about $3.01, five would cost about $15, over $5; stopped after round one
+    pass  replies of 20,000 tokens: the first round costs about $3.01, five would cost about $15, over $10; stopped after round one
     pass  the stop says why
     pass  run again: it stops again at the same place without a call
 
@@ -334,7 +334,7 @@ S2. John's go cannot be matched to words that were about something else
     pass  refused: a go quoted for Google used for the Anthropic run
     pass  refused: words that run across two separate quotations
     pass  refused: a go that is not the quotation directly above its block (for example one later withdrawn in a second quotation)
-    pass  refused: a quotation of $50 matched by words ending 'up to $5'
+    pass  refused: a quotation of $100 matched by words ending 'up to $10'
     pass  refused: quoted words that carry a second, larger figure
     pass  refused: a go with no date
     pass  refused: a go with no commit
@@ -395,8 +395,8 @@ SECOND CHECK, S5. A file that cannot be read, with no marker: the figure it is c
     pass  64,000 tokens at $15 a million, plus the longest message at $3 a million: $0.9624
 
 SECOND CHECK, S6. John's go: the figure may not run on, and a developer with two runs needs the date
-    pass  refused: a quotation of $5,000 matched by words ending 'up to $5'
-    pass  refused: a quotation of $5k matched by words ending 'up to $5'
+    pass  refused: a quotation of $10,000 matched by words ending 'up to $10'
+    pass  refused: a quotation of $10k matched by words ending 'up to $10'
     pass  a figure followed by a comma and more words is still accepted
     pass  refused: a go quoted for OpenAI's December models, used for its January run with the same figure
     pass  the go that carries the January date is accepted for the January run
@@ -406,9 +406,9 @@ SECOND CHECK, note 6. A reply folder that cannot be written to before the first 
     pass  a plain refusal, and no call
 
 AT THE END. Across everything above
-    pass  all 4072 attempt files written are marked constructed in their names
-    pass  the constructed key is in none of the 4713 files written
-    pass  the constructed key is in none of the 2767 lines the script printed
+    pass  all 4152 attempt files written are marked constructed in their names
+    pass  the constructed key is in none of the 4794 files written
+    pass  the constructed key is in none of the 2814 lines the script printed
     pass  no word of any constructed reply is in any line the script printed
     pass  nor the first word of any constructed reply
     pass  no word of any constructed reply is in any file name
@@ -416,4 +416,4 @@ AT THE END. Across everything above
     pass  the tripwire was touched 3 times, all three deliberate: no other code path tried to reach the network
 
 299 checks, 0 failed.
-REHEARSAL PASSED 2026-11-18 capture.py=2c38f8af0e7d2e8b613855b536df76b112e4fb8599ec5250cd3f53f4216909e4 plan.toml=b08f8dee2521a657af446a568ce44487e2c9f6933ab6124e40d069c251b33332
+REHEARSAL PASSED 2026-11-18 capture.py=2c38f8af0e7d2e8b613855b536df76b112e4fb8599ec5250cd3f53f4216909e4 plan.toml=0b8d32d676af8b0dc200f8656645166f4b65aae48637fc28a3d26fe6c846580f

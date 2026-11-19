@@ -71,7 +71,7 @@ from anywhere else, the script is not found.
    call reads like this:
 
    ```text
-   q01 asking 1 attempt 01: a reply (stop reason end_turn; model reported as named: yes; tokens sent 201, replied 412; limit 32000; counted $0.0068; run total $0.0068 of $5.0000)
+   q01 asking 1 attempt 01: a reply (stop reason end_turn; model reported as named: yes; tokens sent 201, replied 412; limit 32000; counted $0.0068; run total $0.0068 of $10.0000)
    ```
 
    What each other first line means, and what to do:
@@ -108,12 +108,12 @@ from anywhere else, the script is not found.
 **Things not to do during a run**
 
 - **Do not close the lid or let the Mac sleep.** A stream that breaks is counted at $0.48, and
-  two of those in round one can end the run for good (below).
+  four of those in round one can end the run for good (below).
 - **Do not run the same command in a second window.** The script now refuses a second run on
   the same folder, so this only wastes a minute.
 - **Ctrl-C loses nothing, and is free only between calls and during a wait.** Pressed while a
   reply is arriving, what has arrived is saved first, but that call is counted at $0.48 of the
-  ceiling, and two calls counted that way in round one can end the run. The cut-short reply
+  ceiling, and four calls counted that way in round one can end the run. The cut-short reply
   is kept and does not use up either of the question's two askings. If a reply is in hand, its
   file is written before the run stops. The best moment is the minute's wait after a failed
   attempt.
@@ -124,19 +124,24 @@ from anywhere else, the script is not found.
 
 ## What the ceiling means in practice
 
-Tell John these before he names his figure.
+The ceiling for the Anthropic run is $10. John ruled it on 2026-11-18: asked "Set the
+Anthropic ceiling at $10 in place of $5?", he answered "Yes, $10" (decided by: mixed;
+`docs/rulings/2026-11-18-anthropic-ceiling.md`). The ruling sets the limit. It is not his go
+to spend, which the next section covers. The sums below are for $10, and say what $5 would
+have meant where that was the reason for the change.
 
 - **A call whose cost the service did not report is counted at the most it could cost,** $0.48
   for Claude Sonnet 4.5. That is the strict reading of rule 4. A stream broken by a sleeping
   laptop or a wireless drop is such a call.
 - **Rule 5 multiplies round one by five.** With replies of the size the cost document expects
-  (about three cents each), two broken streams in round one give 5 x (0.96 + 0.25) = $6.05,
-  which is over $5, so the run stops after round one and stops again on every restart, because
-  the files stay. By the same sum a ceiling of $10 survives three breaks in round one and stops
-  at four. The estimate for the whole run is $1.89 either way; the ceiling only sets how much
-  room there is for breaks.
+  (about three cents each), four broken streams in round one give 5 x (1.92 + 0.15) = $10.35,
+  which is over $10, so the run stops after round one and stops again on every restart, because
+  the files stay. Three breaks give 5 x (1.44 + 0.18) = $8.10, and the run goes on. At the $5
+  first proposed, two breaks were enough to stop it: 5 x (0.96 + 0.20) = $5.80. The estimate
+  for the whole run is $1.89 either way; the ceiling only sets how much room there is for
+  breaks.
 - **Before a first asking the script needs room for that call at its limit and one repeat at
-  the model's maximum,** about $1.44. At a $5 ceiling it therefore stops asking once $3.56 is
+  the model's maximum,** about $1.44. At the $10 ceiling it therefore stops asking once $8.56 is
   counted.
 - Anthropic's rate-limits page says "The `max_tokens` parameter does not factor into OTPM rate
   limit calculations" (read by the checking session, 2026-11-18), so a limit of 32,000 does not
@@ -149,14 +154,14 @@ quotation and, **directly under that quotation**, one block in this form, which 
 that records his go writes:
 
 ````markdown
-> Go for the sealed capture as written in `docs/capture/` at commit abc1234. Anthropic, up to $5.
+> Go for the sealed capture as written in `docs/capture/` at commit abc1234. Anthropic, up to $10.
 
 ```sealed-capture-go
 run = "anthropic-2026-11-30"
 date = "2026-11-20"
 commit = "abc1234"
-ceiling_usd = "5.00"
-johns_words = "Anthropic, up to $5"
+ceiling_usd = "10.00"
+johns_words = "Anthropic, up to $10"
 messages_sha256 = "the SHA-256 checksum of docs/capture/sent/SHA256SUMS"
 ```
 ````
@@ -170,7 +175,7 @@ words carry the run's withdrawal date where the developer has more than one run 
 as it stands. The spending record must be committed, like the script.
 
 What no code can check: that the quotation is what John said, that it does not say the
-opposite ("no go for Anthropic, up to $5 was too much" would pass), and that he has not since
+opposite ("no go for Anthropic, up to $10 was too much" would pass), and that he has not since
 withdrawn it. If he withdraws a go, a session takes it out of the record, block and all.
 
 If John's figure differs from the plan's, a session changes the plan in a commit and runs the
@@ -226,8 +231,10 @@ are ever published in full, those lines are taken out of the published copies fi
 
 John: "Approve all four". Decided by: mixed (sessions proposed, the planning session
 recommended, John approved). The ruling is `docs/rulings/2026-11-18-capture-script-four-points.md`.
-Nothing in this section is proposed any longer. Still proposed and not ruled: each ceiling in
-`plan.toml`, which waits for John's go.
+Nothing in this section is proposed any longer. The ceiling for the Anthropic run was ruled
+separately the same day, at $10 (`docs/rulings/2026-11-18-anthropic-ceiling.md`). Still
+proposed and not ruled: the other three ceilings in `plan.toml`, for Google and the two OpenAI
+runs. No run has John's go to spend yet.
 
 1. **An error that trying again cannot cure stops the run and is not one of the day's tries.**
    When Anthropic's service answers with status 400, 401, 402, 403 or 404 (a problem with the
