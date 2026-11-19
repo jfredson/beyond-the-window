@@ -394,7 +394,12 @@ it describes the site now. What changed on the pages that day:
   checked, and what is not known yet. The block marked `id="who"` is the opening part, and
   it is still the only place the first person stands. The paragraph marked `id="sources"`
   now names two developers, and choice 18's note should be read with that. Every sentence on
-  the page is PROPOSED (`docs/reviews/2026-11-19-site-fixes-written.md`).
+  the page was at first PROPOSED (`docs/reviews/2026-11-19-site-fixes-written.md`).
+- *Ruled 2026-11-19:* John read and approved seven of its sentences, "Yes, they stand"
+  (`docs/rulings/2026-11-19-about-page-sentences-stand.md`; decided by: mixed): the five in "Who Is Asking", the
+  paragraph on the name, and the line "No AI model has yet been asked any of the questions this
+  record will keep", which also stands on every entry page. The PROPOSED mark is off those
+  seven. The page's other sentences are a first version, to be corrected in public.
 - `scripts/check_site.py` refuses a built page that carries one of the removed phrases (its
   rule 10).
 

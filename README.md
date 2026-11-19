@@ -35,7 +35,8 @@ As of 2026-11-19.
   beyondthewindow.org, as on the sibling sites
   (`docs/rulings/2026-11-19-every-push-publishes.md`). Nothing can be published until two
   secret values are set on the repository, and the first release waits for John's go. The steps
-  are in `.github/workflows/deploy.yml`.
+  GitHub runs are in `.github/workflows/deploy.yml`, and John's own steps are in
+  `docs/reviews/2026-11-19-deploy-files-written.md`.
 - **The records:** thirteen entries, eight on the list and five beside it, each a first pass
   written from sources that were opened. Five things are counted as offered today. A full check
   of every page, link and fact was made on 2026-11-19
@@ -51,7 +52,8 @@ the tests: `python3 scripts/test_compute.py`. Python's standard library only.
 
 ## Two readings, kept apart
 
-The question has two parts, and the project keeps them apart on every entry.
+The question has two parts, and the project keeps them apart. The site so far keeps only the
+first, as its About page says.
 
 - **Reach.** How far the world has got toward making a thing possible. This is a question with
   evidence: research results, what developers offer, laws and commitments, changes in what
@@ -77,19 +79,10 @@ and may echo human wants. Later models may have read the earlier questions and a
 Asking records what models say and choose. What that means is argued elsewhere, and under the
 project's first rule it settles nothing.
 
-No question has been asked under any protocol. No protocol exists yet; `docs/still-asking-protocol.md`
-is an outline of what one would have to cover.
-
-## Who wrote this
-
-Most of the text in this repository was written by Claude, an AI model made by Anthropic, in
-sessions directed by John Andrew Fredrickson, who decides what stands. Claude is a machine of
-the kind the project is about. That is a conflict of interest and a possible bias in either
-direction, and the outside reviewers the family normally uses are models too. The project's
-rule is that nothing a system says about itself settles anything, and that covers every
-document here.
-
-How and where the public site declares this is not yet decided (open question 7).
+No question has been asked for Still Asking, and no written method for it exists yet;
+`docs/still-asking-protocol.md` is an outline of what one would have to cover. The repository
+also holds a written method for a separate, one-off asking, the sealed capture: ten questions
+to be put to models that are about to be withdrawn (`docs/capture/method.md`). It has not run.
 
 ## What is here
 
@@ -99,11 +92,15 @@ How and where the public site declares this is not yet decided (open question 7)
 | `docs/reviews/2026-11-16-kickoff-review.md` | A review of the kickoff against the sibling projects: whether its approach is the best one, whether it fits the family, what to consider first. |
 | `docs/reviews/2026-11-17-positions-alignment.md` | The founding ideas read against the Sentient Horizons positions and The Calibration Problem: where they align, five places they pull apart, and when asking a machine would start to count. |
 | `docs/rulings/2026-11-17-kickoff-decisions.md` | John's rulings on the kickoff's seven decisions, and on the first rule's four-part form. |
+| `docs/rulings/` | Every ruling of John's since, one dated file each, with his words and who decided. |
+| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, and the checks of each. It has not run. |
+| `capture/` | The script that would run the sealed capture, its plan, and a rehearsal that calls no model. |
+| `docs/reviews/` | Reviews, checks and hand-over notes, one dated file each, including the deploy notes. |
 | `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` | Six proposed changes that bring the founding documents in line with the positions, so a machine's word can earn weight as it meets stated conditions. Not ruled. |
 | `docs/proposals/2026-11-17-statement-of-purpose.md` | A proposed statement of purpose: how the project could be useful to people and to machine minds, and six ways to build that in from the start. Not ruled. |
 | `docs/proposals/2026-11-17-what-thinkers-propose.md` | A proposed third record, beside the world's record and Still Asking: what named people propose should be done for or about machine minds, and how each person's view changes over time. Raised by John. Not ruled. |
 | `docs/inheritance.md` | Every practice, rule and lesson the sibling projects settled, where it is written, and whether it carries over here. Includes their recorded mistakes. |
-| `docs/open-questions.md` | Twenty questions held open on purpose, each with options and what exploring it would involve. None is answered. |
+| `docs/open-questions.md` | Twenty questions held open on purpose, each with options and what exploring it would involve. Several are ruled in part, and the file says which. |
 | `docs/record-schema.md` | A proposed framework for the records, with the unsettled parts written as sketches. |
 | `docs/method.md` | A proposed framework for the method, with the unsettled parts written as sketches. |
 | `docs/still-asking-protocol.md` | An outline of what a protocol for Still Asking would have to cover. No question wording. |
@@ -112,7 +109,7 @@ How and where the public site declares this is not yet decided (open question 7)
 | `docs/research/2026-11-17-model-retirement-dates.md` | Each major developer's published dates for withdrawing its current models, as read on 2026-11-17. |
 | `docs/design/2026-11-17-design-proposal.md` | A proposed design, for John to rule on: a skin called Glass built on a window, the strongest alternative, and three forms the top of the page could take. Pictures in `docs/design/pictures/`, the mock-up pages they were photographed from in `docs/design/mockups/`. Every number in them is a constructed example. |
 | `docs/research/` | The research session's sourced drafts: fifteen first entries, when current models are due to be withdrawn, and people to ask. |
-| `docs/first-version-choices.md` | Every provisional choice the first version of the site was built on, each decided by a session and not ruled. |
+| `docs/first-version-choices.md` | Every provisional choice the first version of the site was built on, each decided by a session when it was made. Several have since been ruled, and the file says which. |
 | `data/` | The records (`entries/`, one file each), the groups, the developers named, and `headline.json`, the number as worked out. |
 | `scripts/` | `compute.py` checks the records and works out the number; `export.py` writes the one file the site reads; `check_site.py` checks the built pages; `test_compute.py`; `pictures.sh`. |
 | `site/` | The site (Astro, static). |
@@ -153,3 +150,7 @@ their authors and publishers.
 
 To cite the data: John Andrew Fredrickson, *Beyond the Window*, Sentient Horizons, 2026, with
 the date you read it and the address of the entry.
+
+## Author
+
+John Andrew Fredrickson, with Claude as a working partner. Published under the Sentient Horizons project.

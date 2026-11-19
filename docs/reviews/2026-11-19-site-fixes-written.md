@@ -937,3 +937,48 @@ needed no fix and no date) and `data/groups.toml`; `scripts/check_site.py`, `scr
 `site/src/pages/list/[id].astro`, `site/src/pages/sitemap.xml.ts`, `site/src/lib/data.ts`,
 `site/src/data/window.json`, `site/public/robots.txt`, `site/public/_headers`; `LICENSE`,
 `LICENSE-DATA`, `README.md`, `CHANGELOG.md`, `docs/first-version-choices.md`; and this note.
+
+---
+
+# The third commit, 2026-11-19: the ruled marks, and the README
+
+Written 2026-11-19 by Claude (Fable 5.2), an AI model, the same session as above. Asked for by
+the master planning session after the last check found the site fit to publish
+(`docs/reviews/2026-11-19-check-of-the-last-fixes.md`) and John ruled his seven sentences
+(`docs/rulings/2026-11-19-about-page-sentences-stand.md`, "Yes, they stand"; decided by:
+mixed). **No sentence on any page is changed by this commit.** Nothing is published or pushed.
+
+**1. The PROPOSED marks that the ruling takes off.** The five sentences in "Who Is Asking",
+the paragraph on the name, and the line "No AI model has yet been asked any of the questions
+this record will keep" are no longer PROPOSED. Where the tables in sections 7 and G above still
+list them, read this section in their place. The comments now name the ruling in
+`site/src/pages/about.astro` (the opening comment and the one above the name paragraph),
+`site/src/pages/still-asking.astro` and `site/src/pages/list/[id].astro`, and
+`docs/first-version-choices.md` has a dated note. Still PROPOSED, because the ruling does not
+cover them: the other sentences on the About page; the Still Asking page's headline and its
+other wordings that follow from the line; the dates on a record and the footer sentences they
+print; and the other items in the two tables.
+
+**2. `README.md`,** from section 3 of the last check.
+
+| Before | After |
+|---|---|
+| "the project keeps them apart on every entry." | "the project keeps them apart. The site so far keeps only the first, as its About page says." |
+| "The steps are in `.github/workflows/deploy.yml`." | "The steps GitHub runs are in `.github/workflows/deploy.yml`, and John's own steps are in `docs/reviews/2026-11-19-deploy-files-written.md`." |
+| "No question has been asked under any protocol. No protocol exists yet; `docs/still-asking-protocol.md` is an outline of what one would have to cover." | "No question has been asked for Still Asking, and no written method for it exists yet; `docs/still-asking-protocol.md` is an outline of what one would have to cover. The repository also holds a written method for a separate, one-off asking, the sealed capture: ten questions to be put to models that are about to be withdrawn (`docs/capture/method.md`). It has not run." |
+| Of `docs/open-questions.md`: "None is answered." | "Several are ruled in part, and the file says which." |
+| Of `docs/first-version-choices.md`: "each decided by a session and not ruled." | "each decided by a session when it was made. Several have since been ruled, and the file says which." |
+
+Four rows are added to the table of files: `docs/rulings/`, `docs/capture/`, `capture/` and
+`docs/reviews/`.
+
+**The section "Who wrote this" is replaced,** as the master session asked, by the one line the
+sibling repositories carry at the foot of their READMEs, under the heading "Author": "John
+Andrew Fredrickson, with Claude as a working partner. Published under the Sentient Horizons
+project." The section's untrue last line goes with it. The master session says this is its own
+application of John's principle of copying the siblings, and that he has been told. What the
+old section said about a conflict of interest is no longer in the README. It is still stated
+at the top of the working documents.
+
+**The checks,** run after the change: 30 tests pass; the headline file matches the records and
+the count is 5; the build gives 18 pages; the built site passes.
