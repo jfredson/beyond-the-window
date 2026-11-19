@@ -587,11 +587,64 @@ recorded in the code or in `docs/first-version-choices.md`.
   write about. Neither uses it: one writes of personhood, the other of moral status. The
   About sentences keep each writer's own subject and say that personhood is a larger matter.
 
-## 8. Files changed
+## 8. A second change, in a second commit: the sentence beside the count
+
+The master planning session added this to the task after the first commit (`5f2175a`) was
+made, so it is a commit of its own and not part of that one. It carries out John's ruling of
+2026-11-19 on the sentence beside the count on the home page
+(`docs/rulings/2026-11-19-home-page-sentence.md`, "Shorter version"; decided by: mixed). It has
+not been checked by another session.
+
+**The sentence as it now reads on the built home page.** The number stands large, and the
+rest follows it:
+
+> **5** things past an AI model's ordinary limits are offered today by at least one AI
+> developer.
+
+The same sentence, in one line, is the heading of the list page: "5 things past an AI model's
+ordinary limits are offered today by at least one AI developer."
+
+**What changed.**
+
+- `words_for` in `scripts/compute.py` writes the ruled sentence. The count is still worked
+  out from the records and is 5. Two tests were changed and one added (28 in all, passing).
+- The line "A first count. The wording of the sentence above is not settled yet." is gone
+  from the home page, with the code comment that said the sentence was not ruled. The
+  paragraph of limits under it is untouched.
+- The About page no longer lists "What the sentence at the top of the home page should say."
+  among what is not known yet. In "Who Does What", the list of what John has ruled now reads
+  "how the home page opens and the sentence beside its number".
+- Choice 3 in `docs/first-version-choices.md` says the sentence is ruled, with the date and
+  the ruling's file, and keeps the record of 2026-11-18 under it.
+- `data/headline.json` has a new history row dated 2026-11-19 whose only change is the
+  sentence. The count and the entries counted did not move.
+
+**Three things done that the added task did not name,** each because leaving it would have
+left a false statement:
+
+1. **The same "not settled yet" line was also on the list page,** under the same sentence. It
+   is removed there too.
+2. **The served headline file's line on what is ruled** said the exact sentence was "a
+   session's wording of 2026-11-18". It now says the sentence was ruled on 2026-11-19 and
+   names the ruling's file.
+3. **The form for a count of exactly 1.** The ruling gives the sentence for more than one. For
+   one, the script writes "1 thing past an AI model's ordinary limits is offered today by at
+   least one AI developer". That form is the script's (decided by: agent), and is PROPOSED.
+
+**One new first-person phrase for John to read:** "and the sentence beside its number", in the
+About page's block on who does what.
+
+**Left as it was:** the style rule for the removed line is still in the site's style file and
+is now unused. Other sentences that use the old longer phrase ("the limits an AI model
+ordinarily works within", on the home page's paragraph and on the About page) are not part of
+the ruled sentence and were not changed.
+
+## 9. Files changed
 
 `scripts/compute.py`, `scripts/export.py`, `scripts/test_compute.py`; eleven of the thirteen
 files in `data/entries/` (not the memory entry or the days-long task, whose records did not
-need to change); `data/headline.json` (its fingerprint of the records only); the site's
+need to change); `data/headline.json`; the site's
 `src/data/window.json`, `src/lib/data.ts`, `src/pages/about.astro`, `src/pages/list/[id].astro`
 and `src/styles/site.css`; `docs/first-version-choices.md` (the format table);
-`docs/verify-list.md` (three new entries, 19 to 21); `CHANGELOG.md`; and this note.
+`docs/verify-list.md` (three new entries, 19 to 21); `CHANGELOG.md`; and this note. The second
+commit also changed `site/src/pages/index.astro` and `site/src/pages/list/index.astro`.

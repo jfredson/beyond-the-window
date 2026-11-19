@@ -57,6 +57,20 @@ same computed file.
   record was last read (form 5). It claims least and gives a reader nothing to repeat.
 - *Open question it touches:* 4 (the headline). Not closed.
 
+**Revised 2026-11-19. The sentence is now ruled.** John ruled it on 2026-11-19
+(`docs/rulings/2026-11-19-home-page-sentence.md`; decided by: mixed): "Shorter version". The
+sentence beside the count reads:
+
+> **5** things past an AI model's ordinary limits are offered today by at least one AI
+> developer.
+
+`words_for` in `scripts/compute.py` writes it, with the count worked out from the records. The
+form for a count of exactly 1 ("1 thing ... is offered") is the script's and is not in the
+ruling. The line under the sentence that said its wording was not settled is gone from the home
+page, and so is the matching item in the About page's list of what is not known yet. What
+follows below is the record of 2026-11-18 and is kept as it was written; its sentence is the
+old wording and is no longer on the site.
+
 **Revised 2026-11-18. The form is now ruled; the sentence is a session's wording and is not.**
 John ruled the form on 2026-11-18 (`docs/rulings/2026-11-18-home-page-count.md`; decided by:
 mixed): "Count, no fraction". The home page opens with the count of the things on the list

@@ -5,9 +5,9 @@
 // exported file as the number. Then the list in words, and the entries that sit beside it.
 // The number is never typed here: it is read from the headline file scripts/compute.py wrote.
 // It stands alone, with no total beside it: John ruled that form on 2026-11-18
-// (docs/rulings/2026-11-18-home-page-count.md). The sentence after the number is a session's
-// wording and is not ruled, and the line under it says so (docs/first-version-choices.md,
-// choice 3).
+// (docs/rulings/2026-11-18-home-page-count.md). The sentence after the number was ruled by
+// John on 2026-11-19 (docs/rulings/2026-11-19-home-page-sentence.md), and scripts/compute.py
+// writes it.
 import Base from '../layouts/Base.astro';
 import WindowGrid from '../components/WindowGrid.astro';
 import ThingList from '../components/ThingList.astro';
@@ -29,7 +29,6 @@ const lastRead = data.headline.last_read;
       <p class="eyebrow">A public record of what lies past the present limits of AI models</p>
       <p class="big">{h.count}</p>
       <p class="big-claim">{claim}</p>
-      <p class="unsettled">A first count. The wording of the sentence above is not settled yet.</p>
       <p class="caveat">
         The count comes from a short list. The list holds only things for which a dated source
         could be found, which favours things that have already happened. Nobody knows how long a

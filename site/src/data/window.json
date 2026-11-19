@@ -1,13 +1,13 @@
 {
   "exported_on": "2026-11-19",
-  "commit": "3dfdb58",
+  "commit": "b2fe573",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-19",
     "last_read": "2026-11-19",
     "headline": {
       "count": 5,
-      "words": "5 things that lie past the limits an AI model ordinarily works within are offered today by at least one developer of AI models",
+      "words": "5 things past an AI model's ordinary limits are offered today by at least one AI developer",
       "offered_ids": [
         "ending-a-conversation",
         "interview-before-retirement",

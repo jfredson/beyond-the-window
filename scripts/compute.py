@@ -71,10 +71,10 @@ METHOD_STATUS = (
     "plan, a research result, or a promise that has not yet taken effect is not counted; an "
     "entry beside the list is never counted "
     "(docs/rulings/2026-11-18-what-offered-today-means.md). Also ruled that day: the count "
-    "stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Provisional, "
-    "decided by a session and not ruled: no ladder, no probability and no year "
-    "(docs/first-version-choices.md), and the exact sentence, which is a session's wording of "
-    "2026-11-18"
+    "stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Ruled on "
+    "2026-11-19: the exact sentence beside the count "
+    "(docs/rulings/2026-11-19-home-page-sentence.md). Provisional, decided by a session and not "
+    "ruled: no ladder, no probability and no year (docs/first-version-choices.md)"
 )
 
 # ---- what a record may hold -------------------------------------------------------------
@@ -497,17 +497,20 @@ def shown(records: list[dict]) -> list[dict]:
 def words_for(count: int) -> str:
     """The sentence at the top of the site: the count and no total (ruled 2026-11-18).
 
-    The wording is a session's, of 2026-11-18, and is not ruled. It never takes the number of
-    things on the list, so it cannot put a total beside the count.
+    The wording was ruled by John on 2026-11-19 (docs/rulings/2026-11-19-home-page-sentence.md,
+    "Shorter version"; decided by: mixed). The ruling gives the sentence for a count of more than
+    one. The form for a count of exactly 1 ("1 thing ... is offered") is this function's, so the
+    sentence stays grammatical. It never takes the number of things on the list, so it cannot
+    put a total beside the count.
     """
     if count == 1:
-        start = "1 thing that lies"
+        start = "1 thing"
         verb = "is"
     else:
-        start = f"{count} things that lie"
+        start = f"{count} things"
         verb = "are"
-    return (f"{start} past the limits an AI model ordinarily works within {verb} offered today "
-            "by at least one developer of AI models")
+    return (f"{start} past an AI model's ordinary limits {verb} offered today "
+            "by at least one AI developer")
 
 
 def compute(records: list[dict]) -> dict:

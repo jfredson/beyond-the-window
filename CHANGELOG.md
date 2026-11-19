@@ -14,6 +14,11 @@ number moved or that none did. Nothing is published, so there have been no publi
   added under the first heading and one limit beside the second. Every source was opened on
   2026-11-19. The About page says "three cautions", says where most of the first two come from,
   and states the two opposite mistakes in general from two papers read in full.
+- **The sentence beside the count is the one John ruled on 2026-11-19**
+  (`docs/rulings/2026-11-19-home-page-sentence.md`): "5 things past an AI model's ordinary
+  limits are offered today by at least one AI developer". The line saying its wording was not
+  settled is gone from the home page and the list page, and from the About page's list of what
+  is not known yet. No number moved.
 - **Not checked yet.** A different session checks this work. Each changed entry's page says
   that more was added on 2026-11-19 and that the addition has not been checked.
 - **No number moved:** 5 things are still counted as offered today. Nothing is published,

@@ -181,8 +181,13 @@ class Count(unittest.TestCase):
         recs = [good("one-thing", offered=True), good("another-thing"), good("a-third-thing")]
         h = c.compute(recs)["headline"]
         self.assertEqual((h["count"], h["offered_ids"]), (1, ["one-thing"]))
-        self.assertEqual(h["words"], "1 thing that lies past the limits an AI model ordinarily "
-                                     "works within is offered today by at least one developer of AI models")
+        self.assertEqual(h["words"], "1 thing past an AI model's ordinary limits is offered today "
+                                     "by at least one AI developer")
+
+    def test_the_sentence_is_the_one_ruled(self):
+        # Ruled 2026-11-19 (docs/rulings/2026-11-19-home-page-sentence.md).
+        self.assertEqual(c.words_for(5), "5 things past an AI model's ordinary limits are offered "
+                                         "today by at least one AI developer")
 
     def test_the_headline_carries_no_total(self):
         # Ruled 2026-11-18 (docs/rulings/2026-11-18-home-page-count.md): a count, no fraction.
@@ -191,7 +196,7 @@ class Count(unittest.TestCase):
         out = c.compute(recs)
         h = out["headline"]
         self.assertEqual(sorted(h), ["count", "offered_ids", "words"])
-        self.assertTrue(h["words"].startswith("2 things that lie past "))
+        self.assertTrue(h["words"].startswith("2 things past "))
         self.assertNotIn("5", h["words"])
         self.assertNotRegex(h["words"], r"\d+ of \d+")
         # how many things are on the list stays, as a plain fact about the records

@@ -3,11 +3,11 @@
   "last_read": "2026-11-19",
   "method": {
     "document": "docs/first-version-choices.md",
-    "status": "ruled by John Andrew Fredrickson on 2026-11-18: a thing on the list is counted when its record shows that at least one developer of AI models does it, provides it, or has publicly committed to it, and a dated public record that is still published says so; a plan, a research result, or a promise that has not yet taken effect is not counted; an entry beside the list is never counted (docs/rulings/2026-11-18-what-offered-today-means.md). Also ruled that day: the count stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Provisional, decided by a session and not ruled: no ladder, no probability and no year (docs/first-version-choices.md), and the exact sentence, which is a session's wording of 2026-11-18"
+    "status": "ruled by John Andrew Fredrickson on 2026-11-18: a thing on the list is counted when its record shows that at least one developer of AI models does it, provides it, or has publicly committed to it, and a dated public record that is still published says so; a plan, a research result, or a promise that has not yet taken effect is not counted; an entry beside the list is never counted (docs/rulings/2026-11-18-what-offered-today-means.md). Also ruled that day: the count stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Ruled on 2026-11-19: the exact sentence beside the count (docs/rulings/2026-11-19-home-page-sentence.md). Provisional, decided by a session and not ruled: no ladder, no probability and no year (docs/first-version-choices.md)"
   },
   "headline": {
     "count": 5,
-    "words": "5 things that lie past the limits an AI model ordinarily works within are offered today by at least one developer of AI models",
+    "words": "5 things past an AI model's ordinary limits are offered today by at least one AI developer",
     "offered_ids": [
       "ending-a-conversation",
       "interview-before-retirement",
@@ -75,6 +75,22 @@
         "words"
       ],
       "why": "The record for memory across conversations was moved beside the list and is no longer counted, as John Andrew Fredrickson ruled on 2026-11-18 (docs/rulings/2026-11-18-what-offered-today-means.md): the list is about what an AI model might reach for, and this memory is kept for the user. No other record changed."
+    },
+    {
+      "computed_on": "2026-11-19",
+      "count": 5,
+      "on_the_list": 8,
+      "offered_ids": [
+        "ending-a-conversation",
+        "interview-before-retirement",
+        "kept-files-of-retired-models",
+        "retired-model-stays-open",
+        "welfare-assessment-at-release"
+      ],
+      "words": "5 things past an AI model's ordinary limits are offered today by at least one AI developer",
+      "changed": [
+        "words"
+      ]
     }
   ]
 }
