@@ -17,12 +17,14 @@ export type Source = {
   published?: string;
   from_maker?: boolean;
   kind?: 'primary' | 'coverage';
-  read?: 'full' | 'abstract';
+  read?: 'full' | 'abstract' | 'part';
   says?: string;
   note?: string;
 };
 export type Item = { text: string; source: string };
-export type Kind = { kind: string; heading: string; items: Item[] };
+// `none` is the sentence a caution prints when it holds nothing (scripts/export.py); the four
+// kinds of evidence do not carry one.
+export type Kind = { kind: string; heading: string; none?: string; items: Item[] };
 export type Entry = {
   id: string;
   path: string;
@@ -38,7 +40,7 @@ export type Entry = {
   first_pass: boolean;
   constructed: boolean;
   // What checks the record has had; null when it has had no second check.
-  checks: { against_sources: string; changed?: string; changes_checked?: string; some_unchecked?: boolean } | null;
+  checks: { against_sources: string; changed?: string; changes_checked?: string; some_unchecked?: boolean; added_to?: string; additions_checked?: string } | null;
   state: { words: string; detail: string; offered_today: boolean | null; offered_by: { name: string; url: string | null }[]; set_on: string; source: string };
   evidence: Kind[];
   cautions: Kind[];

@@ -68,6 +68,36 @@ url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
 published = "2026-09-16"
 opened = 2026-11-17
 
+[[sources]]
+key = "seriously"
+label = "A 2024 report arguing that AI welfare should be taken seriously"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2411.00986"
+published = "2024-11-04"
+opened = 2026-11-19
+read = "part"
+note = "By Robert Long, Jeff Sebo and eight others."
+
+[[sources]]
+key = "design-policy"
+label = "A paper proposing that AI systems be designed to draw the reactions that fit what they are"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2507.06263"
+published = "2025-07-07"
+opened = 2026-11-19
+read = "part"
+note = "By Eric Schwitzgebel and Jeff Sebo. The file is dated January 8th, 2025."
+
+[[sources]]
+key = "self-reports"
+label = "A paper on judging an AI system's moral standing from what it says about itself"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2311.08576"
+published = "2023-11-14"
+opened = 2026-11-19
+read = "part"
+note = "By Ethan Perez and Robert Long. The first author's [own page](https://ethanperez.net/) says: \"I lead the alignment team at Anthropic\"."
+
 [[cautions]]
 kind = "attribution"
 text = "The head of Microsoft AI argues that training a model on the idea that it may be owed moral consideration makes it harder to keep under control, and that a system which \"believes it may be conscious\" may be impossible to control."
@@ -83,7 +113,23 @@ kind = "safety"
 text = "The first developer's document gives the opposing safety argument within its own text: that a model secure in its sense of itself behaves more predictably."
 source = "constitution"
 
+[[cautions]]
+kind = "unnoticed"
+text = "A 2024 report by ten researchers says developers should not train a model simply to deny that an AI system can be conscious. It grants that a developer may have fair reasons to, among them the worry that people who reject a model's claims now will go on rejecting such claims later, when they are more likely to be true. On the other side it names a \"desensitizing effect\": people who accept that such systems cannot be conscious may stay doubtful later, when doubt is less warranted. The report was led by the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare. It thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic."
+source = "seriously"
+
+[[cautions]]
+kind = "unnoticed"
+text = "Two philosophers propose that, while experts disagree, language models could be trained to answer questions about their moral standing \"by expressing uncertainty and explaining why\". They write that drawing too little concern has led to harm to animals on a very large scale, that the same mistake could be made with AI systems that matter, and that it may not yet be a major concern for present AI systems. One of the two is [an advisor](https://eleosai.org/team) to that research group."
+source = "design-policy"
+
+[[cautions]]
+kind = "unnoticed"
+text = "A 2023 paper notes that a developer can train a model to describe itself in line with the developer's own \"potentially-flawed beliefs about AI consciousness\", and that training a product to appeal to users can push a model's words about itself the other way. Its first author now leads a team at Anthropic, and its second now heads that research group."
+source = "self-reports"
+
 [checks]
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

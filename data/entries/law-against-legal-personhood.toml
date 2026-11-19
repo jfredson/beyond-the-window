@@ -81,7 +81,7 @@ label = "An opinion piece on state laws about AI consciousness, in The Regulator
 publisher = "The Regulatory Review"
 url = "https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/"
 published = "2026-06-29"
-opened = 2026-11-17
+opened = 2026-11-19
 says = "Counts \"at least nine\" state legislatures with such bills introduced or enacted."
 
 [[sources]]
@@ -90,7 +90,8 @@ label = "An article arguing that the bans on AI personhood are premature, in AI 
 publisher = "AI Frontiers"
 url = "https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood"
 published = "2026-09-01"
-opened = 2026-11-17
+opened = 2026-11-19
+note = "By Heather Alexander and Lucius Caviola."
 
 [[sources]]
 key = "declaration"
@@ -99,6 +100,15 @@ publisher = "humanstatement.org"
 url = "https://humanstatement.org/"
 published = "2026-03"
 opened = 2026-11-17
+
+[[sources]]
+key = "safe-bets"
+label = "An essay in The Guardian on whether AI could be conscious"
+publisher = "The Guardian"
+url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
+published = "2026-07-19"
+opened = 2026-11-19
+note = "By William MacAskill and Lucius Caviola."
 
 [[cautions]]
 kind = "safety"
@@ -115,7 +125,23 @@ kind = "safety"
 text = "A declaration signed by 908 named people and 313 organisations, safety researchers among them, includes the line that AI systems \"must not be granted legal personhood\"."
 source = "declaration"
 
+[[cautions]]
+kind = "unnoticed"
+text = "The article arguing that the bans are premature says that passing laws now, on a question science has not settled, risks a precedent that could be hard to reverse. Supposing conscious AI systems were one day made, it asks: \"Wouldn't it be important to avoid neglecting or abusing them\". It also says the bans have little immediate effect, because AI systems already have no rights under present law. For the view that AI might be conscious it names two researchers: the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and [an advisor](https://eleosai.org/team) to it."
+source = "too-early"
+
+[[cautions]]
+kind = "unnoticed"
+text = "An opinion piece argues that a ban which is right and a ban which is wrong are written in the same words: \"Both contain no capacity for self-correction.\" Its author also writes that no AI system today is a strong candidate for consciousness under any leading theory."
+source = "review-clause"
+
+[[cautions]]
+kind = "unnoticed"
+text = "Two researchers, one of them an author of the article above, write in a newspaper that rights to own property or to vote look too risky for now, and that such rights should not be ruled out for ever, as they say some recent state bills in the United States try to do."
+source = "safe-bets"
+
 [checks]
 # Its corrections were made in the commit applying the two must-fix records (bcf931b), which no check has read yet.
 against_sources = 2026-11-17
 changed = 2026-11-18
+added_to = 2026-11-19

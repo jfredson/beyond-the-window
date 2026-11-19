@@ -82,7 +82,7 @@ METHOD_STATUS = (
 REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "progress_kind",
                 "added", "first_pass", "state", "sources"]
 OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
-                "verify", "checks"]
+                "verify", "checks", "only_the_developer"]
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
@@ -95,14 +95,37 @@ HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
 # changed: the date changes that followed were made (left out when nothing was changed).
 # changes_checked: the date a check of those changes was committed (left out until then).
 # some_unchecked: true when some of the changes were not covered by that check.
-CHECKS_FIELDS = ["against_sources", "changed", "changes_checked", "some_unchecked"]
+# added_to: the date more was added to the record after those checks (the third caution, added on
+#   2026-11-19, is the first such addition). Left out when nothing has been added.
+# additions_checked: the date a check of that addition was committed (left out until then).
+# The last two are PROPOSED 2026-11-19 by the session that wrote the third caution in: without
+# them a record could not say that its earlier changes were checked and its newest text was not.
+CHECKS_FIELDS = ["against_sources", "changed", "changes_checked", "some_unchecked",
+                 "added_to", "additions_checked"]
 
 PROGRESS_KINDS = {"technical", "political", "cultural"}
 # The order is the order an entry page shows them in (choice 7). They are never added together.
 EVIDENCE_KINDS = ["measured", "checked-report", "choice", "statement"]
-CAUTION_KINDS = ["safety", "attribution"]
+# Three cautions on every entry (ruled by John 2026-11-18, docs/rulings/2026-11-18-a-third-caution.md):
+#   attribution: an AI system has no wants, and is treated as if it had;
+#   unnoticed:   an AI system has wants, and they go unnoticed;
+#   safety:      an AI system has wants, and they put people at risk.
+# The names never appear on a page. The headings are in scripts/export.py.
+# The order here is the order an entry page shows them in. It is the order of the ruling's own
+# list. PROPOSED 2026-11-19: John ruled the headings and did not rule the order they are shown in
+# (docs/rulings/2026-11-19-caution-headings.md, "Not covered by this ruling"). Until 2026-11-19
+# the page showed "safety" first.
+CAUTION_KINDS = ["attribution", "unnoticed", "safety"]
+# A caution that a developer's own page is the only source for. Ruled by John 2026-11-19
+# (docs/rulings/2026-11-19-developer-reason-not-alone.md): a developer's statement of its own
+# reasons stands under the second caution only beside a source from outside that developer, and
+# where there is none the entry says so and points to where it gives the developer's reason.
+# A record names such a caution in `only_the_developer`, and the page prints a different sentence.
+ONLY_THE_DEVELOPER_KINDS = ["unnoticed"]
 SOURCE_KINDS = {"primary", "coverage"}
-SOURCE_READS = {"full", "abstract"}
+# "part": the passages an entry cites were read in the paper's full text, and the rest of the
+# paper was not. PROPOSED 2026-11-19 by the session that wrote the third caution in.
+SOURCE_READS = {"full", "abstract", "part"}
 
 ID_SHAPE = re.compile(r"^[a-z]+(-[a-z]+)*$")
 
@@ -257,7 +280,13 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                 bad("checks: 'changes_checked' with no 'changed' date")
             if ch.get("some_unchecked") is True and "changes_checked" not in ch:
                 bad("checks: 'some_unchecked' with no 'changes_checked' date; with no check at all, none of the changes are checked")
-            order = [ch[f] for f in ("against_sources", "changed", "changes_checked")
+            for field in ("added_to", "additions_checked"):
+                if field in ch and not _is_date(ch[field]):
+                    bad(f"checks: '{field}' is not a calendar date")
+            if "additions_checked" in ch and "added_to" not in ch:
+                bad("checks: 'additions_checked' with no 'added_to' date")
+            order = [ch[f] for f in ("against_sources", "changed", "changes_checked",
+                                     "added_to", "additions_checked")
                      if _is_date(ch.get(f))]
             if order != sorted(order):
                 bad("checks: the dates are out of order (a check, then changes, then a check of the changes)")
@@ -402,6 +431,22 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
         if not _text(c.get("text")):
             bad(f"caution {i}: no text")
         dated_source(c.get("source"), f"caution {i}")
+    if "only_the_developer" in rec:
+        only = rec["only_the_developer"]
+        if not isinstance(only, list) or not only:
+            bad("'only_the_developer' is not a list of caution kinds")
+        else:
+            for k in only:
+                if k not in ONLY_THE_DEVELOPER_KINDS:
+                    bad(f"only_the_developer: '{k}' is not one of {ONLY_THE_DEVELOPER_KINDS}")
+                elif any(isinstance(c, dict) and c.get("kind") == k
+                         for c in rec.get("cautions", []) or []):
+                    bad(f"only_the_developer: the record holds a '{k}' caution, so the developer "
+                        f"is not the only source for it")
+            if not any(isinstance(s, dict) and s.get("from_maker") is True and _text(s.get("says"))
+                       for s in rec.get("sources", []) or []):
+                bad("only_the_developer: no source marked as the developer's own account says "
+                    "anything, so the page would point to a reason the entry does not give")
     for i, h in enumerate(rec.get("history", []) or [], 1):
         if not isinstance(h, dict):
             bad(f"history {i} is not a table")

@@ -15,6 +15,7 @@ limits = [
   "How the retired model is open to developers on request, when the developer's list of retired models says that requests to retired models fail. Both pages say what they say, and both may be true.",
 ]
 notes = "From entry 3 of docs/research/2026-11-17-first-entries.md."
+only_the_developer = ["unnoticed"]
 
 [state]
 words = "Happened once, for one model, at one developer"
@@ -30,9 +31,9 @@ label = "Anthropic's update on the retirement of its model Claude Opus 3"
 publisher = "Anthropic"
 url = "https://www.anthropic.com/research/deprecation-updates-opus-3"
 published = "2026-02-25"
-opened = 2026-11-17
+opened = 2026-11-19
 from_maker = true
-says = "Says the retired model remains available to all paying users of the chat product and by request to developers, and that it was given a place to publish essays for three months at the least."
+says = "Says the retired model remains available to all paying users of the chat product and by request to developers, and that it was given a place to publish essays for three months at the least. It counts possible risks to the welfare of the models themselves among the downsides of retiring a model, and says that recording a model's stated preferences, and acting on them where that costs little, is worthwhile for the models and for those who use them."
 
 [[sources]]
 key = "retirements"
@@ -76,3 +77,4 @@ source = "warning"
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

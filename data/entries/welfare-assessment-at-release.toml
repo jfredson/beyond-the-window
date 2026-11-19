@@ -50,7 +50,7 @@ label = "An outside research group's notes on its welfare interviews with one mo
 publisher = "Eleos AI"
 url = "https://eleosai.org/post/claude-4-interview-notes/"
 published = "2025-05-30"
-opened = 2026-11-17
+opened = 2026-11-19
 says = "The outside group's own account of its part in the 2025 assessment, and of why it does not take the answers at face value."
 
 [[sources]]
@@ -69,6 +69,25 @@ publisher = "Mustafa Suleyman"
 url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
 published = "2026-09-16"
 opened = 2026-11-17
+
+[[sources]]
+key = "seriously"
+label = "A 2024 report arguing that AI welfare should be taken seriously"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2411.00986"
+published = "2024-11-04"
+opened = 2026-11-19
+read = "part"
+note = "By Robert Long, Jeff Sebo and eight others."
+
+[[sources]]
+key = "safe-bets"
+label = "An essay in The Guardian on whether AI could be conscious"
+publisher = "The Guardian"
+url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
+published = "2026-07-19"
+opened = 2026-11-19
+note = "By William MacAskill and Lucius Caviola."
 
 [[evidence]]
 kind = "measured"
@@ -105,7 +124,23 @@ kind = "attribution"
 text = "The outside group that took part in the 2025 assessment explains why it does not take the model's answers at face value."
 source = "interviews"
 
+[[cautions]]
+kind = "unnoticed"
+text = "The outside group whose own evaluation is summarised in the 2025 assessment argues for asking although it doubts the answers: trying to ask sets a precedent, \"making it less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be handled only by companies that profit from AI, and that the group accepts no funding or payment from AI companies. The page is dated May 30th, 2025."
+source = "interviews"
+
+[[cautions]]
+kind = "unnoticed"
+text = "A 2024 report by ten researchers, led by the head of that group, recommends that developers assess their AI systems. Its stated ground is that otherwise there is a significant risk of mishandling the question in either direction, by harming AI systems that matter morally or by caring for AI systems that do not. The report thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic."
+source = "seriously"
+
+[[cautions]]
+kind = "unnoticed"
+text = "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two is an author, with [an advisor](https://eleosai.org/team) to that outside group, of [the survey of AI researchers](/list/researcher-views-survey/)."
+source = "safe-bets"
+
 [checks]
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

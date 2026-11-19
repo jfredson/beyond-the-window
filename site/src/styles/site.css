@@ -106,7 +106,7 @@
 .kinds p { font-size: 15px; line-height: 1.6; color: var(--text-soft); margin: 0 0 6px; }
 .kinds p.none { font: 13px/1.55 var(--sans); color: var(--muted); margin: 0; }
 .src { font: 12px/1.5 var(--sans); color: var(--muted); }
-.cautions { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 14px 0 0; max-width: 980px; }
+.cautions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; margin: 14px 0 0; max-width: 980px; }
 .caution { border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 14px 16px; background: var(--panel); }
 .caution h3 { font: 600 13px/1.4 var(--sans); letter-spacing: 0.04em; margin: 0 0 6px; }
 .caution p { font-size: 14.5px; line-height: 1.55; color: var(--text-soft); margin: 0 0 6px; }

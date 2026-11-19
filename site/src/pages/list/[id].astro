@@ -1,9 +1,12 @@
 ---
 // One page per entry. In order: the plain name and the paragraph; where it stands, with its
 // date and source; what would count and what settles it; what is on record about AI models
-// themselves, in four kinds that are kept apart and never added together; the two cautions;
+// themselves, in four kinds that are kept apart and never added together; the three cautions;
 // what could not be confirmed; the sources.
 // The order of the four kinds is a provisional choice (docs/first-version-choices.md, choice 7).
+// The three cautions and their headings were ruled by John (docs/rulings/2026-11-18-a-third-caution.md,
+// docs/rulings/2026-11-19-caution-headings.md). The order they are shown in, and the sentence
+// under a caution that holds nothing, come from scripts/export.py and are PROPOSED 2026-11-19.
 // Record prose may carry links for the things it names; everything else in it is escaped
 // (prose() in lib/data.ts).
 import Base from '../../layouts/Base.astro';
@@ -36,6 +39,16 @@ const checkWords = !ch
           : ch.some_unchecked
             ? `A check on ${longDate(ch.changes_checked)} covered some of those changes. The rest have not been checked yet.`
             : `Those changes were checked on ${longDate(ch.changes_checked)}.`,
+      // More was added after those checks (the third caution, and what came with it). The page
+      // says so, and says whether that addition has itself been checked.
+      !ch.added_to
+        ? ''
+        : `More was added to this entry on ${longDate(ch.added_to)}, when every entry was given a third caution.`,
+      !ch.added_to
+        ? ''
+        : !ch.additions_checked
+          ? 'That addition has not been checked yet.'
+          : `That addition was checked on ${longDate(ch.additions_checked)}.`,
     ].filter(Boolean).join(' ');
 // Why an entry sits beside the list is its group's own sentence (data/groups.toml), so an entry
 // about the setting and an entry that is offered but kept for the user each give their reason.
@@ -113,7 +126,7 @@ const sourceLine = (src: Source) =>
               return (
                 <p>
                   <Fragment set:html={prose(it.text)} />{' '}
-                  <span class="src">Source: <a href={src.url} rel="noopener">{src.label}</a> ({sourceLine(src)}).{src.from_maker ? ' This is the developer’s own account of its own model.' : ''}{src.read === 'abstract' ? ' Read from the summary only.' : ''}</span>
+                  <span class="src">Source: <a href={src.url} rel="noopener">{src.label}</a> ({sourceLine(src)}).{src.from_maker ? ' This is the developer’s own account of its own model.' : ''}{src.read === 'abstract' ? ' Read from the summary only.' : ''}{src.read === 'part' ? ' Read in part.' : ''}</span>
                 </p>
               );
             })}
@@ -124,7 +137,7 @@ const sourceLine = (src: Source) =>
     </section>
 
     <section class="part wide">
-      <div class="shead"><h2>Two Cautions</h2><span>recorded with the same care as the rest</span></div>
+      <div class="shead"><h2>Three Cautions</h2><span>recorded with the same care as the rest</span></div>
       <div class="cautions">
         {entry.cautions.map((c) => (
           <div class="caution">
@@ -134,11 +147,11 @@ const sourceLine = (src: Source) =>
               return (
                 <p>
                   <Fragment set:html={prose(it.text)} />{' '}
-                  <span class="src">Source: <a href={src.url} rel="noopener">{src.label}</a> ({sourceLine(src)}).{src.read === 'abstract' ? ' Read from the summary only.' : ''}</span>
+                  <span class="src">Source: <a href={src.url} rel="noopener">{src.label}</a> ({sourceLine(src)}).{src.read === 'abstract' ? ' Read from the summary only.' : ''}{src.read === 'part' ? ' Read in part.' : ''}</span>
                 </p>
               );
             })}
-            {c.items.length === 0 && <p class="none">Nothing recorded. No source was found for this caution on this entry.</p>}
+            {c.items.length === 0 && <p class="none">{c.none}</p>}
           </div>
         ))}
       </div>
@@ -178,6 +191,7 @@ const sourceLine = (src: Source) =>
               {src.from_maker && ' The developer’s own account.'}
               {src.kind === 'coverage' && ' News coverage, not a first-hand record.'}
               {src.read === 'abstract' && ' Read from the summary only, not the full text.'}
+              {src.read === 'part' && ' Read in part: the passages this entry cites, not the full text.'}
             </span>
             {src.says && <span class="says" set:html={prose(src.says)} />}
           </li>

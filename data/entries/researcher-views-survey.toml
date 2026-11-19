@@ -28,9 +28,15 @@ label = "A survey of AI researchers and the public on subjective experience in A
 publisher = "arXiv"
 url = "https://arxiv.org/abs/2506.11945"
 published = "2025-06-13"
-opened = 2026-11-17
-read = "abstract"
-note = "Revised November 5th, 2026. The paper is 141 pages."
+opened = 2026-11-19
+read = "part"
+note = "Revised November 5th, 2026. The paper is 141 pages. Its summary and its introduction were read."
+
+[[cautions]]
+kind = "unnoticed"
+text = "The survey's own authors write, in one clause of their introduction, that crediting AI systems with too little or too much subjective experience could each carry risks, including \"misplaced attachment or dismissal of AI systems\". They do not say more there about what would be missed, and no other source was found. Two of the paper's nine authors are [advisors](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and the group's page lists a third as a member of its staff."
+source = "survey"
 
 [checks]
 against_sources = 2026-11-17
+added_to = 2026-11-19

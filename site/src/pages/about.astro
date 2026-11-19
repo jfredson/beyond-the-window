@@ -29,6 +29,23 @@ const byDrafterAlone = counted.filter((e) => e.state.offered_by.length === 1 && 
 const restOnDrafter = byDrafterAlone === headline.count ? `all ${headline.count}` : `${byDrafterAlone} of the ${headline.count}`;
 // The sentence says "several entries", so the build stops if the records stop bearing it out.
 if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name)).length < 3) throw new Error('the conflict paragraph says "several entries", and the records no longer show several');
+// Where the first two cautions come from. John ruled on 2026-11-19 that the About page says it in
+// one statement (docs/rulings/2026-11-19-ties-between-sources-told-in-both-places.md); the
+// sentence is a session's draft of that day and is PROPOSED. It says "most" twice, so the build
+// stops if the records stop bearing either "most" out.
+const under = (kind: string) => data.entries.flatMap((e) => (e.cautions.find((c) => c.kind === kind)?.items ?? []).map((it) => e.sources.find((s) => s.key === it.source)!.url));
+const share = (urls: string[], from: RegExp) => urls.filter((u) => from.test(u)).length / Math.max(1, urls.length);
+// The first caution: the essays by the head of another developer's AI group.
+if (share(under('attribution'), /^https:\/\/mustafa-suleyman\.ai\//) <= 0.5) throw new Error('the conflict paragraph says most of the first caution comes from one writer, and the records no longer show it');
+// The second: the research group's own pages; papers and essays by its head, its advisors, or
+// people who have written a report with its head; and a study by people at the drafting model's
+// developer. Each tie is stated on the entry that uses the source.
+const CIRCLE = /eleosai\.org|experiencemachines\.substack\.com|arxiv\.org\/abs\/(2411\.00986|2311\.08576|2507\.06263|2506\.11945|2509\.04781)|a-philosophers-guide-to-ai-welfare|ai-consciousness-a-centrist-manifesto|meditationsondigitalminds/;
+if (share(under('unnoticed'), CIRCLE) <= 0.5) throw new Error('the conflict paragraph says most of the second caution comes from one circle, and the records no longer show it');
+// The general statement of the two mistakes, ruled by John on 2026-11-19
+// (docs/rulings/2026-11-19-general-statement-of-both-mistakes.md, "Yes, from those two"). Both
+// papers were read in full on 2026-11-19 before the sentences were written. The sentences are a
+// session's draft and are PROPOSED.
 ---
 
 <Base title="About · Beyond the Window" description="Why Beyond the Window exists, how it is made, who does what, and what is not known yet.">
@@ -114,8 +131,27 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
         added together, and none of them is treated as settling anything.
       </li>
       <li>
-        <strong>Two cautions are recorded beside the rest:</strong> the cost of seeing wants that
-        are not there, and the worry about a system that does have them.
+        <strong>Three cautions are recorded beside the rest.</strong> Each is headed by an "if",
+        and none of the three says that the "if" is so: if an AI system has no wants, and is
+        treated as if it had; if it has wants, and they go unnoticed; if it has wants, and they
+        put people at risk. Where no source was found for a caution on an entry, the entry says
+        that nothing is recorded yet. Where a caution's source has a tie to a developer, to a
+        research group or to a writer on the other side, the entry states the tie.
+      </li>
+      <li>
+        <strong>The first two cautions are mistakes in opposite directions, and writers weigh
+        them differently.</strong> <a href="https://faculty.ucr.edu/~eschwitz/" rel="noopener">Eric Schwitzgebel</a>,
+        in <a href="https://faculty.ucr.edu/~eschwitz/SchwitzAbs/FullRightsDilemma.htm" rel="noopener"><cite>The Full Rights Dilemma for A.I. Systems of Debatable Personhood</cite></a>,
+        writes about a future AI system that might be a person and might fall far short of
+        one. Treat it as a person, the paper argues, and real human interests may be given up for
+        something with no interests worth the sacrifice. Do not, and people risk doing it
+        "grievous moral wrongs". The argument is about being a person and holding the full
+        rights of one. That is a larger matter than the wants the three headings speak of.
+        Emilia Kaczmarek, of the Faculty of Philosophy at the University of Warsaw, argues in
+        <a href="https://diametros.uj.edu.pl/diametros/article/view/2071" rel="noopener"><cite>The Moral Status of AI and the Precautionary Principle</cite></a>
+        that crediting AI with too much moral standing is the nearer danger, because its harms
+        are already happening. The same paper grants that crediting it with too little
+        "could carry a higher potential for harm".
       </li>
       <li>
         <strong>Nothing here argues</strong> that any of these things should be given to AI models,
@@ -134,8 +170,8 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
       I have ruled the question, the name, the direction of the pages' look, the rules the pages
       are written under, how the home page opens, what "offered today" means, that memory across
       conversations sits beside the list, and where and in whose voice the site says an AI model
-      drafted much of it. I have also ruled that every entry is to record a third caution, the
-      cost of missing wants that are there, and these pages do not show it yet. The list, each
+      drafted much of it. I have also ruled that every entry records three cautions, and how the
+      three are headed. The list, each
       test, and where each of the other entries stands were drafted under my direction and have
       not yet had my ruling.
     </p>
@@ -148,9 +184,11 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
     <p id="conflict">
       The conflict is sharper than that. The model that drafted the text is made by
       <a href={DRAFTER.url} rel="noopener">{DRAFTER.name}</a>. Several entries count things {DRAFTER.name} does or has committed to, and {restOnDrafter} things
-      counted as offered rest on {DRAFTER.name}'s own pages. Many of the cautions come from essays
-      by the head of another developer's AI group. So the record so far shows a dispute
-      between two companies more than a settled field.
+      counted as offered rest on {DRAFTER.name}'s own pages. Most of what is recorded under the first
+      caution comes from two essays by the head of another developer's AI group. Most of what is
+      recorded under the second comes from one research group, from people who advise it or have
+      written reports with its head, and from people at {DRAFTER.name}. So the record so far shows
+      two small camps more than a settled field.
     </p>
     <p>
       All {r.total} entries are a first pass. Each was drafted from
@@ -158,8 +196,9 @@ if (counted.filter((e) => e.state.offered_by.some((d) => d.name === DRAFTER.name
       had not drafted them, opened every source again and compared it with what each entry says.
       The corrections it found were made on November 18th, 2026. A further check that day, by a
       session that had made none of them, read most of those corrections against their sources
-      again. Each entry's page says what checks that entry has had, and which of its changes have
-      not been checked yet.
+      again. On November 19th, 2026 the third caution was added to every entry, with the sources
+      that stand under it, and that addition has not been checked yet. Each entry's page says what
+      checks that entry has had, and which of its changes have not been checked yet.
     </p>
     <p>
       I also write essays about minds, machine minds among them, at

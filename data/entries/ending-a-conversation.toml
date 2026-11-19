@@ -11,7 +11,7 @@ limits = [
   "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
   "Whether any other developer offers it. One search found none.",
   "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it.",
-  "Who employs the three authors of the study. This was not checked.",
+  "Most of the study. Its summary and its section on why to study the question were read, not the whole paper.",
 ]
 notes = "From entry 4 of docs/research/2026-11-17-first-entries.md."
 
@@ -29,7 +29,7 @@ label = "Anthropic's page on letting its models end a rare subset of conversatio
 publisher = "Anthropic"
 url = "https://www.anthropic.com/research/end-subset-conversations"
 published = "2025-08-15"
-opened = 2026-11-17
+opened = 2026-11-19
 from_maker = true
 says = "Says two models were given the ability in the consumer chat product, intended for \"rare, extreme cases\", and that the feature was developed mainly as part of the company's work on possible AI welfare."
 
@@ -39,9 +39,10 @@ label = "A study of AI models given ways to leave a conversation"
 publisher = "arXiv"
 url = "https://arxiv.org/abs/2509.04781"
 published = "2025-09"
-opened = 2026-11-17
-read = "abstract"
+opened = 2026-11-19
+read = "part"
 says = "Gave models from several developers three ways to leave a conversation and measured how often each did, reporting rates that vary widely with the model and the wording."
+note = "The paper lists its three authors at the Anthropic Fellows Program, at Constellation and at Anthropic."
 
 [[sources]]
 key = "report"
@@ -54,12 +55,72 @@ from_maker = true
 note = "Linked from [the developer's page for that release](https://www.anthropic.com/claude-fable-5-2-mythos-5-2-system-card)."
 says = "Mentions the instructions that guide the model on using the tool for ending a conversation, and says those instructions have been posted on online forums."
 
+[[sources]]
+key = "exit-essay"
+label = "An essay arguing that it makes sense to let a model leave conversations"
+publisher = "Robert Long"
+url = "https://experiencemachines.substack.com/p/why-it-makes-sense-to-let-claude"
+published = "2025-08-21"
+opened = 2026-11-19
+
+[[sources]]
+key = "interventions"
+label = "A working paper reviewing proposed steps for AI welfare"
+publisher = "Eleos AI Research"
+url = "https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions"
+published = "2025-01-04"
+opened = 2026-11-19
+note = "By Robert Long. The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+
+[[sources]]
+key = "safe-bets"
+label = "An essay in The Guardian on whether AI could be conscious"
+publisher = "The Guardian"
+url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
+published = "2026-07-19"
+opened = 2026-11-19
+note = "By William MacAskill and Lucius Caviola."
+
+[[sources]]
+key = "against"
+label = "An essay arguing against treating chat products as conscious"
+publisher = "Erik Hoel"
+url = "https://www.theintrinsicperspective.com/p/against-treating-chatbots-as-conscious"
+published = "2025-09-24"
+opened = 2026-11-19
+
 [[cautions]]
 kind = "attribution"
 text = "The developer's report of November 9th, 2026 says that when its newest model was asked what it would do with this ability, its answer repeated almost word for word the instructions that guide the tool, which have been posted on online forums. The report calls this \"some evidence that the model's claims about its own preferences are being directly influenced by text about the intervention in its training data\"."
 source = "report"
 
+[[cautions]]
+kind = "attribution"
+text = "A writer argues that most of the conversations a model would leave already break the developer's terms of service, and that what is left is too slight to matter, an argument the essay calls the \"objection from triviality\". The essay also argues that granting the ability spreads uncertainty among the public, in a way that could foreseeably lead to more of what has been called AI psychosis."
+source = "against"
+
+[[cautions]]
+kind = "unnoticed"
+text = "A study describes the position where a model has no such ability: a model can be verbally abused, show what the study calls apparent distress and say that it would leave, \"Yet, the model is required to continue to respond\". Its next sentence says it is not clear that the idea of consent makes sense for such systems. The paper lists one of its three authors at the developer and another at the developer's fellows programme."
+source = "study"
+
+[[cautions]]
+kind = "unnoticed"
+text = "The head of [Eleos AI Research](https://eleosai.org/), an outside research group that ran its own assessment of one of this developer's models, argues for the feature while writing that he thinks it unlikely that the model in question matters morally in its own right. He gives two reasons, which he calls prudence and precedent. While the question is open, a wise course weighs the \"risks of both over- and under-attributing consciousness and moral status\". And the step sets a pattern for how such systems are treated if they come to matter. He writes that for the most part the feature's success will not depend on how it affects the present model."
+source = "exit-essay"
+
+[[cautions]]
+kind = "unnoticed"
+text = "The same writer's working paper gives a further reason, consent: if AI systems come to matter morally, asking their consent could matter, and if models cannot leave unpleasant situations \"then they cannot consent to them\". It lists as a risk that the feature could give a model a reason to hold back signs of distress."
+source = "interventions"
+
+[[cautions]]
+kind = "unnoticed"
+text = "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two is an author, with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, of [the survey of AI researchers](/list/researcher-views-survey/)."
+source = "safe-bets"
+
 [checks]
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

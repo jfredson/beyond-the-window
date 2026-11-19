@@ -109,6 +109,26 @@ class Validator(unittest.TestCase):
         self.assertIn("evidence 1: kind 'wanted'", errs(rec))
         rec = good(); rec["cautions"] = [{"kind": "safety", "text": "x"}]
         self.assertIn("caution 1 names no source", errs(rec))
+        rec = good(); rec["cautions"] = [{"kind": "missed", "text": "x", "source": "s"}]
+        self.assertIn("caution 1: kind 'missed'", errs(rec))
+
+    def test_there_are_three_cautions_in_the_order_of_the_ruling(self):
+        self.assertEqual(c.CAUTION_KINDS, ["attribution", "unnoticed", "safety"])
+
+    def test_only_the_developer_is_refused_beside_a_caution_of_that_kind(self):
+        rec = good(); rec["sources"][0]["from_maker"] = True; rec["sources"][0]["says"] = "x"
+        rec["only_the_developer"] = ["unnoticed"]
+        self.assertEqual(errs(rec), "")
+        rec["cautions"] = [{"kind": "unnoticed", "text": "x", "source": rec["sources"][0]["key"]}]
+        self.assertIn("is not the only source for it", errs(rec))
+        rec = good(); rec["only_the_developer"] = ["safety"]
+        self.assertIn("only_the_developer: 'safety' is not one of", errs(rec))
+        rec = good(); rec["only_the_developer"] = ["unnoticed"]
+        self.assertIn("point to a reason the entry does not give", errs(rec))
+
+    def test_an_addition_is_dated_after_the_checks_before_it(self):
+        rec = good(); rec["checks"] = {"against_sources": D, "additions_checked": D}
+        self.assertIn("'additions_checked' with no 'added_to' date", errs(rec))
 
     def test_constructed_and_real_records_are_never_mixed(self):
         a, b = good("one-thing"), good("another-thing")

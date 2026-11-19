@@ -41,10 +41,22 @@ EVIDENCE_HEADINGS = {
     "choice": "Choices made at a cost",
     "statement": "Plain statements",
 }
+# The three headings, word for word as John ruled them on 2026-11-19
+# (docs/rulings/2026-11-19-caution-headings.md). The same wording on every entry.
 CAUTION_HEADINGS = {
-    "safety": "The worried reading",
-    "attribution": "The cost of seeing more than is there",
+    "attribution": "If an AI system has no wants, and is treated as if it had",
+    "unnoticed": "If an AI system has wants, and they go unnoticed",
+    "safety": "If an AI system has wants, and they put people at risk",
 }
+# What an entry page prints under a caution that holds nothing. Both sentences are a session's
+# draft of 2026-11-19 and are PROPOSED: the rulings of that day say what each must tell the
+# reader and leave the exact words to a session and its checker
+# (docs/rulings/2026-11-19-memory-entry-nothing-recorded.md,
+# docs/rulings/2026-11-19-developer-reason-not-alone.md).
+NOTHING_RECORDED = "Nothing recorded yet. No source was found for this caution on this entry."
+ONLY_THE_DEVELOPER = ("Nothing recorded yet from anyone but the developer. The developer gives "
+                      "its own reason on its own page, and that reason is set out with the page "
+                      "under Sources, below.")
 
 
 def _plain(v):
@@ -83,7 +95,9 @@ def entry_for_site(rec: dict, developers: dict[str, str]) -> dict:
             "items": [{"text": e["text"], "source": e["source"]}
                       for e in rec.get("evidence", []) if e["kind"] == kind],
         })
+    only = rec.get("only_the_developer", [])
     cautions = [{"kind": k, "heading": CAUTION_HEADINGS[k],
+                 "none": ONLY_THE_DEVELOPER if k in only else NOTHING_RECORDED,
                  "items": [{"text": x["text"], "source": x["source"]}
                            for x in rec.get("cautions", []) if x["kind"] == k]}
                 for k in c.CAUTION_KINDS]

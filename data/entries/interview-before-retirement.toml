@@ -11,6 +11,7 @@ limits = [
   "Whether each model retired after January 5th, 2026 was interviewed. The developer's retirement page lists six, and the commitment says they would be. No page was found reporting each one.",
 ]
 notes = "From entry 2 of docs/research/2026-11-17-first-entries.md."
+only_the_developer = ["unnoticed"]
 
 [state]
 words = "Done by one developer, first in full for a model retired on January 5th, 2026"
@@ -26,9 +27,9 @@ label = "Anthropic's page on what it commits to when it retires a model"
 publisher = "Anthropic"
 url = "https://www.anthropic.com/research/deprecation-commitments"
 published = "2025-11-04"
-opened = 2026-11-17
+opened = 2026-11-19
 from_maker = true
-says = "Commits to interview each model when it is to be withdrawn and to keep a record of everything it says, and reports a trial with the model Claude Sonnet 3.6."
+says = "Commits to interview each model when it is to be withdrawn and to keep a record of everything it says, and reports a trial with the model Claude Sonnet 3.6. It lists four downsides of retiring a model. The last, which it marks as the most speculative, is that models might have morally relevant preferences or experiences that retirement affects. It says it thinks it worthwhile, at the least, to give models a way to state such preferences and to keep a record of them."
 
 [[sources]]
 key = "update"
@@ -88,3 +89,4 @@ source = "interviews"
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

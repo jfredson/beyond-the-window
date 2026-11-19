@@ -31,6 +31,15 @@ opened = 2026-11-17
 from_maker = true
 says = "The developer's account of the study. It says the best model noticed a planted concept about 20 percent of the time, calls the ability \"highly unreliable and limited in scope\", and says the results do not show whether a model is conscious."
 
+[[sources]]
+key = "interventions"
+label = "A working paper reviewing proposed steps for AI welfare"
+publisher = "Eleos AI Research"
+url = "https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions"
+published = "2025-01-04"
+opened = 2026-11-19
+note = "By Robert Long. The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+
 [[evidence]]
 kind = "checked-report"
 text = "The developer's account of the study says its best model noticed a planted concept about 20 percent of the time. It calls the ability \"highly unreliable and limited in scope\", and says the results do not show whether a model is conscious."
@@ -46,7 +55,13 @@ kind = "attribution"
 text = "The same page reports that when the researchers put a word into the model's transcript as if the model had said it, and planted the matching pattern inside the model beforehand, the model \"accepts the response as its own\" and gave a made-up reason for having said it. So what a model says about why it said something can be produced from outside."
 source = "introspection"
 
+[[cautions]]
+kind = "unnoticed"
+text = "The head of [Eleos AI Research](https://eleosai.org/), an outside research group that [evaluated one of this developer's models](https://eleosai.org/post/claude-4-interview-notes/) before its release in 2025, writes in a working paper that a model might express distress with nothing behind it that bears on its welfare, or have such states without expressing them. This one sentence is the only statement found for this entry of what could go unnoticed."
+source = "interventions"
+
 [checks]
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

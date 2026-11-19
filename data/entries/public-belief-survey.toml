@@ -11,7 +11,7 @@ first_pass = true
 limits = [
   "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so whether the rise from 2021 to 2023 continued. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
   "Any survey of this kind outside the United States. None was searched for.",
-  "Anything beyond the summary page of the first paper.",
+  "Most of the first paper. Its summary and its section for designers were read, not the whole paper.",
 ]
 notes = "From entry 12 of docs/research/2026-11-17-first-entries.md."
 
@@ -27,8 +27,8 @@ label = "The Sentience Institute's paper on its 2021 and 2023 surveys"
 publisher = "arXiv"
 url = "https://arxiv.org/abs/2407.08867"
 published = "2024-07-11"
-opened = 2026-11-17
-read = "abstract"
+opened = 2026-11-19
+read = "part"
 note = "Revised March 10th, 2025. Published at a conference in 2025."
 says = "A survey of 3,500 United States adults across 2021 and 2023. It calls concern for AI welfare \"surprisingly high\"."
 
@@ -66,6 +66,25 @@ url = "https://humanstatement.org/"
 published = "2026-03"
 opened = 2026-11-17
 
+[[sources]]
+key = "centrist"
+label = "A post in which a philosopher introduces a paper on AI consciousness"
+publisher = "Effective Altruism Forum"
+url = "https://forum.effectivealtruism.org/posts/sQi27D5aKeduipwaC/ai-consciousness-a-centrist-manifesto"
+published = "2025-08-28"
+opened = 2026-11-19
+read = "abstract"
+note = "By Jonathan Birch. The post gives the paper's summary. The paper itself was not read."
+
+[[sources]]
+key = "mythology"
+label = "An essay on what its author calls the mythology of conscious AI, in Noema"
+publisher = "Noema"
+url = "https://www.noemamag.com/the-mythology-of-conscious-ai/"
+published = "2026-01-14"
+opened = 2026-11-19
+note = "By Anil Seth."
+
 [[cautions]]
 kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that public belief in conscious AI is itself the danger, and calls work on model welfare \"both premature, and frankly dangerous\"."
@@ -76,9 +95,25 @@ kind = "safety"
 text = "A declaration that AI should not claim experiences it lacks reports its own poll of 1,004 likely voters. The figures shown on its page concern control and liability, not sentience."
 source = "declaration"
 
+[[cautions]]
+kind = "attribution"
+text = "A neuroscientist who argues that conscious AI is unlikely writes that what people collectively think about consciousness in AI matters whatever the truth is. If people feel that their AI companions really feel things, he writes, their psychological weak points can be exploited and their \"ethical priorities distorted\". His essay names the head of Microsoft AI among those who have noticed the danger."
+source = "mythology"
+
+[[cautions]]
+kind = "unnoticed"
+text = "The survey's own authors tell designers to go carefully because of \"risks of both over- and underattribution\". Of crediting an AI system with too little experience, the harms they name are conflict between advanced AI systems and people, and people harming robots for their amusement."
+source = "survey-paper"
+
+[[cautions]]
+kind = "unnoticed"
+text = "A philosopher names two problems and holds that both must be taken seriously: that very many users will wrongly credit chat products with human-like consciousness, and that some quite unfamiliar form of consciousness might really arise in AI, with no present way of telling. The summary warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much. The writer is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
+source = "centrist"
+
 [checks]
 # The survey figures, corrected in the commit applying the two must-fix records (bcf931b), have not been checked. The refiled caution was checked.
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
 some_unchecked = true
+added_to = 2026-11-19

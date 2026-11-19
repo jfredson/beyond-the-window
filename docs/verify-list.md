@@ -44,6 +44,19 @@ corrected wording is there.
     on how many Anthropic Console workspaces and keys exist (five against three). Which is
     current: unchecked.
 
+## Added on 2026-11-19, with the third caution
+
+19. Erik Hoel and Bradford Saad are each called "a writer" in the entries that cite them (the
+    entry about a model ending a conversation, and the entry about kept files). That says only
+    that each wrote the piece cited. What each of them is was not read on any page opened, so
+    nothing more is said. If a page that says it is opened, the entries can say more.
+20. That Eleos AI Research accepts no funding or payment from AI companies. Its page of
+    2025-05-30 says so, and the entry about welfare assessments gives the statement with that
+    date. Nothing later was opened, so whether it is still true is unchecked.
+21. No public page of her own was found for Emilia Kaczmarek in one search on 2026-11-19, so her
+    name on the About page carries no link of its own. Her paper is linked. This is a gap
+    against the workspace habit of linking every named person, not an unchecked fact.
+
 ## Cleared
 
 All by the session that wrote `docs/research/2026-11-17-first-entries.md`. Every address was

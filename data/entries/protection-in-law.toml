@@ -35,7 +35,7 @@ label = "An essay by the head of Microsoft AI warning against work on model welf
 publisher = "Mustafa Suleyman"
 url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
 published = "2026-09-16"
-opened = 2026-11-17
+opened = 2026-11-19
 
 [[sources]]
 key = "declaration"
@@ -44,6 +44,34 @@ publisher = "humanstatement.org"
 url = "https://humanstatement.org/"
 published = "2026-03"
 opened = 2026-11-17
+
+[[sources]]
+key = "safe-bets"
+label = "An essay in The Guardian on whether AI could be conscious"
+publisher = "The Guardian"
+url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
+published = "2026-07-19"
+opened = 2026-11-19
+note = "By William MacAskill and Lucius Caviola."
+
+[[sources]]
+key = "wellbeing"
+label = "A paper arguing that some AI systems may have wellbeing"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2509.11913"
+published = "2025-09-11"
+opened = 2026-11-19
+read = "part"
+note = "By Simon Goldstein and Cameron Domenico Kirk-Giannini."
+
+[[sources]]
+key = "mythology"
+label = "An essay on what its author calls the mythology of conscious AI, in Noema"
+publisher = "Noema"
+url = "https://www.noemamag.com/the-mythology-of-conscious-ai/"
+published = "2026-01-14"
+opened = 2026-11-19
+note = "By Anil Seth."
 
 [[cautions]]
 kind = "attribution"
@@ -55,9 +83,25 @@ kind = "safety"
 text = "A declaration signed by 908 named people and 313 organisations adds that AI systems should not be designed so that they come to deserve personhood."
 source = "declaration"
 
+[[cautions]]
+kind = "attribution"
+text = "A neuroscientist who argues that conscious AI is unlikely, and that nobody should set out to build it, grants the other side. He writes that he might be wrong, that rights should arguably follow if such systems really were conscious, and that it is reasonable to wonder whether withholding such credit will leave people \"once again on the wrong side of history\". He holds that with AI the mistake is likelier the other way, because people's habits of mind lean toward seeing consciousness in systems that use language. His essay names the head of Microsoft AI among those who have noticed the danger, and the essay by the head of Microsoft AI that is a source here cites two of his works."
+source = "mythology"
+
+[[cautions]]
+kind = "unnoticed"
+text = "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two is an author, with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, of [the survey of AI researchers](/list/researcher-views-survey/)."
+source = "safe-bets"
+
+[[cautions]]
+kind = "unnoticed"
+text = "Two philosophers argue that a wide range of theories of the mind, joined with leading theories of wellbeing, predict that some AI systems that exist today have wellbeing. They say they do not claim to have shown it conclusively. If it is so, they write, \"we are in danger of gravely immoral action\", and they conclude that the regulation of AI should be strengthened to allow for the possibility. The paper lists both at the Center for AI Safety, where the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, [worked earlier](https://eleosai.org/team)."
+source = "wellbeing"
+
 [checks]
 # The count of the declaration's signers, corrected in the commit applying the two must-fix records (bcf931b), has not been checked. The refiled caution was checked.
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
 some_unchecked = true
+added_to = 2026-11-19

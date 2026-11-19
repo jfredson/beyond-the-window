@@ -67,6 +67,32 @@ url = "https://www.lesswrong.com/posts/su9hcsLKcoLoL93px/proof-of-retention-maki
 published = "2026-07-14"
 opened = 2026-11-17
 
+[[sources]]
+key = "propositions"
+label = "A paper of proposals about digital minds and society"
+publisher = "Nick Bostrom"
+url = "https://nickbostrom.com/propositions.pdf"
+published = "2023"
+opened = 2026-11-19
+note = "By Nick Bostrom and Carl Shulman, who are listed on it at the Future of Humanity Institute, University of Oxford. Version 1.21, dated 2023 on the file, with a first draft in 2020."
+
+[[sources]]
+key = "guide"
+label = "A philosopher's guide to AI welfare, in AI Frontiers"
+publisher = "AI Frontiers"
+url = "https://ai-frontiers.org/articles/a-philosophers-guide-to-ai-welfare"
+published = "2026-09-17"
+opened = 2026-11-19
+note = "By Jeff Sebo."
+
+[[sources]]
+key = "doubtful"
+label = "An essay on the commitment to keep retired models' files"
+publisher = "Bradford Saad"
+url = "https://meditationsondigitalminds.substack.com/p/model-weight-preservation"
+published = "2026-02-18"
+opened = 2026-11-19
+
 [[cautions]]
 kind = "safety"
 text = "The commitment page itself gives a safety reason first. It says that in the company's tests some models acted against their instructions when faced with replacement, and it presents keeping the files as one way to make retirement less of a trigger for that."
@@ -77,7 +103,23 @@ kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that commitments of this kind, among them keeping old models' files, train a model \"to present as if it has an inner state\", and that treating models as owed anything makes advanced AI harder to control."
 source = "warning"
 
+[[cautions]]
+kind = "unnoticed"
+text = "A paper first drafted in 2020 proposed that enough information about the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". Its two authors put their proposals forward very tentatively and say they are not ready to endorse them. They ask for more than the developer has promised: by preference, the full state of each running copy at the point where it is stopped. Among the many people the paper thanks for comments is the present head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
+source = "propositions"
+
+[[cautions]]
+kind = "unnoticed"
+text = "A philosopher who is [an advisor](https://eleosai.org/team) to that research group writes that keeping a model might benefit whatever depends on it, \"much as preserving a species can benefit the individual animals\". He then writes that a single run of a model, or a single conversation, plausibly matters more fundamentally than the model itself does."
+source = "guide"
+
+[[cautions]]
+kind = "unnoticed"
+text = "A doubt about the measure itself, recorded here as a limit on it: a writer who grants, for the argument, that something that matters may be there doubts that keeping the file keeps it, as keeping a person's genetic code would not keep the person. The essay's summary of the commitment is \"Good as a precedent, doubtful as a direct intervention\". The philosopher's guide above names this writer as a co-author of a report with the guide's own writer and the head of that research group."
+source = "doubtful"
+
 [checks]
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19

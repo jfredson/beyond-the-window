@@ -3,6 +3,23 @@
 Every change to the records, the method or the site gets a dated line here, saying which
 number moved or that none did. Nothing is published, so there have been no public corrections.
 
+## 2026-11-19
+
+- **A third caution is written into every entry,** as John ruled on 2026-11-18 and in seven
+  rulings of 2026-11-19 (`docs/rulings/`). The three headings are his wording: "If an AI system
+  has no wants, and is treated as if it had", "If an AI system has wants, and they go
+  unnoticed", "If an AI system has wants, and they put people at risk". Nine entries now hold
+  something under the second heading, two say that nothing is recorded yet from anyone but the
+  developer, and two say that nothing is recorded yet. In the same change three replies were
+  added under the first heading and one limit beside the second. Every source was opened on
+  2026-11-19. The About page says "three cautions", says where most of the first two come from,
+  and states the two opposite mistakes in general from two papers read in full.
+- **Not checked yet.** A different session checks this work. Each changed entry's page says
+  that more was added on 2026-11-19 and that the addition has not been checked.
+- **No number moved:** 5 things are still counted as offered today. Nothing is published,
+  pushed or deployed. What is new, what is PROPOSED and what was left out are in
+  `docs/reviews/2026-11-19-third-caution-written.md`.
+
 ## 2026-11-18
 
 - **The fixes from the second check of the count and the authorship wording are applied**
