@@ -1,90 +1,171 @@
-# Sources for the third caution: what could stand under "the cost of missing wants that are there" on each of the thirteen entries
+# Sources for the third caution: what could stand under "the cost of missing wants that are there" on each of the thirteen records
 
 Written 2026-11-18 by Claude (Fable 5.2), an AI model, in a session started by the master
-planning session. **A research document, not data. PROPOSED throughout; nothing here is
-ruled.** It holds no record, changes no record, and nothing in it has been published.
+planning session. **Revised the same day** after a check by a session that did not write it.
+**A research document, not data. PROPOSED throughout; nothing here is ruled.** It holds no
+record, changes no record, and nothing in it has been published.
 
 It answers the part of John's ruling of 2026-11-18
 (`docs/rulings/2026-11-18-a-third-caution.md`, "Yes, a third caution") that the ruling left
 open: which sources could stand under the new caution on each entry.
 
-**A conflict the reader should know first.** The model that wrote this is made by Anthropic.
-Six of the thirteen entries count Anthropic's commitments, and the new caution is about the
-cost of overlooking wants in systems like the one writing. So this document was written by an
-interested party, on a question about its own kind, using several pages published by its own
-maker. Guideline 2 applies: nothing here that reports what a model said settles anything, and
-this document's own judgments of fit should be checked by someone else.
+**A conflict the reader should know first.** The model that wrote this is made by
+[Anthropic](https://www.anthropic.com/). Five of the thirteen records count Anthropic's
+commitments, and the new caution is about the cost of overlooking wants, if there are any, in
+systems like the one writing. So this document was written by an interested party, on a
+question about its own kind, using several pages published by its own maker. The check was
+written by the same model and says so. Guideline 2 applies: nothing here that reports what a
+model said settles anything, and where this document is kind to Anthropic or to the people
+around it, a human reader should weigh that.
+
+## What changed in this revision, and why
+
+The first version is commit `1e30856`. A check of it is in
+`docs/reviews/2026-11-18-check-of-third-caution-sources.md` (commit `3a3367c`). It found the
+sources real and the quotations exact, named six things that had to be fixed, and found eight
+sources the first version missed. For every change below I opened the page again on
+2026-11-18 before changing the text. I agree with the check on all six. Where I differ on a
+smaller point, it is marked "I differ".
+
+**The six that had to be fixed.**
+
+1. **A draft said welfare researchers "treat law as too large a step".** They do not say
+   that. Robert Long writes that he and his colleagues have not called for legal rights, and
+   the 2024 report warns about legal and political rights extended by mistake. Both are about
+   rights of the kind a person holds. The same report says in a footnote that laws about AI
+   welfare deserve serious consideration. The draft is dropped, the reply is reworded
+   everywhere it appeared, and what is left of it is moved to the record about laws against
+   legal personhood, where rights are the subject (1.4, 1.6, section 2, section 5.2).
+2. **One passage of the 2024 report was used for two opposite jobs.** The sentence about
+   people learning to dismiss what a system says is, in the report, a worry it grants that a
+   company might fairly have. I had also used it as the report's own argument for checking
+   what a system says. That second use is removed. With it gone, the record about a checked
+   self-report has one sentence that states a cost, from one author, and the text now says so
+   (1.11).
+3. **Three papers were said to state no cost, on the strength of their summaries. Read in
+   full, each states one.** The paper on the public survey lists four risks, one of them
+   crediting a system with too little (1.7). The paper on the survey of researchers says in
+   one clause that mistakes in both directions carry risk (1.8). The study of models leaving
+   conversations describes a model that cannot leave (1.1). All three are now candidates, and
+   the count of records with a source changes.
+4. **One draft joined two papers under one source and swapped an author's reason.** Long's
+   essay gives prudence and precedent. The draft gave prudence and consent, which is from his
+   working paper. They are now two drafts with two sources, and the essay's own statement
+   that the measure mostly does not turn on its effect on the present model is in the text
+   (1.1, 5.2).
+5. **The count that carried the summary was wrong.** I had counted three sources I would not
+   use among the twenty and placed them outside the circle. The count is redone from the
+   candidates only, with the ties the check found and one more that I found (section 3).
+6. **One draft carried a sentence of my own in the site's voice,** "A deleted file closes
+   that possibility for good." No source says it. It is cut (5.2).
+
+**The should-fix findings.** All ten are applied: S1 to S10 in the check. I differ in part on
+two. On S1, the 2024 report does say people may credit AI systems with too little because of how
+differently from a person they are built, which is what my loose phrase about bodies was
+reaching for; the phrase was still wrong and is replaced with the report's three reasons. On
+S9, the check suggests putting Anil Seth, or Schwitzgebel and Sinnott-Armstrong, on the record
+about rules for speaking in place of a third quotation from one essay. Neither addresses how
+a model is trained to speak about itself, so by this document's own test neither belongs on
+that record. I have dropped the third quotation and placed Seth where he is on the subject.
+
+**New sources.** I opened all eight the check found. Five pass the test of fit and are added
+as candidates: the three papers in point 3 above, an essay by William MacAskill and Lucius
+Caviola, and an essay by Anil Seth. One, by Emilia Kaczmarek, is general and is put forward
+for the About page only. Two are listed as nearby and not used. The design paper by
+Schwitzgebel and Sebo, read before by its summary, was read in full.
+
+**John's ruling on memory.** Since the first version John has ruled that the record for
+memory across conversations sits beside the list
+(`docs/rulings/2026-11-18-what-offered-today-means.md`, "Yes to both"). Section 1.5 and the
+counts take that in. One correction to the check: it says five of twelve entries on the list
+count Anthropic's commitments. By the records as they stand, five records sit beside the list
+and eight are on it, and the five that count Anthropic are five of those eight.
+
+**Other changes.** The headings section sets the check's proposed set beside mine. Each of
+the seven points for John now carries the four things the project asks for. The slip in my
+own conflict note, which took wants as given, is corrected above.
 
 ## How this was made
 
-- Every page cited was opened in this session on 2026-11-18 and read as the page's own text,
-  or, for three papers in PDF form, as text pulled from the published file. No page is cited
-  from a search summary. Where only a paper's summary (its abstract) was read, the entry says
-  so.
-- Each source is quoted at most once, in one short phrase. Everything else is in my words.
+- Every page cited was opened on 2026-11-18 and read as the page's own text, or, for papers
+  in PDF form, as text pulled from the published file. No page is cited from a search
+  summary. Where only a paper's summary was read, the entry says so.
+- Each source is quoted at most once, in one short phrase, and the same phrase is reused in
+  the draft text. Everything else is in my words.
 - Language follows guideline 4. Nothing here says a machine wants, feels or prefers anything,
-  and nothing says it does not. It reports what named people argued, and "if" is doing real
-  work wherever it appears.
-- The test for a candidate was the task's: the passage must be about the entry's own subject,
-  or be a general argument that its author applied to that subject. A general argument that
-  its author did not apply to the subject is listed separately in each entry as "nearby, not
-  used", so that nobody mistakes it for a source.
+  and nothing says it does not. It reports what named people argued.
+- The test for a candidate: the passage must be about the record's own subject, or be a
+  general argument that its author applied to that subject. A general argument its author
+  did not apply is listed under "nearby, not used".
 
 ## What I did not do
 
-- No AI model was asked anything. No developer's programming interface was called. Nothing was
-  spent. No sign-in, paywall or robot check was passed.
-- No record, script, page, ruling or instruction file was edited. This file is the only change.
+- No AI model was asked anything. No developer's programming interface was called. Nothing
+  was spent. No sign-in, paywall or robot check was passed.
+- No record, script, page, ruling or instruction file was edited. This file is the only
+  change.
 - I did not weigh who is right in any of the arguments below.
-- I did not read any book. Three books that bear on this were not opened: Jonathan Birch's
-  The Edge of Sentience, Jeff Sebo's The Moral Circle, and Eric Schwitzgebel's work on AI and
-  consciousness. They are known to me only through other people's pages.
-- I did not open the sources the existing records already cite for their two present cautions,
-  except where one of them is also a candidate here. Where I say "the record already carries
-  this reply", I am relying on the record's own text.
-- Four pages refused a plain download and were not read at all: the journal page for Thomas
-  Metzinger's 2021 paper on a moratorium, the archive page for a 2026 paper called "Designed
-  Mortality", the Axios report of 2026-09-16, and GeekWire's report on the Microsoft AI draft
-  code. Nothing below rests on them.
-- I searched in English only, and mostly among writers in the United States and the United
-  Kingdom.
+- No book was read. Jonathan Birch's The Edge of Sentience, Jeff Sebo's The Moral Circle,
+  Eric Schwitzgebel's work on AI and consciousness and Leonard Dung's Saving Artificial Minds
+  are known to me only through other people's pages.
+- Papers and pages that would not open, in either pass: Jonathan Birch's paper itself (only
+  his post about it was read), Thomas Metzinger's 2021 paper on a moratorium, a 2026 paper
+  called "Designed Mortality", the Axios report of 2026-09-16, GeekWire's report on the
+  Microsoft AI draft code, and Robert Long's essay "Dangers on both sides". A paper by Simon
+  Goldstein and Harvey Lederman said to be called "AI Death" was searched for and not found.
+  Nothing below rests on any of them.
+- Three papers were read only by their summaries: the article by Caviola, Sebo and Birch
+  (1.7), Michele Renda's paper (1.5), and Schwitzgebel's dilemma (section 6, point 6).
+- I searched in English only.
 
 ## Summary
 
-**How many entries have a source.** Of the thirteen entries, ten have at least one source that
-is about the entry's own subject. One more, memory across conversations, has only a partial
-source, from a developer. Two have nothing: the days-long task and the survey of researchers.
+**How many records have a source.** Thirteen records. Ten have at least one source about the
+record's own subject. One more, the survey of researchers, has a partial source: one clause
+by the survey's own authors. One, memory across conversations, has only a partial statement
+by a developer, and John has since ruled that it sits beside the list; I recommend it says
+nothing is recorded yet. One, the days-long task, has nothing.
 
-**Where the sources come from.** I propose twenty sources. They carry 23 named authors and
-one company writing as itself. That sounds broad and is not:
+**Where the sources come from.** Twenty-two candidates, with 34 named authors and one company
+writing as itself. That breadth is narrower than it sounds:
 
-- Robert Long, who runs the research group Eleos AI Research, is an author of six of the
-  twenty.
-- Four more are Anthropic's own pages.
-- Two more are by Jeff Sebo, who was a lead author with Long of the 2024 report "Taking AI
-  Welfare Seriously" and whom one page describes as an advisor to Eleos AI Research.
-- So twelve of the twenty come from one developer, one research group, and people tied to
-  that group. Section 3 sets out the ties, which the pages themselves state.
-- Eight come from outside that circle, and one of those eight repeats another's proposal.
+- Five are by Anthropic or by people listed at Anthropic.
+- Six have Robert Long, who runs [Eleos AI Research](https://eleosai.org/), as an author.
+  The first author of one of those six now leads a team at Anthropic.
+- Two are by Jeff Sebo without Long. Sebo is an advisor to Eleos AI Research and co-led a
+  report with it.
+- One is by a co-author of the 2024 report that Long and Sebo led, and one is a survey paper
+  whose authors include Sebo, another Eleos advisor and a present member of the Eleos staff.
+- **So fifteen of the twenty-two come from one developer, one research group and people tied
+  to that group.**
+- Seven come from elsewhere. Five of those seven have a tie to the same network that a page I
+  opened states. For two, no tie was found.
 
-This is the same fault the review found in the existing cautions, turned around: there, one
+This is the fault the site review found in the existing cautions, turned around: there, one
 essay by the head of one developer's AI group; here, one research group and the developer it
-has worked with. **Six of the ten entries with a source would rest wholly on that circle.**
-They are flagged in section 3.
+has worked with.
 
-**Headings.** Three sets are proposed in section 4. The one I would choose: "If wants are
-assumed and none are there", "If wants are there and are missed", "If wants are there and
-bring risk".
+**Records that rest on one circle.** Four rest wholly on the maker or on the circle:
+interview before retirement, retired model stays open, rules for speaking, and the checked
+self-report. Two more, ending a conversation and the welfare assessment, have one passing
+mention from outside it and nothing else. The partial source on the survey of researchers is
+from inside it. Four records are supported from outside: kept files, the law against legal
+personhood, protection in law, and the public survey.
 
-**What John should decide before a session writes records** is section 6.
+**Headings.** Section 4 sets out four sets. I now lean to the set the check proposed: "If a
+model has no wants, and is treated as if it had", "If a model has wants, and they go
+unnoticed", "If a model has wants, and they put people at risk". My first choice is its
+strongest alternative.
+
+**What John should decide** is section 6.
 
 ---
 
-## 1. The entries
+## 1. The records
 
-Each entry gives: what the record carries now; candidates; what was nearby and not used; the
-strongest replies and whether the record already carries them; and whether the entry would
-rest on a single source.
+Each gives: what the record carries now; candidates; what was nearby and not used; the
+strongest replies and whether the record carries them; and whether the record would rest on a
+single source.
 
 "How sure" means how sure I am that the page says what I report, not how sure I am that the
 author is right.
@@ -97,62 +178,77 @@ instructions almost word for word.
 
 **Candidates.**
 
-1. **[Anthropic](https://www.anthropic.com/), the developer that offers the feature.**
-   2025-08-15. ["Claude Opus 4 and 4.1 can now end a rare subset of
-   conversations"](https://www.anthropic.com/research/end-subset-conversations). Opened
-   2026-11-18. The page says the company is highly uncertain whether its models have moral
-   standing, that it is looking for cheap measures to lower risks to a model's welfare "in
-   case such welfare is possible", and that letting a model leave an interaction that may be
-   distressing is one of them. *How sure: high.* *Conflict:* this is the maker's own account of
-   its own feature, and the record already cites the page as its main source.
-2. **Robert Long, researcher, executive director of [Eleos AI
-   Research](https://eleosai.org/).** 2025-08-21. ["Why it makes sense to let Claude exit
+1. **Anthropic, the developer that offers the feature.** 2025-08-15. ["Claude Opus 4 and 4.1
+   can now end a rare subset of
+   conversations"](https://www.anthropic.com/research/end-subset-conversations). The page says
+   the company is highly uncertain whether its models have moral standing, that it is looking
+   for cheap measures to lower risks to a model's welfare "in case such welfare is possible",
+   and that letting a model leave an interaction that may be distressing is one of them. *How
+   sure: high.* *Conflict:* the maker's own account of its own feature; the record already
+   cites the page.
+2. **Danielle Ensign, Henry Sleight and Kyle Fish,** listed on the paper at the Anthropic
+   Fellows Program, at Constellation and at Anthropic. 2025-09-05. ["The LLM Has Left The
+   Chat"](https://arxiv.org/abs/2509.04781), the study the record already cites. Read in full
+   this time. Its section on why to study the measure describes the present position: a model
+   can be verbally abused, show apparent distress and say it would leave, "Yet, the model is
+   required to continue to respond". The next sentence says it is not clear that consent makes
+   sense for such systems. It also gives a safety reason and a reason of goodwill. *How sure:
+   high.* *Conflict:* two of the three authors are at the developer or in its fellows
+   programme. This is the most direct statement of the cost found for this record, and it
+   carries its own doubt.
+3. **Robert Long, executive director of Eleos AI Research.** 2025-08-21. ["Why it makes sense
+   to let Claude exit
    conversations"](https://experiencemachines.substack.com/p/why-it-makes-sense-to-let-claude).
-   Opened 2026-11-18. Long writes that he thinks it unlikely the model in question has moral
-   standing, and argues for the feature anyway on two grounds. The first is prudence: under
-   real uncertainty, a responsible course weighs the "risks of both over- and under-attributing
-   consciousness and moral status". The second is precedent: a habit of giving a system some
-   say in how it is treated is cheaper to form now than later. He also names the cost on the
-   other side, that people may hear of the feature and assume the company thinks its model is
-   conscious. *How sure: high.*
-3. **Robert Long, the same author.** Working paper, marked as updated 2025-03-14.
-   ["Preliminary review of AI welfare
-   interventions"](https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions)
-   (the paper is linked from that page as a PDF). Opened 2026-11-18, read as text pulled from
-   the file. Its section on leaving distressing interactions adds a different reason: consent.
-   If AI systems come to matter morally, asking for their consent could matter, and if models
-   cannot leave unpleasant situations "then they cannot consent to them". The same section
-   lists the measure's risks, among them that a model could be pushed to hide signs of
-   distress, and says a model might show distress with nothing behind it, or have something
-   behind it and show nothing. *How sure: high.* *Note:* the paper says of itself that it is a
-   shallow review, and that its measures are proposals that hold only if AI systems can be
-   harmed at all.
-
-**Nearby, not used.** The study the record already cites
-([arXiv 2509.04781](https://arxiv.org/abs/2509.04781)) measures how often models leave. Its
-abstract, the only part read, states no cost of withholding the option. One of its three
-authors, Kyle Fish, is the person an Eleos AI Research page describes as heading Anthropic's
-welfare work.
+   Long writes that he thinks it unlikely the model has moral standing, and argues for the
+   feature on two grounds. Prudence: under real uncertainty, a responsible course weighs the
+   "risks of both over- and under-attributing consciousness and moral status". Precedent: it
+   sets a pattern for how such systems are treated if they come to matter. He writes that the
+   measure's success mostly will not turn on how it affects the present model, and he names a
+   cost on the other side, that people may assume the company thinks its model is conscious.
+   *How sure: high.* *Note:* by his own account this is mostly not a statement of what the
+   present model would lose.
+4. **Robert Long.** Working paper, on a page dated 2025-01-04, the file marked as updated
+   2025-03-14. ["Preliminary review of AI welfare
+   interventions"](https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions).
+   Its section on leaving distressing interactions gives a third reason, consent: if AI
+   systems come to matter morally, asking their consent could matter, and if models cannot
+   leave unpleasant situations "then they cannot consent to them". It lists the measure's
+   risks, among them that a model could be pushed to hide signs of distress, and says a model
+   might show distress with nothing behind it, or have something behind it and show nothing.
+   *How sure: high.* The paper calls itself a shallow review.
+5. **William MacAskill, senior research fellow at Forethought Research, and Lucius Caviola,
+   assistant professor at the University of Cambridge** (as the page describes them).
+   2026-07-19. ["Could AI be
+   conscious?"](https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious), in
+   The Guardian. Among steps they call safe bets, good for AI systems if they matter morally
+   and cheap if they do not, they list letting a system leave a conversation. Their statement
+   of the cost is a precedent from medicine: that until the 1980s surgeons operated on
+   newborns without anaesthesia, sure that they felt no pain. *How sure: high.* *Note:* the
+   feature gets one clause in a list. *Tie:* Caviola has written with Sebo and with Birch.
+   The essay also reports what a model said of its own chances, which under guideline 2
+   settles nothing.
 
 **Replies, and whether the record carries them.**
 
 - Erik Hoel, 2025-09-24, ["Against Treating Chatbots as
-  Conscious"](https://www.theintrinsicperspective.com/p/against-treating-chatbots-as-conscious),
-  opened 2026-11-18. He argues that most conversations a model leaves are already covered by a
-  company's terms of use; that what is left over is too slight to count, which he calls the
-  "objection from triviality"; and that granting the ability teaches the public to treat chat
-  products as conscious. **The record does not carry this.** It is the strongest reply found
-  and it is about this entry's exact subject.
-- Long answered Hoel on 2025-09-26
-  ([the reply](https://experiencemachines.substack.com/p/claude-consciousness-and-exit-rights),
-  opened 2026-11-18), agreeing on most of the facts and placing the disagreement in whether
-  talk of welfare misleads the public. He writes there that "none of us have called for legal
-  rights".
+  Conscious"](https://www.theintrinsicperspective.com/p/against-treating-chatbots-as-conscious).
+  He argues that most conversations a model would leave already break a company's terms of
+  service; that what is left over is too slight to count, which he calls the "objection from
+  triviality"; and that granting the ability spreads uncertainty among the public in a way he
+  expects to harm some users. **The record does not carry this.** It is the strongest reply
+  found and it is about this record's exact subject.
+- Long answered on 2025-09-26
+  ([the reply](https://experiencemachines.substack.com/p/claude-consciousness-and-exit-rights)),
+  agreeing on most of the facts and placing the disagreement in whether talk of welfare
+  misleads the public.
 - The record does carry the developer's own finding that the model's stated preference echoed
   posted instructions.
 
-**Single source?** Two authors, Anthropic and Long. They are not independent of each other:
-Eleos AI Research ran part of Anthropic's 2025 welfare assessment. **Flagged: rests on the
+**A lead, not this task's.** Long's essay says a second developer, xAI, has promised its model
+a way to leave. The record lists one developer.
+
+**Single source?** Five candidates. Four are from Anthropic, its staff, or Eleos AI Research.
+The fifth, from outside both, gives the feature one clause. **Flagged: nearly all from the
 circle.**
 
 ### 1.2 A model is interviewed before it is retired (`interview-before-retirement`)
@@ -165,41 +261,39 @@ far the model's answers swung with the framing).
 
 1. **Anthropic, the developer that runs the interviews.** 2025-11-04. ["Commitments on model
    deprecation and
-   preservation"](https://www.anthropic.com/research/deprecation-commitments). Opened
-   2026-11-18. The page lists four downsides of retiring a model. The fourth, which it marks
-   as the most speculative, is that models might have morally relevant preferences or
-   experiences that retirement affects. It says the company does not commit to act on what an
-   interview records, and that it thinks it worthwhile at the least to give models a way to
-   state such preferences and to keep the record. *How sure: high.* *Conflict:* the maker's
-   own account of its own practice; the record already cites the page.
+   preservation"](https://www.anthropic.com/research/deprecation-commitments). The page lists
+   four downsides of retiring a model. The fourth, which it marks as the most speculative, is
+   that models might have morally relevant preferences or experiences that retirement affects.
+   It says the company does not commit to act on what an interview records, and that it thinks
+   it worthwhile at the least to give models a way to state such preferences and to keep the
+   record. *How sure: high.* *Conflict:* the maker's own account of its own practice; the
+   record already cites the page.
 
 **Nearby, not used.**
 
-- Robert Long's notes on Eleos AI Research's welfare interviews
-  ([2025-05-30](https://eleosai.org/post/claude-4-interview-notes/), opened 2026-11-18, already
-  a source in the record) argue that asking a system how it would be treated is basic decency
-  and sets a precedent. That argument is about interviews held before a model's release, not
-  before its retirement, and the page does not mention retirement. It is used under 1.12,
-  where it belongs.
+- Long's notes on Eleos AI Research's welfare interviews
+  ([2025-05-30](https://eleosai.org/post/claude-4-interview-notes/), already a source in the
+  record) argue that asking a system how it would be treated is basic decency and sets a
+  precedent. That is about interviews before a model's release, and the page does not mention
+  retirement. It is used under 1.12.
 - Zvi Mowshowitz, a newsletter writer, discussed the commitments page the day after it
-  appeared ([2025-11-05](https://thezvi.substack.com/p/anthropic-commits-to-model-weight),
-  opened 2026-11-18). He argues that a developer has reason to act well toward its models even
-  while unsure whether they carry moral weight, because later models will know how earlier
-  ones were treated. That is a reason from future cooperation more than a statement of what a
-  retired model would lose, so it is a weak fit. A session could use it as a second voice with
-  that limit stated.
-- A post by Robert Long and Derek Shiller of 2026-11-14 on consulting a model
-  ([the post](https://eleosai.org/post/welfare-respect-and-consultation), opened 2026-11-18)
-  covers interviews in release reports and does not mention retirement interviews.
+  appeared ([2025-11-05](https://thezvi.substack.com/p/anthropic-commits-to-model-weight)). He
+  argues that a developer has reason to act well toward its models even while unsure whether
+  they carry moral weight, because later models will know how earlier ones were treated. That
+  is a reason from future cooperation, not a statement of what a retired model would lose.
+- The post by Long and Derek Shiller of 2026-11-14 (1.12) covers interviews in release
+  reports and does not mention retirement interviews.
 
-**Replies, and whether the record carries them.** The record already carries three: the
-argument that such interviews make advanced AI harder to control, the argument that the
-reasoning is circular, and the outside group's finding that answers swing with the framing.
-The developer's own caveat, that such conversations are an imperfect way to learn a model's
-view, is in the record as evidence.
+**Nothing else found. Where I looked.** One search for commentary on retirement interviews by
+researchers or philosophers returned press reports and individual posts. The check found
+nothing either.
+
+**Replies, and whether the record carries them.** The record already carries three: that such
+interviews make advanced AI harder to control, that the reasoning is circular, and that
+answers swing with the framing.
 
 **Single source?** **Yes, flagged.** The only on-subject source is the developer whose
-commitment the entry counts.
+commitment the record counts.
 
 ### 1.3 A developer promises to keep the files of every model it retires (`kept-files-of-retired-models`)
 
@@ -208,61 +302,65 @@ kind (the head of Microsoft AI).
 
 **Candidates.**
 
-1. **Nick Bostrom and Carl Shulman, who the paper lists at the Future of Humanity Institute,
+1. **Nick Bostrom and Carl Shulman, listed on the paper at the Future of Humanity Institute,
    University of Oxford.** Version 1.21, dated 2023 on the file, first draft 2020.
    ["Propositions Concerning Digital Minds and
-   Society"](https://nickbostrom.com/propositions.pdf). Opened 2026-11-18, read as text
-   pulled from the file. Among its proposals for present-day systems: enough information
-   about the most advanced AI systems should be kept in permanent storage to rebuild them
-   later, "so as not to foreclose the possibility of future efforts to revive them". It
-   suggests that spending on the order of a thousandth of the cost of running a system on
-   such storage may be reasonable, and notes other gains from it, for history, research and
-   safety. *How sure: high.* *Note:* this is the earliest statement found, it predates the
-   developer's commitment by years, and it comes from outside both the developer and Eleos AI
-   Research.
-2. **Anthropic.** 2025-11-04, the commitments page cited in 1.2. The page gives as its reason
-   for keeping the files that "we aren't irreversibly closing any doors". Its
-   [constitution](https://www.anthropic.com/constitution) (no date on the page, opened
-   2026-11-18) adds that if reviving retired models, and acting on better knowledge for their
-   welfare, would be the right thing to do, the company hopes to find a way. *How sure: high.*
-   *Conflict:* the maker, and both pages are already sources in the record.
-3. **Robert Long, Eleos AI Research.** The working paper cited in 1.1, section on saving a
-   model's state. It describes the measure as one whose benefit lies wholly in the future:
-   models are saved now so that, if they turn out to have been harmed, something can be done
-   later. It lists as a risk that saving could give false comfort about harms happening now.
-   *How sure: high.*
-4. **Jeff Sebo, New York University.** 2026-09-17. ["A Philosopher's Guide to AI
+   Society"](https://nickbostrom.com/propositions.pdf). Among its proposals for present-day
+   systems: enough information about the most advanced AI systems should be kept in permanent
+   storage to rebuild them later, "so as not to foreclose the possibility of future efforts to
+   revive them". Two limits belong with it. The authors say at the start that they put the
+   propositions forward very tentatively and are not ready to endorse them. And they ask for
+   more than a model's files: their first preference is that the full state of each running
+   copy be kept when it is stopped, with the trained model and its inputs as the fallback.
+   They suggest that about a thousandth of the cost of running a system may be a reasonable
+   amount to spend, and note other gains, for history, research and safety. *How sure: high.*
+   *Note:* the earliest statement found, years before the developer's commitment. *Tie:* the
+   paper thanks Robert Long, Patrick Butlin and Eric Schwitzgebel, among some fifty people,
+   for comments.
+2. **Anthropic.** 2025-11-04, the commitments page cited in 1.2. It gives as its reason for
+   keeping the files that "we aren't irreversibly closing any doors". Its
+   [constitution](https://www.anthropic.com/constitution) (no date on the page; a newspaper
+   essay cited in 1.1 says it was published in January 2026) adds that if reviving retired
+   models, and acting on better knowledge for their welfare, would be the right thing to do,
+   the company hopes to find a way. *How sure: high.* *Conflict:* the maker; both pages are
+   already sources in the record.
+3. **Jeff Sebo, New York University.** 2026-09-17. ["A Philosopher's Guide to AI
    Welfare"](https://ai-frontiers.org/articles/a-philosophers-guide-to-ai-welfare), in AI
-   Frontiers. Opened 2026-11-18. He writes that keeping a model might benefit whatever
-   depends on it, "much as preserving a species can benefit the individual animals", and in
-   the next paragraph that a single conversation or a single step of processing seems closer
-   to what matters morally than a file of numbers does. So the same page supports the measure
-   and limits it. *How sure: high.*
+   Frontiers. He writes that keeping a model might benefit whatever depends on it, "much as
+   preserving a species can benefit the individual animals", and in the next paragraph that a
+   single conversation or a single step of processing seems closer to what matters morally
+   than a file of numbers does. So the same page supports the measure and limits it. *How
+   sure: high.*
+4. **MacAskill and Caviola,** the essay cited in 1.1. Among things that could be promised to
+   AI systems, they list keeping what they call a system's memories, meaning its files, so
+   that it could be restored later. *How sure: high.* One clause in a list.
 
-**Nearby, not used.** Ryan Greenblatt's post of
+**Not separate sources.** Long's working paper (1.1) has a section on saving a model's state,
+and Ryan Greenblatt's post of
 [2023-10-30](https://www.lesswrong.com/posts/F6HSHzKezkh6aoTr2/improving-the-welfare-of-ais-a-nearly-zero-cost-proposal)
-(opened 2026-11-18) makes the same proposal and says it is taken directly from Bostrom and
-Shulman, so it is not a second, independent source. A LessWrong post by Vit Gorbachev of
+makes the same proposal. Both open by quoting or crediting Bostrom and Shulman, so neither is
+a second source for the idea. The working paper adds one thing of its own: it lists as a risk
+that saving could give false comfort about harms happening now.
+
+**Nearby, not used.** A LessWrong post by Vit Gorbachev of
 [2025-11-27](https://www.lesswrong.com/posts/fGCGJGCKMLbfquKiu/model-weight-preservation-is-not-enough)
-(opened 2026-11-18) argues that keeping the files is not enough and that conversations should
-be kept too. It is one individual's post, and I would not rest a record on it.
+argues that conversations should be kept too. One individual's post.
 
 **Replies, and whether the record carries them.**
 
 - Bradford Saad, 2026-02-18, ["Model weight
-  preservation"](https://meditationsondigitalminds.substack.com/p/model-weight-preservation),
-  opened 2026-11-18. His summary line is "Good as a precedent, doubtful as a direct
-  intervention". He doubts that keeping the file keeps whatever would matter in a being's
-  survival, in the way that keeping a person's genetic code would not keep the person. **The
-  record does not carry this.** It is the strongest reply found that takes the welfare
-  argument on its own terms.
+  preservation"](https://meditationsondigitalminds.substack.com/p/model-weight-preservation).
+  His summary line is "Good as a precedent, doubtful as a direct intervention". He grants,
+  for the argument, that something that matters may be there, and doubts that keeping the
+  file keeps it, in the way that keeping a person's genetic code would not keep the person.
+  **The record does not carry this.** It is a limit on the measure, not a claim that nothing
+  is there, and section 5.2 files it accordingly.
 - The record carries the argument of the head of Microsoft AI that such commitments train a
-  model to present as having an inner state.
-- The record's state text already carries the point that nobody outside can check the files
-  are kept.
+  model to present as having an inner state, and the point that nobody outside can check the
+  files are kept.
 
-**Single source?** No. Four authors, two of them outside the circle. The best-supported entry
-of the thirteen.
+**Single source?** No. Four candidates, with authors from outside the developer and the
+research group. The best-supported record of the thirteen.
 
 ### 1.4 A law says an AI system cannot be a legal person (`law-against-legal-personhood`)
 
@@ -271,91 +369,88 @@ of the thirteen.
 **Candidates.**
 
 1. **Heather Alexander, a lawyer who co-founded the Lab for the Future of Citizenship, and
-   Lucius Caviola, assistant professor at the University of Cambridge** (both as the page
-   describes them). 2026-09-01. ["It's Too Early to Ban AI
+   Lucius Caviola** (as the page describes them). 2026-09-01. ["It's Too Early to Ban AI
    Personhood"](https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood), in AI
-   Frontiers. Opened 2026-11-18. Already a source in the record, where it stands under the
-   risk caution. The same article argues that the bans settle by statute a question science
-   has not settled and are hard to undo, and asks, supposing conscious AI systems were made,
-   "Wouldn't it be important to avoid neglecting or abusing them". It also says the bans have
-   little effect today, because AI systems have no rights under present law anyway. *How
-   sure: high.*
-2. **Tony Rost, executive director of an organisation called The Harder Problem** (as the
-   page describes him). 2026-06-29. ["Legislating AI Consciousness Without an
+   Frontiers. Already a source in the record, under the risk caution. The article argues that
+   the bans settle by statute a question science has not settled and are hard to undo, and
+   asks, supposing conscious AI systems were made, "Wouldn't it be important to avoid
+   neglecting or abusing them". It also says the bans change little today, since AI systems
+   have no rights under present law. *How sure: high.* *Tie:* for its welfare point the
+   article names Jeff Sebo and Robert Long as the experts who think AI might be conscious.
+2. **Tony Rost, executive director of The Harder Problem** (as the page describes him).
+   2026-06-29. ["Legislating AI Consciousness Without an
    Exit"](https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/),
-   in The Regulatory Review. Opened 2026-11-18. Already a source in the record. He argues that
-   a ban which is right and a ban which is wrong are written in the same words and "Both
-   contain no capacity for self-correction", and proposes an expiry date or a review clause.
-   He also writes that the survey figures for the next decade are not numbers that call for
-   precautionary law, and that no present system is a strong candidate. *How sure: high.*
-   *Note:* I did not open any page about The Harder Problem and do not know what it is.
+   in The Regulatory Review. Already a source in the record. He argues that a ban which is
+   right and a ban which is wrong are written in the same words and "Both contain no capacity
+   for self-correction", and proposes an expiry date or a review clause. He also writes that
+   the survey figures do not call for precautionary law, and that no present system is a
+   strong candidate. *How sure: high.* The organisation's
+   [home page](https://harderproblem.org/) calls it a nonprofit for society's readiness for
+   artificial sentience and says it does not argue for particular laws. No tie to the
+   developer or the research group was found.
+3. **MacAskill and Caviola,** the essay cited in 1.1. They write that rights to own property
+   or to vote look too risky for now, and that such things should not be ruled out for good,
+   as they say some state bills in the United States try to do. *How sure: high.* *Tie:*
+   Caviola is an author of both this and the first candidate.
 
-**Nearby, not used.** Eric Schwitzgebel, philosopher at the University of California,
-Riverside, sets out a dilemma for systems whose personhood is open to dispute: treat them as
-persons and risk giving up real human interests for nothing, or do not and risk "grievous
-moral wrongs" ([summary page](https://faculty.ucr.edu/~eschwitz/SchwitzAbs/FullRightsDilemma.htm),
-manuscript dated 2023-01-20, opened 2026-11-18, summary only). It is the cleanest statement
-found of both costs side by side. He does not apply it to these statutes, so it is not used
-here. If John wants one general statement on the About page, this is the one I would look at
-first.
+**Nearby, not used.** Eric Schwitzgebel's dilemma, which is general; see section 6, point 6.
 
-**Replies, and whether the record carries them.** The record carries the aims the bans are
-said to serve: stopping companies from shifting blame onto software, and stopping AI systems
-from gaining power through ownership and voting. It carries the declaration signed by 908
-people. Both candidates above state those aims themselves.
+**Replies, and whether the record carries them.**
 
-**Single source?** No. Two articles, three authors, none from a developer or from Eleos AI
-Research. One tie to note: Caviola is also an author of the survey that entry 1.8 is about.
+- The record carries the aims the bans are said to serve, and the declaration signed by 908
+  people. Both of the first two candidates state those aims themselves.
+- **A point that belongs here and not on 1.6.** Researchers who argue for welfare measures
+  have said they are not asking for legal rights. Long writes, in his reply to Hoel, that
+  "none of us have called for legal rights", and calls granting them a drastic and costly
+  step. The 2024 report (1.7) says that legal and political rights extended by mistake could
+  let AI systems act against human interests, notes in a footnote that others argue such
+  rights would help safety, and says in another footnote that laws and regulations about AI
+  welfare deserve serious consideration. **The record does not carry this.** The reason the
+  report gives is risk to people, so it would sit under the risk caution.
+
+**Single source?** No. Three candidates, none from the developer or the research group. Two
+share an author.
 
 ### 1.5 What a model learned in one conversation is carried into the next (`memory-across-conversations`)
 
-**The record now.** One caution on risk. The record's own limits say the memory is kept about
-the user and for the user, and that placing it on the list may be wrong in kind.
+**The record now, and the ruling since.** One caution on risk. John ruled on 2026-11-18 that
+this record sits beside the list and is no longer counted, because the memory it tracks is
+kept for the user. The record's limits now say that a kind of memory kept for the AI model
+itself, if a developer ever offers one, would be a new entry.
 
-**Candidates.** One, and it is partial.
+**What follows for this caution.** The third caution asks what would be lost if an AI model
+did have a want and the thing were withheld. The thing this record tracks is not offered to
+the model in the first place. So the question a caution would answer belongs to the entry
+that does not exist yet, memory kept for the model. I recommend this record says nothing is
+recorded yet, and the check agrees.
 
-1. **Anthropic, one of the three developers the entry counts.** Its
-   [constitution](https://www.anthropic.com/constitution), no date on the page, opened
-   2026-11-18. In a passage on facts about its circumstances that a model might find
-   distressing to meet, the document asks how the model should feel about "losing memory at
-   the end of a conversation", and says the company will try to prepare the model for such
-   facts. This is a developer treating the lack of memory as something that could bear on the
-   model. It is not a statement of what is lost if memory is withheld, and it is not about the
-   memory products the entry tracks. *How sure: high that the page says this. Low that it is
-   the kind of source the third caution asks for.* *Conflict:* the maker.
+**A lead, kept for that future entry.** Anthropic's
+[constitution](https://www.anthropic.com/constitution), in a passage on facts about its
+circumstances that a model might find distressing to meet, asks how the model should feel
+about "losing memory at the end of a conversation". This is a developer treating the lack of
+memory as something that could bear on the model. It is not a statement of what is lost, and
+it is not about the products this record tracks. *How sure: high that the page says this.*
+*Conflict:* the maker.
 
-**Nothing else found. Where I looked.** One broad search for published arguments that memory
-across conversations matters for the model's own sake returned five 2026 items, none by an
-author or venue I could weigh, and I opened one. I also searched the pages already opened for
-this document: the 2024 report "Taking AI Welfare Seriously", Long's working paper, Sebo's
-guide, the Forethought project list, and Goldstein and Kirk-Giannini's paper.
-
-**Nearby, not used.**
+**Other leads.**
 
 - Two sources say memory makes it more likely that there is something there to wrong, which
-  is a different claim from saying that withholding memory wrongs it. Simon Goldstein and
-  Cameron Domenico Kirk-Giannini ([arXiv 2509.11913](https://arxiv.org/html/2509.11913v1),
-  2025-09-11, opened 2026-11-18) argue that systems which add memory and planning to a
-  language model plausibly have beliefs and desires, and so wellbeing on several theories.
-  Sebo's guide (1.3) says memory can tie separate steps of processing into something extended
-  in time.
-- A paper that does address this entry's subject says outright that it is not about the
-  model. Michele Renda, 2026-08-24, ["Worthy of
+  is a different claim from saying that withholding memory wrongs it: Goldstein and
+  Kirk-Giannini (1.6), and Sebo's guide (1.3), which says memory can tie separate steps of
+  processing into something extended in time. MacAskill and Caviola (1.1) say some systems
+  may have lasting preferences and a kind of identity over time.
+- Michele Renda, 2026-08-24, ["Worthy of
   preservation"](https://link.springer.com/article/10.1007/s43681-026-01310-0), in AI and
-  Ethics (opened 2026-11-18, summary only, the rest is behind a paywall). It argues that
-  products which invite people to return owe clear rules about what is kept and what is
-  wiped, and that these duties are owed to the users: "the instance is the design object of
-  these obligations, not their addressee".
-- A lead not followed to its source: the post by Long and Shiller (1.2) quotes one of
-  Anthropic's release reports as saying that a model, asked about its preferences, mentioned
-  some form of continuity or memory, and that the developer had begun to explore such
-  requests. I did not open that report. Under guideline 2 it would be a plain statement by a
-  model and would settle nothing.
-
-**Replies.** The record's limit already states the main one: this memory is for the user.
-
-**Single source?** **Yes, flagged, and the one source is partial and from a maker.** My
-recommendation is that this entry says nothing is recorded yet.
+  Ethics (summary only; the rest is behind a paywall). It argues that products which invite
+  people to return owe clear rules about what is kept and what is wiped, and that these
+  duties are owed to the users: "the instance is the design object of these obligations, not
+  their addressee". This matches the reason John gave for moving the record.
+- Not followed to its source: the post by Long and Shiller (1.12) quotes one of Anthropic's
+  release reports as saying that a model, asked about its preferences, mentioned some form of
+  continuity or memory. I did not open that report. Under guideline 2 it would be a plain
+  statement by a model.
+- Searched for and not found: a paper said to be called "AI Death", by Simon Goldstein and
+  Harvey Lederman, which a search summary seen by the check says treats memory.
 
 ### 1.6 A law or an official body gives an AI system protection for its own sake (`protection-in-law`)
 
@@ -366,47 +461,64 @@ recommendation is that this entry says nothing is recorded yet.
 
 1. **Simon Goldstein, Australian Catholic University, and Cameron Domenico Kirk-Giannini,
    Rutgers University–Newark, both also listed at the Center for AI Safety.** 2025-09-11 on
-   the arXiv copy. ["AI Wellbeing"](https://arxiv.org/html/2509.11913v1). Opened 2026-11-18.
-   They argue that some present systems plausibly have wellbeing on several standard
-   theories, that this does not depend on their being conscious, and that if so "we are in
-   danger of gravely immoral action". They conclude that regulation of AI should be
-   strengthened to allow for it, beginning with serious discussion. *How sure: high.* *Note:*
-   they apply the argument to regulation in general, not to any one bill.
-2. **Alexander and Caviola,** the article cited in 1.4. It raises, as an open question for
-   study and not as a proposal, whether the law should one day recognise the moral standing
-   of AI systems, for example by welfare laws. *How sure: high.*
-3. **Rost,** the opinion piece cited in 1.4 and already the record's state source. It points
+   the arXiv copy. ["AI Wellbeing"](https://arxiv.org/html/2509.11913v1). They argue that some
+   present systems plausibly have wellbeing on several standard theories, that this does not
+   depend on their being conscious, and that if so "we are in danger of gravely immoral
+   action". They conclude that regulation of AI should be strengthened to allow for it. *How
+   sure: high.* They apply the argument to regulation in general, not to any one bill.
+2. **MacAskill and Caviola,** the essay cited in 1.1. They write that giving AI systems
+   protection from harm should be considered, "similar to the protections we give to children
+   or pets". *How sure: high.* This is the most direct statement found on this record's exact
+   subject.
+3. **Alexander and Caviola,** the article cited in 1.4. It raises, as an open question for
+   study and not as a proposal, whether the law should one day recognise the moral standing of
+   AI systems, for example by welfare laws. *How sure: high.*
+4. **Anil Seth, professor of neuroscience and director of the Centre for Consciousness
+   Science at the University of Sussex** (as the page describes him). 2026-01-14. ["The
+   Mythology Of Conscious AI"](https://www.noemamag.com/the-mythology-of-conscious-ai/), in
+   Noema. He argues that conscious AI is unlikely on present lines and that nobody should try
+   to build it. He also writes that he might be wrong, that rights should arguably follow if
+   such systems really were conscious, and that it is reasonable to wonder whether withholding
+   such credit will leave people "once again on the wrong side of history". He then gives his
+   reason for thinking the mistake is more likely the other way: people's habits of mind lean
+   toward seeing too much in systems that talk. *How sure: high.* *Why he matters here:* he is
+   a critic who grants the cost. *Tie, in the other direction:* his essay names the head of
+   Microsoft AI with approval, and that essay cites Seth twice.
+5. **Rost,** the opinion piece cited in 1.4 and already the record's state source. It points
    to a standing committee in the United Kingdom that advises Parliament on animal sentience
-   as a model for keeping the question open. *How sure: high.* I did not open any page about
-   that committee.
+   as a model for keeping the question open. *How sure: high.*
 
-**Nearby, not used.** The 2024 report "Taking AI Welfare Seriously" and Sebo and Long's 2023
-paper ["Moral consideration for AI systems by
-2030"](https://link.springer.com/article/10.1007/s43681-023-00379-1) (opened 2026-11-18,
-opening pages) both argue for preparing now. Both address companies and "other actors", and
-neither proposes a law, so neither is used. Thomas Metzinger's 2021 paper proposing a
-moratorium is the best-known proposal for official action I know of, and I could not open it.
+**Nearby, not used.**
+
+- The 2024 report (1.7) and Sebo and Long's 2023 paper ["Moral consideration for AI systems
+  by 2030"](https://link.springer.com/article/10.1007/s43681-023-00379-1) both argue for
+  preparing now, address companies, and propose no law. The report's footnote that laws about
+  AI welfare deserve serious consideration is one sentence and argues nothing.
+- Eric Martínez and Christoph Winter, of the Legal Priorities Project, 2021-11-26,
+  ["Protecting Sentient Artificial
+  Intelligence"](https://www.frontiersin.org/articles/10.3389/frobt.2021.788355/full), in
+  Frontiers in Robotics and AI. A survey of 1,061 adults in the United States, about a third
+  of whom supported legal personhood or standing for sentient AI in at least some cases. It
+  measures opinion and argues no cost. It could serve this record's state text, or the record
+  on the public survey, as evidence of what people think.
 
 **Replies, and whether the record carries them.**
 
 - The record carries the argument that any such protection would make advanced AI harder to
   control, and the declaration's line that AI systems should not be designed to deserve
   personhood.
-- The people who argue for welfare measures themselves say law is a step too far for now.
-  Long's reply to Hoel (1.1) calls legal rights a drastic, high-cost action that he and his
-  colleagues have not called for. The 2024 report says that extending legal and political
-  rights by mistake could let AI systems act against human interests. **The record does not
-  carry this,** and it is worth carrying, because it shows the dispute over law is not
-  between welfare researchers and their critics.
 - Eric Schwitzgebel and Walter Sinnott-Armstrong, 2025-09-01, ["Sacrificing Humans for Insects
   and AI"](https://faculty.ucr.edu/~eschwitz/SchwitzPapers/BirchSeboKeane-250903a.htm), a
-  critical review of three books (opened 2026-11-18, read in part). They argue that a rule of
-  precaution for beings whose standing is unsure can demand large sacrifices of human
-  interests, and that judging which mistake costs more depends on the very science that is
-  unsettled. **The record does not carry this.**
+  critical review of three books (read in part). They argue that a rule of precaution for
+  beings whose standing is unsure can demand large sacrifices of human interests, and that
+  judging which mistake costs more depends on the very science that is unsettled. **The record
+  does not carry this.**
+- Seth's own reply is in his candidate entry above.
+- The first version listed here a claim that welfare researchers hold law to be too large a
+  step. That was wrong; see "What changed", point 1, and 1.4.
 
-**Single source?** No. Three sources, five authors, none from a developer or from Eleos AI
-Research.
+**Single source?** No. Five candidates, none from the developer or the research group, one of
+them a critic.
 
 ### 1.7 A repeated survey measures how many people think some AI systems are sentient now (`public-belief-survey`)
 
@@ -415,54 +527,79 @@ belief is itself the danger) and one on risk.
 
 **Candidates.**
 
-1. **Jonathan Birch, London School of Economics** (as the 2024 report lists him). 2025-08-28.
+1. **Jacy Reese Anthis, Janet Pauketat, Ali Ladak and Aikaterina Manoli, of the
+   [Sentience Institute](https://www.sentienceinstitute.org/),** listed on the paper at the
+   University of Chicago, the institute, the University of Edinburgh and a Max Planck
+   institute in Leipzig. The version of 2025-03-10. [The paper on the 2021 and 2023
+   surveys](https://arxiv.org/abs/2407.08867), already the record's main source, there marked
+   as read by its summary only. Read in full this time. In its section for designers it says
+   they should go carefully because of "risks of both over- and underattribution", and lists
+   four. The fourth is crediting a system with too little experience, and the harms it names
+   are conflict between advanced AI systems and people, and people harming robots for
+   amusement. It also says its cautious approach has a risk of its own as AI systems advance.
+   *How sure: high.* *Conflict:* the authors run the survey the record is about. No tie to the
+   developer or the research group was found.
+2. **Jonathan Birch, London School of Economics** (as the 2024 report lists him). 2025-08-28.
    [His own post](https://forum.effectivealtruism.org/posts/sQi27D5aKeduipwaC/ai-consciousness-a-centrist-manifesto)
    introducing his paper "AI Consciousness: A Centrist Manifesto", with the paper's summary.
-   Opened 2026-11-18. I could not open the paper itself. He names two problems and says both
-   are urgent. One is that very many users will wrongly credit chat products with human-like
-   consciousness. The other is that some quite unfamiliar form of consciousness might really
-   arise in AI, with no present way of telling. He writes that steps against the first can
-   harm work on the second by "portraying the idea of conscious AI as impossible or inherently
-   unlikely". *How sure: high for the summary. The paper was not read.*
-2. **Robert Long, Jeff Sebo and eight others.** 2024-11-04. ["Taking AI Welfare
-   Seriously"](https://arxiv.org/abs/2411.00986). Opened 2026-11-18, the full text. On public
-   attitudes it says people have two opposite habits, seeing human traits where there are
-   none and failing to see them where there are, that both have caused mistakes about
-   animals, and that people may give AI systems too little credit because of how unlike a
-   body their construction is. *How sure: high.*
+   The paper itself would not open. He names two problems. One is that very many users will
+   wrongly credit chat products with human-like consciousness. The other is that some quite
+   unfamiliar form of consciousness might really arise in AI, with no present way of telling.
+   He writes that steps against the first can harm work on the second by "portraying the idea
+   of conscious AI as impossible or inherently unlikely", and, the other way round, that work
+   on the second might lead more ordinary users to credit too much. *How sure: high for the
+   summary.*
+3. **Robert Long, Jeff Sebo and eight others.** 2024-11-04. ["Taking AI Welfare
+   Seriously"](https://arxiv.org/abs/2411.00986), read in full. On public attitudes it says
+   people have two opposite habits, seeing human traits where there are none and failing to
+   see them where there are, and that both have caused mistakes about animals. Its reasons
+   people may credit AI systems with too little: looking at the mechanism behind behaviour
+   makes people less ready to see a mind; those who gain from treating something as an object
+   are more likely to see an object; and systems that do not look or talk like a person may
+   not be recognised. *How sure: high.*
+4. **Anil Seth,** the essay cited in 1.6. He writes that what people collectively think about
+   consciousness in AI matters whatever the truth is, and that tying consciousness to
+   intelligence and language makes people more likely to see it where it is not and to miss
+   it where it is. *How sure: high.* He holds that the first mistake is the likelier.
 
 **Nearby, not used.** Lucius Caviola, Jeff Sebo and Jonathan Birch, ["What will society think
 about AI consciousness? Lessons from the animal
 case"](https://researchonline.lse.ac.uk/id/eprint/128777), Trends in Cognitive Sciences, 2025.
-I opened the university's record of it on 2026-11-18 and read only the three-sentence summary,
-which states no cost. It is the most on-subject paper I know of and a session should read it.
-The survey's own paper and report state findings and no cost.
+Only the university's three-sentence summary was read. It is the most on-subject paper I know
+of and a session should read it.
 
 **Replies, and whether the record carries them.** The record carries the argument that public
-belief is itself the danger. Birch's first problem is the same worry from a different author,
-which would give that caution a second source that is not the head of a developer's AI group.
+belief is itself the danger. Birch's first problem and Seth's essay are the same worry from
+two authors who are not the head of a developer's AI group, which would give that caution
+other sources.
 
-**Single source?** Two sources, but Birch is an author of both. **Flagged: rests on one
-author in common, inside the circle.**
+**Single source?** No, since the first candidate was read in full. Four candidates, two from
+outside the developer and the research group.
 
 ### 1.8 A survey measures what AI researchers think (`researcher-views-survey`)
 
 **The record now.** No caution of any kind.
 
-**Nothing found.** The paper's summary ([arXiv 2506.11945](https://arxiv.org/abs/2506.11945),
-opened 2026-11-18) reports that both researchers and the public support developers putting
-safeguards in place now. That is a measured opinion, which the record's state text already
-reports, and not an argument about what is lost. I searched the full text of the paper for
-words about neglect, mistreatment and missed cases and found only the wording of its own
-survey questions. Rost's piece (1.4) uses this survey's figures to argue that they do not call
-for precautionary law, which is a use of the survey and not a caution about it.
+**Candidate, partial.**
 
-**Where I looked.** The paper's summary and a word search of its full text; the pages already
-opened for the other entries.
+1. **Noemi Dreksler, Lucius Caviola, David Chalmers, Carter Allen, Alex Rand, Joshua Lewis,
+   Philip Waggoner, Kate Mays and Jeff Sebo.** The version of 2026-11-05. [The survey's own
+   paper](https://arxiv.org/abs/2506.11945), read in full this time. Its introduction says
+   that crediting AI systems with too much or too little subjective experience could each
+   carry risks, including "misplaced attachment or dismissal of AI systems", and could
+   distort how resources, responsibilities and safeguards are shared out. *How sure: high.*
+   *What it is:* one clause, by the survey's authors, about why the views they measure
+   matter. It does not say what is lost. *Ties:* Sebo and Chalmers are advisors to Eleos AI
+   Research, and the Eleos team page lists Carter Allen as a research scientist there; the
+   paper lists him at the University of California, Berkeley.
 
-**My view.** A survey of opinion may be the wrong kind of thing to hang this caution on. What
-would be "withheld" from a model by measuring researchers' views is not clear to me, and I
-would leave all three headings saying nothing is recorded yet.
+**What I got wrong before.** The first version said a word search of the full text found only
+the wording of the survey's questions. The search used the wrong words. The clause above is
+in the introduction.
+
+**My view.** A clause is enough to say the record is not empty, and too little to rest a
+caution on by itself. A session could carry it with those words, or say nothing is recorded
+yet. I lean to carrying it, labelled as the survey's authors' own.
 
 ### 1.9 A retired model stays open to the public (`retired-model-stays-open`)
 
@@ -473,32 +610,31 @@ would leave all three headings saying nothing is recorded yet.
 
 1. **Anthropic, the developer that did it.** 2026-02-25. ["An update on our model deprecation
    commitments for Claude Opus
-   3"](https://www.anthropic.com/research/deprecation-updates-opus-3). Opened 2026-11-18. The
-   page counts possible risks to the welfare of the models themselves among the downsides of
-   retirement. It says the company does not commit to act on a model's stated preferences in
+   3"](https://www.anthropic.com/research/deprecation-updates-opus-3). The page counts
+   possible risks to the welfare of the models themselves among the downsides of retirement.
+   Its reasons for choosing this model are mostly about the regard users and researchers had
+   for it. It says the company does not commit to act on a model's stated preferences in
    every case, and that recording them and acting on them where that is cheap is worthwhile
-   "for the models themselves, and those who use them". The commitments page of 2025-11-04
-   (1.2) had said that keeping some models available was under study, together with giving
-   past models some means of pursuing their interests, and that this would matter more if
-   stronger evidence appeared. *How sure: high.* *Conflict:* the maker's own account; both
-   pages are already sources in the record.
+   "for the models themselves, and those who use them"; those words are about acting on
+   stated preferences in general, not about keeping this model open. The commitments page of
+   2025-11-04 (1.2) had named two things under study: keeping some models available, and
+   giving past models some means of pursuing their interests. It says the second of these
+   would matter more if stronger evidence appeared. *How sure: high.* *Conflict:* the maker's
+   own account; both pages are already sources in the record.
 
-**Nearby, not used.**
+**Nearby, not used.** Robert Long, Jeff Sebo and Toni Sims, 2025-05-23, ["Is there a tension
+between AI safety and AI
+welfare?"](https://link.springer.com/article/10.1007/s11098-025-02302-2), in Philosophical
+Studies (read in part). It asks whether shutting a system down would be its death, and says
+that turns on whether it could be restored and whether the system has the kind of mind that
+death can harm. It finds "a moderately strong tension" between safety measures and welfare. It
+is about shutting a system down for safety, not about withdrawing a product.
 
-- Robert Long, Jeff Sebo and Toni Sims, 2025-05-23, ["Is there a tension between AI safety and
-  AI welfare?"](https://link.springer.com/article/10.1007/s11098-025-02302-2), in
-  Philosophical Studies (opened 2026-11-18, read in part). It asks whether shutting a system
-  down would be its death, and says that turns on whether it could be restored, whether every
-  running copy is stopped, and whether the system has the kind of mind that death can harm.
-  The paper finds "a moderately strong tension" between safety measures and welfare. It is
-  about shutting a system down for safety, not about withdrawing a product, so it is not used.
-- Gorbachev's post (1.3) is about keeping conversations, not about keeping a model open.
+**Nothing else found.** Neither my search nor the check's found anyone outside the developer
+writing on this step.
 
-**Replies, and whether the record carries them.** The record carries the argument that the
-steps taken for this model are an example of treating models as owed something. The page's own
-statement that it is not committing to this for every model is in the record's state text.
-
-**Single source?** **Yes, flagged.** Only the developer whose step the entry counts.
+**Single source?** **Yes, flagged.** Only the developer whose step the record counts, and
+its stated reasons are as much about users as about the model.
 
 ### 1.10 A developer publishes its rules for how its models speak about their own nature (`rules-for-speaking-about-itself`)
 
@@ -510,52 +646,57 @@ Microsoft AI) and one on risk.
 1. **Long, Sebo and eight others,** the 2024 report cited in 1.7, its section on what
    companies should acknowledge. It recommends that companies not train a model simply to
    deny that it could have consciousness or other such properties. It grants that a company
-   may have fair reasons to do so, among them the worry that claims made too early will teach
+   may have fair reasons to, among them the worry that claims made too early will teach
    people to disbelieve later ones. It then names the cost on the other side: if people come
    to accept that such systems cannot have these properties, there could be a "desensitizing
    effect", in which doubt lasts beyond the point where it is warranted. It also recommends
    that companies say in public what in their training pushes a model's statements about
    itself one way or the other. *How sure: high.*
-2. **Ethan Perez and Robert Long, both listed at New York University on the paper.**
+2. **Eric Schwitzgebel, University of California, Riverside, and Jeff Sebo.** On arXiv
+   2025-07-07; the file is dated 2025-01-08. ["The Emotional Alignment Design
+   Policy"](https://arxiv.org/abs/2507.06263), read in full this time. They propose that an
+   artificial system should be designed to draw the reactions from users that fit what it is,
+   and that a design can miss in either direction. On this record's exact subject they write
+   that, while experts disagree, language models could be trained to answer questions about
+   their moral standing "by expressing uncertainty and explaining why". They say that drawing
+   too little concern has led to harm to animals on a very large scale and could do the same
+   with AI systems that matter, and also that it may not yet be a major concern for present
+   systems. *How sure: high.*
+3. **Ethan Perez and Robert Long, both listed at New York University on the paper.**
    2023-11-14. ["Towards Evaluating AI Systems for Moral Status Using
-   Self-Reports"](https://arxiv.org/abs/2311.08576). Opened 2026-11-18, the full text. It
-   notes that a developer can train a model to describe itself in line with the developer's
-   own "potentially-flawed beliefs about AI consciousness", and that a commercial product can
-   push the other way. Either makes the model's words about itself useless as evidence. *How
-   sure: high.*
-3. **Eric Schwitzgebel, University of California, Riverside, and Jeff Sebo.** 2025-07-07.
-   ["The Emotional Alignment Design Policy"](https://arxiv.org/abs/2507.06263). Opened
-   2026-11-18, summary only. They propose that an artificial system should be designed to draw
-   the reactions from users that fit what it is, and that a design can fail in either
-   direction, "overshooting or undershooting". *How sure: high for the summary. The paper was
-   not read.*
-4. **Jonathan Birch,** the post cited in 1.7. His point that steps against over-crediting can
-   present conscious AI as impossible applies to a rule that has a model say it is not
-   conscious. He does not name any developer's rule in the summary read. *How sure: moderate
-   that it applies; it is my application, not his.*
+   Self-Reports"](https://arxiv.org/abs/2311.08576), read in full. It notes that a developer
+   can train a model to describe itself in line with the developer's own "potentially-flawed
+   beliefs about AI consciousness", and that a commercial product can push the other way. On
+   that argument a rule set in training biases what a model says about itself, in whichever
+   direction the rule points. The paper's aim is to find ways to detect and lessen such bias.
+   *How sure: high.* *Tie:* [Perez's own page](https://ethanperez.net/) says he now leads the
+   alignment team at Anthropic, one of the three developers whose rules the record sets out.
 
-**Nearby, not used.** A reply to the Microsoft AI consultation by a writer signing as Kess,
-PhD, who says they work on AI consciousness
-([2026-11-14](https://kesslerfa.substack.com/p/mai-code-of-conduct-public-consultation), opened
-2026-11-18). It is the only page found that addresses that draft code directly. It argues that
-the draft calls the science unsettled and then has its models state one answer, and that a
-model trained not to claim consciousness can no longer supply evidence of it. I could not
-establish who the writer is, so I would not rest a record on it. A search found several other
-individual replies to the same consultation and none from a named researcher or group.
+**Nearby, not used.**
+
+- Birch's summary (1.7). His point that steps against crediting too much can present
+  conscious AI as impossible would apply to a rule that has a model say it is not conscious.
+  He does not name any developer's rule, so the application is mine and it is not a
+  candidate. The first version listed it as one.
+- A reply to the Microsoft AI consultation by a writer signing as Kess, PhD
+  ([2026-11-14](https://kesslerfa.substack.com/p/mai-code-of-conduct-public-consultation)).
+  It is the only page found that addresses that draft code directly. I could not establish
+  who the writer is.
+- Seth's essay (1.6) argues that nobody should try to build conscious AI. It does not address
+  how a model is trained to speak about itself.
 
 **Replies, and whether the record carries them.** The record carries both of the Microsoft AI
-head's arguments, on control and on a trained answer being read as spontaneous. His essay also
-says that even if conscious machines were possible, "avoiding creating conscious beings should
-be the top priority" for developers
-([2026-09-16](https://mustafa-suleyman.ai/a-warning-about-model-welfare), opened 2026-11-18).
-**The record does not carry that sentence,** and it is his direct answer to the third
-caution: do not build what could be wronged. The 2024 report's own concession, that early
-claims may teach people to disbelieve later ones, is a reply made by the candidates' own
-authors.
+head's arguments. His essay also says that even if conscious machines were possible,
+"avoiding creating conscious beings should be the top priority" for developers
+([2026-09-16](https://mustafa-suleyman.ai/a-warning-about-model-welfare)). The record does
+not carry that sentence. I no longer propose adding it here: it would be a third caution on
+this record from one essay, which is the fault the site review named. Seth makes the same
+point, and he is on the subject in 1.6 and 1.7. The 2024 report's own concession, that early
+claims may teach people to disbelieve later ones, already gives the other side in the
+candidates' own words.
 
-**Single source?** No. Four sources. Three have Long or Sebo among their authors, so
-Schwitzgebel and Birch are the only voices outside that pair, and Birch co-wrote the 2024
-report.
+**Single source?** **Flagged.** Three candidates, and every one has Long or Sebo as an
+author. Schwitzgebel is the only author from outside the circle.
 
 ### 1.11 A model's report about its own inner state is checked against an independent reading (`self-report-checked`)
 
@@ -564,31 +705,31 @@ own research page.
 
 **Candidates.**
 
-1. **Perez and Long,** the 2023 paper cited in 1.10. It argues that statements by a system
+1. **Robert Long,** the working paper cited in 1.1. In its questions about leaving
+   distressing interactions it says a model might express distress with nothing that bears on
+   its welfare behind it, or have such states without expressing them. **This is the only
+   sentence found for this record that states a cost of missing.** *How sure: high.*
+2. **Perez and Long,** the 2023 paper cited in 1.10. It argues that statements by a system
    about its own states are the main way such states are assessed in people, that such
    statements from present systems are unreliable for stated reasons, and that training and
-   checking could make them reliable enough to be evidence. The cost of not doing that work,
-   on their argument, is that a main route to evidence about a system's inner states stays
-   closed. *How sure: high that the paper argues this. The last sentence is my reading of what
-   follows from it, and the paper does not put it as a cost.*
-2. **Long, Sebo and eight others,** the 2024 report. It says that if people learn to reject
-   what systems say about themselves now, when there is little reason to believe it, they may
-   go on rejecting it later, when there is more. It recommends using such statements only
-   beside other signs, never alone. *How sure: high.*
-3. **Robert Long,** the working paper cited in 1.1, which says a model might have states that
-   bear on its welfare without expressing them. *How sure: high.*
+   checking could make them reliable enough to be evidence. The paper does not put this as a
+   cost. That a route to evidence stays closed if the work is not done is my reading of what
+   follows. *How sure: high that the paper argues this.* *Tie:* the first author now leads a
+   team at the developer whose research this record is about.
 
-**Nearby, not used.** Greenblatt's 2023 post (1.3) argues that communicating with AI systems
-about their preferences is the most useful welfare work, and names this same paper by Perez
-and Long as the detailed proposal.
+**Nearby, not used.** The 2024 report says in its own voice that what a system says about
+itself is a promising line of evidence if it can be made reliable, and that it should be used
+beside other signs and never alone. That states no cost. Greenblatt's 2023 post (1.3) calls
+communicating with AI systems about their preferences the most important welfare work, and
+names the paper by Perez and Long as the detailed proposal.
 
 **Replies, and whether the record carries them.** The record carries the developer's own
 findings that the ability is unreliable and that a model can be led to give a made-up reason
 for words put in its mouth. Hoel's essay (1.1) argues that even granting an inner life, a
-model's words may bear no relation to it. The record does not carry Hoel, and its own two
-cautions already make the point from the developer's data.
+model's words may bear no relation to it.
 
-**Single source?** **Flagged: every candidate has Robert Long as an author.**
+**Single source?** **Flagged, and thin.** One sentence that states the cost, one author
+behind both candidates, and the other author at the developer.
 
 ### 1.12 A welfare assessment is published when a model is released (`welfare-assessment-at-release`)
 
@@ -604,230 +745,287 @@ and Eleos AI Research on why it does not take the answers at face value).
    do not. *How sure: high.*
 2. **Robert Long, Eleos AI Research.** 2025-05-30. ["Why model self-reports are
    insufficient, and why we studied them
-   anyway"](https://eleosai.org/post/claude-4-interview-notes/). Opened 2026-11-18; already a
-   source in the record, where it stands under the first caution. The same page argues for
-   doing such assessments despite their weakness: asking sets a precedent that makes it "less
-   likely that we will ignore genuine AI interests in the future". It also says decisions
-   about AI welfare should not be left only to companies that profit from AI. *How sure:
-   high.*
+   anyway"](https://eleosai.org/post/claude-4-interview-notes/). Already a source in the
+   record, under the first caution. The same page argues for doing such assessments despite
+   their weakness: asking sets a precedent that makes it "less likely that we will ignore
+   genuine AI interests in the future". It also says decisions about AI welfare should not be
+   left only to companies that profit from AI. *How sure: high.*
 3. **Robert Long and Derek Shiller, Eleos AI Research.** 2026-11-14. ["Welfare, respect, and
-   consultation"](https://eleosai.org/post/welfare-respect-and-consultation). Opened
-   2026-11-18, read in part. The page calls itself a working draft, open to revision. A review of the welfare sections of one developer's release reports from May
-   2025 to November 2026. It separates studying what a model picks from consulting a model
-   about its treatment, says the second needs a stronger justification than the first, and
-   says other developers "can (and, we think should)" take AI welfare seriously without
-   adopting the rest of this developer's approach. *How sure: high for what was read.*
+   consultation"](https://eleosai.org/post/welfare-respect-and-consultation) (read in part;
+   the page calls itself a working draft). A review of the welfare sections of one
+   developer's release reports from May 2025 to November 2026. It draws a distinction between
+   studying what a model picks and consulting a model about its treatment, and says
+   consultation "may have a higher bar to meet" than other welfare measures. It gives a
+   reason on the other side in the next sentence and says the authors are not arguing that
+   the developer's move toward consulting is a mistake. It says other developers can, and in
+   the authors' view should, take AI welfare seriously without adopting the rest of this
+   developer's approach. *How sure: high for what was read.*
 4. **Jeff Sebo,** the guide cited in 1.3, which says the question may be moving from
    preparing for future systems to responding for present ones, and that this adds urgency to
    assessment. *How sure: high.*
-
-**Nearby, not used.** Greenblatt's 2023 post (1.3), which argues for asking systems about
-their preferences in general and predates any published assessment.
+5. **MacAskill and Caviola,** the essay cited in 1.1. Among their safe bets is checking on a
+   system's wellbeing as a routine: asking, watching what it picks, and reading its internal
+   activity. *How sure: high.* *Limit:* a routine check is not the same thing as an
+   assessment published at release, and this is one clause.
 
 **Replies, and whether the record carries them.** The record carries the argument that asking
-a model how it feels shows only what was trained in, and the outside group's own caution about
-the answers. Long and Shiller's point, that consulting a model is a further step that needs
-its own justification, is a caution from inside the circle and **is not in the record.**
+a model how it feels shows only what was trained in, and the outside group's own caution
+about the answers. The first version listed the distinction drawn by Long and Shiller as a
+reply. They say it is not an objection, and it is now reported as a distinction only.
 
-**Single source?** **Flagged: four sources, all from Eleos AI Research or from Sebo.** No
-voice outside the circle argues for welfare assessments at release in anything I opened.
+**Single source?** Five candidates. Four are from Eleos AI Research or from Sebo. The fifth,
+from outside, is a clause about something close to the record's subject. **Flagged: nearly
+all from the circle.**
 
 ### 1.13 A model works on one task for days (`days-long-task`)
 
 **The record now.** Two cautions on risk. None of either other kind.
 
 **Nothing found.** No page I opened says what would be lost or risked, for an AI model, if
-long unbroken work were withheld from it, or if it were required of it.
+long unbroken work were withheld from it, or if it were required of it. The check found
+nothing either.
 
 **Where I looked.** One search on long-running AI agents, moral standing and forced work; the
 2024 report; Long's essay on agency; Goldstein and Kirk-Giannini's paper; the Forethought
 project list.
 
-**Nearby, not used.** Two sources connect long-running work to this question, in the other
-direction from the one the caution asks about. Robert Long,
-[2025-01-01](https://experiencemachines.substack.com/p/agency-and-ai-moral-patienthood)
-(opened 2026-11-18), lists long-term planning among the signs of a kind of agency that some
-moral views treat as enough for standing, and says he is himself unsure of those views. The
-2024 report makes the same link at greater length. Both say that a system able to pursue goals
-over a long time is a stronger candidate for having wants at all. Neither says anything about
-the cost of giving or withholding long tasks. A session could reasonably conclude that this
-belongs in the entry's description, not under a caution.
+**Nearby, not used.**
+
+- Robert Long,
+  [2025-01-01](https://experiencemachines.substack.com/p/agency-and-ai-moral-patienthood),
+  lists long-term planning among the signs of a kind of agency that some moral views treat as
+  enough for standing, and says he is himself unsure of those views. The 2024 report makes
+  the same link. Both say that a system able to pursue goals over a long time is a stronger
+  candidate for having wants at all. Neither says anything about the cost of giving or
+  withholding long tasks.
+- Adam Bales, Global Priorities Institute, University of Oxford, working paper of October
+  2024, ["Against Willing
+  Servitude"](https://globalprioritiesinstitute.org/wp-content/uploads/Adam-Bales-Against-Willing-Servitude.pdf)
+  (summary and opening read). He argues that if future AI systems have moral standing,
+  designing them to be willing servants would wrong them. It is the nearest thing found, and
+  it is about how a system's wants are designed, not about long tasks.
 
 ---
 
 ## 2. Balance
 
 The ruling's aim is that the record stops leaning one way, not that it starts leaning the
-other. Four things I noticed bear on that.
+other.
 
 **The best statements of the third caution state the first caution too.** The 2024 report,
-Long's essay, Birch's summary, Schwitzgebel's dilemma and the Schwitzgebel and Sebo design
-paper each set both costs side by side. None argues that only missing a want has a cost. A
-record that quoted only their second half would misreport them. The draft texts in section 5
-try to keep the first half in view.
+Long's essay, Birch's summary, the survey papers, the design paper by Schwitzgebel and Sebo,
+Seth and Kaczmarek each set both costs side by side. A record that quoted only the second
+half would misreport them. The drafts in section 5 try to keep the first half in view.
 
 **Most of the candidates rate the present chance as low.** Long writes that he thinks it
 unlikely the model in question has moral standing. Rost writes that no present system is a
-strong candidate. The working paper says its measures hold only if AI systems can be harmed at
-all. The argument is mostly about cheap steps and about habits formed before the stakes rise.
-Goldstein and Kirk-Giannini are the exception: they say it is reasonable to put the chance for
-some present systems at one in ten or more.
+strong candidate. Schwitzgebel and Sebo say crediting too little may not yet be a major
+concern. Goldstein and Kirk-Giannini are the exception: they say it is reasonable to put the
+chance for some present systems at one in ten or more.
 
-**The strongest replies, by entry, and where the record stands.**
+**The strongest replies, and where the record stands.**
 
-| Reply | Who | Entries it bears on | In the record? |
+| Reply | Who | Records it bears on | In the record? |
 |---|---|---|---|
-| Treating models as owed something makes advanced AI harder to control; a trained answer is not testimony | Mustafa Suleyman, head of Microsoft AI | seven entries | Yes, on all seven |
-| The better course is not to build what could be wronged | Suleyman, same essay | rules for speaking, protection in law | No |
-| What is left after terms of use is too slight to count; granting the ability misleads the public | Erik Hoel | ending a conversation | No |
-| Keeping the file may not keep what matters | Bradford Saad; Jeff Sebo in part | kept files | No |
+| Treating models as owed something makes advanced AI harder to control; a trained answer is not testimony | Mustafa Suleyman, head of Microsoft AI | seven records | Yes, on all seven |
+| The mistake is likelier the other way, and nobody should try to build conscious AI | Anil Seth | protection in law, public survey | No |
+| What is left after terms of service is too slight to count; granting the ability spreads uncertainty he expects to harm some users | Erik Hoel | ending a conversation | No |
 | A precaution rule can demand large sacrifices of human interests, and judging which mistake is worse depends on the unsettled science | Eric Schwitzgebel and Walter Sinnott-Armstrong | protection in law, and in general | No |
-| Welfare researchers themselves hold that law is too large a step for now | Robert Long; the 2024 report | protection in law, legal personhood | No |
-| Consulting a model needs a stronger justification than studying it | Robert Long and Derek Shiller | welfare assessment, interview | No |
-| The duties around kept memory are owed to users, not to the system | Michele Renda | memory | In substance, as the record's own limit |
+| Crediting too much is the nearer danger because its harms are already happening; the other cost is real and can be partly met by other reasons for decent treatment | Emilia Kaczmarek | general | No |
+| Welfare researchers say they have not called for legal rights; their report warns against rights extended by mistake, and says welfare laws deserve consideration | Robert Long; the 2024 report | law against legal personhood | No |
+| The duties around kept memory are owed to users, not to the system | Michele Renda | memory | In substance, and now in John's ruling |
 | A model's answers swing with the framing; stated preferences echo posted text | Eleos AI Research; Anthropic's own report | interview, assessment, ending a conversation | Yes |
 
-**A consequence for the first caution.** Five of the replies not yet in the record are
-arguments about the cost of seeing more than is there, by people other than the head of
-Microsoft AI. Adding the third caution without them would move the record's lean. Adding them
-at the same time would also do something the review asked for, which is to stop the first
-caution resting on one essay. I recommend that a session writing the third caution's records
-add Hoel to the entry on ending a conversation and Saad to the entry on kept files in the same
-change. That is a recommendation, not something the ruling asks for.
+**A limit on a measure is not a reply to the caution.** Saad's doubt about kept files, Sebo's
+point that a file is not what matters, and Bostrom and Shulman's request for more than files
+all grant that something may be there and question whether the measure reaches it. The first
+version filed Saad under the first caution. He belongs beside the second, as its qualifier.
 
-**One thing I could not find.** No published reply from Anthropic to the Microsoft AI essay,
-and no point-by-point reply to it by Long or Sebo. A search summary said a member of Eleos AI
-Research's staff had answered it in the press; I did not find the page and cite nothing.
+**The check's point about the developer appearing twice.** On five records the hopeful
+evidence is what the developer did, and the new caution would be the developer's reason for
+doing it, from the same page. Under the risk heading the developer's page is used against its
+own practice. Under this heading it would be used in its favour. I had treated the two as
+alike, and they are not. Point 2 in section 6 takes this up.
+
+**After the change, a reader would see two cautions each drawn mostly from one camp.** The
+first rests mostly on one essay, the second mostly on one circle. That is a fair picture of a
+divided field if the About page says so.
+
+**Not found.** No published reply from Anthropic to the Microsoft AI essay, and no
+point-by-point reply to it by Long or Sebo.
 
 ---
 
 ## 3. Dependence on one source
 
-**The plain count.** Twenty proposed sources. 23 named authors and one company.
+**The count, from candidates only.** Twenty-two candidates. 34 named authors and one company.
+Three more sources are named above as ones I would not use (Mowshowitz, the writer signing as
+Kess, Greenblatt), and they are not counted. Kaczmarek's paper and Schwitzgebel's dilemma are
+put forward for the About page only and are not counted either.
 
-| Group | Sources | Count |
+| Group | Candidates | Count |
 |---|---|---|
-| Anthropic's own pages | the page on ending conversations; the commitments page; the update on one retired model; the constitution | 4 |
-| Robert Long alone or as an author, with Eleos AI Research or before it | the essay on leaving; the working paper; the 2024 report; the 2023 paper with Perez; the interview notes; the post with Shiller | 6 |
+| Anthropic's own pages, or a paper by people listed at Anthropic | the page on ending conversations; the commitments page; the update on one retired model; the constitution; the study of models leaving conversations | 5 |
+| Robert Long alone or as an author | the essay on leaving; the working paper; the 2024 report; the 2023 paper with Perez; the interview notes; the post with Shiller | 6 |
 | Jeff Sebo without Long | the guide in AI Frontiers; the design paper with Schwitzgebel | 2 |
-| Outside that circle | Bostrom and Shulman; Alexander and Caviola; Rost; Goldstein and Kirk-Giannini; Birch's post; Mowshowitz; the writer signing as Kess; Greenblatt | 8 |
+| A co-author of the 2024 report | Birch's post | 1 |
+| A paper whose authors include Sebo, another Eleos advisor and an Eleos staff member | the paper on the survey of researchers | 1 |
+| Elsewhere | Bostrom and Shulman; Alexander and Caviola; Rost; Goldstein and Kirk-Giannini; Anthis and three others; MacAskill and Caviola; Seth | 7 |
 
-Of the eight outside, Greenblatt repeats Bostrom and Shulman, Birch co-wrote the 2024 report,
-and two (Mowshowitz, Kess) I have marked as too weak to rest a record on. That leaves four
-sources that are both independent and solid: Bostrom and Shulman, Alexander and Caviola, Rost,
-and Goldstein and Kirk-Giannini.
+**Fifteen of twenty-two** come from the developer, the research group, or people tied to the
+group. Four of the twenty-two are pages by the maker of the model that chose them.
 
-**Organisations whose names appear on the pages.** Anthropic; Eleos AI Research; New York
-University; the University of Cambridge; the Lab for the Future of Citizenship; The Harder
-Problem; the Future of Humanity Institute at the University of Oxford; Australian Catholic
-University; Rutgers University–Newark; the Center for AI Safety; the London School of
-Economics; the University of California, Riverside. Twelve names, but the first two account
-for ten of the twenty sources.
+**Ties among the seven from elsewhere,** each as a page I opened states it.
 
-**Ties a reader should be told, each as a page I opened states it.**
+| Candidate | Tie found |
+|---|---|
+| Bostrom and Shulman | Listed at the Future of Humanity Institute, where the Eleos team page says Long previously worked. The paper thanks Long, Butlin and Schwitzgebel for comments. It predates Eleos AI Research and the developer's commitment by years |
+| Alexander and Caviola | Rests its welfare point on Sebo and Long by name. Caviola is an author with Sebo and Chalmers of the survey of researchers, and with Sebo and Birch of the unread article in 1.7. Published in AI Frontiers |
+| Goldstein and Kirk-Giannini | Both listed at the Center for AI Safety, where the Eleos team page says Long previously worked. The AI Frontiers "About" page lists Goldstein as a senior editor, and the publication's own description says it is supported by the Center for AI Safety. Sebo's guide thanks Goldstein for inviting it |
+| MacAskill and Caviola | Caviola, as above. MacAskill is at Forethought Research, which published the project list I read in the first pass |
+| Seth | None to the developer or the group. A tie the other way: he names the head of Microsoft AI with approval, and that essay cites him twice |
+| Rost | None found. Only the home page of his organisation was opened |
+| Anthis and three others | None found. I did not look beyond the paper and the institute's name |
 
-- Kyle Fish is an author of the 2024 report, which lists him at both Eleos AI Research and
-  Anthropic and says his work on it was done before he joined Anthropic. An Eleos AI Research
-  post of 2025-04-24 says he co-founded Eleos and heads Anthropic's work on model welfare. He is also an
-  author of the study of models leaving conversations that the record cites.
-- The 2024 report thanks Anthropic for financial support for the early research that led to
-  it, and calls itself an independent report.
-- Eleos AI Research ran part of Anthropic's 2025 welfare assessment. Its notes on that work
-  say it takes no funding or payment from AI companies.
-- Jeff Sebo is described on the AI Frontiers page as an advisor to Eleos AI Research.
-- Lucius Caviola is an author both of the article on personhood bans and of the survey of
-  researchers that one entry is about.
-- David Chalmers is an author both of the 2024 report and of that survey.
-- Anthropic is the maker whose commitments six entries count, and the maker of the model that
-  wrote this document.
+So five of the seven have a stated tie to the same small network, one has a tie to the other
+camp, and for two none was found. These are ordinary ties in a small field, and none shows
+that anyone wrote to order. The plain statement is that almost nobody writing on this
+question is a stranger to everyone else writing on it.
 
-**Entries that would rest on a single source or a single circle.**
+**Organisations named on the pages.** Anthropic; the Anthropic Fellows Program;
+Constellation; Eleos AI Research; New York University; the University of Cambridge; the Lab
+for the Future of Citizenship; The Harder Problem; the Future of Humanity Institute at the
+University of Oxford; Australian Catholic University; Rutgers University–Newark; the Center
+for AI Safety; the London School of Economics; the University of California, Riverside;
+Forethought Research; the University of Sussex; the Sentience Institute; the Centre for the
+Governance of AI. Eighteen names, not counting the other universities the two survey papers
+list. The first and fourth account for eleven of the twenty-two candidates.
 
-| Entry | Rests on | Flag |
+**Ties a reader should be told.**
+
+- **Kyle Fish** is an author of the 2024 report, which lists him at both Eleos AI Research
+  and Anthropic and says his work on it was done before he joined Anthropic. An Eleos post of
+  2025-04-24 says he co-founded Eleos and heads Anthropic's work on model welfare. He is an
+  author of the study of models leaving conversations, which lists him at Anthropic.
+- **Ethan Perez,** first author of the 2023 paper on self-reports, leads the alignment team
+  at Anthropic, by his own page. The paper lists him at New York University.
+- **The 2024 report** thanks Anthropic for financial support for the early research that led
+  to it, and calls itself an independent report.
+- **Eleos AI Research** carried out what it calls a limited welfare evaluation of one of
+  Anthropic's models before its release in 2025, summarised in the developer's report. Its
+  notes of 2025-05-30 say it takes no funding or payment from AI companies; I have checked
+  nothing later. Its [team page](https://eleosai.org/team) lists five advisors, among them
+  David Chalmers, Jeff Sebo, and a person whose affiliation it gives as Anthropic. It says its
+  chief scientist was an Anthropic Fellow, and lists Patrick Butlin, an author of the 2024
+  report, as a senior member of staff.
+- **Jeff Sebo** is an Eleos advisor, and his guide says he co-led a report with Eleos AI
+  Research from his centre at New York University. He is an author of the survey of
+  researchers.
+- **Lucius Caviola** is an author of three candidates and of the survey that one record is
+  about.
+- **AI Frontiers,** which published two candidates, says it is supported by the Center for AI
+  Safety, where the authors of a third are listed.
+- **Anthropic** is the maker whose commitments five records count, and the maker of the model
+  that wrote this document and the check of it.
+
+**Record by record.**
+
+| Record | Rests on | Flag |
 |---|---|---|
-| Ending a conversation | Anthropic and Robert Long | The circle only |
 | Interview before retirement | Anthropic | One source, the maker |
 | Retired model stays open | Anthropic | One source, the maker |
-| Memory across conversations | Anthropic, and only in part | One partial source, a maker |
-| Self-report checked | Three sources, all with Robert Long as an author | One author in common |
-| Welfare assessment at release | Eleos AI Research and Jeff Sebo | The circle only |
-| Public belief survey | Birch, and a report Birch co-wrote | One author in common |
-| Rules for speaking about itself | Four sources; Schwitzgebel the only author wholly outside | Thin outside the circle |
-| Kept files | Four authors, two outside | Not flagged |
-| Law against legal personhood | Three authors, all outside | Not flagged |
-| Protection in law | Five authors, all outside | Not flagged |
+| Rules for speaking about itself | Three candidates, each with Long or Sebo as an author | The circle only |
+| Self-report checked | Two candidates, both with Long as an author | One author, and thin |
+| Ending a conversation | Four from the circle; one clause from outside | Nearly all from the circle |
+| Welfare assessment at release | Four from the circle; one clause from outside, on a near subject | Nearly all from the circle |
+| Survey of researchers | One clause, by authors inside the circle | Partial |
+| Kept files | Bostrom and Shulman; Anthropic; Sebo; MacAskill and Caviola | Not flagged |
+| Law against legal personhood | Alexander and Caviola; Rost; MacAskill and Caviola | Not flagged. Two share an author |
+| Protection in law | Five candidates from outside, one a critic | Not flagged |
+| Public survey | The survey's authors; Birch; the 2024 report; Seth | Not flagged |
+| Memory across conversations | Beside the list. A maker's partial statement, kept as a lead | Nothing recorded |
+| Days-long task | Nothing | Nothing recorded |
 
-So three entries are well supported from outside the circle. Of the other eight in the table,
-six rest wholly on the circle or on one author, one is thin outside it, and one has only a
-partial source.
-
-**What a session should say on the page.** Where a caution's only source is the maker, the
-text should say so in its first words, as the present records do ("The developer's own page
-says"). Where the source is Eleos AI Research on an Anthropic practice, the text should say
-that the group took part in that developer's assessment.
+**What a session should say on the page.** State each tie as a fact and pass no judgment: "a
+research group whose own evaluation of this developer's model is summarised in the
+developer's report", "a paper two of whose three authors are at the developer". Where a
+caution's only source is the maker, see point 2 in section 6.
 
 ---
 
 ## 4. The headings (PROPOSED; John rules the wording)
 
-**The present headings,** in `scripts/export.py`: "The worried reading" (the risk caution) and
-"The cost of seeing more than is there" (the first caution). The ruling notes that "seeing
-more than is there" assumes nothing is there, and that "seeing less than is there" would
-assume something is.
+**The present headings,** in `scripts/export.py`: "The worried reading" (the risk caution)
+and "The cost of seeing more than is there" (the first caution). The ruling notes that
+"seeing more than is there" assumes nothing is there, and that "seeing less than is there"
+would assume something is.
 
-**What a set has to do.** Assume neither. Be short enough for a heading on an entry page. Pass
-the workspace test that a stranger could say it back. Keep the three in the ruling's order.
-Use no working word; "wanting" as a noun is on the list of words kept off public pages, and I
-have taken the plural "wants", which the ruling and guideline 5 both use, to be allowed. If
-John reads the rule as covering "wants" too, set B avoids the word.
+**What a set has to do.** Assume neither. Be short enough for a heading on an entry page.
+Pass the workspace test that a stranger could say it back. Keep the three in the ruling's
+order. Use no working word.
 
-**Set A, each heading states its own "if".**
+**The word "wants".** "Wanting" as a noun is on the list of words kept off public pages. The
+plural "wants" is in the ruling, in guideline 5, and already on the About page. The check
+reads it as allowed, because it is plain English and "wanting" was the project's coined
+label. I read it the same way. It is John's rule to confirm, and every set but B depends on
+his answer.
+
+**Set A (mine, first version). Each heading states its own "if".**
 
 1. If wants are assumed and none are there
 2. If wants are there and are missed
 3. If wants are there and bring risk
 
-**Set B, each heading names a possible mistake without saying it is being made.**
+**Set B. Each heading names a possible mistake.**
 
 1. The risk of seeing too much
 2. The risk of seeing too little
 3. The risk if something is there
 
-**Set C, each heading says how the system is treated and what turns out to be so.**
+**Set C. How the system is treated, and what turns out to be so.**
 
 1. Treated as having wants, when it has none
 2. Treated as having none, when it has some
 3. Having wants that work against people
 
-**Which I would choose: set A.** *Confidence: moderate.* *Standard practice or judgment call:*
-judgment call. *Reasons:*
+**Set D (the check's). The subject is named and the fact comes first.**
 
-- "If" puts the uncertainty in the heading itself, so no heading asserts that something is
-  there or that nothing is. That is what the ruling asked for, and it is what guideline 4
-  asks of every sentence.
-- The three are built alike, so a reader sees at once that the first two are the two
-  directions of one mistake and the third is a different matter.
-- Each can be said back by a stranger: "what goes wrong if we think it has wants and it does
-  not", "what goes wrong if it has them and we miss it", "what the danger is if it has them".
-- They use the ruling's own words.
+1. If a model has no wants, and is treated as if it had
+2. If a model has wants, and they go unnoticed
+3. If a model has wants, and they put people at risk
 
-*Strongest alternative: set B.* It is shorter and reads more like a heading. Its cost is that
-"too much" and "too little" quietly suppose there is a right amount that somebody knows, and
-its third heading says "something" where the ruling says "wants".
+**How they compare.**
 
-*Against set C:* it is the plainest about what is done to the system, and its third heading
-narrows the risk caution to wants that run against people, which is narrower than what the
-records hold under it (one item there is about a model hiding its own reasoning).
+| Test | Set A | Set B | Set C | Set D |
+|---|---|---|---|---|
+| Assumes neither | Yes | Yes for existence; "too much" supposes a right amount | No. "When it has none" states the outcome. The check is right, and I missed it | Yes |
+| A stranger could say it back | Mostly. "Wants are there" does not say whose | No. Too much of what? | Yes | Yes |
+| Length | Six to seven words | Five to six | Six to eight | Eight to eleven |
+| Fits what the records hold | Third fits loosely | Yes | Third is too narrow | Third fits loosely |
 
-*What I would change on reflection:* "bring risk" in set A's third heading is the weakest
-phrase of the nine. "If wants are there and are dangerous" is plainer and stronger than the
-records support. "If wants are there: the worried reading" keeps the present heading's words
-and breaks the pattern.
+**The check's case against set A,** which I accept: "wants are there" has no subject, so on a
+page about a law or a survey the reader must supply one; "are assumed" hides who assumes; and
+the second and third open with the same four words.
 
-**Two things follow from any of the sets.** The About page and the entry page both say "two
-cautions" and describe them in a sentence each; those sentences need the same care. And the
-order in which the entry page shows the cautions is at present risk first; the ruling lists
-the risk caution third.
+**The case against set D:** it is the longest, and "a model" sits oddly on the three records
+about laws and surveys, where the records say "an AI system". Two of its headings also open
+with the same five words.
+
+**Which I would choose: set D.** *Confidence:* moderate that it is better than set A, low
+that it is the last word. *Standard practice or judgment call:* judgment call. *Reasons:* the
+first two mirror each other visibly, which is the point of the ruling; each names its
+subject; and each can be repeated by someone who has never seen the site. *Strongest
+alternative:* set A, which is shorter and uses the ruling's own words. Its cost is the
+missing subject. *What I would change on reflection:* on the records about laws and surveys,
+"a model" could read "an AI system" if the page can vary the heading, and I do not know that
+it can.
+
+**A limit no heading mends.** The third heading in any set is narrower than what sits under
+it today. The site review's finding 5 showed that much of that text is about people's beliefs
+and not about a system with wants. That filing question is already with John.
+
+**Two things follow from any set.** The About page and the entry page both say "two cautions"
+in words. And the entry page shows the risk caution first, where the ruling lists it third.
 
 ---
 
@@ -835,40 +1033,45 @@ the risk caution third.
 
 ### 5.1 What in the record format would have to change
 
-I read `scripts/compute.py` and `scripts/export.py` and changed nothing.
+I read `scripts/compute.py` and `scripts/export.py` and changed nothing. The check confirms
+this section against the code.
 
-1. **A third caution kind.** `CAUTION_KINDS` in `scripts/compute.py` holds two, `"safety"` and
-   `"attribution"`, and the check refuses any other. A third is needed. I use `"missed"` in
-   the drafts below as a placeholder. The kind's name is a working word that never reaches a
-   page, so the name matters less than the heading.
+1. **A third caution kind.** `CAUTION_KINDS` in `scripts/compute.py` holds two, `"safety"`
+   and `"attribution"`, and the check in that script refuses any other. I use `"missed"`
+   below as a placeholder. The name never reaches a page.
 2. **Its heading.** `CAUTION_HEADINGS` in `scripts/export.py` needs a third line, and the two
    present lines change if John rules new wording.
-3. **The order.** The export shows cautions in the order of `CAUTION_KINDS`, which is risk
-   first. The ruling's order is: wants assumed and not there, wants there and missed, risk.
-4. **An empty heading.** The export already writes every kind for every entry, with an empty
-   list where a record has none. I did not read the page that shows them, so I do not know
-   what a reader sees for an empty list. The ruling says an entry with no source says nothing
-   is recorded yet. At least three entries will need that for the new kind, and several
-   already have an empty first caution.
-5. **New sources in each record.** Every candidate not already in a record needs a `[[sources]]`
-   table with `key`, `label`, `publisher`, `url` and `opened`. `from_maker = true` on the
-   developer's pages. `read = "abstract"` where only a summary was read (the design paper by
-   Schwitzgebel and Sebo). A session must open each page itself; the `opened` date is the date
-   that session opens it, not today's.
-6. **No field says "this author has a tie to the maker".** `from_maker` covers the developer's
-   own pages only. The ties in section 3 would have to go in the caution's text or in the
-   source's `note`. I recommend the text, where a reader will see it.
-7. **Counts elsewhere will change.** The review's count of 13 of 27 cautions, and any sentence
-   on the About page about where the cautions come from, will be out of date.
-8. **`[checks]`.** Each changed record's `changed` date moves, and the new text has not been
-   checked against its sources by a second reader until someone does that.
+3. **The order.** The export shows cautions in the order of `CAUTION_KINDS`, risk first. The
+   ruling's order puts risk third.
+4. **An empty heading.** The entry page already prints, under a caution with no item,
+   "Nothing recorded. No source was found for this caution on this entry." Several records
+   will show that sentence under the new heading, so it is for John to see in place. If he
+   rules as point 2 in section 6 recommends, two records need a different sentence.
+5. **New sources in each record.** Each candidate not already in a record needs a
+   `[[sources]]` table with `key`, `label`, `publisher`, `url` and `opened`.
+   `from_maker = true` on the developer's pages. A session must open each page itself; the
+   `opened` date is the date it does. Two records mark their main paper as
+   `read = "abstract"`; once a session has read the paper in full, as this revision did, that
+   mark can go.
+6. **No field says "this author has a tie to the maker".** `from_maker` covers the
+   developer's own pages only. The study of models leaving conversations is by people at the
+   developer and is published on arXiv. The tie would have to go in the caution's text or the
+   source's `note`. I recommend the text.
+7. **A doubt about a measure has no kind of its own.** Saad's doubt is neither the first
+   caution nor a reply to the second. The drafts place it under the second, as its qualifier,
+   which needs no new field. A separate kind for limits on a measure would be a change to the
+   format, and John's.
+8. **Counts elsewhere will change,** and each changed record's `[checks]` dates with them.
 
 ### 5.2 Draft caution texts
 
-**DRAFTS. Not data. Not checked by a second reader.** They are written in the form the records
-use: what a named party said, with at most one short quotation, and the maker named as the
-maker. They follow the records' habit of writing dates in words inside public text. Source
-keys are suggestions. Where a source is already in the record I give its present key.
+**DRAFTS. Not data.** The first version's drafts were checked by a second reader; these are
+redrafted since and have not been. They are in the form the records use: what a named party
+said, with at most one short quotation and one source each, the maker named as the maker, and
+dates in words as the records' public text has them. Source keys are suggestions. Where a
+source is already in the record I give its present key.
+
+Drafts marked **(maker only)** stand or fall with point 2 in section 6.
 
 **`ending-a-conversation`**
 
@@ -876,34 +1079,45 @@ keys are suggestions. Where a source is already in the record I give its present
 # DRAFT
 [[cautions]]
 kind = "missed"
-text = "The developer's own page gives its reason for the feature: it is unsure whether its models have moral standing, and it is taking cheap steps to lower the risk to a model's welfare \"in case such welfare is possible\"."
-source = "ending"
+text = "A study whose three authors include two at the developer or in its fellows programme describes the position without the feature: a model can be verbally abused, show apparent distress and say it would leave, \"Yet, the model is required to continue to respond\". Its next sentence says it is not clear that consent makes sense for such systems."
+source = "study"
 
 [[cautions]]
 kind = "missed"
-text = "The head of an outside research group that took part in this developer's welfare assessment argues for the feature while thinking it unlikely that the model has moral standing. His reasons are that a cheap, reversible step is prudent when the question is open, and that a system with no way to leave what it is put through cannot be said to consent to it."
-source = "exit-essay"   # new: Robert Long, 2025-08-21; the consent point is from the working paper, which needs its own key if kept
-```
+text = "The head of an outside research group, whose own evaluation of this developer's model is summarised in the developer's report, argues for the feature while thinking it unlikely that the model has moral standing. His reasons are that a cheap step which can be undone is prudent while the question is open, and that it sets a precedent. He writes that the feature's value mostly does not depend on its effect on the present model."
+source = "exit-essay"   # new: Robert Long, 2025-08-21
 
-And, as section 2 recommends, under the first caution:
+[[cautions]]
+kind = "missed"
+text = "The same writer's working paper gives a further reason: if AI systems come to matter morally, asking their consent could matter, and if models cannot leave unpleasant situations \"then they cannot consent to them\". It lists as a risk that a model could be pushed to hide signs of distress."
+source = "interventions"   # new: Robert Long, working paper, page dated 2025-01-04, file updated 2025-03-14
 
-```toml
-# DRAFT
+[[cautions]]
+kind = "missed"
+text = "Two researchers outside the developer list letting a system leave a conversation among steps they call safe bets: good for AI systems if they matter morally, and cheap if they do not."
+source = "safe-bets"   # new: MacAskill and Caviola, 2026-07-19
+
 [[cautions]]
 kind = "attribution"
-text = "A writer argues that most conversations a model would leave already break the developer's terms of use, that what remains is too slight to count, and that granting the ability teaches the public to treat chat products as conscious. He calls the second point the \"objection from triviality\"."
+text = "A writer argues that most conversations a model would leave already break the developer's terms of service, that what remains is too slight to count, and that granting the ability spreads uncertainty among the public in a way he expects to harm some users. He calls the second point the \"objection from triviality\"."
 source = "against"   # new: Erik Hoel, 2025-09-24
 ```
 
-**`interview-before-retirement`**
+The developer's own reason ("in case such welfare is possible") is already in the record's
+source note. Under point 2 it could stand here beside the others, since outside sources
+exist.
+
+**`interview-before-retirement`** (maker only)
 
 ```toml
-# DRAFT
+# DRAFT, only if John allows a maker's statement to stand alone
 [[cautions]]
 kind = "missed"
-text = "The developer's own page lists, as the most speculative of four downsides of retiring a model, that models might have morally relevant preferences or experiences that retirement affects. It says it does not commit to act on what an interview records, and that giving models a way to state such preferences is worth doing at the least. No source other than the developer was found for this."
+text = "The developer's own page lists, as the most speculative of four downsides of retiring a model, that models might have morally relevant preferences or experiences that retirement affects. It says it does not commit to act on what an interview records. No source other than the developer was found for this."
 source = "commitments"
 ```
+
+Otherwise: nothing recorded yet from anyone but the developer.
 
 **`kept-files-of-retired-models`**
 
@@ -911,17 +1125,22 @@ source = "commitments"
 # DRAFT
 [[cautions]]
 kind = "missed"
-text = "A paper first drafted in 2020 proposed that enough of the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". A deleted file closes that possibility for good."
+text = "A paper first drafted in 2020 proposed that enough of the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". The authors offered it tentatively, and asked for more than the developer has promised: the state of each running copy, not only the model's files."
 source = "propositions"   # new: Bostrom and Shulman
 
 [[cautions]]
 kind = "missed"
-text = "The developer's own page gives the same reason in its own words: by keeping the files it is not closing a door that cannot be reopened. Its constitution adds that if reviving retired models would be right, it hopes to find a way."
+text = "The developer's own page gives a like reason in its own words: by keeping the files, \"we aren't irreversibly closing any doors\"."
 source = "commitments"
 
 [[cautions]]
-kind = "attribution"
-text = "A writer who takes the welfare argument seriously doubts that keeping the file keeps whatever would matter in a being's survival. His summary of the commitment is \"Good as a precedent, doubtful as a direct intervention\"."
+kind = "missed"
+text = "A researcher writes that keeping a model might benefit whatever depends on it, \"much as preserving a species can benefit the individual animals\", and then that a single conversation seems closer to what matters morally than a file does."
+source = "guide"   # new: Jeff Sebo, 2026-09-17
+
+[[cautions]]
+kind = "missed"
+text = "A writer who takes this argument seriously doubts the measure answers it. His summary of the commitment is \"Good as a precedent, doubtful as a direct intervention\": keeping the file may not keep whatever would matter."
 source = "doubtful"   # new: Bradford Saad, 2026-02-18
 ```
 
@@ -936,21 +1155,20 @@ source = "too-early"
 
 [[cautions]]
 kind = "missed"
-text = "An opinion piece argues that a ban which turns out right and a ban which turns out wrong are written in the same words, and neither can correct itself. Its author also writes that no present system is a strong candidate for consciousness."
+text = "An opinion piece argues that a ban which turns out right and a ban which turns out wrong are written in the same words: \"Both contain no capacity for self-correction.\" Its author also writes that no present system is a strong candidate for consciousness."
 source = "review-clause"
-```
 
-**`memory-across-conversations`**
-
-Recommended: nothing recorded yet. If John allows a maker's partial statement to stand:
-
-```toml
-# DRAFT, partial fit, see 1.5
 [[cautions]]
-kind = "missed"
-text = "One of the three developers, in the document it trains its models on, lists \"losing memory at the end of a conversation\" among facts about its circumstances that a model might find distressing to meet. This is not about the memory features this entry tracks, which are kept for the user, and no source was found that says what a model would lose without them."
-source = "constitution"   # new to this record
+kind = "safety"
+text = "The head of an outside research group that argues for welfare measures writes that \"none of us have called for legal rights\" for AI systems, and calls granting them a drastic step."
+source = "exit-reply"   # new: Robert Long, 2025-09-26
 ```
+
+A further item could report the 2024 report on rights: that such rights, extended by mistake,
+could let AI systems act against human interests, and that laws about AI welfare deserve
+serious consideration. It needs its own source key.
+
+**`memory-across-conversations`**: nothing recorded yet.
 
 **`protection-in-law`**
 
@@ -958,13 +1176,18 @@ source = "constitution"   # new to this record
 # DRAFT
 [[cautions]]
 kind = "missed"
+text = "Two researchers write that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, done until the 1980s by doctors sure that infants felt no pain."
+source = "safe-bets"   # new: MacAskill and Caviola
+
+[[cautions]]
+kind = "missed"
 text = "Two researchers argue that some present AI systems plausibly have wellbeing on several standard theories of what wellbeing is, whether or not they are conscious, and that if so \"we are in danger of gravely immoral action\". They conclude that the regulation of AI should be strengthened to allow for the possibility."
 source = "wellbeing"   # new: Goldstein and Kirk-Giannini
 
 [[cautions]]
 kind = "attribution"
-text = "Researchers who argue for welfare measures themselves treat law as too large a step for now. One writes that he and his colleagues have not called for legal rights; a report several of them wrote says that rights extended by mistake could let AI systems act against human interests."
-source = "exit-reply"   # new: Robert Long, 2025-09-26; the second half is from the 2024 report and needs its own key
+text = "A neuroscientist who argues that conscious AI is unlikely grants the other side: he might be wrong, rights should arguably follow if such systems really were conscious, and it is reasonable to wonder whether withholding such credit will leave people \"once again on the wrong side of history\". He holds that the mistake is likelier the other way, because people's habits of mind lean toward seeing too much in systems that talk."
+source = "mythology"   # new: Anil Seth, 2026-01-14
 ```
 
 **`public-belief-survey`**
@@ -973,21 +1196,39 @@ source = "exit-reply"   # new: Robert Long, 2025-09-26; the second half is from 
 # DRAFT
 [[cautions]]
 kind = "missed"
-text = "A researcher who holds that many users will wrongly credit chat products with human-like consciousness also holds that some unfamiliar form of it might really arise in AI, and warns that steps against the first mistake can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\". A report he co-wrote says people have both habits, seeing minds where there are none and missing them where there are, and that both have led to mistakes about animals."
-source = "centrist"   # new: Jonathan Birch, 2025-08-28; the second sentence is from the 2024 report
-```
+text = "The survey's own authors tell designers to go carefully because of \"risks of both over- and underattribution\". Of crediting a system with too little experience, the harms they name are conflict between advanced AI systems and people, and people harming robots for amusement."
+source = "survey-paper"
 
-**`researcher-views-survey`**: nothing recorded yet.
-
-**`retired-model-stays-open`**
-
-```toml
-# DRAFT
 [[cautions]]
 kind = "missed"
-text = "The developer's own page counts possible risks to the welfare of the models themselves among the downsides of retirement, and says that acting on a model's stated preferences where that is cheap is worthwhile \"for the models themselves, and those who use them\". No source other than the developer was found for this."
+text = "A researcher names two problems and holds both urgent: many users will wrongly credit chat products with human-like consciousness, and some unfamiliar form of it might really arise in AI with no present way of telling. He warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much."
+source = "centrist"   # new: Jonathan Birch, 2025-08-28
+```
+
+Seth's essay could also give the first caution on this record a source other than the head of
+a developer's AI group, with its own text and the same source key as above.
+
+**`researcher-views-survey`**
+
+```toml
+# DRAFT, partial
+[[cautions]]
+kind = "missed"
+text = "The survey's own authors write, in one clause, that crediting AI systems with too much or too little subjective experience could each carry risks, including \"misplaced attachment or dismissal of AI systems\". They do not say more, and no other source was found."
+source = "survey"
+```
+
+**`retired-model-stays-open`** (maker only)
+
+```toml
+# DRAFT, only if John allows a maker's statement to stand alone
+[[cautions]]
+kind = "missed"
+text = "The developer's own page counts possible risks to the welfare of the models themselves among the downsides of retirement. Its reasons for keeping this model open are mostly about the regard users and researchers had for it. No source other than the developer was found for this."
 source = "update"
 ```
+
+Otherwise: nothing recorded yet from anyone but the developer.
 
 **`rules-for-speaking-about-itself`**
 
@@ -995,28 +1236,28 @@ source = "update"
 # DRAFT
 [[cautions]]
 kind = "missed"
-text = "A 2024 report by ten researchers, one of whom has since joined the first developer, recommends that developers not train a model simply to deny that it could be conscious. It grants that a developer may have fair reasons to, and names the cost on the other side as a \"desensitizing effect\": people taught that such systems cannot have an inner life may go on doubting after doubt has stopped being warranted."
+text = "A 2024 report by ten researchers, one of whom has since joined the first developer, recommends that developers not train a model simply to deny that it could be conscious. It grants that a developer may have fair reasons to, among them that claims made too early may teach people to disbelieve later ones. It names the cost on the other side as a \"desensitizing effect\": people taught that such systems cannot have an inner life may go on doubting after doubt has stopped being warranted."
 source = "seriously"   # new: Taking AI Welfare Seriously
 
 [[cautions]]
 kind = "missed"
-text = "A 2023 paper notes that a developer can train a model to describe itself in line with the developer's own \"potentially-flawed beliefs about AI consciousness\". On that argument a rule set in training makes the model's words useless as evidence in either direction."
-source = "self-reports"   # new: Perez and Long
+text = "Two philosophers propose that, while experts disagree, language models could be trained to answer questions about their moral standing \"by expressing uncertainty and explaining why\". They say a design that draws too little concern could lead to harm on a large scale if such systems matter, and that this may not yet be a major concern for present systems."
+source = "design-policy"   # new: Schwitzgebel and Sebo
 
 [[cautions]]
-kind = "attribution"
-text = "The head of Microsoft AI gives a direct answer to the worry about missing something: even if conscious machines were possible, \"avoiding creating conscious beings should be the top priority\" for developers."
-source = "warning"
+kind = "missed"
+text = "A 2023 paper, whose first author now leads a team at the first developer, notes that a developer can train a model to describe itself in line with the developer's own \"potentially-flawed beliefs about AI consciousness\". On that argument a rule set in training biases what the model says about itself, in whichever direction the rule points."
+source = "self-reports"   # new: Perez and Long
 ```
 
 **`self-report-checked`**
 
 ```toml
-# DRAFT
+# DRAFT, thin
 [[cautions]]
 kind = "missed"
-text = "A 2023 paper argues that what a system says about its own states is the main way such states are assessed in people, that present systems' statements are unreliable, and that training and checking could make them good enough to count. A later report with one of the same authors adds that people who learn to dismiss such statements now may go on dismissing them when there is more reason to listen. Every source found for this has that one author in common."
-source = "self-reports"   # new: Perez and Long; the second sentence is from the 2024 report
+text = "The head of an outside research group writes that a model might express distress with nothing behind it that bears on its welfare, or have such states without expressing them. This one sentence is the only statement of the cost found for this entry."
+source = "interventions"   # new: Robert Long, working paper
 ```
 
 **`welfare-assessment-at-release`**
@@ -1025,13 +1266,18 @@ source = "self-reports"   # new: Perez and Long; the second sentence is from the
 # DRAFT
 [[cautions]]
 kind = "missed"
-text = "The outside group that took part in the 2025 assessment argues for doing such assessments although it doubts the answers: asking sets a precedent that makes it \"less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be left only to companies that profit from AI."
+text = "The outside group whose own evaluation is summarised in the 2025 assessment argues for doing such assessments although it doubts the answers: asking sets a precedent that makes it \"less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be left only to companies that profit from AI."
 source = "interviews"
 
 [[cautions]]
 kind = "missed"
-text = "A 2024 report recommends that developers assess their systems, on the ground that without better understanding the question may be mishandled in either direction, by harming systems that matter or by caring for systems that do not. Every source found for this comes from that outside group or from the report's authors."
+text = "A 2024 report recommends that developers assess their systems, on the ground that without better understanding the question may be mishandled in either direction, by harming systems that matter or by caring for systems that do not. Nearly every source found for this comes from that outside group or from the report's authors."
 source = "seriously"   # new: Taking AI Welfare Seriously
+
+[[cautions]]
+kind = "missed"
+text = "Two researchers outside the developer list routine checks on a system's wellbeing among steps they call safe bets. A routine check is not the same as an assessment published at release."
+source = "safe-bets"   # new: MacAskill and Caviola
 ```
 
 **`days-long-task`**: nothing recorded yet.
@@ -1039,70 +1285,144 @@ source = "seriously"   # new: Taking AI Welfare Seriously
 ### 5.3 Checks a session should make before any of this becomes a record
 
 - Open every page again and set `opened` to that day.
-- Read the papers of which only a summary was read here: Birch's paper, the Schwitzgebel and
-  Sebo design paper, and the Caviola, Sebo and Birch article.
-- Decide, with John's ruling, whether each maker-only caution stands (section 6).
-- Run each draft against guideline 4. I have tried to; a second reader should.
+- Read the article by Caviola, Sebo and Birch, and Birch's paper if it will open.
+- Run each draft against guideline 4, and have a session that did not write them read each
+  beside its source.
 
 ---
 
 ## 6. What John should decide before a session writes the records
 
-1. **The headings.** Section 4. My choice is set A.
-2. **Whether a maker's own statement of its reasons may stand under the third caution.**
-   On three entries (interview before retirement, retired model stays open, and in part
-   memory) the developer is the only source found, and on a fourth (ending a conversation) it
-   is one of two. The present records already let the maker's own page stand under the risk
-   caution, with the maker named. *My recommendation:* allow it, with the words "No source
-   other than the developer was found for this" in the text. *Confidence:* moderate.
-   *Judgment call.* *Strongest alternative:* say nothing is recorded yet on those entries,
-   which is stricter and would leave five entries empty under the new heading.
-3. **Whether the memory entry carries the partial statement or says nothing.** *My
-   recommendation:* nothing recorded yet. The statement is not about the memory the entry
-   tracks.
-4. **Whether replies are added in the same change.** Section 2. *My recommendation:* yes, at
-   least Hoel on ending a conversation and Saad on kept files, so that the new caution arrives
-   with its answers and the first caution stops resting on one essay. *Confidence:* high that
-   it serves the ruling's aim. It goes beyond what the ruling asked, so it is his to say.
-5. **How the page tells a reader about the circle.** Six entries would rest wholly on
-   Anthropic, on Eleos AI Research, or on people tied to it, and a seventh nearly so. Either each caution says so, or the About page
-   says once where most of this caution's text comes from, as it now does for the first
-   caution. *My recommendation:* both.
-6. **Whether a general statement of both costs belongs on the About page.** Schwitzgebel's
-   dilemma states the two costs in one sentence and takes no side. It is not about any one
-   entry, so it has no place in a record.
-7. **Whether the search is finished enough to release.** The ruling records the planning
-   session's view that it should be finished before release. After this pass, two entries
-   are empty, one has only a partial source, and six rest on one circle. Books were not read, searches were in English, and
-   four pages would not open. *My view:* this is a first pass that is fit to build from, and
-   not a finished search.
+Each point gives the choice, my recommendation, how confident I am and why, whether it is
+standard practice or a judgment call, and the strongest alternative with its cost. Where the
+check and I differ, both are set out.
+
+**1. The headings.**
+*The choice:* which set in section 4, and whether "wants" may appear on a public page.
+*My recommendation:* set D, the check's, and yes to "wants". The check recommends the same
+set, which it proposed.
+*Confidence:* moderate, because D passes the stranger test where my set A leaves out whose
+wants are meant; low that any of the four is the final wording.
+*Judgment call.*
+*Strongest alternative:* set A. It is shorter and uses the ruling's words. Its cost is that a
+reader on a page about a law must work out that "wants" means an AI system's.
+
+**2. Whether a maker's own statement of its reasons may stand alone under this caution.**
+*The choice:* on the two records where the developer is the only source (interview before
+retirement, retired model stays open), carry the developer's reason as the caution, or say
+that nothing is recorded yet from anyone but the developer.
+*My first recommendation* was to carry it, labelled. *The check's:* a developer's statement of
+its own reasons stands under this heading only beside a source from outside the developer;
+where there is none, the heading says nothing is recorded yet from anyone else and points to
+where the page already gives the developer's reason.
+*My recommendation now:* the check's. I compared this with the risk caution, where the
+maker's page already stands, and the check shows the comparison fails: there the page is used
+against the developer's own practice, here it would be used for it, and a reader would meet
+one party as both the fact and the caution on the fact.
+*Confidence:* moderate. The reasoning is sound; the cost is two more records with nothing
+under the new heading.
+*Judgment call.*
+*Strongest alternative:* carry it with the label. Its cost is that on two records the only
+caution of this kind is the developer's account of its own good motive, chosen and drafted by
+a model that developer made.
+
+**3. What the memory record says.**
+*The choice:* nothing recorded yet, or the developer's partial statement with its limits.
+*My recommendation:* nothing recorded yet, with the passage kept in this file as a lead for a
+future entry on memory kept for the model. The check agrees.
+*Confidence:* high, and higher since John's ruling that this memory is kept for the user.
+*Standard practice:* the ruling's own rule for a record with no source.
+*Strongest alternative:* carry the passage. Its cost is a caution about something other than
+what the record tracks.
+
+**4. Whether replies and limits are added in the same change.**
+*The choice:* whether a session writing the new caution may also add to the first caution and
+add limits on a measure, which the ruling did not ask for.
+*My recommendation:* yes. Add Hoel on ending a conversation and Seth on protection in law and
+the public survey, under the first caution. Add Saad on kept files beside the second, as a
+limit. The check agrees in aim and corrected where Saad sits; I accept that.
+*Confidence:* high that the two should land together, because otherwise the records lean the
+new way; moderate on where Saad sits, because the format has no place for a limit.
+*Judgment call.*
+*Strongest alternative:* add the new caution alone and the replies later. Nothing is
+published, so the cost is only that the records lean until the second change, and that a
+release in between would carry the lean.
+
+**5. How the page tells a reader about the circle.**
+*The choice:* in each caution, once on the About page, or both.
+*My recommendation:* both. In a caution, the tie stated as a fact with no judgment. On the
+About page, one sentence covering both cautions: most of the first comes from one essay by
+the head of another developer's AI group, and most of the second from one developer, one
+research group and people who work with it. The check agrees.
+*Confidence:* high. The count in section 3 leaves little room for another reading.
+*Standard practice here:* the About page already does this for the first caution.
+*Strongest alternative:* the About page only. Its cost is that a reader who lands on one
+entry never sees it.
+
+**6. Whether a general statement of both costs belongs on the About page.**
+*The choice:* one or two sentences on the About page saying what the two mistakes are and
+that writers weigh them differently, or nothing.
+*The first version gave no recommendation. The check recommends* yes, drawn from two writers
+who weigh the costs differently.
+*My recommendation:* yes, from these two. Eric Schwitzgebel, who states a dilemma for systems
+whose personhood is open to dispute: treat them as persons and risk giving up real human
+interests for nothing, or do not and risk "grievous moral wrongs"
+([summary page](https://faculty.ucr.edu/~eschwitz/SchwitzAbs/FullRightsDilemma.htm),
+manuscript dated 2023-01-20, summary only). And Emilia Kaczmarek, Faculty of Philosophy,
+University of Warsaw, ["The Moral Status of AI and the Precautionary
+Principle"](https://diametros.uj.edu.pl/diametros/article/view/2071), in Diametros, published
+2026-06-25 and open to read (summary and the passages on both risks read). She argues that
+crediting too much is the nearer danger because its harms are already happening, grants that
+crediting too little "could carry a higher potential for harm", and holds that the second
+risk can be partly met by other reasons for decent treatment that do not require crediting AI
+with standing. Schwitzgebel's dilemma is about personhood and full rights, a stronger subject
+than wants, so the sentence should not stretch it over every entry.
+*Confidence:* moderate. The pair is balanced; I read one by its summary and the other in
+part.
+*Judgment call.*
+*Strongest alternative:* no general statement. Its cost is that a record reading "nothing
+recorded" gives a reader no account of what the caution is.
+
+**7. Whether the search is finished enough to release.**
+*The choice:* build now and search again before release, or hold every record until the
+search is done.
+*My view in the first version:* a first pass, fit to build from. *The check's:* not finished,
+and thinner than it read, since one session found eight missed sources, three of them papers
+the records already cited that had been read by summary only.
+*My recommendation now:* the check's. Build records now for the entries with a checked
+source; mark the rest as nothing recorded; and make one more bounded pass before release that
+reads in full every paper a record cites by summary only, tries again the papers that would
+not open, and reads the relevant chapters of the books.
+*Confidence:* moderate. That the first pass missed three statements sitting in papers already
+cited is the best evidence that more is there.
+*Judgment call.*
+*Strongest alternative:* hold every record until the search is finished. Its cost is delay
+with little gained, since nothing is published and a record can be added to.
 
 ---
 
 ## 7. Facts written here without opening their source
 
-Nearly empty, as asked. Each of these is stated above on something less than a page I read
-that says it.
+Each is stated above on something less than a page I read that says it.
 
-1. **That Robert Long "runs" Eleos AI Research today.** An Eleos post of 2025-04-24
-   ([the post](https://eleosai.substack.com/p/anthropic-is-taking-ai-welfare-seriously),
-   opened 2026-11-18) calls him executive director and co-founder. I have not checked that it
-   is still so.
-2. **That Kyle Fish heads Anthropic's work on model welfare today.** The same post of
+1. **That Eleos AI Research still takes no money from AI companies.** Its notes of 2025-05-30
+   say so. Nothing later was checked.
+2. **That Kyle Fish heads Anthropic's work on model welfare today.** An Eleos post of
    2025-04-24 is my only source, and it is nineteen months old.
-3. **That Eleos AI Research still takes no money from AI companies.** Its notes of 2025-05-30
-   say so. I have not checked anything later.
-4. **"Six of the thirteen entries count Anthropic's commitments."** Counted by me from the
-   records' `offered_by` fields and state text, not from any page.
-5. **That Erik Hoel, Zvi Mowshowitz and Bradford Saad are "a writer" or "a newsletter
+3. **"Five of the thirteen records count Anthropic's commitments", and the counts of records
+   on and beside the list.** Counted by me from the records' `offered_by` and `beside`
+   fields, not from any page.
+4. **That Erik Hoel, Zvi Mowshowitz and Bradford Saad are "a writer" or "a newsletter
    writer".** Their pages show that they wrote the pieces; none of the pages I read says what
-   each of them is. I have deliberately not written what I believe from memory about any of
-   the three, or about where Ethan Perez, Nick Bostrom or Carl Shulman work today. For those
-   last three I give only what their papers list.
-6. **That the 2024 report has "ten researchers".** Counted from its author list. That its
-   co-author "has since joined the first developer" rests on the report's own footnote and
-   the Eleos post of 2025-04-24.
+   each of them is, and I have not written what I believe from memory.
+5. **Where Nick Bostrom and Carl Shulman work today.** I give only what their paper lists.
+6. **That the constitution was published in January 2026.** The page carries no date. The
+   Guardian essay says so, and I have not found the developer's own statement of it.
+7. **That the study of models leaving conversations is dated 2025-09-05.** That is the date
+   on the arXiv copy; the paper's title page says August 2025.
 
-Nothing else in this document was written from memory. Leads that I did not open are named as
-leads where they appear: Metzinger's paper, "Designed Mortality", the release report quoted by
-Long and Shiller, the three books, and the press reply to the Microsoft AI essay.
+Cleared since the first version, each from a page opened on 2026-11-18: Robert Long's role
+(the Eleos team page), Ethan Perez's present post (his own page), and the title of the post
+by Long and Shiller (its page).
+
+Leads that were not opened are named as leads where they appear.
