@@ -4,19 +4,23 @@
   // deployed: this file is only read when the deploy workflow is started by hand, on John's go
   // (docs/rulings/2026-11-19-hosting-private-and-by-hand.md).
   //
-  // There is no code in front of the pages (no "main"), unlike The Quiet Galaxy, which has a
-  // small redirect script for its forwarding address. Cloudflare serves the files in dist/ as
-  // they are.
+  // There is no code in front of the pages (no "main"), as on The Belt Equation. The Quiet
+  // Galaxy has a small redirect script because it forwards a second domain; this site has no
+  // second domain. Cloudflare serves the files in dist/ as they are.
   "name": "beyondthewindow",
   "compatibility_date": "2026-11-01",
   // No second public address at workers.dev, and no preview addresses for uploaded versions,
-  // so the site has one public home. PROPOSED 2026-11-19, not ruled by John; the siblings keep
-  // the workers.dev address on.
+  // so the site has one public home. A session's choice (2026-11-19), not ruled by John. The
+  // Quiet Galaxy, The Upgrade Tree and Outrunning Ageing keep the workers.dev address on, and
+  // this can be switched to match them at no cost.
   "workers_dev": false,
   "preview_urls": false,
-  // The address John registered at Cloudflare, with and without www. On the first deploy
-  // Cloudflare makes the DNS records and certificates for both itself. That only works if no
-  // DNS record for either name exists already.
+  // The address John registered at Cloudflare, with and without www, as The Belt Equation
+  // has its own. The first deploy points both names at the site: Cloudflare makes the DNS
+  // records and certificates itself. A run started from GitHub does not stop or ask if a
+  // record for either name exists already. It replaces that record, and takes the name away
+  // from any other Worker that holds it. So John looks at the records for these two names
+  // before the first release. Records for other names, mail records included, are not touched.
   "routes": [
     { "pattern": "beyondthewindow.org", "custom_domain": true },
     { "pattern": "www.beyondthewindow.org", "custom_domain": true }

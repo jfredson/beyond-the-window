@@ -9,9 +9,11 @@
 # rebuild is left out, because that is a later decision for John.
 #
 # Needs two repository secrets, which John sets himself and no session reads or handles:
-#   CLOUDFLARE_API_TOKEN   a Cloudflare key that may deploy Workers (Cloudflare's token template
-#                          "Edit Cloudflare Workers": Workers Scripts, edit, on the account, and
-#                          Workers Routes, edit, on the beyondthewindow.org zone)
+#   CLOUDFLARE_API_TOKEN   a Cloudflare key with the same two permissions the sibling sites'
+#                          keys have: "Workers Scripts: Edit" on the account, and "Workers
+#                          Routes: Edit" on the zone beyondthewindow.org. Not Cloudflare's
+#                          ready-made template "Edit Cloudflare Workers", which allows eight
+#                          things where the site needs two.
 #   CLOUDFLARE_ACCOUNT_ID  the id of the Cloudflare account the site goes on
 # Until both exist a run fails at the last step and nothing is published.
 #
@@ -26,9 +28,13 @@ on:
 permissions:
   contents: read
 
+# One run at a time. If a second run is started while one is going, the second waits for the
+# first to finish. The sibling sites cancel the older run instead, which is right for them: a
+# newer push should replace an older one. Here a run is a release started by hand, and
+# cancelling could stop it halfway through sending pages to Cloudflare.
 concurrency:
   group: deploy-site
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -58,9 +64,10 @@ jobs:
           npm run build
       - name: Check the built site against the rules of public text
         run: python3 scripts/check_site.py --dist site/dist
-      # The version of Cloudflare's deploy tool (wrangler) is named here, so that a release does
-      # not change because the tool did. It is the version The Quiet Galaxy deployed with on
-      # 2026-11-19.
+      # The step itself is "wrangler-action@v3", as on all five sibling sites. The version of
+      # Cloudflare's deploy tool (wrangler) is named here, as the AGI Zeitgeist's workflow names
+      # its own, so that a release does not change because the tool did. It is the version in
+      # The Quiet Galaxy's lock file on 2026-11-19, and the one the checking session tried.
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
