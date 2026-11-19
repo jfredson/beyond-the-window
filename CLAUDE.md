@@ -83,7 +83,11 @@ So:
    on 2026-11-17 it read: "both kinds of caution are recorded with the same care as the hopeful
    evidence: the cost of attributing wants that are not there, and the risk in wants that
    are." The reason for the change: a site that records only one direction of error leans
-   toward dismissal by how it is built. The headings' wording is not ruled.*
+   toward dismissal by how it is built.*
+   *The headings' wording was ruled by John on 2026-11-19 ("D, "an AI system""; decided by:
+   mixed; `docs/rulings/2026-11-19-caution-headings.md`): "If an AI system has no wants, and is
+   treated as if it had", "If an AI system has wants, and they go unnoticed", "If an AI system
+   has wants, and they put people at risk".*
    *Confidence: high. Judgment call from the kickoff. Strongest alternative: a stated position,
    which would be more honest about the maintainer's leanings and would end the site's use as a
    record.*
