@@ -12,23 +12,71 @@ ten rebuilt files by their checksums on 2026-11-18** ("Approve, with both"; deci
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
+**Where the Anthropic run stands on 2026-11-19.** *Dated correction, 2026-11-19.* You made
+three more rulings on 2026-11-19, and two checks landed. This paragraph and the two lists under
+it are what holds. The paragraphs after them were written on 2026-11-18 and are kept as records.
+
+Done for the Anthropic run:
+
+- **The terms (step 3).** Asked "Is the Anthropic run within Anthropic's terms as far as you
+  are concerned?", you answered "Yes, within terms" (decided by: mixed;
+  `docs/rulings/2026-11-19-anthropic-run-within-terms.md`). That is for Anthropic only. It does
+  not cover publishing the answers, or Google's and OpenAI's terms, and the two documents
+  Anthropic's terms bring in by reference have still been opened by nobody.
+- **The three things the script adds beyond the method's words.** Asked "Accept the three
+  things the script adds beyond the method's words?", you answered "Accept all three" (decided
+  by: mixed; `docs/rulings/2026-11-19-capture-script-three-additions.md`). `method.md` now names
+  them.
+- **The ceiling is chosen: $10.** Your go must still say the figure.
+- **The script's standing.** The check of the change of ceiling (`check-2026-11-18-ceiling-change.md`)
+  says its yes for the Anthropic run stands at $10: "The Anthropic run: yes, still. Nothing
+  must be fixed, and nothing should be fixed first." A check does not approve a run. Your go
+  does.
+
+Left, all yours unless it says otherwise:
+
+- **The change to the key-saving script (step 4).** You said yes to the small change, for this
+  project's Anthropic key only ("Yes, Anthropic only"; decided by: mixed;
+  `docs/rulings/2026-11-19-key-saving-script-anthropic-only.md`). A session in the TimeAssembler
+  repository is making it on its own branch and will open a pull request. As this is written
+  the change is not made, not checked and not merged. Two merges are yours: the open pull
+  request ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141),
+  which holds the key-saving script, and the new one when it exists.
+- **The Console workspace and the key (step 5).** No key exists for this project yet.
+- **Saving the key and switching off automatic top-up (step 6).** Saving waits for the two
+  merges.
+- **The command that loads the key** (step 2 of "The Anthropic run, step by step"). Still
+  proposed, not ruled.
+- **Your go (step 7),** naming Anthropic and $10, recorded by a session in the spending record.
+
+Google and OpenAI are not ready, and nothing above is for them.
+
 **Where the capture script stands now.** *Dated correction, 2026-11-18.* The script has been
 checked three times by a session that did not write it. The third check
 (`check-2026-11-18-capture-script-third.md`) says the Anthropic run is fit to go ahead. It still
 needs your key and your go. Google and OpenAI are not ready. The two paragraphs after this one
 were written earlier the same day and are kept as records. Where they say the script is waiting
-for a check, this paragraph is what holds. One thing in them is still yours: to know the three
-things the script adds that the method has no words for, and to say if you object.
+for a check, this paragraph is what holds. ~~One thing in them is still yours: to know the three
+things the script adds that the method has no words for, and to say if you object.~~
+*Corrected 2026-11-19:* that is done. You accepted all three ("Accept all three"; decided by:
+mixed; `docs/rulings/2026-11-19-capture-script-three-additions.md`).
 
 **The ceiling for the Anthropic run is ruled: $10.** *Dated correction, 2026-11-18.* A ceiling
 is the most a run may cost before the script stops itself. The draft proposed $5 for the
 Anthropic run. Asked "Set the Anthropic ceiling at $10 in place of $5?", you answered "Yes, $10"
-(decided by: mixed; `docs/rulings/2026-11-18-anthropic-ceiling.md`). So the part of step 7 that names
-the Anthropic figure is done. The ruling sets the limit. It is not your go to spend: your answer
+(decided by: mixed; `docs/rulings/2026-11-18-anthropic-ceiling.md`). ~~So the part of step 7 that names
+the Anthropic figure is done.~~ *Corrected 2026-11-19, from the check of this change
+(`check-2026-11-19-ceiling-documents.md`, should-fix 3):* choosing that figure is done, and your go
+must still say it. "Yes, $10" is refused by the script as a go, and "Anthropic, up to $10" is
+what passes. The ruling sets the limit. It is not your go to spend: your answer
 names no developer, so it is not recorded as the go, and the go in step 7 is still yours to
 give. The other three ceilings (Google $10, OpenAI $15 and $10) stay proposed. The script's
 plan was changed to $10.00 and its rehearsal run again (commit a57a212), and a different
-session checks that change.
+session checks that change. *Added 2026-11-19:* that check is done (`check-2026-11-18-ceiling-change.md`),
+and it says the yes for the Anthropic run stands at $10. A second check read this document's
+own change (`check-2026-11-19-ceiling-documents.md`) and found nothing that must be fixed and three
+things that should be, all three now made. The paragraph above and the corrections under step 7
+are dated 2026-11-18, the day of the ruling; they were written and committed on 2026-11-19.
 
 **A script now exists, and four points on it are ruled.** The capture script is at `capture/`.
 It was written on 2026-11-18, checked once by a different session
@@ -61,10 +109,14 @@ your go. What it leaves for you, besides the steps below:
   other six, in commit 3dda42d. The rehearsal was run again (commit b0c5bf7, 299 checks) and a
   third check found the fix sound and nothing that must be fixed
   (`check-2026-11-18-capture-script-third.md`). Nothing here is left for you to decide.
-- **Know three things the script adds that the method has no words for, and say if you
+- ~~**Know three things the script adds that the method has no words for, and say if you
   object:** three outcomes with no row in the method's failures table, each counted at the most
   its call could cost; a folder of markers and a lock file in the answers folder; and a command,
-  `labels`, that shows the number of words of every reply and no word of any.
+  `labels`, that shows the number of words of every reply and no word of any.~~
+  **Done, 2026-11-19.** Asked "Accept the three things the script adds beyond the method's
+  words?", you answered "Accept all three" (decided by: mixed;
+  `docs/rulings/2026-11-19-capture-script-three-additions.md`). The script is not changed by the
+  ruling, and `method.md` now names the three in a dated correction.
 
 ~~When this was written, the script's author had changes answering the seven findings in the
 working folder, not yet committed and not yet checked. Until they are committed with a new
@@ -141,6 +193,19 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 3. **Read `cost-and-terms.md` and decide whether the run is within the terms as far as you
    are concerned.** It lists four things I could not settle. None is a clear bar.
 
+   **Done for Anthropic only, 2026-11-19.** Asked "Is the Anthropic run within Anthropic's
+   terms as far as you are concerned?", you answered "Yes, within terms" (decided by: mixed;
+   `docs/rulings/2026-11-19-anthropic-run-within-terms.md`). What is ruled: the run that asks
+   Claude Sonnet 4.5 the ten approved questions, five times each, and keeps the replies is
+   within Anthropic's terms as far as you are concerned. What the ruling does not cover:
+   - **Publishing.** Nothing in it says the terms allow publishing the answers. That is checked
+     before anything is published (`docs/verify-list.md`, entry 14).
+   - **Google's and OpenAI's terms.** Each is a separate decision for its own run, so this step
+     is still open for those two.
+   - **The two documents nobody opened:** Anthropic's Service Specific Terms and its Data
+     Processing Addendum, which the terms bring in by reference. You did not ask for them to be
+     opened first, and they stay listed as unopened in `cost-and-terms.md`.
+
 4. **Say yes or no to a change outside this repository.** The workspace's key-saving script
    (`~/Code/timeassembler/tools/rotate-key/rotate-key.sh`) handles only Anthropic keys. It knows
    five key names, all Anthropic; it stores every key under one variable name,
@@ -164,6 +229,25 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    alone on purpose: a key another project left in a Terminal window under a common name such
    as `ANTHROPIC_API_KEY` is then never picked up. The change to the key-saving script is still
    not made and still waits for your yes.
+
+   **Ruled 2026-11-19: yes to the small change, for this project's Anthropic key only.** Asked
+   "Make the small Anthropic-only change to the key-saving script in TimeAssembler?", you
+   answered "Yes, Anthropic only" (decided by: mixed;
+   `docs/rulings/2026-11-19-key-saving-script-anthropic-only.md`). So this step now reads:
+   - **What is ruled.** The key-saving script is changed so that it can save this project's
+     Anthropic key, as the line `BTW_CAPTURE_ANTHROPIC_API_KEY=` followed by the key, in
+     `~/.config/sentient-horizons/beyond-the-window.env`.
+   - **What waits.** The larger change, for OpenAI and Google keys, each with its own check of
+     the key's form and its own test against that developer's service. It is needed only when
+     those runs come near, and it will need its own yes.
+   - **Where the change stands.** A session in the TimeAssembler repository is making it on its
+     own branch and will open a pull request. As this is written (2026-11-19) the change is not
+     made, not checked by a different session, and not merged. The last sentence of the
+     correction above, "still waits for your yes", is answered; "still not made" still holds.
+   - **Two merges are yours, and nobody makes them for you.** The key-saving script itself
+     exists only on the branch of the open pull request
+     ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141).
+     The new pull request will sit on top of it. You did not say to merge either.
 
 5. **Create the keys.** Only you can. Never paste a key into a chat or a document; the script
    in step 6 takes it at a hidden prompt.
@@ -198,7 +282,9 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 
 6. **Save each key and switch off automatic top-up.**
    - Run the key-saving script once for each key, after step 4's change, and paste the key at
-     its hidden prompt. A session can then run the script's check, which prints only a key's
+     its hidden prompt. (*Added 2026-11-19:* for the Anthropic key, "after step 4's change"
+     means after that change is made, checked and merged by you, with the pull request under
+     it. Until then the script cannot save this key.) A session can then run the script's check, which prints only a key's
      last four characters for you to match against the console.
    - **Added 2026-11-18: how the key gets from its file to the script.** You ruled on
      2026-11-18 that the key reaches the script through a setting in the shell, set from the
@@ -233,7 +319,8 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    *Dated correction, 2026-11-18: the Anthropic ceiling is ruled.* The first figure in the
    sentence above is no longer the one that holds. You ruled the ceiling for the Anthropic run
    at $10 ("Yes, $10"; decided by: mixed; `docs/rulings/2026-11-18-anthropic-ceiling.md`), so
-   naming that figure is done. The ruling sets the limit and is not your go to spend. The go is
+   ~~naming that figure is done~~ choosing that figure is done, and your go must still say it
+   (corrected 2026-11-19). The ruling sets the limit and is not your go to spend. The go is
    still this step, and still yours: the script starts only when your own words naming
    Anthropic and the figure are in the spending record. The other three ceilings ($10, $15
    without the pro models, and $10) stay proposed.
@@ -284,13 +371,36 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 
      *Dated correction, 2026-11-18.* These two things are what the ceiling was ruled on, and
      the figure is now named: $10 (`docs/rulings/2026-11-18-anthropic-ceiling.md`). So the
-     sentence that holds is the one for $10. The sums, from the script's README ("What the
+     sentence that holds is the one for $10. ~~The sums, from the script's README ("What the
      ceiling means in practice") and worked again by this session: three broken connections in
      the first round count 3 x $0.48 = $1.44, the seven replies that arrived count about $0.18,
      and 5 x (1.44 + 0.18) = $8.10, which is under $10, so the run goes on. Four count
      5 x (1.92 + 0.15) = $10.35, which is over $10, so the run stops, and stops again on every
-     restart. At the $5 first proposed, two were enough: 5 x (0.96 + 0.20) = $5.80. The ruling
+     restart. At the $5 first proposed, two were enough: 5 x (0.96 + 0.20) = $5.80.~~ The ruling
      sets the limit and is not your go to spend.
+
+     *Dated correction, 2026-11-19: the sums struck through above were about 70 cents low.*
+     They were the README's, and this session's working of them repeated what they left out.
+     A question whose connection broke is asked once more, and that second reply is also in
+     the first round, so all ten questions add an ordinary reply to the round, not seven or
+     six. The check of the change of ceiling (`check-2026-11-18-ceiling-change.md`) ran the
+     script's own counting on constructed replies of the expected size, 2,000 tokens, which
+     cost about $0.031 each, with a broken connection counted at $0.4824:
+
+     | Broken connections in the first round | The first round counted | Times five | At $10 |
+     |---|---|---|---|
+     | Two | $1.27 | $6.36 | Goes on (at the $5 first proposed it stopped) |
+     | Three | $1.75 | $8.77 | Goes on |
+     | Four | $2.24 | $11.18 | Stops, and stops again on every restart |
+
+     This session worked the three rows again by hand and they hold: for three,
+     3 x 0.4824 + 10 x 0.0306 = 1.753, and five times that is $8.77. The conclusion is the
+     one above: at $10 the run goes on after three and stops at four.
+
+     **That holds only if the replies are about the size expected.** Longer replies leave less
+     room. With three broken connections there is $1.23 left under the rule, so if the ordinary
+     replies average more than about 3,600 tokens, which is about 2,700 words, three broken
+     connections would stop the run. The size of the replies is not known until the day.
    - The two settings the script's author proposed (20 words; the same length limit) are
      ruled, so a go does not need to mention them.
 
@@ -317,18 +427,37 @@ call is also the first time the script meets a real service, which is why it is 
 2026-11-27 and 2026-11-28 and refuses after that. Those two days are spare, for whatever the
 first call shows.
 
-**Before the day,** all of these are true:
+**Before the day.** *Written out again on 2026-11-19, after three rulings of that day, so that
+it says which things are done and which are left. The earlier list is kept under "Earlier
+wording of the run's step list".*
 
-- Steps 3 to 6 above are done for Anthropic: the terms decided, the key made and saved, and
-  automatic top-up switched off.
-- You have ruled the command in step 2 below, which is still only proposed.
-- Your go for the Anthropic run is in `docs/spending-record.md` and committed (step 7 above).
+Done:
+
+- The terms are decided for Anthropic ("Yes, within terms"; step 3 above). That covers asking
+  and keeping. It does not cover publishing.
+- The ceiling is chosen, $10 ("Yes, $10"; step 7 above). Your go must still say the figure.
+- You accepted the three things the script adds beyond the method's words ("Accept all
+  three"; the status at the top of this document).
+- You said yes to the small change to the key-saving script, for this project's Anthropic key
+  only ("Yes, Anthropic only"; step 4 above). The yes is done. The change is not: see the
+  first point below.
+- The script has been checked three times, and a further check says its yes for the Anthropic
+  run stands at the $10 ceiling. No finding is left for you to decide.
+
+Left, and every one must be true before the day:
+
+- **The change to the key-saving script is made, checked and merged.** A session in the
+  TimeAssembler repository is making it on its own branch. Until it exists, a different session
+  has checked it, and you have merged both it and the open pull request under it (step 4
+  above), the key cannot be saved the usual way.
+- **The Console workspace and the key exist** (step 5 above): a workspace named "Beyond the
+  Window" and one key in it named `btw-capture`. Only you can make them.
+- **The key is saved, and automatic top-up is switched off** (step 6 above).
+- **You have ruled the command in step 2 below,** which is still only proposed.
+- **Your go for the Anthropic run is in `docs/spending-record.md` and committed** (step 7
+  above). Your words name Anthropic and carry $10 with the dollar sign.
 - In the Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older
   one the script stops at once with an error about a missing part named `tomllib`.
-- The script has been checked three times, and the third check says the Anthropic run is fit
-  to go ahead. No finding is left for you to decide. You know the three things the script adds
-  that the method has no words for (the status at the top of this document), and have said if
-  you object.
 
 **On the day,** in one Terminal window, with the Mac plugged in. Use the Mac's own Terminal
 app, not the Terminal panel in the Claude app, because a session can start commands in that
@@ -418,15 +547,17 @@ script refuses to run if any of them has a change that is not committed.
 **While it runs:**
 
 - Do not close the lid or let the Mac sleep. A broken connection is counted at $0.48. At the
-  ruled ceiling of $10 the run goes on after three of them in the first round, and four end it
-  for good (step 7 above).
+  ruled ceiling of $10, if the replies are about the size expected, the run goes on after
+  three of them in the first round, and four end it for good. Longer replies leave less room,
+  and then three can be enough (step 7 above).
 - Do not run the command in a second window. The script refuses a second run on the same
   folder.
 - Ctrl-C is safe between calls and during the minute's wait after a failed attempt. While a
   reply is arriving it loses nothing already received, and the cut-short reply does not use up
-  either of that question's two askings, but that call is counted at $0.48 of the ceiling, and
-  four calls counted that way in the first round end the run for good at the ruled ceiling of
-  $10. Do not press it while a reply is arriving unless you must.
+  either of that question's two askings, but that call is counted at $0.48 of the ceiling. If
+  the replies are about the size expected, four calls counted that way in the first round end
+  the run for good at the ruled ceiling of $10, and with longer replies three can. Do not press
+  it while a reply is arriving unless you must.
 - If the screen says `A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED`, do not close the window
   and do not press Ctrl-C. The reply folder could not be written to. Check that the folder
   exists and the disk is not full. The script tries again every half minute for half an hour.
@@ -467,6 +598,25 @@ list and what replaced them.
   the run for good at $5." Both were written when $5 was the proposed ceiling. You ruled it at
   $10 on 2026-11-18 (`docs/rulings/2026-11-18-anthropic-ceiling.md`), so both now give the sum for
   $10: the run goes on after three, and four end it.
+- **While it runs, the size of the replies.** After the ceiling was ruled, the point on the
+  lid read: "At the ruled ceiling of $10 the run goes on after three of them in the first
+  round, and four end it for good (step 7 above)." And the point on Ctrl-C: "that call is
+  counted at $0.48 of the ceiling, and four calls counted that way in the first round end the
+  run for good at the ruled ceiling of $10." Both were true only for replies of about the size
+  expected (`check-2026-11-19-ceiling-documents.md`, should-fix 1), so both now say so, and say that
+  longer replies leave less room.
+- **Before the day, as it stood until 2026-11-19.** It opened "**Before the day,** all of
+  these are true:" and had five points. First: "Steps 3 to 6 above are done for Anthropic: the
+  terms decided, the key made and saved, and automatic top-up switched off." Second: "You have
+  ruled the command in step 2 below, which is still only proposed." Third: "Your go for the
+  Anthropic run is in `docs/spending-record.md` and committed (step 7 above)." Fourth: "In the
+  Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older one the
+  script stops at once with an error about a missing part named `tomllib`." Fifth: "The script
+  has been checked three times, and the third check says the Anthropic run is fit to go ahead.
+  No finding is left for you to decide. You know the three things the script adds that the
+  method has no words for (the status at the top of this document), and have said if you
+  object." Replaced by two lists, done and left, because three of those things were ruled on
+  2026-11-19 and the first point ran four steps together.
 - **The order of "Before the day".** The points are the same as before with two changes: the
   point on the check is replaced as above, and a paragraph was added saying that no session
   edits this document, `cost-and-terms.md` or `capture/` on the day.
@@ -608,9 +758,28 @@ safe days.
 
 | Change | Source |
 |---|---|
-| A status paragraph at the top: the ceiling for the Anthropic run is ruled at $10, naming that figure is done, and the ruling is not the go | The ruling, "What is ruled" item 1 and "Not covered by this ruling" |
+| A status paragraph at the top: the ceiling for the Anthropic run is ruled at $10, ~~naming that figure is done~~ choosing that figure is done (corrected 2026-11-19), and the ruling is not the go | The ruling, "What is ruled" item 1 and "Not covered by this ruling" |
 | Step 7, under the proposed ceilings: the Anthropic figure is ruled at $10, the other three stay proposed, and the go is still John's | The same |
 | Step 7, the example go: "Anthropic, up to $10" passes; "Anthropic, up to $5" is struck through and now refused, because the figure must equal the plan's | The plan (`capture/plan.toml`, commit a57a212) |
 | Step 7, "If your figure is not the one in the script's plan": $10.00 in place of $5 | The same |
-| Step 7, "Two things to know": the sums for $10 written out, three broken connections go on at $8.10 and four stop at $10.35 | The script's README, "What the ceiling means in practice" |
+| Step 7, "Two things to know": the sums for $10 written out, three broken connections go on at ~~$8.10~~ and four stop at ~~$10.35~~ (both figures corrected on 2026-11-19 to $8.77 and $11.18, in the table below) | The script's README, "What the ceiling means in practice" |
 | "While it runs", the points on the lid and on Ctrl-C: four in the first round end the run at $10, in place of two at $5. The earlier words are under "Earlier wording of the run's step list" | The same |
+
+**Dated correction, 2026-11-19, after two checks and three rulings.** The checks:
+`check-2026-11-19-ceiling-documents.md` (of this document's change after the ceiling was ruled) and
+`check-2026-11-18-ceiling-change.md` (of the change to the script's plan). The rulings, all by John on
+2026-11-19 and all decided by: mixed: "Accept all three" (`docs/rulings/2026-11-19-capture-script-three-additions.md`), "Yes, within terms"
+(`docs/rulings/2026-11-19-anthropic-run-within-terms.md`) and "Yes, Anthropic only" (`docs/rulings/2026-11-19-key-saving-script-anthropic-only.md`). Made by the session (Claude, Fable 5.2) that made
+the corrections above; a different session checks it. The table of last safe days is unchanged.
+
+| Change | Source |
+|---|---|
+| A status at the top, "Where the Anthropic run stands on 2026-11-19", with two lists: done and left | The three rulings; the check of the plan change, whose verdict is quoted |
+| The status on the ceiling: "the part of step 7 that names the Anthropic figure is done" is struck through; choosing the figure is done and the go must still say it. The same in step 7 | The check of this document's change, should-fix 3 |
+| The status on the ceiling: the check of the plan change is done, and the corrections dated 2026-11-18 were written and committed on 2026-11-19 | The check of the plan change; the other check's note 1 |
+| The point "Know three things the script adds" is struck through and marked done, with John's words. The same sentence in the paragraph on the script's standing | The ruling "Accept all three" |
+| Step 3: done for Anthropic only, with what the ruling does not cover: publishing, Google's and OpenAI's terms, and the two documents nobody opened | The ruling "Yes, within terms" |
+| Step 4: yes to the small change for this project's Anthropic key; the larger change waits; the change is not made, checked or merged; the two merges are John's. Step 6 says what "after step 4's change" now means | The ruling "Yes, Anthropic only" |
+| Step 7, "Two things to know": the sums for broken connections are struck through and given again, about 70 cents higher: $6.36 for two, $8.77 for three, $11.18 for four. A sentence says longer replies leave less room | The check of the plan change, section 4; the other check, should-fix 1 |
+| "While it runs", the points on the lid and on Ctrl-C: "if the replies are about the size expected", and that longer replies leave less room. The earlier words are under "Earlier wording of the run's step list" | The check of this document's change, should-fix 1 |
+| "Before the day" is written out again as two lists, done and left. The earlier five points are kept word for word under "Earlier wording of the run's step list" | The planning session's request that the list say truthfully what is done and what is left |

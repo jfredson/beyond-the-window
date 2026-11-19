@@ -32,6 +32,14 @@ never done with the answers", and the foot lists each change under "What changed
 after the second approval". Still John's before any run: the terms, the keys, the spending
 ceilings and the capture script.
 
+**Three things the script does beyond these words are accepted.** *Dated correction,
+2026-11-19.* The script handles three situations this method had no words for. John accepted
+all three on 2026-11-19 ("Accept all three"; decided by: mixed;
+`docs/rulings/2026-11-19-capture-script-three-additions.md`). They are set out under the failures
+table, in "Three things the script adds, accepted by John", and noted at script rules 8 and
+10. Nothing that is sent changes. The points lower down that leave these three for John to
+know of and object to are answered here.
+
 **Where the capture script stands now.** *Dated correction, 2026-11-18.* The script has been
 checked three times by a session that did not write it. The third check
 (`check-2026-11-18-capture-script-third.md`) says the Anthropic run is fit to go ahead. It still
@@ -74,6 +82,8 @@ run". After the second check that is too little. Two more things are his:
   call could cost; a folder of markers and a lock file in the answers folder; and a command,
   `labels`, that shows the number of words of every reply and no word of any, where this method
   speaks only of a faulty file's count.
+  *Added 2026-11-19:* John accepted all three ("Accept all three"; decided by: mixed;
+  `docs/rulings/2026-11-19-capture-script-three-additions.md`). It is no longer left for him.
 
 ~~When this was written, the script's author had changes answering the seven findings in the
 working folder, not yet committed and not yet checked.~~ (Out of date since later on
@@ -254,6 +264,41 @@ model out for the rest of the day even after the cause was fixed, so a key paste
 the last safe day would have ended the capture for that model
 (`check-2026-11-18-capture-script.md`, the first of its two must-fix findings).
 
+**Three things the script adds, accepted by John.** *Dated correction, 2026-11-19.* The script's
+own notes count seven outcomes in the table above. The script
+that carries out this method met three situations the table and the script rules have no words
+for, and handled them. Asked "Accept the three things the script adds beyond the method's
+words?", John answered "Accept all three" (decided by: mixed;
+`docs/rulings/2026-11-19-capture-script-three-additions.md`). The table and the rules are left as
+approved, and these words are added so that the method matches the script. The script is not
+changed by the ruling, and nothing that is sent changes: the message files, the settings and
+what is asked are as approved.
+
+1. **Three more outcomes, for trouble on the script's own side.** Each is counted at the most
+   its call could have cost, so the running total can be too high and never too low.
+
+   | What happened | Recorded as | What is done |
+   |---|---|---|
+   | The service sent a reply the script could not take apart | A reply this script could not take apart; everything received is saved whole | The run stops, and a session looks at the script. The question is asked once more and then left |
+   | A call was sent and nothing was saved, as after a power cut | Sent, with no record written; only its marker exists | Counted on the next start. Its number is never used again |
+   | A file was only half written when the machine stopped | A file that could not be read | It is named on screen and the run carries on |
+
+2. **Two kinds of extra file in the answers folder.** A folder named `sent-markers`, holding
+   one small file for each call, written just before the call is sent. A marker holds the
+   attempt's numbers, the length limit and the most the call could cost. It is how the script
+   knows a call was sent even if its reply was lost, and why it never asks under the same
+   number twice. And an empty file, `one-run-at-a-time.lock`, held while the script runs, which
+   stops two runs going at once. Neither holds any word of a model's reply.
+
+3. **A command, `labels`, that shows the word count of every reply and no words of any.**
+   Script rule 10 and the rule on faulty files speak of a count only for a faulty reply. The
+   command also lists what each file was recorded as. Without it, nobody could tell a full
+   answer from a very short one after the one watched call except by opening the file, which
+   this method forbids. A word count is a small piece of information about an answer, since a
+   very short one hints at a refusal, and John was told so before he ruled. The rule that
+   nobody reads the answers until a way of comparing them is ruled is not changed: a word
+   count is not a reading.
+
 **Which row, when a stream breaks.** A streamed reply can stop part way, because the service
 sends an error or the connection times out. Anthropic's streaming page
 (https://platform.claude.com/docs/en/build-with-claude/streaming, opened 2026-11-18) says each
@@ -423,12 +468,16 @@ near the top.) It must:
    models close to withdrawal are likely to be less reliable, and two spare days cost nothing.
 7. Stop a model's run if the reported model name is not the one sent.
 8. Write each file before sending the next message, make it read-only, and write the list of
-   names and checksums at the end.
+   names and checksums at the end. *Added 2026-11-19, accepted by John ("Accept all three"):*
+   the script also writes a small marker file before each call and holds an empty lock file
+   while it runs, both in the answers folder and neither holding any word of a reply ("Three
+   things the script adds, accepted by John", under the failures table).
 9. Use for each developer the interface named above, with streaming for Anthropic, and send
    OpenAI's `store` as false.
 10. After each round, flag faulty reply files (empty, very short, ending mid-reply) by name and
     fault only, never showing any words of a reply, as set out under "What is never done with
-    the answers".
+    the answers". *Added 2026-11-19, accepted by John ("Accept all three"):* the script's
+    `labels` command shows the word count of every reply, faulty or not, and no words of any.
 11. Have a rehearsal that calls no service and runs every row of the failures table, and the
     fault flags, on replies marked "constructed". The rows include a streamed reply that ends
     without the service's signal that the reply is complete, and the two cases under "Which
@@ -597,3 +646,18 @@ it still needs John's key and his go, and Google and OpenAI are not ready. The t
 places that say "checked once" point to it, and the point that left the half-symbol finding for
 John is struck through, because the finding is fixed. Made by the session (Claude, Fable 5.2)
 that made the corrections above; a different session checks it.
+
+## What changed on 2026-11-19 after the ruling on the script's three additions
+
+From `docs/rulings/2026-11-19-capture-script-three-additions.md` (ruled by John on 2026-11-19,
+"Accept all three", decided by: mixed), which leaves to the session that keeps the capture
+documents the work of bringing this method's words into line. Made by the session (Claude,
+Fable 5.2) that made the corrections above; a different session checks it. Nothing that is sent
+changes, no earlier words were removed, and the failures table and the script rules are left as
+approved with the additions marked.
+
+| Change | Ruling |
+|---|---|
+| A status paragraph near the top says the three things are accepted and where they are set out. The earlier point that left them for John to know of and object to is marked as answered | "What is ruled" |
+| A new paragraph under the failures table, "Three things the script adds, accepted by John": the three added outcomes, each counted at the most its call could cost; the marker files and the lock file in the answers folder; and the `labels` command, which shows the word count of every reply and no words of any | "What is ruled", items 1 to 3. The details of each are from the script's own notes (`capture/README.md`, "What is written in the reply folder") |
+| Script rule 8: the marker files and the lock file. Script rule 10: the `labels` command | Items 2 and 3 |

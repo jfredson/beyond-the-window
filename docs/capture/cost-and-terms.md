@@ -91,7 +91,7 @@ used to improve Google's products (Part 3).
 | Google, before 2026-12-01 | 2 | $3.79 | $4.55 | **$10** | $20 |
 | OpenAI, before 2026-12-11, without the two pro models | 4 | $6.21 | $7.45 | **$15** | $33 |
 | OpenAI, before 2027-01-14 | 5 | $3.21 | $3.85 | **$10** | $32 |
-| **All four** | 12 | $14.78 | **$17.74** | **$40** | $109 |
+| **All four** | 12 | $14.78 | **$17.74** | ~~**$40**~~ **$45**: one figure ruled ($10 for Anthropic), three proposed. Corrected 2026-11-19 | $109 |
 | The two pro models, if John wants them | 2 | $150.88 | $181.05 | $200 | $321 |
 
 *Dated correction, 2026-11-18.* The ceiling for the Anthropic run is no longer proposed. John
@@ -154,6 +154,20 @@ I could not settle.
   organization already operates under them, so I read this as no obstacle, but the wording is
   there. I did not open the Service Specific Terms or the Data Processing Addendum, which the
   terms bring in by reference.
+- ***Added 2026-11-19: John's ruling on the Anthropic run.*** Asked "Is the Anthropic run within
+  Anthropic's terms as far as you are concerned?", John answered "Yes, within terms" (decided
+  by: mixed; `docs/rulings/2026-11-19-anthropic-run-within-terms.md`). What is ruled: the run
+  that asks Claude Sonnet 4.5 the ten approved questions, five times each, and keeps the
+  replies is within Anthropic's terms as far as he is concerned. He decided as the customer
+  who agrees to the terms. This document is not legal advice and the ruling does not make it
+  so. What the ruling does not cover:
+  - **Publishing.** Nothing in it says these terms allow publishing the answers. That is still
+    not looked for, and is checked before anything is published.
+  - **Google's and OpenAI's terms.** Each is a separate decision for its own run, and neither
+    is made.
+  - **The two documents nobody opened.** The Service Specific Terms and the Data Processing
+    Addendum are still unopened. John did not ask for them to be opened first. No terms page
+    was opened or re-read for this note.
 
 ### Google
 
@@ -351,3 +365,13 @@ checks it. No terms page was opened, and no price or estimate changed.
 | Change | Ruling |
 |---|---|
 | The table "By developer and date": the Anthropic row's ceiling shows $5 struck through and $10 as ruled, and a note under the table says the ruling sets the limit and is not John's go, that the other three stay proposed, and that the four ceilings now come to $45 | `docs/rulings/2026-11-18-anthropic-ceiling.md`, "What is ruled" item 1 and "Not covered by this ruling" |
+
+## What changed on 2026-11-19
+
+Made by the session (Claude, Fable 5.2) that made the additions above; a different session
+checks it. No terms page was opened, and no price or estimate changed.
+
+| Change | Source |
+|---|---|
+| The table "By developer and date", the row "All four": $40 struck through and $45 shown, one figure ruled and three proposed | The check of the documents after the ruling on the ceiling (`check-2026-11-19-ceiling-documents.md`), should-fix 2 |
+| Part 3, Anthropic: a point recording John's ruling that the Anthropic run is within Anthropic's terms as far as he is concerned, and what it does not cover: publishing, Google's and OpenAI's terms, and the two documents nobody opened | `docs/rulings/2026-11-19-anthropic-run-within-terms.md` |
