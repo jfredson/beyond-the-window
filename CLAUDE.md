@@ -142,8 +142,11 @@ Each of these is a row in `docs/inheritance.md`, where the source file is named.
 - **Commit on `main`** at the end of a working session. Since 2026-11-19 there is a
   repository on GitHub (`jfredson/beyond-the-window`), public like the sibling sites'
   repositories (`docs/rulings/2026-11-19-repository-is-public.md`, decided by: John). Only the
-  master planning session pushes to it. A push never publishes the site: a release is started
-  by hand, on John's go. Everything committed is public, so no key, no private matter and
+  master planning session pushes to it. Once the two secret values are on the repository, a
+  push that passes the checks publishes the site, as on the sibling sites
+  (`docs/rulings/2026-11-19-every-push-publishes.md`). So: the first release waits for John's
+  go; after it, only work a different session has checked is pushed; and any sentence in
+  John's first person goes to him before it is pushed. Everything committed is public, so no key, no private matter and
   nothing copyrighted goes into a commit.
   The commit hook (`.githooks/commit-msg`, turned on with `git config core.hooksPath
   .githooks`) refuses a commit message with a month-name, slash or relative date.
