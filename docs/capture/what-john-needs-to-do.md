@@ -12,25 +12,48 @@ ten rebuilt files by their checksums on 2026-11-18** ("Approve, with both"; deci
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
-**What is left before the Anthropic run, in order.** *Dated correction, later on 2026-11-19,
-after two more rulings and your word that the key is made.* This list is what holds. The status
-under it was written earlier the same day, and its list of things left is corrected where it
-has changed.
+**What is left before the Anthropic run, in order.** *Written out again on 2026-11-19, after
+the check of the change to the key-saving script landed (`check-2026-11-19-key-saving-change.md`).
+The list as it first stood had the two merges the wrong way round; its first two points are
+kept word for word under this list.* This list is what holds. The status under it was written
+earlier the same day, and its list of things left is corrected where it has changed.
 
-1. **The check of the change to the key-saving script.** The change now exists as
-   [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142), in the
-   TimeAssembler repository. A different session is checking it, and its findings will be in
-   `check-2026-11-19-key-saving-change.md`, which is not written yet.
-2. **Your two merges.** The older pull request
+The check's verdict, in its own words: "Yes. John may merge the pull request and save his key
+with the changed script." A check does not merge anything, and neither does a session.
+
+1. **Your two merges, the newer one first.** First merge
+   [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142)
+   (number 142), which goes into the older pull request's branch and not into `main`. Then
+   merge the older one,
    ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141)
-   first, then the new one, which is open against the older one's branch. Neither is merged.
-   Both merges are yours, and nobody makes them for you.
-3. **You save the key on this Mac and switch automatic top-up off** (step 6). The key exists
-   in the Console, by your word ("Done, no expiry"). It is not yet saved on the Mac, and
-   automatic top-up being off is not confirmed.
+   (number 141), into `main`. The reason for the order: the newer one is open against the
+   older one's branch, so if the older one is merged first, the newer one lands on a leftover
+   branch and the change never reaches `main`. Neither is merged as this is written. Both
+   merges are yours, and nobody makes them for you.
+2. **You bring the folder `~/Code/timeassembler` on this Mac up to date, and prove it** (step
+   6). A merge on GitHub changes nothing on the Mac, and the script in that folder is still
+   the old one.
+3. **You save the key on this Mac and switch automatic top-up off** (step 6, where the
+   commands now are). The key exists in the Console, by your word ("Done, no expiry"). It is
+   not yet saved on the Mac, and automatic top-up being off is not confirmed.
 4. **Your go,** naming Anthropic and $10 with the dollar sign. A session records it in
    `docs/spending-record.md` and commits it (step 7).
 5. **The run, no later than 2026-11-26** ("The Anthropic run, step by step").
+
+One question is with you and does not hold up the list: whether a session may run the
+key-saving script's check for this project's key. Until you rule, that check is yours to run
+(step 6, "Who runs it").
+
+*Earlier wording of points 1 and 2, kept as a record and not to be followed.* "1. **The check
+of the change to the key-saving script.** The change now exists as [the pull request that
+holds the change] (number 142), in the TimeAssembler repository. A different session is
+checking it, and its findings will be in `check-2026-11-19-key-saving-change.md`, which is not
+written yet." That check has landed. "2. **Your two merges.** The older pull request ["Anthropic
+API keys: a swap script, and a record that none is in use"] (number 141) first, then the new
+one, which is open against the older one's branch. Neither is merged. Both merges are yours,
+and nobody makes them for you." That order was wrong, as both checks of 2026-11-19 found
+(`check-2026-11-19-key-saving-change.md`, must-fix 1; `check-2026-11-19-rulings-in-documents.md`, should-fix 1). The links, which
+stood in the square brackets, are in the list above.
 
 Done since the status below was written: the command that loads the key is ruled ("Approve
 it"; decided by: mixed; `docs/rulings/2026-11-19-command-that-loads-the-key.md`); the
@@ -63,13 +86,16 @@ Left, all yours unless it says otherwise:
 
 - **The change to the key-saving script (step 4).** You said yes to the small change, for this
   project's Anthropic key only ("Yes, Anthropic only"; decided by: mixed;
-  `docs/rulings/2026-11-19-key-saving-script-anthropic-only.md`). A session in the TimeAssembler
-  repository is making it on its own branch and will open a pull request. ~~As this is written
+  `docs/rulings/2026-11-19-key-saving-script-anthropic-only.md`). ~~A session in the TimeAssembler
+  repository is making it on its own branch and will open a pull request.~~ ~~As this is written
   the change is not made, not checked and not merged.~~ *Corrected later on 2026-11-19:* the
-  change is made and is an open pull request. It is being checked and is not merged (the list
+  change is made and is an open pull request. It is ~~being checked~~ checked (it was being checked when this was written) and is not merged (the list
   above). Two merges are yours: the open pull
   request ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141),
-  which holds the key-saving script, and the new one when it exists.
+  which holds the key-saving script, and ~~the new one when it exists~~ the new one, which
+  now exists (struck through 2026-11-19, with the sentence above about a session making the
+  change; both were written before the pull request existed). The new one is merged first:
+  see the list above.
 - ~~**The Console workspace and the key (step 5).** No key exists for this project yet.~~
   *Corrected later on 2026-11-19:* done, by your word ("Done, no expiry"). The key is not yet
   saved on this Mac.
@@ -271,16 +297,20 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    - **What waits.** The larger change, for OpenAI and Google keys, each with its own check of
      the key's form and its own test against that developer's service. It is needed only when
      those runs come near, and it will need its own yes.
-   - **Where the change stands.** A session in the TimeAssembler repository is making it on its
-     own branch and will open a pull request. ~~As this is written (2026-11-19) the change is not
+   - **Where the change stands.** ~~A session in the TimeAssembler repository is making it on its
+     own branch and will open a pull request.~~ ~~As this is written (2026-11-19) the change is not
      made, not checked by a different session, and not merged.~~ (Corrected later on
-     2026-11-19: it is made, and is being checked; it is not merged. See the next point.) The last sentence of the
-     correction above, "still waits for your yes", is answered; "still not made" still holds.
+     2026-11-19: it is made, and was then being checked, a check that has since landed; it is not merged. See the next point.) The last sentence of the
+     correction above, "still waits for your yes", is answered; ~~"still not made" still holds~~. (Struck through 2026-11-19, with the first
+     sentence of this point, from the check of these documents, `check-2026-11-19-rulings-in-documents.md`,
+     should-fix 2: the change is made, as the next point says. What still holds is that it is
+     not merged.)
    - *Added later on 2026-11-19: the change now exists.* It is
      [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142),
      open against the branch of the older pull request named in the next point, which is
-     itself not merged. A different session is checking the change, and its findings will be in
-     `check-2026-11-19-key-saving-change.md`, which is not written yet. Neither pull request is merged, and
+     itself not merged. ~~A different session is checking the change, and its findings will be in
+     `check-2026-11-19-key-saving-change.md`, which is not written yet.~~ (That check has since
+     landed; see the point added after the check, below.) Neither pull request is merged, and
      both merges are yours. The planning session reports that the changed script knows this key
      under the name `beyond-the-window-capture`. The session that keeps this document did not
      open the pull request, so that name and everything else about the change is as reported,
@@ -302,6 +332,21 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      ["Anthropic API keys: a swap script, and a record that none is in use"](https://github.com/jfredson/timeassembler/pull/141).
      ~~The new pull request will sit on top of it.~~ The new pull request now sits on top of
      it (corrected later on 2026-11-19). You did not say to merge either.
+   - *Added 2026-11-19, after the check of the change landed* (`check-2026-11-19-key-saving-change.md`).
+     Its verdict: "Yes. John may merge the pull request and save his key with the changed
+     script." Nothing in the pull request must be fixed first. The check confirms what the
+     point above gave as reported: the script knows this key as `beyond-the-window-capture`,
+     and it writes the line `BTW_CAPTURE_ANTHROPIC_API_KEY=` followed by the key with no
+     quotation marks, which is what the command that loads the key expects. So the condition
+     the planning session attached to that command is met.
+   - **The order of the two merges, corrected 2026-11-19.** Merge the newer pull request
+     first, [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142)
+     (number 142). It goes into the older one's branch. Then merge the older one (number 141,
+     linked above) into `main`. The reason: the newer one is open against the older one's
+     branch, and the TimeAssembler repository keeps a branch after its pull request is merged,
+     so if the older one went first the change would land on a leftover branch and never reach
+     `main`. The check worked out both merges without touching any branch and found no
+     conflict at either. Neither pull request is merged as this is written.
 
 5. **Create the keys.** Only you can. Never paste a key into a chat or a document; the script
    in step 6 takes it at a hidden prompt.
@@ -318,6 +363,13 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      there is no date to write down. The key is not yet saved on this Mac, and automatic top-up
      being switched off is not confirmed; both are step 6 and both are still yours. The Google
      and OpenAI keys are not made.
+
+     *Added 2026-11-19, from the check of the key-saving change* (`check-2026-11-19-key-saving-change.md`,
+     should-fix 3). The name `btw-capture` above is the name asked for in the Console. It is
+     not the name to type on this Mac. The key-saving script knows this key only as
+     `beyond-the-window-capture`, and answers `Stopped: unknown key name` to `btw-capture`.
+     The two names may differ without harm, because the script's name only picks the file
+     and the line.
    - **Google: the free check first, before paying anything.** Google's withdrawal page says
      "Access to the 2.5 models is limited to users who have actively used them in the past." A
      project made new for this capture will very likely be refused. So, in this order:
@@ -351,11 +403,13 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 
      *Added later on 2026-11-19, for the Anthropic key.*
      - **Where it stands.** The change is [the pull request that holds the change](https://github.com/jfredson/timeassembler/pull/142).
-       It is being checked (`check-2026-11-19-key-saving-change.md`, not written yet) and is not merged, and
+       ~~It is being checked (`check-2026-11-19-key-saving-change.md`, not written yet) and is not merged, and
        neither is the older pull request under it. Both merges are yours. So the exact
        commands for saving this key are not written here yet. They are added, as a dated
        correction, when that check has landed, and nothing in this point is to be typed
-       before then.
+       before then.~~ (Out of date since the check landed on 2026-11-19. The commands are
+       under "Saving the Anthropic key, in order" below. Still true: neither pull request is
+       merged, and both merges are yours.)
      - **What the script does when it saves or checks a key.** It makes one free call to
        Anthropic's token counter, sending the two letters "hi" and naming `claude-haiku-4-5`.
        The service answers with a number, and no model writes a reply. You allowed that one
@@ -369,6 +423,74 @@ checked them, applied their fixes the same day. The section at the foot lists ea
        session's reading, not a ruling.
      - **Still yours, and not confirmed:** saving the key on this Mac, and switching automatic
        top-up off in the Console (the point below).
+
+     **Saving the Anthropic key, in order.** *Added 2026-11-19, after the check of the change
+     to the key-saving script landed* (`check-2026-11-19-key-saving-change.md`). The commands are from
+     that check, which tried each on made-up values with no service called, and from the
+     changed script's own notes as they stand on its branch. Nothing here has been run with a
+     real key. The first sentence of this step says "once for each key"; the script saves
+     Anthropic keys only, so this is for the Anthropic key alone. Each of the four things
+     below is yours to do. No session merges, no session switches the branch of the folder
+     `~/Code/timeassembler`, and no session handles the key.
+
+     1. **Merge the two pull requests, the newer one first** (step 4): number 142 into the
+        older one's branch, then number 141 into `main`.
+
+     2. **Bring the folder `~/Code/timeassembler` on this Mac up to date.** A merge on GitHub
+        changes nothing on the Mac. As the check found it on 2026-11-19, that folder is on the
+        older pull request's branch and not on `main`, and the script in it is the old one,
+        which does not know this key's name. Other sessions share that folder, which is why
+        you do this yourself and no session does it for you. **The exact commands are not
+        written here,** because they depend on how you merge (for one thing, whether the older
+        branch is kept or deleted afterwards), and none was tried for this document. Ask a
+        session for them at that moment: it can look at the folder and at GitHub and tell you
+        what to type, without typing it.
+
+     3. **Prove the folder holds the changed script.** This makes no call to any service while
+        no key is saved.
+
+        ```bash
+        ~/Code/timeassembler/tools/rotate-key/rotate-key.sh --check beyond-the-window-capture
+        ```
+
+        The changed script answers `beyond-the-window-capture no file at` followed by the
+        path of the key's file. That is the answer you want. The old script answers
+        `Stopped: unknown key name "beyond-the-window-capture"`. If you see that, the folder
+        is not up to date yet: go back to point 2 and do not go on.
+
+     4. **Save the key.** Copy the key in the Console first, then:
+
+        ```bash
+        ~/Code/timeassembler/tools/rotate-key/rotate-key.sh beyond-the-window-capture
+        ```
+
+        It prints `Paste the new "beyond-the-window-capture" key and press Return (nothing
+        will show):`. Paste the key and press Return. Nothing shows as you paste. The script
+        checks that the text looks like an Anthropic key, makes the one free call to
+        Anthropic's token counter that you allowed ("Yes, keep the test";
+        `docs/rulings/2026-11-19-key-test-stays.md`), and only then writes the file. After a good key it
+        prints `"beyond-the-window-capture": new key saved, ends` with the key's last four
+        characters, `and it works.`, then the file's path, then a line asking you to tell a
+        session the new ending. If either check fails it stops and nothing is changed.
+        Whether the last four characters are written into the TimeAssembler key table, as
+        they are for two other keys, is your choice.
+
+     5. **Check it, if you wish, always with the key's name on the end.** The same command as
+        in point 3. It now answers `beyond-the-window-capture ends` with the last four
+        characters and `works`, and it makes that one call again. Match the four characters
+        against the Console. **Always type the name.** The same command without a name tests
+        all six keys the script knows, which sends each of the other projects' stored keys to
+        Anthropic as well: up to six calls, where your ruling allowed one named call
+        (`check-2026-11-19-key-saving-change.md`, should-fix 2).
+
+     Three more things from that check. **Do not edit the key's file by hand.** The script
+     writes one plain line, and the command that loads the key was shown to give back exactly
+     what the script wrote. A file changed by hand (a doubled line, quotation marks, or
+     `export` in front) could pass the script's check and still hand the capture script
+     something else. **The name to type is `beyond-the-window-capture`,** not `btw-capture`
+     (step 5). **Who may run the check in point 5 is with you to rule.** The TimeAssembler
+     guide says a session may run the script's check, and that check now reaches this
+     project's key (`check-2026-11-19-key-saving-change.md`, should-fix 1). Until you rule, it is yours.
    - **Added 2026-11-18: how the key gets from its file to the script.** You ruled on
      2026-11-18 that the key reaches the script through a setting in the shell, set from the
      key's own file, and that the script never opens that file
@@ -523,8 +645,10 @@ Done:
   three"; the status at the top of this document).
 - You said yes to the small change to the key-saving script, for this project's Anthropic key
   only ("Yes, Anthropic only"; step 4 above), and you allowed its test of a key as it is ("Yes,
-  keep the test"). The change exists as an open pull request. It is not checked and not
-  merged: see the first two points below.
+  keep the test"). The change exists as an open pull request. It is checked, and the check
+  says you may merge it and save your key with it (`check-2026-11-19-key-saving-change.md`). It is not
+  merged: see the first point below. That check also found the script writes the key's line
+  as step 2's command expects.
 - The Console workspace and its key are made, by your word ("Done, no expiry"; step 5 above).
 - The command in step 2 below is ruled ("Approve it").
 - The script has been checked three times, and a further check says its yes for the Anthropic
@@ -532,12 +656,11 @@ Done:
 
 Left, in order, and every one must be true before the day:
 
-1. **The change to the key-saving script is checked.** A different session is checking it
-   (`check-2026-11-19-key-saving-change.md`, not written yet). If that check finds the script writes
-   the key's line any other way than step 2's command expects, the difference comes back to
-   you before the run (step 2 below).
-2. **You have merged both pull requests** (step 4 above): the older one first, then the one
-   that holds the change.
+1. **You have merged both pull requests, the newer one first** (step 4 above): the one that
+   holds the change into the older one's branch, then the older one into `main`. Neither is
+   merged as this is written.
+2. **You have brought the folder `~/Code/timeassembler` up to date and proved it** (step 6
+   above, "Saving the Anthropic key, in order", points 2 and 3).
 3. **You have saved the key on this Mac, and automatic top-up is switched off** (step 6
    above). Neither is done or confirmed as this is written.
 4. **Your go for the Anthropic run is in `docs/spending-record.md` and committed** (step 7
@@ -588,10 +711,14 @@ script refuses to run if any of them has a change that is not committed.
    `BTW_CAPTURE_ANTHROPIC_API_KEY=` followed by the key, with no quotation marks. If the check
    of the changed key-saving script finds that it writes the line any other way, the command
    or the script is corrected, and the difference is put to you before the run.
+   *Added 2026-11-19:* the check has landed and the condition is met. It found that the
+   changed script writes the line exactly so, and that the command gives back exactly what
+   the script wrote, for every value it tried (`check-2026-11-19-key-saving-change.md`, question 2).
 
    ~~PROPOSED 2026-11-18, not ruled.~~ (Ruled 2026-11-19, as above. What follows is the
    proposal as it was first written, kept as a record.) It has been tried only on a constructed file holding no
-   real key, because the real file does not exist until step 4's change is made. *The choice:*
+   real key, because the real file does not exist until step 4's change is made (more exactly,
+   until you save the key with the changed script; noted 2026-11-19). *The choice:*
    a command that reads the one line for Anthropic and nothing else. *Confidence:* moderate. It
    depends on the file's lines being written as step 4 now says. *Judgment call.* *Strongest
    alternative:* the workspace's usual command, which loads every line of a key file at once.
@@ -740,6 +867,17 @@ list and what replaced them.
   on the go and on `python3`, are unchanged. Replaced later the same day, because the change
   then existed as a pull request, the workspace and key were made by your word, and the
   command was ruled.
+- **Before the day, the list of things left, as it stood until the check of the key-saving
+  change landed.** Its first three points read: "1. **The change to the key-saving script is
+  checked.** A different session is checking it (`check-2026-11-19-key-saving-change.md`, not
+  written yet). If that check finds the script writes the key's line any other way than step
+  2's command expects, the difference comes back to you before the run (step 2 below)." "2.
+  **You have merged both pull requests** (step 4 above): the older one first, then the one that
+  holds the change." "3. **You have saved the key on this Mac, and automatic top-up is switched
+  off** (step 6 above). Neither is done or confirmed as this is written." And the fourth point
+  of the list of things done ended: "The change exists as an open pull request. It is not
+  checked and not merged: see the first two points below." The check has landed, the merge
+  order in the second was wrong, and a step was missing between the merges and the save.
 - **The order of "Before the day".** The points are the same as before with two changes: the
   point on the check is replaced as above, and a paragraph was added saying that no session
   edits this document, `cost-and-terms.md` or `capture/` on the day.
@@ -923,3 +1061,24 @@ above; a different session checks it. The table of last safe days is unchanged.
 | Step 6: where the change stands, that the saving commands are not written until the check lands, what the test does, and who runs it. One sentence there is marked as this session's reading | The same ruling, "Not covered by this ruling" |
 | The run, step 2: the command is marked ruled, with the four things put to John and the planning session's condition (decided by: agent). The first proposal is kept under it | The ruling "Approve it" |
 | The run, "Before the day": written out again as done and left, in order, with the command off the list of things left. The earlier points are kept word for word under "Earlier wording of the run's step list" | The planning session's request |
+
+**Dated correction, 2026-11-19, after two more checks:** `check-2026-11-19-key-saving-change.md`
+(of the change to the key-saving script) and `check-2026-11-19-rulings-in-documents.md` (of this
+document's last two commits, 91669af and e786dba). The commands are taken from the first check
+and from the changed script's own notes as they stand on its branch
+(`claude/rotate-key-btw-capture-0adc86`, read without changing anything in that repository).
+Made by the session (Claude, Fable 5.2) that made the corrections above. Nothing here says that
+either pull request is merged, that the key is saved, that automatic top-up is off or that the
+go is given, because none of those is true as this is written. The table of last safe days is
+unchanged.
+
+| Change | Finding |
+|---|---|
+| The merge order is corrected in every place it appears: the newer pull request (142) first, into the older one's branch, then the older one (141) into `main`, with the reason. The places: the list near the top, the earlier status under it, step 4, step 6 and "Before the day" | The key-saving check, must-fix 1; the documents check, should-fix 1 |
+| A step between the merges and the save: John brings `~/Code/timeassembler` up to date himself, no session switches that folder's branch, and the command that proves it, with what the changed script answers and what the old one answers. The exact commands for bringing it up to date are not written, and the document says why | The key-saving check, must-fix 2 |
+| Step 6: the saving commands, written as final under "Saving the Anthropic key, in order". The save and the check always name the key | The key-saving check, should-fix 2, and its section on the eighth question |
+| Step 5: the name to type on the Mac is `beyond-the-window-capture`, not `btw-capture` | The key-saving check, should-fix 3 |
+| Step 4: "'still not made' still holds" is struck through, with the two sentences written before the pull request existed ("A session ... is making it on its own branch and will open a pull request", in two places, and "the new one when it exists") | The documents check, should-fix 2 |
+| The list near the top is written out again, with the check's verdict quoted and the earlier first two points kept under it. "Before the day" has its first three points written again, with the earlier words kept under "Earlier wording of the run's step list" | Both checks |
+| The run, step 2: the planning session's condition on the command is met | The key-saving check, question 2 |
+| Left as it is: whether a session may run the key check for this project's key. It is with John to rule, and until he does the check is his | The key-saving check, should-fix 1 |

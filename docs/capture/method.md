@@ -30,7 +30,9 @@ the sentence in bold above is answered: the approval it waited for has been give
 checksums in the first approval no longer name what is sent. The two rules are under "What is
 never done with the answers", and the foot lists each change under "What changed on 2026-11-18
 after the second approval". Still John's before any run: the terms, the keys, the spending
-ceilings and the capture script.
+ceilings and the capture script. (*Added 2026-11-19:* for the Anthropic run the terms and the
+ceiling are since ruled, and the script's standing is in the paragraphs below. What is still
+John's is listed at the top of `what-john-needs-to-do.md`.)
 
 **Three things the script does beyond these words are accepted.** *Dated correction,
 2026-11-19.* The script handles three situations this method had no words for. John accepted
