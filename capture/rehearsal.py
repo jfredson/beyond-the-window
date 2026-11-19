@@ -109,7 +109,10 @@ def refuses(fn, what, expect=None):
 # ----- constructed text ----------------------------------------------------------------
 
 def message_text(n):
-    return f"CONSTRUCTED message q{n:02d}. Not a real question. Made for the rehearsal only."
+    # About as long as a real message, so that the stand-in's count of 210 tokens sent is one
+    # a service could truly report for it.
+    return (f"CONSTRUCTED message q{n:02d}. Not a real question. Made for the rehearsal only."
+            + " CONSTRUCTED filler, to give this message the length of a real one." * 10)
 
 
 LONG = ("{first} CONSTRUCTED reply, not from any model. {mark} number {n}: filler for the rehearsal of the "
@@ -233,6 +236,10 @@ def anthropic_wire(spec, model, text):
         return ok(a_start(model), A_BLOCK, *a_text(text), broke=capture.INTERRUPTED)
     if kind == "by_hand_nothing":
         return capture.Received(request_left=True, broke=capture.INTERRUPTED)
+    if kind == "split_symbol":                   # a two-part symbol, one half in each piece of the stream
+        pieces = [{"type": "content_block_delta", "index": 0, "delta": {"type": "text_delta", "text": part}}
+                  for part in (text + " \ud83d", "\ude00 CONSTRUCTED end.")]
+        return ok(a_start(model), A_BLOCK, *pieces, A_BLOCK_STOP, a_end("end_turn"), A_STOP)
     raise AssertionError(kind)
 
 
@@ -347,7 +354,7 @@ def git(repo, *args):
 
 def go_block(run, sums_checksum, ceiling=None, words=None, quoted=None, date="2026-11-18", commit=None):
     ceiling = ceiling or f"{run.ceiling_usd}"
-    words = words or f"CONSTRUCTED go. {run.developer.capitalize()}, up to ${ceiling}"
+    words = words or f"CONSTRUCTED go. {run.developer.capitalize()}, models due {run.withdrawal_date}, up to ${ceiling}"
     quoted = quoted if quoted is not None else f"> {words}"
     lines = [f'run = "{run.id}"', f'ceiling_usd = "{ceiling}"', f'johns_words = "{words}"',
              f'messages_sha256 = "{sums_checksum}"']
@@ -1307,7 +1314,7 @@ def part_nothing_is_lost(bench, root):
     half = folder / "CONSTRUCTED__anthropic__claude-sonnet-4-5-20250929__q01__asking1__attempt01.json"
     half.write_text('{\n "what_this_is": "CONSTRUCTED. A half-written file", "recorded_', encoding="utf-8")
     eng, standin, clock, _ = bench.engine(run_id, folder=folder)
-    at_most = eng.most_an_unknown_call_could_cost("anthropic", model.name)
+    at_most = ((max(len(m) for m in bench.messages.values()) + 64) * D(3) + 64000 * D(15)) / 1000000   # written out
     check(any(n.startswith(half.name + ": this file could not be read") for n in eng.notices) and eng.spent() == at_most,
           f"it is named in a notice and counted at the most its call could cost ({capture.money(at_most)}, the model's maximum, since no marker says what limit was sent)")
     before = len(SAID)
@@ -1413,6 +1420,175 @@ def part_should_fix(bench, root):
     check(len(standin.calls) == 0, "the check inside the writing code caught it before anything was sent")
 
 
+class ConstructedConnection:
+    """Stands where Python's HTTPS connection would be. It opens nothing.
+
+    It lets the script's real network code run to the end: it records what the code sends,
+    hands back constructed pieces of a reply, and then ends in the way a case asks for.
+    """
+    ending = None
+    sent = {}
+
+    def __init__(self, host, port, timeout=None, context=None):
+        ConstructedConnection.sent = {"host": host, "port": port}
+
+    def connect(self):
+        pass
+
+    def request(self, method, path, body=None, headers=None):
+        ConstructedConnection.sent.update(method=method, path=path, body=body, headers=dict(headers))
+
+    def getresponse(self):
+        pieces = [b"CONSTRUCTED piece one of a reply. ", b"CONSTRUCTED piece two."]
+
+        class Response:
+            status = 200
+
+            def getheaders(self):
+                return [("content-type", "text/event-stream")]
+
+            def read1(self, _n):
+                if pieces:
+                    return pieces.pop(0)
+                if ConstructedConnection.ending is None:
+                    return b""
+                raise ConstructedConnection.ending
+        return Response()
+
+    def close(self):
+        pass
+
+
+def part_second_check(bench, root):
+    run_id = "anthropic-2026-11-30"
+    model = bench.plan.run(run_id).models[0]
+    one = (210 * D(3) + 60 * D(15)) / 1000000
+    most = lambda q: ((len(bench.messages[f"q{q:02d}.txt"]) + 64) * D(3) + 32000 * D(15)) / 1000000   # noqa: E731
+
+    case("SECOND CHECK, S1. A reply that holds half of a two-part symbol is saved exactly as the service gave it")
+    eng, standin, clock, folder = bench.engine(run_id, {
+        1: [{"kind": "text", "text": "{first} CONSTRUCTED reply, not from any model. {mark} one half alone: \ud83d and more CONSTRUCTED words follow it here."}],
+        2: [{"kind": "split_symbol"}]})
+    before = len(SAID)
+    clean = eng.run_all()
+    (path1, rec1), (path2, rec2) = slot(folder, 1)[0], slot(folder, 2)[0]
+    check(clean and len(records(folder)) == 50 and clock.sleeps == [] and path1.name.endswith("__attempt01.json")
+          and not any("HELD" in line for line in SAID[before:]),
+          "saved at the first try, under its ordinary name, with no wait and no warning (it could never be saved before)")
+    check(rec1["recorded_as"] == capture.REPLY and "one half alone: \ud83d and more" in rec1["reply_text"]
+          and b"one half alone: \\ud83d and more" in path1.read_bytes(),
+          "the lone half is in the file as the escape the service sent, and reads back as the same half")
+    check(rec2["recorded_as"] == capture.REPLY and "\U0001F600 CONSTRUCTED end." in rec2["reply_text"],
+          "a symbol whose two halves came in two pieces of the stream reads back from the file as the whole symbol")
+    check(all(len(list(folder.glob(f"*__q{q:02d}__asking1__*"))) == 1 for q in (1, 2)), "one file for each, and no empty files left behind")
+
+    case("SECOND CHECK, S1. A write that fails for a reason other than the folder or the disk")
+    eng, standin, clock, folder = bench.engine(run_id)
+    real_write, failed = eng.write, []
+
+    def write_that_fails_once(name, record, apart, plainer=False):
+        if not plainer and not failed:
+            failed.append(name)
+            raise ValueError("CONSTRUCTED failure that waiting cannot cure")
+        return real_write(name, record, apart, plainer)
+    eng.write = write_that_fails_once
+    clean = eng.run_all()
+    first = slot(folder, 1)[0]
+    check(clean and clock.sleeps == [] and first[0].name.endswith("__attempt01__copy02.json") and first[0].read_bytes().isascii()
+          and MARK in first[1]["reply_text"] and len(records(folder)) == 50,
+          "the script goes straight to a plainer form of the same record, with no wait: saved at the second try, nothing lost")
+
+    case("SECOND CHECK, S2. A reply cut short by hand is kept, and is not one of the question's two askings")
+    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "by_hand_text"}]})
+    eng.run_all()
+    eng, standin, clock, _ = bench.engine(run_id, {1: [{"kind": "empty"}]}, folder=folder)
+    clean = eng.run_all()
+    check(clean and outcomes(folder, 1) == [capture.CUT_OFF_STREAM, capture.EMPTY, capture.REPLY],
+          "cut short by hand, then an empty reply (the check's own test): the empty reply is still asked once more, and a whole reply is kept")
+
+    case("SECOND CHECK, S3. A count the service could not truly have reported is not used")
+    for out, what in ((-5, "a count below zero"), (40000, "a count above the length limit sent"), (10 ** 30, "a count of a million million million million million")):
+        eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "ok", "out": out}]})
+        before = len(SAID)
+        clean = eng.run_all()
+        first = slot(folder, 1)[0][1]
+        eng2, standin2, _, _ = bench.engine(run_id, folder=folder)
+        check(clean and D(first["cost"]["counted_toward_the_ceiling_usd"]) == most(1) and "could not be used" in first["cost"]["basis"]
+              and eng.spent() == 49 * one + most(1) and any(line.startswith("run total counted") for line in SAID[before:])
+              and eng2.run_all() and len(standin2.calls) == 0,
+              f"{what}: the reply is saved, the call is counted at the most it could cost, the total prints, and a restart works")
+
+    case("SECOND CHECK, S4 and S5. The script's real network code, run against a constructed connection that opens nothing")
+    real_connection = capture.http.client.HTTPSConnection
+    capture.http.client.HTTPSConnection = ConstructedConnection
+    try:
+        request = capture.build_request(model, bench.messages["q01.txt"], 32000)
+        transport = capture.HttpsTransport(capture.Secret(CONSTRUCTED_KEY))
+        whole = b"CONSTRUCTED piece one of a reply. CONSTRUCTED piece two."
+        ConstructedConnection.ending = None
+        got = transport.exchange(request)
+        sent = ConstructedConnection.sent
+        check(got.raw == whole and got.broke is None and got.status == 200, "a reply that ends properly is handed back whole")
+        check(sent["host"] == "api.anthropic.com" and sent["path"] == "/v1/messages" and sent["method"] == "POST" and sent["body"] == request.body
+              and sent["headers"] == {"content-type": "application/json", "anthropic-version": "2026-10-21",
+                                      "user-agent": capture.USER_AGENT, "x-api-key": CONSTRUCTED_KEY},
+              "what it sends: the address, the body exactly as built, and four headers, the key among them and nowhere else")
+        for ending, expected, what in ((KeyboardInterrupt(), capture.INTERRUPTED, "Ctrl-C"), (TimeoutError(), "timeout", "a timeout"),
+                                       (ConnectionResetError(), "connection", "a dropped connection"),
+                                       (ValueError("CONSTRUCTED"), "error of the kind ValueError", "an error of any other kind")):
+            ConstructedConnection.ending = ending
+            got = transport.exchange(request)
+            check(got.raw == whole and got.broke == expected and got.request_left is True,
+                  f"{what} after two pieces of a reply: both pieces are handed back, to be saved")
+    finally:
+        capture.http.client.HTTPSConnection = real_connection
+
+    case("SECOND CHECK, S5. A marker that cannot be written stops the send")
+    eng, standin, clock, folder = bench.engine(run_id)
+    standin.faults[1] = [{"kind": "ok", "then": lambda: os.chmod(folder / "sent-markers", 0o555)}]
+    refuses(lambda: eng.run_all(), "the second call, when its marker cannot be written", "Nothing was sent")
+    os.chmod(folder / "sent-markers", 0o755)
+    check(len(standin.calls) == 1 and len(records(folder)) == 1, "one call was made before the folder of markers was closed, and none after")
+
+    case("SECOND CHECK, S5. A file that cannot be read, with no marker: the figure it is counted at, written out")
+    folder = bench.folder()
+    folder.mkdir()
+    (folder / "CONSTRUCTED__anthropic__claude-sonnet-4-5-20250929__q01__asking1__attempt01.json").write_text("CONSTRUCTED: not a whole file", encoding="utf-8")
+    eng, _, _, _ = bench.engine(run_id, folder=folder)
+    longest = max(len(m) for m in bench.messages.values())
+    written_out = ((longest + 64) * D(3) + 64000 * D(15)) / 1000000
+    check(eng.spent() == written_out and written_out > D("0.96"),
+          f"64,000 tokens at $15 a million, plus the longest message at $3 a million: {capture.money(written_out)}")
+
+    case("SECOND CHECK, S6. John's go: the figure may not run on, and a developer with two runs needs the date")
+    run = bench.plan.run(run_id)
+    sums_checksum = capture.sha256_hex((bench.repo / "docs" / "capture" / "sent" / "SHA256SUMS").read_bytes())
+
+    def go(name, text):
+        return capture.Paths(variant(root, bench.repo, name, lambda r: (r / "docs" / "spending-record.md").write_text(text)))
+    for name, quoted in (("c2-thousands", "> CONSTRUCTED go. Anthropic, up to $5,000"), ("c2-k", "> CONSTRUCTED go. Anthropic, up to $5k")):
+        refuses(lambda: capture.check_go(go(name, go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5", quoted=quoted)), run, bench.plan),
+                f"a quotation of {quoted.split()[-1]} matched by words ending 'up to $5'", "word for word")
+    capture.check_go(go("c2-comma-after", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5",
+                                                   quoted="> CONSTRUCTED go. Anthropic, up to $5, and no more.")), run, bench.plan)
+    check(True, "a figure followed by a comma and more words is still accepted")
+    january = bench.plan.run("openai-2027-01-14")
+    december_words = "CONSTRUCTED go. Openai, models due 2026-12-11, up to $10.00"
+    refuses(lambda: capture.check_go(go("c2-other-date", go_block(january, sums_checksum, words=december_words)), january, bench.plan),
+            "a go quoted for OpenAI's December models, used for its January run with the same figure", "must carry its withdrawal date")
+    capture.check_go(bench.paths, january, bench.plan)
+    check(True, "the go that carries the January date is accepted for the January run")
+
+    case("SECOND CHECK, note 6. A reply folder that cannot be written to before the first call")
+    eng, standin, clock, folder = bench.engine(run_id)
+    os.chmod(folder, 0o555)
+    try:
+        refuses(lambda: eng.run_all(), "a run whose reply folder cannot be written to", "Nothing was sent")
+    finally:
+        os.chmod(folder, 0o755)
+    check(len(standin.calls) == 0, "a plain refusal, and no call")
+
+
 def main():
     print("THE REHEARSAL OF THE SEALED CAPTURE SCRIPT")
     print("Every reply below is CONSTRUCTED. No service is called and no model is asked anything.")
@@ -1435,6 +1611,7 @@ def main():
         part_errors_trying_again_cannot_cure(bench)
         part_nothing_is_lost(bench, root)
         part_should_fix(bench, root)
+        part_second_check(bench, root)
 
         case("AT THE END. Across everything above")
         everything = [p for p in root.rglob("*") if p.is_file() and ".git" not in p.parts]

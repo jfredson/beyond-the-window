@@ -19,18 +19,19 @@ questions = 10
 askings = 5
 length_limit_tokens = 32000
 
-# PROPOSED 2026-11-18, not approved. A reply with fewer words than this is listed as
-# "very short" after each round. It is kept and never asked again. See capture/README.md for
-# the reason for 20. It needs John's approval before any real asking.
+# Ruled by John on 2026-11-18 ("Approve all four";
+# docs/rulings/2026-11-18-capture-script-four-points.md). A reply with fewer words than this
+# is listed as "very short" after each round. It is kept and never asked again.
 very_short_words = 20
 
-# PROPOSED 2026-11-18, waiting for John, because it narrows how the method's first failure row
-# is applied. When true: an error that trying again cannot cure (for Anthropic, the service's
+# Ruled by John on 2026-11-18 ("Approve all four";
+# docs/rulings/2026-11-18-capture-script-four-points.md), as an exception to the method's
+# first failure row. When true: an error that trying again cannot cure (for Anthropic, the service's
 # statuses 400, 401, 402, 403 and 404: a problem with the request, the key, billing,
 # permission or the address) stops the run with a line saying what to fix. The attempt is
 # saved, none of the day's tries is used, and the same command can be run again the same day.
 # A timeout, a rate limit and an overloaded service keep the three tries either way.
-# If John says no, set this to false: such an error is then tried again up to three times
+# Setting this to false turns the exception off: such an error is then tried again up to three times
 # and the question is left for the next day, as the method's table reads word for word.
 stop_at_errors_trying_again_cannot_cure = true
 

@@ -4,10 +4,14 @@ Written 2026-11-18 by Claude (Fable 5.2), an AI model, from the specification in
 `docs/capture/method.md` ("What the script must do, and must refuse to do"), which John approved
 on 2026-11-18. John said the same day: "Yes, start the capture script now".
 
-A session that did not write it checked it the same day
-(`docs/capture/check-2026-11-18-capture-script.md`). That check found two things that must be
-fixed before any real run and nine that should be. This version answers them; the section
-"What changed after the check" says how, one by one. A different session checks it again.
+A session that did not write it checked it twice the same day. The first check
+(`docs/capture/check-2026-11-18-capture-script.md`) found two things that must be fixed. The
+second (`docs/capture/check-2026-11-18-capture-script-second.md`) found both fixed, said yes to
+the Anthropic run with nothing that must be fixed, and listed seven things that should be. This
+version answers those seven; "What changed after the second check" says how. John ruled four
+points on 2026-11-18 ("Approve all four"; `docs/rulings/2026-11-18-capture-script-four-points.md`);
+they are under "Ruled by John on 2026-11-18" below. A different session checks this round's
+difference.
 
 **Nothing has been run against any service.** No model has been asked anything, no key has been
 handled, and nothing has been spent. The first real call will also be the first time this code
@@ -18,14 +22,19 @@ meets a real service. The section "The day of the first run" is written for that
 | File | What it is |
 |---|---|
 | `capture.py` | The script. Python's standard library only, so every line that touches the network is in this one file (class `HttpsTransport`). Needs Python 3.11 or later; written and rehearsed on 3.14.5. |
-| `plan.toml` | The data the script reads and cannot change: the models, each last safe day, each ceiling, each price, the threshold for a "very short" reply, and one switch (see proposal 3). |
+| `plan.toml` | The data the script reads and cannot change: the models, each last safe day, each ceiling, each price, the threshold for a "very short" reply, and one switch (see "Ruled by John on 2026-11-18", point 1). |
 | `rehearsal.py` | The rehearsal the method requires (script rule 11). It calls no service. |
 | `rehearsal-result.txt` | The saved output of the rehearsal, committed separately. The script refuses a real run unless this file ends with a pass for the script and plan exactly as they stand. |
 
 ## The day of the first run
 
-For the Anthropic run. The last safe day is 2026-11-28, and nothing says to wait for it: a run
-two or three days earlier leaves room to fix whatever the first call shows.
+For the Anthropic run. **John ruled on 2026-11-18 that the first Anthropic run is made no later
+than 2026-11-26** (`docs/rulings/2026-11-18-capture-script-four-points.md`). The last safe day
+stays 2026-11-28, as a limit the script enforces and not as the day to aim for: the two days
+between are for fixing whatever the first call shows.
+
+Every command below is run from the repository's top folder, `~/Code/beyond-the-window`. Run
+from anywhere else, the script is not found.
 
 **Before the day**
 
@@ -39,8 +48,11 @@ two or three days earlier leaves room to fix whatever the first call shows.
 
 **On the day, in one window, with the Mac on mains power**
 
-1. Set the variable, then show the run. Every line under "Checks made before a real run" must
-   say `pass`. Nothing is sent.
+1. Set the variable `BTW_CAPTURE_ANTHROPIC_API_KEY` from the key's file, in this window. **The
+   one line that does this cannot be given here yet:** it depends on where the key's file is
+   and how it is laid out, which step 4 of `what-john-needs-to-do.md` settles. Once that is
+   settled the line belongs here. Then show the run. Every line under "Checks made before a
+   real run" must say `pass`, the one about the variable included. Nothing is sent.
 
    ```bash
    python3 -I capture/capture.py show --run anthropic-2026-11-30
@@ -52,7 +64,11 @@ two or three days earlier leaves room to fix whatever the first call shows.
    caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30 --stop-after 1
    ```
 
-3. Read the one line it prints for that call. A good first line reads like this:
+3. Read what it prints. With `--stop-after 1` the screen shows four things: a line naming the
+   model, the line for the one call, a line beginning STOPPED that says it stopped after 1 call
+   as asked, and the run total. A line beginning NOTICE at the start of any run names a call or
+   a file from an earlier run that was counted at the most it could cost. A good line for the
+   call reads like this:
 
    ```text
    q01 asking 1 attempt 01: a reply (stop reason end_turn; model reported as named: yes; tokens sent 201, replied 412; limit 32000; counted $0.0068; run total $0.0068 of $5.0000)
@@ -95,9 +111,12 @@ two or three days earlier leaves room to fix whatever the first call shows.
   two of those in round one can end the run for good (below).
 - **Do not run the same command in a second window.** The script now refuses a second run on
   the same folder, so this only wastes a minute.
-- **Ctrl-C is safe at any time now.** If a reply is on its way, what has arrived is saved and
-  counted first. If a reply is in hand, its file is written first. The quietest moment is still
-  the minute's wait after a failed attempt.
+- **Ctrl-C loses nothing, and is free only between calls and during a wait.** Pressed while a
+  reply is arriving, what has arrived is saved first, but that call is counted at $0.48 of the
+  ceiling, and two calls counted that way in round one can end the run. The cut-short reply
+  is kept and does not use up either of the question's two askings. If a reply is in hand, its
+  file is written before the run stops. The best moment is the minute's wait after a failed
+  attempt.
 - **If the screen says `A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED`, do not close the
   window and do not press Ctrl-C.** The reply folder could not be written to. Check that the
   folder exists and the disk is not full. The script tries again every half minute for half
@@ -144,11 +163,14 @@ messages_sha256 = "the SHA-256 checksum of docs/capture/sent/SHA256SUMS"
 
 The script checks that `ceiling_usd` equals the plan's ceiling; that `johns_words` appears
 word for word in the one quotation directly above the block, names the developer, and carries
-exactly one dollar figure, the ceiling; that `commit` is a commit of this repository; that
+exactly one dollar figure, the ceiling, not followed by more digits, ",000" or "k"; that the
+words carry the run's withdrawal date where the developer has more than one run (OpenAI); that
+`commit` is a commit of this repository; that
 `date` is there; and that `messages_sha256` is the checksum of the list of message checksums
 as it stands. The spending record must be committed, like the script.
 
-What no code can check: that the quotation is what John said, and that he has not since
+What no code can check: that the quotation is what John said, that it does not say the
+opposite ("no go for Anthropic, up to $5 was too much" would pass), and that he has not since
 withdrawn it. If he withdraws a go, a session takes it out of the record, block and all.
 
 If John's figure differs from the plan's, a session changes the plan in a commit and runs the
@@ -187,63 +209,51 @@ script could not take apart" (saved whole; the run stops), "sent, with no record
 marker only), and "a file that could not be read" (half written when the machine stopped; it
 is named on screen and the run carries on).
 
+A question whose reply the script could not take apart is asked once more and then left, like
+any reply that is not whole. Everything received is in the file, so nothing is lost, but it is
+not labelled as a reply; if that ever happens, the record of the run should say so.
+
+Three things here go beyond what the method's words name, and John should know of them: the
+three added outcomes; the markers and the lock file in the reply folder; and the `labels`
+command, which shows the word count of every reply and not only of faulty ones (no words are
+ever shown). The method's rule on fault flags speaks only of a faulty file's count.
+
 Each attempt file keeps every header the service returned. Anthropic's include the
 organization's id and the workspace's id. That is right for a private record. If the answers
 are ever published in full, those lines are taken out of the published copies first.
 
-## PROPOSED 2026-11-18, for John
+## Ruled by John on 2026-11-18
 
-None is approved. Each has the four things the project asks for.
+John: "Approve all four". Decided by: mixed (sessions proposed, the planning session
+recommended, John approved). The ruling is `docs/rulings/2026-11-18-capture-script-four-points.md`.
+Nothing in this section is proposed any longer. Still proposed and not ruled: each ceiling in
+`plan.toml`, which waits for John's go.
 
-**1. "Very short" means fewer than 20 words.** *The choice:* a reply of 19 words or fewer is
-listed after its round as very short, kept, and never asked again. *Confidence:* moderate.
-*Judgment call.* An ordinary full sentence is fifteen to twenty words, so a reply under twenty
-is at most about one sentence. A flag costs nothing and changes nothing, so erring high is
-cheap. One thing to know: the screen then shows the word count of any reply under 20 words,
-which says a little about that reply; the method allows exactly that. *Strongest alternative:*
-5 words, which lists only fragments and would miss a one-line reply cut short without the
-service saying so.
+1. **An error that trying again cannot cure stops the run and is not one of the day's tries.**
+   When Anthropic's service answers with status 400, 401, 402, 403 or 404 (a problem with the
+   request, the key, billing, permission or the address), the attempt is saved, the run stops
+   with one line saying what to fix, none of the day's tries is used, and the same command can
+   be run again the same day. For OpenAI, 401 and 403. For Google, none. A timeout, a rate
+   limit, a server error, an overloaded service and a connection that fails keep the three
+   tries. John approved the method's correction in the words written out for him; they are in
+   the ruling. One line in `plan.toml` turns it off
+   (`stop_at_errors_trying_again_cannot_cure = false`), and the rehearsal covers both settings.
 
-**2. After a reply cut off without the service's signal that it was complete, the one further
-asking uses the same length limit, not the model's maximum.** The method leaves this to the
-script. *Confidence:* high. *Judgment call.* A broken stream is not a sign that the limit was
-too low. *Strongest alternative:* the maximum, as for a reply stopped at the length limit.
-
-**3. An error that trying again cannot cure stops the run and is not one of the day's tries.**
-This narrows how the method's first failure row is applied, and the method is approved, so it
-waits for John. *The choice:* when Anthropic's service answers with status 400, 401, 402, 403
-or 404 (a problem with the request, the key, billing, permission or the address), the attempt
-is saved, the run stops with one line saying what to fix, none of the day's tries is used, and
-the same command can be run again the same day. A timeout, a rate limit, a server error and an
-overloaded service keep the three tries as the method wrote them. *Confidence:* high.
-*Judgment call.* The reason: without it, a mistyped key on 2026-11-28 uses four tries in three
-minutes, the question is left for the next day, and the next day is past the last safe day, so
-every asking is recorded as not made. Anthropic's errors page (opened 2026-11-18) gives each of
-the five a thing to fix and no advice to try again. *Strongest alternative:* leave the row as
-written and have John rule that the first run is no later than 2026-11-26, which costs
-nothing in code and still loses a day to each such mistake. **If John says no, one line turns
-it off:** `stop_at_errors_trying_again_cannot_cure = false` in `plan.toml`, then the rehearsal
-again. The rehearsal covers both settings.
-
-For OpenAI the same applies to 401 and 403 only, the two its error guide gives a status and a
-fix for. For Google it applies to nothing: its errors page describes its newer interface and
-does not say it covers the one used.
-
-The dated correction the method would need, for John to approve or refuse:
-
-> *Dated correction, 2026-11-18, waiting for John.* The first row of the failures table reads:
-> "No reply: an error, a timeout, a rate limit ... Tried again up to three times, a minute
-> apart, then left for the next day." It is applied with one exception. **An error that trying
-> again cannot cure is not tried again and is not one of the day's tries.** For Anthropic
-> these are the service's statuses 400, 401, 402, 403 and 404: a problem with the request, the
-> key, billing, permission, or the address. For OpenAI, 401 and 403. For Google, none, until a
-> page confirms them for the interface used. The attempt is kept as a failed attempt, with
-> the error. The run stops and says what to fix, and may be run again the same day. Every
-> other failed attempt (a timeout, a rate limit, a server error, an overloaded service, a
-> connection that fails) is tried again up to three times as before. The reason: four tries at
-> an error of this kind would use up the day, and on the last safe day that would end the
-> capture for the model with nothing asked. It can be turned off by one line in
-> `capture/plan.toml`.
+   Three things the ruled words do not spell out, which the second check recorded:
+   - The stop is for the whole run. For OpenAI a wrong key stops every model of that run.
+   - Two errors that trying again also cannot cure are not on the list and keep the three
+     tries: a request too large (413), which cannot happen with messages this small, and the
+     form of 429 that means the organization's monthly spend cap is reached.
+   - A 403 from the service's front door, and not from the service itself, is treated the
+     same. The line then reads "status 403 (none)", and its advice about the key's permission
+     may be off the mark. Stopping without using up the day is still right.
+2. **The first Anthropic run is made no later than 2026-11-26.** The script does not enforce
+   this; it enforces the last safe day, 2026-11-28.
+3. **The key reaches the script through a setting in the shell, set from the key's own file
+   outside the repository.** The script never opens a credentials file.
+4. **A reply of fewer than 20 words is listed as very short,** kept, and never asked again. And
+   **the one further asking after a reply cut off without the service's signal that it was
+   complete uses the same length limit,** not the model's maximum.
 
 ## Where each rule is enforced, and which rehearsal case proves it
 
@@ -280,9 +290,9 @@ The failures table is `classify` (which row) and `Engine.next_step` (what is don
 a rehearsal case named for it: ROW 1 to ROW 8, the two cases under WHICH ROW, WHEN A STREAM
 BREAKS, and the two under THE TWO THINGS THAT COME FIRST.
 
-## What changed after the check
+## What changed after the first check
 
-**M1, four failed tries shut the model out for the day.** Proposal 3 above. Rehearsal cases
+**M1, four failed tries shut the model out for the day.** The exception John has since ruled. Rehearsal cases
 headed M1: the check's own test (a wrong key, then the same command later the same day, which
 now asks all 50); five such stops in one day; each of the five statuses; the four kinds that
 keep the three tries; the switch turned off; and the other two developers.
@@ -319,24 +329,48 @@ a reply was lost.
 | S8. The rehearsal misses seven of sixteen deliberate changes | Fixed. Cases added for each of the seven, and the key test corrected. See "The rehearsal, tested against broken copies" |
 | S9. The capture documents still say no script exists | Not mine to edit. The wording is listed in the hand-over note for the planning session |
 
+## What changed after the second check
+
+Kept as small as it could be. The functions touched in `capture.py` are named, so that the
+next check knows where to look. The code that builds and checks a request was not touched.
+
+| Finding | What was done | Functions changed |
+|---|---|---|
+| S1. A reply holding half of a two-part symbol can never be saved | Fixed, both parts. The file is written as bytes, and a lone half is written as the escape the service sent, which reads back as the same half. A write that fails for a reason other than the folder or the disk goes straight to a plainer form of the same record, once, with no wait. Rehearsal: SECOND CHECK, S1 (two cases) | `Engine.write_new_file`, `Engine.write`, `Engine.save` |
+| S2. Ctrl-C while a reply is arriving uses up one of the two askings, and the README overstated its safety | Fixed. A reply cut short by hand is kept and is not one of the two askings. The README says what Ctrl-C costs. Rehearsal: SECOND CHECK, S2 | class `Entry`, `read_folder`, `Engine.next_step`, `Engine.ask` (one line each) |
+| S3. A count the service could not truly have reported is used as given | Fixed. A count below zero, above what the message could hold, or above the length limit sent is not used; the call is counted at the most it could cost. Rehearsal: SECOND CHECK, S3 | `Engine.make_record` |
+| S4. The network code hands back what had arrived only for some kinds of error | Fixed. Any other kind of error after the service has begun to answer hands back what arrived and names the kind. Rehearsal: SECOND CHECK, S4 and S5 | `HttpsTransport.exchange` |
+| S5. Three gaps in the rehearsal | Fixed: a marker that cannot be written; the real network code run against a constructed connection that opens nothing; and the figure for an unreadable file written out as 64,000 tokens at $15 a million plus the longest message | none in `capture.py`; `rehearsal.py` only |
+| S6. John's go: two loose ends | Fixed, both. "$5,000" and "$5k" no longer match words ending "up to $5". Where a developer has more than one run, the words must carry the run's withdrawal date. A go that says the opposite cannot be caught by code, and is listed. Rehearsal: SECOND CHECK, S6 | `check_go`, `start_checks` (passes the plan) |
+| S7. Three gaps in the day-of-run steps | Fixed in this file: the top folder is named; Ctrl-C is described as it is; what the screen shows after one call and what NOTICE means are added. The one line that sets the variable still cannot be given, because where the key's file is has not been settled; the step says so | none |
+
+Of the eight notes: note 6 is acted on (a reply folder that cannot be written to before the
+first call now gives a plain refusal, in `Engine.only_one_run`; rehearsal: SECOND CHECK, note
+6). Notes 2, 3, 4 and 5 are written into "What is written in the reply folder" for John. Notes
+1, 7 and 8 confirm earlier work and need nothing. The check's three remarks on the ruled
+exception are under "Ruled by John" above.
+
+Still open, and only for Google and OpenAI: everything the first check said makes them not
+ready. Nothing in this round is left open for them alone; the one finding that concerned
+OpenAI alone (the go's date) was small and is fixed.
+
 ## Where the script reads the method strictly, and where loosely
 
 Each is a place where the method could be read more than one way. Each is for John or the
 checking session to confirm or change.
 
-*Departing from the method's words, needing a dated correction:*
+*Departing from the method's words, each ruled by John on 2026-11-18 and owed to the method as a
+dated correction:*
 
-1. **The key comes from the environment, not from a file the script opens.** Rule 1 says
-   "Read each key from its own file outside the repository". The key still lives in its own
-   file outside the repository; the script is handed it by the shell.
-2. **Proposal 3,** above.
+1. **The key comes from the environment, not from a file the script opens.**
+2. **The exception for errors that trying again cannot cure.**
 
 *The stricter reading:*
 
 3. **A ceiling for each run, not each developer,** matching the steps document.
 4. **A call whose cost the service did not report is counted at the most it could cost.**
 5. **At most one further asking for a slot, whatever the second brings.**
-6. **A slot left for the next day stops that model's run for the day.** With proposal 3 this
+6. **A slot left for the next day stops that model's run for the day.** With the exception above this
    now happens only after four timeouts, rate limits or the like.
 7. **A model that once reported a different name stays stopped** until John rules.
 8. **A complete reply that names no model is treated as the wrong-model row.**
@@ -380,12 +414,12 @@ Pages were opened on 2026-11-18. Reading a documentation page asks no model anyt
 
 | Fact, as used | Status | What to open to check |
 |---|---|---|
-| Anthropic: address, the three headers, `"stream": true`, the event names, the `error` event, `message_stop` as the final event, the stop reasons, 64,000 maximum, $3 and $15, the five statuses of proposal 3 | Checked, and confirmed again by the checking session | streaming, handling-stop-reasons, versioning, errors and models overview pages on platform.claude.com |
+| Anthropic: address, the three headers, `"stream": true`, the event names, the `error` event, `message_stop` as the final event, the stop reasons, 64,000 maximum, $3 and $15, the five statuses of the ruled exception | Checked, and confirmed again by the checking session | streaming, handling-stop-reasons, versioning, errors and models overview pages on platform.claude.com |
 | Anthropic: that the service reports `claude-sonnet-4-5-20250929`, exactly, in `message_start` | **Not checked** | Only a real reply shows it. If it differs, the run stops after one call |
 | Google: the path, the reply's field names, every finish reason and block reason, the token counts, 65,536 maximum, the prices | Checked | aistudio.google.com/api-reference/generate-content, the two model pages, the pricing page |
 | Google: the request's field names (`contents`, `parts`, `text`) | **Not checked.** The checking session confirmed `maxOutputTokens` and the two roles; the rest is from memory | The "Request body" section of the reference page |
 | Google: the host and the `x-goog-api-key` header for this interface; what `modelVersion` holds; whether thinking counts inside the limit; which error statuses apply to this interface | **Not checked** | The reference page; only a real reply shows the model name |
-| OpenAI: address, `Authorization: Bearer` header, field names, the states and reasons, the two error statuses of proposal 3 | Checked against OpenAI's guides and its own Python library | |
+| OpenAI: address, `Authorization: Bearer` header, field names, the states and reasons, the two error statuses of the ruled exception | Checked against OpenAI's guides and its own Python library | |
 | OpenAI: a plain-text `input` is one user message | Confirmed by the checking session on OpenAI's reference page, not by this one | |
 | OpenAI: each model's maximum and price; what `model` holds in the reply | Checked by this session; not reopened by the checking session. The reported name is **not checked** | Each model's page; only a real reply shows the name |
 
@@ -418,3 +452,19 @@ caught:
 | The guard round taking a reply apart is removed | Yes |
 | The write is tried once only | Yes |
 | The go's words are looked for in every quotation in the record | Yes |
+
+After the second check, nine more changed copies were made, aimed at that round's changes
+(the three that check found the rehearsal missed, and six that undo the new fixes). All nine
+were caught:
+
+| Change made to a copy of the script | Caught? |
+|---|---|
+| Half of a two-part symbol is refused again | Yes |
+| A marker that cannot be written no longer stops the send | Yes |
+| The network code no longer hands back what arrived on Ctrl-C | Yes |
+| The network code drops what arrived on any other kind of error | Yes |
+| A file that cannot be read, with no marker, is counted as nothing | Yes |
+| A reply cut short by hand uses one of the two askings | Yes |
+| A count the service could not have reported is used | Yes |
+| The go's figure may be followed by ",000" or "k" | Yes |
+| A developer with two runs needs no date in the go | Yes |

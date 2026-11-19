@@ -415,7 +415,7 @@ def check_prices(paths: Paths, run: Run) -> None:
             raise Refused(f"the plan's prices for {model.name} differ from cost-and-terms.md")
 
 
-def check_go(paths: Paths, run: Run) -> dict:
+def check_go(paths: Paths, run: Run, plan: Plan | None = None) -> dict:
     """Rule 3. The ceiling must equal the figure in John's go, quoted in the spending record.
 
     The spending record must hold, for this run, John's words as a quotation (lines that
@@ -475,11 +475,15 @@ def check_go(paths: Paths, run: Run) -> dict:
     while lines and lines[-1].lstrip().startswith(">"):
         quotation.insert(0, lines.pop().lstrip()[1:].strip())
     quoted = " ".join(" ".join(quotation).split())
-    if not words or not re.search(re.escape(words) + r"(?!\d)(?!\.\d)", quoted):
+    if not words or not re.search(re.escape(words) + r"(?!,?\d)(?!\.\d)(?![kKmM]\b)", quoted):
         raise Refused(f"the words given as John's go for {run.id} are not quoted word for word in "
                       "the quotation directly above their block in the spending record")
     if run.developer not in words.lower():
         raise Refused(f"John's quoted words for {run.id} do not name the developer ({run.developer})")
+    if plan is not None and sum(r.developer == run.developer for r in plan.runs) > 1 \
+            and run.withdrawal_date.isoformat() not in words:
+        raise Refused(f"{run.developer} has more than one run, so John's quoted words for {run.id} must carry "
+                      f"its withdrawal date, {run.withdrawal_date}")
     figures = re.findall(r"\$\s?(\d+(?:\.\d+)?)", words)
     if len(figures) != 1 or D(figures[0]) != figure:
         raise Refused(f"John's quoted words for {run.id} do not carry the figure {money(figure)}, "
@@ -559,7 +563,7 @@ def start_checks(paths: Paths, plan: Plan, run: Run, today: datetime.date,
     attempt("the prices equal the dated price list in cost-and-terms.md (rule 4)",
             lambda: check_prices(paths, run))
     learned["go"] = attempt("the ceiling equals the figure in John's go, quoted in the spending record (rule 3)",
-                            lambda: check_go(paths, run))
+                            lambda: check_go(paths, run, plan))
     learned["rehearsal_passed_on"] = attempt("the rehearsal passed for this exact script and plan (rule 11)",
                                              lambda: check_rehearsal_passed(paths))
 
@@ -1063,6 +1067,12 @@ class HttpsTransport:
             # Stopped by hand while a reply was on its way. What had arrived is handed back, so
             # that it is saved before the run stops.
             got.broke = INTERRUPTED
+        except Exception as problem:               # noqa: BLE001
+            # Any other kind of error once the service has begun to answer: what had arrived is
+            # handed back too. Before any answer there is nothing to hand back, and it is raised.
+            if got.status is None:
+                raise
+            got.broke = f"error of the kind {type(problem).__name__}"
         finally:
             connection.close()
         got.raw = b"".join(chunks)
@@ -1158,6 +1168,7 @@ class Entry:
     counted_usd: D
     kept_apart: bool
     counts_as_a_try: bool = True          # False for an error trying again cannot cure, and the like
+    stopped_by_hand: bool = False         # Ctrl-C while the reply was on its way
 
 
 def _when(text):
@@ -1234,7 +1245,8 @@ def read_folder(folder: pathlib.Path, constructed: bool, most_it_could_cost) -> 
                                  attempt=attempt, outcome=str(record["recorded_as"]), asked_at=at,
                                  asked_on=at.astimezone(PACIFIC).date() if at else None, counted_usd=counted,
                                  kept_apart=apart,
-                                 counts_as_a_try=record.get("counts_as_one_of_the_days_tries", True) is not False))
+                                 counts_as_a_try=record.get("counts_as_one_of_the_days_tries", True) is not False,
+                                 stopped_by_hand=record.get("stopped_by_hand") is True))
         else:
             at = _when(marker.get("sent_at_utc"))
             if copies:
@@ -1331,7 +1343,11 @@ class Engine:
 
         class Hold:
             def __enter__(self):
-                self.handle = os.open(engine.folder / LOCK_NAME, os.O_RDWR | os.O_CREAT, 0o644)
+                try:
+                    self.handle = os.open(engine.folder / LOCK_NAME, os.O_RDWR | os.O_CREAT, 0o644)
+                except OSError as problem:
+                    raise Refused(f"refused: the reply folder cannot be written to ({type(problem).__name__}). "
+                                  "Nothing was sent.")
                 try:
                     fcntl.flock(self.handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 except OSError:
@@ -1428,7 +1444,11 @@ class Engine:
         if any(e.outcome == NOT_MADE for e in attempts):
             return ("done",)
         answered = [e for e in attempts if e.outcome not in NOT_AN_ANSWER]
-        if any(e.outcome == REPLY for e in answered) or len(answered) >= 2:
+        if any(e.outcome == REPLY for e in answered):
+            return ("done",)
+        # A reply cut short by hand (Ctrl-C) is kept, and is not one of the two askings.
+        answered = [e for e in answered if not e.stopped_by_hand]
+        if len(answered) >= 2:
             return ("done",)
         tries_today = [e for e in attempts if e.outcome == FAILED and e.counts_as_a_try and e.asked_on == self.today()]
         if len(tries_today) >= 1 + RETRIES_AFTER_A_FAILED_ATTEMPT:
@@ -1436,7 +1456,8 @@ class Engine:
         limit = self.plan.limit_for(model)
         if answered and answered[-1].outcome == CUT_OFF_LENGTH:
             limit = model.max_output_tokens          # "Asked once more at the model's maximum"
-        # PROPOSED 2026-11-18: after a reply cut off without the signal that it is complete,
+        # Ruled by John on 2026-11-18 (docs/rulings/2026-11-18-capture-script-four-points.md):
+        # after a reply cut off without the signal that it is complete,
         # the one further asking uses the same length limit, not the model's maximum. A broken
         # stream is not a sign that the limit was too low (the method leaves this to the script).
         last = attempts[-1] if attempts else None
@@ -1504,7 +1525,8 @@ class Engine:
             self.entries.append(Entry(
                 name=saved_as, developer=model.developer, model=model.name, question=question, asking=asking,
                 attempt=attempt, outcome=outcome, asked_at=asked_at, asked_on=asked_at.astimezone(PACIFIC).date(),
-                counted_usd=counted, kept_apart=(outcome == WRONG_MODEL), counts_as_a_try=counts_as_a_try))
+                counted_usd=counted, kept_apart=(outcome == WRONG_MODEL), counts_as_a_try=counts_as_a_try,
+                stopped_by_hand=record.get("stopped_by_hand") is True))
         say(f"  q{question:02d} asking {asking} attempt {attempt:02d}: {line}; limit {max_tokens}; "
             f"counted {money(counted)}; run total {money(self.spent())} of {money(self.run.ceiling_usd)})")
         if hold.asked_to_stop and not stop_because:
@@ -1521,10 +1543,14 @@ class Engine:
         from_counts = None
         try:
             if seen.tokens_sent is not None and seen.tokens_replied_billed is not None:
+                # A count below zero, or above what this call could have sent or been sent
+                # back, is not one the service could truly have reported. It is not used.
+                most_replied = model.max_output_tokens if adapter.worst_case_uses_model_maximum else max_tokens
+                if not (0 <= int(seen.tokens_sent) <= len(message) + 64
+                        and 0 <= int(seen.tokens_replied_billed) <= most_replied):
+                    raise ValueError
                 from_counts = (int(seen.tokens_sent) * model.price_sent
                                + int(seen.tokens_replied_billed) * model.price_replied) / MILLION
-                if from_counts < 0:
-                    raise ValueError
                 counted, basis = from_counts, "the token counts the service reported"
             elif not got.request_left or (got.status is not None and got.status != 200):
                 # ASSUMED: a request the service answers with an error status, or that never
@@ -1718,14 +1744,18 @@ class Engine:
             raise Refused(f"refused: {folder} is inside a git repository")
         os.makedirs(folder, exist_ok=True)
         path = folder / name
+        # Some symbols can arrive as two escaped halves. One half alone cannot be written as
+        # ordinary text, so it is written as the escape the service sent ("\ud83d"), which is
+        # valid inside the file and reads back as the same half. Nothing is refused or dropped.
+        data = text.encode("utf-8", errors="backslashreplace")
         handle = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o444)
-        with os.fdopen(handle, "w", encoding="utf-8") as f:
-            f.write(text)
+        with os.fdopen(handle, "wb") as f:
+            f.write(data)
             f.flush()
             os.fsync(f.fileno())
         os.chmod(path, 0o444)
 
-    def write(self, name: str, record: dict, apart: bool) -> pathlib.Path:
+    def write(self, name: str, record: dict, apart: bool, plainer: bool = False) -> pathlib.Path:
         """Rule 8: write the file before the next message is sent, and make it read-only.
 
         The file is created new and never opened again for writing; an existing name is an
@@ -1733,7 +1763,10 @@ class Engine:
         removes, renames or empties a file.
         """
         folder = self.folder / APART if apart else self.folder
-        text = json.dumps(record, ensure_ascii=False, indent=1, default=str)
+        # The plainer form writes every character outside plain ASCII as its escape. It holds
+        # the same record, and is used only if the ordinary form fails for a reason other than
+        # the folder or the disk.
+        text = json.dumps(record, ensure_ascii=plainer, indent=1, default=repr if plainer else str)
         if self.key.appears_in(text):
             # "The key is never saved." If a service ever sent the key back, it is taken out.
             text = self.key.removed_from(text)
@@ -1749,19 +1782,26 @@ class Engine:
         plainly that it is holding an unsaved reply, and keeps trying every half minute for
         half an hour, so that the folder can be put right while it waits.
         """
-        tries = 0
+        tries, plainer = 0, False
         while True:
             tries += 1
             candidate = name if tries == 1 else f"{name[:-5]}__copy{tries:02d}.json"
             try:
-                self.write(candidate, record, apart)
+                self.write(candidate, record, apart, plainer)
                 if tries > QUICK_WRITE_TRIES:
                     say(f"  saved at try {tries}, as {candidate}. Nothing was lost.")
                 return candidate
             except Refused:
                 raise
-            except Exception as problem:               # noqa: BLE001
+            except OSError as problem:                 # the folder or the disk: worth waiting for
                 kind = type(problem).__name__
+            except Exception as problem:               # noqa: BLE001
+                # Not the folder or the disk, so waiting cannot help. Go straight to the plainer
+                # form of the same record, once, with no wait.
+                kind = type(problem).__name__
+                if not plainer:
+                    plainer = True
+                    continue
             if tries >= QUICK_WRITE_TRIES + SLOW_WRITE_TRIES:
                 raise RunStopped(
                     f"A REPLY WAS HELD AND COULD NOT BE SAVED. {tries} tries to write {name} failed "
