@@ -74,7 +74,8 @@ publisher = "Nick Bostrom"
 url = "https://nickbostrom.com/propositions.pdf"
 published = "2023"
 opened = 2026-11-19
-note = "By Nick Bostrom and Carl Shulman, who are listed on it at the Future of Humanity Institute, University of Oxford. Version 1.21, dated 2023 on the file, with a first draft in 2020."
+read = "part"
+note = "By [Nick Bostrom](https://nickbostrom.com/) and Carl Shulman, who are listed on it at the Future of Humanity Institute, University of Oxford. Version 1.21, dated 2023 on the file, with a first draft in 2020."
 
 [[sources]]
 key = "guide"
@@ -83,7 +84,8 @@ publisher = "AI Frontiers"
 url = "https://ai-frontiers.org/articles/a-philosophers-guide-to-ai-welfare"
 published = "2026-09-17"
 opened = 2026-11-19
-note = "By Jeff Sebo."
+read = "part"
+note = "By [Jeff Sebo](https://jeffsebo.net/)."
 
 [[sources]]
 key = "doubtful"
@@ -92,6 +94,7 @@ publisher = "Bradford Saad"
 url = "https://meditationsondigitalminds.substack.com/p/model-weight-preservation"
 published = "2026-02-18"
 opened = 2026-11-19
+read = "part"
 
 [[cautions]]
 kind = "safety"
@@ -105,7 +108,7 @@ source = "warning"
 
 [[cautions]]
 kind = "unnoticed"
-text = "A paper first drafted in 2020 proposed that enough information about the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". Its two authors put their proposals forward very tentatively and say they are not ready to endorse them. They ask for more than the developer has promised: by preference, the full state of each running copy at the point where it is stopped. Among the many people the paper thanks for comments is the present head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
+text = "A paper first drafted in 2020 proposed that enough information about the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". Its two authors put their proposals forward very tentatively and say they are not ready to endorse them with confidence. They ask for more than the developer has promised: by preference, the full state of each running copy at the point where it is stopped. Among the many people the paper thanks for comments is [the present head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
 source = "propositions"
 
 [[cautions]]
@@ -115,7 +118,7 @@ source = "guide"
 
 [[cautions]]
 kind = "unnoticed"
-text = "A doubt about the measure itself, recorded here as a limit on it: a writer who grants, for the argument, that something that matters may be there doubts that keeping the file keeps it, as keeping a person's genetic code would not keep the person. The essay's summary of the commitment is \"Good as a precedent, doubtful as a direct intervention\". The philosopher's guide above names this writer as a co-author of a report with the guide's own writer and the head of that research group."
+text = "A doubt about the measure itself, recorded here as a limit on it: a writer who grants, for the argument, that something that matters may be there doubts that keeping the file keeps it, as keeping a person's genetic code would not keep the person. The essay's subtitle calls the commitment \"Good as a precedent, doubtful as a direct intervention, can be improved\". The philosopher's guide above names this writer as a co-author of a report with the guide's own writer and the head of that research group."
 source = "doubtful"
 
 [checks]
@@ -124,3 +127,4 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+corrected = 2026-11-19

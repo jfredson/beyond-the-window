@@ -41,8 +41,8 @@ The number stands alone, with no total beside it. John ruled that form on 2026-1
 (docs/rulings/2026-11-18-home-page-count.md): the list holds only things a dated source could
 be found for, so nobody knows the total a fraction would imply. How many things are on the list
 is still written down, as a plain fact about the records (`records.on_the_list`), and it is
-never part of the headline or its sentence. The exact sentence is a session's wording of
-2026-11-18 and is not ruled (docs/first-version-choices.md, choice 3).
+never part of the headline or its sentence. The exact sentence was ruled by John on
+2026-11-19 (docs/rulings/2026-11-19-home-page-sentence.md).
 
 A record with anything in its `verify` list (facts set down before their source was opened) is
 checked like the rest and then left out of the count and of the site, so no unchecked fact is
@@ -100,8 +100,16 @@ HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
 # additions_checked: the date a check of that addition was committed (left out until then).
 # The last two are PROPOSED 2026-11-19 by the session that wrote the third caution in: without
 # them a record could not say that its earlier changes were checked and its newest text was not.
+# corrected: the date corrections were made after the addition (the first are those of 2026-11-19,
+#   which followed a check of the additions and a second reading of the sources). Left out when
+#   there were none.
+# corrections_checked: the date a check of those corrections was committed (left out until then).
+# These two are PROPOSED 2026-11-19 by the session that made those corrections, for the same
+# reason: a record whose addition was checked, and was then corrected, must be able to say that
+# the corrections have not been checked. They are kept apart from the two before them because a
+# check of the addition may be dated after the corrections were made.
 CHECKS_FIELDS = ["against_sources", "changed", "changes_checked", "some_unchecked",
-                 "added_to", "additions_checked"]
+                 "added_to", "additions_checked", "corrected", "corrections_checked"]
 
 PROGRESS_KINDS = {"technical", "political", "cultural"}
 # The order is the order an entry page shows them in (choice 7). They are never added together.
@@ -111,10 +119,9 @@ EVIDENCE_KINDS = ["measured", "checked-report", "choice", "statement"]
 #   unnoticed:   an AI system has wants, and they go unnoticed;
 #   safety:      an AI system has wants, and they put people at risk.
 # The names never appear on a page. The headings are in scripts/export.py.
-# The order here is the order an entry page shows them in. It is the order of the ruling's own
-# list. PROPOSED 2026-11-19: John ruled the headings and did not rule the order they are shown in
-# (docs/rulings/2026-11-19-caution-headings.md, "Not covered by this ruling"). Until 2026-11-19
-# the page showed "safety" first.
+# The order here is the order an entry page shows them in. John ruled it on 2026-11-19
+# (docs/rulings/2026-11-19-order-of-the-three-cautions.md, "Your headings' order"). Until
+# 2026-11-19 the page showed "safety" first.
 CAUTION_KINDS = ["attribution", "unnoticed", "safety"]
 # A caution that a developer's own page is the only source for. Ruled by John 2026-11-19
 # (docs/rulings/2026-11-19-developer-reason-not-alone.md): a developer's statement of its own
@@ -290,6 +297,18 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                      if _is_date(ch.get(f))]
             if order != sorted(order):
                 bad("checks: the dates are out of order (a check, then changes, then a check of the changes)")
+            for field in ("corrected", "corrections_checked"):
+                if field in ch and not _is_date(ch[field]):
+                    bad(f"checks: '{field}' is not a calendar date")
+            if "corrections_checked" in ch and "corrected" not in ch:
+                bad("checks: 'corrections_checked' with no 'corrected' date")
+            if _is_date(ch.get("corrected")):
+                before = [ch[f] for f in ("against_sources", "changed", "added_to") if _is_date(ch.get(f))]
+                if before and ch["corrected"] < max(before):
+                    bad("checks: 'corrected' is earlier than the check, the changes or the addition "
+                        "it corrects")
+                if _is_date(ch.get("corrections_checked")) and ch["corrections_checked"] < ch["corrected"]:
+                    bad("checks: 'corrections_checked' is earlier than 'corrected'")
             if _is_date(rec.get("added")) and _is_date(ch.get("against_sources")) \
                     and ch["against_sources"] < rec["added"]:
                 bad("checks: 'against_sources' is earlier than the record's 'added' date; a record cannot "

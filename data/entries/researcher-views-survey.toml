@@ -9,16 +9,14 @@ progress_kind = "cultural"
 added = 2026-11-17
 first_pass = true
 limits = [
-  "When the survey was run. The page opened does not say.",
-  "The figures behind \"unlikely\" and \"more likely than not\".",
   "Whether it has been repeated.",
-  "A safety reading. None was found on the page read. The summary reports that both groups agree such systems, if created, should be held accountable.",
+  "A safety researcher's reading of this survey. None was found. The paper reports what the people surveyed think about danger to people, which is a measure of opinion and not a safety argument.",
 ]
-notes = "From entry 13 of docs/research/2026-11-17-first-entries.md. Read from the paper's summary page only."
+notes = "From entry 13 of docs/research/2026-11-17-first-entries.md. First read from the paper's summary page only. The second search pass of 2026-11-19 read the paper in full, and the state was corrected from it that day."
 
 [state]
 words = "Measured once, in a survey of 582 AI researchers"
-detail = "The survey asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century, and that both support developers putting safeguards in place now. It also reports that the two groups disagree widely on moral and policy questions. One measurement cannot show a change."
+detail = "The survey was run between May 8th and May 30th, 2024. It asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century. Part of each group was asked to put a chance on an AI system having subjective experience by a given year. For the time of the survey, the middle answer was 1 percent among the researchers and 5 percent among the public. For the year 2100 it was 70 percent among the researchers and 60 percent among the public. The summary also says both groups support developers putting safeguards in place now, and that inside both groups there is substantial disagreement on many moral and policy questions. One measurement cannot show a change."
 set_on = 2026-11-17
 source = "survey"
 
@@ -29,8 +27,8 @@ publisher = "arXiv"
 url = "https://arxiv.org/abs/2506.11945"
 published = "2025-06-13"
 opened = 2026-11-19
-read = "part"
-note = "Revised November 5th, 2026. The paper is 141 pages. Its summary and its introduction were read."
+read = "full"
+note = "Revised November 5th, 2026. The paper is 141 pages."
 
 [[cautions]]
 kind = "unnoticed"
@@ -41,3 +39,4 @@ source = "survey"
 against_sources = 2026-11-17
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+corrected = 2026-11-19

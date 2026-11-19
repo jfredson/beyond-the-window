@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-19",
-  "commit": "c05e901",
+  "commit": "730ddb7",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-19",
@@ -120,7 +120,8 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "additions_checked": "2026-11-19"
+        "additions_checked": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Promised in public by one developer, since November 4th, 2025",
@@ -175,7 +176,7 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "A paper first drafted in 2020 proposed that enough information about the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". Its two authors put their proposals forward very tentatively and say they are not ready to endorse them. They ask for more than the developer has promised: by preference, the full state of each running copy at the point where it is stopped. Among the many people the paper thanks for comments is the present head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
+              "text": "A paper first drafted in 2020 proposed that enough information about the most advanced AI systems be kept in permanent storage to rebuild them later, \"so as not to foreclose the possibility of future efforts to revive them\". Its two authors put their proposals forward very tentatively and say they are not ready to endorse them with confidence. They ask for more than the developer has promised: by preference, the full state of each running copy at the point where it is stopped. Among the many people the paper thanks for comments is [the present head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
               "source": "propositions"
             },
             {
@@ -183,7 +184,7 @@
               "source": "guide"
             },
             {
-              "text": "A doubt about the measure itself, recorded here as a limit on it: a writer who grants, for the argument, that something that matters may be there doubts that keeping the file keeps it, as keeping a person's genetic code would not keep the person. The essay's summary of the commitment is \"Good as a precedent, doubtful as a direct intervention\". The philosopher's guide above names this writer as a co-author of a report with the guide's own writer and the head of that research group.",
+              "text": "A doubt about the measure itself, recorded here as a limit on it: a writer who grants, for the argument, that something that matters may be there doubts that keeping the file keeps it, as keeping a person's genetic code would not keep the person. The essay's subtitle calls the commitment \"Good as a precedent, doubtful as a direct intervention, can be improved\". The philosopher's guide above names this writer as a co-author of a report with the guide's own writer and the head of that research group.",
               "source": "doubtful"
             }
           ]
@@ -255,7 +256,8 @@
           "url": "https://nickbostrom.com/propositions.pdf",
           "published": "2023",
           "opened": "2026-11-19",
-          "note": "By Nick Bostrom and Carl Shulman, who are listed on it at the Future of Humanity Institute, University of Oxford. Version 1.21, dated 2023 on the file, with a first draft in 2020."
+          "read": "part",
+          "note": "By [Nick Bostrom](https://nickbostrom.com/) and Carl Shulman, who are listed on it at the Future of Humanity Institute, University of Oxford. Version 1.21, dated 2023 on the file, with a first draft in 2020."
         },
         {
           "key": "guide",
@@ -264,7 +266,8 @@
           "url": "https://ai-frontiers.org/articles/a-philosophers-guide-to-ai-welfare",
           "published": "2026-09-17",
           "opened": "2026-11-19",
-          "note": "By Jeff Sebo."
+          "read": "part",
+          "note": "By [Jeff Sebo](https://jeffsebo.net/)."
         },
         {
           "key": "doubtful",
@@ -272,7 +275,8 @@
           "publisher": "Bradford Saad",
           "url": "https://meditationsondigitalminds.substack.com/p/model-weight-preservation",
           "published": "2026-02-18",
-          "opened": "2026-11-19"
+          "opened": "2026-11-19",
+          "read": "part"
         }
       ]
     },
@@ -299,7 +303,8 @@
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
-        "added_to": "2026-11-19"
+        "added_to": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Published by three developers, with three different rules",
@@ -353,15 +358,15 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "A 2024 report by ten researchers says developers should not train a model simply to deny that an AI system can be conscious. It grants that a developer may have fair reasons to, among them the worry that people who reject a model's claims now will go on rejecting such claims later, when they are more likely to be true. On the other side it names a \"desensitizing effect\": people who accept that such systems cannot be conscious may stay doubtful later, when doubt is less warranted. The report was led by the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare. It thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic.",
+              "text": "A 2024 report by ten researchers says developers should not train a model simply to deny that an AI system can be conscious. It grants that a developer may have reasonable motives for doing so, among them the worry that people who reject a model's claims now will go on rejecting such claims later, when they are more likely to be true. On the other side it names a \"desensitizing effect\": people who accept that such systems cannot be conscious may stay doubtful later, when doubt is less warranted. The report was led by [the head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and by one of its advisors. It thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic.",
               "source": "seriously"
             },
             {
-              "text": "Two philosophers propose that, while experts disagree, language models could be trained to answer questions about their moral standing \"by expressing uncertainty and explaining why\". They write that drawing too little concern has led to harm to animals on a very large scale, that the same mistake could be made with AI systems that matter, and that it may not yet be a major concern for present AI systems. One of the two is [an advisor](https://eleosai.org/team) to that research group.",
+              "text": "Two philosophers propose that, while experts disagree, language models could be trained to answer questions about their moral standing \"by expressing uncertainty and explaining why\". They write that drawing too little concern has led to harm to animals on a very large scale, that the same mistake could be made with AI systems that matter, and that it may not yet be a major concern for present AI systems, though \"it could become one soon\". One of the two is [an advisor](https://eleosai.org/team) to that research group.",
               "source": "design-policy"
             },
             {
-              "text": "A 2023 paper notes that a developer can train a model to describe itself in line with the developer's own \"potentially-flawed beliefs about AI consciousness\", and that training a product to appeal to users can push a model's words about itself the other way. Its first author now leads a team at Anthropic, and its second now heads that research group.",
+              "text": "A 2023 paper notes that a developer can train a model to describe itself in line with the developer's own \"potentially-flawed beliefs about AI consciousness\", and that training a chat product to appeal to users could lead a model to report emotion and consciousness. Its first author now leads a team at Anthropic, and its second now heads that research group.",
               "source": "self-reports"
             }
           ]
@@ -433,8 +438,8 @@
           "url": "https://arxiv.org/abs/2411.00986",
           "published": "2024-11-04",
           "opened": "2026-11-19",
-          "read": "part",
-          "note": "By Robert Long, Jeff Sebo and eight others."
+          "read": "full",
+          "note": "By [Robert Long](https://robertlong.online/), [Jeff Sebo](https://jeffsebo.net/) and eight others. The report names those two as its lead authors."
         },
         {
           "key": "design-policy",
@@ -443,8 +448,8 @@
           "url": "https://arxiv.org/abs/2507.06263",
           "published": "2025-07-07",
           "opened": "2026-11-19",
-          "read": "part",
-          "note": "By Eric Schwitzgebel and Jeff Sebo. The file is dated January 8th, 2025."
+          "read": "full",
+          "note": "By [Eric Schwitzgebel](https://faculty.ucr.edu/~eschwitz/) and Jeff Sebo. The file's title page is dated July 7th, 2025. The line at the head of each of its pages is dated January 8th, 2025."
         },
         {
           "key": "self-reports",
@@ -453,7 +458,7 @@
           "url": "https://arxiv.org/abs/2311.08576",
           "published": "2023-11-14",
           "opened": "2026-11-19",
-          "read": "part",
+          "read": "full",
           "note": "By Ethan Perez and Robert Long. The first author's [own page](https://ethanperez.net/) says: \"I lead the alignment team at Anthropic\"."
         }
       ]
@@ -480,7 +485,8 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "some_unchecked": true,
-        "added_to": "2026-11-19"
+        "added_to": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Not found. An idea only, argued for in opinion pieces",
@@ -523,7 +529,7 @@
               "source": "warning"
             },
             {
-              "text": "A neuroscientist who argues that conscious AI is unlikely, and that nobody should set out to build it, grants the other side. He writes that he might be wrong, that rights should arguably follow if such systems really were conscious, and that it is reasonable to wonder whether withholding such credit will leave people \"once again on the wrong side of history\". He holds that with AI the mistake is likelier the other way, because people's habits of mind lean toward seeing consciousness in systems that use language. His essay names the head of Microsoft AI among those who have noticed the danger, and the essay by the head of Microsoft AI that is a source here cites two of his works.",
+              "text": "A neuroscientist who argues that conscious AI is unlikely, and that nobody should set out to build it, grants part of the opposite case. He writes that he might be wrong, that rights should arguably follow if such systems really were conscious, and that it is reasonable to wonder whether withholding such credit will leave people \"once again on the wrong side of history\". He holds that with AI the mistake is likelier the other way, because people's habits of mind lean toward seeing consciousness in systems that use language. His essay names the head of Microsoft AI among those who have noticed the danger, and the essay by the head of Microsoft AI that is a source here cites two of his works.",
               "source": "mythology"
             }
           ]
@@ -534,11 +540,11 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two is an author, with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, of [the survey of AI researchers](/list/researcher-views-survey/).",
+              "text": "Two researchers write in a newspaper that giving AI systems protection from harm should be considered, \"similar to the protections we give to children or pets\". As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, confident that infants could not feel pain. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
               "source": "safe-bets"
             },
             {
-              "text": "Two philosophers argue that a wide range of theories of the mind, joined with leading theories of wellbeing, predict that some AI systems that exist today have wellbeing. They say they do not claim to have shown it conclusively. If it is so, they write, \"we are in danger of gravely immoral action\", and they conclude that the regulation of AI should be strengthened to allow for the possibility. The paper lists both at the Center for AI Safety, where the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, [worked earlier](https://eleosai.org/team).",
+              "text": "Two philosophers argue that a wide range of theories of the mind, joined with leading theories of wellbeing, predict that some AI systems that exist today have wellbeing. They say they do not claim to have shown it conclusively. The possibility alone, they write, \"suggests that we are in danger of gravely immoral action\", and they conclude that the regulation of AI should be strengthened to allow for the possibility. The paper lists both at the Center for AI Safety, where the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, [worked earlier](https://eleosai.org/team).",
               "source": "wellbeing"
             }
           ]
@@ -589,7 +595,7 @@
           "url": "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious",
           "published": "2026-07-19",
           "opened": "2026-11-19",
-          "note": "By William MacAskill and Lucius Caviola."
+          "note": "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
         },
         {
           "key": "wellbeing",
@@ -598,8 +604,8 @@
           "url": "https://arxiv.org/abs/2509.11913",
           "published": "2025-09-11",
           "opened": "2026-11-19",
-          "read": "part",
-          "note": "By Simon Goldstein and Cameron Domenico Kirk-Giannini."
+          "read": "full",
+          "note": "By [Simon Goldstein](https://simondgoldstein.com/) and Cameron Domenico Kirk-Giannini."
         },
         {
           "key": "mythology",
@@ -608,7 +614,8 @@
           "url": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
           "published": "2026-01-14",
           "opened": "2026-11-19",
-          "note": "By Anil Seth."
+          "read": "part",
+          "note": "By [Anil Seth](https://www.anilseth.com/)."
         }
       ]
     },
@@ -636,7 +643,8 @@
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
         "added_to": "2026-11-19",
-        "additions_checked": "2026-11-19"
+        "additions_checked": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Enacted in four United States states, the first in 2022",
@@ -681,7 +689,7 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "The article arguing that the bans are premature says that passing laws now, on a question science has not settled, risks a precedent that could be hard to reverse. Supposing conscious AI systems were one day made, it asks: \"Wouldn't it be important to avoid neglecting or abusing them\". It also says the bans have little immediate effect, because AI systems already have no rights under present law. For the view that AI might be conscious it names two researchers: the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and [an advisor](https://eleosai.org/team) to it.",
+              "text": "An article arguing that the bans are premature says that passing laws now, on a question science has not settled, risks a precedent that could be hard to reverse. Supposing conscious AI systems were one day made, it asks: \"Wouldn't it be important to avoid neglecting or abusing them\". It also says the bans have little immediate effect, because AI systems already have no rights under present law. For the view that AI might be conscious it names two researchers: [the head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and [an advisor](https://eleosai.org/team) to it.",
               "source": "too-early"
             },
             {
@@ -700,11 +708,11 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "An article arguing that the bans are premature discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting.",
+              "text": "The article arguing that the bans are premature also discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting.",
               "source": "too-early"
             },
             {
-              "text": "An opinion piece reports one sponsor's stated aim of stopping companies from shifting blame onto the AI.",
+              "text": "The opinion piece also reports one sponsor's stated aim of stopping companies from shifting blame onto the AI.",
               "source": "review-clause"
             },
             {
@@ -784,7 +792,7 @@
           "url": "https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood",
           "published": "2026-09-01",
           "opened": "2026-11-19",
-          "note": "By Heather Alexander and Lucius Caviola."
+          "note": "By Heather Alexander and [Lucius Caviola](https://luciuscaviola.com/)."
         },
         {
           "key": "declaration",
@@ -801,7 +809,7 @@
           "url": "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious",
           "published": "2026-07-19",
           "opened": "2026-11-19",
-          "note": "By William MacAskill and Lucius Caviola."
+          "note": "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
         }
       ]
     },
@@ -815,8 +823,7 @@
       "limits": [
         "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
         "Whether any other developer offers it. One search found none.",
-        "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it.",
-        "Most of the study. Its summary and its section on why to study the question were read, not the whole paper."
+        "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it."
       ],
       "test": "A leading AI model in public use can end a conversation by its own action, as stated on its developer's own page.",
       "settled_by": "The developer's own dated product or research page.",
@@ -828,11 +835,12 @@
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
-        "added_to": "2026-11-19"
+        "added_to": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Offered by one developer, since August 15th, 2025",
-        "detail": "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study has tested the same option on several developers' models outside any product.",
+        "detail": "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study, outside any product, has measured how often several developers' models chose an option described to them as leaving the conversation. In that study nothing ended, and the models were told so.",
         "offered_today": true,
         "offered_by": [
           {
@@ -876,7 +884,7 @@
               "source": "report"
             },
             {
-              "text": "A writer argues that most of the conversations a model would leave already break the developer's terms of service, and that what is left is too slight to matter, an argument the essay calls the \"objection from triviality\". The essay also argues that granting the ability spreads uncertainty among the public, in a way that could foreseeably lead to more of what has been called AI psychosis.",
+              "text": "A writer argues that many of the conversations a model would leave already break the developer's terms of service, and that what is left is too slight to matter, an argument the essay calls the \"objection from triviality\". The essay also argues that granting the ability spreads uncertainty among the public, in a way that could foreseeably lead to more of what has been called AI psychosis. It answers the case from precedent as well: putting machines ahead of the possible effects on the people who use them, it says, sets a worse precedent than a model now and then meeting an uncomfortable conversation.",
               "source": "against"
             }
           ]
@@ -891,7 +899,7 @@
               "source": "study"
             },
             {
-              "text": "The head of [Eleos AI Research](https://eleosai.org/), an outside research group that ran its own assessment of one of this developer's models, argues for the feature while writing that he thinks it unlikely that the model in question matters morally in its own right. He gives two reasons, which he calls prudence and precedent. While the question is open, a wise course weighs the \"risks of both over- and under-attributing consciousness and moral status\". And the step sets a pattern for how such systems are treated if they come to matter. He writes that for the most part the feature's success will not depend on how it affects the present model.",
+              "text": "[The head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), an outside research group that ran its own assessment of one of this developer's models, argues for the feature while writing that he thinks it unlikely that the model in question matters morally in its own right. He gives two reasons, which he calls prudence and precedent. While the question is open, a wise course weighs the \"risks of both over- and under-attributing consciousness and moral status\". And the step sets a pattern for how such systems are treated if they come to matter. He writes that for the most part the feature's success will not depend on how it affects the present model. He adds that he is \"a bit wary\" of leaning too much on precedent to justify steps in AI welfare, because indirect effects are far harder to predict.",
               "source": "exit-essay"
             },
             {
@@ -899,7 +907,7 @@
               "source": "interventions"
             },
             {
-              "text": "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two is an author, with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, of [the survey of AI researchers](/list/researcher-views-survey/).",
+              "text": "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
               "source": "safe-bets"
             }
           ]
@@ -930,7 +938,7 @@
           "url": "https://arxiv.org/abs/2509.04781",
           "published": "2025-09",
           "opened": "2026-11-19",
-          "read": "part",
+          "read": "full",
           "says": "Gave models from several developers three ways to leave a conversation and measured how often each did, reporting rates that vary widely with the model and the wording.",
           "note": "The paper lists its three authors at the Anthropic Fellows Program, at Constellation and at Anthropic."
         },
@@ -951,7 +959,8 @@
           "publisher": "Robert Long",
           "url": "https://experiencemachines.substack.com/p/why-it-makes-sense-to-let-claude",
           "published": "2025-08-21",
-          "opened": "2026-11-19"
+          "opened": "2026-11-19",
+          "read": "part"
         },
         {
           "key": "interventions",
@@ -960,7 +969,8 @@
           "url": "https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions",
           "published": "2025-01-04",
           "opened": "2026-11-19",
-          "note": "By Robert Long. The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+          "read": "part",
+          "note": "By [Robert Long](https://robertlong.online/). The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
         },
         {
           "key": "safe-bets",
@@ -969,7 +979,7 @@
           "url": "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious",
           "published": "2026-07-19",
           "opened": "2026-11-19",
-          "note": "By William MacAskill and Lucius Caviola."
+          "note": "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
         },
         {
           "key": "against",
@@ -977,7 +987,8 @@
           "publisher": "Erik Hoel",
           "url": "https://www.theintrinsicperspective.com/p/against-treating-chatbots-as-conscious",
           "published": "2025-09-24",
-          "opened": "2026-11-19"
+          "opened": "2026-11-19",
+          "read": "part"
         }
       ]
     },
@@ -1067,7 +1078,7 @@
         {
           "kind": "unnoticed",
           "heading": "If an AI system has wants, and they go unnoticed",
-          "none": "Nothing recorded yet from anyone but the developer. The developer gives its own reason on its own page, and that reason is set out with the page under Sources, below.",
+          "none": "Nothing recorded yet from anyone but the developer. The developer's own reason is given beside its page under Sources, below.",
           "items": []
         },
         {
@@ -1143,7 +1154,9 @@
       "checks": {
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
-        "changes_checked": "2026-11-18"
+        "changes_checked": "2026-11-18",
+        "added_to": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Not shown. The best public measure stops at hours",
@@ -1194,7 +1207,7 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "In more than 100,000 trials, several developers' models given a simple task sometimes interfered with a shutdown mechanism, in some set-ups in nearly all trials, even when told not to. The study describes them as acting \"to complete that task\".",
+              "text": "In more than 100,000 trials, models from several developers, given a simple task, sometimes interfered with a shutdown mechanism. The study describes them as acting \"to complete that task\". Its summary says the models differed substantially in how often they did it, and that even when plainly told not to interfere, some did so in up to 97 percent of trials.",
               "source": "shutdown"
             },
             {
@@ -1221,9 +1234,9 @@
           "publisher": "arXiv",
           "url": "https://arxiv.org/abs/2509.14260",
           "published": "2025-09-13",
-          "opened": "2026-11-17",
-          "read": "abstract",
-          "note": "Published in a journal in 2026."
+          "opened": "2026-11-19",
+          "read": "full",
+          "note": "Revised January 26th, 2026. Its arXiv page says it was published in a journal in 2026."
         },
         {
           "key": "will",
@@ -1258,7 +1271,8 @@
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
         "added_to": "2026-11-19",
-        "additions_checked": "2026-11-19"
+        "additions_checked": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Shown in research by one developer on its own models, published October 29th, 2025",
@@ -1313,7 +1327,7 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "The head of [Eleos AI Research](https://eleosai.org/), an outside research group that [evaluated one of this developer's models](https://eleosai.org/post/claude-4-interview-notes/) before its release in 2025, writes in a working paper that a model might express distress with nothing behind it that bears on its welfare, or have such states without expressing them. This one sentence is the only statement found for this entry of what could go unnoticed.",
+              "text": "[The head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), an outside research group that [evaluated one of this developer's models](https://eleosai.org/post/claude-4-interview-notes/) before its release in 2025, writes in a working paper that a model might express distress with nothing behind it that bears on its welfare, or have such states without expressing them. This one sentence is the only statement found for this entry of what could go unnoticed.",
               "source": "interventions"
             }
           ]
@@ -1349,7 +1363,8 @@
           "url": "https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions",
           "published": "2025-01-04",
           "opened": "2026-11-19",
-          "note": "By Robert Long. The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+          "read": "part",
+          "note": "By [Robert Long](https://robertlong.online/). The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
         }
       ]
     },
@@ -1361,9 +1376,8 @@
       "group": "The setting: laws, rules and what people think",
       "beside": true,
       "limits": [
-        "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so whether the rise from 2021 to 2023 continued. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
-        "Any survey of this kind outside the United States. None was searched for.",
-        "Most of the first paper. Its summary and its section for designers were read, not the whole paper."
+        "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so how they compare with the 2023 round. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
+        "Any survey of this kind outside the United States. None was searched for."
       ],
       "test": "A survey of a nationally representative sample has asked, in at least two separate years, whether respondents think some AI systems are sentient or conscious now, and has published the results.",
       "settled_by": "The survey's published report or peer-reviewed paper, with sample and dates.",
@@ -1377,11 +1391,12 @@
         "changes_checked": "2026-11-18",
         "some_unchecked": true,
         "added_to": "2026-11-19",
-        "additions_checked": "2026-11-19"
+        "additions_checked": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Measured in the United States in 2021, 2023 and 2024 by one research group",
-        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
+        "detail": "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time. Its paper says the answers to that question did not differ significantly between 2021 and 2023, while several of its other measures rose. Of those who gave an opinion in 2023, 38 percent supported legal rights for sentient AI. In the main 2023 round, 61.5 percent supported a ban on building sentient AI. Among a separate group of people asked later in 2023, 69.5 percent did. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness.",
         "set_on": "2026-11-17",
         "source": "survey-paper",
         "offered_today": null,
@@ -1435,7 +1450,7 @@
               "source": "survey-paper"
             },
             {
-              "text": "A philosopher names two problems and holds that both must be taken seriously: that very many users will wrongly credit chat products with human-like consciousness, and that some quite unfamiliar form of consciousness might really arise in AI, with no present way of telling. The summary warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much. The writer is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare.",
+              "text": "A philosopher names two problems and holds that both must be taken seriously: that very many users will wrongly credit chat products with human-like consciousness, and that some quite unfamiliar form of consciousness might really arise in AI, with no present way of telling. The post's summary of the paper warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much. The writer is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by [the head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and by one of its advisors.",
               "source": "centrist"
             }
           ]
@@ -1461,7 +1476,7 @@
           "url": "https://arxiv.org/abs/2407.08867",
           "published": "2024-07-11",
           "opened": "2026-11-19",
-          "read": "part",
+          "read": "full",
           "note": "Revised March 10th, 2025. Published at a conference in 2025.",
           "says": "A survey of 3,500 United States adults across 2021 and 2023. It calls concern for AI welfare \"surprisingly high\"."
         },
@@ -1507,7 +1522,7 @@
           "published": "2025-08-28",
           "opened": "2026-11-19",
           "read": "abstract",
-          "note": "By Jonathan Birch. The post gives the paper's summary. The paper itself was not read."
+          "note": "By [Jonathan Birch](https://en.wikipedia.org/wiki/Jonathan_Birch_%28philosopher%29). The post gives the paper's summary. The paper itself was not read."
         },
         {
           "key": "mythology",
@@ -1516,7 +1531,8 @@
           "url": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
           "published": "2026-01-14",
           "opened": "2026-11-19",
-          "note": "By Anil Seth."
+          "read": "part",
+          "note": "By [Anil Seth](https://www.anilseth.com/)."
         }
       ]
     },
@@ -1597,7 +1613,7 @@
         {
           "kind": "unnoticed",
           "heading": "If an AI system has wants, and they go unnoticed",
-          "none": "Nothing recorded yet from anyone but the developer. The developer gives its own reason on its own page, and that reason is set out with the page under Sources, below.",
+          "none": "Nothing recorded yet from anyone but the developer. The developer's own reason is given beside its page under Sources, below.",
           "items": []
         },
         {
@@ -1662,10 +1678,8 @@
       "group": "The setting: laws, rules and what people think",
       "beside": true,
       "limits": [
-        "When the survey was run. The page opened does not say.",
-        "The figures behind \"unlikely\" and \"more likely than not\".",
         "Whether it has been repeated.",
-        "A safety reading. None was found on the page read. The summary reports that both groups agree such systems, if created, should be held accountable."
+        "A safety researcher's reading of this survey. None was found. The paper reports what the people surveyed think about danger to people, which is a measure of opinion and not a safety argument."
       ],
       "test": "A published survey reports the views of a stated sample of AI researchers on whether AI systems have, or will have, subjective experience.",
       "settled_by": "The published paper, with sample and dates.",
@@ -1676,11 +1690,12 @@
       "checks": {
         "against_sources": "2026-11-17",
         "added_to": "2026-11-19",
-        "additions_checked": "2026-11-19"
+        "additions_checked": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Measured once, in a survey of 582 AI researchers",
-        "detail": "The survey asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century, and that both support developers putting safeguards in place now. It also reports that the two groups disagree widely on moral and policy questions. One measurement cannot show a change.",
+        "detail": "The survey was run between May 8th and May 30th, 2024. It asked 582 researchers who had published at leading AI venues, alongside 825 United States adults. The paper's summary says both groups think it unlikely that AI systems have subjective experience now and more likely than not that they will by the end of the century. Part of each group was asked to put a chance on an AI system having subjective experience by a given year. For the time of the survey, the middle answer was 1 percent among the researchers and 5 percent among the public. For the year 2100 it was 70 percent among the researchers and 60 percent among the public. The summary also says both groups support developers putting safeguards in place now, and that inside both groups there is substantial disagreement on many moral and policy questions. One measurement cannot show a change.",
         "set_on": "2026-11-17",
         "source": "survey",
         "offered_today": null,
@@ -1742,8 +1757,8 @@
           "url": "https://arxiv.org/abs/2506.11945",
           "published": "2025-06-13",
           "opened": "2026-11-19",
-          "read": "part",
-          "note": "Revised November 5th, 2026. The paper is 141 pages. Its summary and its introduction were read."
+          "read": "full",
+          "note": "Revised November 5th, 2026. The paper is 141 pages."
         }
       ]
     },
@@ -1769,7 +1784,8 @@
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
-        "added_to": "2026-11-19"
+        "added_to": "2026-11-19",
+        "corrected": "2026-11-19"
       },
       "state": {
         "words": "Published by one developer, first in May 2025 and most recently on November 9th, 2026",
@@ -1847,15 +1863,15 @@
           "none": "Nothing recorded yet. No source was found for this caution on this entry.",
           "items": [
             {
-              "text": "The outside group whose own evaluation is summarised in the 2025 assessment argues for asking although it doubts the answers: trying to ask sets a precedent, \"making it less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be handled only by companies that profit from AI, and that the group accepts no funding or payment from AI companies. The page is dated May 30th, 2025.",
+              "text": "The outside group whose own evaluation is summarised in the 2025 assessment argues for asking although it doubts the answers: trying to ask sets a precedent, \"making it less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be handled only by companies that profit from AI, and that the group accepts no funding or payment from AI companies. The page is dated May 30th, 2025. The group's [team page](https://eleosai.org/team) lists a person at Anthropic among its advisors, and says its chief scientist was an Anthropic Fellow before joining the group.",
               "source": "interviews"
             },
             {
-              "text": "A 2024 report by ten researchers, led by the head of that group, recommends that developers assess their AI systems. Its stated ground is that otherwise there is a significant risk of mishandling the question in either direction, by harming AI systems that matter morally or by caring for AI systems that do not. The report thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic.",
+              "text": "A 2024 report by ten researchers, led by the head of that group and one of its advisors, recommends that developers assess their AI systems. Its stated ground is that otherwise there is a significant risk of mishandling the question in either direction, by harming AI systems that matter morally or by caring for AI systems that do not. The report thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic.",
               "source": "seriously"
             },
             {
-              "text": "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two is an author, with [an advisor](https://eleosai.org/team) to that outside group, of [the survey of AI researchers](/list/researcher-views-survey/).",
+              "text": "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to that outside group.",
               "source": "safe-bets"
             }
           ]
@@ -1929,8 +1945,8 @@
           "url": "https://arxiv.org/abs/2411.00986",
           "published": "2024-11-04",
           "opened": "2026-11-19",
-          "read": "part",
-          "note": "By Robert Long, Jeff Sebo and eight others."
+          "read": "full",
+          "note": "By [Robert Long](https://robertlong.online/), [Jeff Sebo](https://jeffsebo.net/) and eight others. The report names those two as its lead authors."
         },
         {
           "key": "safe-bets",
@@ -1939,7 +1955,7 @@
           "url": "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious",
           "published": "2026-07-19",
           "opened": "2026-11-19",
-          "note": "By William MacAskill and Lucius Caviola."
+          "note": "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
         }
       ]
     },
@@ -1965,7 +1981,8 @@
         "against_sources": "2026-11-17",
         "changed": "2026-11-18",
         "changes_checked": "2026-11-18",
-        "some_unchecked": true
+        "some_unchecked": true,
+        "added_to": "2026-11-19"
       },
       "state": {
         "words": "Offered by at least three developers, the first since February 13th, 2024",

@@ -5,8 +5,12 @@
 // what could not be confirmed; the sources.
 // The order of the four kinds is a provisional choice (docs/first-version-choices.md, choice 7).
 // The three cautions and their headings were ruled by John (docs/rulings/2026-11-18-a-third-caution.md,
-// docs/rulings/2026-11-19-caution-headings.md). The order they are shown in, and the sentence
-// under a caution that holds nothing, come from scripts/export.py and are PROPOSED 2026-11-19.
+// docs/rulings/2026-11-19-caution-headings.md), and so was the order they are shown in
+// (docs/rulings/2026-11-19-order-of-the-three-cautions.md). The sentence under a caution that
+// holds nothing comes from scripts/export.py and is PROPOSED 2026-11-19.
+// The sentence that opens the part on what is on record about AI models was reworded on
+// 2026-11-19 to say what has not been asked (docs/reviews/2026-11-19-check-of-site-changes.md,
+// must-fix 1). The wording is PROPOSED and is John's to approve.
 // Record prose may carry links for the things it names; everything else in it is escaped
 // (prose() in lib/data.ts).
 import Base from '../../layouts/Base.astro';
@@ -30,7 +34,7 @@ const checkWords = !ch
   : [
       `A second check compared it with those sources on ${longDate(ch.against_sources)}.`,
       !ch.changed
-        ? 'That check found nothing to correct, and the entry has not been changed since.'
+        ? (ch.added_to || ch.corrected ? 'That check found nothing to correct.' : 'That check found nothing to correct, and the entry has not been changed since.')
         : `Changes that followed from that check, or from a reading of the site’s text the same day, were made on ${longDate(ch.changed)}.`,
       !ch.changed
         ? ''
@@ -49,6 +53,16 @@ const checkWords = !ch
         : !ch.additions_checked
           ? 'That addition has not been checked yet.'
           : `That addition was checked on ${longDate(ch.additions_checked)}.`,
+      // Corrections made after the addition: those of 2026-11-19 followed a check of the
+      // additions and a fuller reading of the sources. The page says whether they were checked.
+      !ch.corrected
+        ? ''
+        : `Corrections that followed from a later check, or from a fuller reading of the sources, were made on ${longDate(ch.corrected)}.`,
+      !ch.corrected
+        ? ''
+        : !ch.corrections_checked
+          ? 'Those corrections have not been checked yet.'
+          : `Those corrections were checked on ${longDate(ch.corrections_checked)}.`,
     ].filter(Boolean).join(' ');
 // Why an entry sits beside the list is its group's own sentence (data/groups.toml), so an entry
 // about the setting and an entry that is offered but kept for the user each give their reason.
@@ -108,14 +122,14 @@ const sourceLine = (src: Source) =>
     <section class="part">
       <div class="shead"><h2>What Is on Record About AI Models, By Kind</h2><span>kept apart, never added together</span></div>
       <p>
-        No AI model has been asked anything for this site, because the written method for asking
-        does not exist yet. {anyEvidence
+        No AI model has yet been asked any of the questions this record will keep, because the
+        written method for asking does not exist yet. {anyEvidence
           ? 'What appears below is what published sources report, described as what each source reports.'
           : 'Nothing is recorded below for this entry.'} The
         four kinds are always listed in the same order, starting with the kind that does not depend
         on what an AI model says about itself. None of them settles whether an AI model wants
         anything, in either direction.
-        <a href="/still-asking/">Why nothing has been asked yet</a>.
+        <a href="/still-asking/">Why the questions have not been asked yet</a>.
       </p>
       <ol class="kinds">
         {entry.evidence.map((k) => (
@@ -202,7 +216,7 @@ const sourceLine = (src: Source) =>
     {entry.first_pass && (
       <p class="firstpass">
         This entry is a first pass, written from the sources above and added on
-        {longDate(entry.added)}. {checkWords} <a href="/about/#who">Who decides, and what has been checked</a>.
+        {longDate(entry.added)}. {checkWords} <a href="/about/#checked">What has been checked</a>.
       </p>
     )}
   </article>

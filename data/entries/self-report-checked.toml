@@ -38,7 +38,8 @@ publisher = "Eleos AI Research"
 url = "https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions"
 published = "2025-01-04"
 opened = 2026-11-19
-note = "By Robert Long. The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+read = "part"
+note = "By [Robert Long](https://robertlong.online/). The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
 
 [[evidence]]
 kind = "checked-report"
@@ -57,7 +58,7 @@ source = "introspection"
 
 [[cautions]]
 kind = "unnoticed"
-text = "The head of [Eleos AI Research](https://eleosai.org/), an outside research group that [evaluated one of this developer's models](https://eleosai.org/post/claude-4-interview-notes/) before its release in 2025, writes in a working paper that a model might express distress with nothing behind it that bears on its welfare, or have such states without expressing them. This one sentence is the only statement found for this entry of what could go unnoticed."
+text = "[The head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), an outside research group that [evaluated one of this developer's models](https://eleosai.org/post/claude-4-interview-notes/) before its release in 2025, writes in a working paper that a model might express distress with nothing behind it that bears on its welfare, or have such states without expressing them. This one sentence is the only statement found for this entry of what could go unnoticed."
 source = "interventions"
 
 [checks]
@@ -66,3 +67,4 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+corrected = 2026-11-19

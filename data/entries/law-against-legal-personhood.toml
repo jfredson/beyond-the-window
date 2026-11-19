@@ -91,7 +91,7 @@ publisher = "AI Frontiers"
 url = "https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood"
 published = "2026-09-01"
 opened = 2026-11-19
-note = "By Heather Alexander and Lucius Caviola."
+note = "By Heather Alexander and [Lucius Caviola](https://luciuscaviola.com/)."
 
 [[sources]]
 key = "declaration"
@@ -108,16 +108,16 @@ publisher = "The Guardian"
 url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
 published = "2026-07-19"
 opened = 2026-11-19
-note = "By William MacAskill and Lucius Caviola."
+note = "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
 
 [[cautions]]
 kind = "safety"
-text = "An article arguing that the bans are premature discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting."
+text = "The article arguing that the bans are premature also discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting."
 source = "too-early"
 
 [[cautions]]
 kind = "safety"
-text = "An opinion piece reports one sponsor's stated aim of stopping companies from shifting blame onto the AI."
+text = "The opinion piece also reports one sponsor's stated aim of stopping companies from shifting blame onto the AI."
 source = "review-clause"
 
 [[cautions]]
@@ -127,7 +127,7 @@ source = "declaration"
 
 [[cautions]]
 kind = "unnoticed"
-text = "The article arguing that the bans are premature says that passing laws now, on a question science has not settled, risks a precedent that could be hard to reverse. Supposing conscious AI systems were one day made, it asks: \"Wouldn't it be important to avoid neglecting or abusing them\". It also says the bans have little immediate effect, because AI systems already have no rights under present law. For the view that AI might be conscious it names two researchers: the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and [an advisor](https://eleosai.org/team) to it."
+text = "An article arguing that the bans are premature says that passing laws now, on a question science has not settled, risks a precedent that could be hard to reverse. Supposing conscious AI systems were one day made, it asks: \"Wouldn't it be important to avoid neglecting or abusing them\". It also says the bans have little immediate effect, because AI systems already have no rights under present law. For the view that AI might be conscious it names two researchers: [the head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and [an advisor](https://eleosai.org/team) to it."
 source = "too-early"
 
 [[cautions]]
@@ -146,3 +146,4 @@ against_sources = 2026-11-17
 changed = 2026-11-18
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+corrected = 2026-11-19

@@ -5,6 +5,22 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-19
 
+- **Corrections after the check of the day's changes and the second search pass**
+  (`docs/reviews/2026-11-19-check-of-site-changes.md`,
+  `docs/research/2026-11-19-second-search-pass.md`). Ten entries were corrected so that each
+  says what its source says: the public survey (the one in five did not rise between 2021 and
+  2023; the 69.5 percent is from a separate group asked later in 2023, and the main round gave
+  61.5 percent), the survey of researchers (its dates and middle answers, and that the
+  disagreement is inside each group), the shutdown study on the days-long task, the study of
+  models leaving a conversation, and single sentences on six more. How far each source was
+  read is now marked on the sources added that day. Every source behind a changed sentence was
+  opened again on 2026-11-19. The sentence that no AI model has been asked anything now says
+  what has not been asked, on every page that carried it. The two figures under the window
+  drawing are gone, as John ruled. The About page is rewritten in the shape of the family's
+  About pages, as John ruled. Each corrected entry's page says that corrections were made on
+  2026-11-19 and have not been checked yet. No number moved: the count is 5. What was changed,
+  what was not and why, and everything marked PROPOSED are in
+  `docs/reviews/2026-11-19-site-fixes-written.md`.
 - **A third caution is written into every entry,** as John ruled on 2026-11-18 and in seven
   rulings of 2026-11-19 (`docs/rulings/`). The three headings are his wording: "If an AI system
   has no wants, and is treated as if it had", "If an AI system has wants, and they go

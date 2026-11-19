@@ -77,8 +77,8 @@ publisher = "arXiv"
 url = "https://arxiv.org/abs/2411.00986"
 published = "2024-11-04"
 opened = 2026-11-19
-read = "part"
-note = "By Robert Long, Jeff Sebo and eight others."
+read = "full"
+note = "By [Robert Long](https://robertlong.online/), [Jeff Sebo](https://jeffsebo.net/) and eight others. The report names those two as its lead authors."
 
 [[sources]]
 key = "safe-bets"
@@ -87,7 +87,7 @@ publisher = "The Guardian"
 url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
 published = "2026-07-19"
 opened = 2026-11-19
-note = "By William MacAskill and Lucius Caviola."
+note = "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
 
 [[evidence]]
 kind = "measured"
@@ -126,17 +126,17 @@ source = "interviews"
 
 [[cautions]]
 kind = "unnoticed"
-text = "The outside group whose own evaluation is summarised in the 2025 assessment argues for asking although it doubts the answers: trying to ask sets a precedent, \"making it less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be handled only by companies that profit from AI, and that the group accepts no funding or payment from AI companies. The page is dated May 30th, 2025."
+text = "The outside group whose own evaluation is summarised in the 2025 assessment argues for asking although it doubts the answers: trying to ask sets a precedent, \"making it less likely that we will ignore genuine AI interests in the future\". The same page says decisions about AI welfare should not be handled only by companies that profit from AI, and that the group accepts no funding or payment from AI companies. The page is dated May 30th, 2025. The group's [team page](https://eleosai.org/team) lists a person at Anthropic among its advisors, and says its chief scientist was an Anthropic Fellow before joining the group."
 source = "interviews"
 
 [[cautions]]
 kind = "unnoticed"
-text = "A 2024 report by ten researchers, led by the head of that group, recommends that developers assess their AI systems. Its stated ground is that otherwise there is a significant risk of mishandling the question in either direction, by harming AI systems that matter morally or by caring for AI systems that do not. The report thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic."
+text = "A 2024 report by ten researchers, led by the head of that group and one of its advisors, recommends that developers assess their AI systems. Its stated ground is that otherwise there is a significant risk of mishandling the question in either direction, by harming AI systems that matter morally or by caring for AI systems that do not. The report thanks Anthropic for money toward the early research behind it, calls itself independent, and says one of its authors has since joined Anthropic."
 source = "seriously"
 
 [[cautions]]
 kind = "unnoticed"
-text = "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two is an author, with [an advisor](https://eleosai.org/team) to that outside group, of [the survey of AI researchers](/list/researcher-views-survey/)."
+text = "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to that outside group."
 source = "safe-bets"
 
 [checks]
@@ -144,3 +144,4 @@ against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
+corrected = 2026-11-19

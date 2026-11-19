@@ -9,15 +9,14 @@ progress_kind = "cultural"
 added = 2026-11-17
 first_pass = true
 limits = [
-  "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so whether the rise from 2021 to 2023 continued. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
+  "Whether the 2024 report's figures in text (17 percent; 66 percent) are for 2024 alone or pooled across 2021 to 2024, and so how they compare with the 2023 round. The report's table is headed as covering 2021 to 2024, and its other figures are in a chart that could not be read as text.",
   "Any survey of this kind outside the United States. None was searched for.",
-  "Most of the first paper. Its summary and its section for designers were read, not the whole paper.",
 ]
 notes = "From entry 12 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Measured in the United States in 2021, 2023 and 2024 by one research group"
-detail = "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time, a rise on 2021, and that 38 percent supported legal rights for sentient AI. In the same 2023 round, 69 percent supported a ban on building sentient AI. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness."
+detail = "The group reports that about one in five adults in 2023 believed some AI systems were sentient at that time. Its paper says the answers to that question did not differ significantly between 2021 and 2023, while several of its other measures rose. Of those who gave an opinion in 2023, 38 percent supported legal rights for sentient AI. In the main 2023 round, 61.5 percent supported a ban on building sentient AI. Among a separate group of people asked later in 2023, 69.5 percent did. Its report on a third round, collected in late 2024, says that 17 percent of its representative sample believed sentient AI systems already exist and that 66 percent supported a ban on building sentient AI. The report does not make clear whether these two figures are for 2024 alone or for all the rounds together. A separate one-day poll on April 30th, 2025 found 10 percent saying AI systems already have consciousness."
 set_on = 2026-11-17
 source = "survey-paper"
 
@@ -28,7 +27,7 @@ publisher = "arXiv"
 url = "https://arxiv.org/abs/2407.08867"
 published = "2024-07-11"
 opened = 2026-11-19
-read = "part"
+read = "full"
 note = "Revised March 10th, 2025. Published at a conference in 2025."
 says = "A survey of 3,500 United States adults across 2021 and 2023. It calls concern for AI welfare \"surprisingly high\"."
 
@@ -74,7 +73,7 @@ url = "https://forum.effectivealtruism.org/posts/sQi27D5aKeduipwaC/ai-consciousn
 published = "2025-08-28"
 opened = 2026-11-19
 read = "abstract"
-note = "By Jonathan Birch. The post gives the paper's summary. The paper itself was not read."
+note = "By [Jonathan Birch](https://en.wikipedia.org/wiki/Jonathan_Birch_%28philosopher%29). The post gives the paper's summary. The paper itself was not read."
 
 [[sources]]
 key = "mythology"
@@ -83,7 +82,8 @@ publisher = "Noema"
 url = "https://www.noemamag.com/the-mythology-of-conscious-ai/"
 published = "2026-01-14"
 opened = 2026-11-19
-note = "By Anil Seth."
+read = "part"
+note = "By [Anil Seth](https://www.anilseth.com/)."
 
 [[cautions]]
 kind = "attribution"
@@ -107,7 +107,7 @@ source = "survey-paper"
 
 [[cautions]]
 kind = "unnoticed"
-text = "A philosopher names two problems and holds that both must be taken seriously: that very many users will wrongly credit chat products with human-like consciousness, and that some quite unfamiliar form of consciousness might really arise in AI, with no present way of telling. The summary warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much. The writer is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
+text = "A philosopher names two problems and holds that both must be taken seriously: that very many users will wrongly credit chat products with human-like consciousness, and that some quite unfamiliar form of consciousness might really arise in AI, with no present way of telling. The post's summary of the paper warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much. The writer is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by [the head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and by one of its advisors."
 source = "centrist"
 
 [checks]
@@ -118,3 +118,4 @@ changes_checked = 2026-11-18
 some_unchecked = true
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+corrected = 2026-11-19

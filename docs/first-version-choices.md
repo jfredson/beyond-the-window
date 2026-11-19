@@ -186,6 +186,11 @@ meaning is printed on each page.
   offered yet as squares outside the frame, with "5 inside the frame" and "3 outside it" under
   them. One question to put to him with the picture: keep the empty squares and drop the two
   figures under the frame, or keep both. Nothing was changed.
+- *Ruled and done, 2026-11-19:* John ruled "Drop both figures"
+  (`docs/rulings/2026-11-19-window-drawing-figures-dropped.md`; decided by: mixed). The two
+  figures are off the page. The squares, the key, the sentence under the drawing and the spoken
+  summary for screen readers stay. The spoken summary still gives both numbers, which is a
+  session's call and not ruled.
 
 ### 4. Theme and colours
 
@@ -382,6 +387,14 @@ it describes the site now. What changed on the pages that day:
   and its mark is `id="sources"` where it was `id="conflict"`. Choice 18's note on the one
   allowed name should be read with that new mark.
 - The first person now stands in one place only, the About page's block marked `id="who"`.
+- *Changed again later on 2026-11-19:* John ruled that the About page is rewritten in the
+  shape of the family's About pages (`docs/rulings/2026-11-19-about-page-in-the-familys-shape.md`).
+  The section "Who Decides, and What Has Been Checked" is gone. The page now has six parts:
+  who is asking, why the name, how it works, where the sources come from, what has been
+  checked, and what is not known yet. The block marked `id="who"` is the opening part, and
+  it is still the only place the first person stands. The paragraph marked `id="sources"`
+  now names two developers, and choice 18's note should be read with that. Every sentence on
+  the page is PROPOSED (`docs/reviews/2026-11-19-site-fixes-written.md`).
 - `scripts/check_site.py` refuses a built page that carries one of the removed phrases (its
   rule 10).
 
@@ -478,9 +491,9 @@ One file per entry in `data/entries/`, named for its id, in the layout the sibli
 | `[state]` | `words` (the state in a few plain words), `detail` (a fuller account, optional), `offered_today` (true or false; this is what the count reads; required on a list entry and refused on a beside entry), `offered_by` (the developers that offer it; needed when `offered_today` is true, and each must be in `data/developers.toml` with its public page so the name can be linked), `set_on` (the date the state was set), `source` (the key of the dated source behind it). | yes |
 | `[[sources]]` | `key`, `label` (a plain description of the page; it is not the page's own title, because the research document did not record titles), `publisher`, `url`, `opened` (the date a session opened the page), and optionally `published` (text, as the world supplies it), `from_maker` (true when the source is the developer's own word about its own model), `kind` (`primary` or `coverage`), `read` (`full`, `abstract`, or, PROPOSED 2026-11-19, `part` for a paper whose cited passages were read in the full text and whose other pages were not), `says` (what the page says that the entry rests on), `note`. | at least one |
 | `[[evidence]]` | `kind` (one of `measured`, `checked-report`, `choice`, `statement`), `text` (what the source reports, in those terms), `source`. | no |
-| `[[cautions]]` | `kind`, `text`, `source`. Three kinds since 2026-11-19, as John ruled (`docs/rulings/2026-11-18-a-third-caution.md`, `docs/rulings/2026-11-19-caution-headings.md`): `attribution` (if an AI system has no wants, and is treated as if it had), `unnoticed` (if an AI system has wants, and they go unnoticed), `safety` (if an AI system has wants, and they put people at risk). Until 2026-11-19 there were two, `safety` and `attribution`. The order they are shown in is PROPOSED 2026-11-19. | no |
+| `[[cautions]]` | `kind`, `text`, `source`. Three kinds since 2026-11-19, as John ruled (`docs/rulings/2026-11-18-a-third-caution.md`, `docs/rulings/2026-11-19-caution-headings.md`): `attribution` (if an AI system has no wants, and is treated as if it had), `unnoticed` (if an AI system has wants, and they go unnoticed), `safety` (if an AI system has wants, and they put people at risk). Until 2026-11-19 there were two, `safety` and `attribution`. The order they are shown in was ruled by John on 2026-11-19 (`docs/rulings/2026-11-19-order-of-the-three-cautions.md`). | no |
 | `only_the_developer` | A list of caution kinds, today only `unnoticed`, for which the developer's own page is the only source found. The entry page then says that nothing is recorded yet from anyone but the developer, and points to the developer's reason under Sources (`docs/rulings/2026-11-19-developer-reason-not-alone.md`). Refused when the record holds a caution of that kind. The field and the sentence are PROPOSED 2026-11-19. | no |
-| `[checks]` | `against_sources`, `changed`, `changes_checked`, `some_unchecked`, and, PROPOSED 2026-11-19, `added_to` (the date more was added after those checks) and `additions_checked` (the date that addition was checked). | no |
+| `[checks]` | `against_sources`, `changed`, `changes_checked`, `some_unchecked`, and, PROPOSED 2026-11-19, `added_to` (the date more was added after those checks) and `additions_checked` (the date that addition was checked); and, PROPOSED 2026-11-19 by the session that made the corrections of that day, `corrected` (the date corrections were made after the addition) and `corrections_checked` (the date those corrections were checked). | no |
 | `[[history]]` | `date`, `field`, `old`, `new`, `why`. For changes after the first commit. | no |
 | `verify` | A list of facts set down before their source was opened. A record with anything in it is left out of the build. | no |
 

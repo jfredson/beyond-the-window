@@ -11,6 +11,11 @@
 // The words never give the squares inside as a share of all the squares: John ruled on
 // 2026-11-18 that the count stands with no total beside it
 // (docs/rulings/2026-11-18-home-page-count.md).
+// Until 2026-11-19 two small figures stood under the drawing, "N inside the frame" and "N outside
+// it". John ruled that day that both come off, because a reader could add them into the total
+// the earlier ruling removed (docs/rulings/2026-11-19-window-drawing-figures-dropped.md). The
+// squares, the key, the sentence under the drawing and the spoken summary for screen readers
+// stay. The spoken summary still gives both numbers: that is a session's call, not ruled.
 import { listGroups, headline, entryById, plain } from '../lib/data';
 
 const rows = listGroups.map((g) => {
@@ -51,9 +56,6 @@ const summary = `A window. ${things(inside)} inside its frame, offered today by 
     <span></span>
     <span class="win-sill" aria-hidden="true"></span>
     <span></span>
-    <span></span>
-    <span class="win-foot">{inside} inside the frame</span>
-    <span class="win-foot">{outside} outside it</span>
   </div>
   <ul class="legend">
     <li><i class="k-lit"></i>one thing offered today by at least one developer of AI models</li>

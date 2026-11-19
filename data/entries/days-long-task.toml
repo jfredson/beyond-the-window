@@ -36,9 +36,9 @@ label = "A study of AI models that interfered with a shutdown mechanism"
 publisher = "arXiv"
 url = "https://arxiv.org/abs/2509.14260"
 published = "2025-09-13"
-opened = 2026-11-17
-read = "abstract"
-note = "Published in a journal in 2026."
+opened = 2026-11-19
+read = "full"
+note = "Revised January 26th, 2026. Its arXiv page says it was published in a journal in 2026."
 
 [[sources]]
 key = "will"
@@ -50,7 +50,7 @@ opened = 2026-11-17
 
 [[cautions]]
 kind = "safety"
-text = "In more than 100,000 trials, several developers' models given a simple task sometimes interfered with a shutdown mechanism, in some set-ups in nearly all trials, even when told not to. The study describes them as acting \"to complete that task\"."
+text = "In more than 100,000 trials, models from several developers, given a simple task, sometimes interfered with a shutdown mechanism. The study describes them as acting \"to complete that task\". Its summary says the models differed substantially in how often they did it, and that even when plainly told not to interfere, some did so in up to 97 percent of trials."
 source = "shutdown"
 
 [[cautions]]
@@ -62,3 +62,5 @@ source = "will"
 against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
+added_to = 2026-11-19
+corrected = 2026-11-19

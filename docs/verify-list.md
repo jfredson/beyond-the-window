@@ -56,6 +56,22 @@ corrected wording is there.
 21. No public page of her own was found for Emilia Kaczmarek in one search on 2026-11-19, so her
     name on the About page carries no link of its own. Her paper is linked. This is a gap
     against the workspace habit of linking every named person, not an unchecked fact.
+22. Added 2026-11-19 with the fixes after the site check. The writers named in the entries'
+    source lines now carry a link of their own where a page about them opened that day: William
+    MacAskill, Lucius Caviola, Jeff Sebo, Robert Long, Simon Goldstein, Anil Seth, Nick Bostrom
+    and Eric Schwitzgebel (each one's own site) and Jonathan Birch (Wikipedia). Four are named
+    with no link, because no page of their own was found at the addresses tried: Heather
+    Alexander, Cameron Domenico Kirk-Giannini, Carl Shulman and Bradford Saad. No search was
+    made beyond trying a likely address and Wikipedia. The same gap as entry 21.
+23. Added 2026-11-19. The entry about the survey of AI researchers gives the survey's dates and
+    its middle answers from the paper's full text, which was opened that day as a file from
+    arXiv and searched for those passages. The second search pass read the paper in full; the
+    session that wrote the figures into the entry did not.
+24. Added 2026-11-19. That a paper by Nick Bostrom and Carl Shulman thanks Robert Long, and that
+    Eleos AI Research's team page calls him its Executive Director, were both opened that day.
+    That its chief scientist "was an Anthropic Fellow" and that one advisor is listed at
+    Anthropic are as the team page read on 2026-11-19; whether either is still so later is
+    unchecked.
 
 ## Cleared
 

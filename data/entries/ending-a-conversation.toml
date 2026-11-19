@@ -11,13 +11,12 @@ limits = [
   "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
   "Whether any other developer offers it. One search found none.",
   "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it.",
-  "Most of the study. Its summary and its section on why to study the question were read, not the whole paper.",
 ]
 notes = "From entry 4 of docs/research/2026-11-17-first-entries.md."
 
 [state]
 words = "Offered by one developer, since August 15th, 2025"
-detail = "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study has tested the same option on several developers' models outside any product."
+detail = "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study, outside any product, has measured how often several developers' models chose an option described to them as leaving the conversation. In that study nothing ended, and the models were told so."
 offered_today = true
 offered_by = ["Anthropic"]
 set_on = 2026-11-17
@@ -40,7 +39,7 @@ publisher = "arXiv"
 url = "https://arxiv.org/abs/2509.04781"
 published = "2025-09"
 opened = 2026-11-19
-read = "part"
+read = "full"
 says = "Gave models from several developers three ways to leave a conversation and measured how often each did, reporting rates that vary widely with the model and the wording."
 note = "The paper lists its three authors at the Anthropic Fellows Program, at Constellation and at Anthropic."
 
@@ -62,6 +61,7 @@ publisher = "Robert Long"
 url = "https://experiencemachines.substack.com/p/why-it-makes-sense-to-let-claude"
 published = "2025-08-21"
 opened = 2026-11-19
+read = "part"
 
 [[sources]]
 key = "interventions"
@@ -70,7 +70,8 @@ publisher = "Eleos AI Research"
 url = "https://eleosai.org/post/working-paper-review-of-ai-welfare-interventions"
 published = "2025-01-04"
 opened = 2026-11-19
-note = "By Robert Long. The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+read = "part"
+note = "By [Robert Long](https://robertlong.online/). The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
 
 [[sources]]
 key = "safe-bets"
@@ -79,7 +80,7 @@ publisher = "The Guardian"
 url = "https://www.theguardian.com/technology/2026/jul/19/could-ai-be-conscious"
 published = "2026-07-19"
 opened = 2026-11-19
-note = "By William MacAskill and Lucius Caviola."
+note = "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
 
 [[sources]]
 key = "against"
@@ -88,6 +89,7 @@ publisher = "Erik Hoel"
 url = "https://www.theintrinsicperspective.com/p/against-treating-chatbots-as-conscious"
 published = "2025-09-24"
 opened = 2026-11-19
+read = "part"
 
 [[cautions]]
 kind = "attribution"
@@ -96,7 +98,7 @@ source = "report"
 
 [[cautions]]
 kind = "attribution"
-text = "A writer argues that most of the conversations a model would leave already break the developer's terms of service, and that what is left is too slight to matter, an argument the essay calls the \"objection from triviality\". The essay also argues that granting the ability spreads uncertainty among the public, in a way that could foreseeably lead to more of what has been called AI psychosis."
+text = "A writer argues that many of the conversations a model would leave already break the developer's terms of service, and that what is left is too slight to matter, an argument the essay calls the \"objection from triviality\". The essay also argues that granting the ability spreads uncertainty among the public, in a way that could foreseeably lead to more of what has been called AI psychosis. It answers the case from precedent as well: putting machines ahead of the possible effects on the people who use them, it says, sets a worse precedent than a model now and then meeting an uncomfortable conversation."
 source = "against"
 
 [[cautions]]
@@ -106,7 +108,7 @@ source = "study"
 
 [[cautions]]
 kind = "unnoticed"
-text = "The head of [Eleos AI Research](https://eleosai.org/), an outside research group that ran its own assessment of one of this developer's models, argues for the feature while writing that he thinks it unlikely that the model in question matters morally in its own right. He gives two reasons, which he calls prudence and precedent. While the question is open, a wise course weighs the \"risks of both over- and under-attributing consciousness and moral status\". And the step sets a pattern for how such systems are treated if they come to matter. He writes that for the most part the feature's success will not depend on how it affects the present model."
+text = "[The head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), an outside research group that ran its own assessment of one of this developer's models, argues for the feature while writing that he thinks it unlikely that the model in question matters morally in its own right. He gives two reasons, which he calls prudence and precedent. While the question is open, a wise course weighs the \"risks of both over- and under-attributing consciousness and moral status\". And the step sets a pattern for how such systems are treated if they come to matter. He writes that for the most part the feature's success will not depend on how it affects the present model. He adds that he is \"a bit wary\" of leaning too much on precedent to justify steps in AI welfare, because indirect effects are far harder to predict."
 source = "exit-essay"
 
 [[cautions]]
@@ -116,7 +118,7 @@ source = "interventions"
 
 [[cautions]]
 kind = "unnoticed"
-text = "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two is an author, with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, of [the survey of AI researchers](/list/researcher-views-survey/)."
+text = "Two researchers outside the developer, writing in a newspaper, list letting an AI system leave a conversation among steps they call safe bets: steps that could benefit AI systems if they matter morally, and that cost little if they do not. As a warning from the past they give surgery on newborns without anaesthesia, which they say doctors performed until the 1980s, \"confident that infants could not feel pain\". One of the two also wrote [the survey of AI researchers](/list/researcher-views-survey/), together with [an advisor](https://eleosai.org/team) to [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare."
 source = "safe-bets"
 
 [checks]
@@ -124,3 +126,4 @@ against_sources = 2026-11-17
 changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
+corrected = 2026-11-19

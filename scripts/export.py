@@ -54,9 +54,8 @@ CAUTION_HEADINGS = {
 # (docs/rulings/2026-11-19-memory-entry-nothing-recorded.md,
 # docs/rulings/2026-11-19-developer-reason-not-alone.md).
 NOTHING_RECORDED = "Nothing recorded yet. No source was found for this caution on this entry."
-ONLY_THE_DEVELOPER = ("Nothing recorded yet from anyone but the developer. The developer gives "
-                      "its own reason on its own page, and that reason is set out with the page "
-                      "under Sources, below.")
+ONLY_THE_DEVELOPER = ("Nothing recorded yet from anyone but the developer. The developer's own "
+                      "reason is given beside its page under Sources, below.")
 
 
 def _plain(v):

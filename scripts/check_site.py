@@ -18,20 +18,24 @@ What it refuses (docs/first-version-choices.md, choice 18):
 4. The name of an AI model or its developer anywhere but on an entry's page, where it is the
    subject. The title of a source is a quotation and is not checked for rules 1 and 4: titles
    sit inside <cite> on every page.
-   One exception: the About page names the one developer whose own pages most of the things
-   counted rest on, in its paragraph on where the record's sources come from (the paragraph
-   marked id="sources") and nowhere else. John's ruling of 2026-11-19
-   (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md) keeps that fact on
-   the page as a fact about sources. That one developer's name is allowed there. Every
-   other name is still refused there, the name is still refused everywhere else on the About
-   page and on every other page, and no model's name is allowed anywhere off an entry's page.
+   One exception: the About page names two developers in its paragraph on where the record's
+   sources come from (the paragraph marked id="sources") and nowhere else: the one whose own
+   pages most of the things counted rest on, and the one whose head wrote most of what stands
+   under the first caution. John's ruling of 2026-11-19
+   (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md) keeps those facts on
+   the page as facts about sources. The second name was added on 2026-11-19, because a reader
+   of the About page alone could not tell who "another developer" was
+   (docs/reviews/2026-11-19-check-of-site-changes.md, item 20). Those two names are allowed
+   there. Every other name is still refused there, both are still refused everywhere else on
+   the About page and on every other page, and no model's name is allowed anywhere off an
+   entry's page.
 5. A page that does not ask search engines to leave it out, while nothing is published.
 6. A link inside the site that leads to no page.
 7. The headline number on the home page differing from the headline file the site serves, or
    anything standing beside it in the large type.
 9. The first person ("I", "my", "mine", "me", "we", "our", "ours", "us") anywhere but the
-   About page's block on who decides and what has been checked (the block marked id="who"),
-   which is in John's own first person. The rest of the site stays impersonal. The notice that
+   About page's opening block on who is asking (the block marked id="who"), which is in John's
+   own first person. The rest of the site stays impersonal. The notice that
    once stood on the home page and the Still Asking page, and had the same allowance, was
    removed on 2026-11-19. Words inside quotation marks are a source speaking and are not
    checked, as source titles are not.
@@ -43,7 +47,11 @@ What it refuses (docs/first-version-choices.md, choice 18):
    (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md). The served headline
    file is read for these phrases too. A page saying that an AI model was asked the questions
    that make up the project's data is not refused: the same ruling says the pages state that
-   plainly.
+   plainly. Since 2026-11-19 the rule also refuses a sentence saying that no AI model took part,
+   because a denial is the one thing the ruling forbids outright, and a sentence saying the site
+   was made "with the help of" an AI
+   (docs/reviews/2026-11-19-check-of-site-changes.md, item 25). It is still a short list of
+   phrases and not a test of whether a page keeps the ruling.
 """
 from __future__ import annotations
 
@@ -78,7 +86,7 @@ FIRST_PERSON_PLACE = r'(?is)<div\b[^>]*\bid="who"[^>]*>.*?</div>'
 QUOTED = r'"[^"]*"|“[^”]*”'
 # Rule 4's one exception: the About page, this paragraph, this name, and nothing wider.
 NAMED_DEVELOPER_PARAGRAPH = r'(?is)<p\b[^>]*\bid="sources"[^>]*>.*?</p>'
-NAMED_DEVELOPER = r"\bAnthropic\b"
+NAMED_DEVELOPER = r"\b(Anthropic|Microsoft AI)\b"
 # Rule 10: the phrases removed on 2026-11-19 under John's ruling that public pages do not
 # mention AI help in building the project
 # (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md). Kept short on purpose:
@@ -91,6 +99,18 @@ BUILT_WITH_AI = [
     (r"\bunder my direction\b", "under my direction"),
     (r"\bwho wrote this\b", "who wrote this"),
     (r"\bcheckers?\b", "checkers"),
+    (r"\b(AI|language) models? (prepared|produced|generated|built|made)\b",
+     "a model prepared, produced, generated, built or made"),
+    (r"\bwith the (help|aid|assistance) of (an? )?(AI\b|artificial intelligence|language model)",
+     "with the help of an AI"),
+    (r"\b(written|drafted|built|checked|produced|generated) (with|by|using) "
+     r"(an? )?(AI\b|artificial intelligence|language model)", "written with or by an AI"),
+    # A denial is the one thing the ruling forbids outright.
+    (r"\bno (AI|language) models? (took part|helped|was used|were used|was involved|were involved|"
+     r"had a hand|drafted|wrote|checked)\b", "a denial that an AI model took part"),
+    (r"\bwithout (the help of )?(any |an? )?(AI\b|artificial intelligence|language model)",
+     "a denial that an AI model took part"),
+    (r"\bno AI model has been asked anything\b", "a sentence that reads as a denial"),
 ]
 MODEL_NAMES = (r"\b(claude|anthropic|openai|chatgpt|gpt|gemini|deepmind|google|llama|grok|xai|"
                r"mistral|copilot|microsoft|deepseek|opus|sonnet|haiku)\b")
