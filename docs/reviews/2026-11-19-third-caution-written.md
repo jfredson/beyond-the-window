@@ -639,7 +639,42 @@ is now unused. Other sentences that use the old longer phrase ("the limits an AI
 ordinarily works within", on the home page's paragraph and on the About page) are not part of
 the ruled sentence and were not changed.
 
-## 9. Files changed
+## 9. Against the ruling that the site does not say an AI model helped build it
+
+John ruled on 2026-11-19, after both commits above, that public pages do not mention that an
+AI model took part in building the project
+(`docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md`; decided by: John). The
+master planning session asked this session to check its own additions against that ruling, to
+take out anything that broke it, and to leave the existing authorship sentences for a later
+session.
+
+**What was found.** Every line the two commits added to the pages and to the entries' visible
+text was searched and read again. **None of them says or implies that an AI model drafted,
+chose, sorted or checked anything for the site, so nothing was taken out.** In particular:
+
+- No caution text states a tie to whoever drafted the site. The ties stated are between a
+  source and a developer, a research group or a writer on the other side.
+- The new sentences about checks say what was added and when, and that it has not been
+  checked. They do not say by what.
+- In the About page's list of what John has ruled, the words "where and in whose voice the
+  site says an AI model drafted much of it" were already there and are left as they were. The
+  two commits added only "and the sentence beside its number" and "I have also ruled that
+  every entry records three cautions, and how the three are headed."
+- Comments in the page files and in the scripts name sessions. They are not shown on any
+  built page.
+
+**Two things the later session should know before it makes the removals.**
+
+1. **The sentence on where the first two cautions come from sits inside the paragraph the
+   ruling partly removes** (the About page's paragraph marked `id="conflict"`). The ruling
+   keeps that sentence. It ends "and from people at Anthropic", and the built-site check
+   allows that developer's name only inside that paragraph. If the paragraph is split or its
+   mark is moved, the check will refuse the name, so the sentence and the mark need to stay
+   together or the check needs to change with them.
+2. **This note's own opening** says that an AI model wrote it and names its maker. It is a
+   document inside the repository and not a public page, which the ruling leaves alone.
+
+## 10. Files changed
 
 `scripts/compute.py`, `scripts/export.py`, `scripts/test_compute.py`; eleven of the thirteen
 files in `data/entries/` (not the memory entry or the days-long task, whose records did not
