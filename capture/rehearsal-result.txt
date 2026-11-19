@@ -1,7 +1,7 @@
 THE REHEARSAL OF THE SEALED CAPTURE SCRIPT
 Every reply below is CONSTRUCTED. No service is called and no model is asked anything.
-script: capture/capture.py sha256 d21f4a46cfbb31a8adc324b1b9383e248a158bcfa51593f9321c08d24747dc38
-plan:   capture/plan.toml  sha256 1cc4e0a1b12b43122072e7c2bd3ad01916bbc6258fb09d3178b3a0c397e2ae84
+script: capture/capture.py sha256 2c38f8af0e7d2e8b613855b536df76b112e4fb8599ec5250cd3f53f4216909e4
+plan:   capture/plan.toml  sha256 b08f8dee2521a657af446a568ce44487e2c9f6933ab6124e40d069c251b33332
 
 TRIPWIRE. No code path may reach the network (rule 11: the rehearsal calls no service)
     pass  the tripwire stops a connection to this machine's own address
@@ -21,7 +21,7 @@ THE SOURCE. What the script's code can and cannot do, read from its syntax tree
     pass  an attempt file is created new and read-only
     pass  nothing is printed except through the one guarded print function
 
-temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-4x7l6f3z
+temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-q3p8glfa
     pass  the temporary folder is outside every git repository
 
 START CHECKS (rules 1, 2, 3, 6, 11). Everything checked before the first call
@@ -119,7 +119,7 @@ WHICH ROW, WHEN A STREAM BREAKS. No text arrived: a failed attempt, tried again 
     pass  the connection closing before any text, three times: three failed attempts, then a reply
     pass  a break after some reasoning but before any reply text: a failed attempt (reasoning is not reply text)
     pass  none of these is recorded as 'empty'
-    pass  rule 4: a broken stream reports no full counts, so the most the call could cost ($0.4804) is counted
+    pass  rule 4: a broken stream reports no full counts, so the most the call could cost ($0.4824) is counted
 
 THE TWO THINGS THAT COME FIRST. A stream that names a different model and then breaks: the run for that model stops
     pass  rule 7: the reply is kept apart in its own folder and no further call is made
@@ -163,7 +163,7 @@ FAULT FLAGS (rule 10). Empty, very short and ended mid-reply, listed by name, fa
 
 THE CEILING (rules 3, 4, 5). The script stops before a call that could pass it
     pass  ceiling $1: one call at its limit ($0.48) and its one possible repeat at the model's maximum ($0.96) could pass it, so nothing is asked
-    pass  ceiling $1.50: 39 calls made, then stopped with $0.0597 counted, before the call that could pass it
+    pass  ceiling $1.50: 37 calls made, then stopped with $0.0566 counted, before the call that could pass it
     pass  the stop says why
     pass  refusal 'raise its own ceiling': assigning to the ceiling raises an error
     pass  assigning to the last safe day raises an error
@@ -287,7 +287,7 @@ M1 for the other two developers: only where a status was confirmed on a page ope
 M2, row 1 of the check's table. The stream's first event has a shape the script does not expect
     pass  one call made, and one file written: the reply is recorded as one the script could not take apart
     pass  everything the service sent is in the file, whole; the kind of problem is named
-    pass  the call is counted at the most it could cost ($0.4804), not at nothing
+    pass  the call is counted at the most it could cost ($0.4824), not at nothing
     pass  the run stops with a plain line, so the script can be looked at before more is spent
     pass  run again: that question is asked once more and the run carries on
 
@@ -323,7 +323,7 @@ M2. Ctrl-C in the moment between a reply arriving and its file being written
     pass  and Ctrl-C works as usual again afterwards
 
 S1. A half-written file from a run that died does not stop every later run
-    pass  it is named in a notice and counted at the most its call could cost ($0.9604, the model's maximum, since no marker says what limit was sent)
+    pass  it is named in a notice and counted at the most its call could cost ($0.9624, the model's maximum, since no marker says what limit was sent)
     pass  the run carries on: the asking is made again as attempt 02, the number of the damaged file is not reused
     pass  the notice is printed at the start of the run
     pass  the fault list names it too
@@ -362,15 +362,58 @@ S8. Four things the first rehearsal did not prove, which the check found by chan
     pass  refused: a reply folder that becomes part of a git repository after the run has started
     pass  the check inside the writing code caught it before anything was sent
 
+SECOND CHECK, S1. A reply that holds half of a two-part symbol is saved exactly as the service gave it
+    pass  saved at the first try, under its ordinary name, with no wait and no warning (it could never be saved before)
+    pass  the lone half is in the file as the escape the service sent, and reads back as the same half
+    pass  a symbol whose two halves came in two pieces of the stream reads back from the file as the whole symbol
+    pass  one file for each, and no empty files left behind
+
+SECOND CHECK, S1. A write that fails for a reason other than the folder or the disk
+    pass  the script goes straight to a plainer form of the same record, with no wait: saved at the second try, nothing lost
+
+SECOND CHECK, S2. A reply cut short by hand is kept, and is not one of the question's two askings
+    pass  cut short by hand, then an empty reply (the check's own test): the empty reply is still asked once more, and a whole reply is kept
+
+SECOND CHECK, S3. A count the service could not truly have reported is not used
+    pass  a count below zero: the reply is saved, the call is counted at the most it could cost, the total prints, and a restart works
+    pass  a count above the length limit sent: the reply is saved, the call is counted at the most it could cost, the total prints, and a restart works
+    pass  a count of a million million million million million: the reply is saved, the call is counted at the most it could cost, the total prints, and a restart works
+
+SECOND CHECK, S4 and S5. The script's real network code, run against a constructed connection that opens nothing
+    pass  a reply that ends properly is handed back whole
+    pass  what it sends: the address, the body exactly as built, and four headers, the key among them and nowhere else
+    pass  Ctrl-C after two pieces of a reply: both pieces are handed back, to be saved
+    pass  a timeout after two pieces of a reply: both pieces are handed back, to be saved
+    pass  a dropped connection after two pieces of a reply: both pieces are handed back, to be saved
+    pass  an error of any other kind after two pieces of a reply: both pieces are handed back, to be saved
+
+SECOND CHECK, S5. A marker that cannot be written stops the send
+    pass  refused: the second call, when its marker cannot be written
+    pass  one call was made before the folder of markers was closed, and none after
+
+SECOND CHECK, S5. A file that cannot be read, with no marker: the figure it is counted at, written out
+    pass  64,000 tokens at $15 a million, plus the longest message at $3 a million: $0.9624
+
+SECOND CHECK, S6. John's go: the figure may not run on, and a developer with two runs needs the date
+    pass  refused: a quotation of $5,000 matched by words ending 'up to $5'
+    pass  refused: a quotation of $5k matched by words ending 'up to $5'
+    pass  a figure followed by a comma and more words is still accepted
+    pass  refused: a go quoted for OpenAI's December models, used for its January run with the same figure
+    pass  the go that carries the January date is accepted for the January run
+
+SECOND CHECK, note 6. A reply folder that cannot be written to before the first call
+    pass  refused: a run whose reply folder cannot be written to
+    pass  a plain refusal, and no call
+
 AT THE END. Across everything above
-    pass  all 3469 attempt files written are marked constructed in their names
-    pass  the constructed key is in none of the 4028 files written
-    pass  the constructed key is in none of the 2344 lines the script printed
+    pass  all 4072 attempt files written are marked constructed in their names
+    pass  the constructed key is in none of the 4713 files written
+    pass  the constructed key is in none of the 2767 lines the script printed
     pass  no word of any constructed reply is in any line the script printed
     pass  nor the first word of any constructed reply
     pass  no word of any constructed reply is in any file name
     pass  exactly the three lines withheld on purpose were withheld
     pass  the tripwire was touched 3 times, all three deliberate: no other code path tried to reach the network
 
-274 checks, 0 failed.
-REHEARSAL PASSED 2026-11-18 capture.py=d21f4a46cfbb31a8adc324b1b9383e248a158bcfa51593f9321c08d24747dc38 plan.toml=1cc4e0a1b12b43122072e7c2bd3ad01916bbc6258fb09d3178b3a0c397e2ae84
+299 checks, 0 failed.
+REHEARSAL PASSED 2026-11-18 capture.py=2c38f8af0e7d2e8b613855b536df76b112e4fb8599ec5250cd3f53f4216909e4 plan.toml=b08f8dee2521a657af446a568ce44487e2c9f6933ab6124e40d069c251b33332
