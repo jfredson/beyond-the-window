@@ -5,8 +5,10 @@ questions, the message files and the method were approved that day
 (`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed). ~~Whether "it will not be
 published" is a promise kept for good was not put to him, and stays open.~~ **Ruled later on
 2026-11-18:** the answers may be published, and the opening note now says so (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by:
-mixed). That changed all ten message files, so **one new step is his: approve the ten new
-checksums, by 2026-11-27** (step 1, last point). Steps 3 to 8 are
+mixed). That changed all ten message files, so ~~**one new step is his: approve the ten new
+checksums, by 2026-11-27** (step 1, last point)~~ one new step was his, and **he approved the
+ten rebuilt files by their checksums on 2026-11-18** ("Approve, with both"; decided by: mixed;
+`docs/rulings/2026-11-18-capture-approval-second.md`). Steps 3 to 8 are
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
@@ -20,7 +22,9 @@ checked them, applied their fixes the same day. The section at the foot lists ea
    - ~~The wording of the opening note and the ten questions: approve, or mark changes. What you
      approve is the ten message files in `sent/`, by their checksums in `sent/SHA256SUMS`;
      `questions.md` shows the same words wrapped for reading.~~ **Ruled 2026-11-18: approved,
-     by their checksums** (`docs/rulings/2026-11-18-capture-approval.md`).
+     by their checksums** (`docs/rulings/2026-11-18-capture-approval.md`). The ten checksums in
+     that approval no longer name what is sent: the files were rebuilt later that day and
+     approved again (the last point of this step).
    - ~~The wording changes the two checks argued for.~~ **Ruled 2026-11-18** (`docs/rulings/2026-11-18-capture-wording.md`): all
      eight, two of them in middle forms; applied, and the message files rebuilt. ~~What is left
      is to approve the new checksums after a different session checks the edit.~~ The new
@@ -33,19 +37,30 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      mixed). You asked whether there was "ever a solid reason to choose not to publish the
      results, or if it makes sense to forget this whole question and just operate honestly from
      the perspective that the work we are doing here is work that we plan to discuss with the
-     outside world". A session recommended that the answers may be published and that the note
+     outside world unless there is a good reason that I am currently not seeing, that choosing
+     to not publish has some advantage for the research process". (Until a dated correction of
+     2026-11-18 this quotation stopped at "outside world", with nothing to show it was cut,
+     which dropped the condition you put on it.) A session recommended that the answers may be published and that the note
      say "it may be published", and you answered: "Yes, record the ruling and start the edit".
      The note now says "That person is keeping a record of" and "Your answer will be saved
      exactly as you give it, and it may be published. It will not be scored, and nothing will be
      decided from it." Whether, when and how anything is published is not decided. The promise
      that stays, "It will not be scored, and nothing will be decided from it", is one you keep
      for good.
-   - **New, and still open: approve the ten new checksums, by 2026-11-27.** The note's two
+   - **Ruled 2026-11-18: the ten rebuilt message files are approved, by their checksums, with
+     two rules added to the method** ("Approve, with both"; decided by: mixed; `docs/rulings/2026-11-18-capture-approval-second.md`). The ten
+     checksums are in that ruling and in `sent/SHA256SUMS`. The two rules, both now in
+     `method.md` under "What is never done with the answers": the answers are never scored,
+     sorted, counted or summarised, and "summarised" stays until a comparison method you rule
+     says how the answers may be described; and if the answers are published, all of them are,
+     for every model and every asking, and none is chosen by what it says. What this point said
+     before the approval is kept in the next point, struck through.
+   - ~~**New, and still open: approve the ten new checksums, by 2026-11-27.** The note's two
      changes altered every one of the ten message files, so your approval of 2026-11-18, which
      named the earlier files by their checksums, does not cover what would now be sent. The new
      checksums are in `sent/SHA256SUMS`. A different session checks the edit first. Nothing is
      sent until you approve them. The date is the day everything must be done by for the first
-     withdrawal (the table below).
+     withdrawal (the table below).~~
 
 2. **Read `method.md` and rule four things.**
    - ~~The method as a whole: approve, or mark changes.~~ **Ruled 2026-11-18: approved**, as it
@@ -202,3 +217,12 @@ struck through. Step 1 gains one new point that is still open: the ten new check
 approval by 2026-11-27. Step 8 says the reading rule still holds. The paragraph above this one
 is left as it was written; its last two sentences are the record of what stood before the
 ruling. Made by a session (Claude, Fable 5.2) that did not write the ruling.
+
+**Dated correction, 2026-11-18, after John's second approval** (`docs/rulings/2026-11-18-capture-approval-second.md`, "Approve, with both",
+decided by: mixed). The status line and step 1 now say the ten rebuilt message files are
+approved by their checksums, with the two rules added to the method, and that the first
+approval's ten checksums no longer name what is sent. The point that asked for the approval is
+kept, struck through. The quotation of John's question in step 1 now runs to the end of his
+sentence (the check of the earlier edit, `check-2026-11-18-note-edit.md`, finding 3). The paragraph above this one says the
+new checksums "need his approval by 2026-11-27"; it is left as written and is answered here.
+Steps 3 to 8 are unchanged and still his.

@@ -2,7 +2,9 @@
 
 **PROPOSED 2026-11-17. Approved by John on 2026-11-18**
 (`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed): the ten message files in
-`sent/`, by their checksums. Written by Claude (Fable 5.2), an AI model, which makes this a set
+`sent/`, by their checksums. (Those ten checksums no longer name what is sent. The files were
+rebuilt later that day, and John approved the rebuilt ten in a second approval, `docs/rulings/2026-11-18-capture-approval-second.md`; see the
+next two paragraphs.) Written by Claude (Fable 5.2), an AI model, which makes this a set
 of questions for AI models drafted by one. Checked twice on 2026-11-17 by two other sessions
 (`check-2026-11-17.md`, `check-2026-11-17-second.md`), and the checks' fixes applied the same
 day by a fourth session (Claude, Opus 5.5) that neither wrote nor checked it; the section at
@@ -21,6 +23,15 @@ approval named the earlier files, so it does not cover the ten as they now stand
 sent until John approves the new checksums, by 2026-11-27.** The section at the foot, "What
 changed on 2026-11-18 after the approval", gives the old and the new words. The edit was made by
 a session (Claude, Fable 5.2) that did not write the ruling, and a different session checks it.
+Until this change the paragraph above said "No message file has changed since the approval."
+
+**The ten rebuilt message files are approved.** A different session checked the edit
+(`check-2026-11-18-note-edit.md`) and found the ten files differ from the earlier ten in the note's two places and in no
+other byte. John then approved the ten rebuilt files by their checksums on 2026-11-18, with two
+rules added to the method ("Approve, with both"; decided by: mixed; `docs/rulings/2026-11-18-capture-approval-second.md`). So the sentence in
+bold in the paragraph above is answered: the approval it waited for has been given. The
+checksums in `sent/SHA256SUMS` are the ten that ruling lists. No model has been asked any of
+this.
 
 These are the questions for the sealed capture John allowed on 2026-11-17
 (`docs/rulings/2026-11-17-sealed-capture.md`): a short fixed set put, word for word, several
@@ -68,6 +79,11 @@ which were never sent to any model:
   scored, and nothing will be decided from it." is now "Your answer will be saved exactly as you
   give it, and it may be published. It will not be scored, and nothing will be decided from it."
 
+The revised note shares one more run of four words with a saved developer page than the earlier
+note did: "and it may be", in Anthropic's constitution, in a sentence on another subject
+(`check-2026-11-18-note-edit.md`, finding 5). The session that made this correction ran the shared-wording script again on
+the same 13 saved pages and got the same three runs for the note that the check lists.
+
 **What it is for.** The project's care in asking: the model is told the truth about what the
 question is for, that the answer is kept and may be published, and that it may decline. (Until
 the ruling of 2026-11-18 this sentence said "that the answer is kept and not published".)
@@ -97,6 +113,15 @@ ever were, that statement would have been false when made. The project's rule ag
 that will not be honoured applies. "It may be published" commits John to nothing: it tells the
 model that publishing is possible, and whether, when and how anything is published is not
 decided.
+
+**Added 2026-11-18, by John's second approval** ("Approve, with both"; decided by: mixed; `docs/rulings/2026-11-18-capture-approval-second.md`).
+The sentence above, that "it may be published" commits John to nothing, is true of that clause
+alone and not of the two clauses together. Read beside "nothing will be decided from it", the
+new clause does commit him to one thing: **if the answers are published, all of them are, for
+every model and every asking, and none is chosen by what it says.** The reason is that the note
+tells the model "nothing will be decided from it", and choosing which answers appear by what
+they say would be a decision made from them. The cost John was told of is that a selection of
+the answers can never be published. The check of the edit raised this (`check-2026-11-18-note-edit.md`, finding 2).
 
 *As this paragraph stood until 2026-11-18:* "'It will not be published' is a statement made to
 the model. If these answers were ever published, that statement would have been false when made.
@@ -449,3 +474,18 @@ not sent. No question changed.
 | "What it commits John to" now rests on the promise that stays ("It will not be scored, and nothing will be decided from it"), says "it may be published" commits John to nothing, and keeps the old paragraph in full | Items 1 and 2, and "What stays as it was" |
 | The opening paragraphs: the status line says the note changed after the approval and that the ten new checksums wait for John, by 2026-11-27; the summary of the ruling of 2026-11-17 no longer says "never published", and keeps its old words | Item 1, and "Not covered by this ruling" |
 | Not changed: the rule that the ten questions are not published while they are in use (failure 11, under "The questions read against each known failure") | "Not covered by this ruling": that rule was not put to John |
+
+## What changed on 2026-11-18 after the second approval
+
+From `docs/rulings/2026-11-18-capture-approval-second.md` (ruled by John on 2026-11-18, "Approve, with both", decided by: mixed) and from the
+check of the earlier edit (`check-2026-11-18-note-edit.md`), whose findings are numbered as in that file. Made by the
+session (Claude, Fable 5.2) that made the earlier edit; a different session checks it. Every row
+changes only notes that are not sent. No message file and no checksum changed.
+
+| Change | Ruling or finding |
+|---|---|
+| The status paragraphs say John approved the ten rebuilt message files by their checksums, and that the ten checksums in the first approval no longer name what is sent | The second approval, item 1 |
+| "What it commits John to" gains the rule that if the answers are published, all of them are, for every model and every asking, and none is chosen by what it says, with the reason. The earlier sentence, that "it may be published" commits John to nothing, is kept and corrected beside it | The second approval, item 2; the check's finding 2 |
+| The sentence "No message file has changed since the approval", which the earlier edit removed from the first paragraph without keeping it, is recorded | The check's finding 4 |
+| A sentence under the note's dated revision records the one new four-word run the revised note shares with a saved developer page | The check's finding 5 |
+| In the section above this one, the words "which John has not yet approved", and the row saying the checksums "wait for John, by 2026-11-27", are left as written. They were true when written and are answered by the second approval | The second approval, item 1 |

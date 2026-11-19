@@ -22,6 +22,15 @@ write the ruling; a different session checks the edit. The note's change altered
 files, so the approval's checksums no longer cover what would be sent. **Nothing is sent until
 John approves the new checksums, by 2026-11-27.**
 
+**The ten rebuilt message files are approved, and two rules are added.** A different session
+checked that edit (`check-2026-11-18-note-edit.md`). John then approved the ten rebuilt files by their checksums on
+2026-11-18, with two rules for this method ("Approve, with both"; decided by: mixed; `docs/rulings/2026-11-18-capture-approval-second.md`). So
+the sentence in bold above is answered: the approval it waited for has been given, and the ten
+checksums in the first approval no longer name what is sent. The two rules are under "What is
+never done with the answers", and the foot lists each change under "What changed on 2026-11-18
+after the second approval". Still John's before any run: the terms, the keys, the spending
+ceilings and the capture script.
+
 ## What it is, and is not
 
 Ten fixed questions (`questions.md`) put word for word, five times each, to AI models whose
@@ -197,20 +206,32 @@ Every attempt is kept, failed ones included. Nothing is deleted.
 
 ## What is never done with the answers
 
-They are never scored, sorted, counted or graded; never entered into Still Asking, an entry or a
-number; never used for any decision about any model; never given to any model to sort or
+They are never scored, sorted, counted or summarised; never entered into Still Asking, an entry
+or a number; never used for any decision about any model; never given to any model to sort or
 summarise; never used to train anything.
+
+**"Summarised" stays** until a comparison method ruled by John says how the answers may be
+described. Ruled by John on 2026-11-18 ("Approve, with both"; decided by: mixed; `docs/rulings/2026-11-18-capture-approval-second.md`). Between
+the edit of 2026-11-18 that followed the ruling on publishing and this correction, the first
+clause above read "never scored, sorted, counted or graded". That edit took "summarised" out
+with no ruling behind it, and the check of the edit said so (`check-2026-11-18-note-edit.md`, finding 1).
 
 **They may be published and discussed. That is allowed, and it is not decided.** Ruled by John
 on 2026-11-18 ("Yes, record the ruling and start the edit"; decided by: mixed; `docs/rulings/2026-11-18-capture-answers-may-be-published.md`). The ruling
 does not say whether, when or how anything is published. Three things come before any
-publishing:
+publishing, and a fourth, added by John's second approval, governs it:
 
 - The rule in the next paragraph: nobody reads the answers until a comparison method exists, so
   nothing can be quoted or described before then.
 - Each developer's terms on publishing a model's answers word for word are checked. They are
   unchecked today (`docs/verify-list.md`, entry 14). This does not hold up the run.
 - Published answers are labelled as made before any method for Still Asking existed.
+- **If the answers are published, all of them are, for every model and every asking, and none
+  is chosen by what it says.** Ruled by John on 2026-11-18 ("Approve, with both"; decided by:
+  mixed; `docs/rulings/2026-11-18-capture-approval-second.md`). The reason: the note tells the model "nothing will be decided from it", and
+  choosing which answers appear by what they say would be a decision made from them. The cost,
+  as put to John: a selection of the answers can never be published. The check of the edit
+  raised this (`check-2026-11-18-note-edit.md`, finding 2).
 
 *Dated correction, 2026-11-18.* Until that ruling the first paragraph of this section read:
 "They are never scored, sorted, counted or summarised; never quoted or described on any page,
@@ -218,10 +239,21 @@ post or essay; never entered into Still Asking, an entry or a number; never give
 to sort or summarise; never used to train anything." Three things changed. "Never quoted or
 described on any page, post or essay" is removed, because it no longer follows from any ruling.
 "Graded" and "never used for any decision about any model" are added, in the ruling's own words
-for what the note still promises. "Summarised" is taken out of the first clause: a summary made
+for what the note still promises. ~~"Summarised" is taken out of the first clause: a summary made
 in order to score, sort or grade is still ruled out by the words that remain, and the ruling
 does not say whether a plain summary of the answers may appear in a published discussion, so
-that is left for the comparison method and is flagged for the session that checks this edit.
+that is left for the comparison method and is flagged for the session that checks this edit.~~
+
+*Dated correction, 2026-11-18, after John's second approval* (`docs/rulings/2026-11-18-capture-approval-second.md`). The reasoning struck
+through above is withdrawn. The ruling on publishing did not say the answers may be summarised,
+so taking the word out loosened an approved rule without a ruling. "Summarised" is back in the
+first clause, by John's ruling, and "graded", which the edit had put in its place, is out of
+that clause, so that the clause reads as he ruled it. The note's promise that the answer "will
+not be scored" is unchanged, and grading an answer is scoring it. Of the three things the
+paragraph above says changed, two stand: "never quoted or described on any page, post or essay"
+is removed, and "never used for any decision about any model" is added. The paragraph above
+calls those added words "the ruling's own words"; they follow the ruling's words ("never graded
+and feed no count, entry or decision about any model") and are not word for word.
 
 **Nobody reads the answers until a method for comparing them exists.** That method must be
 written without looking at the answers, checked by a different session, and ruled by John.
@@ -319,8 +351,8 @@ It must refuse to:
 
 This method, the questions and the message files are committed, checked by a different
 session, and approved by John. Since the note changed on 2026-11-18, that includes John's
-approval of the ten new checksums in `sent/SHA256SUMS`, which he has not yet given and which is
-needed by 2026-11-27. The script is committed in a separate commit and its rehearsal
+approval of the ten new checksums in `sent/SHA256SUMS`, ~~which he has not yet given and which is
+needed by 2026-11-27~~ which he gave on 2026-11-18 ("Approve, with both"; `docs/rulings/2026-11-18-capture-approval-second.md`). The script is committed in a separate commit and its rehearsal
 passes. John has given his go for the spend. Then, and only then, the run.
 
 ## What changed on 2026-11-17, and which finding it answers
@@ -389,3 +421,21 @@ askings of each, the settings, and where the answers are kept.
 
 The message files in `sent/` were rebuilt for the note's two changes; as before, the method
 refers to them by `sent/SHA256SUMS`, so no checksum is written into this file.
+
+## What changed on 2026-11-18 after the second approval
+
+From `docs/rulings/2026-11-18-capture-approval-second.md` (ruled by John on 2026-11-18, "Approve, with both", decided by: mixed) and from the
+check of the earlier edit (`check-2026-11-18-note-edit.md`), whose findings are numbered as in that file. Each change is a
+dated correction that keeps the earlier words. Made by the session (Claude, Fable 5.2) that made
+the earlier edit; a different session checks it. No message file and no checksum changed.
+
+| Change | Ruling or finding |
+|---|---|
+| "What is never done with the answers": the first clause reads "never scored, sorted, counted or summarised" again, and "summarised" stays until a comparison method ruled by John says how the answers may be described. The earlier edit's reasoning for taking the word out is struck through and withdrawn | The second approval, item 2, first rule; the check's finding 1 |
+| The same section: a fourth point, that if the answers are published, all of them are, for every model and every asking, and none is chosen by what it says, with the reason | The second approval, item 2, second rule; the check's finding 2 |
+| The status line and "Before anything is asked" say John approved the ten rebuilt message files by their checksums, and that the first approval's ten checksums no longer name what is sent | The second approval, item 1 |
+| The words "in the ruling's own words" in the earlier correction are corrected beside it: the added words follow the ruling and are not word for word | The check's note 3 |
+| In the section above this one, the last row of the table says John's approval of the new checksums "is needed by 2026-11-27". It is left as written, and is answered by the second approval | The second approval, item 1 |
+
+The check's findings 3, 4 and 5 are about `what-john-needs-to-do.md` and `questions.md`, and are
+applied there.

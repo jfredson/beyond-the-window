@@ -1,6 +1,9 @@
 # The messages sent, byte for byte
 
-**PROPOSED 2026-11-17. Not approved.** Added by Claude (Opus 5.5), the session that applied the
+**PROPOSED 2026-11-17. Approved by John on 2026-11-18, by the ten checksums in `SHA256SUMS`**
+("Approve, with both"; decided by: mixed; `../../rulings/2026-11-18-capture-approval-second.md`).
+Until a dated correction of 2026-11-18 this line read "PROPOSED 2026-11-17. Not approved."
+Added by Claude (Opus 5.5), the session that applied the
 two checks' fixes (`../check-2026-11-17.md`, finding M1; `../check-2026-11-17-second.md`,
 finding M1).
 
@@ -24,11 +27,17 @@ note, one blank line, then the question. Question 10's file has questions 1 to 9
 
 Like `questions.md`, these files must be held back if this repository is ever made public.
 
-**Rebuilt on 2026-11-18, and waiting for John's approval.** John ruled that day that the
+**Approved on 2026-11-18.** The paragraph below was written before John approved the rebuilt
+files. He approved them that day, by the ten checksums now in `SHA256SUMS`, with two rules added
+to the method ("Approve, with both"; `../../rulings/2026-11-18-capture-approval-second.md`). The
+ten checksums in his first approval of that day no longer name what is sent. Any change to these
+files is a change to what he approved, and needs his ruling again.
+
+~~**Rebuilt on 2026-11-18, and waiting for John's approval.**~~ John ruled that day that the
 capture's answers may be published and that the opening note says so
 (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). The note
 changed in two places, so all ten files here and `SHA256SUMS` were rebuilt. The questions did
 not change. John's approval earlier that day (`docs/rulings/2026-11-18-capture-approval.md`)
-named the files as they were before this rebuild, so it does not cover these. Nothing is sent
-until he approves the new checksums, by 2026-11-27. The old and new words of the note are in
+named the files as they were before this rebuild, so it does not cover these. ~~Nothing is sent
+until he approves the new checksums, by 2026-11-27.~~ The old and new words of the note are in
 `../questions.md`.
