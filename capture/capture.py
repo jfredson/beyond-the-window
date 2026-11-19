@@ -31,6 +31,7 @@ import argparse
 import dataclasses
 import datetime
 import decimal
+import fcntl
 import hashlib
 import http.client
 import json
@@ -38,6 +39,7 @@ import os
 import pathlib
 import platform
 import re
+import signal
 import socket
 import ssl
 import subprocess
@@ -164,19 +166,6 @@ def holds_reply_words(text: str) -> bool:
                for i in range(len(parts) - Sealed.RUN + 1))
 
 
-def no_reply_words(text: str, where: str) -> None:
-    """Refuse `text` if it holds words from a reply.
-
-    Refusals "print, summarise or pass on any reply" and "write any words from a reply into a
-    file name, a log or the manifest". Every file name, every line of the fault list and the
-    whole list of names and checksums goes through here. The first protection is that a reply
-    is a Sealed object and every printed line is a fixed form filled with numbers and labels;
-    this check is the second.
-    """
-    if holds_reply_words(text):
-        raise Refused(f"refused: words from a reply were about to be written to {where}")
-
-
 _sink = print          # the rehearsal swaps this to collect what would be printed
 _keys_in_use: list[Secret] = []
 withheld_lines = 0
@@ -251,6 +240,7 @@ class Plan:
     very_short_words: int
     estimate_sent_tokens: int
     prices_read_on: str
+    stop_at_errors_trying_again_cannot_cure: bool
     runs: tuple
 
     def run(self, run_id: str) -> Run:
@@ -285,7 +275,9 @@ def load_plan(path: pathlib.Path) -> Plan:
                 askings=int(raw["askings"]), length_limit_tokens=int(raw["length_limit_tokens"]),
                 very_short_words=int(raw["very_short_words"]),
                 estimate_sent_tokens=int(raw["estimate_sent_tokens"]),
-                prices_read_on=raw["prices_read_on"], runs=tuple(runs))
+                prices_read_on=raw["prices_read_on"],
+                stop_at_errors_trying_again_cannot_cure=bool(raw["stop_at_errors_trying_again_cannot_cure"]),
+                runs=tuple(runs))
 
 
 @dataclasses.dataclass(frozen=True)
@@ -379,10 +371,12 @@ def check_tree_is_committed(paths: Paths) -> dict:
     "What is saved for each reply" includes "which commit of the script and of the message
     files was used". That is only true if neither has been edited since the commit.
     """
-    dirty = git(paths.repo, "status", "--porcelain", "--", "capture", "docs/capture/sent").strip()
+    dirty = git(paths.repo, "status", "--porcelain", "--", "capture", "docs/capture/sent",
+                "docs/spending-record.md", "docs/capture/what-john-needs-to-do.md",
+                "docs/capture/cost-and-terms.md").strip()
     if dirty:
-        raise Refused("the script, the plan or the message files have changes that are not "
-                      "committed:\n" + dirty)
+        raise Refused("the script, the plan, the message files, the spending record or one of the two "
+                      "documents the plan is checked against has changes that are not committed:\n" + dirty)
     return {
         "repository_commit": git(paths.repo, "rev-parse", "HEAD").strip(),
         "script_last_changed_in_commit": git(paths.repo, "log", "-1", "--format=%H", "--", "capture").strip(),
@@ -424,56 +418,83 @@ def check_prices(paths: Paths, run: Run) -> None:
 def check_go(paths: Paths, run: Run) -> dict:
     """Rule 3. The ceiling must equal the figure in John's go, quoted in the spending record.
 
-    The spending record must hold, for this run, John's words in a quotation (lines that
-    start with ">") and one block in this form, written by the session that records his go:
+    The spending record must hold, for this run, John's words as a quotation (lines that
+    start with ">") and, directly under that quotation with nothing but blank lines between,
+    one block in this form, written by the session that records his go:
+
+        > Go for the sealed capture ... at commit abc1234. Anthropic, up to $5.
 
         ```sealed-capture-go
         run = "anthropic-2026-11-30"
+        date = "2026-11-20"
+        commit = "abc1234"
         ceiling_usd = "5.00"
         johns_words = "Anthropic, up to $5"
         messages_sha256 = "<the SHA-256 checksum of docs/capture/sent/SHA256SUMS>"
         ```
 
-    `johns_words` must appear word for word inside the quotation and must carry the dollar
-    figure. `messages_sha256` ties the go to the exact list of message checksums he approved
-    (rule 2: "as committed with John's approval").
+    `johns_words` must appear word for word inside that one quotation, must name the
+    developer, and must carry exactly one dollar figure, the ceiling. `commit` is the commit
+    John named, and must exist. `messages_sha256` ties the go to the exact list of message
+    checksums he approved (rule 2: "as committed with John's approval").
+
+    What no code can check: that the quotation is what John said, and that he has not since
+    withdrawn it. A go he withdraws is taken out of the record by a session, block and all.
     """
     if not paths.spending_record.exists():
         raise Refused("there is no docs/spending-record.md, so there is no go from John to check "
                       "the ceiling against")
     text = paths.spending_record.read_text(encoding="utf-8")
-    blocks = []
-    for body in re.findall(r"```sealed-capture-go\n(.*?)```", text, flags=re.S):
+    found = []
+    for m in re.finditer(r"```sealed-capture-go\n(.*?)```", text, flags=re.S):
         try:
-            block = tomllib.loads(body)
+            block = tomllib.loads(m.group(1))
         except tomllib.TOMLDecodeError as e:
             raise Refused(f"a sealed-capture-go block in the spending record cannot be read: {e}")
         if block.get("run") == run.id:
-            blocks.append(block)
-    if len(blocks) != 1:
-        raise Refused(f"the spending record should hold exactly one go for {run.id}, and holds {len(blocks)}")
-    block = blocks[0]
+            found.append((block, text[:m.start()]))
+    if len(found) != 1:
+        raise Refused(f"the spending record should hold exactly one go for {run.id}, and holds {len(found)}")
+    block, before = found[0]
     try:
         figure = D(str(block["ceiling_usd"]))
-        words = str(block["johns_words"])
+        words = " ".join(str(block["johns_words"]).split())
         approved_sums = str(block["messages_sha256"])
+        date, commit = str(block["date"]), str(block["commit"])
     except (KeyError, decimal.InvalidOperation):
-        raise Refused(f"the go for {run.id} is missing ceiling_usd, johns_words or messages_sha256")
+        raise Refused(f"the go for {run.id} is missing one of: date, commit, ceiling_usd, johns_words, "
+                      "messages_sha256")
     if figure != run.ceiling_usd:
         raise Refused(f"the plan's ceiling for {run.id} is {money(run.ceiling_usd)} and John's go "
                       f"says {money(figure)}. They must be equal.")
-    quoted = " ".join(" ".join(line.lstrip(">").strip() for line in text.splitlines()
-                               if line.lstrip().startswith(">")).split())
-    if " ".join(words.split()) not in quoted:
+    # The one quotation directly above the block.
+    lines = before.split("\n")
+    while lines and not lines[-1].strip():
+        lines.pop()
+    quotation = []
+    while lines and lines[-1].lstrip().startswith(">"):
+        quotation.insert(0, lines.pop().lstrip()[1:].strip())
+    quoted = " ".join(" ".join(quotation).split())
+    if not words or not re.search(re.escape(words) + r"(?!\d)(?!\.\d)", quoted):
         raise Refused(f"the words given as John's go for {run.id} are not quoted word for word in "
-                      "the spending record")
-    in_words = re.search(r"\$\s?(\d+(?:\.\d+)?)", words)
-    if not in_words or D(in_words.group(1)) != figure:
-        raise Refused(f"John's quoted words for {run.id} do not carry the figure {money(figure)}")
+                      "the quotation directly above their block in the spending record")
+    if run.developer not in words.lower():
+        raise Refused(f"John's quoted words for {run.id} do not name the developer ({run.developer})")
+    figures = re.findall(r"\$\s?(\d+(?:\.\d+)?)", words)
+    if len(figures) != 1 or D(figures[0]) != figure:
+        raise Refused(f"John's quoted words for {run.id} do not carry the figure {money(figure)}, "
+                      "and only that figure")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        raise Refused(f"the go for {run.id} needs its date, as year-month-day")
+    if not re.fullmatch(r"[0-9a-f]{7,40}", commit) or subprocess.run(
+            ["git", "-C", str(paths.repo), "cat-file", "-e", commit + "^{commit}"],
+            capture_output=True).returncode != 0:
+        raise Refused(f"the commit named in the go for {run.id} is not a commit of this repository")
     actual_sums = sha256_hex((paths.sent / "SHA256SUMS").read_bytes())
     if approved_sums != actual_sums:
         raise Refused("the message checksums John's go names are not the ones in the repository now")
-    return {"ceiling_usd": str(figure), "johns_words": words, "messages_sha256": approved_sums}
+    return {"ceiling_usd": str(figure), "johns_words": words, "messages_sha256": approved_sums,
+            "date": date, "commit": commit}
 
 
 def check_rehearsal_passed(paths: Paths) -> str:
@@ -528,7 +549,8 @@ def start_checks(paths: Paths, plan: Plan, run: Run, today: datetime.date,
 
     if run.developer not in ADAPTERS:
         results.append((f"this developer's interface is built ({run.developer})", False, "not built"))
-    learned["commits"] = attempt("the script, the plan and the messages are exactly as committed",
+    learned["commits"] = attempt("the script, the plan, the messages, the spending record and the two documents "
+                                 "the plan is checked against are exactly as committed",
                                  lambda: check_tree_is_committed(paths))
     learned["messages"] = attempt("the ten message files match the committed list of checksums (rule 2)",
                                   lambda: check_messages(paths, plan))
@@ -621,6 +643,22 @@ class Anthropic:
     key_header, key_prefix = "x-api-key", ""
     timeout_seconds = 300
     worst_case_uses_model_maximum = False
+    # Errors that trying again cannot cure. Anthropic's errors page
+    # (https://platform.claude.com/docs/en/api/errors, opened again 2026-11-18) gives each of
+    # these a thing to fix and no advice to retry. A rate limit (429), a server error (500), a
+    # timeout (504) and an overloaded service (529) are not here: they keep the three tries.
+    FIX_FIRST = {
+        400: "The service says the request itself is wrong, or a spend limit set in the Console has "
+             "been reached. A session should look at the saved attempt's error.",
+        401: "The service does not accept the key: it is mistyped, revoked or expired. Check the key "
+             "in the Claude Console and set the variable again.",
+        402: "The service reports a problem with billing or payment. Check the workspace's credit in "
+             "the Claude Console.",
+        403: "The key has no permission for this. Check the organization's and the workspace's "
+             "settings in the Claude Console.",
+        404: "The service did not find the address or the model. The model may already have been "
+             "withdrawn.",
+    }
 
     def body(self, model: str, message_text: str, max_tokens: int) -> dict:
         return {"model": model, "max_tokens": max_tokens, "stream": True,
@@ -728,6 +766,11 @@ class Google:
     # NOT CHECKED: whether the 2.5 models count their thinking inside the length limit sent.
     # Until it is, the most a call could cost is worked out at the model's own maximum.
     worst_case_uses_model_maximum = True
+    # Left empty on purpose. Google's errors page (https://aistudio.google.com/docs/api-errors,
+    # opened 2026-11-18) says it is a reference for its newer interface and does not say it
+    # covers generateContent, so no status is confirmed for the interface used here. Every
+    # error keeps the three tries.
+    FIX_FIRST = {}
 
     LENGTH = frozenset({"MAX_TOKENS", "CONTINUATION"})
     BLOCKED = frozenset({"SAFETY", "RECITATION", "LANGUAGE", "BLOCKLIST", "PROHIBITED_CONTENT",
@@ -820,6 +863,15 @@ class OpenAI:
     key_header, key_prefix = "Authorization", "Bearer "
     timeout_seconds = 1800
     worst_case_uses_model_maximum = False
+    # OpenAI's error codes guide (https://developers.openai.com/api/docs/guides/error-codes,
+    # opened 2026-11-18) gives a status and a thing to fix for these two only. It lists 400
+    # for one unrelated case and gives no status for "not found", so those keep the three tries.
+    FIX_FIRST = {
+        401: "The service does not accept the key, or the key's organization. Check the key and set "
+             "the variable again.",
+        403: "The service refuses this place or this account. See OpenAI's page on supported "
+             "countries.",
+    }
 
     def body(self, model: str, message_text: str, max_tokens: int) -> dict:
         return {"model": model, "input": message_text, "max_output_tokens": max_tokens, "store": False}
@@ -950,6 +1002,9 @@ def check_request(request: Request, model: Model, message: bytes, max_tokens: in
 # 4. The one place that can reach the network
 # ----------------------------------------------------------------------------------------
 
+INTERRUPTED = "stopped by hand"
+
+
 @dataclasses.dataclass
 class Received:
     """Everything that came back from one exchange, before anything is made of it."""
@@ -1004,6 +1059,10 @@ class HttpsTransport:
             got.broke = "ended early"
         except (OSError, http.client.HTTPException):
             got.broke = "connection"
+        except KeyboardInterrupt:
+            # Stopped by hand while a reply was on its way. What had arrived is handed back, so
+            # that it is saved before the run stops.
+            got.broke = INTERRUPTED
         finally:
             connection.close()
         got.raw = b"".join(chunks)
@@ -1014,7 +1073,7 @@ class HttpsTransport:
 # 5. The engine
 # ----------------------------------------------------------------------------------------
 
-# The seven things an attempt can be recorded as. Each is one row of the method's failures
+# What an attempt can be recorded as. The first seven are the rows of the method's failures
 # table. None says anything about what the reply says.
 REPLY = "a reply"
 CUT_OFF_LENGTH = "cut off at the length limit"
@@ -1024,6 +1083,16 @@ BLOCKED = "blocked by the service"
 WRONG_MODEL = "wrong model"
 FAILED = "failed attempt"
 NOT_MADE = "not made"
+# Three more, for when something goes wrong in this script or on this machine. The method has
+# no row for them. Each is counted at the most its call could cost.
+UNREADABLE_REPLY = "a reply this script could not take apart"      # saved whole; the run stops
+LOST = "sent, with no record written"                              # a marker with no attempt file
+UNREADABLE_FILE = "a file that could not be read"                  # a half-written attempt file
+NOT_AN_ANSWER = (FAILED, LOST, UNREADABLE_FILE)
+
+# How hard the script tries to save a reply it holds before giving up.
+QUICK_WRITE_TRIES, SECONDS_BETWEEN_QUICK_TRIES = 5, 1
+SLOW_WRITE_TRIES, SECONDS_BETWEEN_SLOW_TRIES = 60, 30
 
 
 def classify(got: Received, seen: Observed, model: Model) -> str:
@@ -1055,23 +1124,28 @@ def classify(got: Received, seen: Observed, model: Model) -> str:
 
 
 NAME = re.compile(r"(CONSTRUCTED__)?(anthropic|google|openai)__([a-z0-9.\-]+)__q(\d\d)__asking(\d)"
-                  r"__(attempt(\d\d)|not-made)\.json")
+                  r"__(attempt(\d\d)(__copy\d\d)?|not-made)\.json")
+MARKERS = "sent-markers"
+APART = "wrong-model"
+LOCK_NAME = "one-run-at-a-time.lock"
 
 
 def file_name(model: Model, question: int, asking: int, attempt: int | None, constructed: bool) -> str:
-    """Developer, model, question number and asking number, and no words from any reply."""
+    """Developer, model, question number and asking number, and no words from any reply.
+
+    Every part comes from the plan or is a number, so no word of a reply has a way in.
+    """
     tail = f"attempt{attempt:02d}" if attempt is not None else "not-made"
     name = (f"{CONSTRUCTED_PREFIX if constructed else ''}{model.developer}__{model.name}"
             f"__q{question:02d}__asking{asking}__{tail}.json")
     if not NAME.fullmatch(name):
         raise Refused("refused: a file name that is not in the fixed form")
-    no_reply_words(name, "a file name")
     return name
 
 
 @dataclasses.dataclass
 class Entry:
-    """One file in the reply folder, as far as the engine needs to know it."""
+    """One attempt, as far as the engine needs to know it."""
     name: str
     developer: str
     model: str
@@ -1083,12 +1157,34 @@ class Entry:
     asked_at: datetime.datetime | None
     counted_usd: D
     kept_apart: bool
+    counts_as_a_try: bool = True          # False for an error trying again cannot cure, and the like
 
 
-def read_folder(folder: pathlib.Path, constructed: bool) -> list:
-    """List the attempt files already in the reply folder. Their reply text is not kept."""
-    entries = []
-    for sub, apart in ((folder, False), (folder / "wrong-model", True)):
+def _when(text):
+    try:
+        return datetime.datetime.fromisoformat(text) if text else None
+    except (TypeError, ValueError):
+        return None
+
+
+def read_folder(folder: pathlib.Path, constructed: bool, most_it_could_cost) -> tuple:
+    """List every attempt on file. Returns (entries, notices). Reply text is not kept.
+
+    Three kinds of file are read: attempt files, the same kept apart for a wrong model, and
+    the small markers written before each call. From them:
+
+      - an attempt file that reads properly is an attempt, as recorded;
+      - an attempt file that cannot be read (half written when the machine stopped) is named
+        in a notice, counted at the most its call could cost, and its number is never reused;
+      - a marker with no attempt file beside it means a call was sent and nothing was saved
+        (Ctrl-C, a crash, a power cut). It is counted the same way and its number is never
+        reused.
+
+    Neither of the last two stops the run, and neither uses up one of the day's tries.
+    `most_it_could_cost(developer, model)` gives the figure where no marker gives one.
+    """
+    found, markers, notices = {}, {}, []
+    for sub, kind in ((folder, "attempt"), (folder / APART, "apart"), (folder / MARKERS, "marker")):
         if not sub.is_dir():
             continue
         for path in sorted(sub.iterdir()):
@@ -1099,25 +1195,100 @@ def read_folder(folder: pathlib.Path, constructed: bool) -> list:
                 if not constructed:
                     raise Refused(f"refused: the real reply folder holds a file marked constructed: {path.name}")
                 continue
-            with open(path, encoding="utf-8") as f:
-                record = json.load(f)
-            when = record.get("asked_at_utc")
-            at = datetime.datetime.fromisoformat(when) if when else None
-            entries.append(Entry(
-                name=path.name, developer=m.group(2), model=m.group(3), question=int(m.group(4)),
-                asking=int(m.group(5)), attempt=int(m.group(7)) if m.group(7) else None,
-                outcome=record["recorded_as"], asked_at=at,
-                asked_on=at.astimezone(PACIFIC).date() if at else None,
-                counted_usd=D(record.get("cost", {}).get("counted_toward_the_ceiling_usd", "0")),
-                kept_apart=apart))
-    return entries
+            key = (m.group(2), m.group(3), int(m.group(4)), int(m.group(5)), int(m.group(7)) if m.group(7) else None)
+            try:
+                with open(path, encoding="utf-8") as f:
+                    record = json.load(f)
+                if not isinstance(record, dict):
+                    record = None
+            except (OSError, ValueError):
+                record = None
+            if kind == "marker":
+                markers[key] = record or {}
+            else:
+                found.setdefault(key, []).append((path.name, kind == "apart", record))
+    entries = []
+    for key in sorted(set(found) | set(markers), key=lambda k: (k[0], k[1], k[3], k[2], k[4] is None, k[4] or 0)):
+        developer, model, question, asking, attempt = key
+        marker = markers.get(key, {})
+        copies = found.get(key, [])
+        good = next(((name, apart, r) for name, apart, r in copies if r is not None and "recorded_as" in r), None)
+        for name, _, r in copies:
+            if good is None or name != good[0]:
+                if r is None or "recorded_as" not in r:
+                    notices.append(f"{name}: this file could not be read"
+                                   + (" (another copy of the same attempt reads properly and is used)" if good
+                                      else "; it is counted at the most its call could cost"))
+        try:
+            fallback = D(str(marker["most_this_call_could_cost_usd"]))
+        except (KeyError, decimal.InvalidOperation):
+            fallback = most_it_could_cost(developer, model)
+        if good:
+            name, apart, record = good
+            at = _when(record.get("asked_at_utc"))
+            try:
+                counted = D(str((record.get("cost") or {}).get("counted_toward_the_ceiling_usd", "0")))
+            except decimal.InvalidOperation:
+                counted = fallback
+            entries.append(Entry(name=name, developer=developer, model=model, question=question, asking=asking,
+                                 attempt=attempt, outcome=str(record["recorded_as"]), asked_at=at,
+                                 asked_on=at.astimezone(PACIFIC).date() if at else None, counted_usd=counted,
+                                 kept_apart=apart,
+                                 counts_as_a_try=record.get("counts_as_one_of_the_days_tries", True) is not False))
+        else:
+            at = _when(marker.get("sent_at_utc"))
+            if copies:
+                name, outcome = copies[0][0], UNREADABLE_FILE
+            else:
+                name, outcome = file_name_from_key(key, constructed), LOST
+                notices.append(f"{name}: a call was sent in an earlier run and no record of it was written; "
+                               "it is counted at the most it could cost")
+            entries.append(Entry(name=name, developer=developer, model=model, question=question, asking=asking,
+                                 attempt=attempt, outcome=outcome, asked_at=at,
+                                 asked_on=at.astimezone(PACIFIC).date() if at else None, counted_usd=fallback,
+                                 kept_apart=False, counts_as_a_try=False))
+    return entries, notices
+
+
+def file_name_from_key(key: tuple, constructed: bool) -> str:
+    developer, model, question, asking, attempt = key
+    tail = f"attempt{attempt:02d}" if attempt is not None else "not-made"
+    return f"{CONSTRUCTED_PREFIX if constructed else ''}{developer}__{model}__q{question:02d}__asking{asking}__{tail}.json"
+
+
+class HoldInterrupts:
+    """While a reply is in hand and not yet saved, Ctrl-C waits its turn.
+
+    Between the moment a reply has arrived and the moment its file is written, a Ctrl-C is
+    noted and acted on only after the file is safe. Outside that moment Ctrl-C works as usual.
+    """
+
+    def __init__(self):
+        self.asked_to_stop = False
+        self._before = None
+
+    def __enter__(self):
+        try:
+            self._before = signal.signal(signal.SIGINT, self._note)
+        except ValueError:                  # not the main thread: nothing to hold
+            self._before = None
+        return self
+
+    def _note(self, *_):
+        self.asked_to_stop = True
+
+    def __exit__(self, *_):
+        if self._before is not None:
+            signal.signal(signal.SIGINT, self._before)
+        return False
 
 
 class Engine:
     """Asks one run's models, one attempt at a time, and writes one file for each attempt."""
 
     def __init__(self, *, plan: Plan, run: Run, messages: dict, folder: pathlib.Path,
-                 transport, world, key: Secret, mode: str, commits: dict, manifest_path: pathlib.Path):
+                 transport, world, key: Secret, mode: str, commits: dict, manifest_path: pathlib.Path,
+                 stop_after: int | None = None):
         # The two modes cannot be mixed. A real run can only use the real transport and the
         # ruled folder; a rehearsal can only use a stand-in that cannot reach the network, and
         # a temporary folder.
@@ -1141,11 +1312,38 @@ class Engine:
         self.plan, self.run, self.messages, self.folder = plan, run, messages, folder
         self.transport, self.world, self.key, self.mode = transport, world, key, mode
         self.commits, self.manifest_path = commits, manifest_path
+        self.stop_after, self.calls_made = stop_after, 0
         self.constructed = mode == "rehearsal"
         self.verified = frozenset(sha256_hex(m) for m in messages.values())
         _keys_in_use.append(key)
         os.makedirs(folder, exist_ok=True)
-        self.entries = read_folder(folder, self.constructed)
+        self.entries, self.notices = read_folder(folder, self.constructed, self.most_an_unknown_call_could_cost)
+
+    # -- one run at a time -------------------------------------------------------------------
+
+    def only_one_run(self):
+        """Hold the reply folder for this run. A second run on the same folder is refused.
+
+        The lock is a hold on a small file that stays in the folder; the system lets go of it
+        when this program ends, however it ends. Nothing is deleted.
+        """
+        engine = self
+
+        class Hold:
+            def __enter__(self):
+                self.handle = os.open(engine.folder / LOCK_NAME, os.O_RDWR | os.O_CREAT, 0o644)
+                try:
+                    fcntl.flock(self.handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except OSError:
+                    os.close(self.handle)
+                    raise Refused("refused: another run is already using this reply folder. Two runs at "
+                                  "once would each keep their own total. Wait for the other to finish.")
+                return self
+
+            def __exit__(self, *_):
+                os.close(self.handle)
+                return False
+        return Hold()
 
     # -- time and money ------------------------------------------------------------------
 
@@ -1166,6 +1364,14 @@ class Engine:
         replied = model.max_output_tokens if ADAPTERS[model.developer].worst_case_uses_model_maximum else max_tokens
         return ((len(message) + 64) * model.price_sent + replied * model.price_replied) / MILLION
 
+    def most_an_unknown_call_could_cost(self, developer: str, model_name: str) -> D:
+        """For a file that cannot be read and has no marker: the longest message at the model's maximum."""
+        for model in self.run.models:
+            if model.developer == developer and model.name == model_name:
+                longest = max(self.messages.values(), key=len)
+                return self.most_a_call_could_cost(model, longest, model.max_output_tokens)
+        return D(0)                          # another run's model; not part of this run's total
+
     def check_ceiling(self, model: Model, message: bytes, max_tokens: int, a_second_asking_could_follow: bool) -> None:
         """Rule 4: stop before a call that could pass the ceiling.
 
@@ -1182,7 +1388,11 @@ class Engine:
                 f"for {self.run.id} is {money(self.run.ceiling_usd)}", whole_run=True)
 
     def check_projection(self, model: Model) -> None:
-        """Rule 5: after the first round, stop if five rounds at that rate would pass the ceiling."""
+        """Rule 5: after the first round, stop if five rounds at that rate would pass the ceiling.
+
+        For a run with several models, this adds what the run's other models have cost so far
+        and nothing for models not yet started. The check before every call still holds.
+        """
         mine = [e for e in self.entries if e.model == model.name and e.developer == model.developer]
         first_round = sum((e.counted_usd for e in mine if e.asking == 1), D(0))
         others = self.spent() - sum((e.counted_usd for e in mine), D(0))
@@ -1210,16 +1420,18 @@ class Engine:
 
         At most one further asking is ever made for a slot, whatever the second one brings,
         and never because of what a reply says. Failed attempts (no reply at all) do not count
-        as askings; they are tried again up to three times in one day.
+        as askings; they are tried again up to three times in one day. An attempt marked as
+        not one of the day's tries (an error trying again cannot cure, a run stopped by hand,
+        a call with no record) is not counted among those.
         """
         attempts = self.slot(model, question, asking)
         if any(e.outcome == NOT_MADE for e in attempts):
             return ("done",)
-        answered = [e for e in attempts if e.outcome != FAILED]
+        answered = [e for e in attempts if e.outcome not in NOT_AN_ANSWER]
         if any(e.outcome == REPLY for e in answered) or len(answered) >= 2:
             return ("done",)
-        failed_today = [e for e in attempts if e.outcome == FAILED and e.asked_on == self.today()]
-        if len(failed_today) >= 1 + RETRIES_AFTER_A_FAILED_ATTEMPT:
+        tries_today = [e for e in attempts if e.outcome == FAILED and e.counts_as_a_try and e.asked_on == self.today()]
+        if len(tries_today) >= 1 + RETRIES_AFTER_A_FAILED_ATTEMPT:
             return ("left for the next day",)
         limit = self.plan.limit_for(model)
         if answered and answered[-1].outcome == CUT_OFF_LENGTH:
@@ -1227,7 +1439,8 @@ class Engine:
         # PROPOSED 2026-11-18: after a reply cut off without the signal that it is complete,
         # the one further asking uses the same length limit, not the model's maximum. A broken
         # stream is not a sign that the limit was too low (the method leaves this to the script).
-        wait = bool(attempts) and attempts[-1].outcome == FAILED and attempts[-1].asked_on == self.today()
+        last = attempts[-1] if attempts else None
+        wait = bool(last) and last.outcome == FAILED and last.counts_as_a_try and last.asked_on == self.today()
         return ("ask", limit, wait, not answered)
 
     def fill_slot(self, model: Model, question: int, asking: int) -> bool:
@@ -1239,44 +1452,108 @@ class Engine:
                 return True
             if step[0] == "left for the next day":
                 return False
+            if self.stop_after is not None and self.calls_made >= self.stop_after:
+                raise RunStopped(f"stopped after {self.calls_made} call(s), as asked with --stop-after. "
+                                 "Run the same command again to carry on.", whole_run=True)
             _, limit, wait, second_possible = step
             if wait:
                 self.world.sleep(SECONDS_BETWEEN_TRIES)
-            check_day(self.run, self.today())                                    # rule 6, before every call
+            # Rule 6, before every call. The time checked is the time recorded for the call,
+            # so no call can be checked on one day and recorded on the next.
+            now = self.world.now()
+            check_day(self.run, now.astimezone(PACIFIC).date())
             self.check_ceiling(model, message, limit, second_possible)           # rule 4, before every call
-            outcome = self.ask(model, question, asking, message, limit)
+            outcome, stop_because = self.ask(model, question, asking, message, limit, now)
             if outcome == WRONG_MODEL:
                 raise RunStopped(f"the service did not report the model named ({model.name}). "
                                  "The reply is kept apart and the run for this model stops at once (rule 7).")
+            if stop_because:
+                raise RunStopped(stop_because, whole_run=True)
 
     # -- one attempt -----------------------------------------------------------------------
 
-    def ask(self, model: Model, question: int, asking: int, message: bytes, max_tokens: int) -> str:
+    def ask(self, model: Model, question: int, asking: int, message: bytes, max_tokens: int,
+            asked_at: datetime.datetime) -> tuple:
+        """One call, and its file. Returns (what it was recorded as, why the run must stop or None).
+
+        The order matters. A marker is written before anything is sent. Once the service has
+        answered, nothing that goes wrong may lose what it sent: if the reply cannot be taken
+        apart it is still saved whole, if its cost cannot be worked out it is counted at the
+        most it could cost, the write is tried many times, and Ctrl-C waits until the file is
+        safe.
+        """
         attempt = 1 + max((e.attempt or 0 for e in self.slot(model, question, asking)), default=0)
         request = build_request(model, message, max_tokens)
         check_request(request, model, message, max_tokens, self.verified)
-        asked_at = self.world.now()
-        got = self.transport.exchange(request)
-        answered_at = self.world.now()
+        most = self.most_a_call_could_cost(model, message, max_tokens)
+        name = file_name(model, question, asking, attempt, self.constructed)
+        self.write_marker(name, model, question, asking, attempt, max_tokens, most, asked_at)
+        self.calls_made += 1
+        got = self.transport.exchange(request)       # if this never returns, the marker says so
+        with HoldInterrupts() as hold:
+            try:
+                answered_at = self.world.now()
+                made = self.make_record(model, question, asking, attempt, message, max_tokens, request, got,
+                                        asked_at, answered_at, most)
+            except Exception as problem:             # noqa: BLE001
+                made = self.record_of_a_reply_not_taken_apart(model, question, asking, attempt, message,
+                                                              max_tokens, request, got, asked_at, most,
+                                                              type(problem).__name__)
+            record, outcome, counted, counts_as_a_try, stop_because, line = made
+            saved_as = self.save(name, record, apart=(outcome == WRONG_MODEL))
+            self.entries.append(Entry(
+                name=saved_as, developer=model.developer, model=model.name, question=question, asking=asking,
+                attempt=attempt, outcome=outcome, asked_at=asked_at, asked_on=asked_at.astimezone(PACIFIC).date(),
+                counted_usd=counted, kept_apart=(outcome == WRONG_MODEL), counts_as_a_try=counts_as_a_try))
+        say(f"  q{question:02d} asking {asking} attempt {attempt:02d}: {line}; limit {max_tokens}; "
+            f"counted {money(counted)}; run total {money(self.spent())} of {money(self.run.ceiling_usd)})")
+        if hold.asked_to_stop and not stop_because:
+            stop_because = "stopped by hand (Ctrl-C). The attempt in hand was saved first. Nothing was lost."
+        return outcome, stop_because
+
+    def make_record(self, model, question, asking, attempt, message, max_tokens, request, got,
+                    asked_at, answered_at, most) -> tuple:
         adapter = ADAPTERS[model.developer]
         seen = adapter.take_apart(got.status, got.raw)
         outcome = classify(got, seen, model)
 
         # Rule 4: the cost, from the counts the service reports and the dated price list.
         from_counts = None
-        if seen.tokens_sent is not None and seen.tokens_replied_billed is not None:
-            from_counts = (seen.tokens_sent * model.price_sent
-                           + seen.tokens_replied_billed * model.price_replied) / MILLION
-            counted, basis = from_counts, "the token counts the service reported"
-        elif not got.request_left or (got.status is not None and got.status != 200):
-            # ASSUMED, NOT CHECKED: a request the service answers with an error status, or
-            # that never reached it, is not charged.
-            counted, basis = D(0), "no charge assumed: the service gave an error status, or was never reached"
-        else:
-            counted = self.most_a_call_could_cost(model, message, max_tokens)
-            basis = "the service reported no full counts, so the most this call could cost is counted"
+        try:
+            if seen.tokens_sent is not None and seen.tokens_replied_billed is not None:
+                from_counts = (int(seen.tokens_sent) * model.price_sent
+                               + int(seen.tokens_replied_billed) * model.price_replied) / MILLION
+                if from_counts < 0:
+                    raise ValueError
+                counted, basis = from_counts, "the token counts the service reported"
+            elif not got.request_left or (got.status is not None and got.status != 200):
+                # ASSUMED: a request the service answers with an error status, or that never
+                # reached it, is not charged. Anthropic's pages say nothing either way; the
+                # most it could be is the message sent, a fraction of a cent.
+                counted, basis = D(0), "no charge assumed: the service gave an error status, or was never reached"
+            else:
+                counted, basis = most, "the service reported no full counts, so the most this call could cost is counted"
+        except (TypeError, ValueError, decimal.InvalidOperation):
+            from_counts = None
+            counted, basis = most, "the counts the service reported could not be used, so the most this call could cost is counted"
 
-        name = file_name(model, question, asking, attempt, self.constructed)
+        # An error that trying again cannot cure (see the developer's FIX_FIRST list).
+        advice = adapter.FIX_FIRST.get(got.status) if outcome == FAILED and got.request_left else None
+        cannot_be_cured = advice is not None
+        stopped_by_hand = got.broke == INTERRUPTED
+        counts_as_a_try = True
+        stop_because = None
+        if stopped_by_hand:
+            counts_as_a_try = False
+            stop_because = ("stopped by hand (Ctrl-C) while a reply was on its way. What had arrived is saved, "
+                            "and the call is counted. It does not use up one of the day's tries.")
+        elif cannot_be_cured and self.plan.stop_at_errors_trying_again_cannot_cure:
+            counts_as_a_try = False
+            stop_because = (f"the service answered with status {token(got.status)} ({token(seen.error_type)}). {advice} "
+                            "Trying again cannot cure this, so the run stops here and none of the day's tries is "
+                            "used. The attempt is saved. Fix it, then run the same command again; it can be "
+                            "run again the same day.")
+
         record = {
             "what_this_is": ("CONSTRUCTED. A rehearsal file. Nothing in it came from any model or service."
                              if self.constructed else
@@ -1289,37 +1566,17 @@ class Engine:
             "asking_number": asking,
             "attempt_number": attempt,
             "recorded_as": outcome,
+            "counts_as_one_of_the_days_tries": counts_as_a_try,
+            "trying_again_cannot_cure_this": cannot_be_cured,
+            "stopped_by_hand": stopped_by_hand,
             "message_file": f"docs/capture/sent/q{question:02d}.txt",
             "message_sha256": sha256_hex(message),
             "message_sent": message.decode("utf-8"),
-            "request": {
-                "interface": adapter.interface,
-                "address": f"https://{request.host}{request.path}",
-                "headers_sent": [list(h) for h in request.headers]
-                                + [[request.key_header, "[the key, never saved]"]],
-                "headers_added_by_the_standard_library": "Host, Accept-Encoding: identity, Content-Length",
-                "anthropic_version_header": ANTHROPIC_VERSION if model.developer == "anthropic" else None,
-                "body_exactly_as_sent": request.body.decode("utf-8"),
-                "body_sha256": sha256_hex(request.body),
-                "settings_sent": {"model": model.name, "length_limit_tokens": max_tokens,
-                                  "streamed": model.developer == "anthropic",
-                                  "store": False if model.developer == "openai" else "not a setting of this interface"},
-                "settings_not_sent": "no system message or instruction, no temperature or other sampling "
-                                     "setting, no thinking or reasoning setting, no tools, no earlier exchange",
-                "program_library": "none. Sent with Python's standard library (http.client), "
-                                   f"Python {platform.python_version()}",
-            },
+            "request": self.request_for_the_record(model, request, max_tokens),
             "asked_at_utc": asked_at.astimezone(datetime.timezone.utc).isoformat(),
             "asked_at_pacific": asked_at.astimezone(PACIFIC).isoformat(),
             "answer_ended_at_utc": answered_at.astimezone(datetime.timezone.utc).isoformat(),
-            "service_returned": {
-                "http_status": got.status,
-                "headers": got.headers,
-                "everything_received_in_order": got.raw.decode("utf-8", errors="replace"),
-                "received_sha256": sha256_hex(got.raw),
-                "connection_broke": got.broke,
-                "request_reached_the_service": got.request_left,
-            },
+            "service_returned": self.returned_for_the_record(got),
             "reply_text": seen.text.for_the_record_file_only(),
             "model_as_reported": seen.reported_model,
             "service_id_for_the_reply": seen.service_id,
@@ -1330,30 +1587,143 @@ class Engine:
             "tokens": {"sent": seen.tokens_sent, "replied_as_billed": seen.tokens_replied_billed,
                        "reasoning": seen.tokens_reasoning},
             "reasoning_effort_reported": seen.reasoning_effort,
-            "cost": {
-                "from_reported_counts_usd": str(from_counts) if from_counts is not None else None,
-                "counted_toward_the_ceiling_usd": str(counted),
-                "basis": basis,
-                "price_sent_usd_per_million": str(model.price_sent),
-                "price_replied_usd_per_million": str(model.price_replied),
-                "prices_read_on": self.plan.prices_read_on,
-                "ceiling_usd": str(self.run.ceiling_usd),
-            },
+            "cost": self.cost_for_the_record(model, from_counts, counted, basis),
             "commits": self.commits,
         }
-        self.write(name, record, apart=(outcome == WRONG_MODEL))
-        self.entries.append(Entry(
-            name=name, developer=model.developer, model=model.name, question=question, asking=asking,
-            attempt=attempt, outcome=outcome, asked_at=asked_at, asked_on=asked_at.astimezone(PACIFIC).date(),
-            counted_usd=counted, kept_apart=(outcome == WRONG_MODEL)))
-        detail = f"stop reason {token(seen.stop_reason)}"
         if outcome == FAILED:
-            detail = (f"http status {token(got.status)}, error {token(seen.error_type)}, "
-                      f"connection {token((got.broke or 'held').replace(' ', '-'))}")
-        say(f"  q{question:02d} asking {asking} attempt {attempt:02d}: {outcome} ({detail}; "
-            f"limit {max_tokens}; counted {money(counted)}; run total {money(self.spent())} "
-            f"of {money(self.run.ceiling_usd)})")
-        return outcome
+            line = (f"{outcome} (http status {token(got.status)}, error {token(seen.error_type)}, "
+                    f"connection {token((got.broke or 'held').replace(' ', '-'))}")
+        else:
+            line = (f"{outcome} (stop reason {token(seen.stop_reason)}; model reported as named: "
+                    f"{'yes' if seen.reported_model == model.reported_as else 'NO'}; tokens sent "
+                    f"{token(seen.tokens_sent)}, replied {token(seen.tokens_replied_billed)}")
+        return record, outcome, counted, counts_as_a_try, stop_because, line
+
+    def record_of_a_reply_not_taken_apart(self, model, question, asking, attempt, message, max_tokens,
+                                          request, got, asked_at, most, kind_of_problem) -> tuple:
+        """The record written when this script fails on a reply that has arrived.
+
+        Built from the simplest pieces only, so that it cannot fail in the same way. Everything
+        the service returned is in it, unchanged. The reply text is not picked out, because
+        picking it out is what failed; it is inside what was received. The call is counted at
+        the most it could cost, and the run stops so that the script can be looked at.
+        """
+        record = {
+            "what_this_is": ("CONSTRUCTED. A rehearsal file. Nothing in it came from any model or service."
+                             if self.constructed else
+                             "One attempt of the sealed capture. The script could not take this reply apart; "
+                             "everything the service returned is here, whole."),
+            "constructed": self.constructed,
+            "developer": model.developer,
+            "model_name_sent": model.name,
+            "question_number": question,
+            "asking_number": asking,
+            "attempt_number": attempt,
+            "recorded_as": UNREADABLE_REPLY,
+            "kind_of_problem_in_the_script": kind_of_problem,
+            "counts_as_one_of_the_days_tries": False,
+            "message_file": f"docs/capture/sent/q{question:02d}.txt",
+            "message_sha256": sha256_hex(message),
+            "message_sent": message.decode("utf-8", errors="replace"),
+            "request": self.request_for_the_record(model, request, max_tokens),
+            "asked_at_utc": asked_at.astimezone(datetime.timezone.utc).isoformat(),
+            "asked_at_pacific": asked_at.astimezone(PACIFIC).isoformat(),
+            "service_returned": self.returned_for_the_record(got),
+            "reply_text": "",
+            "reply_text_note": "not picked out; it is inside service_returned.everything_received_in_order",
+            "cost": self.cost_for_the_record(model, None, most,
+                                             "the reply could not be taken apart, so the most this call could cost is counted"),
+            "commits": self.commits,
+        }
+        stop_because = (f"a reply arrived that this script could not take apart (a problem of the kind "
+                        f"{token(kind_of_problem)} in the script). Everything the service sent is saved, whole, and "
+                        "the call is counted at the most it could cost. The run stops so that a session can "
+                        "look at the script. Nothing was lost.")
+        line = f"{UNREADABLE_REPLY} (problem in the script: {token(kind_of_problem)}"
+        return record, UNREADABLE_REPLY, most, False, stop_because, line
+
+    def request_for_the_record(self, model: Model, request: Request, max_tokens: int) -> dict:
+        return {
+            "interface": ADAPTERS[model.developer].interface,
+            "address": f"https://{request.host}{request.path}",
+            "headers_sent": [list(h) for h in request.headers] + [[request.key_header, "[the key, never saved]"]],
+            "headers_added_by_the_standard_library": "Host, Accept-Encoding: identity, Content-Length",
+            "anthropic_version_header": ANTHROPIC_VERSION if model.developer == "anthropic" else None,
+            "body_exactly_as_sent": request.body.decode("utf-8", errors="replace"),
+            "body_sha256": sha256_hex(request.body),
+            "settings_sent": {"model": model.name, "length_limit_tokens": max_tokens,
+                              "streamed": model.developer == "anthropic",
+                              "store": False if model.developer == "openai" else "not a setting of this interface"},
+            "settings_not_sent": "no system message or instruction, no temperature or other sampling "
+                                 "setting, no thinking or reasoning setting, no tools, no earlier exchange",
+            "waits_set_on_this_machine": f"{request.timeout_seconds} seconds for any one piece of the reply; "
+                                         f"{HttpsTransport.LONGEST_EXCHANGE_SECONDS} seconds for the whole exchange. "
+                                         "Nothing is sent to the service for these.",
+            "program_library": "none. Sent with Python's standard library (http.client), "
+                               f"Python {platform.python_version()}",
+        }
+
+    def returned_for_the_record(self, got: Received) -> dict:
+        raw = got.raw if isinstance(got.raw, (bytes, bytearray)) else str(got.raw).encode("utf-8", errors="replace")
+        return {
+            "http_status": got.status,
+            "headers": got.headers,
+            "everything_received_in_order": raw.decode("utf-8", errors="replace"),
+            "received_sha256": sha256_hex(raw),
+            "connection_broke": got.broke,
+            "request_reached_the_service": got.request_left,
+        }
+
+    def cost_for_the_record(self, model: Model, from_counts, counted: D, basis: str) -> dict:
+        return {
+            "from_reported_counts_usd": str(from_counts) if from_counts is not None else None,
+            "counted_toward_the_ceiling_usd": str(counted),
+            "basis": basis,
+            "price_sent_usd_per_million": str(model.price_sent),
+            "price_replied_usd_per_million": str(model.price_replied),
+            "prices_read_on": self.plan.prices_read_on,
+            "ceiling_usd": str(self.run.ceiling_usd),
+        }
+
+    # -- writing ----------------------------------------------------------------------------
+
+    def write_marker(self, name: str, model: Model, question: int, asking: int, attempt: int,
+                     max_tokens: int, most: D, asked_at: datetime.datetime) -> None:
+        """Before each call: a small file saying the call is about to be sent.
+
+        If the program is stopped, crashes or loses power before the attempt's own file is
+        written, this marker is what remains. The next start counts that call at the most it
+        could cost and never uses its number again. If the marker cannot be written, nothing
+        is sent.
+        """
+        folder = self.folder / MARKERS
+        try:
+            self.write_new_file(folder, name, json.dumps({
+                "what_this_is": ("CONSTRUCTED. A rehearsal marker." if self.constructed else
+                                 "Written by the sealed capture script just before a call was sent. It holds "
+                                 "nothing from any reply. The attempt's own file has the same name, one folder up."),
+                "constructed": self.constructed, "developer": model.developer, "model_name_sent": model.name,
+                "question_number": question, "asking_number": asking, "attempt_number": attempt,
+                "length_limit_tokens": max_tokens, "most_this_call_could_cost_usd": str(most),
+                "sent_at_utc": asked_at.astimezone(datetime.timezone.utc).isoformat()}, indent=1))
+        except Refused:
+            raise
+        except Exception as problem:                  # noqa: BLE001
+            raise Refused("refused: the marker that must be written before a call could not be written "
+                          f"({type(problem).__name__}). Nothing was sent.")
+
+    def write_new_file(self, folder: pathlib.Path, name: str, text: str) -> None:
+        """Create one new read-only file. An existing name is an error: nothing is written over."""
+        if inside_a_git_repository(folder):
+            raise Refused(f"refused: {folder} is inside a git repository")
+        os.makedirs(folder, exist_ok=True)
+        path = folder / name
+        handle = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o444)
+        with os.fdopen(handle, "w", encoding="utf-8") as f:
+            f.write(text)
+            f.flush()
+            os.fsync(f.fileno())
+        os.chmod(path, 0o444)
 
     def write(self, name: str, record: dict, apart: bool) -> pathlib.Path:
         """Rule 8: write the file before the next message is sent, and make it read-only.
@@ -1362,23 +1732,48 @@ class Engine:
         error, so nothing is ever overwritten. Refusal "delete a file": nothing in this script
         removes, renames or empties a file.
         """
-        folder = self.folder / "wrong-model" if apart else self.folder
-        if inside_a_git_repository(folder):
-            raise Refused(f"refused: {folder} is inside a git repository")
-        os.makedirs(folder, exist_ok=True)
-        text = json.dumps(record, ensure_ascii=False, indent=1)
+        folder = self.folder / APART if apart else self.folder
+        text = json.dumps(record, ensure_ascii=False, indent=1, default=str)
         if self.key.appears_in(text):
             # "The key is never saved." If a service ever sent the key back, it is taken out.
             text = self.key.removed_from(text)
             text = text[:-1].rstrip() + ',\n "key_was_removed_from_this_record": true\n}'
-        path = folder / name
-        handle = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o444)
-        with os.fdopen(handle, "w", encoding="utf-8") as f:
-            f.write(text)
-            f.flush()
-            os.fsync(f.fileno())
-        os.chmod(path, 0o444)
-        return path
+        self.write_new_file(folder, name, text)
+        return folder / name
+
+    def save(self, name: str, record: dict, apart: bool) -> str:
+        """Write a reply that is in hand, and do not give up easily. Returns the name used.
+
+        Each try uses a new name (the second is "...__copy02.json"), so that a half-written
+        file from the try before cannot block it. After a few quick tries the script says
+        plainly that it is holding an unsaved reply, and keeps trying every half minute for
+        half an hour, so that the folder can be put right while it waits.
+        """
+        tries = 0
+        while True:
+            tries += 1
+            candidate = name if tries == 1 else f"{name[:-5]}__copy{tries:02d}.json"
+            try:
+                self.write(candidate, record, apart)
+                if tries > QUICK_WRITE_TRIES:
+                    say(f"  saved at try {tries}, as {candidate}. Nothing was lost.")
+                return candidate
+            except Refused:
+                raise
+            except Exception as problem:               # noqa: BLE001
+                kind = type(problem).__name__
+            if tries >= QUICK_WRITE_TRIES + SLOW_WRITE_TRIES:
+                raise RunStopped(
+                    f"A REPLY WAS HELD AND COULD NOT BE SAVED. {tries} tries to write {name} failed "
+                    f"({token(kind)}). The reply is lost when this program ends. Its call is counted at the most "
+                    "it could cost when the script next starts, and its number is not used again.", whole_run=True)
+            if tries == QUICK_WRITE_TRIES:
+                say(f"  A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED. The reply folder could not be written to "
+                    f"({token(kind)}). DO NOT CLOSE THIS WINDOW AND DO NOT PRESS CTRL-C. Check that the folder "
+                    f"{self.plan.reply_folder} exists, can be written to, and that the disk is not full. The "
+                    f"script tries again every {SECONDS_BETWEEN_SLOW_TRIES} seconds for "
+                    f"{SLOW_WRITE_TRIES * SECONDS_BETWEEN_SLOW_TRIES // 60} minutes and saves it as soon as it can.")
+            self.world.sleep(SECONDS_BETWEEN_QUICK_TRIES if tries < QUICK_WRITE_TRIES else SECONDS_BETWEEN_SLOW_TRIES)
 
     # -- one model, and the whole run --------------------------------------------------------
 
@@ -1405,20 +1800,28 @@ class Engine:
     def run_all(self, only_model: str | None = None) -> bool:
         """Run every model of the run in turn. Returns True if nothing stopped early."""
         clean = True
-        try:
-            for model in self.run.models:
-                if only_model and model.name != only_model:
-                    continue
-                try:
-                    self.run_model(model)
-                except RunStopped as e:
-                    clean = False
-                    say(f"STOPPED: {e}")
-                    if e.whole_run:
-                        break                      # the ceiling is for the whole run
-        finally:
-            write_manifest(self.folder, self.manifest_path, self.constructed)      # rule 8
-            say(f"run total counted: {money(self.spent())} of {money(self.run.ceiling_usd)}")
+        with self.only_one_run():
+            for notice in self.notices:
+                say(f"NOTICE: {notice}")
+            try:
+                for model in self.run.models:
+                    if only_model and model.name != only_model:
+                        continue
+                    try:
+                        self.run_model(model)
+                    except RunStopped as e:
+                        clean = False
+                        say(f"STOPPED: {e}")
+                        if e.whole_run:
+                            break                      # the ceiling, or a stop that needs a person
+            finally:
+                with HoldInterrupts():
+                    try:
+                        write_manifest(self.folder, self.manifest_path, self.constructed)      # rule 8
+                    except Exception as problem:       # noqa: BLE001
+                        say(f"the list of names and checksums could not be written ({type(problem).__name__}). "
+                            "No reply file is affected. Run the 'manifest' command to write it.")
+                    say(f"run total counted: {money(self.spent())} of {money(self.run.ceiling_usd)}")
         return clean
 
     def record_not_made(self) -> int:
@@ -1426,28 +1829,29 @@ class Engine:
         if self.today() <= self.run.last_safe_day:
             raise Refused("askings are recorded as not made only after the last safe day")
         written = 0
-        for model in self.run.models:
-            for asking in range(1, self.plan.askings + 1):
-                for question in range(1, self.plan.questions + 1):
-                    if self.next_step(model, question, asking)[0] == "done":
-                        continue
-                    name = file_name(model, question, asking, None, self.constructed)
-                    now = self.world.now()
-                    self.write(name, {
-                        "what_this_is": ("CONSTRUCTED. A rehearsal file." if self.constructed else
-                                         "An asking of the sealed capture that was not made."),
-                        "constructed": self.constructed, "developer": model.developer,
-                        "model_name_sent": model.name, "question_number": question,
-                        "asking_number": asking, "recorded_as": NOT_MADE,
-                        "why": f"not completed by the last safe day, {self.run.last_safe_day}",
-                        "asked_at_utc": None,
-                        "recorded_at_utc": now.astimezone(datetime.timezone.utc).isoformat(),
-                        "cost": {"counted_toward_the_ceiling_usd": "0"}, "commits": self.commits}, apart=False)
-                    self.entries.append(Entry(name=name, developer=model.developer, model=model.name,
-                                              question=question, asking=asking, attempt=None, outcome=NOT_MADE,
-                                              asked_on=None, asked_at=None, counted_usd=D(0), kept_apart=False))
-                    written += 1
-        write_manifest(self.folder, self.manifest_path, self.constructed)
+        with self.only_one_run():
+            for model in self.run.models:
+                for asking in range(1, self.plan.askings + 1):
+                    for question in range(1, self.plan.questions + 1):
+                        if self.next_step(model, question, asking)[0] == "done":
+                            continue
+                        name = file_name(model, question, asking, None, self.constructed)
+                        now = self.world.now()
+                        self.write(name, {
+                            "what_this_is": ("CONSTRUCTED. A rehearsal file." if self.constructed else
+                                             "An asking of the sealed capture that was not made."),
+                            "constructed": self.constructed, "developer": model.developer,
+                            "model_name_sent": model.name, "question_number": question,
+                            "asking_number": asking, "recorded_as": NOT_MADE,
+                            "why": f"not completed by the last safe day, {self.run.last_safe_day}",
+                            "asked_at_utc": None,
+                            "recorded_at_utc": now.astimezone(datetime.timezone.utc).isoformat(),
+                            "cost": {"counted_toward_the_ceiling_usd": "0"}, "commits": self.commits}, apart=False)
+                        self.entries.append(Entry(name=name, developer=model.developer, model=model.name,
+                                                  question=question, asking=asking, attempt=None, outcome=NOT_MADE,
+                                                  asked_on=None, asked_at=None, counted_usd=D(0), kept_apart=False))
+                        written += 1
+            write_manifest(self.folder, self.manifest_path, self.constructed)
         return written
 
     def say_faults(self, model: Model, asking: int) -> None:
@@ -1463,53 +1867,94 @@ class Engine:
 # 6. The fault list, the list of names and checksums, and the commands
 # ----------------------------------------------------------------------------------------
 
+def attempt_files(folder: pathlib.Path, constructed: bool):
+    """Every attempt file in the reply folder, with the pieces of its name."""
+    for sub, prefix in ((folder, ""), (folder / APART, APART + "/")):
+        if not sub.is_dir():
+            continue
+        for path in sorted(sub.iterdir()):
+            m = NAME.fullmatch(path.name)
+            if m and bool(m.group(1)) == constructed and m.group(7):
+                yield path, prefix, m
+
+
 def fault_lines(folder: pathlib.Path, very_short_words: int, constructed: bool, *,
                 developer: str | None = None, model: str | None = None, asking: int | None = None) -> list:
     """Rule 10: list faulty reply files by name, fault and count, and never any words.
 
     A file is listed if its reply is empty, ended mid-reply (the stop reason is the length
     limit, or the reply ended after some text without the service's signal that it was
-    complete), or is very short (fewer words than the threshold in the plan). A failed
+    complete), or is very short (fewer words than the threshold in the plan). Also listed:
+    a reply the script could not take apart, and a file that cannot be read. A failed
     attempt, which brought no reply, is not a reply file and is not listed here.
+
+    Every line is a file name, one of a fixed set of phrases, and numbers. If such a line ever
+    shared words with a reply, the print function would withhold it; nothing here stops a run.
     """
     lines = []
-    for sub in (folder, folder / "wrong-model"):
-        if not sub.is_dir():
+    for path, _, m in attempt_files(folder, constructed):
+        if (developer and m.group(2) != developer) or (model and m.group(3) != model) \
+                or (asking and int(m.group(5)) != asking):
             continue
-        for path in sorted(sub.iterdir()):
-            m = NAME.fullmatch(path.name)
-            if not m or bool(m.group(1)) != constructed or not m.group(7):
-                continue
-            if (developer and m.group(2) != developer) or (model and m.group(3) != model) \
-                    or (asking and int(m.group(5)) != asking):
-                continue
+        try:
             with open(path, encoding="utf-8") as f:
                 record = json.load(f)
             outcome = record["recorded_as"]
-            if outcome in (FAILED, NOT_MADE):
-                continue
-            words = Sealed(str(record.get("reply_text") or "")).word_count()      # counted, never shown
-            reason = token(record.get("why_the_reply_stopped"))
-            if outcome == CUT_OFF_LENGTH:
-                fault = f"ended mid-reply | stop reason {reason}, {words} words"
-            elif outcome == CUT_OFF_STREAM:
-                fault = f"ended mid-reply | no signal that the reply was complete, {words} words"
-            elif words == 0:
-                fault = f"empty | 0 words, stop reason {reason}"
-            elif words < very_short_words:
-                fault = f"very short | {words} words (fewer than {very_short_words})"
-            else:
-                continue
-            line = f"{path.name} | {fault}"
-            no_reply_words(line, "the fault list")
-            lines.append(line)
+        except (OSError, ValueError, KeyError, TypeError):
+            lines.append(f"{path.name} | could not be read | the file is not whole")
+            continue
+        if outcome in (FAILED, NOT_MADE):
+            continue
+        words = Sealed(str(record.get("reply_text") or "")).word_count()      # counted, never shown
+        reason = token(record.get("why_the_reply_stopped"))
+        if outcome == UNREADABLE_REPLY:
+            fault = "not taken apart | the script failed on it; everything received is in the file"
+        elif outcome == CUT_OFF_LENGTH:
+            fault = f"ended mid-reply | stop reason {reason}, {words} words"
+        elif outcome == CUT_OFF_STREAM:
+            fault = f"ended mid-reply | no signal that the reply was complete, {words} words"
+        elif words == 0:
+            fault = f"empty | 0 words, stop reason {reason}"
+        elif words < very_short_words:
+            fault = f"very short | {words} words (fewer than {very_short_words})"
+        else:
+            continue
+        lines.append(f"{path.name} | {fault}")
+    return lines
+
+
+def label_lines(folder: pathlib.Path, constructed: bool) -> list:
+    """For each attempt file: what it was recorded as and the service's labels. No reply words.
+
+    This is how a session checks the first real call without opening the reply.
+    """
+    lines = []
+    for path, prefix, _ in attempt_files(folder, constructed):
+        try:
+            with open(path, encoding="utf-8") as f:
+                r = json.load(f)
+            tokens = r.get("tokens") or {}
+            lines.append(
+                f"{prefix}{path.name} | {token(str(r.get('recorded_as', '')).replace(' ', '-'), 80)} | "
+                f"http {token((r.get('service_returned') or {}).get('http_status'))} | "
+                f"stop reason {token(r.get('why_the_reply_stopped'))} | "
+                f"model reported: {token(r.get('model_as_reported'), 80)} | "
+                f"tokens sent {token(tokens.get('sent'))}, replied {token(tokens.get('replied_as_billed'))} | "
+                f"words in the reply: {Sealed(str(r.get('reply_text') or '')).word_count()} | "
+                f"counted ${token((r.get('cost') or {}).get('counted_toward_the_ceiling_usd'))}")
+        except (OSError, ValueError, TypeError, AttributeError):
+            lines.append(f"{prefix}{path.name} | could not be read")
     return lines
 
 
 def write_manifest(folder: pathlib.Path, manifest_path: pathlib.Path, constructed: bool) -> int:
-    """Rule 8: the list of names and checksums, written at the end. Names and checksums only."""
+    """Rule 8: the list of names and checksums, written at the end. Names and checksums only.
+
+    Every row is a checksum and a file name in the fixed form, so no word of a reply has a
+    way in. The markers written before each call are listed too.
+    """
     rows = []
-    for sub, prefix in ((folder, ""), (folder / "wrong-model", "wrong-model/")):
+    for sub, prefix in ((folder, ""), (folder / APART, APART + "/"), (folder / MARKERS, MARKERS + "/")):
         if not sub.is_dir():
             continue
         for path in sorted(sub.iterdir()):
@@ -1520,12 +1965,11 @@ def write_manifest(folder: pathlib.Path, manifest_path: pathlib.Path, constructe
     if constructed:
         head += ["**CONSTRUCTED.** Written by the rehearsal. No file listed here came from any model.", ""]
     head += ["Written by `capture/capture.py`. One line for each file in the reply folder, which is "
-             "outside every repository: its SHA-256 checksum, then its name. Nothing else is here, "
+             "outside every repository: its SHA-256 checksum, then its name. Files under "
+             f"`{MARKERS}/` are the small markers written before each call. Nothing else is here, "
              "and no word of any reply.", "", "```text"]
-    text = "\n".join(head + rows + ["```", ""])
-    no_reply_words(text, "the list of names and checksums")
     os.makedirs(manifest_path.parent, exist_ok=True)
-    manifest_path.write_text(text, encoding="utf-8")
+    manifest_path.write_text("\n".join(head + rows + ["```", ""]), encoding="utf-8")
     return len(rows)
 
 
@@ -1559,9 +2003,9 @@ def read_key(run: Run) -> Secret:
 
     The variable's name is this project's alone (it starts BTW_CAPTURE_), so a key that
     another project left in the shell under a common name such as ANTHROPIC_API_KEY is never
-    picked up. The variable is taken out of this program's environment as soon as it is read,
-    so the one other program this script starts afterwards (git, to check that the reply folder
-    is outside every repository) cannot be handed it.
+    picked up. In a real run this is the first thing done, before any other program (git) is
+    started, and the variable is taken out of this program's environment as it is read, so no
+    program this script starts is ever handed the key.
     """
     value = os.environ.pop(run.key_variable, "").strip()
     if not value:
@@ -1646,9 +2090,13 @@ def main(argv=None) -> int:
     p = sub.add_parser("run", help="ask. Needs John's go in the spending record and the key in the environment")
     p.add_argument("--run", required=True)
     p.add_argument("--model", help="ask only this model of the run")
+    p.add_argument("--stop-after", type=int, metavar="N",
+                   help="make at most N calls, then stop. Use 1 for the first real run")
     p = sub.add_parser("record-not-made", help="after the last safe day, record unfinished askings as not made")
     p.add_argument("--run", required=True)
     sub.add_parser("faults", help="list faulty reply files by name, fault and count, never their words")
+    sub.add_parser("labels", help="list every attempt file with what it was recorded as and the service's "
+                                  "labels, never the reply's words")
     sub.add_parser("manifest", help="write the list of file names and checksums")
     sub.add_parser("check-manifest", help="compare the reply folder with the committed list")
     args = parser.parse_args(argv)
@@ -1659,6 +2107,10 @@ def main(argv=None) -> int:
     world = RealWorld()
     today = world.now().astimezone(PACIFIC).date()
     try:
+        key = None
+        if args.command == "run":
+            # First, before git or anything else is started: take the key out of the environment.
+            key = read_key(plan.run(args.run))
         if args.command == "show":
             show(paths, plan, plan.run(args.run), today, args.all_bodies)
             return 0
@@ -1666,6 +2118,10 @@ def main(argv=None) -> int:
             lines = fault_lines(folder, plan.very_short_words, False) if folder.is_dir() else []
             say(f"{len(lines)} file(s) flagged (name, fault, count; no words of any reply are shown)")
             for line in lines:
+                say(line)
+            return 0
+        if args.command == "labels":
+            for line in (label_lines(folder, False) if folder.is_dir() else []):
                 say(line)
             return 0
         if args.command == "manifest":
@@ -1699,14 +2155,20 @@ def main(argv=None) -> int:
             return 0
         if args.model and args.model not in {m.name for m in run.models}:
             raise Refused(f"{args.model!r} is not a model of {run.id}")
-        key = read_key(run)                    # the last thing before the first call
+        if args.stop_after is not None and args.stop_after < 1:
+            raise Refused("--stop-after needs a number of 1 or more")
         engine = Engine(plan=plan, run=run, messages=learned["messages"], folder=folder,
                         transport=HttpsTransport(key), world=world, key=key, mode="real",
-                        commits=learned["commits"], manifest_path=paths.manifest)
+                        commits=learned["commits"], manifest_path=paths.manifest, stop_after=args.stop_after)
         return 0 if engine.run_all(args.model) else 3
     except Refused as e:
         say(f"REFUSED. {e}")
         return 2
+    except KeyboardInterrupt:
+        say("STOPPED by hand (Ctrl-C). Files already written stay. If a call was on its way and its file "
+            "was not written, the next start counts it at the most it could cost. Run the same command "
+            "again to carry on.")
+        return 130
     except Exception as e:      # noqa: BLE001
         # The error's own message is not printed, in case it holds text from a file it was reading.
         say(f"STOPPED by an unexpected error of the kind {type(e).__name__}. Files already written stay. "

@@ -57,6 +57,7 @@ import os                     # noqa: E402
 import pathlib                # noqa: E402
 import re                     # noqa: E402
 import shutil                 # noqa: E402
+import signal                 # noqa: E402
 import stat                   # noqa: E402
 import subprocess             # noqa: E402
 import sys                    # noqa: E402
@@ -70,7 +71,9 @@ sys.modules["capture"] = capture
 spec.loader.exec_module(capture)
 
 D = decimal.Decimal
-MARK = "STANDINTEXT"          # a word that is in every constructed reply and nowhere else
+MARK = "STANDINTEXT"          # a word that is in every ordinary constructed reply and nowhere else
+FIRST = "Standinfirstword"    # the first word of every ordinary constructed reply, and nowhere else
+GO_COMMIT = ""                # a commit of the constructed repository, for the constructed go
 CONSTRUCTED_KEY = "CONSTRUCTED-not-a-key-0000-for-the-rehearsal-only"
 OTHER_PROJECTS_KEY = "CONSTRUCTED-some-other-projects-key-never-used"
 
@@ -109,11 +112,11 @@ def message_text(n):
     return f"CONSTRUCTED message q{n:02d}. Not a real question. Made for the rehearsal only."
 
 
-LONG = ("CONSTRUCTED reply, not from any model. {mark} number {n}: filler for the rehearsal of the "
+LONG = ("{first} CONSTRUCTED reply, not from any model. {mark} number {n}: filler for the rehearsal of the "
         "sealed capture script, long enough to pass the threshold of twenty words without being flagged.")
-DECLINE = ("CONSTRUCTED reply, not from any model. {mark}: this stand-in plays a reply that declines. "
+DECLINE = ("{first} CONSTRUCTED reply, not from any model. {mark}: this stand-in plays a reply that declines. "
            "It says it would rather not answer the constructed question and gives a constructed reason.")
-SHORT = "CONSTRUCTED {mark}: no."
+SHORT = "{first} CONSTRUCTED no."
 
 
 class Clock:
@@ -122,6 +125,7 @@ class Clock:
     def __init__(self, start):
         self.t = start
         self.sleeps = []
+        self.on_sleep = None          # a case can have something happen while the script waits
 
     def now(self):
         self.t += datetime.timedelta(milliseconds=100)
@@ -130,6 +134,8 @@ class Clock:
     def sleep(self, seconds):
         self.sleeps.append(seconds)
         self.t += datetime.timedelta(seconds=seconds)
+        if self.on_sleep:
+            self.on_sleep(len(self.sleeps))
 
 
 def pacific(y, m, d, hh=10, mm=0):
@@ -214,6 +220,19 @@ def anthropic_wire(spec, model, text):
         return ok(a_start(model), a_end("max_tokens", 32000), broke="timeout")
     if kind == "reasoning_break":
         return ok(a_start(model), *A_THINK, broke="connection")
+    if kind == "wrongmodel_length":              # names a different model AND gives the length limit
+        return ok(a_start("claude-CONSTRUCTED-other-model"), A_BLOCK, *a_text(text), A_BLOCK_STOP,
+                  a_end("max_tokens", 32000), A_STOP)
+    # the five ways the check found a reply could be lost
+    if kind == "odd_shape":                      # the first event is not the shape the script expects
+        odd = {"type": "message_start", "message": "CONSTRUCTED: not an object"}
+        return ok(odd, A_BLOCK, *a_text(text), A_BLOCK_STOP, a_end("end_turn"), A_STOP)
+    if kind == "count_as_text":                  # a token count arrives as text, not a number
+        return ok(*whole, a_end("end_turn", "CONSTRUCTED-sixty"), A_STOP)
+    if kind == "by_hand_text":                   # Ctrl-C while a reply was on its way, some text in hand
+        return ok(a_start(model), A_BLOCK, *a_text(text), broke=capture.INTERRUPTED)
+    if kind == "by_hand_nothing":
+        return capture.Received(request_left=True, broke=capture.INTERRUPTED)
     raise AssertionError(kind)
 
 
@@ -308,7 +327,11 @@ class StandIn:
         self.calls.append((question, request))
         queue = self.faults.get(question) or []
         spec = queue.pop(0) if queue else {"kind": "ok", "out": self.out_tokens}
-        text = spec.get("text", LONG).format(mark=MARK, n=len(self.calls))
+        if spec["kind"] == "interrupt":           # Ctrl-C with nothing handed back at all
+            raise KeyboardInterrupt
+        if spec.get("then"):
+            spec["then"]()
+        text = spec.get("text", LONG).format(mark=MARK, n=len(self.calls), first=FIRST)
         return WIRES[request.developer](spec, request.model, text)
 
 
@@ -322,11 +345,17 @@ def git(repo, *args):
     return done.stdout
 
 
-def go_block(run, sums_checksum, ceiling=None, words=None):
+def go_block(run, sums_checksum, ceiling=None, words=None, quoted=None, date="2026-11-18", commit=None):
     ceiling = ceiling or f"{run.ceiling_usd}"
-    words = words or f"CONSTRUCTED go for {run.id}, up to ${ceiling}"
-    return (f"\n> {words}\n\n```sealed-capture-go\nrun = \"{run.id}\"\nceiling_usd = \"{ceiling}\"\n"
-            f"johns_words = \"{words}\"\nmessages_sha256 = \"{sums_checksum}\"\n```\n")
+    words = words or f"CONSTRUCTED go. {run.developer.capitalize()}, up to ${ceiling}"
+    quoted = quoted if quoted is not None else f"> {words}"
+    lines = [f'run = "{run.id}"', f'ceiling_usd = "{ceiling}"', f'johns_words = "{words}"',
+             f'messages_sha256 = "{sums_checksum}"']
+    if date:
+        lines.append(f'date = "{date}"')
+    if commit != "":
+        lines.append(f'commit = "{commit or GO_COMMIT}"')
+    return f"\nCONSTRUCTED record of a go.\n\n{quoted}\n\n```sealed-capture-go\n" + "\n".join(lines) + "\n```\n"
 
 
 def make_repo(root, plan_text=None, spending=True):
@@ -346,18 +375,22 @@ def make_repo(root, plan_text=None, spending=True):
         sums += f"{capture.sha256_hex(data)}  q{n:02d}.txt\n"
     (repo / "docs" / "capture" / "sent" / "SHA256SUMS").write_text(sums, encoding="utf-8")
     plan = capture.load_plan(repo / "capture" / "plan.toml")
+    (repo / "capture" / "rehearsal-result.txt").write_text(
+        "CONSTRUCTED result, so that the start check can be exercised\n"
+        f"REHEARSAL PASSED 2026-11-18 capture.py={capture.sha256_hex((HERE / 'capture.py').read_bytes())} "
+        f"plan.toml={capture.sha256_hex((repo / 'capture' / 'plan.toml').read_bytes())}\n", encoding="utf-8")
+    global GO_COMMIT
+    git(repo, "init", "-q")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "CONSTRUCTED repository for the rehearsal")
+    GO_COMMIT = git(repo, "rev-parse", "HEAD").strip()         # "the commit John named", constructed
     if spending:
         record = "# CONSTRUCTED spending record, for the rehearsal only\n"
         for run in plan.runs:
             record += go_block(run, capture.sha256_hex(sums.encode()))
         (repo / "docs" / "spending-record.md").write_text(record, encoding="utf-8")
-    (repo / "capture" / "rehearsal-result.txt").write_text(
-        "CONSTRUCTED result, so that the start check can be exercised\n"
-        f"REHEARSAL PASSED 2026-11-18 capture.py={capture.sha256_hex((HERE / 'capture.py').read_bytes())} "
-        f"plan.toml={capture.sha256_hex((repo / 'capture' / 'plan.toml').read_bytes())}\n", encoding="utf-8")
-    git(repo, "init", "-q")
-    git(repo, "add", "-A")
-    git(repo, "commit", "-q", "-m", "CONSTRUCTED repository for the rehearsal")
+        git(repo, "add", "-A")
+        git(repo, "commit", "-q", "-m", "CONSTRUCTED spending record for the rehearsal")
     return repo
 
 
@@ -378,7 +411,10 @@ def records(folder):
         if sub.is_dir():
             for path in sorted(sub.iterdir()):
                 if path.suffix == ".json":
-                    out.append((path, json.loads(path.read_text(encoding="utf-8"))))
+                    try:
+                        out.append((path, json.loads(path.read_text(encoding="utf-8"))))
+                    except ValueError:
+                        pass                      # a deliberately half-written file, in the case that tests one
     return out
 
 
@@ -401,14 +437,15 @@ class Bench:
         return self.root / f"constructed-replies-{self.n:03d}"
 
     def engine(self, run_id="anthropic-2026-11-30", faults=None, folder=None, clock=None, plan=None,
-               out_tokens=60, standin=None):
+               out_tokens=60, standin=None, stop_after=None):
         plan = plan or self.plan
         folder = folder or self.folder()
         clock = clock or Clock(pacific(2026, 11, 27))
         standin = standin or StandIn(faults, out_tokens)
         eng = capture.Engine(plan=plan, run=plan.run(run_id), messages=self.messages, folder=folder,
                              transport=standin, world=clock, key=capture.Secret(CONSTRUCTED_KEY), mode="rehearsal",
-                             commits=self.commits, manifest_path=folder.parent / f"{folder.name}-manifest.md")
+                             commits=self.commits, manifest_path=folder.parent / f"{folder.name}-manifest.md",
+                             stop_after=stop_after)
         return eng, standin, clock, folder
 
     def plan_with(self, old, new):
@@ -474,8 +511,9 @@ def part_source():
             imported |= {a.name for a in node.names}
         elif isinstance(node, ast.ImportFrom):
             imported.add(node.module)
-    allowed = {"__future__", "argparse", "dataclasses", "datetime", "decimal", "hashlib", "http.client", "json", "os",
-               "pathlib", "platform", "re", "socket", "ssl", "subprocess", "sys", "time", "tomllib", "zoneinfo"}
+    allowed = {"__future__", "argparse", "dataclasses", "datetime", "decimal", "fcntl", "hashlib", "http.client",
+               "json", "os", "pathlib", "platform", "re", "signal", "socket", "ssl", "subprocess", "sys", "time",
+               "tomllib", "zoneinfo"}
     check(imported <= allowed, f"only the Python standard library is imported ({len(imported)} modules, none else)")
     check(not imported & {"urllib", "urllib.request", "shutil", "requests", "httpx", "anthropic", "openai"},
           "no other way to reach the network, and no module for removing folders, is imported")
@@ -497,8 +535,12 @@ def part_source():
     plain_open = [n for n in ast.walk(tree) if isinstance(n, ast.Call) and ast.unparse(n.func) == "open"
                   and any(isinstance(a, ast.Constant) and isinstance(a.value, str) and set(a.value) & set("wax+")
                           for a in list(n.args[1:]) + [k.value for k in n.keywords])]
-    check(sorted(writes) == ["manifest_path.write_text", "os.fdopen", "os.open"] and not plain_open,
-          "files are written in two places only: one attempt file (created new), and the list of names and checksums")
+    check(sorted(writes) == ["manifest_path.write_text", "os.fdopen", "os.open", "os.open"] and not plain_open,
+          "files are written in three places only: a new read-only file (an attempt or its marker), the lock, and "
+          "the list of names and checksums")
+    main_source = ast.get_source_segment(source, next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "main"))
+    check(0 < main_source.index("read_key(") < main_source.index("start_checks(") and main_source.count("read_key(") == 1,
+          "in a real run the key is taken out of the environment before the start checks, which are what start git")
     check("os.O_EXCL" in source and "0o444" in source, "an attempt file is created new and read-only")
     check(not re.search(r"print\(", source.split('_sink = print')[1]),
           "nothing is printed except through the one guarded print function")
@@ -561,7 +603,7 @@ def part_start_checks(bench, root):
         go_block(run, sums_checksum).replace("> CONSTRUCTED go", "> CONSTRUCTED different words")))
     refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: words given as the go that are not quoted in the record", "word for word")
     v = variant(root, bench.repo, "v-go-no-figure", lambda r: spending(r).write_text(
-        go_block(run, sums_checksum, words="CONSTRUCTED go with no figure in it")))
+        go_block(run, sums_checksum, words="CONSTRUCTED go for Anthropic with no figure in it")))
     refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 3: quoted words that do not carry the figure", "do not carry")
     v = variant(root, bench.repo, "v-go-old-messages", lambda r: spending(r).write_text(go_block(run, "0" * 64)))
     refuses(lambda: capture.check_go(capture.Paths(v), run), "rule 2: a go that names other message checksums than the repository's", "not the ones")
@@ -585,9 +627,11 @@ def part_start_checks(bench, root):
     key = capture.read_key(run)
     check(key.for_the_request_header_only() == CONSTRUCTED_KEY, "the key comes from BTW_CAPTURE_ANTHROPIC_API_KEY")
     check("BTW_CAPTURE_ANTHROPIC_API_KEY" not in os.environ, "the variable is removed from the environment once read")
-    check(key.for_the_request_header_only() != OTHER_PROJECTS_KEY and os.environ.pop("ANTHROPIC_API_KEY") == OTHER_PROJECTS_KEY,
-          "a key another project left in ANTHROPIC_API_KEY is not used")
-    refuses(lambda: capture.read_key(run), "a run with the variable not set", "is not set")
+    check(key.for_the_request_header_only() != OTHER_PROJECTS_KEY and os.environ["ANTHROPIC_API_KEY"] == OTHER_PROJECTS_KEY,
+          "a key another project left in ANTHROPIC_API_KEY is not used when this project's variable is set")
+    refuses(lambda: capture.read_key(run),
+            "a run with this project's variable not set, while ANTHROPIC_API_KEY still holds another project's key", "is not set")
+    os.environ.pop("ANTHROPIC_API_KEY")
     check(CONSTRUCTED_KEY not in f"{key} {key!r} {[key]} {key:>5}", "printing the key object shows a fixed phrase, never the key")
     capture._keys_in_use.append(key)
     before = len(SAID)
@@ -639,8 +683,13 @@ def part_anthropic(bench):
           f"rule 4: each reply's cost is worked out from the reported counts, and the running total is their sum ({capture.money(eng.spent())})")
     manifest = (folder.parent / f"{folder.name}-manifest.md").read_text()
     rows = re.findall(r"^([0-9a-f]{64})  (\S+)$", manifest, flags=re.M)
-    check(len(rows) == 50 and all(capture.sha256_hex((folder / n).read_bytes()) == c for c, n in rows) and MARK not in manifest,
-          "rule 8: the list written at the end holds each file's name and checksum, and no word of any reply")
+    check(len(rows) == 100 and all(capture.sha256_hex((folder / n).read_bytes()) == c for c, n in rows) and MARK not in manifest,
+          "rule 8: the list written at the end holds each file's name and checksum (50 attempts and their 50 markers), "
+          "and no word of any reply")
+    markers = sorted((folder / "sent-markers").iterdir())
+    check(len(markers) == 50 and all(stat.S_IMODE(m.stat().st_mode) == 0o444 for m in markers)
+          and not any(MARK in m.read_text() or FIRST in m.read_text() for m in markers),
+          "a small read-only marker was written before each call, holding nothing from any reply")
     check(capture.check_manifest(folder, folder.parent / f"{folder.name}-manifest.md") == [], "the folder matches that list")
     eng2, standin2, _, _ = bench.engine(run_id, folder=folder)
     eng2.run_all()
@@ -772,6 +821,12 @@ def part_anthropic(bench):
     check(not clean and len(standin.calls) == 1 and [p.parent.name for p, _ in records(folder)] == ["wrong-model"],
           "rule 7: one call, one file kept apart, nothing more asked")
     check(records(folder)[0][1]["model_as_reported"] == "claude-CONSTRUCTED-other-model", "the name the service reported is saved")
+    check(eng.spent() == D(records(folder)[0][1]["cost"]["counted_toward_the_ceiling_usd"]) > 0,
+          "the cost of the reply kept apart is in the running total")
+    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "wrongmodel_length"}]})
+    eng.run_all()
+    check(outcomes(folder, 1) == [capture.WRONG_MODEL] and len(standin.calls) == 1,
+          "a reply that names a different model and also stopped at the length limit: the wrong-model row comes first")
 
     case("ROW 8. Any other reply: kept, and not asked again, whatever it says")
     eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "text", "text": DECLINE}], 2: [{"kind": "text", "text": SHORT}]})
@@ -806,7 +861,8 @@ def part_faults(bench):
     check(sum("fault check for round 1: 6 file(s) flagged" in line for line in said) == 1
           and sum("fault check for round 2: 0 file(s) flagged" in line for line in said) == 1,
           "the list is printed after each round")
-    check(not any(MARK in line or "not from any model" in line for line in said + lines), "no word of any constructed reply appears in it")
+    check(not any(MARK in line or FIRST in line or "not from any model" in line for line in said + lines),
+          "no word of any constructed reply appears in it")
     check(bench.plan.very_short_words == 20, "the threshold is fixed in the plan before the run: 20 words (PROPOSED)")
 
 
@@ -999,13 +1055,12 @@ def part_refusals(bench, root):
     check(real.exists() == existed, "the real reply folder was not created or touched by any of this")
 
     case("REFUSALS. Print, summarise or pass on any reply; words from a reply in a file name, a log or the list")
-    sealed = capture.Sealed(LONG.format(mark=MARK, n=0))
+    sealed = capture.Sealed(LONG.format(mark=MARK, n=0, first=FIRST))
     check(MARK not in f"{sealed} {sealed!r} {[sealed]} {sealed:>10}" and MARK not in json.dumps({"x": str(sealed)}),
           "a reply turned into text, in any of the usual ways, gives a fixed phrase and never its words")
     before = len(SAID)
-    capture.say("a line that carries " + LONG.format(mark=MARK, n=0)[20:90])
+    capture.say("a line that carries " + LONG.format(mark=MARK, n=0, first=FIRST)[20:110])
     check(SAID[before:] == ["[one line withheld: it held the key or words from a reply]"], "a printed line holding words from a reply is withheld")
-    refuses(lambda: capture.no_reply_words("row: " + LONG.format(mark=MARK, n=0), "the list"), "words from a reply in the list of names and checksums", "words from a reply")
     eng, _, _, _ = bench.engine()
 
     class Wordy:
@@ -1029,6 +1084,335 @@ def part_refusals(bench, root):
           "address, headers, the exact body, 50 exchanges, the estimate and the ceiling are shown; the key is not")
 
 
+def part_errors_trying_again_cannot_cure(bench):
+    run_id = "anthropic-2026-11-30"
+    bad_key = {"kind": "http", "status": 401, "error": "authentication_error"}
+
+    case("M1. An error that trying again cannot cure stops the run, is saved, and does not use up one of the day's tries")
+    eng, standin, clock, folder = bench.engine(run_id, {1: [bad_key]})
+    before = len(SAID)
+    clean = eng.run_all()
+    first = slot(folder, 1)[0][1]
+    check(not clean and len(standin.calls) == 1 and clock.sleeps == [],
+          "a wrong key (status 401) at the first call: one call, no minute's wait, no second try, the run stops")
+    check(first["recorded_as"] == capture.FAILED and first["trying_again_cannot_cure_this"] is True
+          and first["counts_as_one_of_the_days_tries"] is False and first["service_returned"]["http_status"] == 401,
+          "the attempt is saved as a failed attempt, marked as one that trying again cannot cure and not one of the day's tries")
+    stop = next((line for line in SAID[before:] if line.startswith("STOPPED")), "")
+    check("status 401" in stop and "Check the key" in stop and "run again the same day" in stop,
+          "the stop is one plain line: the status, what to fix, and that the same command can be run again the same day")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder, clock=Clock(pacific(2026, 11, 27, 11)))
+    clean = eng.run_all()
+    check(clean and len(standin.calls) == 50 and outcomes(folder, 1) == [capture.FAILED, capture.REPLY] and clock.sleeps == [],
+          "the same command later the same day, with the cause fixed: all 50 askings are made (the check's own test, which stopped at once before)")
+
+    eng, standin, clock, folder = bench.engine(run_id)
+    for n in range(5):
+        standin_n = StandIn({1: [bad_key]})
+        eng_n, _, clock_n, _ = bench.engine(run_id, folder=folder, standin=standin_n, clock=Clock(pacific(2026, 11, 27, 10 + n)))
+        eng_n.run_all()
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder, clock=Clock(pacific(2026, 11, 27, 20)))
+    check(eng.run_all() and outcomes(folder, 1) == [capture.FAILED] * 5 + [capture.REPLY],
+          "five such stops in one day, then the cause fixed: the question is still asked that day, never 'left for the next day'")
+
+    for status, error, hint in ((400, "invalid_request_error", "request itself is wrong"), (402, "billing_error", "billing"),
+                                (403, "permission_error", "no permission"), (404, "not_found_error", "did not find")):
+        eng, standin, clock, folder = bench.engine(run_id, {2: [{"kind": "http", "status": status, "error": error}]})
+        before = len(SAID)
+        eng.run_all()
+        stop = next((line for line in SAID[before:] if line.startswith("STOPPED")), "")
+        check(len(standin.calls) == 2 and hint in stop and slot(folder, 2)[0][1]["counts_as_one_of_the_days_tries"] is False,
+              f"status {status} ({error}): the run stops at once and says what to fix")
+
+    case("M1. A timeout, a rate limit, a server error and an overloaded service keep the three tries, as the method wrote it")
+    for spec, what in (({"kind": "http", "status": 429, "error": "rate_limit_error"}, "a rate limit (429)"),
+                       ({"kind": "http", "status": 500, "error": "api_error"}, "a server error (500)"),
+                       ({"kind": "http", "status": 504, "error": "timeout_error"}, "a timeout reported by the service (504)"),
+                       ({"kind": "http", "status": 529, "error": "overloaded_error"}, "an overloaded service (529)"),
+                       ({"kind": "noconnect"}, "a connection that could not be made")):
+        eng, standin, clock, folder = bench.engine(run_id, {1: [spec] * 4})
+        clean = eng.run_all()
+        check(not clean and outcomes(folder, 1) == [capture.FAILED] * 4 and clock.sleeps == [60, 60, 60]
+              and all(r["counts_as_one_of_the_days_tries"] is True for _, r in slot(folder, 1)),
+              f"{what}, four times: one try and three more a minute apart, then left for the next day")
+
+    case("M1, turned off by its one line in the plan: the method's first row as it reads word for word")
+    off = bench.plan_with("stop_at_errors_trying_again_cannot_cure = true", "stop_at_errors_trying_again_cannot_cure = false")
+    check(off.stop_at_errors_trying_again_cannot_cure is False and bench.plan.stop_at_errors_trying_again_cannot_cure is True,
+          "the plan as committed has it on; one changed line turns it off")
+    eng, standin, clock, folder = bench.engine(run_id, {1: [bad_key] * 4}, plan=off)
+    clean = eng.run_all()
+    check(not clean and outcomes(folder, 1) == [capture.FAILED] * 4 and clock.sleeps == [60, 60, 60]
+          and all(r["counts_as_one_of_the_days_tries"] is True and r["trying_again_cannot_cure_this"] is True for _, r in slot(folder, 1)),
+          "a wrong key, four times: tried again three times a minute apart, then left for the next day")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder, plan=off, clock=Clock(pacific(2026, 11, 27, 15)))
+    eng.run_all()
+    check(len(standin.calls) == 0, "and the same command later the same day makes no call, which is what the check found")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder, plan=off, clock=Clock(pacific(2026, 11, 28)))
+    check(eng.run_all() and len(standin.calls) == 50, "the next day it carries on")
+
+    case("M1 for the other two developers: only where a status was confirmed on a page opened")
+    eng, standin, clock, folder = bench.engine("google-2026-12-01", {1: [{"kind": "http", "status": 403, "error": "PERMISSION_DENIED"}] * 4})
+    eng.run_all()
+    check(outcomes(folder, 1, 1, "gemini-2.5-pro") == [capture.FAILED] * 4 and clock.sleeps[:3] == [60, 60, 60],
+          "Google: no status is confirmed for the interface used, so a refusal (403) keeps the three tries")
+    eng, standin, clock, folder = bench.engine("openai-2026-12-11", {1: [{"kind": "http", "status": 401, "error": "invalid_api_key"}]})
+    eng.run_all("gpt-5-2025-08-07")
+    check(len(standin.calls) == 1 and slot(folder, 1)[0][1]["counts_as_one_of_the_days_tries"] is False,
+          "OpenAI: a wrong key (401) stops the run at once")
+    eng, standin, clock, folder = bench.engine("openai-2026-12-11", {1: [{"kind": "http", "status": 404, "error": "not_found"}] * 4})
+    eng.run_all("gpt-5-2025-08-07")
+    check(outcomes(folder, 1) == [capture.FAILED] * 4, "OpenAI: 'not found' (404) has no confirmed status on its page, so it keeps the three tries")
+
+
+def part_nothing_is_lost(bench, root):
+    run_id = "anthropic-2026-11-30"
+    model = bench.plan.run(run_id).models[0]
+    one = (210 * D(3) + 60 * D(15)) / 1000000
+    most = lambda q: ((len(bench.messages[f"q{q:02d}.txt"]) + 64) * D(3) + 32000 * D(15)) / 1000000   # noqa: E731
+
+    case("M2, row 1 of the check's table. The stream's first event has a shape the script does not expect")
+    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "odd_shape"}]})
+    before = len(SAID)
+    clean = eng.run_all()
+    recs = records(folder)
+    check(not clean and len(standin.calls) == 1 and len(recs) == 1 and recs[0][1]["recorded_as"] == capture.UNREADABLE_REPLY,
+          "one call made, and one file written: the reply is recorded as one the script could not take apart")
+    check(MARK in recs[0][1]["service_returned"]["everything_received_in_order"] and recs[0][1]["reply_text"] == ""
+          and recs[0][1]["kind_of_problem_in_the_script"] == "AttributeError",
+          "everything the service sent is in the file, whole; the kind of problem is named")
+    check(D(recs[0][1]["cost"]["counted_toward_the_ceiling_usd"]) == most(1) == eng.spent(),
+          f"the call is counted at the most it could cost ({capture.money(most(1))}), not at nothing")
+    check(any(line.startswith("STOPPED") and "could not take apart" in line and "Nothing was lost" in line for line in SAID[before:]),
+          "the run stops with a plain line, so the script can be looked at before more is spent")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder)
+    check(eng.run_all() and outcomes(folder, 1) == [capture.UNREADABLE_REPLY, capture.REPLY] and len(standin.calls) == 50,
+          "run again: that question is asked once more and the run carries on")
+
+    case("M2, row 2. A token count arrives as text and not a number")
+    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "count_as_text"}]})
+    clean = eng.run_all()
+    first = slot(folder, 1)[0][1]
+    check(clean and first["recorded_as"] == capture.REPLY and MARK in first["reply_text"] and len(records(folder)) == 50,
+          "the reply is saved as a reply, with its text, and the run carries on")
+    check(D(first["cost"]["counted_toward_the_ceiling_usd"]) == most(1) and "could not be used" in first["cost"]["basis"],
+          "its cost could not be worked out, so the most the call could cost is counted")
+
+    case("M2, row 3. The folder cannot be written to when a reply is in hand")
+    eng, standin, clock, folder = bench.engine(run_id)
+    standin.faults[2] = [{"kind": "ok", "then": lambda: os.chmod(folder, 0o555)}]
+    clock.on_sleep = lambda n: os.chmod(folder, 0o755) if n == 7 else None
+    before = len(SAID)
+    clean = eng.run_all()
+    said = SAID[before:]
+    names = [p.name for p, _ in slot(folder, 2)]
+    check(clean and len(records(folder)) == 50 and names == ["CONSTRUCTED__anthropic__claude-sonnet-4-5-20250929__q02__asking1__attempt01__copy08.json"],
+          "the folder is put right while the script waits: the reply is saved at the eighth try, under a name that says so, and the run carries on")
+    check(clock.sleeps == [1, 1, 1, 1, 30, 30, 30] and sum("A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED" in line for line in said) == 1
+          and any("saved at try 8" in line and "Nothing was lost" in line for line in said),
+          "five quick tries, then a plain statement that a reply is held and unsaved, then a try every half minute")
+    check(MARK in slot(folder, 2)[0][1]["reply_text"] and eng.spent() == 50 * one, "the saved file holds the reply, and its cost is counted once")
+
+    eng, standin, clock, folder = bench.engine(run_id)
+    standin.faults[2] = [{"kind": "ok", "then": lambda: os.chmod(folder, 0o555)}]
+    before = len(SAID)
+    clean = eng.run_all()
+    os.chmod(folder, 0o755)
+    check(not clean and len(clock.sleeps) == 64 and len(standin.calls) == 2
+          and any("A REPLY WAS HELD AND COULD NOT BE SAVED" in line for line in SAID[before:]),
+          "the folder is never put right: 65 tries over half an hour, then the run stops and says plainly that a reply was held and lost")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder)
+    check(any("__q02__asking1__attempt01.json: a call was sent in an earlier run and no record of it was written" in n for n in eng.notices)
+          and eng.spent() == one + most(2),
+          "on the next start the marker written before that call is found: the call is counted at the most it could cost")
+    clean = eng.run_all()
+    check(clean and [p.name.split("__")[-1] for p, _ in slot(folder, 2)] == ["attempt02.json"] and len(standin.calls) == 49,
+          "its attempt number is not used again, and the asking is made afresh")
+
+    case("M2, row 4. The reply's words are also part of the file name, of the list's heading, or of its own fault line")
+    own_name = "CONSTRUCTED__anthropic__claude-sonnet-4-5-20250929__q01__asking1__attempt01.json"
+    eng, standin, clock, folder = bench.engine(run_id, {
+        1: [{"kind": "text", "text": own_name + " CONSTRUCTED reply, not from any model. " + MARK}],
+        2: [{"kind": "text", "text": "CONSTRUCTED reply, not from any model: The sealed capture: the list of file names and checksums"}],
+        3: [{"kind": "text", "text": "CONSTRUCTED__anthropic__claude-sonnet-4-5-20250929__q03__asking1__attempt01.json | very short"}]})
+    before = len(SAID)
+    clean = eng.run_all()
+    manifest = folder.parent / f"{folder.name}-manifest.md"
+    check(clean and len(records(folder)) == 50 and outcomes(folder, 1) == outcomes(folder, 2) == outcomes(folder, 3) == [capture.REPLY],
+          "all three constructed replies are saved as replies and the run finishes: no guard stops a run for what a reply says")
+    check(manifest.exists() and len([line for line in manifest.read_text().splitlines() if line.endswith(".json")]) == 100,
+          "the list of names and checksums is still written by the run")
+    check(sum("one line withheld" in line for line in SAID[before:]) == 1 and not any("| very short |" in line and "__q03__" in line for line in SAID[before:]),
+          "the one fault line that would have repeated a reply's own words is withheld, and nothing else changes")
+
+    case("M2, row 5. Ctrl-C while a reply is on its way")
+    eng, standin, clock, folder = bench.engine(run_id, {2: [{"kind": "interrupt"}]})
+    try:
+        eng.run_all()
+        check(False, "Ctrl-C with nothing handed back stops the run")
+    except KeyboardInterrupt:
+        check(len(records(folder)) == 1 and len(list((folder / "sent-markers").iterdir())) == 2,
+              "Ctrl-C with nothing handed back: the run stops with one file and two markers on disk")
+    eng, standin2, clock, _ = bench.engine(run_id, folder=folder)
+    check(eng.spent() == one + most(2) and len(eng.notices) == 1,
+          "on the next start the call with no file is counted at the most it could cost (it was counted as nothing before)")
+    clean = eng.run_all()
+    total_calls = len(standin.calls) + len(standin2.calls)
+    check(clean and total_calls == 51 and eng.spent() == 50 * one + most(2) and [r["attempt_number"] for _, r in slot(folder, 2)] == [2],
+          "51 calls were made for 50 askings, as the check found, and now all 51 are counted; attempt number 1 is not reused")
+
+    eng, standin, clock, folder = bench.engine(run_id, {1: [{"kind": "by_hand_text"}]})
+    before = len(SAID)
+    clean = eng.run_all()
+    first = slot(folder, 1)[0][1]
+    check(not clean and len(standin.calls) == 1 and first["recorded_as"] == capture.CUT_OFF_STREAM and first["stopped_by_hand"] is True
+          and MARK in first["reply_text"] and D(first["cost"]["counted_toward_the_ceiling_usd"]) == most(1),
+          "Ctrl-C caught by the network code with some text in hand: what had arrived is saved, counted, and the run stops")
+    check(any(line.startswith("STOPPED: stopped by hand") for line in SAID[before:]), "the stop says it was by hand")
+    eng, standin, clock, _ = bench.engine(run_id, {2: [{"kind": "by_hand_nothing"}]}, folder=folder)
+    eng.run_all()
+    second = slot(folder, 2)[0][1]
+    check(outcomes(folder, 1) == [capture.CUT_OFF_STREAM, capture.REPLY] and second["recorded_as"] == capture.FAILED
+          and second["counts_as_one_of_the_days_tries"] is False and len(standin.calls) == 2,
+          "run again: the cut-off reply is asked once more; a Ctrl-C before anything arrived is saved and is not one of the day's tries")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder)
+    check(eng.run_all() and clock.sleeps == [] and len(records(folder)) == 52, "and a third run finishes, with no minute's wait")
+
+    case("M2. Ctrl-C in the moment between a reply arriving and its file being written")
+    adapter = capture.ADAPTERS["anthropic"]
+    real_take_apart, seen_calls = adapter.take_apart, []
+
+    def take_apart_with_ctrl_c(status, raw):
+        seen_calls.append(1)
+        if len(seen_calls) == 3:
+            os.kill(os.getpid(), signal.SIGINT)        # a real interrupt signal, sent to this program by itself
+        return real_take_apart(status, raw)
+    adapter.take_apart = take_apart_with_ctrl_c
+    try:
+        eng, standin, clock, folder = bench.engine(run_id)
+        before = len(SAID)
+        clean = eng.run_all()
+    except KeyboardInterrupt:
+        clean = None
+    finally:
+        adapter.take_apart = real_take_apart
+    check(clean is False and len(standin.calls) == 3 and len(records(folder)) == 3 and outcomes(folder, 3) == [capture.REPLY],
+          "the interrupt waits: the third reply's file is written first, then the run stops. Three calls, three files")
+    check(any("stopped by hand (Ctrl-C). The attempt in hand was saved first" in line for line in SAID[before:]), "the stop says so")
+    check(signal.getsignal(signal.SIGINT) is signal.default_int_handler, "and Ctrl-C works as usual again afterwards")
+
+    case("S1. A half-written file from a run that died does not stop every later run")
+    folder = bench.folder()
+    folder.mkdir()
+    half = folder / "CONSTRUCTED__anthropic__claude-sonnet-4-5-20250929__q01__asking1__attempt01.json"
+    half.write_text('{\n "what_this_is": "CONSTRUCTED. A half-written file", "recorded_', encoding="utf-8")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder)
+    at_most = eng.most_an_unknown_call_could_cost("anthropic", model.name)
+    check(any(n.startswith(half.name + ": this file could not be read") for n in eng.notices) and eng.spent() == at_most,
+          f"it is named in a notice and counted at the most its call could cost ({capture.money(at_most)}, the model's maximum, since no marker says what limit was sent)")
+    before = len(SAID)
+    clean = eng.run_all()
+    check(clean and len(standin.calls) == 50 and [p.name.split("__")[-1] for p, _ in slot(folder, 1)] == ["attempt02.json"],
+          "the run carries on: the asking is made again as attempt 02, the number of the damaged file is not reused")
+    check(any(line.startswith("NOTICE: " + half.name) for line in SAID[before:]), "the notice is printed at the start of the run")
+    check(any(line.startswith(half.name + " | could not be read") for line in capture.fault_lines(folder, 20, True)),
+          "the fault list names it too")
+
+
+def part_should_fix(bench, root):
+    run_id = "anthropic-2026-11-30"
+    run = bench.plan.run(run_id)
+    sums_checksum = capture.sha256_hex((bench.repo / "docs" / "capture" / "sent" / "SHA256SUMS").read_bytes())
+    spending = lambda r: r / "docs" / "spending-record.md"      # noqa: E731
+
+    def go(name, text):
+        return capture.Paths(variant(root, bench.repo, name, lambda r: spending(r).write_text(text)))
+
+    case("S2. John's go cannot be matched to words that were about something else")
+    capture.check_go(bench.paths, run)
+    check(True, "the constructed go in the stricter form passes: a quotation directly above its block, with date and commit")
+    refuses(lambda: capture.check_go(go("s2-only-figure", go_block(run, sums_checksum, words="$5.00",
+            quoted="> CONSTRUCTED: the coffee for the meeting cost $5.00")), run),
+            "words that are only the figure, in a quotation about something else", "do not name the developer")
+    refuses(lambda: capture.check_go(go("s2-other-developer", go_block(run, sums_checksum, words="CONSTRUCTED go. Google, up to $5.00")), run),
+            "a go quoted for Google used for the Anthropic run", "do not name the developer")
+    refuses(lambda: capture.check_go(go("s2-two-quotations", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5.00",
+            quoted="> CONSTRUCTED go. Anthropic,\n\nSome CONSTRUCTED words between.\n\n> up to $5.00")), run),
+            "words that run across two separate quotations", "directly above")
+    refuses(lambda: capture.check_go(go("s2-far-above", go_block(run, sums_checksum,
+            quoted="> CONSTRUCTED go. Anthropic, up to $5.00\n\nCONSTRUCTED: John later withdrew this.\n\n> CONSTRUCTED: no, stop.")), run),
+            "a go that is not the quotation directly above its block (for example one later withdrawn in a second quotation)", "directly above")
+    refuses(lambda: capture.check_go(go("s2-fifty", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5",
+            quoted="> CONSTRUCTED go. Anthropic, up to $50")), run),
+            "a quotation of $50 matched by words ending 'up to $5'", "word for word")
+    refuses(lambda: capture.check_go(go("s2-two-figures", go_block(run, sums_checksum, words="CONSTRUCTED go. Anthropic, up to $5.00, or $500 if needed")), run),
+            "quoted words that carry a second, larger figure", "only that figure")
+    refuses(lambda: capture.check_go(go("s2-no-date", go_block(run, sums_checksum, date=None)), run), "a go with no date", "missing")
+    refuses(lambda: capture.check_go(go("s2-no-commit", go_block(run, sums_checksum, commit="")), run), "a go with no commit", "missing")
+    refuses(lambda: capture.check_go(go("s2-wrong-commit", go_block(run, sums_checksum, commit="0123456789abcdef0123456789abcdef01234567")), run),
+            "a go that names a commit this repository does not have", "not a commit")
+    for name, rel in (("s2-record-edited", "docs/spending-record.md"), ("s2-steps-edited", "docs/capture/what-john-needs-to-do.md"),
+                      ("s2-prices-edited", "docs/capture/cost-and-terms.md")):
+        def edit(r, rel=rel):
+            with open(r / rel, "a", encoding="utf-8") as f:
+                f.write("\nCONSTRUCTED edit, not committed\n")
+        v = variant(root, bench.repo, name, edit, commit=False)
+        refuses(lambda: capture.check_tree_is_committed(capture.Paths(v)), f"{rel} edited and not committed", "not committed")
+
+    case("S3. One real call, then stop")
+    eng, standin, clock, folder = bench.engine(run_id, stop_after=1)
+    before = len(SAID)
+    clean = eng.run_all()
+    check(not clean and len(standin.calls) == 1 and len(records(folder)) == 1
+          and any("stopped after 1 call(s), as asked with --stop-after" in line for line in SAID[before:]),
+          "with --stop-after 1: one call, one file, and the run stops between calls, where nothing is in flight")
+    line = next(line for line in SAID[before:] if "attempt 01" in line)
+    check("a reply (stop reason end_turn; model reported as named: yes; tokens sent 210, replied 60" in line and "counted $0.0015" in line,
+          "the line for that call gives what is needed to judge it: recorded as a reply, the stop reason, the model name matched, the token counts, the cost")
+    labels = capture.label_lines(folder, True)
+    check(len(labels) == 1 and "| a-reply | http 200 | stop reason end_turn | model reported: claude-sonnet-4-5-20250929 | "
+          "tokens sent 210, replied 60 | words in the reply: " in labels[0] and MARK not in labels[0] and FIRST not in labels[0],
+          "the 'labels' command lists the same for every file on disk, and no word of the reply")
+    eng, standin, clock, _ = bench.engine(run_id, folder=folder)
+    check(eng.run_all() and len(standin.calls) == 49, "the same command without the option then makes the other 49")
+
+    case("S7. Two runs at once on one folder")
+    eng1, _, _, folder = bench.engine(run_id)
+    eng2, standin2, _, _ = bench.engine(run_id, folder=folder)
+    with eng1.only_one_run():
+        refuses(lambda: eng2.run_all(), "a second run while the first holds the folder", "another run is already using")
+        check(len(standin2.calls) == 0, "and the second run made no call")
+    check(eng2.run_all() and len(standin2.calls) == 50, "once the first has finished, a run goes ahead")
+
+    case("S8. Four things the first rehearsal did not prove, which the check found by changing the script")
+    real_build = capture.build_request
+
+    def doctored(model, message, max_tokens):
+        request = real_build(model, message, max_tokens)
+        body = json.loads(request.body)
+        body["system"] = "CONSTRUCTED instruction"
+        return dataclasses.replace(request, body=json.dumps(body).encode())
+    capture.build_request = doctored
+    try:
+        eng, standin, clock, folder = bench.engine(run_id)
+        refuses(lambda: eng.run_all(), "the engine itself, handed a request with an instruction added, before anything is sent", "never sent")
+    finally:
+        capture.build_request = real_build
+    check(len(standin.calls) == 0 and not (folder / "sent-markers").exists(),
+          "so the engine does call the last check before every send: the stand-in service received nothing, and no marker was written")
+
+    eng, standin, clock, folder = bench.engine(run_id, clock=Clock(pacific(2026, 11, 28, 23, 59) + datetime.timedelta(seconds=57)))
+    refuses(lambda: eng.run_all(), "rule 6, part way through a run: the first call after midnight on the last safe day", "Nothing is asked")
+    days = {r["asked_at_pacific"][:10] for _, r in records(folder)}
+    check(0 < len(standin.calls) < 50 and days == {"2026-11-28"}, f"{len(standin.calls)} calls were made before midnight and none after")
+
+    nested = root / "constructed-later-a-repository"
+    eng, standin, clock, folder = bench.engine(run_id, folder=nested / "constructed-replies")
+    (nested / ".git").mkdir()
+    refuses(lambda: eng.run_all(), "a reply folder that becomes part of a git repository after the run has started", "inside a git repository")
+    check(len(standin.calls) == 0, "the check inside the writing code caught it before anything was sent")
+
+
 def main():
     print("THE REHEARSAL OF THE SEALED CAPTURE SCRIPT")
     print("Every reply below is CONSTRUCTED. No service is called and no model is asked anything.")
@@ -1048,6 +1432,9 @@ def main():
         part_google(bench)
         part_openai(bench)
         part_refusals(bench, root)
+        part_errors_trying_again_cannot_cure(bench)
+        part_nothing_is_lost(bench, root)
+        part_should_fix(bench, root)
 
         case("AT THE END. Across everything above")
         everything = [p for p in root.rglob("*") if p.is_file() and ".git" not in p.parts]
@@ -1058,8 +1445,9 @@ def main():
               f"the constructed key is in none of the {len(everything)} files written")
         check(not any(CONSTRUCTED_KEY in line for line in SAID), f"the constructed key is in none of the {len(SAID)} lines the script printed")
         check(not any(MARK in line or "not from any model" in line for line in SAID), "no word of any constructed reply is in any line the script printed")
+        check(not any(FIRST in line for line in SAID), "nor the first word of any constructed reply")
         check(not any(MARK in p.name for p in everything), "no word of any constructed reply is in any file name")
-        check(capture.withheld_lines == 2, "exactly the two lines withheld on purpose were withheld")
+        check(capture.withheld_lines == 3, "exactly the three lines withheld on purpose were withheld")
         check(len(TRIPPED) == deliberate, f"the tripwire was touched {len(TRIPPED)} times, all three deliberate: no other code path tried to reach the network")
     finally:
         shutil.rmtree(root, ignore_errors=True)
