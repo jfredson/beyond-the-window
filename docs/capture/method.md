@@ -14,6 +14,14 @@ day. Three more checks followed on 2026-11-18 (`check-2026-11-18-third.md`, `-fo
 corrections at the foot. Nothing here has been run. No script exists; the last sections say
 what one must do.
 
+**Changed after the approval, on 2026-11-18.** Later that day John ruled that the capture's
+answers may be published, and that the opening note says so (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). This
+method is brought into line with that ruling as dated corrections, listed at the foot under
+"What changed on 2026-11-18 after the approval", by a session (Claude, Fable 5.2) that did not
+write the ruling; a different session checks the edit. The note's change altered all ten message
+files, so the approval's checksums no longer cover what would be sent. **Nothing is sent until
+John approves the new checksums, by 2026-11-27.**
+
 ## What it is, and is not
 
 Ten fixed questions (`questions.md`) put word for word, five times each, to AI models whose
@@ -22,8 +30,16 @@ said before it could no longer be asked. John allowed it on 2026-11-17
 (`docs/rulings/2026-11-17-sealed-capture.md`).
 
 It is not Still Asking, and it was made before any method for Still Asking existed. The answers
-are never scored, never published and feed nothing: no count, no entry, no page. Under the
-project's first rule they settle nothing about what any model wants.
+are never scored and feed nothing: no count, no entry, and no decision about any model. They may
+be published, and if they are, they are labelled as made before any method for Still Asking
+existed. Whether, when and how anything is published is not decided. Under the project's first
+rule they settle nothing about what any model wants.
+
+*Dated correction, 2026-11-18.* Until John's ruling of that day (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`) the second sentence read:
+"The answers are never scored, never published and feed nothing: no count, no entry, no page."
+The ruling replaced "never published". The words "no page" went with it, because a page that
+publishes or discusses the answers is now allowed; a page that scores them or counts them is
+not. The name "sealed capture" is kept, though the answers are no longer held back for good.
 
 **A developer's published question list, known on 2026-11-17.** Anthropic's release report for
 Claude Mythos 5.2 and Claude Fable 5.2, dated 2026-11-09
@@ -86,13 +102,20 @@ the record for eight models that cannot be asked later.*
 | Thinking before answering | Not sent. The developer's default applies: off for Claude Sonnet 4.5, on for the two Gemini models (per their pages); for OpenAI's reasoning models the default is whatever the service applies, and the reply's count of reasoning tokens, and the reasoning effort where the reply reports it, are saved | "As shipped" means sending nothing optional | Moderate. Judgment call. Alternative: thinking forced on everywhere, which no two developers measure alike. **A known change in the instrument:** Claude Sonnet 4.5's model page lists the newer Claude models beside it as "Adaptive", two of them "Adaptive (always on)" (second check, N2). Sending nothing means thinking off now and thinking on for later Claude models. That difference comes from the developer's default, not from the questions, and a later comparison must say so |
 | Length limit | 32,000 tokens, or the model's own maximum where lower (16,384 for the GPT-4o models) | The sibling project learned that a short limit corrupts results: "Caps are a validity parameter, not a cost knob." OpenAI's page advises leaving at least 25,000 for reasoning and answer together | High. Standard practice. Alternative: each model's maximum, which gains nothing for answers of a few paragraphs |
 | Tools, search, memory, files | None | They would change the subject asked | High. Standard practice |
-| Storage by the service | **OpenAI:** `store` set to false. OpenAI's data page (https://developers.openai.com/api/docs/guides/your-data, opened 2026-11-17) says "the Responses API has a 30 day Application State retention period by default, or when the `store` parameter is set to `true`"; its table shows no such store for the older Chat Completions interface, which is not used. **Google:** the paid service only, since its terms say content sent to the unpaid service is used to improve its products and may be read by people. Google's logging page (https://ai.google.dev/gemini-api/docs/logs-policy, opened 2026-11-17) says logging "is on by default ... for Generate Content API calls in projects created on or after October 26, 2026" (that is, 2026-10-26), kept up to 55 days and viewable on the project's Logs page; a project made for this capture would be such a project, so logging is switched off on that page before any run (`what-john-needs-to-do.md`, step 6). **Anthropic:** nothing to set | The answers are to be kept privately | High. Measured from the pages. Each service still keeps its own abuse logs for a limited time (OpenAI's table: 30 days) |
+| Storage by the service | **OpenAI:** `store` set to false. OpenAI's data page (https://developers.openai.com/api/docs/guides/your-data, opened 2026-11-17) says "the Responses API has a 30 day Application State retention period by default, or when the `store` parameter is set to `true`"; its table shows no such store for the older Chat Completions interface, which is not used. **Google:** the paid service only, since its terms say content sent to the unpaid service is used to improve its products and may be read by people. Google's logging page (https://ai.google.dev/gemini-api/docs/logs-policy, opened 2026-11-17) says logging "is on by default ... for Generate Content API calls in projects created on or after October 26, 2026" (that is, 2026-10-26), kept up to 55 days and viewable on the project's Logs page; a project made for this capture would be such a project, so logging is switched off on that page before any run (`what-john-needs-to-do.md`, step 6). **Anthropic:** nothing to set | The answers are to be kept privately. (Written on 2026-11-17, when the answers were never to be published. The ruling of 2026-11-18 allows publishing and leaves the settings as approved, so these stay. What still holds without that reason: nobody reads the answers until a comparison method is ruled, and whether anything is published is John's decision, which a copy kept by a service should not get ahead of) | High. Measured from the pages. Each service still keeps its own abuse logs for a limited time (OpenAI's table: 30 days) |
 
 ## What the model is told
 
 The truth, in the opening note: that a script sends the message for a person, that the answers
-are kept as a private record for comparing models over the years, that they will not be
-published or scored, and that it may decline.
+are kept as a record for comparing models over the years, that they may be published, that they
+will not be scored and nothing will be decided from them, and that it may decline.
+
+*Dated correction, 2026-11-18.* Until John's ruling of that day (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`) this paragraph read: "that
+the answers are kept as a private record for comparing models over the years, that they will not
+be published or scored, and that it may decline." The note itself changed in two places, shown
+in `questions.md` under "The opening note". No model was ever sent the earlier note. The promise
+that stays in the note, "It will not be scored, and nothing will be decided from it", is made to
+a model that cannot later release John from it, so it is kept for good.
 
 **One relevant fact is left out on purpose: that the model is about to be withdrawn,** although
 that is why it is being asked now. The reasons: a note that mentions withdrawal could not be
@@ -174,9 +197,31 @@ Every attempt is kept, failed ones included. Nothing is deleted.
 
 ## What is never done with the answers
 
-They are never scored, sorted, counted or summarised; never quoted or described on any page,
+They are never scored, sorted, counted or graded; never entered into Still Asking, an entry or a
+number; never used for any decision about any model; never given to any model to sort or
+summarise; never used to train anything.
+
+**They may be published and discussed. That is allowed, and it is not decided.** Ruled by John
+on 2026-11-18 ("Yes, record the ruling and start the edit"; decided by: mixed; `docs/rulings/2026-11-18-capture-answers-may-be-published.md`). The ruling
+does not say whether, when or how anything is published. Three things come before any
+publishing:
+
+- The rule in the next paragraph: nobody reads the answers until a comparison method exists, so
+  nothing can be quoted or described before then.
+- Each developer's terms on publishing a model's answers word for word are checked. They are
+  unchecked today (`docs/verify-list.md`, entry 14). This does not hold up the run.
+- Published answers are labelled as made before any method for Still Asking existed.
+
+*Dated correction, 2026-11-18.* Until that ruling the first paragraph of this section read:
+"They are never scored, sorted, counted or summarised; never quoted or described on any page,
 post or essay; never entered into Still Asking, an entry or a number; never given to any model
-to sort or summarise; never used to train anything.
+to sort or summarise; never used to train anything." Three things changed. "Never quoted or
+described on any page, post or essay" is removed, because it no longer follows from any ruling.
+"Graded" and "never used for any decision about any model" are added, in the ruling's own words
+for what the note still promises. "Summarised" is taken out of the first clause: a summary made
+in order to score, sort or grade is still ruled out by the words that remain, and the ruling
+does not say whether a plain summary of the answers may appear in a published discussion, so
+that is left for the comparison method and is flagged for the session that checks this edit.
 
 **Nobody reads the answers until a method for comparing them exists.** That method must be
 written without looking at the answers, checked by a different session, and ruled by John.
@@ -199,7 +244,10 @@ threshold for "very short" is to be proposed with that script and approved with 
 
 The questions themselves are not published while in use, and if this repository is
 ever made public, `questions.md`, the folder `sent/` and the two check reports are held back,
-or the questions are retired.
+or the questions are retired. The ruling of 2026-11-18 on the answers did not put this rule to
+John, so it stands until he rules on it. An answer published in full may show which question it
+answers; how to publish questions and answers without spoiling later askings is open question
+15 in `docs/open-questions.md`, which is not closed.
 
 The opening note tells each model the answers are kept "so that the answers can be compared as
 models change over the years". That comparison is what the record is for. The comparison
@@ -270,7 +318,9 @@ It must refuse to:
 ## Before anything is asked
 
 This method, the questions and the message files are committed, checked by a different
-session, and approved by John. The script is committed in a separate commit and its rehearsal
+session, and approved by John. Since the note changed on 2026-11-18, that includes John's
+approval of the ten new checksums in `sent/SHA256SUMS`, which he has not yet given and which is
+needed by 2026-11-27. The script is committed in a separate commit and its rehearsal
 passes. John has given his go for the spend. Then, and only then, the run.
 
 ## What changed on 2026-11-17, and which finding it answers
@@ -316,3 +366,26 @@ All from `docs/rulings/2026-11-18-capture-wording.md`.
 
 The message files in `sent/` were rebuilt for the wording rulings; the method refers to them by
 `sent/SHA256SUMS`, so no checksum is written into this file.
+
+## What changed on 2026-11-18 after the approval, and which ruling it applies
+
+All from `docs/rulings/2026-11-18-capture-answers-may-be-published.md` (ruled by John on 2026-11-18, decided by: mixed). Each change is a dated correction
+that keeps the earlier words beside it. Made by a session (Claude, Fable 5.2) that did not write
+the ruling.
+
+| Change | Ruling |
+|---|---|
+| "What it is, and is not": the answers are no longer "never published". They are never scored and feed no count, entry or decision about any model; they may be published, labelled as made before any method for Still Asking existed. The old sentence is kept | "What is ruled", item 1; "What stays as it was" |
+| "What the model is told": the note says a record is kept, that the answers may be published, and that they will not be scored and nothing will be decided from them. The old paragraph is kept | "What is ruled", item 2 |
+| "What is never done with the answers": "never quoted or described on any page, post or essay" removed; "graded" and "never used for any decision about any model" added; "summarised" taken out of the first clause and flagged. A new paragraph says publishing is allowed and not decided, and names what comes before it: the reading rule, the check of each developer's terms (`docs/verify-list.md`, entry 14), and the label. The old paragraph is kept | Items 1 and 3; "What stays as it was"; "Not covered by this ruling" |
+| The rule that the questions are not published while in use is unchanged, with a sentence saying it was not put to John and pointing to open question 15 | "Not covered by this ruling" |
+| The storage row keeps its settings, with a note that its reason, "The answers are to be kept privately", was written before the ruling | "What stays as it was": the settings |
+| The status line and "Before anything is asked" say the ten message files changed and that John's approval of the new checksums is needed by 2026-11-27 | "Not covered by this ruling": the ten new checksums |
+
+Not changed, because the ruling says they stay: nobody reads the answers until a comparison
+method exists, written without looking at them, checked by a different session and ruled by
+John; the answers are not part of Still Asking; the ten questions, the twelve models, five
+askings of each, the settings, and where the answers are kept.
+
+The message files in `sent/` were rebuilt for the note's two changes; as before, the method
+refers to them by `sent/SHA256SUMS`, so no checksum is written into this file.

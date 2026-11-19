@@ -2,8 +2,11 @@
 
 **PROPOSED 2026-11-17. Steps 1 and 2 ruled by John on 2026-11-18, apart from one point.** The
 questions, the message files and the method were approved that day
-(`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed). Whether "it will not be
-published" is a promise kept for good was not put to him, and stays open. Steps 3 to 8 are
+(`docs/rulings/2026-11-18-capture-approval.md`, decided by: mixed). ~~Whether "it will not be
+published" is a promise kept for good was not put to him, and stays open.~~ **Ruled later on
+2026-11-18:** the answers may be published, and the opening note now says so (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by:
+mixed). That changed all ten message files, so **one new step is his: approve the ten new
+checksums, by 2026-11-27** (step 1, last point). Steps 3 to 8 are
 still his. Written by Claude (Fable 5.2). A list of the steps
 only John can take, in order. Until step 7, nothing is asked of any model and nothing is spent.
 
@@ -24,8 +27,25 @@ checked them, applied their fixes the same day. The section at the foot lists ea
      checksums were approved on 2026-11-18, after the fifth check.
    - ~~Whether the opening note should tell the model it is about to be withdrawn.~~ **Ruled
      2026-11-18: leave it out.**
-   - That "it will not be published" is a promise you are willing to keep for good. **Still
-     open:** the approval of 2026-11-18 did not put this to you as a separate question.
+   - ~~That "it will not be published" is a promise you are willing to keep for good.~~ ~~**Still
+     open:** the approval of 2026-11-18 did not put this to you as a separate question.~~ **Ruled
+     2026-11-18: the promise is taken out, and the answers may be published** (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`; decided by:
+     mixed). You asked whether there was "ever a solid reason to choose not to publish the
+     results, or if it makes sense to forget this whole question and just operate honestly from
+     the perspective that the work we are doing here is work that we plan to discuss with the
+     outside world". A session recommended that the answers may be published and that the note
+     say "it may be published", and you answered: "Yes, record the ruling and start the edit".
+     The note now says "That person is keeping a record of" and "Your answer will be saved
+     exactly as you give it, and it may be published. It will not be scored, and nothing will be
+     decided from it." Whether, when and how anything is published is not decided. The promise
+     that stays, "It will not be scored, and nothing will be decided from it", is one you keep
+     for good.
+   - **New, and still open: approve the ten new checksums, by 2026-11-27.** The note's two
+     changes altered every one of the ten message files, so your approval of 2026-11-18, which
+     named the earlier files by their checksums, does not cover what would now be sent. The new
+     checksums are in `sent/SHA256SUMS`. A different session checks the edit first. Nothing is
+     sent until you approve them. The date is the day everything must be done by for the first
+     withdrawal (the table below).
 
 2. **Read `method.md` and rule four things.**
    - ~~The method as a whole: approve, or mark changes.~~ **Ruled 2026-11-18: approved**, as it
@@ -116,7 +136,10 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 
 8. **After each run, nothing.** The script writes the list of file names and checksums, a
    session commits it and records the measured cost. Nobody opens the answers unless you have
-   ruled that someone may.
+   ruled that someone may. That holds although the answers may now be published (ruled
+   2026-11-18): publishing is allowed, not decided, and comes only after a comparison method is
+   ruled and each developer's terms on publishing replies have been checked
+   (`docs/verify-list.md`, entry 14).
 
 ## The last safe day for each date
 
@@ -171,3 +194,11 @@ day (`docs/rulings/2026-11-18-capture-approval.md`): the message files by their 
 method as a whole, the twelve models and where the answers are kept. The old wording is kept,
 struck through. The promise that "it will not be published" is kept for good was not put to him,
 and is marked still open. The status line says the same.
+
+**Dated correction, 2026-11-18, after John's ruling that the answers may be published** (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`,
+decided by: mixed). The status line and step 1 now mark the point about "it will not be
+published" as ruled, with his words as the ruling quotes them, and the old wording is kept,
+struck through. Step 1 gains one new point that is still open: the ten new checksums need his
+approval by 2026-11-27. Step 8 says the reading rule still holds. The paragraph above this one
+is left as it was written; its last two sentences are the record of what stood before the
+ruling. Made by a session (Claude, Fable 5.2) that did not write the ruling.

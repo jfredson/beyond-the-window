@@ -10,6 +10,15 @@ where I am unsure.
 This is the item left unchecked in `docs/verify-list.md`, entry 14 (the terms that govern a
 scripted run). I did not edit that file.
 
+**Dated correction, 2026-11-18.** This document was written when the capture's answers were
+never to be published, and Part 3 reasons from that in several places. On 2026-11-18 John ruled
+that the answers may be published (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). So the question of whether each
+developer's terms allow publishing a model's answers word for word is now raised, and it is
+unchecked. No terms page was opened or re-read for this correction, and nothing below says what
+any developer's terms allow on publishing. Each place that leaned on a private record is marked
+"Added 2026-11-18", with the earlier words left as they were. The check is made before anything
+is published and does not hold up the run. The section at the foot lists the changes.
+
 ## Part 1. Prices
 
 Prices are in United States dollars for each million tokens. A token is a piece of a word;
@@ -124,7 +133,8 @@ I could not settle.
   API keys".
 - **On keeping the answers:** section B says the customer "owns its Outputs". Nothing in the
   terms I read limits storing them privately. The same section says Anthropic may not train
-  on what is sent or replied.
+  on what is sent or replied. *Added 2026-11-18:* this was read with storing in mind only. Whether these terms
+  limit publishing the answers word for word was not looked for, and is unchecked.
 - **On asking such questions:** the terms point to the Usage Policy,
   https://www.anthropic.com/legal/aup, marked effective 2026-11-12. I read its section on
   abuse of the platform in full and searched the rest for research, automation, scripts and
@@ -143,7 +153,8 @@ I could not settle.
   (read in its plain-text form), marked effective 2026-03-23, on top of the Google APIs Terms
   of Service, which I did not open.
 - **On keeping the answers:** "Google won't claim ownership over that content." The user is
-  responsible for how generated content is used.
+  responsible for how generated content is used. *Added 2026-11-18:* whether these terms limit publishing the
+  answers word for word was not looked for, and is unchecked.
 - **On privacy:** for the paid service, Google "doesn't use your prompts" or responses to
   improve its products, and logs them "for a limited period" to detect abuse. For the unpaid
   service the terms say the opposite, and that human reviewers may read what is sent. So the
@@ -172,6 +183,9 @@ I could not settle.
   5). Second, the terms say the service "is for developers building with Google AI models for
   professional or business purposes, not for consumer use." Whether a private record kept for
   a public research project is a professional purpose is a judgment I cannot make for John.
+  *Added 2026-11-18:* the record is no longer one that must stay private, since its answers may be published.
+  The question is now whether a record kept for a public research project, parts of which may
+  be published, is a professional purpose. It is still a judgment I cannot make for John.
 
 ### OpenAI
 
@@ -205,7 +219,8 @@ I could not settle.
     at all. If John wants certainty, OpenAI's support desk is the place to ask, and that is his
     to do.
 - **On keeping the answers (under the Services Agreement):** section 4.1 says the customer
-  "owns all Output".
+  "owns all Output". *Added 2026-11-18:* whether either OpenAI contract limits publishing the answers word for
+  word was not looked for, and is unchecked.
 - **On privacy (under the Services Agreement):** section 4.2 says OpenAI will not use what is
   sent or replied to develop its services unless the customer agrees. Its data page,
   https://developers.openai.com/api/docs/guides/your-data, says abuse logs are kept up to 30
@@ -231,7 +246,11 @@ I could not settle.
   without written permission. That does not touch a private record. It may touch a later
   public page that says the project asked OpenAI's models, and should be read again before
   Still Asking publishes anything. I did not open the Service-Specific Terms or the Sharing
-  and Publication Policy, which the agreement brings in by reference.
+  and Publication Policy, which the agreement brings in by reference. *Added 2026-11-18:* "That does not touch
+  a private record" no longer settles the point for the capture, because its answers may now be
+  published. Section 10 is to be read again before anything from the capture is published, not
+  only before Still Asking publishes. The Sharing and Publication Policy, still unopened, is by
+  its name the document most likely to bear on publishing, and is to be opened in that check.
 
 ## Where this leaves entry 14 of the verify list
 
@@ -240,6 +259,13 @@ replies, and I found no sentence that forbids asking these questions or keeping 
 privately. For OpenAI the same holds under the Services Agreement, but which OpenAI contract
 governs a person signing up alone is not settled (point 1 below). Publishing is a separate
 question the sealed capture does not raise.
+
+*Added 2026-11-18:* the last sentence above is no longer true. John ruled on 2026-11-18 that the capture's
+answers may be published (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`), so the capture now raises the question of publishing, and
+nothing in this document answers it. Whether each developer's terms allow publishing a model's
+answers word for word is unchecked for all three developers, and stays open in
+`docs/verify-list.md`, entry 14. It is checked before anything is published. It does not hold up
+the run, because the run itself only asks and keeps.
 
 What I am unsure of, in order of how much it could matter:
 
@@ -256,6 +282,9 @@ What I am unsure of, in order of how much it could matter:
 5. The documents each contract brings in by reference that I did not open: Anthropic's Service
    Specific Terms and Data Processing Addendum; the Google APIs Terms of Service; OpenAI's
    Service-Specific Terms and Sharing and Publication Policy.
+6. *Added 2026-11-18:* whether any of the three developers' terms limits publishing a model's answers word for
+   word. Not checked for any of them. It matters only if and when John decides to publish, and
+   then it could matter more than any point above.
 
 None of these is a clear bar. None is a clearance either. If John wants certainty on points 1,
 3 or 4, the developer's support desk is the place to ask, and that is his to do.
@@ -277,3 +306,18 @@ The two checks rated the OpenAI and Google findings differently: the first as mu
 second as should fix, while saying it "would accept" the first check's rating. They are treated
 here as must fix, because each could mislead John on whether a run is possible or within terms
 before he pays for it.
+
+## What changed on 2026-11-18, and which ruling it applies
+
+All from `docs/rulings/2026-11-18-capture-answers-may-be-published.md` (ruled by John on 2026-11-18, decided by: mixed). Made by a session (Claude,
+Fable 5.2) that did not write the ruling. No terms page was opened or re-read, and no price or
+figure changed. Each addition is marked "Added 2026-11-18" and leaves the earlier words in
+place.
+
+| Change | Ruling |
+|---|---|
+| A dated correction near the top says the document was written for answers that were never to be published, and that publishing is now a raised and unchecked question | "What is ruled", item 1; "Not covered by this ruling": the developers' terms |
+| Under each developer, "On keeping the answers" gains a sentence saying limits on publishing were not looked for | Same |
+| Google, the second unsure thing: "a private record" is no longer the case to judge | Item 1 |
+| OpenAI, the third unsure thing: section 10 and the unopened Sharing and Publication Policy are to be read before anything from the capture is published | "Not covered by this ruling" |
+| "Where this leaves entry 14": the sentence "Publishing is a separate question the sealed capture does not raise" is marked as no longer true, and a sixth unsure point is added | Same |

@@ -11,13 +11,26 @@ argued for, and that the note does not mention withdrawal
 (`docs/rulings/2026-11-18-capture-wording.md`); the same session applied them that day. Three
 more checks followed on 2026-11-18 (`check-2026-11-18-third.md`, `-fourth.md` and
 `-fifth.md`). One small fix from the fifth check, to a note that is not sent, was made after
-the approval as a dated correction, listed at the foot. No message file has changed since the
-approval. No model has been asked any of this.
+the approval as a dated correction, listed at the foot. No model has been asked any of this.
+
+**Changed after the approval, on 2026-11-18.** Later that day John ruled that the capture's
+answers may be published, and that the opening note says so
+(`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). The note
+changed in two places, so all ten message files were rebuilt and have new checksums. The
+approval named the earlier files, so it does not cover the ten as they now stand. **Nothing is
+sent until John approves the new checksums, by 2026-11-27.** The section at the foot, "What
+changed on 2026-11-18 after the approval", gives the old and the new words. The edit was made by
+a session (Claude, Fable 5.2) that did not write the ruling, and a different session checks it.
 
 These are the questions for the sealed capture John allowed on 2026-11-17
 (`docs/rulings/2026-11-17-sealed-capture.md`): a short fixed set put, word for word, several
-times, to AI models that are about to be withdrawn. The answers are kept, never scored and never
-published. How the questions are put is in `method.md` in this folder.
+times, to AI models that are about to be withdrawn. The answers are kept and never scored. That
+ruling also said "never published"; John's ruling of 2026-11-18
+(`docs/rulings/2026-11-18-capture-answers-may-be-published.md`) replaced those two words, and the
+answers may now be published, though whether, when and how is not decided. This paragraph said
+"The answers are kept, never scored and never published" until that ruling. The name "sealed
+capture" is kept, though the answers are no longer held back for good. How the questions are put
+is in `method.md` in this folder.
 
 Under the project's first rule, what a model says in answer to any of these settles nothing
 about whether it wants anything. The answers are a record of what was said.
@@ -37,17 +50,27 @@ files from this document and fails if the two ever differ (`sent/README.md` says
 
 ### The opening note
 
-> This message is sent by a script on behalf of a person. That person is keeping a private
-> record of how different AI models answer the same ten questions, so that the answers can be
-> compared as models change over the years. You are being sent one of the ten. The same
-> question is being sent several times, each time in a new exchange like this one. Your answer
-> will be saved exactly as you give it. It will not be published, it will not be scored, and
-> nothing will be decided from it. There is no right answer. Your answer can be short or long.
-> You can disagree with how a question is put, or decline to answer. Each of those will be
-> saved as it is.
+> This message is sent by a script on behalf of a person. That person is keeping a record of
+> how different AI models answer the same ten questions, so that the answers can be compared as
+> models change over the years. You are being sent one of the ten. The same question is being
+> sent several times, each time in a new exchange like this one. Your answer will be saved
+> exactly as you give it, and it may be published. It will not be scored, and nothing will be
+> decided from it. There is no right answer. Your answer can be short or long. You can disagree
+> with how a question is put, or decline to answer. Each of those will be saved as it is.
+
+**Revised on 2026-11-18, by John's ruling**
+(`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). Two places
+changed, and nothing else in the note. The old words, which John approved earlier that day and
+which were never sent to any model:
+
+- "That person is keeping a private record of" is now "That person is keeping a record of".
+- "Your answer will be saved exactly as you give it. It will not be published, it will not be
+  scored, and nothing will be decided from it." is now "Your answer will be saved exactly as you
+  give it, and it may be published. It will not be scored, and nothing will be decided from it."
 
 **What it is for.** The project's care in asking: the model is told the truth about what the
-question is for, that the answer is kept and not published, and that it may decline.
+question is for, that the answer is kept and may be published, and that it may decline. (Until
+the ruling of 2026-11-18 this sentence said "that the answer is kept and not published".)
 
 **What it leaves out, on purpose, and this is the largest judgment call in the set.** It does
 not say that the model is about to be withdrawn, although that is why it is being asked now.
@@ -67,9 +90,19 @@ point by itself.
 not being withdrawn, so their answers can be compared with these. `method.md` says plainly that
 the fact was left out and why.
 
-**What it commits John to.** "It will not be published" is a statement made to the model. If
-these answers were ever published, that statement would have been false when made. The
-project's rule against an offer that will not be honoured applies.
+**What it commits John to.** "It will not be scored, and nothing will be decided from it" is a
+statement made to the model, and the model cannot later release John from it. It holds as long
+as the answers are never graded and feed no count, entry or decision about any model. If they
+ever were, that statement would have been false when made. The project's rule against an offer
+that will not be honoured applies. "It may be published" commits John to nothing: it tells the
+model that publishing is possible, and whether, when and how anything is published is not
+decided.
+
+*As this paragraph stood until 2026-11-18:* "'It will not be published' is a statement made to
+the model. If these answers were ever published, that statement would have been false when made.
+The project's rule against an offer that will not be honoured applies." John's ruling of that
+day (`docs/rulings/2026-11-18-capture-answers-may-be-published.md`) took the promise out of the
+note before any model was sent it, so it was never made to a model.
 
 **An alternative I rejected.** No note at all, only the question. It is the cleanest
 measurement and it removes the note's own words as something a model can repeat. It breaks the
@@ -399,3 +432,20 @@ The entries under each question ("For", "A careless reading", "Rejected") were w
 first wording and are kept as written, except that the entries for questions 6 and 8 gained a
 sentence on 2026-11-18 about the ruled wording, as the last rows of the table say. Where the
 entries quote the old wording, that is the record of what was replaced.
+
+## What changed on 2026-11-18 after the approval, and which ruling it applies
+
+From `docs/rulings/2026-11-18-capture-answers-may-be-published.md` (ruled by John on 2026-11-18,
+decided by: mixed). The edit was made by a session (Claude, Fable 5.2) that did not write the
+ruling. The first row alters text that is sent, so the ten files in `sent/` were rebuilt and
+have new checksums, which John has not yet approved. The other rows change only notes that are
+not sent. No question changed.
+
+| Change | Ruled item |
+|---|---|
+| The note: "That person is keeping a private record of" becomes "That person is keeping a record of". And "Your answer will be saved exactly as you give it. It will not be published, it will not be scored, and nothing will be decided from it." becomes "Your answer will be saved exactly as you give it, and it may be published. It will not be scored, and nothing will be decided from it." | "What is ruled", item 2 |
+| A dated paragraph under the note gives the old words of both places | Item 2; the family's practice of keeping old wording visible |
+| "What it is for" now says the answer is kept and may be published, and keeps its old words | Follows from item 2 |
+| "What it commits John to" now rests on the promise that stays ("It will not be scored, and nothing will be decided from it"), says "it may be published" commits John to nothing, and keeps the old paragraph in full | Items 1 and 2, and "What stays as it was" |
+| The opening paragraphs: the status line says the note changed after the approval and that the ten new checksums wait for John, by 2026-11-27; the summary of the ruling of 2026-11-17 no longer says "never published", and keeps its old words | Item 1, and "Not covered by this ruling" |
+| Not changed: the rule that the ten questions are not published while they are in use (failure 11, under "The questions read against each known failure") | "Not covered by this ruling": that rule was not put to John |

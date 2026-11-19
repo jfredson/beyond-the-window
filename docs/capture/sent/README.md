@@ -23,3 +23,12 @@ note, one blank line, then the question. Question 10's file has questions 1 to 9
   John approves the new checksums.
 
 Like `questions.md`, these files must be held back if this repository is ever made public.
+
+**Rebuilt on 2026-11-18, and waiting for John's approval.** John ruled that day that the
+capture's answers may be published and that the opening note says so
+(`docs/rulings/2026-11-18-capture-answers-may-be-published.md`, decided by: mixed). The note
+changed in two places, so all ten files here and `SHA256SUMS` were rebuilt. The questions did
+not change. John's approval earlier that day (`docs/rulings/2026-11-18-capture-approval.md`)
+named the files as they were before this rebuild, so it does not cover these. Nothing is sent
+until he approves the new checksums, by 2026-11-27. The old and new words of the note are in
+`../questions.md`.
