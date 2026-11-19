@@ -25,6 +25,28 @@ fewer than 20 words is listed as very short; a second asking after a broken conn
 the same length limit). The new section "The Anthropic run, step by step" is the list to
 follow on the day.
 
+**The second check of the script is done.** *Dated correction, 2026-11-18.* The paragraph above
+says the script "is waiting for a second check". That check was committed seconds before the
+paragraph was (`check-2026-11-18-capture-script-second.md`, commit 1420917), so the words were
+out of date when written. The same words in "The Anthropic run, step by step" and under the
+table of last safe days are answered here too. The check's verdict, in its own words: "The
+Anthropic run: yes. Nothing must be fixed." It lists seven things that should be fixed, and
+says Google and OpenAI are "still not ready". It does not approve a run. What allows a run is
+your go. What it leaves for you, besides the steps below:
+
+- **Decide whether its first should-fix finding is fixed before the first run.** The finding: a
+  reply that holds half of a two-part symbol (most emoji are sent as two halves) can never be
+  saved. The check would fix it first. Any change to the script means the rehearsal is run
+  again, its result committed, and that difference checked by a different session.
+- **Know three things the script adds that the method has no words for, and say if you
+  object:** three outcomes with no row in the method's failures table, each counted at the most
+  its call could cost; a folder of markers and a lock file in the answers folder; and a command,
+  `labels`, that shows the number of words of every reply and no word of any.
+
+When this was written, the script's author had changes answering the seven findings in the
+working folder, not yet committed and not yet checked. Until they are committed with a new
+rehearsal result, the script's own start checks fail, as designed.
+
 Two other sessions checked all four documents on 2026-11-17 (`check-2026-11-17.md`,
 `check-2026-11-17-second.md`), and a fourth session (Claude, Opus 5.5), which neither wrote nor
 checked them, applied their fixes the same day. The section at the foot lists each change.
@@ -226,8 +248,10 @@ checked them, applied their fixes the same day. The section at the foot lists ea
 ## The Anthropic run, step by step
 
 *Added 2026-11-18.* This follows `capture/README.md`, "The day of the first run", which the
-script's author wrote for this purpose. The script is waiting for a second check, so this list
-may change once more. Nothing here has been run against any service. The first real call is
+script's author wrote for this purpose. ~~The script is waiting for a second check, so this list
+may change once more.~~ (Corrected 2026-11-18: the second check is done, and the status at the
+top of this document says what it found. The list may still change once more, when the script's
+author commits the changes that answer that check.) Nothing here has been run against any service. The first real call is
 also the first time the script meets a real service, which is why it is made alone.
 
 **Do this no later than 2026-11-26** (ruled by you on 2026-11-18, "Approve all four";
@@ -237,12 +261,20 @@ first call shows.
 
 **Before the day,** all of these are true:
 
-- The second check of the script is done and says it may run.
+- ~~The second check of the script is done and says it may run.~~ Corrected 2026-11-18: the
+  second check of the script (`check-2026-11-18-capture-script-second.md`) is done. Its
+  findings are dealt with as you decide; if the script changed, the rehearsal was run again and
+  its result committed.
+- You have ruled the command in step 2, which is still only proposed.
+- In the Terminal window you will use, `python3 --version` says 3.11 or higher. Under an older
+  one the script stops at once with an error about a missing part named `tomllib`.
 - Steps 3 to 6 above are done for Anthropic: the terms decided, the key made and saved, and
   automatic top-up switched off.
 - Your go for the Anthropic run is in `docs/spending-record.md` and committed (step 7).
 
-**On the day,** in one Terminal window, with the Mac plugged in. You type the commands.
+**On the day,** in one Terminal window, with the Mac plugged in. Use the Mac's own Terminal
+app, not the Terminal panel in the Claude app, because a session can start commands in that
+panel and the window will hold the key. You type the commands.
 Whether a session may run them in your place is not ruled, and a session that did would be
 handling the key.
 
@@ -266,6 +298,11 @@ handling the key.
    It is shorter, and it would also put the Google and OpenAI keys in the window, where they
    are not needed.
 
+   *Added 2026-11-18, the judgment of a session that did not write it*
+   (`check-2026-11-18-method-corrections-second.md`): the command is safe, it puts the
+   key neither in the shell's history nor on the screen, and that session recommends you approve
+   it as written. It is still proposed, and not ruled.
+
 3. Show the run. Nothing is sent. Every line under "Checks made before a real run" must say
    `pass`. If one does not, stop and tell a session what it says.
 
@@ -279,7 +316,10 @@ handling the key.
    caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30 --stop-after 1
    ```
 
-5. Read the one line it prints for that call. A good line says `a reply`, gives the stop reason
+5. ~~Read the one line it prints for that call.~~ Corrected 2026-11-18: four lines are printed:
+   the model's name, the line for the call, a line saying the script stopped as asked, and the
+   total. Read the second. A line beginning NOTICE is about an earlier run's call counted at its
+   highest possible cost; tell a session what it says. A good line for the call says `a reply`, gives the stop reason
    `end_turn`, says `model reported as named: yes`, and gives token counts and a cost of about
    a cent. No word of the reply is shown. Any other line:
 
@@ -305,11 +345,14 @@ handling the key.
    caffeinate -i python3 -I capture/capture.py run --run anthropic-2026-11-30
    ```
 
-8. Close the Terminal window, which removes the key from it. The last lines of the run give
+8. ~~Close the Terminal window, which removes the key from it. The last lines of the run give
    the total counted and write the list of file names and checksums,
-   `docs/capture/manifest.md`. A session commits that list and records the cost. You compare
-   the total with the Usage page in Anthropic's console. Nobody opens the answers (step 8 of
-   the list above).
+   `docs/capture/manifest.md`.~~ Corrected 2026-11-18, because the step had the closing before
+   the reading: read the last lines, which give the total counted and say that the list of file
+   names and checksums (`docs/capture/manifest.md`) was written. Note the total. Then close the
+   Terminal window, which removes the key from it. A session commits that list and records the
+   cost. You compare the total with the Usage page in Anthropic's console. Nobody opens the
+   answers (step 8 of the list above).
 
 **While it runs:**
 
@@ -317,7 +360,14 @@ handling the key.
   in the first round can end the run for good at a $5 ceiling (step 7 above).
 - Do not run the command in a second window. The script refuses a second run on the same
   folder.
-- Ctrl-C is safe at any time. What has arrived is saved and counted first.
+- ~~Ctrl-C is safe at any time. What has arrived is saved and counted first.~~ Corrected
+  2026-11-18: Ctrl-C is safe between calls and during the minute's wait after a failed attempt.
+  While a reply is arriving it loses nothing already received, but that call is counted at
+  $0.48 and uses one of that question's two askings
+  (`check-2026-11-18-capture-script-second.md`, finding S2). Do not press it while a reply
+  is arriving unless you must. The script's author has a change in the working folder, not yet
+  committed, under which a reply cut short by hand would no longer use an asking; the $0.48
+  would stay. If it is committed, this line is corrected again to match.
 - If the screen says `A REPLY IS HELD IN MEMORY AND IS NOT YET SAVED`, do not close the window
   and do not press Ctrl-C. The reply folder could not be written to. Check that the folder
   exists and the disk is not full. The script tries again every half minute for half an hour.
@@ -422,3 +472,18 @@ different session checks it. Nothing was deleted, and the table of last safe day
 | Step 7: what the script needs of a go, where it is recorded, and two things to know about the ceiling before naming a figure | The script's README, "John's go, in the spending record" and "What the ceiling means in practice"; the earlier check's row on the form of the go |
 | A new section, "The Anthropic run, step by step" | The script's README, "The day of the first run"; the ruling, points 1 and 2 |
 | Under the table of last safe days: the first Anthropic run no later than 2026-11-26, and the first caution brought up to date | The ruling, point 2; the earlier check's row on the first caution |
+
+**Dated correction, 2026-11-18, after the second check of these corrections**
+(`check-2026-11-18-method-corrections-second.md`, whose findings are numbered as in that file).
+Made by the session (Claude, Fable 5.2) that made the corrections above; a different session
+checks it. The earlier words are struck through beside each change.
+
+| Change | Finding |
+|---|---|
+| "While it runs": Ctrl-C is safe between calls and during a wait, and while a reply is arriving it costs $0.48 of the ceiling and one of the question's two askings | Must fix 1 |
+| A status paragraph says the second check of the script is done, gives its verdict in its own words, and says what it leaves for John. "Before the day" names that check | Should fix 1 |
+| Step 8 of the run: read the last lines and note the total, then close the window | Should fix 2 |
+| "Before the day": the command in step 2 is ruled first | Should fix 3 |
+| Step 5 of the run: four lines are printed, and what a line beginning NOTICE means | Should fix 4 |
+| "Before the day": `python3 --version` says 3.11 or higher | Should fix 5 |
+| Step 2 of the run: one line giving that check's judgment of the key-loading command, which stays proposed. "On the day": use the Mac's own Terminal app | The check's section "The key-loading command" |

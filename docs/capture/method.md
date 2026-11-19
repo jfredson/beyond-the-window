@@ -44,6 +44,30 @@ as a dated correction where it belongs, and the foot lists them under "What chan
 still John's before any run. What is still his about the script now is his go for each run,
 which comes after the second check. The ruling does not say the script is fit to run.
 
+**The second check of the script is done.** *Dated correction, 2026-11-18.* The paragraph above
+says the script "is waiting for a second check". That check was committed seconds before the
+paragraph was (`check-2026-11-18-capture-script-second.md`, commit 1420917), so the words were
+out of date when written. The same words appear again below (in the faulty-files
+paragraph, the opening of "What the script must do", "Before anything is asked" and a table
+at the foot) and are answered here. The check's verdict, in its own words: "The Anthropic run: yes. Nothing must be
+fixed." It lists seven things that should be fixed, and says Google and OpenAI are "still not
+ready". It does not approve a run. What allows a run is John's go.
+
+The paragraph above also says that what is still John's about the script "is his go for each
+run". After the second check that is too little. Two more things are his:
+
+- Whether the check's first should-fix finding is fixed before the first run: a reply that
+  holds half of a two-part symbol can never be saved. Any change to the script means the
+  rehearsal is run again, its result committed, and that difference checked.
+- Three things the script adds that this method has no words for, which he should know and may
+  object to: three outcomes with no row in the failures table, each counted at the most its
+  call could cost; a folder of markers and a lock file in the answers folder; and a command,
+  `labels`, that shows the number of words of every reply and no word of any, where this method
+  speaks only of a faulty file's count.
+
+When this was written, the script's author had changes answering the seven findings in the
+working folder, not yet committed and not yet checked.
+
 ## What it is, and is not
 
 Ten fixed questions (`questions.md`) put word for word, five times each, to AI models whose
@@ -541,3 +565,11 @@ file name and the reply folder now also hold; the three outcomes the script adds
 its own side; the one header and the two waits this method does not name; and that no program
 library is used. None is one of the four ruled points. They are in `capture/README.md`, under
 "Where the script reads the method strictly, and where loosely", for John or a later session.
+
+## What changed on 2026-11-18 after the second check of these corrections
+
+One change, from `check-2026-11-18-method-corrections-second.md`, should-fix finding 1: a status
+paragraph says the second check of the script is done, gives its verdict in its own words, and
+names the two further things it leaves for John. The other places that say "waiting for a second
+check" are left as written and answered there. Made by the session (Claude, Fable 5.2) that
+made the corrections above; a different session checks it.
