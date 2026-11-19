@@ -139,7 +139,11 @@ Each of these is a row in `docs/inheritance.md`, where the source file is named.
   to any model is made until John creates one, and calls never go through another project's
   key.
 - **Guards live in code, not in documents,** once there is code.
-- **Commit on `main`** at the end of a working session. There is no remote; nothing is pushed.
+- **Commit on `main`** at the end of a working session. Since 2026-11-19 there is a private
+  repository on GitHub (`jfredson/beyond-the-window`), ruled by John that day
+  (`docs/rulings/2026-11-19-hosting-private-and-by-hand.md`). Only the master planning session
+  pushes to it. A push never publishes the site: a release is started by hand, on John's go.
+  The repository stays private, because it holds the sealed questions.
   The commit hook (`.githooks/commit-msg`, turned on with `git config core.hooksPath
   .githooks`) refuses a commit message with a month-name, slash or relative date.
 
