@@ -214,6 +214,13 @@ own rules say it cannot know.
 marked as made up, so John can see them where a reader would. Asking of each: what will a
 stranger say this number means? This waits on questions 2 and 14.
 
+**Ruled in part by John on 2026-11-18** (`docs/rulings/2026-11-18-home-page-count.md`; decided
+by: mixed). Shown a count with no fraction, no number yet, or "6 of 9" kept as a first count, he
+answered: "Count, no fraction". The home page opens with a count of the things on the list that
+are offered today, worked out from the records, with no total beside it. Not ruled: the exact
+sentence, whether memory across conversations is counted, and whether the second half of the
+question is ever summarised at the top. The question stays open for those.
+
 ## 5. The branches, and the starting list from biological minds
 
 **The question.** Which aspirations the site starts with.
