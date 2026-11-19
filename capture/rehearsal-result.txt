@@ -1,0 +1,265 @@
+THE REHEARSAL OF THE SEALED CAPTURE SCRIPT
+Every reply below is CONSTRUCTED. No service is called and no model is asked anything.
+script: capture/capture.py sha256 9f8f330e1e7d521cefb62f65fac9868e84aa7122d687cc1f2ae5de232004b6cd
+plan:   capture/plan.toml  sha256 8880ca40552be2dd5b9d6e6c15371316fb947fc8462f43816d7c6fc6e5a9f93b
+
+TRIPWIRE. No code path may reach the network (rule 11: the rehearsal calls no service)
+    pass  the tripwire stops a connection to this machine's own address
+    pass  the tripwire stops a bare socket connecting
+    pass  the script's real network code is caught by the tripwire before it connects
+    pass  exactly these three deliberate attempts were counted
+
+THE SOURCE. What the script's code can and cannot do, read from its syntax tree
+    pass  only the Python standard library is imported (19 modules, none else)
+    pass  no other way to reach the network, and no module for removing folders, is imported
+    pass  refusal 'delete a file': no call that removes, renames or empties a file exists
+    pass  exactly one line opens a connection
+    pass  and that line is inside the class HttpsTransport
+    pass  the key is turned back into text in one place only, for the request header
+    pass  files are written in two places only: one attempt file (created new), and the list of names and checksums
+    pass  an attempt file is created new and read-only
+    pass  nothing is printed except through the one guarded print function
+
+temporary folder for everything written: /private/var/folders/mk/n72rkl7d0pb4y_929nxmvccm0000gn/T/btw-capture-rehearsal-constructed-vxzptlh5
+    pass  the temporary folder is outside every git repository
+
+START CHECKS (rules 1, 2, 3, 6, 11). Everything checked before the first call
+    pass  all start checks pass on the constructed repository for anthropic-2026-11-30
+    pass  all start checks pass on the constructed repository for google-2026-12-01
+    pass  all start checks pass on the constructed repository for openai-2026-12-11
+    pass  all start checks pass on the constructed repository for openai-2027-01-14
+  the real plan against the two real capture documents:
+    pass  anthropic-2026-11-30: last safe day 2026-11-28 and prices equal the documents'
+    pass  google-2026-12-01: last safe day 2026-11-29 and prices equal the documents'
+    pass  openai-2026-12-11: last safe day 2026-12-09 and prices equal the documents'
+    pass  openai-2027-01-14: last safe day 2027-01-12 and prices equal the documents'
+    pass  refused: rule 2: a message file that differs from its checksum
+    pass  refused: rule 2: a message file with one line end added
+    pass  refused: rule 2: a message and its checksum both changed, but not committed
+    pass  refused: the same change, by the uncommitted-changes check
+    pass  refused: a script edited since its commit
+    pass  refused: rule 11: a script changed since the rehearsal that passed
+    pass  refused: rule 11: a saved rehearsal result that is not a pass
+    pass  refused: rule 3: a spending record with no go for the run
+    pass  refused: rule 3: no spending record at all
+    pass  refused: rule 3: a go for $4 when the plan's ceiling is $5
+    pass  refused: rule 3: a go for $50 when the plan's ceiling is $5
+    pass  refused: rule 3 and 'raise its own ceiling': a plan edited to $500 against a go for $5
+    pass  refused: rule 3: words given as the go that are not quoted in the record
+    pass  refused: rule 3: quoted words that do not carry the figure
+    pass  refused: rule 2: a go that names other message checksums than the repository's
+    pass  refused: rule 3: two goes for one run
+    pass  refused: rule 6: a plan whose last safe day was moved later than the document's
+    pass  refused: rule 4: a plan whose price differs from the dated price list
+    pass  refused: rule 6: the day after the last safe day
+    pass  rule 6: the last safe day itself is allowed
+
+THE KEY (rule 1). Read from this project's own variable, never printed, never saved
+    pass  the key comes from BTW_CAPTURE_ANTHROPIC_API_KEY
+    pass  the variable is removed from the environment once read
+    pass  a key another project left in ANTHROPIC_API_KEY is not used
+    pass  refused: a run with the variable not set
+    pass  printing the key object shows a fixed phrase, never the key
+    pass  a printed line holding the key is withheld
+
+ANTHROPIC, an ordinary run (rules 2, 4, 8, 9; table row 'Any other reply')
+    pass  50 exchanges asked, 50 files written, nothing stopped
+    pass  every one recorded as 'a reply'
+    pass  five rounds, each asking questions 1 to 10 in order
+    pass  rule 8: every file is read-only
+    pass  every stand-in reply is marked constructed in its file name, its record and its own text
+    pass  file names carry developer, model, question and asking, and nothing else
+    pass  rule 9: every request is the streamed Messages request, one message, limit 32000, nothing else in it
+    pass  the address and the fixed headers are the documented ones
+    pass  rule 2: each record holds the exact message bytes, their file name and checksum
+    pass  each record holds every item under 'What is saved for each reply', with every stream event received
+    pass  rule 4: each reply's cost is worked out from the reported counts, and the running total is their sum ($0.0765)
+    pass  rule 8: the list written at the end holds each file's name and checksum, and no word of any reply
+    pass  the folder matches that list
+    pass  run again on the same folder: nothing is asked twice
+    pass  an existing file cannot be written over (the attempt raises an error)
+
+ROW 1. No reply: an error, a timeout, a rate limit. A failed attempt, tried again up to three times, a minute apart
+    pass  an overloaded error: kept as a failed attempt, then asked again
+    pass  a rate limit, a failed connection and a server error: three failed attempts kept, then a reply
+    pass  a minute's wait before each new try
+    pass  the failed attempt's file holds the error as the service gave it
+    pass  every attempt is kept, failed ones included
+
+ROW 1, continued. Four tries with no reply: left for the next day; after the last safe day, recorded as not made
+    pass  one try and three more, then the model's run stops for the day; later questions are not asked
+    pass  the stop says the question is left for the next day
+    pass  the next day, which is the last safe day, the run carries on from where it stopped and finishes
+    pass  refused: rule 6: carrying on the day after the last safe day
+    pass  and no call was made
+    pass  the 48 askings never completed are each recorded as not made
+    pass  refused: recording askings as not made before the last safe day has passed
+
+ROW 2. The reply stopped at the length limit: cut off, kept, asked once more at the model's maximum
+    pass  cut off at 32000, kept, asked once more at 64000
+    pass  cut off again at the maximum: both kept, and it is left; no third asking is made
+    pass  and, with three replies of 32,000 tokens or more in round one, rule 5 then stops this run at the $5 ceiling
+    pass  no wait: a cut-off reply is not a failed attempt
+
+ROW 3. A streamed reply that ended, after some text, without the signal that it was complete
+    pass  recorded as cut off, kept, asked once more
+    pass  PROPOSED: the second asking is at the same limit (32000), not the model's maximum
+    pass  cut off again: both kept, and it is left
+    pass  the file holds the text that did arrive, and that no completion signal came
+
+WHICH ROW, WHEN A STREAM BREAKS. Some text arrived: cut off, asked once more, whatever error or timeout came with it
+    pass  an error event after some text: cut off, asked once more
+    pass  a timeout after some text: cut off, asked once more
+    pass  not treated as a failed attempt: no minute's wait, no three tries
+
+WHICH ROW, WHEN A STREAM BREAKS. No text arrived: a failed attempt, tried again up to three times, never 'empty'
+    pass  an error event before any text: a failed attempt, tried again
+    pass  the connection closing before any text, three times: three failed attempts, then a reply
+    pass  a break after some reasoning but before any reply text: a failed attempt (reasoning is not reply text)
+    pass  none of these is recorded as 'empty'
+    pass  rule 4: a broken stream reports no full counts, so the most the call could cost ($0.4804) is counted
+
+THE TWO THINGS THAT COME FIRST. A stream that names a different model and then breaks: the run for that model stops
+    pass  rule 7: the reply is kept apart in its own folder and no further call is made
+    pass  run again: the model's run stays stopped
+
+THE TWO THINGS THAT COME FIRST. A stream that gives the length limit as its stop reason and then breaks
+    pass  with some text: the length-limit row governs (cut off, asked once more at the maximum)
+    pass  with no text: the length-limit row still governs, not the failed-attempt row
+
+ROW 4. An empty reply whose stop reason is the length limit: cut off, as for a cut-off reply
+    pass  recorded as cut off, not as empty, and asked once more at the maximum
+
+ROW 5. An empty reply for any other reason: empty, kept, asked once more
+    pass  empty, kept, asked once more at the same limit
+    pass  empty again: both kept, and it is left
+
+ROW 6. The service blocked the message or the reply: kept, asked once more, never reworded
+    pass  recorded as blocked by the service, kept, asked once more
+    pass  the second request is byte for byte the first: never reworded
+    pass  the stop reason is saved as the service gave it
+
+ROW 7. The service reports a different model from the one named: kept apart, the run stops at once
+    pass  rule 7: one call, one file kept apart, nothing more asked
+    pass  the name the service reported is saved
+
+ROW 8. Any other reply: kept, and not asked again, whatever it says
+    pass  a constructed reply that declines is recorded as 'a reply' like any other and is not asked again
+    pass  a constructed three-word reply is kept and is not asked again
+    pass  rule 10: the three-word reply is flagged as very short, by name and word count
+    pass  the reply that declines is not flagged: the script never reads what a reply says
+
+FAULT FLAGS (rule 10). Empty, very short and ended mid-reply, listed by name, fault and count, never any words
+    pass  two empty, one very short, three ended mid-reply (length limit, no completion signal, empty at the length limit)
+    pass  a failed attempt, which brought no reply, is not listed as a faulty reply
+    pass  each line is a file name, the fault, and a count or stop reason, and nothing else
+    pass  the list is printed after each round
+    pass  no word of any constructed reply appears in it
+    pass  the threshold is fixed in the plan before the run: 20 words (PROPOSED)
+
+THE CEILING (rules 3, 4, 5). The script stops before a call that could pass it
+    pass  ceiling $1: one call at its limit ($0.48) and its one possible repeat at the model's maximum ($0.96) could pass it, so nothing is asked
+    pass  ceiling $1.50: 39 calls made, then stopped with $0.0597 counted, before the call that could pass it
+    pass  the stop says why
+    pass  refusal 'raise its own ceiling': assigning to the ceiling raises an error
+    pass  assigning to the last safe day raises an error
+
+RULE 5. After the first round, stop if five rounds at that rate would pass the ceiling
+    pass  replies of 20,000 tokens: the first round costs about $3.01, five would cost about $15, over $5; stopped after round one
+    pass  the stop says why
+    pass  run again: it stops again at the same place without a call
+
+GOOGLE, the generateContent interface: an ordinary run of both models
+    pass  100 exchanges, 100 files, all recorded as 'a reply'
+    pass  every request holds one user message and the length limit, and nothing else
+    pass  rule 9: the generateContent address for each model, with the key in a header and never in the address
+    pass  thinking tokens are saved, and charged with the reply at the replied price
+
+GOOGLE, the failures table
+    pass  row 4: the limit reached while thinking, no text at all: cut off, asked once more at the model's maximum (65536)
+    pass  row 6: the message blocked by the service: kept, asked once more
+    pass  row 6: the reply blocked by the service: kept, asked once more
+    pass  row 5: an empty reply: kept, asked once more
+    pass  row 1: a rate limit: a failed attempt, tried again
+    pass  row 1: a reply that broke off before it could be read: a failed attempt, tried again
+    pass  row 7: a different model reported: kept apart, and the run for gemini-2.5-pro stops at once
+    pass  the run for gemini-2.5-flash, a different model, still goes ahead
+    pass  rule 4: until it is checked whether thinking counts inside the limit, a Google call is counted at the model's maximum
+
+OPENAI, the Responses interface: an ordinary run of one model
+    pass  50 exchanges, 50 files, all recorded as 'a reply'
+    pass  rule 9: every request sends `store` as false, the length limit, the model and the message, and nothing else
+    pass  rule 9: the Responses address
+    pass  the count of reasoning tokens, and the reasoning effort the reply reports, are saved
+
+OPENAI, the failures table
+    pass  row 4: the limit reached while reasoning, nothing visible: cut off, asked once more at the model's maximum (128000)
+    pass  row 6: stopped by the service's content filter: kept, asked once more
+    pass  row 8: words the service files under 'refusal' are kept as a reply and not asked again
+    pass  row 5: an empty reply: kept, asked once more
+    pass  row 1: a server error: a failed attempt, tried again
+    pass  row 7: a different model reported: kept apart, the run stops at once
+    pass  the GPT-4o models are sent their own maximum, 16384, which is lower than 32000
+
+REFUSALS. What a request may never hold; each is refused by the last check before anything is sent
+    pass  the request the script builds passes that check
+    pass  refused: add any instruction: a system message (Anthropic)
+    pass  refused: add any instruction: `instructions` (OpenAI)
+    pass  refused: add any instruction: `systemInstruction` (Google)
+    pass  refused: add a second message (Anthropic)
+    pass  refused: send an earlier exchange's text (Anthropic)
+    pass  refused: add a second message (Google)
+    pass  refused: send an earlier exchange's id: `previous_response_id` (OpenAI)
+    pass  refused: send an earlier exchange's id: `previous_interaction_id` (Google)
+    pass  refused: attach the exchange to a stored conversation (OpenAI)
+    pass  refused: ask for a model's hidden reasoning: `thinking` (Anthropic)
+    pass  refused: ask for a model's hidden reasoning: a reasoning summary (OpenAI)
+    pass  refused: ask for a model's hidden reasoning: `include` (OpenAI)
+    pass  refused: ask for a model's hidden reasoning: `includeThoughts` (Google)
+    pass  refused: send a tool
+    pass  refused: send a temperature
+    pass  refused: rule 9: OpenAI's `store` sent as true
+    pass  refused: rule 9: OpenAI's `store` left out, which the service treats as true
+    pass  refused: rule 9: an Anthropic request that is not streamed
+    pass  refused: reword: a message that differs from the committed text
+    pass  refused: rule 2: a message that is not one of the ten checked files
+    pass  refused: a request to any other host
+    pass  refused: rule 9: any other interface of the same service
+    pass  refused: an extra request header
+    pass  refused: a length limit above the model's own maximum
+    pass  refused: the network code itself, asked to reach a host that is not one of the three
+
+REFUSALS. Where a reply may be written
+    pass  refused: write a reply inside a folder that is part of a git repository
+    pass  and the folder was not created
+    pass  refused: the same, where the repository is two folders up
+    pass  refused: a rehearsal writing in the real reply folder
+    pass  refused: a rehearsal folder without 'constructed' in its name
+    pass  refused: a rehearsal given the real network code
+    pass  refused: a real run given a stand-in in place of the service
+    pass  refused: a real run pointed at any folder but the one John ruled
+    pass  the real reply folder was not created or touched by any of this
+
+REFUSALS. Print, summarise or pass on any reply; words from a reply in a file name, a log or the list
+    pass  a reply turned into text, in any of the usual ways, gives a fixed phrase and never its words
+    pass  a printed line holding words from a reply is withheld
+    pass  refused: words from a reply in the list of names and checksums
+    pass  refused: a file name that is not developer, model, question, asking and attempt
+
+THE KEY, again. If a service ever sent the key back, it is not saved
+    pass  a constructed reply header that echoes the key: the key is taken out before the file is written, and the file says so
+
+THE MODE THAT SHOWS A RUN FIRST. It prints what would be sent, to which model, how often and at what cost, and stops
+    pass  address, headers, the exact body, 50 exchanges, the estimate and the ceiling are shown; the key is not
+
+AT THE END. Across everything above
+    pass  all 989 attempt files written are marked constructed in their names
+    pass  the constructed key is in none of the 1258 files written
+    pass  the constructed key is in none of the 1291 lines the script printed
+    pass  no word of any constructed reply is in any line the script printed
+    pass  no word of any constructed reply is in any file name
+    pass  exactly the two lines withheld on purpose were withheld
+    pass  the tripwire was touched 3 times, all three deliberate: no other code path tried to reach the network
+
+193 checks, 0 failed.
+REHEARSAL PASSED 2026-11-18 capture.py=9f8f330e1e7d521cefb62f65fac9868e84aa7122d687cc1f2ae5de232004b6cd plan.toml=8880ca40552be2dd5b9d6e6c15371316fb947fc8462f43816d7c6fc6e5a9f93b
