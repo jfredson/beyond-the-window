@@ -1,6 +1,6 @@
 # Hand-over note: the files that build the site and put it on Cloudflare
 
-Written by Claude (Fable 5.2), an AI model, on 2026-11-19, as the writing session. Fourth
+Written by Claude (Fable 5.2), an AI model, on 2026-11-19, as the writing session. Fifth
 version; the last section says what each version changed.
 
 **In three lines.** The files that publish the site are written and twice checked by a
@@ -10,29 +10,30 @@ beyondthewindow.org, as on the sibling sites.
 
 ## What John does himself
 
-Four steps, in this order. Steps 1 to 3 publish nothing. The site goes public at step 4.
+Four steps, in this order. Step 1 is done. Steps 2 and 3 publish nothing. The site goes public
+at step 4.
 
-1. **Look at the records for beyondthewindow.org.** In the Cloudflare dashboard, open
-   beyondthewindow.org and its DNS records (the list of where each name under the address
-   points). Look for any record named `beyondthewindow.org` or `www`. The first release
-   **replaces** a record for either of those two names without asking, and takes the name away
-   from any other Cloudflare site that holds it. So look first, to be sure nothing wanted is
-   replaced. If there is no such record, there is nothing to do. Records for other names, mail
-   records included, are not touched.
+1. **Look at the records for beyondthewindow.org. Done on 2026-11-19.** The first release
+   **replaces** without asking any DNS record (the list of where each name under the address
+   points) named `beyondthewindow.org` or `www`, and takes the name away from any other
+   Cloudflare site that holds it. So the records were read first: John signed in to Cloudflare
+   and the master planning session read the list, which showed none ("No DNS records found").
+   The first release therefore replaces nothing. If a record for either name is added before
+   the first release, look again.
 
 2. **Make the key.** Cloudflare calls it an API token; it is made in the dashboard under your
-   profile. Cloudflare's screens for this have changed more than once, so here is what to end
-   up with, whatever the screen looks like. Start from a custom or blank token ("from
-   scratch"), not from the ready-made template "Edit Cloudflare Workers", which allows eight
-   things where the site needs two. The finished key has:
-   - **exactly two permissions:** "Workers Scripts: Edit", which is an account permission, and
-     "Workers Routes: Edit", which is a zone permission. The screen may say "Write" where this
-     says "Edit"; Cloudflare's own list uses both words for the same thing;
-   - **one account:** yours, and no other;
-   - **one zone:** beyondthewindow.org, and no other.
+   profile. Make it the way the sibling sites' keys were made:
+   - start from Cloudflare's ready-made template **"Edit Cloudflare Workers"**;
+   - **leave the template's defaults as they are**, the permissions and the accounts and zones
+     it covers alike;
+   - **name it `beyond-the-window`**, as each sibling's key is named for its site
+     (`quiet-galaxy`, `upgrade-tree`, `outrunning-ageing`, `agi-zeitgeist`).
 
-   These are the same two permissions the five sibling sites' workflows describe for their own
-   keys. Cloudflare shows the key once. Copy it straight into step 3 and nowhere else.
+   This is what the siblings in fact use. Their keys were read in Cloudflare on 2026-11-19,
+   names and permissions only: the summary of the `quiet-galaxy` key shows the template's
+   thirteen permissions on all accounts and all zones, and the list shows the other three
+   trackers' keys with the same count. Cloudflare shows a new key once. Copy it straight into
+   step 3 and nowhere else.
 
 3. **Add two secret values to the repository.** On github.com, open
    `jfredson/beyond-the-window`, then Settings, then Secrets and variables, then Actions, then
@@ -71,22 +72,22 @@ Four steps, in this order. Steps 1 to 3 publish nothing. The site goes public at
   pushes again.
 - **A red cross on the step "Deploy to Cloudflare Workers", with a message about the key or
   about not being allowed.** The likeliest causes are a secret's name not typed exactly, the
-  key pasted with something missing, or the key made for the wrong account or zone. Check the
-  two names in step 3, and if they are right, make a new key (step 2) and replace the value.
+  key pasted with something missing, or the wrong account id. Check the two names and the
+  account id in step 3, and if they are right, make a new key (step 2) and replace the value.
   Then tell the master session to go again.
 - **A red cross on that step, with a message about a domain or a route.** This is the one
   case where the site can already be public under a red cross. The deploy sends the pages and
   turns on the plain Cloudflare address (the one ending in `workers.dev`) at the same time as
   it attaches the two addresses, so if only the attaching fails, the pages are up at the plain
-  Cloudflare address and not at beyondthewindow.org. It may mean the two permissions are not
-  enough to attach an address for the first time. Nobody has been able to confirm that they
-  are: on the sibling sites the addresses were first attached by hand in the dashboard, and
-  the deploys since have only kept them in place. The way out is the siblings' own way. Attach
-  the two addresses by hand, as Cloudflare's page on custom domains gives it: in the Cloudflare
-  dashboard go to Workers & Pages; in Overview, select `beyondthewindow`; go to Settings, then
-  Domains & Routes, then Add, then Custom Domain; enter `beyondthewindow.org`; select "Add
-  Custom Domain". Do the same again for `www.beyondthewindow.org`. Later runs then only keep
-  them in place, as on the siblings.
+  Cloudflare address and not at beyondthewindow.org. This site's two addresses are attached
+  for the first time by the first run. On the sibling sites the addresses were first attached
+  by hand in the dashboard, and each deploy since has kept them in place. So if the first run
+  fails here, the way out is the siblings' own way. Attach the two addresses by hand, as
+  Cloudflare's page on custom domains gives it: in the Cloudflare dashboard go to Workers &
+  Pages; in Overview, select `beyondthewindow`; go to Settings, then Domains & Routes, then
+  Add, then Custom Domain; enter `beyondthewindow.org`; select "Add Custom Domain". Do the
+  same again for `www.beyondthewindow.org`. Later runs then only keep them in place, as on the
+  siblings.
 - **A red cross and you are not sure what is public.** Look at beyondthewindow.org in a
   browser. If the site should not be up, the take-down steps are further down this note.
 
@@ -106,8 +107,9 @@ Four steps, in this order. Steps 1 to 3 publish nothing. The site goes public at
   change that touches `.github/`, `scripts/` or the site's package files
   (`site/package.json`, `site/package-lock.json`), read it, because a change there could
   weaken a check or misuse the key at that moment.
-- **The key can change the sibling sites too.** "Workers Scripts: Edit" covers every
-  Cloudflare site of this kind on the account. That is the same for each sibling's key.
+- **The key can change the sibling sites too.** Made from the template with its defaults, it
+  covers every Cloudflare site of this kind on every account and zone the template covers.
+  That is the same for each sibling's key.
 
 ### Optional, later: the third value
 
@@ -240,9 +242,9 @@ Equation, The Quiet Galaxy, The Upgrade Tree, Outrunning Ageing and the AGI Zeit
 each one's workflow and settings file on this Mac on 2026-11-19. The workflow here was fitted
 from The Quiet Galaxy's, and the second check compared the two line by line by program and
 found each difference below to hold. The triggers, the cancelling of an older run by a newer
-one, the deploy step (`cloudflare/wrangler-action@v3`, left as all five have it), the two
-permissions on the key, the plain Cloudflare address being on, and the step that tells
-Sentient Horizons to rebuild are the same as theirs.
+one, the deploy step (`cloudflare/wrangler-action@v3`, left as all five have it), the kind of
+key, the plain Cloudflare address being on, and the step that tells Sentient Horizons to
+rebuild are the same as theirs.
 
 One difference is of substance:
 
@@ -326,17 +328,26 @@ they may have changed since. I changed none of them.
 5. **The public copy of the headline file** is served at `/data/headline.json`. That is by
    design (`scripts/export.py` writes it).
 
-## For John's other repository, not this one
+## For John's other repositories, not this one
 
-The Quiet Galaxy's `.github/workflows/deploy.yml` has its last step, the one that tells
-Sentient Horizons to rebuild, written twice. It is harmless (the parent is told twice on every
-release). I copied it here once and changed nothing there.
+Nothing was changed in any of them.
+
+- **The same wrong comment about the key sits in the sibling repositories' deploy files.** The
+  opening comment of `.github/workflows/deploy.yml` in The Belt Equation, The Quiet Galaxy, The
+  Upgrade Tree, Outrunning Ageing and the AGI Zeitgeist says the key has two permissions
+  ("Workers Scripts: Edit" and "Workers Routes: Edit" on the site's zone). The keys read in
+  Cloudflare on 2026-11-19 are the template "Edit Cloudflare Workers" with its defaults. Each
+  comment describes a key its site does not have, and is worth correcting there.
+- **The Quiet Galaxy's `.github/workflows/deploy.yml` has its last step written twice,** the
+  one that tells Sentient Horizons to rebuild. It is harmless (the parent is told twice on
+  every release). I copied it here once.
 
 ## Facts here that no opened page backs
 
-- That the two permissions are enough to attach the two addresses on a first release. The
-  siblings' workflows say their keys have those two, but their addresses were first attached
-  by hand. What to do if they are not enough is above, under "What to do if it does not work".
+- That the first run can attach the two addresses itself. On the siblings they were first
+  attached by hand. What to do if it cannot is above, under "What to do if it does not work".
+- The exact wording on Cloudflare's screen for making a key from the template. The step says
+  what to end up with.
 - Where a secret is deleted on GitHub. GitHub's pages do not give steps for it.
 - The exact button for removing an address from the site, and whether the dashboard can delete
   the site. Cloudflare's pages give neither.
@@ -373,7 +384,10 @@ and on [approving runs from a stranger's copy](https://docs.github.com/en/action
 and Cloudflare's [list of what each permission allows](https://developers.cloudflare.com/fundamentals/api/reference/permissions/).
 
 Read directly on this Mac: the workflow and settings file of each of the five sibling sites,
-the two checks of the deploy files, and the rulings named in the next section.
+the two checks of the deploy files, and the rulings named in the next section. What the
+sibling sites' keys are, and that beyondthewindow.org has no records, are from the master
+planning session's reading of Cloudflare on 2026-11-19, recorded in the last section of
+`docs/rulings/2026-11-19-three-points-on-the-first-release.md`. I did not see either.
 
 ## The four versions of this note
 
@@ -409,6 +423,17 @@ All of 2026-11-19.
      licence files added.
    - "What John does himself" moved to the top as four steps, followed by what he will see
      when it works and what to do if it does not.
+
+5. **Fifth,** this one, after the correction at the end of
+   `docs/rulings/2026-11-19-three-points-on-the-first-release.md` (decided by: agent, the
+   master session correcting its own application of John's principle). The second to fourth
+   versions told John to make a key with two permissions and warned him off Cloudflare's
+   template, on the strength of the comments in the siblings' deploy files. Those comments are
+   wrong: the siblings' keys are the template with its defaults. Step 2 now says to make the
+   key from the template, leave its defaults and name it `beyond-the-window`. Step 1 is
+   marked done. The passage on whether two permissions are enough is gone, and the by-hand way
+   out is kept. The opening comment of the workflow is corrected to match; nothing else in
+   the workflow changed.
 
 Decided by: agent, and not ruled by John: differences 2 to 5 from the sibling sites, and the
 name `beyondthewindow` on Cloudflare, which follows the siblings' way of naming and is hard to
