@@ -328,6 +328,14 @@ is declared conflicts with three standing family rules (rows K1, K2, K5, K6).
 mock-up wording. An honest count of the hours a human check would need. A written statement of
 the conflict that the site could carry.
 
+**Ruled in part by John on 2026-11-18** (`docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md`;
+decided by: mixed). Shown the three placements a session had made, the About page only, or a
+notice on every page, with a recommendation to keep the three placements, name the developer on
+the About page and write the notice and that section in his first person, he answered: "As
+recommended". Not ruled: the exact sentences, whether entry pages say who made the second
+check, and the parts of this question on checking, maintenance, other developers' models and
+whether AI models can put entries forward. The question stays open for those.
+
 ## 8. The family boundaries
 
 **The question.** Where this project ends and its relatives begin: Minimum Viable Mind (is

@@ -56,6 +56,11 @@ So:
    because it conflicts with three family rules (tools are not advertised; no "with Claude" in
    the footer; public text never says how the work was done). Until John rules, a session
    writing anything meant for the public raises this first.
+   *Ruled in part by John on 2026-11-18 ("As recommended"; decided by: mixed;
+   `docs/rulings/2026-11-18-how-the-site-declares-ai-authorship.md`): the site says it in a
+   notice on the home page and the Still Asking page, on the About page and on every entry
+   page; the About page names the developer and no model; the notice and that About section are
+   in John's first person. The exact sentences and the rest of open question 7 are not ruled.*
    *Confidence: high that the repository documents declare it. Low on the public form, which is
    John's. Strongest alternative: the family's present practice, a line in the method account
    only.*
