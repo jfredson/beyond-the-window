@@ -1,0 +1,71 @@
+# THIS WORKFLOW PUBLISHES THE SITE. It builds Beyond the Window, runs the project's checks and
+# puts the result on Cloudflare at beyondthewindow.org. It is started only by hand, and only on
+# John's go: John ruled on 2026-11-19 that a push never publishes and each release is his
+# (docs/rulings/2026-11-19-hosting-private-and-by-hand.md). So there is no "push" trigger and no
+# schedule below, and none is to be added without a new ruling.
+#
+# Adapted from The Quiet Galaxy's workflow, which deploys on every push. The steps and their
+# order are the same; the trigger is the difference, and the step that tells the parent site to
+# rebuild is left out, because that is a later decision for John.
+#
+# Needs two repository secrets, which John sets himself and no session reads or handles:
+#   CLOUDFLARE_API_TOKEN   a Cloudflare key that may deploy Workers (Cloudflare's token template
+#                          "Edit Cloudflare Workers": Workers Scripts, edit, on the account, and
+#                          Workers Routes, edit, on the beyondthewindow.org zone)
+#   CLOUDFLARE_ACCOUNT_ID  the id of the Cloudflare account the site goes on
+# Until both exist a run fails at the last step and nothing is published.
+#
+# Any check that fails stops the run before the deploy step, so a site that breaks a rule of
+# the records or of public text is never put up.
+name: Deploy site (by hand only)
+
+on:
+  workflow_dispatch:
+
+# The job reads the repository and nothing else.
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # A run can be started from any branch in GitHub's menu. Only main is ever published.
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Check the records and the headline file
+        run: python3 scripts/compute.py --check
+      - name: Run the tests of the record check and the export
+        run: python3 scripts/test_compute.py
+      # The build runs the record check and the export again before it starts, and the check of
+      # the built site after it ends (the "prebuild" and "postbuild" lines in site/package.json).
+      - name: Install and build
+        working-directory: site
+        run: |
+          npm ci
+          npm run build
+      - name: Check the built site against the rules of public text
+        run: python3 scripts/check_site.py --dist site/dist
+      # The version of Cloudflare's deploy tool (wrangler) is named here, so that a release does
+      # not change because the tool did. It is the version The Quiet Galaxy deployed with on
+      # 2026-11-19.
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: site
+          wranglerVersion: "4.151.1"
+          command: deploy

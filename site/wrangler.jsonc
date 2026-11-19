@@ -1,0 +1,29 @@
+{
+  // Cloudflare Workers config for beyondthewindow.org: a static-assets deployment, the same
+  // pattern as thequietgalaxy.com and the other sibling sites. Written 2026-11-19. Nothing is
+  // deployed: this file is only read when the deploy workflow is started by hand, on John's go
+  // (docs/rulings/2026-11-19-hosting-private-and-by-hand.md).
+  //
+  // There is no code in front of the pages (no "main"), unlike The Quiet Galaxy, which has a
+  // small redirect script for its forwarding address. Cloudflare serves the files in dist/ as
+  // they are.
+  "name": "beyondthewindow",
+  "compatibility_date": "2026-11-01",
+  // No second public address at workers.dev, and no preview addresses for uploaded versions,
+  // so the site has one public home. PROPOSED 2026-11-19, not ruled by John; the siblings keep
+  // the workers.dev address on.
+  "workers_dev": false,
+  "preview_urls": false,
+  // The address John registered at Cloudflare, with and without www. On the first deploy
+  // Cloudflare makes the DNS records and certificates for both itself. That only works if no
+  // DNS record for either name exists already.
+  "routes": [
+    { "pattern": "beyondthewindow.org", "custom_domain": true },
+    { "pattern": "www.beyondthewindow.org", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./dist",
+    // An address with no page gets the site's own "not found" page (dist/404.html).
+    "not_found_handling": "404-page"
+  }
+}
