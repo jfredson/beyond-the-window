@@ -153,18 +153,12 @@ nothing was found, so that no single name stands alone. What follows for the des
 - The check of the built site lets a developer in `data/developers.toml` be named in that
   reading and nowhere else on the home page.
 
-**Decision 2. Which developers does the record cover?**
-"None was found at any other developer" is only as good as the search. The records name three
-developers today. A reading that says "1 of 3" invites the question of why three.
-- *Proposed:* a stated rule and a named list on the About page, with each covered developer
-  searched for each thing on the list and the date of the search shown. Start with the three
-  already named and add others by ruling.
-- *Confidence:* high that a stated list is needed. Low on which list: I know of no outside
-  list of leading developers that would settle it without a judgment, and one should be looked
-  for before the list is fixed.
-- *Standard or judgment:* judgment call.
-- *Strongest alternative:* no denominator at all, and "none found elsewhere" stated with the
-  date and scope of the search. It claims less and is harder to check.
+**Decision 2. Which developers does the record cover?** *Ruled by John on 2026-11-20*
+(`docs/rulings/2026-11-20-the-record-covers-three-developers.md`; decided by: mixed): "The
+three named now". The record covers Anthropic, OpenAI and Google, and they are the columns of
+the grid. The page says plainly that only these three are covered so far, and a developer is
+added by John's ruling. With eight things on the list, the grid has twenty-four cells; the
+records fill five of them with an act today, and most of the rest still need a search.
 
 **Decision 3. The opening.**
 Two candidates, neither yet read by a person:
@@ -196,7 +190,8 @@ service is used.
 
 ## The order of work
 
-1. John's answer on decision 2, which fixes the columns of the grid. Decision 1 is ruled.
+1. Decisions 1 and 2 are ruled, so the records can be shaped. The searches behind the grid's
+   empty cells need John's go before they are made.
 2. Acts and measures written into the thirteen records, each source re-opened; the validator
    and the count script extended; tests.
 3. The home page, the dated page, the feed and the preview picture, on a branch.
