@@ -1,6 +1,6 @@
 #!/bin/sh
-# Draws the picture a link preview shows for the draft of the rebuilt home page, 1200 by 630,
-# into site/public/draft/preview.png, with a headless Chrome.
+# Draws the picture a link preview shows for every page of the site, 1200 by 630, into
+# site/public/preview.png, with a headless Chrome.
 #   sh scripts/preview_picture.sh
 # PROPOSED 2026-11-20. The picture holds the site's name, one line saying what the record is,
 # and the address. It holds no figure, so it cannot go out of date when the record changes.
@@ -8,7 +8,7 @@
 set -e
 cd "$(dirname "$0")/.."
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-OUT="site/public/draft/preview.png"
+OUT="site/public/preview.png"
 TMP=$(mktemp -d)
 mkdir -p "$(dirname "$OUT")"
 cat > "$TMP/card.html" <<'HTML'

@@ -1,8 +1,9 @@
 #!/bin/sh
 # Photographs the running site into docs/site-pictures/<date>/ with a headless Chrome.
 #   sh scripts/pictures.sh 2026-11-17
-#   sh scripts/pictures.sh 2026-11-20 draft   only the draft of the rebuilt home page, into
-#                                             docs/site-pictures/<date>-draft/ (added 2026-11-20)
+#   sh scripts/pictures.sh 2026-11-20 rebuilt   only the rebuilt home page and its page of acts,
+#                                               into docs/site-pictures/<date>-rebuilt/ (added
+#                                               2026-11-20)
 # The site must already be running on port 4329 (the project's dev server, .claude/launch.json).
 # Needs Google Chrome and Python with the Pillow library. Adapted from the design session's
 # docs/design/mockups/capture.sh on 2026-11-17.
@@ -12,7 +13,7 @@ DAY="${1:?give the date, year-month-day}"
 BASE="http://localhost:4329"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 OUT="docs/site-pictures/$DAY"
-[ "$2" = draft ] && OUT="docs/site-pictures/$DAY-draft"
+[ "$2" = rebuilt ] && OUT="docs/site-pictures/$DAY-rebuilt"
 TMP=$(mktemp -d)
 mkdir -p "$OUT"
 # A phone is photographed through a frame 390 points wide, because a headless Chrome window
@@ -51,17 +52,16 @@ im.crop((0, 0, 780, im.height)).save(sys.argv[2], quality=88)
 PY
   echo "  $OUT/$1.jpg"
 }
-if [ "$2" = draft ]; then
-  # The first screen as a phone shows it (390 by 844 points), then the whole page.
-  phone 1-draft-first-screen       /draft/      844
-  phone 2-draft-phone              /draft/      6200
-  phone 3-draft-phone-dark         /draft/      6200 dark
-  phone 4-draft-b-first-screen     /draft/b/    844
-  phone 5-draft-b-phone            /draft/b/    2400
-  phone 6-draft-acts-phone         /draft/acts/ 6000
-  phone 9-draft-c-first-screen     /draft/c/    844
-  shot  7-draft-light              /draft/      light 1280 3300
-  phone 8-published-home-phone      /            3400
+if [ "$2" = rebuilt ]; then
+  # The rebuilt home page: the first screen as a phone shows it (390 by 844 points), the whole
+  # page on a phone in both themes, the page at desktop width, and the page of acts.
+  phone 1-home-first-screen        /            844
+  phone 2-home-phone               /            6400
+  phone 3-home-phone-dark          /            6400 dark
+  shot  4-home-desktop-light       /            light 1280 3600
+  shot  5-home-desktop-dark        /            dark  1280 3600
+  phone 6-acts-phone               /acts/       6400
+  shot  7-acts-desktop-light       /acts/       light 1280 3000
   rm -rf "$TMP"
   exit 0
 fi

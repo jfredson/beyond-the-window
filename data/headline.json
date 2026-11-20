@@ -26,7 +26,7 @@
     "constructed": false
   },
   "readings": {
-    "status": "PROPOSED 2026-11-20 and not ruled: the readings of the rebuilt home page, which is a draft (docs/proposals/2026-11-20-rebuild-design.md). The count above them is unchanged.",
+    "status": "the readings of the home page since 2026-11-20 (docs/proposals/2026-11-20-rebuild-design.md). Which readings stand there, and how each is worked out, are provisional choices and not rulings. The count above them is worked out as before.",
     "developers": {
       "covered": [
         "Anthropic",

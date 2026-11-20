@@ -1,22 +1,18 @@
 ---
-// The rebuilt home page, as a draft (PROPOSED 2026-11-20, nothing here is ruled but what the
-// three rulings of that day say). It stands at /draft/ and the published home page does not
-// link to it. Design: docs/proposals/2026-11-20-rebuild-design.md. Starting text: Option C2
-// (docs/proposals/pictures/2026-11-20-first-screen/option-C2-index.astro.txt).
+// The home page, rebuilt (2026-11-20). John ruled that day to pursue the rebuild, to name every
+// developer the record covers, and that the record covers three; and gave his go to publish
+// once a different session has checked the page
+// (docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md). Design:
+// docs/proposals/2026-11-20-rebuild-design.md. Which form of the page this is, and every
+// sentence on it, is a session's choice and not John's (the same ruling lists them).
 //
 // Every figure is read from the readings scripts/compute.py wrote, and each is marked with
 // data-figure so that scripts/check_site.py can compare it with the served file. No figure is
-// typed. Every sentence is a draft for John.
+// typed.
 //
-// Developers are named in the developers' reading and nowhere else on this page: the strip at
-// the top and the table under "Who does what", both marked data-developers-reading (ruled
-// 2026-11-20, docs/rulings/2026-11-20-home-page-names-every-covered-developer.md). The dated
-// list below prints a developer's act as "A developer ...".
-//
-// `opening` picks between the two candidates of the design's decision 3, which is not ruled:
-//   "acts"     one developer interviews its models before retiring them (read in Option C2)
-//   "forecast" the researchers' two figures (not read by anyone yet); the researchers' reading
-//              is then left out of the rows below, as the design proposes
+// Developers are named in the developers' reading and nowhere else on this page: the three
+// boxes near the top and the table under "Who does what", both marked data-developers-reading.
+// The dated list below prints a developer's act as "A developer ...".
 import Base from '../layouts/Base.astro';
 import WindowGrid from './WindowGrid.astro';
 import ThingList from './ThingList.astro';
@@ -24,13 +20,6 @@ import ActList from './ActList.astro';
 import '../styles/rebuild.css';
 import { data, readings, entryById, longDate, worldDate, countWord, QUESTION } from '../lib/data';
 
-interface Props {
-  opening: 'acts' | 'forecast';
-  // With the first opening only: put the researchers' reading first among the readings, so
-  // that it is on a phone's first screen (added 2026-11-20 as an option for John).
-  researchersFirst?: boolean;
-}
-const { opening, researchersFirst = false } = Astro.props;
 
 if (!readings) throw new Error('the headline file holds no readings; run scripts/compute.py');
 const r = data.headline.records;
@@ -43,10 +32,14 @@ const lastRead = data.headline.last_read;
 if (!law.against || !law.protecting || !pub || !res || !latest) throw new Error('a reading is missing');
 if (res.measures.length !== 2) throw new Error('the researchers\' reading is written for two figures');
 
-// The first opening holds for exactly one developer. The build stops if the records say otherwise.
+// The opening sentence says what the entry on interviews before retirement supports and no
+// more: that one developer has committed to it. Whether every model retired since was
+// interviewed is listed on that entry as not confirmed, so the sentence does not say the
+// developer "interviews its models" (the wording of the first drafts, changed 2026-11-20).
+// It holds for exactly one developer, and the build stops if the records say otherwise.
 const interview = entryById.get('interview-before-retirement');
 const interviewers = interview ? interview.state.offered_by.length : 0;
-if (opening === 'acts' && interviewers !== 1) throw new Error('the opening sentence is written for one developer');
+if (interviewers !== 1) throw new Error('the opening sentence is written for one developer');
 
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
@@ -60,24 +53,17 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
 const description = 'A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.';
 ---
 
-<Base description={description} noindex draft image="/draft/preview.png" feed="/draft/acts.xml">
+<Base description={description}>
   <div class="rb-top">
     <p class="eyebrow">A dated record of how the world is treating AI models</p>
-    {opening === 'acts' ? (
-      <h1>{cap(countWord(interviewers))} AI developer interviews its models before retiring them, and keeps the record.</h1>
-      <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
-    ) : (
-      <h1>AI researchers put the chance that an AI system has inner experience at <span data-figure="researchers.0">{res.measures[0].value}</span> percent in {worldDate(res.date)} and <span data-figure="researchers.1">{res.measures[1].value}</span> percent by 2100.</h1>
-      <p class="lede">This is a dated record of what the world is doing in the meantime, by whom and when.</p>
-    )}
+    <h1>{cap(countWord(interviewers))} AI developer has <a href="/list/interview-before-retirement/">committed to interview each of its models before retiring it</a>, and to keep the record.</h1>
+    <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
 
     <div class="rb-readings">
-      {opening === 'acts' && researchersFirst && (
-        <p class="rb-reading rb-row">
+      <p class="rb-reading rb-row">
           <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
           <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span> percent {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>The entry.</a></span>
-        </p>
-      )}
+      </p>
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
         <p>This record covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
@@ -101,18 +87,12 @@ const description = 'A dated record of how the world is treating AI models: what
         <span class="rb-fig"><span data-figure="public.0">{pub.measures[0].value}</span>%</span>
         <span><span class="rb-label">The public</span>{pub.measures[0].words}. {pub.one_source && 'From one survey. '}<a href={`/list/${pub.entry}/`}>The entry.</a></span>
       </p>
-      {opening === 'acts' && !researchersFirst && (
-        <p class="rb-reading rb-row">
-          <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
-          <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span> percent {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>The entry.</a></span>
-        </p>
-      )}
       <p class="rb-reading rb-latest"><strong>Latest, {worldDate(latest.date)}:</strong> {actSentence(latest)} <a href="#dated">Everything, by date.</a></p>
     </div>
 
     <ul class="checked">
       {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
-      <li class="world">The dated acts and the survey figures above were written in on November 20th, 2026, each from a source opened again that day. They have not had a second check.</li>
+      <li class="world">The dated acts, the survey figures and the searches were written in on November 20th, 2026, each from a source or a search made that day.</li>
     </ul>
     <div class="ctas">
       <a class="btn" href="#list">Read the list</a>
@@ -158,7 +138,7 @@ const description = 'A dated record of how the world is treating AI models: what
   <section class="below" id="dated">
     <div class="shead"><h2>Everything, by date</h2><span><span data-figure="acts.count">{readings.acts.length}</span> dated acts, newest first</span></div>
     <ActList />
-    <p class="rb-note"><a href="/draft/acts/">The same list on its own page, with who acted and the source for each.</a></p>
+    <p class="rb-note"><a href="/acts/">The same list on its own page, with who acted and the source for each.</a></p>
   </section>
 
   <section class="below" id="why">

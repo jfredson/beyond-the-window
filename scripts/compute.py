@@ -711,8 +711,8 @@ def words_for(count: int) -> str:
 
 # ---- the readings (the rebuild, PROPOSED 2026-11-20) ----------------------------------------
 # docs/proposals/2026-11-20-rebuild-design.md, part 2. Worked out here and written to the
-# headline file beside the count, which is left exactly as it was: the published home page
-# still reads the count, and the rebuilt page, a draft, reads these.
+# headline file beside the count, which is left exactly as it was. The home page reads these
+# since 2026-11-20; the page of the list still reads the count.
 
 def _source_for_site(rec: dict, key: str) -> dict:
     s = next(x for x in rec["sources"] if x["key"] == key)
@@ -858,9 +858,10 @@ def measure_reading(records: list[dict], by: str) -> dict | None:
 def readings(records: list[dict], developers: list[dict] | None = None) -> dict:
     acts = all_acts(records)
     return {
-        "status": "PROPOSED 2026-11-20 and not ruled: the readings of the rebuilt home page, "
-                  "which is a draft (docs/proposals/2026-11-20-rebuild-design.md). The count "
-                  "above them is unchanged.",
+        "status": "the readings of the home page since 2026-11-20 "
+                  "(docs/proposals/2026-11-20-rebuild-design.md). Which readings stand there, "
+                  "and how each is worked out, are provisional choices and not rulings. The "
+                  "count above them is worked out as before.",
         "developers": developer_grid(records, developers or []),
         "law": law_reading(records),
         "public": measure_reading(records, "public"),

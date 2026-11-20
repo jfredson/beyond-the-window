@@ -12,6 +12,10 @@ the sentences that changed are in
 `docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md`. The counts in this file
 (19 acts, 14 places to search) are the earlier ones.
 
+**Updated again on 2026-11-20.** The third draft became the home page on the branch and the
+`/draft/` addresses are gone. The file to check from is
+`docs/proposals/2026-11-20-rebuilt-home-page-for-checking.md`.
+
 **A different session must check this branch before the master planning session pushes
 anything.** No act, no measure, no sentence and no line of the new checks has been read by
 anyone but the session that wrote it.

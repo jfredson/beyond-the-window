@@ -1,16 +1,16 @@
 // A feed of acts, newest first, for a reader who wants to be told when something changes
-// (PROPOSED 2026-11-20, a draft with the rebuilt home page; the published site has no feed).
-// Built from the same readings every draft page reads. An act dated to a month or a year is
+// (added 2026-11-20 with the rebuilt home page).
+// Built from the same readings the home page reads. An act dated to a month or a year is
 // given the first day of it, because a feed needs a full date.
 import type { APIRoute } from 'astro';
-import { readings, startOf, SITE_NAME } from '../../lib/data';
+import { readings, startOf, SITE_NAME } from '../lib/data';
 
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export const GET: APIRoute = async ({ site }) => {
   const acts = readings?.acts ?? [];
-  const page = new URL('/draft/acts/', site).href;
-  const self = new URL('/draft/acts.xml', site).href;
+  const page = new URL('/acts/', site).href;
+  const self = new URL('/acts.xml', site).href;
   const updated = acts.length ? `${startOf(acts[0].date)}T00:00:00Z` : '1970-01-01T00:00:00Z';
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">

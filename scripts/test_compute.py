@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Tests for scripts/compute.py and scripts/export.py. Run: python3 scripts/test_compute.py
+"""Tests for scripts/compute.py, scripts/export.py and the rebuilt home page's part of
+scripts/check_site.py. Run: python3 scripts/test_compute.py
 
 Every record in this file is a constructed example, made up to exercise a rule. None is real
 data, and none describes anything any developer does.
@@ -17,6 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import compute as c  # noqa: E402
 import export as x  # noqa: E402
+import check_site as s  # noqa: E402
 
 D = dt.date(2026, 11, 17)
 GROUPS = [{"name": "A constructed group"}]
@@ -556,6 +558,97 @@ class Readings(unittest.TestCase):
             before = len(c.read_headline(path)["history"])
             c.write_headline(path, c.compute(recs, DEVS), today="2026-11-21")
             self.assertEqual(len(c.read_headline(path)["history"]), before)
+
+
+# ---- the check of the built site: the rebuilt home page (rule 7 of scripts/check_site.py) ----
+
+def built_site(folder: Path, rd: dict, change=lambda home: home) -> Path:
+    """A constructed built site, as small as the check allows: a home page that shows the
+    readings, a page of acts and a feed. `change` edits the home page before it is written."""
+    g = rd["developers"]
+    fig = lambda key, value: f'<span data-figure="{key}">{value}</span>'
+    names = "".join(f"<li>{d['name']} {fig('developers.' + d['name'] + '.offered', d['offered'])}</li>"
+                    for d in g["by_developer"])
+    rows = "".join(
+        f'<tr data-entry="{row["entry"]}"><th>{row["name"]}</th>' + "".join(
+            f'<td data-dev="{c_["developer"]}" data-kind="{c_["kind"]}"'
+            + (f' data-date="{c_["date"]}"' if c_["date"] else " data-date") + ">x</td>"
+            for c_ in row["cells"]) + "</tr>" for row in g["rows"])
+    acts = "".join(f'<li data-act="{a["id"]}" data-date="{a["date"]}">'
+                   f'<a href="{a["source"]["url"]}">source</a></li>' for a in rd["acts"])
+    measures = "".join(fig(f"{who}.{i}", m["value"]) for who in ("public", "researchers")
+                       for i, m in enumerate((rd[who] or {}).get("measures", [])))
+    home = (f'<ul data-developers-reading>{names}</ul>'
+            f'{fig("developers.covered", len(g["covered"]))}{fig("developers.things", g["things"])}'
+            f'{fig("developers.cells", g["cells"])}'
+            f'{fig("developers.nothing_found", g["counts"]["nothing_found"])}'
+            f'{fig("law.against.count", rd["law"]["against"]["count"])}{measures}'
+            f'<table data-developers-reading><tr><th>Thing</th>'
+            + "".join(f"<th>{n}</th>" for n in g["covered"]) + f'</tr>{rows}</table>'
+            f'{fig("acts.count", len(rd["acts"]))}<ul>{acts}</ul>')
+    (folder / "acts").mkdir(parents=True)
+    (folder / "index.html").write_text(change(home), encoding="utf-8")
+    (folder / "acts" / "index.html").write_text(
+        f'{fig("acts.count", len(rd["acts"]))}<ul>{acts}</ul>', encoding="utf-8")
+    (folder / "acts.xml").write_text("<feed>" + "<entry></entry>" * len(rd["acts"]) + "</feed>",
+                                     encoding="utf-8")
+    return folder
+
+
+class SiteCheck(unittest.TestCase):
+    def readings(self) -> dict:
+        recs = Readings().records()
+        against = good(c.LAW_AGAINST_ID); against["state"].pop("offered_today")
+        against["beside"] = True
+        against["acts"] = [act("2022", "A made-up state", "lawmaker")]
+        survey = good("a-made-up-survey")
+        survey["measures"] = [measure(17), measure(1, "researchers"), measure(70, "researchers")]
+        return json.loads(json.dumps(c.readings(recs + [against, survey], DEVS)))
+
+    def problems(self, change=lambda home: home, rd_change=lambda rd: None) -> str:
+        rd = self.readings()
+        with tempfile.TemporaryDirectory() as d:
+            site = built_site(Path(d) / "dist", rd, change)
+            rd_change(rd)
+            return "\n".join(s.rebuilt_problems(site, rd))
+
+    def test_a_home_page_that_shows_the_served_readings_passes(self):
+        self.assertEqual(self.problems(), "")
+
+    def test_a_figure_on_the_page_must_equal_the_served_figure(self):
+        wrong = lambda home: home.replace('data-figure="law.against.count">1<',
+                                          'data-figure="law.against.count">2<')
+        self.assertIn("the figure 'law.against.count' reads \"2\"", self.problems(wrong))
+        self.assertEqual(s.as_number("three"), 3)
+        self.assertEqual(s.as_number(" 17% "), 17)
+        self.assertIsNone(s.as_number("several"))
+
+    def test_a_figure_the_page_must_carry_cannot_be_left_unmarked(self):
+        gone = lambda home: home.replace('<span data-figure="acts.count">', "<span>")
+        self.assertIn("the figure 'acts.count' is not on the page, or is not marked",
+                      self.problems(gone))
+
+    def test_a_place_cannot_say_nothing_found_unless_the_served_file_does(self):
+        claimed = lambda home: home.replace('data-kind="not_searched" data-date',
+                                            'data-kind="nothing_found" data-date="2026-11-20"', 1)
+        self.assertIn("the table of developers does not show what the served file holds",
+                      self.problems(claimed))
+
+    def test_the_acts_listed_are_the_acts_served_in_order(self):
+        dropped = lambda home: home.replace('<li data-act="a-thing-offered-2026-03-02"', '<li', 1)
+        self.assertIn("the acts listed are not the acts in the served file", self.problems(dropped))
+
+    def test_every_covered_developer_is_named_in_the_developers_reading(self):
+        alone = lambda home: home.replace("<th>Another made-up developer</th>", "<th></th>")
+        self.assertIn("does not name Another made-up developer", self.problems(alone))
+
+    def test_a_served_act_needs_a_date_an_actor_and_an_opened_source(self):
+        def strip(rd):
+            rd["acts"][0]["source"]["opened"] = None
+            rd["acts"][1]["actor"] = "A developer nobody listed"
+        said = self.problems(rd_change=strip)
+        self.assertIn("lacks a source with an address and the date it was opened", said)
+        self.assertIn("is by a developer the record does not cover", said)
 
 
 if __name__ == "__main__":

@@ -6,6 +6,10 @@ session that built the draft. The searches were made on John's go of 2026-11-20
 is on the branch `claude/cold-reader-proposal-2026-11-20`. Nothing was pushed, and no money was
 spent.
 
+**Updated later on 2026-11-20.** The third draft, `/draft/c/` below, became the home page on
+the branch, and the `/draft/` addresses are gone. The file to check from is
+`docs/proposals/2026-11-20-rebuilt-home-page-for-checking.md`.
+
 **A different session must check this before anything is pushed.** Three new acts, eleven
 records of a search that found nothing, and the new sentences have been read by nobody but the
 session that wrote them.
