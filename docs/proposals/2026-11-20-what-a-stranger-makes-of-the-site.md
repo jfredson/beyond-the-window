@@ -165,6 +165,82 @@ from the model not knowing today's date, and says nothing about the page.
 Every sentence in both options is new public wording, so each needs your eye before it stands,
 and a different session's check before it is pushed.
 
+## Decision 1, continued. Option C: the site rebuilt from the question up
+
+*Added later on 2026-11-20.* After seeing options A and B, John asked how the site would be
+designed from nothing to meet the audit's tests. Option C is a mock-up of that
+(`option-C-01.jpg`, `option-C-02.jpg`, page text in `option-C-index.astro.txt`). It changes
+what is counted, not only the wording, so it reaches well past decision 1.
+
+**The idea.** The unit stops being a thing on a list, marked offered or not, and becomes a
+dated act by a named actor: who did what, on what day, with its source. The question at the
+top becomes "How is the world treating AI models, while nobody knows whether it matters to
+them?" The founding question stays as the reason for the project and moves to the About page.
+
+**What the first screen shows.** No single count. Three short readings, each of which the
+world moves:
+
+- **Developers, "1":** "One developer does five things for its own models, the first in May
+  2025. One is interviewing a model before retiring it. None was found at any other developer."
+- **Law, "4":** "United States states have passed a law saying an AI system cannot be a legal
+  person, the first in 2022. No law was found that protects one."
+- **People, "17%":** "of United States adults surveyed in late 2024 believed sentient AI systems
+  already exist. AI researchers surveyed that year put the chance that an AI system has inner
+  experience at 1 percent now and 70 percent by 2100."
+
+Under them: "Latest, November 9th, 2026: a developer published a welfare assessment with its
+newest models", and a link to "Everything, by date", a list of eleven dated acts drawn from
+the records, newest first. Every figure and date is taken from the thirteen records as they
+stand; none is new research. In the mock-up the present window still sits between the first
+screen and the dated list, because only the top was rebuilt.
+
+**What fresh readers made of it** (first screen only):
+
+| | Option A | Option B | Option C |
+|---|---|---|---|
+| Could say what the site is about | both | both | both |
+| Could say what it is telling them today | the count, which neither would repeat | the count | both gave a finding in their own words: "almost nobody is doing anything, and the law so far runs the other way" (Claude); "society is mostly ignoring AI rights, but it's starting to become a legal and social issue" (Gemini) |
+| Scroll or leave | Claude scroll, Gemini leave | both scroll | Claude scroll ("a near thing"), Gemini leave |
+| Fact they would repeat | the interview | the interview | the interview (Claude); the 17 percent (Gemini) |
+
+**What C does that A and B do not.** It is the only version where a stranger could say what
+the site is telling them today as a statement about the world. It also gave two different
+facts worth repeating, from two different readings.
+
+**What C gets wrong, by the readers' account.**
+
+- **The opening paragraph about costs fails here as it did in B.** The Claude reader: "I read
+  it twice and it still felt like a logic puzzle." Gemini's: "written like a riddle". In all
+  three mock-ups the thing that made a reader care was the concrete detail, the interview
+  before retirement, and never the argument. The costs belong lower down, and the concrete
+  fact belongs at the top.
+- **No one-line summary.** The Claude reader had to add the three readings up, and wanted the
+  page to do it.
+- **The "1" row carries three counts** (one developer, five things, one example), and the
+  researchers' figures sit under the public's 17 percent, so both readers briefly mixed them.
+- **The name again.** "Just say the name; hiding it feels coy and makes me slightly
+  suspicious."
+- **Both readers summed the page up as "almost nobody is doing anything".** That is a fair
+  reading of the facts, and it is also a judgment the page does not make. Guideline 5 says the
+  site does not campaign, so a one-line summary would need careful wording.
+
+**What C would cost.** It sets aside the ruling that the home page opens with a count
+(2026-11-18) and the ruled sentence (2026-11-19). It needs a stated rule for which developers
+are covered, since "none was found at any other developer" is only as good as the search. And
+it makes the survey and law entries, which now sit beside the list and are not counted, into
+two of the three readings.
+
+**Where I land.** C's structure is right and its opening is wrong. If the project goes this
+way, the next mock-up should open on the concrete facts, give one plain summary line, split the
+researchers' figures into their own reading, and move the costs below the first screen. Option
+A remains the change that can be made now without reopening anything.
+
+- *Confidence:* moderate. C is the only option that passed the "what is it telling me today"
+  test, on two readers and one screen. It has not been read past the first screen.
+- *Standard practice or judgment call:* judgment call. The nearest sibling practice is the AGI
+  Zeitgeist's four signs, each one checkable fact set against the record.
+- *Strongest alternative:* Option A, which changes little and keeps both rulings.
+
 ## Decision 2. Saying that all five come from one developer
 
 The home page says "at least one AI developer" and the list says "one developer" five times. A
