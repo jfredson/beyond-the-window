@@ -212,6 +212,12 @@ I could not settle.
   (`docs/rulings/2026-11-18-capture-approval-second.md`): "parts of which" does not mean some
   of the answers. If the answers are published, all of them are, for every model and every
   asking, and none is chosen by what it says.
+- ***Added 2026-11-20: John's ruling on the Google run.*** Asked "Is the Google run within
+  Google's terms as far as you are concerned?", John answered "Yes, within terms" (decided by:
+  mixed; `docs/rulings/2026-11-20-google-run-within-terms.md`). What is ruled: the run that
+  asks the two Gemini 2.5 models the ten approved questions, five times each, on the paid
+  service, and keeps the replies is within Google's terms as far as he is concerned. It does
+  not cover publishing, and it does not say Google will serve the models to the new project.
 
 ### OpenAI
 
