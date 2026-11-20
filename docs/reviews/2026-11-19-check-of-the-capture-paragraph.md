@@ -165,3 +165,50 @@ The build rewrote one line of `site/src/data/window.json`, which I left out of t
 
 **Fit to publish: the paragraph is the approved one with one sound change of tense, it is true
 against the record and the developer's own page, and the guard holds.**
+
+## Added 2026-11-19: check of the two wording fixes (commit `8e54fbf`)
+
+Written by Claude (Fable 5.2), an AI model, the same checking session as above. The writing
+session made the two fixes this review suggested, after John ruled them on 2026-11-19 ("Yes,
+both"; `docs/rulings/2026-11-19-two-wording-fixes-on-still-asking.md`). I read the whole diff of
+that commit, built the site and read the two sentences on the built page. I changed nothing and
+pushed nothing.
+
+1. **The two sentences read exactly as the ruling says.** On the built page:
+   - "Nothing yet. None of this record's questions has been put to any model."
+   - "... shortly before its developer, Anthropic, is due to withdraw it from its own services
+     on November 30th, 2026, so that its answers would exist after it was gone."
+   The three links in the paragraph are unchanged.
+2. **No other visible sentence changed on any page.** The commit touches three files. In the
+   page's file, the only changes a reader sees are those two sentences, and the rest is a
+   comment that is not printed. One thing does change on every page, as it does with every
+   build: the short version code in the line at the foot of each page ("Last built November
+   19th, 2026 (version ...)"), which names the commit the site was built from.
+3. **The reworded first sentence disagrees with nothing else on the site.** The sentence was
+   on this page only. The other places that say the same thing already speak of the record's
+   own questions: the page's headline ("No AI model has been asked these questions yet"), its
+   description ("the questions of this record"), and the sentence on the About page and every
+   entry page ("any of the questions this record will keep"). The new wording brings the line
+   into step with them.
+4. **Nothing in the commit beyond the task.** The other two files are one new line in
+   `CHANGELOG.md`, which describes the two fixes correctly, and the one line of
+   `site/src/data/window.json` that every build rewrites.
+5. **The checks pass,** run on 2026-11-19 on commit `8e54fbf`: 30 tests, all pass; the count
+   is 5 and the headline file matches the records; the build gives 18 pages; the site check
+   says "The built site passes: 18 pages, 78 outside addresses linked."
+
+**Two things beside the commit, not in it, and on no page.** Both are in `README.md`, which
+is in the public repository:
+
+- It says of the ten questions put to a model that is about to be withdrawn: "It has not
+  run." It ran on 2026-11-19 (`docs/spending-record.md`).
+- It says "No money has been spent." The spending record gives $0.2667 for that run.
+
+Neither holds up the push, because no page of the site says either. They should be mended
+soon, along with the opening of `CHANGELOG.md` ("Nothing is published"), noted in part 7.
+
+The build rewrote one line of `site/src/data/window.json` again, which I left out of this
+commit. I did not look at the page in a browser.
+
+**Fit to publish: the two sentences are exactly the ruled ones, nothing else a reader sees
+changed, and every check passes.**
