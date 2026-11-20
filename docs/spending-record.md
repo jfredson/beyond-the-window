@@ -31,4 +31,21 @@ The commit he names is the one that recorded the site's first release. The captu
 plan and ten message files are unchanged between the commit at which the capture documents were
 settled (`485962c`) and that one.
 
-Spent so far under this go: nothing. No model has been asked anything.
+**The run was made on 2026-11-19, and it is complete.** On John's word ("Yes, run it") the
+master planning session ran it from this Mac: the dry look, then one question alone, then the
+rest.
+
+- 50 exchanges with Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`): the ten approved
+  messages, each asked five times, each a new exchange.
+- All 50 came back as a reply that ended normally, and in all 50 the service reported the
+  model's name as expected. No attempt failed and none was repeated. The script's fault check
+  flagged no file.
+- **Counted cost: $0.2667 of the $10.00 ceiling** (vendor: Anthropic credits). The estimate was
+  $1.89; the replies were much shorter than the estimate assumed, 170 to 276 words each.
+- The replies are kept outside every repository. The list of their file names and checksums
+  is `docs/capture/manifest.md`, and the script confirms the folder matches the list.
+- Nobody has read the replies. The session saw labels, counts and costs only.
+
+Still for John: compare the total with the Usage page in the Anthropic Console.
+
+This go is used up. It covers nothing further.
