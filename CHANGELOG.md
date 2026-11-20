@@ -9,6 +9,18 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **The rebuilt home page was put in place on the working branch, ready for a different
+  session's check. Not published and not pushed. The count did not move: it is still 5.**
+  John gave his go to publish it once checked
+  (`docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md`), which sets
+  aside, on the home page, the count at the top (ruled 2026-11-18) and the sentence beside it
+  (ruled 2026-11-19). The home page now opens with a sentence and several readings; every act
+  by date is at `/acts/`, with a feed at `/acts.xml` and a link preview picture. The opening
+  sentence was reworded to what the entry on interviews supports. One sentence on the Still
+  Asking page and one on each entry beside the list no longer speak of a number on the home
+  page. The check of the built site has a new rule 7 in place of the one that required the
+  count at the top. Which draft, and every sentence, is a session's choice and not John's:
+  `docs/proposals/2026-11-20-rebuilt-home-page-for-checking.md`.
 - **The Still Asking page says that two models have been asked, outside the record**
   (`docs/rulings/2026-11-20-capture-paragraph-names-gemini.md`). The paragraph now adds that
   the same ten questions were put to Gemini 2.5 Flash on 2026-11-20, five times each, and that

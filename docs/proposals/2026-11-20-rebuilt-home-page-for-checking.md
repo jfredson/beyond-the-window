@@ -9,8 +9,8 @@ project's master planning session pushes.
 
 **A conflict to keep in view.** Anthropic made the model that built this page, and it is the
 one developer with anything counted as offered. The opening sentence is about Anthropic,
-unnamed. Twelve of the 22 acts are by one of the three developers other than as a lawmaker or
-research group, and nine of those are Anthropic's. The places where a choice bears on how a
+unnamed. Sixteen of the 22 acts are by one of the three developers, and nine of those are
+Anthropic's. The places where a choice bears on how a
 developer appears are marked below.
 
 ## What changed in this step
