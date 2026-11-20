@@ -135,17 +135,23 @@ phrase "from memory" stay as they are.
 
 ## The decisions this needs
 
-**Decision 1. Does the home page name a developer?**
-The grid of who does what is the plainest form of the developers' reading, and it needs names.
-All four Claude readers of the mock-ups asked for the name, and one said leaving it out "feels
-coy and makes me slightly suspicious". Against: one company's name at the top can read as
-promotion, and it would be the only name there today.
-- *My recommendation:* none. This is the conflict stated above.
-- *The courses:* name developers on the home page; keep "one developer" as a link to the entry
-  that names it; or show a grid in which every covered developer is named, including those
-  with nothing found, so that no single name stands alone.
-- *Standard or judgment:* judgment call. The siblings name companies freely on their home
-  pages (the AGI Zeitgeist names one in the third of its four signs).
+**Decision 1. Does the home page name a developer?** *Ruled by John on 2026-11-20*
+(`docs/rulings/2026-11-20-home-page-names-every-covered-developer.md`; decided by: mixed, with
+no recommendation from the session, which declared a conflict): "Name all covered". The
+developers' reading names every developer the record covers, including each one for which
+nothing was found, so that no single name stands alone. What follows for the design:
+
+- The developers' reading becomes a small grid: the things on the list down the side, the
+  covered developers across the top, and in each cell either the date of the act or the date
+  nothing was found.
+- "Nothing found" is kept apart from "has said it will not" and from "took it back". The
+  records hold one act of the last kind already (a developer withdrawing an older model it had
+  restored).
+- Every empty cell needs a search behind it, made for that developer and that thing, with its
+  date. Most of those searches have not been made. This is new research, and it is the largest
+  piece of work the rebuild adds.
+- The check of the built site lets a developer in `data/developers.toml` be named in that
+  reading and nowhere else on the home page.
 
 **Decision 2. Which developers does the record cover?**
 "None was found at any other developer" is only as good as the search. The records name three
@@ -190,7 +196,7 @@ service is used.
 
 ## The order of work
 
-1. John's answers on decisions 1 and 2, which shape the records.
+1. John's answer on decision 2, which fixes the columns of the grid. Decision 1 is ruled.
 2. Acts and measures written into the thirteen records, each source re-opened; the validator
    and the count script extended; tests.
 3. The home page, the dated page, the feed and the preview picture, on a branch.
