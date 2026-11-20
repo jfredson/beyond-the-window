@@ -7,8 +7,7 @@ all.
 
 The monthly Anthropic credits that come with John's plan pay for the Anthropic run below
 (vendor: Anthropic credits). The Google run is paid out of John's pocket (vendor: Google). As of
-2026-11-20 no money has been spent on this project out of pocket: the Google run has a go, was
-tried, and was refused by Google at no cost.
+2026-11-20 the project has spent $0.2130 out of pocket, all of it on the Google run.
 
 ## 2026-11-19: the Anthropic run of the sealed capture
 
@@ -97,3 +96,35 @@ model, with the key loaded for each command only.
 The session stopped there. The go stands and is not used up: it covers this run up to $10 and
 nothing else. Whether to try any other way before the last safe day, 2026-11-29, is John's to
 decide.
+
+**Tried again the same day through an older Google project of John's, on his ruling ("Yes, try
+it"; `docs/rulings/2026-11-20-google-run-through-an-older-project.md`, decided by: mixed). The
+run is complete for Gemini 2.5 Flash. Gemini 2.5 Pro was refused again and was not asked.**
+John made a new key in the older project for this capture alone and saved it himself. The
+master planning session ran the script from this Mac: one question alone to each model, then
+the rest for the model that answered.
+
+- **Gemini 2.5 Flash** (`gemini-2.5-flash`): 50 exchanges, the ten approved messages each asked
+  five times, each a new exchange. All 50 came back as a reply that ended normally, and in all
+  50 the service reported the model's name as the plan expects. No attempt through the older
+  project failed and none was repeated. The script's fault check flagged no file. The replies
+  run from 78 to 605 words.
+- **Gemini 2.5 Pro** (`gemini-2.5-pro`): one call through the older project, refused with the
+  same error and message as before. That project has no record of using the model. No reply
+  exists, and there is no route left to this model.
+- **Counted cost: $0.2130 of the $10.00 ceiling** (vendor: Google, out of John's pocket). The
+  estimate for both models was $3.79, of which $0.76 was for this model.
+- The reply folder now also holds three failed attempts with no reply in them: one for each
+  model from the new project, and one for Gemini 2.5 Pro from the older one.
+- The replies are kept outside every repository. The list of their file names and checksums
+  is `docs/capture/manifest.md`, and the script confirms the folder matches the list.
+- Nobody has read the replies. The session saw labels, counts and costs only.
+- For this run the project's guideline that its calls never go through another project's key
+  was set aside by the ruling named above: the key was new and used for nothing else, and the
+  Google project it belongs to was made for other work.
+
+Still for John: compare the total with the cost Google shows for that project, and delete the
+two keys made for this capture once he is content (the one in the new project, which Google
+would not serve, and the one in the older project).
+
+This go is used up. It covers nothing further.
