@@ -41,10 +41,20 @@ The run is tried once more through an older Google project of John's, with a key
 for this capture alone. For this run the guideline on keeping projects apart is set aside, and
 this file says so.
 
+*Added 2026-11-20, after the check of the run's record:* a second thing is set aside, which the
+session did not name to John when it asked. The capture's step list
+(`docs/capture/what-john-needs-to-do.md`, step 5, Google) says: "If they do not appear, or a
+first call is refused, the Google run is let go." A first call was refused and the run was
+tried again, on this ruling.
+
 ## Not covered by this ruling
 
 - Any change to the older project's settings, which is asked of John separately.
 - Asking Google's newer models, which the session advised leaving for Still Asking and John did
   not rule on.
 - A new go. The go of 2026-11-20 ("Google, up to $10") covers this run and stands unused.
+  *Added 2026-11-20, after the check of the run's record:* that the earlier go carries over to
+  this second try is the session's reading. John was not told so before he ruled. He was told
+  in the session's next message ("Your go and your 'Yes, run it' already cover this run"), and
+  he then made and saved the new key.
 - The guideline itself, which stands for every other call.

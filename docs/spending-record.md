@@ -100,7 +100,12 @@ decide.
 **Tried again the same day through an older Google project of John's, on his ruling ("Yes, try
 it"; `docs/rulings/2026-11-20-google-run-through-an-older-project.md`, decided by: mixed). The
 run is complete for Gemini 2.5 Flash. Gemini 2.5 Pro was refused again and was not asked.**
-John made a new key in the older project for this capture alone and saved it himself. The
+John made a new key in the older project for this capture alone and saved it himself. Before
+the run the session read that project's pages and changed nothing on them: the project is on
+Google's paid service, which the terms ruling requires, and its storage of requests was already
+switched off for the kind of call the script makes, so Google kept no copy of what was sent.
+*(These two sentences were added after the check of this record,
+`docs/reviews/2026-11-20-check-of-the-google-run-record.md`.)* The
 master planning session ran the script from this Mac: one question alone to each model, then
 the rest for the model that answered.
 
@@ -110,8 +115,11 @@ the rest for the model that answered.
   project failed and none was repeated. The script's fault check flagged no file. The replies
   run from 78 to 605 words.
 - **Gemini 2.5 Pro** (`gemini-2.5-pro`): one call through the older project, refused with the
-  same error and message as before. That project has no record of using the model. No reply
-  exists, and there is no route left to this model.
+  same error and message as before. Neither of John's two older projects shows any use of the
+  model in the 90 days before the run. No reply exists, and no route to this model is known.
+  Its 50 askings are still to be recorded as not made: the method says that is done after the
+  last safe day, 2026-11-29, with the script's own command, which asks no model anything and
+  costs nothing. The master planning session runs it then and tells John.
 - **Counted cost: $0.2130 of the $10.00 ceiling** (vendor: Google, out of John's pocket). The
   estimate for both models was $3.79, of which $0.76 was for this model.
 - The reply folder now also holds three failed attempts with no reply in them: one for each
