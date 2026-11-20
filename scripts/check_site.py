@@ -162,15 +162,16 @@ MODEL_NAMES = (r"\b(claude|anthropic|openai|chatgpt|gpt|gemini|deepmind|google|l
 
 # The draft of the rebuilt home page (rules 11 to 14).
 DRAFT_PREFIX = "/draft/"
-DRAFT_HOMES = ["/draft/", "/draft/b/"]
+DRAFT_HOMES = ["/draft/", "/draft/b/", "/draft/c/"]
 DRAFT_ACTS = "/draft/acts/"
 DRAFT_FEED = "draft/acts.xml"
 DEVELOPERS_READING = r'(?is)<(ul|table)\b[^>]*\bdata-developers-reading\b[^>]*>.*?</\1>'
 ACTOR = r'(?is)<span class="actor"[^>]*>(?:\s*<a\b[^>]*>)?\s*([^<]*?)\s*(?:</a>\s*)?</span>'
 FIGURE = r'(?is)<span\b[^>]*\bdata-figure="([^"]+)"[^>]*>\s*([^<]*?)\s*</span>'
 # Figures a draft home page must carry, so that leaving the mark off is not a way past rule 12.
+# (How many places are not yet searched is shown only while there are any, so it is not here.)
 REQUIRED_FIGURES = ["developers.covered", "developers.things", "developers.cells",
-                    "developers.not_searched", "law.against.count", "public.0",
+                    "developers.nothing_found", "law.against.count", "public.0",
                     "researchers.0", "researchers.1", "acts.count"]
 COUNT_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
                "ten", "eleven", "twelve"]

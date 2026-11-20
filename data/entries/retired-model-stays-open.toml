@@ -101,3 +101,13 @@ actor_kind = "developer"
 words = "says a model it has retired stays open to all paying users of its chat product, and to developers on request"
 source = "update"
 read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for a retired model of the developer's that members of the public can still use, and its own page on retiring models, opened. The page says a model that is shut down is completely turned off and can no longer be used. The pages found cover the service for developers. Nothing was found either way about the developer's chat product."

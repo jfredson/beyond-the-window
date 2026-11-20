@@ -389,6 +389,22 @@ class Acts(unittest.TestCase):
         rec = good(); rec["acts"] = [act(date="2027-01-01")]
         self.assertIn("dated after the day its source was read", errs_with(rec))
 
+    def test_a_source_added_for_an_act_stays_off_the_published_pages(self):
+        rec = good()
+        rec["sources"].append({"key": "new", "label": "Constructed", "publisher": "Nobody",
+                               "url": "https://example.com/new", "opened": dt.date(2026, 11, 20),
+                               "draft": True})
+        rec["acts"] = [act(source="new")]
+        self.assertEqual(errs_with(rec), "")
+        # the date the record was last read does not move, and the entry page does not list it
+        self.assertEqual(c.compute([rec], DEVS)["last_read"], "2026-11-17")
+        entry = x.entry_for_site(rec, {})
+        self.assertEqual([s["key"] for s in entry["sources"]], ["s"])
+        self.assertEqual(c.all_acts([rec])[0]["source"]["url"], "https://example.com/new")
+        # nothing a published page prints may rest on it
+        rec["state"]["source"] = "new"
+        self.assertIn("the state rests on a source, 'new', that is marked as a draft", errs_with(rec))
+
     def test_a_developer_who_acts_must_be_one_the_record_covers(self):
         rec = good(); rec["acts"] = [act(actor="A developer nobody listed")]
         self.assertIn("is not in developers.toml, so the record does not cover it", errs_with(rec))

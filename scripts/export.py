@@ -119,7 +119,8 @@ def entry_for_site(rec: dict, developers: dict[str, str]) -> dict:
         "evidence": evidence,
         "cautions": cautions,
         "history": _plain(rec.get("history", [])),
-        "sources": [sources[s["key"]] for s in rec["sources"]],
+        # A source added for an act of the rebuild stays off the published entry page.
+        "sources": [sources[s["key"]] for s in rec["sources"] if s.get("draft") is not True],
     }
 
 

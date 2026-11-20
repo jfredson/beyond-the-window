@@ -144,3 +144,18 @@ actor_kind = "developer"
 words = "commits to keep the files of every model it has released to the public, for at least as long as the company exists"
 source = "commitments"
 read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "OpenAI"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, and its own page on retiring models, opened. The page describes three stages of a model's life and says nothing about what happens to a model's files. The searches returned users' proposals and a petition asking for such a commitment, and no statement by the developer."
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, and its own page on retiring models, opened. The page says a model that is shut down is completely turned off and says nothing about its files. The searches returned a user's proposal on the developer's forum, and no statement by the developer."

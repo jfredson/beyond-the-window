@@ -168,3 +168,18 @@ actor_kind = "developer"
 words = "publishes a welfare assessment in the report released with its newest models"
 source = "report-new"
 read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "OpenAI"
+words = "Two searches for a welfare assessment or a stated position on model welfare, and the developer's two newest release reports, opened: the report published on November 17th, 2026 and the addendum published on October 26th, 2026. Neither contains the word welfare. The searches returned a user's proposal on the developer's forum. The developer's earlier reports were not opened."
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for a welfare assessment or work on model welfare, and the developer's two newest release documents, opened: the model cards published on November 18th, 2026 and November 12th, 2026. Neither contains the word welfare. The developer's earlier model cards were not opened."

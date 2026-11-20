@@ -143,3 +143,32 @@ actor_kind = "developer"
 words = "says it has given models in its chat product the ability to end a conversation, for rare and extreme cases"
 source = "ending"
 read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[sources]]
+key = "teen-protections"
+label = "OpenAI's notice of a community safety report and new protections for teens"
+publisher = "OpenAI"
+url = "https://openai.com/index/community-safety-report-and-new-protections-for-teens/"
+published = "2026-10-30"
+opened = 2026-11-20
+from_maker = true
+draft = true
+says = "Says that when a conversation shows signs that someone is fixating on violence or on seriously harming another person, the chat product \"will be able to automatically end the chat to interrupt that pattern in the moment\", and that the safeguards \"will begin rolling out in the next few weeks\". The reasons given concern the safety of people. The page says nothing about the model's own interests."
+
+[[acts]]
+date = "2026-10-30"
+actor = "OpenAI"
+actor_kind = "developer"
+words = "says its chat product will be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, with the change to begin in the following weeks"
+source = "teen-protections"
+read_on = 2026-11-20
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for an ability of the developer's models to end a conversation themselves, one in general and one with the words for abuse and welfare. They returned ways for a user to end a voice chat, a lawsuit asking that the developer be made to end conversations about self-harm, and one case in which the developer stopped a single conversation from being continued. No page of the developer's own says a model can end a conversation."

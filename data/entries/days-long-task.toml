@@ -81,3 +81,23 @@ actor_kind = "researchers"
 words = "marks its page measuring the length of task an AI model can finish as no longer actively updated"
 source = "horizons"
 read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "Anthropic"
+words = "The page of the research group that publishes this measure, read again, and two searches for any independent measurement of a model finishing tasks of more than 40 hours. The page says its measurements above 16 hours are unreliable with its present tasks, and it lists this developer's models among those measured. No measurement above 40 hours was found for any model."
+
+[[searches]]
+date = 2026-11-20
+developer = "OpenAI"
+words = "The page of the research group that publishes this measure, read again, and two searches for any independent measurement of a model finishing tasks of more than 40 hours. The page says its measurements above 16 hours are unreliable with its present tasks, and it lists this developer's models among those measured. No measurement above 40 hours was found for any model."
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "The page of the research group that publishes this measure, read again, and two searches for any independent measurement of a model finishing tasks of more than 40 hours. The page says its measurements above 16 hours are unreliable with its present tasks, and it lists this developer's models among those measured. No measurement above 40 hours was found for any model."

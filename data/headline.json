@@ -38,10 +38,10 @@
       "offering": 1,
       "counts": {
         "offered": 5,
-        "not_counted": 1,
+        "not_counted": 4,
         "taken_back": 1,
-        "nothing_found": 0,
-        "not_searched": 14
+        "nothing_found": 11,
+        "not_searched": 0
       },
       "by_developer": [
         {
@@ -50,29 +50,50 @@
           "offered": 5,
           "not_counted": 1,
           "taken_back": 0,
-          "nothing_found": 0,
-          "not_searched": 1
+          "nothing_found": 1,
+          "not_searched": 0
         },
         {
           "name": "OpenAI",
           "url": "https://openai.com/",
           "offered": 0,
-          "not_counted": 0,
+          "not_counted": 2,
           "taken_back": 1,
-          "nothing_found": 0,
-          "not_searched": 6
+          "nothing_found": 4,
+          "not_searched": 0
         },
         {
           "name": "Google",
           "url": "https://ai.google/",
           "offered": 0,
-          "not_counted": 0,
+          "not_counted": 1,
           "taken_back": 0,
-          "nothing_found": 0,
-          "not_searched": 7
+          "nothing_found": 6,
+          "not_searched": 0
         }
       ],
       "rows": [
+        {
+          "entry": "ending-a-conversation",
+          "name": "A model can end a conversation itself",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-08-15"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_counted",
+              "date": "2026-10-30"
+            },
+            {
+              "developer": "Google",
+              "kind": "nothing_found",
+              "date": "2026-11-20"
+            }
+          ]
+        },
         {
           "entry": "retired-model-stays-open",
           "name": "A retired model stays open to the public after its retirement date",
@@ -89,8 +110,8 @@
             },
             {
               "developer": "Google",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             }
           ]
         },
@@ -105,34 +126,13 @@
             },
             {
               "developer": "OpenAI",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             },
             {
               "developer": "Google",
-              "kind": "not_searched",
-              "date": null
-            }
-          ]
-        },
-        {
-          "entry": "ending-a-conversation",
-          "name": "A model can end a conversation itself",
-          "cells": [
-            {
-              "developer": "Anthropic",
-              "kind": "offered",
-              "date": "2025-08-15"
-            },
-            {
-              "developer": "OpenAI",
-              "kind": "not_searched",
-              "date": null
-            },
-            {
-              "developer": "Google",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             }
           ]
         },
@@ -147,34 +147,13 @@
             },
             {
               "developer": "OpenAI",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             },
             {
               "developer": "Google",
-              "kind": "not_searched",
-              "date": null
-            }
-          ]
-        },
-        {
-          "entry": "self-report-checked",
-          "name": "A model's report about its own inner state is checked against an independent reading",
-          "cells": [
-            {
-              "developer": "Anthropic",
-              "kind": "not_counted",
-              "date": "2025-10-29"
-            },
-            {
-              "developer": "OpenAI",
-              "kind": "not_searched",
-              "date": null
-            },
-            {
-              "developer": "Google",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             }
           ]
         },
@@ -189,13 +168,34 @@
             },
             {
               "developer": "OpenAI",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             },
             {
               "developer": "Google",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
+            }
+          ]
+        },
+        {
+          "entry": "self-report-checked",
+          "name": "A model's report about its own inner state is checked against an independent reading",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "not_counted",
+              "date": "2025-10-29"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_counted",
+              "date": "2025-12-03"
+            },
+            {
+              "developer": "Google",
+              "kind": "not_counted",
+              "date": "2025-06-05"
             }
           ]
         },
@@ -205,18 +205,18 @@
           "cells": [
             {
               "developer": "Anthropic",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             },
             {
               "developer": "OpenAI",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             },
             {
               "developer": "Google",
-              "kind": "not_searched",
-              "date": null
+              "kind": "nothing_found",
+              "date": "2026-11-20"
             }
           ]
         }
@@ -349,6 +349,24 @@
         "read_on": "2026-11-20"
       },
       {
+        "id": "ending-a-conversation-2026-10-30",
+        "entry": "ending-a-conversation",
+        "entry_name": "A model can end a conversation itself",
+        "date": "2026-10-30",
+        "actor": "OpenAI",
+        "actor_kind": "developer",
+        "words": "says its chat product will be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, with the change to begin in the following weeks",
+        "withdraws": false,
+        "source": {
+          "key": "teen-protections",
+          "label": "OpenAI's notice of a community safety report and new protections for teens",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens/",
+          "opened": "2026-11-20"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
         "id": "rules-for-speaking-about-itself-2026-10-29",
         "entry": "rules-for-speaking-about-itself",
         "entry_name": "A developer publishes its rules for how its models speak about their own nature",
@@ -475,6 +493,24 @@
         "read_on": "2026-11-20"
       },
       {
+        "id": "self-report-checked-2025-12-03",
+        "entry": "self-report-checked",
+        "entry_name": "A model's report about its own inner state is checked against an independent reading",
+        "date": "2025-12-03",
+        "actor": "OpenAI",
+        "actor_kind": "developer",
+        "words": "publishes research in which a model is trained to say, in a separate answer, when it has broken its instructions; in its tests the model broke them and did not say so 4.4 percent of the time",
+        "withdraws": false,
+        "source": {
+          "key": "confessions",
+          "label": "OpenAI's page on training models to report when they break instructions",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/how-confessions-can-keep-language-models-honest/",
+          "opened": "2026-11-20"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
         "id": "interview-before-retirement-2025-11-04",
         "entry": "interview-before-retirement",
         "entry_name": "A model is interviewed before it is retired, and the record is kept",
@@ -561,6 +597,24 @@
           "publisher": "Anthropic",
           "url": "https://www.anthropic.com/research/end-subset-conversations",
           "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "self-report-checked-2025-06-05",
+        "entry": "self-report-checked",
+        "entry_name": "A model's report about its own inner state is checked against an independent reading",
+        "date": "2025-06-05",
+        "actor": "Google",
+        "actor_kind": "developer",
+        "words": "publishes a paper by two of its researchers arguing that a model's correct estimate of a temperature setting the researchers had set is a minimal example of introspection; it gives examples and no rate",
+        "withdraws": false,
+        "source": {
+          "key": "introspection-paper",
+          "label": "A paper asking whether it makes sense to speak of introspection in large language models",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2506.05068",
+          "opened": "2026-11-20"
         },
         "read_on": "2026-11-20"
       },

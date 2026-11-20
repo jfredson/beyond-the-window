@@ -26,8 +26,11 @@ import { data, readings, entryById, longDate, worldDate, countWord, QUESTION } f
 
 interface Props {
   opening: 'acts' | 'forecast';
+  // With the first opening only: put the researchers' reading first among the readings, so
+  // that it is on a phone's first screen (added 2026-11-20 as an option for John).
+  researchersFirst?: boolean;
 }
-const { opening } = Astro.props;
+const { opening, researchersFirst = false } = Astro.props;
 
 if (!readings) throw new Error('the headline file holds no readings; run scripts/compute.py');
 const r = data.headline.records;
@@ -69,6 +72,12 @@ const description = 'A dated record of how the world is treating AI models: what
     )}
 
     <div class="rb-readings">
+      {opening === 'acts' && researchersFirst && (
+        <p class="rb-reading rb-row">
+          <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
+          <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span> percent {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>The entry.</a></span>
+        </p>
+      )}
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
         <p>This record covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
@@ -77,11 +86,12 @@ const description = 'A dated record of how the world is treating AI models: what
             <li>
               <a href={d.url ?? undefined} rel="noopener">{d.name}</a>
               <span class={d.offered > 0 ? 'has' : ''}>{d.offered > 0 ? <Fragment><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span> {d.offered === 1 ? 'thing' : 'things'} offered</Fragment> : 'Nothing recorded as offered'}</span>
+              {d.nothing_found > 0 && <span class="dim">Nothing found for <span data-figure={`developers.${d.name}.nothing_found`}>{d.nothing_found}</span> {d.nothing_found === 1 ? 'thing' : 'things'}</span>}
               {d.not_searched > 0 && <span class="dim"><span data-figure={`developers.${d.name}.not_searched`}>{d.not_searched}</span> not yet searched</span>}
             </li>
           ))}
         </ul>
-        <p class="rb-note">Not yet searched means that nobody has looked, and not that nothing is there. <a href="#who-does-what">Who does what, thing by thing.</a></p>
+        <p class="rb-note">{g.counts.not_searched > 0 ? 'Not yet searched means that nobody has looked, and not that nothing is there. ' : 'Nothing found means that searches made on a stated day found nothing. A search can miss what exists. '}<a href="#who-does-what">Who does what, thing by thing.</a></p>
       </div>
       <p class="rb-reading rb-row">
         <span class="rb-fig"><span data-figure="law.against.count">{law.against.count}</span></span>
@@ -91,7 +101,7 @@ const description = 'A dated record of how the world is treating AI models: what
         <span class="rb-fig"><span data-figure="public.0">{pub.measures[0].value}</span>%</span>
         <span><span class="rb-label">The public</span>{pub.measures[0].words}. {pub.one_source && 'From one survey. '}<a href={`/list/${pub.entry}/`}>The entry.</a></span>
       </p>
-      {opening === 'acts' && (
+      {opening === 'acts' && !researchersFirst && (
         <p class="rb-reading rb-row">
           <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
           <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span> percent {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>The entry.</a></span>
@@ -116,8 +126,11 @@ const description = 'A dated record of how the world is treating AI models: what
       Each row is a thing on the list that a developer could do. Each column is a developer this
       record covers so far. A date is the developer's first act of that kind. Of the
       <span data-figure="developers.cells">{g.cells}</span> places in the table,
-      <span data-figure="developers.not_searched">{g.counts.not_searched}</span> have not been
-      searched yet, so a place with no date says nothing about that developer.
+      <span data-figure="developers.nothing_found">{g.counts.nothing_found}</span> say nothing
+      found. Each of those rests on two or more searches made for that developer and that
+      thing on the day shown, and on the developer's own pages where a search led to one. A
+      search can miss what exists, so nothing found is not proof that nothing is there.
+      {g.counts.not_searched > 0 && <Fragment> <span data-figure="developers.not_searched">{g.counts.not_searched}</span> places have not been searched yet.</Fragment>}
     </p>
     <table class="rb-grid" data-developers-reading>
       <thead>

@@ -58,7 +58,8 @@ if [ "$2" = draft ]; then
   phone 3-draft-phone-dark         /draft/      6200 dark
   phone 4-draft-b-first-screen     /draft/b/    844
   phone 5-draft-b-phone            /draft/b/    2400
-  phone 6-draft-acts-phone         /draft/acts/ 5200
+  phone 6-draft-acts-phone         /draft/acts/ 6000
+  phone 9-draft-c-first-screen     /draft/c/    844
   shot  7-draft-light              /draft/      light 1280 3300
   phone 8-published-home-phone      /            3400
   rm -rf "$TMP"

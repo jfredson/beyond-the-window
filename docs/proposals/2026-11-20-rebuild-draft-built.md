@@ -5,6 +5,13 @@ session (not the master planning session). It follows the design in
 `docs/proposals/2026-11-20-rebuild-design.md` and the three rulings of 2026-11-20. Everything
 is on the branch `claude/cold-reader-proposal-2026-11-20`. Nothing was pushed.
 
+**Updated later on 2026-11-20.** John gave his go for the searches, and they were made. Part
+(b) below is as it stood before them. What they found, the three acts and eleven "nothing
+found" places that replaced the fourteen "not yet searched", a third draft at `/draft/c/`, and
+the sentences that changed are in
+`docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md`. The counts in this file
+(19 acts, 14 places to search) are the earlier ones.
+
 **A different session must check this branch before the master planning session pushes
 anything.** No act, no measure, no sentence and no line of the new checks has been read by
 anyone but the session that wrote it.

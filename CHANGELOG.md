@@ -8,6 +8,15 @@ before and after in the ruling they name.
 
 ## 2026-11-20
 
+- **The fourteen searches behind the table of developers were made, on John's go
+  (`docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md`). The count
+  did not move: it is still 5, and the published pages are unchanged.** Three acts were found
+  and written into two records, none of them counted as offered: two by OpenAI and one by
+  Google. Eleven places now say nothing found, each with the date and scope of its searches in
+  the record. No place is left unsearched, and no developer was found to have said it will not
+  do a thing. A third draft of the home page, `/draft/c/`, puts the researchers' figures on a
+  phone's first screen. All of it is PROPOSED and unchecked, on the working branch:
+  `docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md`.
 - **The rebuild, built as a draft on a working branch. The count did not move: it is still 5,
   and the published pages are unchanged.** After John's three rulings of 2026-11-20
   (`docs/rulings/2026-11-20-pursue-the-rebuild.md` and the two on developers), nineteen dated

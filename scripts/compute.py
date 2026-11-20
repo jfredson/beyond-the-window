@@ -87,7 +87,11 @@ OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "caution
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
-SOURCE_OPTIONAL = ["published", "from_maker", "kind", "read", "says", "note"]
+SOURCE_OPTIONAL = ["published", "from_maker", "kind", "read", "says", "note", "draft"]
+# `draft` (PROPOSED 2026-11-20): true on a source that was added for an act of the rebuild and
+# nothing else. Such a source is left off the entry's published page and out of the date the
+# record was last read, so that adding it changes no published page. Only an act or a measure
+# may rest on it. The flag comes off when the rebuilt pages are published.
 EVIDENCE_FIELDS = ["kind", "text", "source"]
 CAUTION_FIELDS = ["kind", "text", "source"]
 HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
@@ -421,6 +425,8 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                 bad(f"{label}: '{field}' is empty")
         if "published" in s and not _text(s["published"]):
             bad(f"{label}: 'published' is empty (it is text, as the world supplies it)")
+        if "draft" in s and not isinstance(s["draft"], bool):
+            bad(f"{label}: 'draft' is not true or false")
         if "from_maker" in s and not isinstance(s["from_maker"], bool):
             bad(f"{label}: 'from_maker' is not true or false")
         if "kind" in s and s["kind"] not in SOURCE_KINDS:
@@ -443,6 +449,9 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
             return
         if not _is_date(s.get("opened")) or not isinstance(s.get("url"), str):
             bad(f"{what} rests on a source, '{key}', with no address or no date it was opened")
+        if s.get("draft") is True and not what.startswith(("act ", "measure ")):
+            bad(f"{what} rests on a source, '{key}', that is marked as a draft; only an act or "
+                f"a measure may, because a draft source is not on the published page")
 
     # the state
     state = rec.get("state")
@@ -777,9 +786,11 @@ def developer_grid(records: list[dict], developers: list[dict]) -> dict:
                 cell.update(kind="nothing_found", date=searches[-1].isoformat())
             cells.append(cell)
         rows.append({"entry": r["id"], "name": r["name"], "cells": cells})
-    # Things with the most cells holding an act come first, then by name.
-    rows.sort(key=lambda row: (-sum(1 for c in row["cells"]
-                                    if c["kind"] in ("offered", "not_counted", "taken_back")),
+    # Things offered by the most developers come first, then those with the most places
+    # holding an act, then by name.
+    rows.sort(key=lambda row: (-sum(1 for c in row["cells"] if c["kind"] == "offered"),
+                               -sum(1 for c in row["cells"]
+                                    if c["kind"] in ("not_counted", "taken_back")),
                                row["name"].lower()))
     by_developer = []
     for d in developers:
@@ -866,7 +877,9 @@ def compute(records: list[dict], developers: list[dict] | None = None) -> dict:
     # counted, and the validator has already refused any that carried an offered flag.
     live = [r for r in everything if r.get("beside") is not True]
     offered = sorted(r["id"] for r in live if r["state"]["offered_today"] is True)
-    opened = [s["opened"] for r in everything for s in r["sources"]]
+    # A source added for an act of the rebuild is left out, so the published home page's line
+    # on when the record was last read does not move until the rebuilt page is published.
+    opened = [s["opened"] for r in everything for s in r["sources"] if s.get("draft") is not True]
     return {
         "headline": {
             "count": len(offered),
