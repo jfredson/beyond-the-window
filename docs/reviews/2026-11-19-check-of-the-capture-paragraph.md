@@ -212,3 +212,51 @@ commit. I did not look at the page in a browser.
 
 **Fit to publish: the two sentences are exactly the ruled ones, nothing else a reader sees
 changed, and every check passes.**
+
+## Added 2026-11-19: check of the README and the opening of the changelog (commit `358ed12`)
+
+Written by Claude (Fable 5.2), an AI model, the same checking session as above. The writing
+session brought `README.md` and the opening of `CHANGELOG.md` up to date on John's word of
+2026-11-19 ("Yes, fix them"). I read the whole diff of that commit and the whole README as it
+now stands, and compared them with the spending record, the list of reply files, the capture's
+plan, the rulings and the live site. I did not open or look for the replies. I changed nothing
+and pushed nothing.
+
+1. **Every changed sentence is true against the record, with one count wrong by one.**
+
+   | The files say | The record says | Holds? |
+   |---|---|---|
+   | The site has been public at beyondthewindow.org since 2026-11-19, on John's go | `docs/rulings/2026-11-19-the-go-to-publish.md`: "Stored, go". I fetched the home page and the Still Asking page from the live address on 2026-11-19 and both loaded | Yes |
+   | On 2026-11-19 ten questions were put to Claude Sonnet 4.5, five times each | `docs/spending-record.md` and `capture/plan.toml` (10 questions, 5 askings) | Yes |
+   | 50 replies, saved outside the repository, read by nobody | The spending record. The list of reply files (`docs/capture/manifest.md`) has 50 reply files, apart from the small markers | Yes, by the record |
+   | $0.2667, paid from the monthly Anthropic credits, nothing out of pocket | The spending record, in the same words | Yes |
+   | The runs for Google's and OpenAI's models have not been made, and John has given no go for them | The spending record holds one go, for the Anthropic run, and says "This go is used up." The ruling on who runs the capture says the Google and OpenAI runs "have no go, no key" | Yes |
+   | The rulings named in "What is settled and what is not" | Each has a dated file in `docs/rulings/` | Yes |
+   | In the changelog's opening: no entry corrected since the site went public, and two wordings changed on the Still Asking page | The commits since the release touch no record, and the ruling on the two wordings gives the words before and after | Yes |
+   | In the table of files, of `docs/capture/`: "the other two runs have not been made" | The plan holds four runs: one for Anthropic, one for Google and two for OpenAI. So three other runs have not been made, not two | **Wrong by one** |
+
+   *Suggested fix for the last row:* "the runs for Google's and OpenAI's models have not been
+   made", as the README's own Still Asking part already says.
+
+   One smaller wording: the README says the developer "withdraws it from its own services on
+   2026-11-30". The developer's page calls the date tentative, which is why the site's page
+   says "is due to withdraw". The README would be more exact with the same words.
+2. **Nothing says or hints what the replies hold,** and nothing attributes a want or a feeling
+   to a model. The new sentences give only who was asked, how many times, when, the cost, and
+   that the replies are unread.
+3. **Nothing else untrue is left in the README** that I could find, reading it whole against
+   the day's events. One thing in the changelog, outside this commit: its two lines for the
+   Still Asking paragraph and the two wording fixes still end "Not pushed", and both have
+   since been pushed (the live site's foot line names the version that followed them). Each
+   was true when written.
+4. **Only the two files are in the commit,** and nothing beyond the task.
+5. **No key and no private matter.** The mention of the credits that come with John's plan is
+   already in the public spending record. No code or id stands without a plain phrase beside
+   it.
+
+The push starts no release, because neither file is one the release watches, and no page of
+the site changed.
+
+**Fit to push: every statement is true against the record except one count in the table of
+files, which says two runs are still to be made where the plan holds three, and which misleads
+nobody about what has and has not been asked.**
