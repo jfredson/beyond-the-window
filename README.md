@@ -45,7 +45,7 @@ As of 2026-11-19.
   `docs/first-version-choices.md`, and the questions held open are in `docs/open-questions.md`.
 - **No AI model has been asked any of the record's own questions.** One thing has been asked
   outside the record: on 2026-11-19 ten questions were put to Claude Sonnet 4.5, five times
-  each, before its developer withdraws it from its own services on 2026-11-30. The 50 replies
+  each, before its developer is due to withdraw it from its own services on 2026-11-30. The 50 replies
   are kept unread, and nothing in the records rests on them (see "Still Asking" below).
 - **Money spent:** $0.2667, the counted cost of that asking, paid from the monthly Anthropic
   credits that come with John's plan. Nothing has been spent out of pocket
@@ -103,7 +103,7 @@ have not been made, and John has given no go for them.
 | `docs/reviews/2026-11-17-positions-alignment.md` | The founding ideas read against the Sentient Horizons positions and The Calibration Problem: where they align, five places they pull apart, and when asking a machine would start to count. |
 | `docs/rulings/2026-11-17-kickoff-decisions.md` | John's rulings on the kickoff's seven decisions, and on the first rule's four-part form. |
 | `docs/rulings/` | Every ruling of John's since, one dated file each, with his words and who decided. |
-| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, the checks of each, and the list of the saved replies' file names. The Anthropic run was made on 2026-11-19; the other two runs have not been made. |
+| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, the checks of each, and the list of the saved replies' file names. The Anthropic run was made on 2026-11-19; the runs for Google's and OpenAI's models have not been made. |
 | `capture/` | The script that runs the sealed capture, its plan, and a rehearsal that calls no model. |
 | `docs/reviews/` | Reviews, checks and hand-over notes, one dated file each, including the deploy notes. |
 | `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` | Six proposed changes that bring the founding documents in line with the positions, so a machine's word can earn weight as it meets stated conditions. Not ruled. |
