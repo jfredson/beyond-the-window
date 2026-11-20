@@ -82,7 +82,8 @@ METHOD_STATUS = (
 REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "progress_kind",
                 "added", "first_pass", "state", "sources"]
 OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
-                "verify", "checks", "only_the_developer"]
+                "verify", "checks", "only_the_developer", "acts", "measures", "searches",
+                "done_by"]
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
@@ -116,6 +117,43 @@ HISTORY_FIELDS = ["date", "field", "old", "new", "why"]
 CHECKS_FIELDS = ["against_sources", "changed", "changes_checked", "some_unchecked",
                  "added_to", "additions_checked", "corrected", "corrections_checked",
                  "fixed", "fixes_checked"]
+
+# ---- the rebuild: dated acts, measures and searches ----------------------------------------
+# PROPOSED 2026-11-20 (docs/proposals/2026-11-20-rebuild-design.md, part 1), after John ruled
+# that day that the unit of the record becomes a dated act by a named actor
+# (docs/rulings/2026-11-20-pursue-the-rebuild.md). The fields are a session's and are not ruled.
+#
+# An act: who did what, on what date, and the source on this record that says so.
+#   date       text, as the source gives it: a day ("2025-11-04"), a month ("2025-05") or a
+#              year ("2022")
+#   actor      a developer in data/developers.toml, or a named body
+#   actor_kind one of ACTOR_KINDS
+#   words      what the actor did, written so that it reads after the actor's name, with no
+#              full stop and with no developer's name in it (the home page prints a developer's
+#              act as "A developer ...", so the words must stand without the name)
+#   source     the key of a source already on the record
+#   read_on    the day that source was opened again and found to say this. It is kept on the
+#              act, so that writing an act never changes a source's own `opened` date
+#   withdraws  true when the act takes something back (left out otherwise)
+ACT_REQUIRED = ["date", "actor", "actor_kind", "words", "source", "read_on"]
+ACT_OPTIONAL = ["withdraws"]
+ACTOR_KINDS = ["developer", "lawmaker", "court", "researchers"]
+# A measure: one figure from a survey, so that a figure on the home page is read from a record
+# and never typed. `words` is the rest of a sentence that opens with the figure. The design
+# called this field `of`; it is `words` here because not every figure is a share of a group.
+MEASURE_REQUIRED = ["date", "by", "value", "unit", "words", "source", "read_on"]
+MEASURE_BY = ["public", "researchers"]
+MEASURE_UNITS = ["percent"]
+# A search that found nothing: the one thing that lets the grid of developers say "nothing
+# found" for a developer and a thing. `words` says what was looked for and where.
+SEARCH_REQUIRED = ["date", "developer", "words"]
+# Who could do the thing an entry on the list is about. Left out, it is a developer. The grid
+# of developers holds only the things a developer could do.
+DONE_BY = ["developer", "lawmaker"]
+PARTIAL_DATE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
+# The two entries the reading on law is worked out from. Ids are permanent addresses.
+LAW_AGAINST_ID = "law-against-legal-personhood"
+LAW_PROTECTING_ID = "protection-in-law"
 
 PROGRESS_KINDS = {"technical", "political", "cultural"}
 # The order is the order an entry page shows them in (choice 7). They are never added together.
@@ -169,6 +207,17 @@ def _is_date(v) -> bool:
 
 def _text(v) -> bool:
     return isinstance(v, str) and v.strip() != ""
+
+
+def start_of(text) -> dt.date | None:
+    """The first day of a date written as a day, a month or a year. None when it is not one."""
+    m = PARTIAL_DATE.match(text) if isinstance(text, str) else None
+    if not m:
+        return None
+    try:
+        return dt.date(int(m.group(1)), int(m.group(2) or 1), int(m.group(3) or 1))
+    except ValueError:
+        return None
 
 
 def load(data_dir: Path) -> tuple[list[dict], list[dict], list[str]]:
@@ -484,6 +533,107 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
                        for s in rec.get("sources", []) or []):
                 bad("only_the_developer: no source marked as the developer's own account says "
                     "anything, so the page would point to a reason the entry does not give")
+    # acts, measures and searches (the rebuild, PROPOSED 2026-11-20)
+    if "done_by" in rec:
+        if rec["done_by"] not in DONE_BY:
+            bad(f"done_by '{rec['done_by']}' is not one of {DONE_BY}")
+        if beside:
+            bad("'done_by' on an entry beside the list; it says who could do a thing on the list")
+    for field in ("acts", "measures", "searches"):
+        if field in rec and not isinstance(rec[field], list):
+            bad(f"'{field}' is not a list")
+    acts = rec.get("acts", []) if isinstance(rec.get("acts", []), list) else []
+    for i, a in enumerate(acts, 1):
+        if not isinstance(a, dict):
+            bad(f"act {i} is not a table")
+            continue
+        for field in a:
+            if field not in ACT_REQUIRED and field not in ACT_OPTIONAL:
+                bad(f"act {i}: unknown field '{field}'")
+        if "date" not in a:
+            bad(f"act {i}: no date")
+        elif start_of(a["date"]) is None:
+            bad(f"act {i}: date '{a['date']}' is not a day, a month or a year written as text "
+                f"(\"2025-11-04\", \"2025-05\" or \"2022\")")
+        if not _text(a.get("actor")):
+            bad(f"act {i}: no actor")
+        if a.get("actor_kind") not in ACTOR_KINDS:
+            bad(f"act {i}: actor_kind '{a.get('actor_kind')}' is not one of {ACTOR_KINDS}")
+        elif developer_names is not None and _text(a.get("actor")):
+            if a["actor_kind"] == "developer" and a["actor"] not in developer_names:
+                bad(f"act {i}: developer '{a['actor']}' is not in developers.toml, so the record "
+                    f"does not cover it")
+            if a["actor_kind"] != "developer" and a["actor"] in developer_names:
+                bad(f"act {i}: '{a['actor']}' is a developer in developers.toml and the act "
+                    f"calls it a {a['actor_kind']}")
+        if not _text(a.get("words")):
+            bad(f"act {i}: no words saying what was done")
+        else:
+            if a["words"].rstrip().endswith("."):
+                bad(f"act {i}: the words end with a full stop; the page adds it")
+            for name in sorted(developer_names or []):
+                if _text(name) and re.search(rf"\b{re.escape(name)}\b", a["words"]):
+                    bad(f"act {i}: the words name a developer ('{name}'); the name belongs in "
+                        f"'actor', and the words must stand without it")
+        dated_source(a.get("source"), f"act {i}")
+        if not _is_date(a.get("read_on")):
+            bad(f"act {i}: no 'read_on' date, the day its source was opened again for this act")
+        elif start_of(a.get("date")) is not None and start_of(a["date"]) > a["read_on"]:
+            bad(f"act {i}: dated after the day its source was read")
+        if "withdraws" in a and not isinstance(a["withdraws"], bool):
+            bad(f"act {i}: 'withdraws' is not true or false")
+    # A record that holds acts and is marked as offered by a developer must hold an act by that
+    # developer that does not take something back, so the grid can give the cell a date.
+    if acts and isinstance(state, dict):
+        for b in state.get("offered_by", []) if isinstance(state.get("offered_by", []), list) else []:
+            if not any(isinstance(a, dict) and a.get("actor") == b
+                       and a.get("actor_kind") == "developer" and a.get("withdraws") is not True
+                       for a in acts):
+                bad(f"marked as offered by '{b}', and holds no act by that developer")
+    for i, m in enumerate(rec.get("measures", []) if isinstance(rec.get("measures", []), list) else [], 1):
+        if not isinstance(m, dict):
+            bad(f"measure {i} is not a table")
+            continue
+        for field in m:
+            if field not in MEASURE_REQUIRED:
+                bad(f"measure {i}: unknown field '{field}'")
+        for field in MEASURE_REQUIRED:
+            if field not in m:
+                bad(f"measure {i}: missing '{field}'")
+        if "date" in m and start_of(m["date"]) is None:
+            bad(f"measure {i}: date '{m['date']}' is not a day, a month or a year written as text")
+        if "by" in m and m["by"] not in MEASURE_BY:
+            bad(f"measure {i}: by '{m['by']}' is not one of {MEASURE_BY}")
+        if "value" in m and (isinstance(m["value"], bool) or not isinstance(m["value"], (int, float))):
+            bad(f"measure {i}: 'value' is not a number")
+        if "unit" in m and m["unit"] not in MEASURE_UNITS:
+            bad(f"measure {i}: unit '{m['unit']}' is not one of {MEASURE_UNITS}")
+        elif m.get("unit") == "percent" and isinstance(m.get("value"), (int, float)) \
+                and not isinstance(m["value"], bool) and not 0 <= m["value"] <= 100:
+            bad(f"measure {i}: {m['value']} percent is not between 0 and 100")
+        if "words" in m and not _text(m["words"]):
+            bad(f"measure {i}: 'words' is empty")
+        if "source" in m:
+            dated_source(m["source"], f"measure {i}")
+        if "read_on" in m and not _is_date(m["read_on"]):
+            bad(f"measure {i}: 'read_on' is not a calendar date")
+    for i, s in enumerate(rec.get("searches", []) if isinstance(rec.get("searches", []), list) else [], 1):
+        if not isinstance(s, dict):
+            bad(f"search {i} is not a table")
+            continue
+        for field in s:
+            if field not in SEARCH_REQUIRED:
+                bad(f"search {i}: unknown field '{field}'")
+        if not _is_date(s.get("date")):
+            bad(f"search {i}: no calendar date; a search that found nothing is only as good as its date")
+        if not _text(s.get("developer")):
+            bad(f"search {i}: names no developer; a search made for no one developer cannot fill a cell")
+        elif developer_names is not None and s["developer"] not in developer_names:
+            bad(f"search {i}: developer '{s['developer']}' is not in developers.toml")
+        if not _text(s.get("words")):
+            bad(f"search {i}: no words saying what was looked for and where")
+        if beside or rec.get("done_by", "developer") != "developer":
+            bad(f"search {i}: this entry is not a thing a developer could do, so it has no cell to fill")
     for i, h in enumerate(rec.get("history", []) or [], 1):
         if not isinstance(h, dict):
             bad(f"history {i} is not a table")
@@ -550,7 +700,166 @@ def words_for(count: int) -> str:
             "by at least one AI developer")
 
 
-def compute(records: list[dict]) -> dict:
+# ---- the readings (the rebuild, PROPOSED 2026-11-20) ----------------------------------------
+# docs/proposals/2026-11-20-rebuild-design.md, part 2. Worked out here and written to the
+# headline file beside the count, which is left exactly as it was: the published home page
+# still reads the count, and the rebuilt page, a draft, reads these.
+
+def _source_for_site(rec: dict, key: str) -> dict:
+    s = next(x for x in rec["sources"] if x["key"] == key)
+    return {"key": key, "label": s["label"], "publisher": s["publisher"], "url": s["url"],
+            "opened": s["opened"].isoformat()}
+
+
+def all_acts(records: list[dict]) -> list[dict]:
+    """Every act in the records shown, newest first. A date that is a month or a year is placed
+    at its first day. Each act gets an address made of its entry's id and its date."""
+    rows, seen = [], {}
+    for r in sorted(shown(records), key=lambda r: r["id"]):
+        for a in r.get("acts", []):
+            base = f"{r['id']}-{a['date']}"
+            seen[base] = seen.get(base, 0) + 1
+            rows.append({
+                "id": base if seen[base] == 1 else f"{base}-{seen[base]}",
+                "entry": r["id"],
+                "entry_name": r["name"],
+                "date": a["date"],
+                "actor": a["actor"],
+                "actor_kind": a["actor_kind"],
+                "words": a["words"],
+                "withdraws": a.get("withdraws") is True,
+                "source": _source_for_site(r, a["source"]),
+                "read_on": a["read_on"].isoformat(),
+            })
+    rows.sort(key=lambda a: start_of(a["date"]), reverse=True)  # stable: ties keep entry order
+    return rows
+
+
+def developer_grid(records: list[dict], developers: list[dict]) -> dict:
+    """The developers' reading: every developer the record covers, against every thing on the
+    list that a developer could do (ruled 2026-11-20: every covered developer is named,
+    docs/rulings/2026-11-20-home-page-names-every-covered-developer.md, and the covered
+    developers are those in data/developers.toml,
+    docs/rulings/2026-11-20-the-record-covers-three-developers.md).
+
+    A cell is one of five kinds, and the kind is read from the record, never judged here:
+      offered        the record's state names the developer as offering the thing; the date is
+                     that developer's first act that does not take something back
+      not_counted    the record holds an act by the developer, and does not count the thing as
+                     offered (a research result, a plan, or a promise not yet in effect, under
+                     the ruling of 2026-11-18 on what "offered today" means)
+      taken_back     the developer's newest act on the record takes something back
+      nothing_found  no act, and the record holds a search made for that developer and that
+                     thing; the date is the newest such search
+      not_searched   no act, and no such search
+    A cell never says "nothing found" without a search on the record."""
+    names = [d["name"] for d in developers]
+    things = [r for r in shown(records)
+              if r.get("beside") is not True and r.get("done_by", "developer") == "developer"]
+    kinds = ["offered", "not_counted", "taken_back", "nothing_found", "not_searched"]
+    rows = []
+    for r in things:
+        cells = []
+        for name in names:
+            acts = sorted((a for a in r.get("acts", [])
+                           if a["actor_kind"] == "developer" and a["actor"] == name),
+                          key=lambda a: start_of(a["date"]))
+            searches = sorted(s["date"] for s in r.get("searches", []) if s["developer"] == name)
+            cell = {"developer": name, "kind": "not_searched", "date": None}
+            if name in r["state"].get("offered_by", []):
+                first = next((a for a in acts if a.get("withdraws") is not True), None)
+                cell.update(kind="offered", date=first["date"] if first else None)
+            elif acts and acts[-1].get("withdraws") is True:
+                cell.update(kind="taken_back", date=acts[-1]["date"])
+            elif acts:
+                cell.update(kind="not_counted", date=acts[-1]["date"])
+            elif searches:
+                cell.update(kind="nothing_found", date=searches[-1].isoformat())
+            cells.append(cell)
+        rows.append({"entry": r["id"], "name": r["name"], "cells": cells})
+    # Things with the most cells holding an act come first, then by name.
+    rows.sort(key=lambda row: (-sum(1 for c in row["cells"]
+                                    if c["kind"] in ("offered", "not_counted", "taken_back")),
+                               row["name"].lower()))
+    by_developer = []
+    for d in developers:
+        mine = [c for row in rows for c in row["cells"] if c["developer"] == d["name"]]
+        by_developer.append({"name": d["name"], "url": d.get("url"),
+                             **{k: sum(1 for c in mine if c["kind"] == k) for k in kinds}})
+    return {
+        "covered": names,
+        "things": len(rows),
+        "cells": len(rows) * len(names),
+        "offering": sum(1 for d in by_developer if d["offered"] > 0),
+        "counts": {k: sum(d[k] for d in by_developer) for k in kinds},
+        "by_developer": by_developer,
+        "rows": rows,
+    }
+
+
+def law_reading(records: list[dict]) -> dict:
+    """Where a lawmaker has passed a law against legal personhood for AI, and whether any
+    government has protected an AI system for its own sake. Each half is None when its entry is
+    not among the records shown."""
+    by_id = {r["id"]: r for r in shown(records)}
+    against = protecting = None
+    r = by_id.get(LAW_AGAINST_ID)
+    if r is not None:
+        acts = sorted((a for a in r.get("acts", [])
+                       if a["actor_kind"] == "lawmaker" and a.get("withdraws") is not True),
+                      key=lambda a: start_of(a["date"]))
+        places = []
+        for a in acts:
+            if a["actor"] not in [p["name"] for p in places]:
+                places.append({"name": a["actor"], "date": a["date"]})
+        against = {"entry": r["id"], "count": len(places), "places": places,
+                   "first": places[0]["date"] if places else None,
+                   "latest": places[-1]["date"] if places else None}
+    r = by_id.get(LAW_PROTECTING_ID)
+    if r is not None:
+        places = sorted({a["actor"] for a in r.get("acts", [])
+                         if a["actor_kind"] == "lawmaker" and a.get("withdraws") is not True})
+        protecting = {"entry": r["id"], "count": len(places), "places": places,
+                      "met": r["state"].get("offered_today") is True,
+                      "looked_on": r["state"]["set_on"].isoformat()}
+    return {"against": against, "protecting": protecting}
+
+
+def measure_reading(records: list[dict], by: str) -> dict | None:
+    """The newest measures by one group (the public, or researchers): every measure that shares
+    the newest date. `one_source` is true when every measure by that group rests on one source,
+    and then the page says so beside the figure."""
+    found = [(r, m) for r in shown(records) for m in r.get("measures", []) if m["by"] == by]
+    if not found:
+        return None
+    newest = max(start_of(m["date"]) for _r, m in found)
+    top = [(r, m) for r, m in found if start_of(m["date"]) == newest]
+    return {
+        "entry": top[0][0]["id"],
+        "date": top[0][1]["date"],
+        "one_source": len({(r["id"], m["source"]) for r, m in found}) == 1,
+        "measures": [{"value": m["value"], "unit": m["unit"], "words": m["words"],
+                      "entry": r["id"], "source": _source_for_site(r, m["source"]),
+                      "read_on": m["read_on"].isoformat()} for r, m in top],
+    }
+
+
+def readings(records: list[dict], developers: list[dict] | None = None) -> dict:
+    acts = all_acts(records)
+    return {
+        "status": "PROPOSED 2026-11-20 and not ruled: the readings of the rebuilt home page, "
+                  "which is a draft (docs/proposals/2026-11-20-rebuild-design.md). The count "
+                  "above them is unchanged.",
+        "developers": developer_grid(records, developers or []),
+        "law": law_reading(records),
+        "public": measure_reading(records, "public"),
+        "researchers": measure_reading(records, "researchers"),
+        "latest": acts[0] if acts else None,
+        "acts": acts,
+    }
+
+
+def compute(records: list[dict], developers: list[dict] | None = None) -> dict:
     """The headline and what it rests on, from records that have already passed validation."""
     everything = shown(records)
     # Entries beside the list never reach the count: they are dropped here, before anything is
@@ -574,6 +883,7 @@ def compute(records: list[dict]) -> dict:
             "left_out_unverified": len(records) - len(everything),
             "constructed": any(r.get("constructed") for r in records),
         },
+        "readings": readings(records, developers),
     }
 
 
@@ -592,7 +902,7 @@ def stale_reasons(existing: dict | None, computed: dict) -> list[str]:
     if existing is None:
         return ["the headline file is missing"]
     reasons = []
-    for part in ("headline", "last_read", "records"):
+    for part in ("headline", "last_read", "records", "readings"):
         if existing.get(part) != computed[part]:
             reasons.append(f"'{part}' in the headline file differs from the records")
     if existing.get("method", {}).get("status") != METHOD_STATUS:
@@ -648,6 +958,7 @@ def write_headline(path: Path, computed: dict, today: str | None = None,
         "method": {"document": "docs/first-version-choices.md", "status": METHOD_STATUS},
         "headline": h,
         "records": computed["records"],
+        "readings": computed["readings"],
         "history": history,
     }
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -679,11 +990,16 @@ def main(argv: list[str] | None = None) -> int:
     except Refused as e:
         print("Refused. Nothing was written.\n" + str(e), file=sys.stderr)
         return 1
-    computed = compute(records)
+    developers, _ = load_developers(args.data)
+    computed = compute(records, developers)
     h, r = computed["headline"], computed["records"]
     print(f"{len(records)} records read: {r['on_the_list']} on the list, {r['beside_the_list']} "
           f"beside it, {r['left_out_unverified']} left out with facts still to verify.")
     print(h["words"] + ".")
+    g = computed["readings"]["developers"]
+    print(f"{len(computed['readings']['acts'])} dated acts. The grid of developers: "
+          f"{g['cells']} cells, " + ", ".join(f"{v} {k.replace('_', ' ')}"
+                                             for k, v in g["counts"].items()) + ".")
     if r["constructed"]:
         print("EVERY RECORD IS A CONSTRUCTED EXAMPLE. This is not real data.")
     if args.check:

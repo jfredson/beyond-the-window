@@ -64,6 +64,31 @@ What it refuses (docs/first-version-choices.md, choice 18):
    was made "with the help of" an AI
    (docs/reviews/2026-11-19-check-of-site-changes.md, item 25). It is still a short list of
    phrases and not a test of whether a page keeps the ruling.
+
+The draft of the rebuilt home page (added 2026-11-20, PROPOSED; the design is
+docs/proposals/2026-11-20-rebuild-design.md, part 4). Rules 1 to 10 are in force on the
+published pages exactly as before, rule 7 on the published home page included. A page whose
+address begins /draft/ is a draft, and for a draft:
+
+11. It asks search engines to leave it out, the sitemap does not list it, and no page outside
+    /draft/ links to it or mentions its address. So the drafts can sit in the built site
+    without changing what a visitor to the published pages sees or can find.
+12. Every figure marked on a draft page (data-figure) equals the figure in the readings of the
+    served headline file, and a draft home page carries the figures it must. Every place in the
+    table of developers shows the kind and the date the served file gives it, so no place says
+    "nothing found" unless the records hold a search.
+13. The acts a draft page lists are exactly the acts in the served file, in the same order,
+    each with its date. In the served file no act lacks a date, an actor, or a source with an
+    address and the date it was opened, and no act by a developer names one the record does
+    not cover. The feed holds one item for each act.
+14. Rule 4, for a draft: a developer the record covers (data/developers.toml, as the served
+    file lists them) may be named on a draft home page inside the developers' reading (the
+    list and the table marked data-developers-reading) and nowhere else on that page. John
+    ruled on 2026-11-20 that the reading names every covered developer
+    (docs/rulings/2026-11-20-home-page-names-every-covered-developer.md), so each must be named
+    in both. On the draft page that lists every act, a covered developer may be named as the
+    actor of an act (the element marked class="actor") and nowhere else. That second allowance
+    is a session's and is not ruled. No AI model is named on any draft page.
 """
 from __future__ import annotations
 
@@ -135,6 +160,146 @@ MODEL_NAMES = (r"\b(claude|anthropic|openai|chatgpt|gpt|gemini|deepmind|google|l
                r"mistral|copilot|microsoft|deepseek|opus|sonnet|haiku)\b")
 
 
+# The draft of the rebuilt home page (rules 11 to 14).
+DRAFT_PREFIX = "/draft/"
+DRAFT_HOMES = ["/draft/", "/draft/b/"]
+DRAFT_ACTS = "/draft/acts/"
+DRAFT_FEED = "draft/acts.xml"
+DEVELOPERS_READING = r'(?is)<(ul|table)\b[^>]*\bdata-developers-reading\b[^>]*>.*?</\1>'
+ACTOR = r'(?is)<span class="actor"[^>]*>(?:\s*<a\b[^>]*>)?\s*([^<]*?)\s*(?:</a>\s*)?</span>'
+FIGURE = r'(?is)<span\b[^>]*\bdata-figure="([^"]+)"[^>]*>\s*([^<]*?)\s*</span>'
+# Figures a draft home page must carry, so that leaving the mark off is not a way past rule 12.
+REQUIRED_FIGURES = ["developers.covered", "developers.things", "developers.cells",
+                    "developers.not_searched", "law.against.count", "public.0",
+                    "researchers.0", "researchers.1", "acts.count"]
+COUNT_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+               "ten", "eleven", "twelve"]
+CELL_KINDS = ["offered", "not_counted", "taken_back", "nothing_found", "not_searched"]
+
+
+def expected_figures(rd: dict) -> dict[str, float]:
+    """Every figure a draft page may show, by its mark, from the served readings."""
+    g = rd["developers"]
+    f: dict[str, float] = {
+        "developers.covered": len(g["covered"]),
+        "developers.things": g["things"],
+        "developers.cells": g["cells"],
+        "developers.offering": g["offering"],
+        "acts.count": len(rd["acts"]),
+    }
+    for k in CELL_KINDS:
+        f[f"developers.{k}"] = g["counts"][k]
+        for d in g["by_developer"]:
+            f[f"developers.{d['name']}.{k}"] = d[k]
+    for half in ("against", "protecting"):
+        if rd["law"].get(half):
+            f[f"law.{half}.count"] = rd["law"][half]["count"]
+    for who in ("public", "researchers"):
+        for i, m in enumerate((rd.get(who) or {}).get("measures", [])):
+            f[f"{who}.{i}"] = m["value"]
+    return f
+
+
+def as_number(text: str) -> float | None:
+    text = text.strip().lower().rstrip("%").strip()
+    if text in COUNT_WORDS:
+        return COUNT_WORDS.index(text)
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def draft_problems(dist: Path, rd: dict | None) -> list[str]:
+    """Rules 12 and 13, and the half of rule 14 that asks for every covered developer."""
+    problems: list[str] = []
+    homes = [h for h in DRAFT_HOMES if (dist / h.strip("/") / "index.html").is_file()]
+    acts_page = dist / DRAFT_ACTS.strip("/") / "index.html"
+    if not homes and not acts_page.is_file():
+        return problems
+    if not rd:
+        return ["/data/headline.json holds no readings, and the built site has draft pages that "
+                "show them"]
+    covered = rd["developers"]["covered"]
+    for a in rd["acts"]:
+        src = a.get("source") or {}
+        missing = [k for k in ("date", "actor", "actor_kind", "words", "read_on") if not a.get(k)]
+        if not src.get("url") or not src.get("opened"):
+            missing.append("a source with an address and the date it was opened")
+        if missing:
+            problems.append(f"/data/headline.json: the act '{a.get('id')}' lacks "
+                            + ", ".join(missing))
+        if a.get("actor_kind") == "developer" and a.get("actor") not in covered:
+            problems.append(f"/data/headline.json: the act '{a.get('id')}' is by a developer "
+                            f"the record does not cover ({a.get('actor')})")
+    want_figures = expected_figures(rd)
+    want_acts = [(a["id"], a["date"]) for a in rd["acts"]]
+    want_cells = {(row["entry"], c["developer"]): (c["kind"], c["date"] or "")
+                  for row in rd["developers"]["rows"] for c in row["cells"]}
+
+    def figures(rel: str, raw: str, required: list[str]) -> None:
+        seen = set()
+        for key, text in re.findall(FIGURE, raw):
+            seen.add(key)
+            if key not in want_figures:
+                problems.append(f"{rel}: a figure marked '{key}', which the served file does not hold")
+            elif as_number(html.unescape(text)) != want_figures[key]:
+                problems.append(f"{rel}: the figure '{key}' reads \"{text}\" and the served file "
+                                f"says {want_figures[key]:g}")
+        for key in required:
+            if key not in seen:
+                problems.append(f"{rel}: the figure '{key}' is not on the page, or is not marked")
+
+    def acts(rel: str, raw: str) -> None:
+        got = re.findall(r'<li\b[^>]*\bdata-act="([^"]+)"[^>]*\bdata-date="([^"]*)"', raw)
+        if got != want_acts:
+            problems.append(f"{rel}: the acts listed are not the acts in the served file, in "
+                            f"order, each with its date ({len(got)} listed, {len(want_acts)} served)")
+
+    for rel in homes:
+        raw = (dist / rel.strip("/") / "index.html").read_text(encoding="utf-8")
+        figures(rel, raw, REQUIRED_FIGURES)
+        acts(rel, raw)
+        got_cells = {}
+        for entry, row in re.findall(r'(?is)<tr\b[^>]*\bdata-entry="([^"]+)"[^>]*>(.*?)</tr>', raw):
+            for td in re.findall(r"<td\b[^>]*>", row):
+                # an empty attribute may be written with no value, so each is read on its own
+                attr = {k: v for k, v in re.findall(r'\bdata-(dev|kind|date)(?:="([^"]*)")?', td)}
+                got_cells[(entry, html.unescape(attr.get("dev", "")))] = (attr.get("kind", ""),
+                                                                         attr.get("date", ""))
+        if got_cells != want_cells:
+            wrong = sorted(set(got_cells.items()) ^ set(want_cells.items()))
+            problems.append(f"{rel}: the table of developers does not show what the served file "
+                            f"holds, place by place ({len(wrong)} differences, the first: {wrong[:1]})")
+        blocks = [m.group(0) for m in re.finditer(DEVELOPERS_READING, raw)]
+        if len(blocks) != 2:
+            problems.append(f"{rel}: the developers' reading should be one list and one table, "
+                            f"and {len(blocks)} such blocks were found")
+        for block in blocks:
+            text = visible_text(block, keep_cites=False)
+            for name in covered:
+                if not re.search(rf"\b{re.escape(name)}\b", text):
+                    problems.append(f"{rel}: the developers' reading does not name {name}, a "
+                                    f"developer the record covers")
+    if acts_page.is_file():
+        raw = acts_page.read_text(encoding="utf-8")
+        figures(DRAFT_ACTS, raw, ["acts.count"])
+        acts(DRAFT_ACTS, raw)
+        linked = {html.unescape(h) for h in re.findall(r'<a\b[^>]*\bhref="([^"]+)"', raw)}
+        for a in rd["acts"]:
+            if a["source"]["url"] not in linked:
+                problems.append(f"{DRAFT_ACTS}: the act '{a['id']}' is listed without a link to "
+                                f"its source")
+    feed = dist / DRAFT_FEED
+    if feed.is_file():
+        feed_text = feed.read_text(encoding="utf-8")
+        if len(re.findall(r"<entry>", feed_text)) != len(rd["acts"]):
+            problems.append(f"/{DRAFT_FEED}: does not hold one item for each act in the served file")
+        if re.search("[—–]", feed_text):
+            problems.append(f"/{DRAFT_FEED}: long dash")
+    return problems
+
+
 def visible_text(page: str, keep_cites: bool) -> str:
     page = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", page)
     if not keep_cites:
@@ -172,10 +337,16 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     pages = sorted(dist.rglob("*.html"))
     if not pages:
         return [f"no built pages in {dist}"], outside
+    # The readings of the served file, for the drafts (rules 11 to 14). None when it holds none.
+    served_file = dist / "data" / "headline.json"
+    readings = json.loads(served_file.read_text(encoding="utf-8")).get("readings") \
+        if served_file.is_file() else None
+    covered = "|".join(re.escape(n) for n in readings["developers"]["covered"]) if readings else ""
     for page in pages:
         rel = "/" + str(page.relative_to(dist)).replace("index.html", "")
         raw = page.read_text(encoding="utf-8")
         is_entry = re.match(r"^/list/[a-z-]+/$", rel) is not None
+        is_draft = rel.startswith(DRAFT_PREFIX)
         text = visible_text(raw, keep_cites=False)
         everything = visible_text(raw, keep_cites=True)
 
@@ -199,6 +370,14 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
                 without = re.sub(CAPTURE_PARAGRAPH,
                                  lambda m: re.sub(CAPTURE_NAMES, " ", m.group(0)), raw, count=1)
                 names_text = visible_text(without, keep_cites=False)
+            elif rel in DRAFT_HOMES and covered:  # rule 14: the developers' reading only
+                without = re.sub(DEVELOPERS_READING,
+                                 lambda m: re.sub(rf"\b({covered})\b", " ", m.group(0)), raw)
+                names_text = visible_text(without, keep_cites=False)
+            elif rel == DRAFT_ACTS and covered:  # rule 14: the actor of an act only
+                without = re.sub(ACTOR, lambda m: " " if re.fullmatch(covered, m.group(1))
+                                 else m.group(0), raw)
+                names_text = visible_text(without, keep_cites=False)
             flag(MODEL_NAMES, "an AI model or developer named off an entry's page", names_text)
         for pattern, label in BUILT_WITH_AI:
             flag(pattern, f"says how the site was built ('{label}')")
@@ -212,10 +391,13 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
             problems.append(f"{rel}: the first person outside the About page's block marked "
                             f"id=\"who\": \"...{snippet}...\"")
         asks_out = re.search(r'<meta name="robots" content="noindex', raw) is not None
-        if asks_out != (rel == NOT_FOUND_PAGE):
+        if asks_out != (rel == NOT_FOUND_PAGE or is_draft):
             problems.append(f"{rel}: " + ("asks search engines to leave it out" if asks_out else
-                                          "the page for a missing address does not ask search "
-                                          "engines to leave it out"))
+                                          "the page for a missing address, or a draft, does not "
+                                          "ask search engines to leave it out"))
+        if not is_draft and DRAFT_PREFIX in raw:  # rule 11
+            problems.append(f"{rel}: a page outside {DRAFT_PREFIX} links to a draft or mentions "
+                            f"its address")
         own = SITE_ADDRESS + rel
         if rel != NOT_FOUND_PAGE and f'<link rel="canonical" href="{own}"' not in raw:
             problems.append(f"{rel}: does not give its own address ({own})")
@@ -242,7 +424,8 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     listed = set(re.findall(r"<loc>([^<]+)</loc>", sitemap.read_text(encoding="utf-8"))) \
         if sitemap.is_file() else set()
     built = {SITE_ADDRESS + "/" + str(p.relative_to(dist)).replace("index.html", "")
-             for p in pages if "/" + str(p.relative_to(dist)) != NOT_FOUND_PAGE}
+             for p in pages if "/" + str(p.relative_to(dist)) != NOT_FOUND_PAGE
+             and not ("/" + str(p.relative_to(dist))).startswith(DRAFT_PREFIX)}  # rule 11
     if listed != built:
         problems.append("/sitemap.xml: does not list exactly the built pages: "
                         + ", ".join(sorted(listed ^ built) or ["it is missing"]))
@@ -268,6 +451,7 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
         if "total" in h:
             problems.append("/data/headline.json: the headline holds a total beside the count")
         problems += fraction_problems(dist, pages, h["count"], file["records"]["on_the_list"])
+    problems += draft_problems(dist, readings)
     return problems, outside
 
 

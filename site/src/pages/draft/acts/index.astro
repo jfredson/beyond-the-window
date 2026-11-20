@@ -1,0 +1,32 @@
+---
+// Every act by date, on its own page (PROPOSED 2026-11-20, a draft with the rebuilt home page).
+// Here each act names who acted, because a dated act by a named actor is the unit of the
+// record (ruled 2026-11-20, docs/rulings/2026-11-20-pursue-the-rebuild.md). Whether this page
+// names developers is not ruled: the ruling on naming is about the home page.
+import Base from '../../../layouts/Base.astro';
+import ActList from '../../../components/ActList.astro';
+import '../../../styles/rebuild.css';
+import { readings, countWord } from '../../../lib/data';
+
+if (!readings) throw new Error('the headline file holds no readings; run scripts/compute.py');
+const n = readings.acts.length;
+const covered = readings.developers.covered.length;
+---
+
+<Base title="Everything, by date · Beyond the Window" description="Every dated act in the record of how the world is treating AI models: who acted, when, and the source that says so." noindex draft image="/draft/preview.png" feed="/draft/acts.xml">
+  <div class="rb-top">
+    <p class="eyebrow"><a href="/draft/">A dated record of how the world is treating AI models</a></p>
+    <h1>Everything, by date</h1>
+    <p class="lede">
+      <span data-figure="acts.count">{n}</span> dated acts, newest first. Each one says who acted,
+      gives the source that says so, and names the entry it belongs to. The record covers
+      <span data-figure="developers.covered">{countWord(covered)}</span> developers so far, so an
+      act by any other developer is not here yet. A date given as a month or a year is as exact
+      as its source.
+    </p>
+    <p class="rb-note"><a href="/draft/acts.xml">Follow new acts in a feed reader.</a></p>
+  </div>
+  <section class="below">
+    <ActList named />
+  </section>
+</Base>

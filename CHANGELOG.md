@@ -6,6 +6,21 @@ number moved or that none did. The site has been public at beyondthewindow.org s
 changed after it was public, and both are in the lines for 2026-11-19 below, with the words
 before and after in the ruling they name.
 
+## 2026-11-20
+
+- **The rebuild, built as a draft on a working branch. The count did not move: it is still 5,
+  and the published pages are unchanged.** After John's three rulings of 2026-11-20
+  (`docs/rulings/2026-11-20-pursue-the-rebuild.md` and the two on developers), nineteen dated
+  acts were written into eleven records and three survey figures into the two survey records,
+  each from a source opened again that day. `scripts/compute.py` now checks them and works out
+  the readings of the rebuilt home page, which it writes into `data/headline.json` beside the
+  count. Draft pages stand at `/draft/`, `/draft/b/` and `/draft/acts/`, with a feed and a link
+  preview picture; no published page links to them, the sitemap leaves them out, and
+  `scripts/check_site.py` has four new rules (11 to 14) that hold them to the served file.
+  Everything is PROPOSED and unchecked: `docs/proposals/2026-11-20-rebuild-draft-built.md`
+  lists every new sentence, the fourteen places in the table of developers that still need a
+  search, and the decisions still open. No search for the record was made.
+
 ## 2026-11-19
 
 - **The README and the opening of this file were brought up to date** with the day's events:

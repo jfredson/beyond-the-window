@@ -335,5 +335,212 @@ class Export(unittest.TestCase):
         self.assertIsNone(out["entries"][0]["checks"])
 
 
+# ---- the rebuild: acts, measures, searches and the readings (PROPOSED 2026-11-20) -----------
+
+DEVS = [{"name": "A made-up developer", "url": "https://example.com/a", "opened": D},
+        {"name": "Another made-up developer", "url": "https://example.com/b", "opened": D}]
+
+
+def act(date: str = "2026-03-02", actor: str = "A made-up developer", kind: str = "developer",
+        **more) -> dict:
+    """A constructed act that passes every rule."""
+    return {"date": date, "actor": actor, "actor_kind": kind,
+            "words": "does a made-up thing", "source": "s", "read_on": D, **more}
+
+
+def measure(value=40, by: str = "public", date: str = "2025") -> dict:
+    return {"date": date, "by": by, "value": value, "unit": "percent",
+            "words": "of made-up people said a made-up thing", "source": "s", "read_on": D}
+
+
+def errs_with(rec: dict) -> str:
+    return "\n".join(c.validate(GROUPS, [rec], DEVS))
+
+
+class Acts(unittest.TestCase):
+    def test_a_record_with_acts_measures_and_a_search_passes(self):
+        rec = good(offered=True)
+        rec["acts"] = [act(), act("2022", "A made-up state", "lawmaker"), act("2025-05")]
+        rec["measures"] = [measure()]
+        rec["searches"] = [{"date": D, "developer": "Another made-up developer",
+                            "words": "A constructed search."}]
+        self.assertEqual(errs_with(rec), "")
+
+    def test_an_act_needs_a_date_an_actor_and_a_kind(self):
+        for field, said in (("date", "no date"), ("actor", "no actor"),
+                            ("actor_kind", "is not one of"), ("words", "no words"),
+                            ("read_on", "no 'read_on' date")):
+            rec = good(); a = act(); del a[field]; rec["acts"] = [a]
+            self.assertIn(said, errs_with(rec), field)
+        rec = good(); rec["acts"] = [act(date="March 2026")]
+        self.assertIn("is not a day, a month or a year", errs_with(rec))
+        rec = good(); rec["acts"] = [act(date="2026-13")]
+        self.assertIn("is not a day, a month or a year", errs_with(rec))
+        rec = good(); rec["acts"] = [act(kind="company")]
+        self.assertIn("is not one of", errs_with(rec))
+        rec = good(); rec["acts"] = [act(certainty="high")]
+        self.assertIn("unknown field 'certainty'", errs_with(rec))
+
+    def test_an_act_rests_on_a_source_on_its_record_that_has_been_opened(self):
+        rec = good(); rec["acts"] = [act(source="nowhere")]
+        self.assertIn("names a source, 'nowhere', that the record does not define", errs_with(rec))
+        rec = good(); del rec["sources"][0]["opened"]; rec["acts"] = [act()]
+        self.assertIn("act 1 rests on a source, 's', with no address or no date", errs_with(rec))
+        rec = good(); rec["acts"] = [act(date="2027-01-01")]
+        self.assertIn("dated after the day its source was read", errs_with(rec))
+
+    def test_a_developer_who_acts_must_be_one_the_record_covers(self):
+        rec = good(); rec["acts"] = [act(actor="A developer nobody listed")]
+        self.assertIn("is not in developers.toml, so the record does not cover it", errs_with(rec))
+        rec = good(); rec["acts"] = [act(kind="researchers")]
+        self.assertIn("is a developer in developers.toml and the act calls it a researchers",
+                      errs_with(rec))
+
+    def test_the_words_of_an_act_stand_without_a_developers_name(self):
+        rec = good(); a = act(); a["words"] = "does what Another made-up developer did"
+        rec["acts"] = [a]
+        self.assertIn("the words name a developer", errs_with(rec))
+        rec = good(); a = act(); a["words"] = "does a made-up thing."
+        rec["acts"] = [a]
+        self.assertIn("end with a full stop", errs_with(rec))
+
+    def test_a_thing_marked_as_offered_holds_an_act_by_that_developer(self):
+        rec = good(offered=True); rec["acts"] = [act(actor="Another made-up developer")]
+        self.assertIn("holds no act by that developer", errs_with(rec))
+        rec = good(offered=True); rec["acts"] = [act(withdraws=True)]
+        self.assertIn("holds no act by that developer", errs_with(rec))
+
+    def test_a_measure_is_a_number_with_a_source(self):
+        rec = good(); m = measure("seventeen"); rec["measures"] = [m]
+        self.assertIn("'value' is not a number", errs_with(rec))
+        rec = good(); rec["measures"] = [measure(140)]
+        self.assertIn("is not between 0 and 100", errs_with(rec))
+        rec = good(); rec["measures"] = [measure(by="everyone")]
+        self.assertIn("by 'everyone' is not one of", errs_with(rec))
+        rec = good(); m = measure(); m["source"] = "nowhere"; rec["measures"] = [m]
+        self.assertIn("measure 1 names a source", errs_with(rec))
+
+    def test_a_search_names_one_developer_and_a_date(self):
+        rec = good(); rec["searches"] = [{"date": D, "words": "A constructed search."}]
+        self.assertIn("names no developer", errs_with(rec))
+        rec = good(); rec["searches"] = [{"developer": "A made-up developer", "words": "x"}]
+        self.assertIn("no calendar date", errs_with(rec))
+        rec = good(); rec["searches"] = [{"date": D, "developer": "Nobody listed", "words": "x"}]
+        self.assertIn("is not in developers.toml", errs_with(rec))
+        rec = good(); rec["done_by"] = "lawmaker"
+        rec["searches"] = [{"date": D, "developer": "A made-up developer", "words": "x"}]
+        self.assertIn("is not a thing a developer could do", errs_with(rec))
+
+
+class Readings(unittest.TestCase):
+    def records(self) -> list[dict]:
+        offered = good("a-thing-offered", offered=True)
+        offered["acts"] = [act("2026-03-02"), act("2025-05")]
+        studied = good("a-thing-studied")
+        studied["acts"] = [act("2025-10")]
+        back = good("a-thing-taken-back")
+        back["acts"] = [act("2024-01-01"), act("2026-01-29", withdraws=True)]
+        searched = good("a-thing-searched-for")
+        searched["searches"] = [{"date": dt.date(2026, 11, 1), "developer": "A made-up developer",
+                                 "words": "A constructed search."},
+                                {"date": D, "developer": "A made-up developer",
+                                 "words": "A constructed search."}]
+        law = good("a-thing-for-lawmakers"); law["done_by"] = "lawmaker"
+        return [offered, studied, back, searched, law]
+
+    def test_each_cell_of_the_grid_is_read_from_the_record(self):
+        recs = self.records()
+        self.assertEqual(c.validate(GROUPS, recs, DEVS), [])
+        g = c.developer_grid(recs, DEVS)
+        self.assertEqual(g["covered"], ["A made-up developer", "Another made-up developer"])
+        cells = {row["entry"]: row["cells"] for row in g["rows"]}
+        first = {entry: (cs[0]["kind"], cs[0]["date"]) for entry, cs in cells.items()}
+        self.assertEqual(first["a-thing-offered"], ("offered", "2025-05"))
+        self.assertEqual(first["a-thing-studied"], ("not_counted", "2025-10"))
+        self.assertEqual(first["a-thing-taken-back"], ("taken_back", "2026-01-29"))
+        self.assertEqual(first["a-thing-searched-for"], ("nothing_found", "2026-11-17"))
+        # the second developer did nothing and was searched for nothing
+        self.assertEqual({cs[1]["kind"] for cs in cells.values()}, {"not_searched"})
+        self.assertEqual(g["offering"], 1)
+        self.assertEqual(g["counts"], {"offered": 1, "not_counted": 1, "taken_back": 1,
+                                       "nothing_found": 1, "not_searched": 4})
+
+    def test_a_thing_for_lawmakers_is_not_a_row_of_the_grid(self):
+        g = c.developer_grid(self.records(), DEVS)
+        self.assertNotIn("a-thing-for-lawmakers", [row["entry"] for row in g["rows"]])
+        self.assertEqual((g["things"], g["cells"]), (4, 8))
+
+    def test_nothing_found_is_never_said_without_a_search(self):
+        recs = [good("one-thing"), good("another-thing")]
+        g = c.developer_grid(recs, DEVS)
+        self.assertEqual(g["counts"]["nothing_found"], 0)
+        self.assertEqual(g["counts"]["not_searched"], 4)
+        # a search for one developer fills that developer's cell and no other
+        recs[0]["searches"] = [{"date": D, "developer": "Another made-up developer", "words": "x"}]
+        kinds = [cell["kind"] for cell in c.developer_grid(recs, DEVS)["rows"][1]["cells"]] \
+            + [cell["kind"] for cell in c.developer_grid(recs, DEVS)["rows"][0]["cells"]]
+        self.assertEqual(sorted(kinds), ["not_searched"] * 3 + ["nothing_found"])
+
+    def test_acts_are_listed_newest_first_and_the_latest_is_the_first(self):
+        r = c.readings(self.records(), DEVS)
+        dates = [a["date"] for a in r["acts"]]
+        self.assertEqual(dates, ["2026-03-02", "2026-01-29", "2025-10", "2025-05", "2024-01-01"])
+        self.assertEqual(r["latest"]["id"], "a-thing-offered-2026-03-02")
+        self.assertEqual(len({a["id"] for a in r["acts"]}), len(r["acts"]))
+        self.assertEqual(r["acts"][0]["source"]["url"], "https://example.com/")
+
+    def test_the_law_reading_counts_places_and_not_acts(self):
+        against = good(c.LAW_AGAINST_ID); against["state"].pop("offered_today")
+        against["beside"] = True
+        against["acts"] = [act("2022", "A made-up state", "lawmaker"),
+                           act("2024", "A made-up state", "lawmaker"),
+                           act("2023", "Another made-up state", "lawmaker"),
+                           act("2025", "A third made-up state", "lawmaker", withdraws=True)]
+        protecting = good(c.LAW_PROTECTING_ID); protecting["done_by"] = "lawmaker"
+        law = c.law_reading([against, protecting])
+        self.assertEqual(law["against"]["count"], 2)
+        self.assertEqual((law["against"]["first"], law["against"]["latest"]), ("2022", "2023"))
+        self.assertEqual((law["protecting"]["count"], law["protecting"]["met"]), (0, False))
+        self.assertEqual(c.law_reading([good()]), {"against": None, "protecting": None})
+
+    def test_a_measure_reading_is_the_newest_and_says_when_it_rests_on_one_source(self):
+        a = good("one-thing"); a["measures"] = [measure(20, date="2023"), measure(17, date="2024")]
+        b = good("another-thing"); b["measures"] = [measure(1, "researchers", "2024"),
+                                                    measure(70, "researchers", "2024")]
+        public = c.measure_reading([a, b], "public")
+        self.assertEqual([m["value"] for m in public["measures"]], [17])
+        self.assertIs(public["one_source"], True)
+        self.assertEqual([m["value"] for m in c.measure_reading([a, b], "researchers")["measures"]],
+                         [1, 70])
+        b["measures"].append(measure(5, "public", "2022"))
+        self.assertIs(c.measure_reading([a, b], "public")["one_source"], False)
+        self.assertIsNone(c.measure_reading([good()], "public"))
+
+    def test_the_readings_leave_the_count_as_it_was(self):
+        recs = self.records()
+        self.assertEqual(c.compute(recs, DEVS)["headline"], c.compute(recs)["headline"])
+        self.assertEqual(c.compute(recs, DEVS)["headline"]["count"], 1)
+
+    def test_a_record_with_facts_to_verify_gives_no_act_and_no_cell(self):
+        recs = self.records(); recs[0]["verify"] = ["Unchecked."]
+        r = c.readings(recs, DEVS)
+        self.assertNotIn("a-thing-offered", [a["entry"] for a in r["acts"]])
+        self.assertNotIn("a-thing-offered", [row["entry"] for row in r["developers"]["rows"]])
+
+    def test_the_headline_file_is_stale_when_the_readings_change(self):
+        recs = self.records()
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "headline.json"
+            c.write_headline(path, c.compute(recs, DEVS), today="2026-11-20")
+            self.assertEqual(c.stale_reasons(c.read_headline(path), c.compute(recs, DEVS)), [])
+            recs[1]["acts"].append(act("2026-04-04"))
+            self.assertIn("'readings' in the headline file differs from the records",
+                          c.stale_reasons(c.read_headline(path), c.compute(recs, DEVS)))
+            # an act that leaves the count alone adds no row to the history
+            before = len(c.read_headline(path)["history"])
+            c.write_headline(path, c.compute(recs, DEVS), today="2026-11-21")
+            self.assertEqual(len(c.read_headline(path)["history"]), before)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

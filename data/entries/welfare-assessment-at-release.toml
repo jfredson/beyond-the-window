@@ -147,3 +147,24 @@ additions_checked = 2026-11-19
 corrections_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2025-05"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "publishes a welfare assessment in the report released with a model"
+source = "report-first"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2026-11-09"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "publishes a welfare assessment in the report released with its newest models"
+source = "report-new"
+read_on = 2026-11-20

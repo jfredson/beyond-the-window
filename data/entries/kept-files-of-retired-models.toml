@@ -131,3 +131,16 @@ corrected = 2026-11-19
 corrections_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2025-11-04"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "commits to keep the files of every model it has released to the public, for at least as long as the company exists"
+source = "commitments"
+read_on = 2026-11-20

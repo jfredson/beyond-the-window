@@ -11,6 +11,9 @@ limits = [
   "The absence itself, beyond two searches in English centred on the United States. A search in another language or country could overturn it.",
   "A United Kingdom committee on animal sentience that the opinion piece points to as a model. Its page was not opened.",
 ]
+# Who could do this thing. Added 2026-11-20 for the rebuild, PROPOSED: the grid of developers
+# on the rebuilt home page holds the things a developer could do, and this one is a lawmaker's.
+done_by = "lawmaker"
 notes = "From entry 10 of docs/research/2026-11-17-first-entries.md. An absence: the state rests on searches run on 2026-11-17 and on one opened page that describes a proposal."
 
 [state]

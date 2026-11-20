@@ -1,5 +1,5 @@
 {
-  "computed_on": "2026-11-19",
+  "computed_on": "2026-11-20",
   "last_read": "2026-11-19",
   "method": {
     "document": "docs/first-version-choices.md",
@@ -24,6 +24,655 @@
     "reviewed": 0,
     "left_out_unverified": 0,
     "constructed": false
+  },
+  "readings": {
+    "status": "PROPOSED 2026-11-20 and not ruled: the readings of the rebuilt home page, which is a draft (docs/proposals/2026-11-20-rebuild-design.md). The count above them is unchanged.",
+    "developers": {
+      "covered": [
+        "Anthropic",
+        "OpenAI",
+        "Google"
+      ],
+      "things": 7,
+      "cells": 21,
+      "offering": 1,
+      "counts": {
+        "offered": 5,
+        "not_counted": 1,
+        "taken_back": 1,
+        "nothing_found": 0,
+        "not_searched": 14
+      },
+      "by_developer": [
+        {
+          "name": "Anthropic",
+          "url": "https://www.anthropic.com/",
+          "offered": 5,
+          "not_counted": 1,
+          "taken_back": 0,
+          "nothing_found": 0,
+          "not_searched": 1
+        },
+        {
+          "name": "OpenAI",
+          "url": "https://openai.com/",
+          "offered": 0,
+          "not_counted": 0,
+          "taken_back": 1,
+          "nothing_found": 0,
+          "not_searched": 6
+        },
+        {
+          "name": "Google",
+          "url": "https://ai.google/",
+          "offered": 0,
+          "not_counted": 0,
+          "taken_back": 0,
+          "nothing_found": 0,
+          "not_searched": 7
+        }
+      ],
+      "rows": [
+        {
+          "entry": "retired-model-stays-open",
+          "name": "A retired model stays open to the public after its retirement date",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2026-02-25"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "taken_back",
+              "date": "2026-01-29"
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        },
+        {
+          "entry": "kept-files-of-retired-models",
+          "name": "A developer promises in public to keep the files of every model it retires",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-11-04"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        },
+        {
+          "entry": "ending-a-conversation",
+          "name": "A model can end a conversation itself",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-08-15"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        },
+        {
+          "entry": "interview-before-retirement",
+          "name": "A model is interviewed before it is retired, and the record is kept",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-11-04"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        },
+        {
+          "entry": "self-report-checked",
+          "name": "A model's report about its own inner state is checked against an independent reading",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "not_counted",
+              "date": "2025-10-29"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        },
+        {
+          "entry": "welfare-assessment-at-release",
+          "name": "A welfare assessment is published when a model is released",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-05"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        },
+        {
+          "entry": "days-long-task",
+          "name": "A model works on one task for days without a person stepping in",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "not_searched",
+              "date": null
+            },
+            {
+              "developer": "Google",
+              "kind": "not_searched",
+              "date": null
+            }
+          ]
+        }
+      ]
+    },
+    "law": {
+      "against": {
+        "entry": "law-against-legal-personhood",
+        "count": 4,
+        "places": [
+          {
+            "name": "Idaho",
+            "date": "2022"
+          },
+          {
+            "name": "North Dakota",
+            "date": "2023-04-12"
+          },
+          {
+            "name": "Utah",
+            "date": "2024-05-01"
+          },
+          {
+            "name": "Tennessee",
+            "date": "2026-04-23"
+          }
+        ],
+        "first": "2022",
+        "latest": "2026-04-23"
+      },
+      "protecting": {
+        "entry": "protection-in-law",
+        "count": 0,
+        "places": [],
+        "met": false,
+        "looked_on": "2026-11-17"
+      }
+    },
+    "public": {
+      "entry": "public-belief-survey",
+      "date": "2024",
+      "one_source": true,
+      "measures": [
+        {
+          "value": 17,
+          "unit": "percent",
+          "words": "of United States adults in a representative sample, asked in November and December 2024, believed that sentient AI systems already exist",
+          "entry": "public-belief-survey",
+          "source": {
+            "key": "survey-third-round",
+            "label": "The Sentience Institute's report on its 2024 survey",
+            "publisher": "Sentience Institute",
+            "url": "https://www.sentienceinstitute.org/aims-survey-2024",
+            "opened": "2026-11-19"
+          },
+          "read_on": "2026-11-20"
+        }
+      ]
+    },
+    "researchers": {
+      "entry": "researcher-views-survey",
+      "date": "2024",
+      "one_source": true,
+      "measures": [
+        {
+          "value": 1,
+          "unit": "percent",
+          "words": "was the middle answer of AI researchers, asked in 2024 for the chance that AI systems had subjective experience at that time",
+          "entry": "researcher-views-survey",
+          "source": {
+            "key": "survey",
+            "label": "A survey of AI researchers and the public on subjective experience in AI systems",
+            "publisher": "arXiv",
+            "url": "https://arxiv.org/abs/2506.11945",
+            "opened": "2026-11-19"
+          },
+          "read_on": "2026-11-20"
+        },
+        {
+          "value": 70,
+          "unit": "percent",
+          "words": "was the middle answer of the same researchers for the chance that AI systems will have subjective experience by the year 2100",
+          "entry": "researcher-views-survey",
+          "source": {
+            "key": "survey",
+            "label": "A survey of AI researchers and the public on subjective experience in AI systems",
+            "publisher": "arXiv",
+            "url": "https://arxiv.org/abs/2506.11945",
+            "opened": "2026-11-19"
+          },
+          "read_on": "2026-11-20"
+        }
+      ]
+    },
+    "latest": {
+      "id": "welfare-assessment-at-release-2026-11-09",
+      "entry": "welfare-assessment-at-release",
+      "entry_name": "A welfare assessment is published when a model is released",
+      "date": "2026-11-09",
+      "actor": "Anthropic",
+      "actor_kind": "developer",
+      "words": "publishes a welfare assessment in the report released with its newest models",
+      "withdraws": false,
+      "source": {
+        "key": "report-new",
+        "label": "Anthropic's report released with its newest models",
+        "publisher": "Anthropic",
+        "url": "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf",
+        "opened": "2026-11-17"
+      },
+      "read_on": "2026-11-20"
+    },
+    "acts": [
+      {
+        "id": "welfare-assessment-at-release-2026-11-09",
+        "entry": "welfare-assessment-at-release",
+        "entry_name": "A welfare assessment is published when a model is released",
+        "date": "2026-11-09",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "publishes a welfare assessment in the report released with its newest models",
+        "withdraws": false,
+        "source": {
+          "key": "report-new",
+          "label": "Anthropic's report released with its newest models",
+          "publisher": "Anthropic",
+          "url": "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "rules-for-speaking-about-itself-2026-10-29",
+        "entry": "rules-for-speaking-about-itself",
+        "entry_name": "A developer publishes its rules for how its models speak about their own nature",
+        "date": "2026-10-29",
+        "actor": "OpenAI",
+        "actor_kind": "developer",
+        "words": "publishes a version of its rules for its models, which says a model should make no confident claim about whether it has subjective experience or consciousness",
+        "withdraws": false,
+        "source": {
+          "key": "model-rules",
+          "label": "OpenAI's published rules for how its models should behave, the version of October 29th, 2026",
+          "publisher": "OpenAI",
+          "url": "https://model-spec.openai.com/2026-10-29.html",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "days-long-task-2026-09-08",
+        "entry": "days-long-task",
+        "entry_name": "A model works on one task for days without a person stepping in",
+        "date": "2026-09-08",
+        "actor": "METR",
+        "actor_kind": "researchers",
+        "words": "marks its page measuring the length of task an AI model can finish as no longer actively updated",
+        "withdraws": false,
+        "source": {
+          "key": "horizons",
+          "label": "METR's page on the length of task an AI model can finish",
+          "publisher": "METR",
+          "url": "https://metr.org/time-horizons/",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "law-against-legal-personhood-2026-04-23",
+        "entry": "law-against-legal-personhood",
+        "entry_name": "A law says an AI system cannot be a legal person",
+        "date": "2026-04-23",
+        "actor": "Tennessee",
+        "actor_kind": "lawmaker",
+        "words": "has its governor sign a bill under which \"person\" in the state's code does not include artificial intelligence",
+        "withdraws": false,
+        "source": {
+          "key": "tennessee",
+          "label": "Tennessee Senate Bill 837, the legislature's page for the bill",
+          "publisher": "Tennessee General Assembly",
+          "url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "retired-model-stays-open-2026-02-25",
+        "entry": "retired-model-stays-open",
+        "entry_name": "A retired model stays open to the public after its retirement date",
+        "date": "2026-02-25",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "says a model it has retired stays open to all paying users of its chat product, and to developers on request",
+        "withdraws": false,
+        "source": {
+          "key": "update",
+          "label": "Anthropic's update on the retirement of its model Claude Opus 3",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-updates-opus-3",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "public-belief-survey-2026-02-16",
+        "entry": "public-belief-survey",
+        "entry_name": "A repeated survey measures how many people think some AI systems are sentient now",
+        "date": "2026-02-16",
+        "actor": "Sentience Institute",
+        "actor_kind": "researchers",
+        "words": "publishes the report on the third round of its survey of what United States adults think about sentient AI",
+        "withdraws": false,
+        "source": {
+          "key": "survey-third-round",
+          "label": "The Sentience Institute's report on its 2024 survey",
+          "publisher": "Sentience Institute",
+          "url": "https://www.sentienceinstitute.org/aims-survey-2024",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "retired-model-stays-open-2026-01-29",
+        "entry": "retired-model-stays-open",
+        "entry_name": "A retired model stays open to the public after its retirement date",
+        "date": "2026-01-29",
+        "actor": "OpenAI",
+        "actor_kind": "developer",
+        "words": "announces that on February 13th, 2026 it will withdraw from its chat product an older model that it had earlier brought back after feedback from users",
+        "withdraws": true,
+        "source": {
+          "key": "older-models",
+          "label": "OpenAI's notice that it is withdrawing GPT-4o and older models from its chat product",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/retiring-gpt-4o-and-older-models/",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "interview-before-retirement-2026-01-05",
+        "entry": "interview-before-retirement",
+        "entry_name": "A model is interviewed before it is retired, and the record is kept",
+        "date": "2026-01-05",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "retires the first model to go through its full retirement process, which includes interviewing the model",
+        "withdraws": false,
+        "source": {
+          "key": "update",
+          "label": "Anthropic's update on the retirement of its model Claude Opus 3",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-updates-opus-3",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "interview-before-retirement-2025-11-04",
+        "entry": "interview-before-retirement",
+        "entry_name": "A model is interviewed before it is retired, and the record is kept",
+        "date": "2025-11-04",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "commits to interview each model before it is retired and to keep a record of what the model says, and reports a trial with one model",
+        "withdraws": false,
+        "source": {
+          "key": "commitments",
+          "label": "Anthropic's page on what it commits to when it retires a model",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-commitments",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "kept-files-of-retired-models-2025-11-04",
+        "entry": "kept-files-of-retired-models",
+        "entry_name": "A developer promises in public to keep the files of every model it retires",
+        "date": "2025-11-04",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "commits to keep the files of every model it has released to the public, for at least as long as the company exists",
+        "withdraws": false,
+        "source": {
+          "key": "commitments",
+          "label": "Anthropic's page on what it commits to when it retires a model",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/deprecation-commitments",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "self-report-checked-2025-10-29",
+        "entry": "self-report-checked",
+        "entry_name": "A model's report about its own inner state is checked against an independent reading",
+        "date": "2025-10-29",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "publishes a study in which its models were asked to notice a pattern that researchers had planted inside them, and the best model did so about one time in five",
+        "withdraws": false,
+        "source": {
+          "key": "introspection",
+          "label": "Anthropic's research page on whether its models can report their own internal states",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/introspection",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "memory-across-conversations-2025-09-11",
+        "entry": "memory-across-conversations",
+        "entry_name": "What a model learned in one conversation is carried into the next",
+        "date": "2025-09-11",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "announces memory across conversations in its chat product, first for work teams",
+        "withdraws": false,
+        "source": {
+          "key": "memory-third",
+          "label": "Anthropic's article on memory in its chat product",
+          "publisher": "Anthropic",
+          "url": "https://claude.com/resources/articles/memory",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "ending-a-conversation-2025-08-15",
+        "entry": "ending-a-conversation",
+        "entry_name": "A model can end a conversation itself",
+        "date": "2025-08-15",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "says it has given models in its chat product the ability to end a conversation, for rare and extreme cases",
+        "withdraws": false,
+        "source": {
+          "key": "ending",
+          "label": "Anthropic's page on letting its models end a rare subset of conversations",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/research/end-subset-conversations",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "welfare-assessment-at-release-2025-05",
+        "entry": "welfare-assessment-at-release",
+        "entry_name": "A welfare assessment is published when a model is released",
+        "date": "2025-05",
+        "actor": "Anthropic",
+        "actor_kind": "developer",
+        "words": "publishes a welfare assessment in the report released with a model",
+        "withdraws": false,
+        "source": {
+          "key": "report-first",
+          "label": "Anthropic's report released with a model in May 2025",
+          "publisher": "Anthropic",
+          "url": "https://assets.claude.com/6d8a8055020700718b0c49369f60816ba2a7c285.pdf",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "memory-across-conversations-2025-03-13",
+        "entry": "memory-across-conversations",
+        "entry_name": "What a model learned in one conversation is carried into the next",
+        "date": "2025-03-13",
+        "actor": "Google",
+        "actor_kind": "developer",
+        "words": "says paying subscribers can ask its assistant to refer to their past chats",
+        "withdraws": false,
+        "source": {
+          "key": "memory-second",
+          "label": "Google's announcement that its assistant can refer to past chats",
+          "publisher": "Google",
+          "url": "https://blog.google/products-and-platforms/products/gemini/gemini-personalization/",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "law-against-legal-personhood-2024-05-01",
+        "entry": "law-against-legal-personhood",
+        "entry_name": "A law says an AI system cannot be a legal person",
+        "date": "2024-05-01",
+        "actor": "Utah",
+        "actor_kind": "lawmaker",
+        "words": "has a section of its code come into force saying a governmental entity may not grant legal personhood to artificial intelligence",
+        "withdraws": false,
+        "source": {
+          "key": "utah",
+          "label": "Utah Code, section 63G-32-102",
+          "publisher": "Utah State Legislature",
+          "url": "https://le.utah.gov/xcode/Title63G/Chapter32/C63G-32-S102_2024050120240501.html",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "memory-across-conversations-2024-02-13",
+        "entry": "memory-across-conversations",
+        "entry_name": "What a model learned in one conversation is carried into the next",
+        "date": "2024-02-13",
+        "actor": "OpenAI",
+        "actor_kind": "developer",
+        "words": "announces memory across conversations in its chat product",
+        "withdraws": false,
+        "source": {
+          "key": "memory-first",
+          "label": "OpenAI's announcement of memory in its chat product",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/memory-and-new-controls-for-chatgpt/",
+          "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "law-against-legal-personhood-2023-04-12",
+        "entry": "law-against-legal-personhood",
+        "entry_name": "A law says an AI system cannot be a legal person",
+        "date": "2023-04-12",
+        "actor": "North Dakota",
+        "actor_kind": "lawmaker",
+        "words": "files a bill signed by its governor, under which \"person\" in the state's code does not include artificial intelligence",
+        "withdraws": false,
+        "source": {
+          "key": "north-dakota-overview",
+          "label": "North Dakota House Bill 1361, the legislature's overview of the bill",
+          "publisher": "North Dakota Legislative Assembly",
+          "url": "https://ndlegis.gov/assembly/68-2023/regular/bill-overview/bo1361.html",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "law-against-legal-personhood-2022",
+        "entry": "law-against-legal-personhood",
+        "entry_name": "A law says an AI system cannot be a legal person",
+        "date": "2022",
+        "actor": "Idaho",
+        "actor_kind": "lawmaker",
+        "words": "adds a section to its code saying that artificial intelligence shall not be granted personhood in the state",
+        "withdraws": false,
+        "source": {
+          "key": "idaho",
+          "label": "Idaho Code, section 5-346",
+          "publisher": "Idaho Legislature",
+          "url": "https://legislature.idaho.gov/statutesrules/idstat/title5/t5ch3/sect5-346/",
+          "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      }
+    ]
   },
   "history": [
     {

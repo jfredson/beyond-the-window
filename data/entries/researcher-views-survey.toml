@@ -41,3 +41,26 @@ added_to = 2026-11-19
 additions_checked = 2026-11-19
 corrected = 2026-11-19
 corrections_checked = 2026-11-19
+
+# Measures, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1.2). PROPOSED, and not yet checked by a different session. A measure is a figure the
+# home page may show, read from here and never typed. Both were read again in the paper's full
+# text on the day given in `read_on` (its page 4). This record holds no act: the survey's
+# authors are eight people and not a named body, so its publication is not written as one.
+[[measures]]
+date = "2024"
+by = "researchers"
+value = 1
+unit = "percent"
+words = "was the middle answer of AI researchers, asked in 2024 for the chance that AI systems had subjective experience at that time"
+source = "survey"
+read_on = 2026-11-20
+
+[[measures]]
+date = "2024"
+by = "researchers"
+value = 70
+unit = "percent"
+words = "was the middle answer of the same researchers for the chance that AI systems will have subjective experience by the year 2100"
+source = "survey"
+read_on = 2026-11-20

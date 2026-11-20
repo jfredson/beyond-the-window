@@ -21,13 +21,21 @@ import { data, longDate, builtFrom, SITE_NAME } from '../lib/data';
 interface Props {
   title?: string;
   description?: string;
-  noindex?: boolean; // the page for a missing address only
+  noindex?: boolean; // the page for a missing address, and a draft page
+  // The three below are used by the draft of the rebuilt home page and by nothing published
+  // (PROPOSED 2026-11-20). A page that passes none of them is built exactly as before.
+  draft?: boolean; // a strip across the top saying the page is a draft
+  image?: string; // the picture a link preview shows, as a path from the root
+  feed?: string; // a feed a reader can follow, as a path from the root
 }
 
 const {
   title = SITE_NAME,
   description = 'A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.',
   noindex = false,
+  draft = false,
+  image,
+  feed,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -68,11 +76,17 @@ const currentYear = new Date().getFullYear();
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    {image && <meta property="og:image" content={new URL(image, Astro.site).href} />}
+    {image && <meta property="og:image:width" content="1200" />}
+    {image && <meta property="og:image:height" content="630" />}
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    {feed && <link rel="alternate" type="application/atom+xml" title={`${SITE_NAME}: every act, by date`} href={feed} />}
   </head>
   <body>
     {data.constructed && (
       <div class="constructed-banner">Constructed example, not real data · every entry, state and source on this page is made up</div>
+    )}{draft && (
+      <div class="constructed-banner">A draft of a new home page · not the published page, and not linked from it</div>
     )}
     <Nav />
     <main class="container">

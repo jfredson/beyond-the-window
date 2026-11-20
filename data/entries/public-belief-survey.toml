@@ -122,3 +122,28 @@ corrected = 2026-11-19
 corrections_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2026-02-16"
+actor = "Sentience Institute"
+actor_kind = "researchers"
+words = "publishes the report on the third round of its survey of what United States adults think about sentient AI"
+source = "survey-third-round"
+read_on = 2026-11-20
+
+# A measure is a figure the home page may show, read from here and never typed. Only the
+# question this entry's test is about is written as a measure. The other figures stay in the
+# state's text above.
+[[measures]]
+date = "2024"
+by = "public"
+value = 17
+unit = "percent"
+words = "of United States adults in a representative sample, asked in November and December 2024, believed that sentient AI systems already exist"
+source = "survey-third-round"
+read_on = 2026-11-20

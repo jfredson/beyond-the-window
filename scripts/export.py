@@ -138,7 +138,10 @@ def build(groups: list[dict], records: list[dict], headline: dict,
         "exported_on": c.pacific_today(),
         "commit": commit(),
         "constructed": headline["records"]["constructed"],
-        "headline": {k: headline[k] for k in ("computed_on", "last_read", "headline", "records")},
+        # With the readings of the rebuilt home page, a draft (PROPOSED 2026-11-20). They are
+        # None when the headline file holds none, as in a test that builds one by hand.
+        "headline": {**{k: headline[k] for k in ("computed_on", "last_read", "headline", "records")},
+                     "readings": headline.get("readings")},
         "groups": out_groups,
         "entries": entries,
     }
@@ -157,14 +160,14 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     headline_path = args.data / c.HEADLINE_NAME
     headline = c.read_headline(headline_path)
-    reasons = c.stale_reasons(headline, c.compute(records))
+    developers, _ = c.load_developers(args.data)
+    reasons = c.stale_reasons(headline, c.compute(records, developers))
     if reasons:
         print("Refused. Nothing was written: " + "; ".join(reasons)
               + ". Run scripts/compute.py first.", file=sys.stderr)
         return 1
     args.out.mkdir(parents=True, exist_ok=True)
     args.public.mkdir(parents=True, exist_ok=True)
-    developers, _ = c.load_developers(args.data)
     data = build(groups, records, headline, developers)
     (args.out / "window.json").write_text(
         json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

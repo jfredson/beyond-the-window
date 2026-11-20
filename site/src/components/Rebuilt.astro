@@ -1,0 +1,179 @@
+---
+// The rebuilt home page, as a draft (PROPOSED 2026-11-20, nothing here is ruled but what the
+// three rulings of that day say). It stands at /draft/ and the published home page does not
+// link to it. Design: docs/proposals/2026-11-20-rebuild-design.md. Starting text: Option C2
+// (docs/proposals/pictures/2026-11-20-first-screen/option-C2-index.astro.txt).
+//
+// Every figure is read from the readings scripts/compute.py wrote, and each is marked with
+// data-figure so that scripts/check_site.py can compare it with the served file. No figure is
+// typed. Every sentence is a draft for John.
+//
+// Developers are named in the developers' reading and nowhere else on this page: the strip at
+// the top and the table under "Who does what", both marked data-developers-reading (ruled
+// 2026-11-20, docs/rulings/2026-11-20-home-page-names-every-covered-developer.md). The dated
+// list below prints a developer's act as "A developer ...".
+//
+// `opening` picks between the two candidates of the design's decision 3, which is not ruled:
+//   "acts"     one developer interviews its models before retiring them (read in Option C2)
+//   "forecast" the researchers' two figures (not read by anyone yet); the researchers' reading
+//              is then left out of the rows below, as the design proposes
+import Base from '../layouts/Base.astro';
+import WindowGrid from './WindowGrid.astro';
+import ThingList from './ThingList.astro';
+import ActList from './ActList.astro';
+import '../styles/rebuild.css';
+import { data, readings, entryById, longDate, worldDate, countWord, QUESTION } from '../lib/data';
+
+interface Props {
+  opening: 'acts' | 'forecast';
+}
+const { opening } = Astro.props;
+
+if (!readings) throw new Error('the headline file holds no readings; run scripts/compute.py');
+const r = data.headline.records;
+const g = readings.developers;
+const law = readings.law;
+const pub = readings.public;
+const res = readings.researchers;
+const latest = readings.latest;
+const lastRead = data.headline.last_read;
+if (!law.against || !law.protecting || !pub || !res || !latest) throw new Error('a reading is missing');
+if (res.measures.length !== 2) throw new Error('the researchers\' reading is written for two figures');
+
+// The first opening holds for exactly one developer. The build stops if the records say otherwise.
+const interview = entryById.get('interview-before-retirement');
+const interviewers = interview ? interview.state.offered_by.length : 0;
+if (opening === 'acts' && interviewers !== 1) throw new Error('the opening sentence is written for one developer');
+
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
+const cellWords = (kind: string, date: string | null) =>
+  kind === 'offered' ? `Since ${date ? worldDate(date) : 'a date not recorded'}`
+  : kind === 'not_counted' ? `${worldDate(date!)}, not counted as offered`
+  : kind === 'taken_back' ? `Withdrawal: ${worldDate(date!)}`
+  : kind === 'nothing_found' ? `Nothing found on ${worldDate(date!)}`
+  : 'Not yet searched';
+const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A developer' : a.actor} ${a.words}.`;
+const description = 'A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.';
+---
+
+<Base description={description} noindex draft image="/draft/preview.png" feed="/draft/acts.xml">
+  <div class="rb-top">
+    <p class="eyebrow">A dated record of how the world is treating AI models</p>
+    {opening === 'acts' ? (
+      <h1>{cap(countWord(interviewers))} AI developer interviews its models before retiring them, and keeps the record.</h1>
+      <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
+    ) : (
+      <h1>AI researchers put the chance that an AI system has inner experience at <span data-figure="researchers.0">{res.measures[0].value}</span> percent in {worldDate(res.date)} and <span data-figure="researchers.1">{res.measures[1].value}</span> percent by 2100.</h1>
+      <p class="lede">This is a dated record of what the world is doing in the meantime, by whom and when.</p>
+    )}
+
+    <div class="rb-readings">
+      <div class="rb-reading rb-devs">
+        <span class="rb-label">Developers</span>
+        <p>This record covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
+        <ul class="rb-strip" data-developers-reading>
+          {g.by_developer.map((d) => (
+            <li>
+              <a href={d.url ?? undefined} rel="noopener">{d.name}</a>
+              <span class={d.offered > 0 ? 'has' : ''}>{d.offered > 0 ? <Fragment><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span> {d.offered === 1 ? 'thing' : 'things'} offered</Fragment> : 'Nothing recorded as offered'}</span>
+              {d.not_searched > 0 && <span class="dim"><span data-figure={`developers.${d.name}.not_searched`}>{d.not_searched}</span> not yet searched</span>}
+            </li>
+          ))}
+        </ul>
+        <p class="rb-note">Not yet searched means that nobody has looked, and not that nothing is there. <a href="#who-does-what">Who does what, thing by thing.</a></p>
+      </div>
+      <p class="rb-reading rb-row">
+        <span class="rb-fig"><span data-figure="law.against.count">{law.against.count}</span></span>
+        <span><span class="rb-label">Law</span>United States states have <a href={`/list/${law.against.entry}/`}>a law saying an AI system cannot be a legal person</a>, the first in {worldDate(law.against.first!)} and the newest on {worldDate(law.against.latest!)}. {law.protecting.met ? '' : <Fragment><a href={`/list/${law.protecting.entry}/`}>No law protecting an AI system for its own sake</a> was found when it was looked for on {longDate(law.protecting.looked_on)}.</Fragment>}</span>
+      </p>
+      <p class="rb-reading rb-row">
+        <span class="rb-fig"><span data-figure="public.0">{pub.measures[0].value}</span>%</span>
+        <span><span class="rb-label">The public</span>{pub.measures[0].words}. {pub.one_source && 'From one survey. '}<a href={`/list/${pub.entry}/`}>The entry.</a></span>
+      </p>
+      {opening === 'acts' && (
+        <p class="rb-reading rb-row">
+          <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
+          <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span> percent {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>The entry.</a></span>
+        </p>
+      )}
+      <p class="rb-reading rb-latest"><strong>Latest, {worldDate(latest.date)}:</strong> {actSentence(latest)} <a href="#dated">Everything, by date.</a></p>
+    </div>
+
+    <ul class="checked">
+      {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
+      <li class="world">The dated acts and the survey figures above were written in on November 20th, 2026, each from a source opened again that day. They have not had a second check.</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn" href="#list">Read the list</a>
+      <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
+    </div>
+  </div>
+
+  <section class="below" id="who-does-what">
+    <div class="shead"><h2>Who does what</h2><span><span data-figure="developers.things">{g.things}</span> things a developer could do, <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers</span></div>
+    <p class="intro">
+      Each row is a thing on the list that a developer could do. Each column is a developer this
+      record covers so far. A date is the developer's first act of that kind. Of the
+      <span data-figure="developers.cells">{g.cells}</span> places in the table,
+      <span data-figure="developers.not_searched">{g.counts.not_searched}</span> have not been
+      searched yet, so a place with no date says nothing about that developer.
+    </p>
+    <table class="rb-grid" data-developers-reading>
+      <thead>
+        <tr>
+          <th scope="col">Thing</th>
+          {g.by_developer.map((d) => <th scope="col"><a href={d.url ?? undefined} rel="noopener">{d.name}</a></th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {g.rows.map((row) => (
+          <tr data-entry={row.entry}>
+            <th scope="row"><a href={`/list/${row.entry}/`}>{row.name}</a></th>
+            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date)}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="rb-note">
+      "Not counted as offered" marks a research result, a plan, or a promise that has not yet
+      taken effect. "Withdrawal" marks an act that takes something back.
+      {!law.protecting.met && <Fragment> One thing on the list is a lawmaker's to do and not a developer's, so it has no row here: <a href={`/list/${law.protecting.entry}/`}>{entryById.get(law.protecting.entry)!.name.charAt(0).toLowerCase() + entryById.get(law.protecting.entry)!.name.slice(1)}</a>. It is counted under Law, above.</Fragment>}
+    </p>
+  </section>
+
+  <section class="below" id="dated">
+    <div class="shead"><h2>Everything, by date</h2><span><span data-figure="acts.count">{readings.acts.length}</span> dated acts, newest first</span></div>
+    <ActList />
+    <p class="rb-note"><a href="/draft/acts/">The same list on its own page, with who acted and the source for each.</a></p>
+  </section>
+
+  <section class="below" id="why">
+    <div class="shead"><h2>Why keep this record</h2></div>
+    <p class="intro">
+      If AI models have no wants, treating them as if they had has a cost. If they have wants and
+      nobody notices, that has a cost. If they have wants that put people at risk, that has a cost
+      too. All three are kept in view here, and none is argued for.
+    </p>
+    <p class="intro">The question behind the record: {QUESTION}</p>
+  </section>
+
+  <section class="below" id="window">
+    <div class="shead"><h2>The window</h2><span>the things on the list, at a glance</span></div>
+    <div class="rb-window"><WindowGrid /></div>
+  </section>
+
+  <section class="below" id="list">
+    <div class="shead"><h2>The List</h2><span>{r.on_the_list} things, and how far the world has got on each</span></div>
+    <ThingList />
+  </section>
+
+  <section class="below" id="beside">
+    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries</span></div>
+    <p class="intro">
+      These entries are kept because they bear on everything on the list. Each group says why it
+      sits beside the list.
+    </p>
+    <ThingList beside />
+  </section>
+</Base>
