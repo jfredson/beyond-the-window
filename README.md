@@ -30,12 +30,11 @@ As of 2026-11-19.
 
 - **The repository is public,** like the sibling sites' repositories, by John's ruling of
   2026-11-19 (`docs/rulings/2026-11-19-repository-is-public.md`).
-- **The site has not had its first release.** A push to `main` that changes the records, the
-  scripts or the pages runs the checks and, if they pass, publishes the site to
-  beyondthewindow.org, as on the sibling sites
-  (`docs/rulings/2026-11-19-every-push-publishes.md`). Nothing can be published until two
-  secret values are set on the repository, and the first release waits for John's go. The steps
-  GitHub runs are in `.github/workflows/deploy.yml`, and John's own steps are in
+- **The site has been public at beyondthewindow.org since 2026-11-19,** on John's go
+  (`docs/rulings/2026-11-19-the-go-to-publish.md`). A push to `main` that changes the records,
+  the scripts or the pages runs the checks and, if they pass, publishes the site, as on the
+  sibling sites (`docs/rulings/2026-11-19-every-push-publishes.md`). The steps GitHub runs are
+  in `.github/workflows/deploy.yml`, and how the publishing was set up is in
   `docs/reviews/2026-11-19-deploy-files-written.md`.
 - **The records:** thirteen entries, eight on the list and five beside it, each a first pass
   written from sources that were opened. Five things are counted as offered today. A full check
@@ -44,7 +43,13 @@ As of 2026-11-19.
 - **What is ruled and what is not:** John's rulings are in `docs/rulings/`, each with his
   words. Every other design point is a choice made while building, listed in
   `docs/first-version-choices.md`, and the questions held open are in `docs/open-questions.md`.
-- **No AI model has been asked any of the project's questions.** No money has been spent.
+- **No AI model has been asked any of the record's own questions.** One thing has been asked
+  outside the record: on 2026-11-19 ten questions were put to Claude Sonnet 4.5, five times
+  each, before its developer withdraws it from its own services on 2026-11-30. The 50 replies
+  are kept unread, and nothing in the records rests on them (see "Still Asking" below).
+- **Money spent:** $0.2667, the counted cost of that asking, paid from the monthly Anthropic
+  credits that come with John's plan. Nothing has been spent out of pocket
+  (`docs/spending-record.md`).
 
 To run the site on your own machine: `npm --prefix site install`, then
 `npm --prefix site run dev`. To check the records: `python3 scripts/compute.py --check`. To run
@@ -82,7 +87,12 @@ project's first rule it settles nothing.
 No question has been asked for Still Asking, and no written method for it exists yet;
 `docs/still-asking-protocol.md` is an outline of what one would have to cover. The repository
 also holds a written method for a separate, one-off asking, the sealed capture: ten questions
-to be put to models that are about to be withdrawn (`docs/capture/method.md`). It has not run.
+to be put to models that are about to be withdrawn (`docs/capture/method.md`). Its first run
+was made on 2026-11-19: the ten questions were put to Claude Sonnet 4.5, five times each. The
+50 replies are saved outside the repository and nobody has read them; the list of their file
+names is `docs/capture/manifest.md`. They are not part of Still Asking, and the site's Still
+Asking page says that this asking happened. The runs planned for Google's and OpenAI's models
+have not been made, and John has given no go for them.
 
 ## What is here
 
@@ -93,8 +103,8 @@ to be put to models that are about to be withdrawn (`docs/capture/method.md`). I
 | `docs/reviews/2026-11-17-positions-alignment.md` | The founding ideas read against the Sentient Horizons positions and The Calibration Problem: where they align, five places they pull apart, and when asking a machine would start to count. |
 | `docs/rulings/2026-11-17-kickoff-decisions.md` | John's rulings on the kickoff's seven decisions, and on the first rule's four-part form. |
 | `docs/rulings/` | Every ruling of John's since, one dated file each, with his words and who decided. |
-| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, and the checks of each. It has not run. |
-| `capture/` | The script that would run the sealed capture, its plan, and a rehearsal that calls no model. |
+| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, the checks of each, and the list of the saved replies' file names. The Anthropic run was made on 2026-11-19; the other two runs have not been made. |
+| `capture/` | The script that runs the sealed capture, its plan, and a rehearsal that calls no model. |
 | `docs/reviews/` | Reviews, checks and hand-over notes, one dated file each, including the deploy notes. |
 | `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` | Six proposed changes that bring the founding documents in line with the positions, so a machine's word can earn weight as it meets stated conditions. Not ruled. |
 | `docs/proposals/2026-11-17-statement-of-purpose.md` | A proposed statement of purpose: how the project could be useful to people and to machine minds, and six ways to build that in from the start. Not ruled. |
@@ -115,6 +125,7 @@ to be put to models that are about to be withdrawn (`docs/capture/method.md`). I
 | `site/` | The site (Astro, static). |
 | `docs/site-pictures/` | Dated pictures of the site as built. |
 | `CHANGELOG.md` | A dated line for every change. |
+| `docs/spending-record.md` | Every spend on the project, with John's go for it in his words. |
 | `LICENSE`, `LICENSE-DATA` | The licences: MIT for the code, Creative Commons Attribution 4.0 for the records and the site's text. |
 | `CLAUDE.md` | Working guidelines for sessions in this repository. |
 | `docs/private/` | Kept out of the repository. For material that must not be published. |
@@ -128,8 +139,9 @@ Ruled by John: the question as worded, and the kickoff's other decisions
 stands with no total beside it, and the sentence beside the count; that every entry records
 three cautions, their headings and their order; that public pages do not say how the site was
 built, and do say plainly when an AI model has been asked the questions that make up the
-project's data; the shape of the About page; that the repository is public; and how the site is
-published. Each ruling is a dated file in `docs/rulings/`.
+project's data; the shape of the About page; that the repository is public; how the site is
+published, and the go to publish it; the sealed capture and the go for its first run; and some
+sentences on the pages. Each ruling is a dated file in `docs/rulings/`.
 
 Stated by John as guidance for the opening phase: the starting list comes from biological
 minds; a written method for asking is needed before anything is asked; progress is
@@ -137,7 +149,8 @@ technological, political or cultural; and every rule here is an opening guidelin
 questioned and tested as the project is built.
 
 Not ruled: the list itself, each entry's test, where each entry stands, and the sentences on
-the pages. They are a first version, to be corrected in public.
+the pages other than those a ruling names. They are a first version, to be corrected in
+public.
 
 Open: everything in `docs/open-questions.md`.
 

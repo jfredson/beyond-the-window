@@ -1,10 +1,16 @@
 # Changelog
 
 Every change to the records, the method or the site gets a dated line here, saying which
-number moved or that none did. Nothing is published, so there have been no public corrections.
+number moved or that none did. The site has been public at beyondthewindow.org since
+2026-11-19. Since then no entry has been corrected. Two wordings on the Still Asking page were
+changed after it was public, and both are in the lines for 2026-11-19 below, with the words
+before and after in the ruling they name.
 
 ## 2026-11-19
 
+- **The README and the opening of this file were brought up to date** with the day's events:
+  the site is public, ten questions were put to one model outside the record, and that asking
+  cost $0.2667. No page of the site changed. No number moved: the count is 5. Not pushed.
 - **Two wording fixes on the Still Asking page**
   (`docs/rulings/2026-11-19-two-wording-fixes-on-still-asking.md`). The line under "What AI
   models said when asked" now reads "None of this record's questions has been put to any
