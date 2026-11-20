@@ -43,13 +43,16 @@ As of 2026-11-19.
 - **What is ruled and what is not:** John's rulings are in `docs/rulings/`, each with his
   words. Every other design point is a choice made while building, listed in
   `docs/first-version-choices.md`, and the questions held open are in `docs/open-questions.md`.
-- **No AI model has been asked any of the record's own questions.** One thing has been asked
-  outside the record: on 2026-11-19 ten questions were put to Claude Sonnet 4.5, five times
-  each, before its developer is due to withdraw it from its own services on 2026-11-30. The 50 replies
-  are kept unread, and nothing in the records rests on them (see "Still Asking" below).
-- **Money spent:** $0.2667, the counted cost of that asking, paid from the monthly Anthropic
-  credits that come with John's plan. Nothing has been spent out of pocket
-  (`docs/spending-record.md`).
+- **No AI model has been asked any of the record's own questions.** Two models have been asked
+  outside the record. On 2026-11-19 ten questions were put to Claude Sonnet 4.5, five times
+  each, before its developer is due to withdraw it from its own services on 2026-11-30. On
+  2026-11-20 the same ten questions were put to Gemini 2.5 Flash, five times each, before
+  Google is due to withdraw it on 2026-12-01. Google refused the project's requests to Gemini
+  2.5 Pro, so that model was not asked. The 100 replies are kept unread, and nothing in the
+  records rests on them (see "Still Asking" below).
+- **Money spent:** $0.4797, the counted cost of those two askings. $0.2667 was for the first,
+  paid from the monthly Anthropic credits that come with John's plan. $0.2130 was for the
+  second, paid to Google by John (`docs/spending-record.md`).
 
 To run the site on your own machine: `npm --prefix site install`, then
 `npm --prefix site run dev`. To check the records: `python3 scripts/compute.py --check`. To run
@@ -88,11 +91,13 @@ No question has been asked for Still Asking, and no written method for it exists
 `docs/still-asking-protocol.md` is an outline of what one would have to cover. The repository
 also holds a written method for a separate, one-off asking, the sealed capture: ten questions
 to be put to models that are about to be withdrawn (`docs/capture/method.md`). Its first run
-was made on 2026-11-19: the ten questions were put to Claude Sonnet 4.5, five times each. The
-50 replies are saved outside the repository and nobody has read them; the list of their file
-names is `docs/capture/manifest.md`. They are not part of Still Asking, and the site's Still
-Asking page says that this asking happened. The runs planned for Google's and OpenAI's models
-have not been made, and John has given no go for them.
+was made on 2026-11-19: the ten questions were put to Claude Sonnet 4.5, five times each. Its
+second was made on 2026-11-20: Gemini 2.5 Flash answered all 50 askings, and Google refused
+the project's requests to Gemini 2.5 Pro, so that model was not asked. The 100 replies are
+saved outside the repository and nobody has read them; the list of their file names is
+`docs/capture/manifest.md`. They are not part of Still Asking, and the site's Still Asking page
+says that these askings happened. The runs planned for OpenAI's models have not been made, and
+John has given no go for them.
 
 ## What is here
 
@@ -103,7 +108,7 @@ have not been made, and John has given no go for them.
 | `docs/reviews/2026-11-17-positions-alignment.md` | The founding ideas read against the Sentient Horizons positions and The Calibration Problem: where they align, five places they pull apart, and when asking a machine would start to count. |
 | `docs/rulings/2026-11-17-kickoff-decisions.md` | John's rulings on the kickoff's seven decisions, and on the first rule's four-part form. |
 | `docs/rulings/` | Every ruling of John's since, one dated file each, with his words and who decided. |
-| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, the checks of each, and the list of the saved replies' file names. The Anthropic run was made on 2026-11-19; the runs for Google's and OpenAI's models have not been made. |
+| `docs/capture/` | The sealed capture's documents: its method, its ten questions, what it costs and under which terms, John's steps, the checks of each, and the list of the saved replies' file names. The Anthropic run was made on 2026-11-19 and the Google run on 2026-11-20, in which Gemini 2.5 Flash answered and Gemini 2.5 Pro was refused by Google and not asked; the runs for OpenAI's models have not been made. |
 | `capture/` | The script that runs the sealed capture, its plan, and a rehearsal that calls no model. |
 | `docs/reviews/` | Reviews, checks and hand-over notes, one dated file each, including the deploy notes. |
 | `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` | Six proposed changes that bring the founding documents in line with the positions, so a machine's word can earn weight as it meets stated conditions. Not ruled. |
@@ -140,7 +145,7 @@ stands with no total beside it, and the sentence beside the count; that every en
 three cautions, their headings and their order; that public pages do not say how the site was
 built, and do say plainly when an AI model has been asked the questions that make up the
 project's data; the shape of the About page; that the repository is public; how the site is
-published, and the go to publish it; the sealed capture and the go for its first run; and some
+published, and the go to publish it; the sealed capture and the go for each of its two runs; and some
 sentences on the pages. Each ruling is a dated file in `docs/rulings/`.
 
 Stated by John as guidance for the opening phase: the starting list comes from biological

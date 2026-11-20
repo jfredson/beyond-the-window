@@ -4,7 +4,19 @@ Every change to the records, the method or the site gets a dated line here, sayi
 number moved or that none did. The site has been public at beyondthewindow.org since
 2026-11-19. Since then no entry has been corrected. Two wordings on the Still Asking page were
 changed after it was public, and both are in the lines for 2026-11-19 below, with the words
-before and after in the ruling they name.
+before and after in the ruling they name. The paragraph on that page about questions asked
+outside the record was replaced on 2026-11-20, and that is in the line for that day.
+
+## 2026-11-20
+
+- **The Still Asking page says that two models have been asked, outside the record**
+  (`docs/rulings/2026-11-20-capture-paragraph-names-gemini.md`). The paragraph now adds that
+  the same ten questions were put to Gemini 2.5 Flash on 2026-11-20, five times each, and that
+  Google would not let the project ask Gemini 2.5 Pro. The run's record is
+  `docs/spending-record.md`: 50 replies from Gemini 2.5 Flash, kept unread, at a counted cost
+  of $0.2130. The runs for OpenAI's models have not been made. The built-site check allows the
+  three new names in that one paragraph, and the README is brought up to date. No entry
+  changed. No number moved: the count is 5. Not pushed.
 
 ## 2026-11-19
 

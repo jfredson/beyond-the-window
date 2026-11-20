@@ -638,6 +638,13 @@ paragraph. Each of those two refusals was tried on a copy of the built site. *De
 agent.* *Confidence:* high. *Judgment:* the alternative is to keep the paragraph free of names,
 which would leave a reader unable to tell which model was asked.
 
+*Added 2026-11-20:* that exception now covers five names in the same one paragraph: Gemini 2.5
+Flash, Gemini 2.5 Pro and Google are added, because John approved a paragraph that names them
+(`docs/rulings/2026-11-20-capture-paragraph-names-gemini.md`, "Yes, as written"). The widening
+of the check follows from that ruling and is not itself ruled. Each of the five is still
+refused everywhere else on that page, and every other name is refused in that paragraph. Both
+refusals were tried again on a copy of the built site. *Decided by: agent.* *Confidence:* high.
+
 *Added 2026-11-18:* it also refuses anything standing beside the number in the large type on
 the home page, a total in the headline part of the served file, and the count written as a
 share of the things on the list ("6 of 9", "six of the nine") on any page, so the ruling of

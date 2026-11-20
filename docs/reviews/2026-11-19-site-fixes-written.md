@@ -1036,3 +1036,58 @@ meant to. It now allows "Claude Sonnet 4.5" and "Anthropic" in the paragraph mar
 
 **The checks,** run after the change: 30 tests pass; the headline file matches the records and
 the count is 5; the build gives 18 pages; the built site passes.
+
+# A later commit, 2026-11-20: the paragraph now names the second model asked
+
+Asked for by the master planning session, after John approved the new paragraph
+(`docs/rulings/2026-11-20-capture-paragraph-names-gemini.md`, "Yes, as written"). The replies
+were not opened or looked for.
+
+**The paragraph on the page is the ruled one, word for word.** It was read back from the built
+page and compared with the ruling.
+
+**The four new links, each opened on 2026-11-20:**
+
+- "Gemini 2.5 Flash": `https://aistudio.google.com/docs/models/gemini-2.5-flash`, Google's own
+  page for the model, titled "Gemini 2.5 Flash".
+- "Google": `https://about.google/`, the company's own page about itself.
+- "December 1st, 2026": `https://aistudio.google.com/docs/deprecations`, Google's page of
+  withdrawal dates, titled "Gemini deprecations". Its tables give `gemini-2.5-flash` and
+  `gemini-2.5-pro` the same shutdown date, December 1, 2026.
+- "Gemini 2.5 Pro": `https://aistudio.google.com/docs/models/gemini-2.5-pro`, Google's own page
+  for the model, titled "Gemini 2.5 Pro".
+
+The older address `ai.google.dev/gemini-api/docs/...`, which this repository's other documents
+cite, now passes the reader on to these `aistudio.google.com` addresses.
+
+**Three things Google's page says that the paragraph does not.** None changes the date, so the
+ruled paragraph was left as it is.
+
+- The page is about one Google service, the one developers send requests to. It says nothing
+  of Google's other services, so "withdraw it" is true of that service. The sentence about
+  Claude Sonnet 4.5 says "from its own services" for the like reason; the Google sentence has
+  no such words.
+- A note at the top of the page says the dates in its tables are the earliest on which a model
+  might be shut down. The notice above each of the two tables is firmer: "Effective December
+  1, 2026", requests to either model are passed to a newer model.
+- So after that day a request that names either model is answered by a different model, and is
+  not refused.
+
+**No other line on the Still Asking page is made untrue.** The headline, the description and
+the line "None of this record's questions has been put to any model" are about the record's
+own questions, which are still unasked. Nothing else on the page, and nothing on any other
+page, counts the models asked.
+
+**The built-site check** now allows five names in the paragraph marked `id="capture"`: the two
+it allowed before, and "Gemini 2.5 Flash", "Gemini 2.5 Pro" and "Google". On a copy of the
+built site it still refused those three anywhere else on the page, and still refused another
+name inside the paragraph. No test in `scripts/test_compute.py` covers this check, so none was
+changed.
+
+**The README and the changelog** say what the spending record says: the Google run was made on
+2026-11-20, Gemini 2.5 Flash answered 50 askings at a counted cost of $0.2130, Gemini 2.5 Pro
+was refused by Google and not asked, and the runs for OpenAI's models have not been made.
+
+**The checks,** run after the change: 30 tests pass; the headline file matches the records and
+the count is 5; the build gives 18 pages; the built site passes, with 82 outside addresses.
+
