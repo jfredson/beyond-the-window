@@ -5,6 +5,12 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-19
 
+- **Two wording fixes on the Still Asking page**
+  (`docs/rulings/2026-11-19-two-wording-fixes-on-still-asking.md`). The line under "What AI
+  models said when asked" now reads "None of this record's questions has been put to any
+  model", and the paragraph about the ten questions now says the developer is due to withdraw
+  the model "from its own services". No entry changed. No number moved: the count is 5. Not
+  pushed.
 - **The Still Asking page says that one thing has been asked, outside the record**
   (`docs/rulings/2026-11-19-capture-paragraph-on-still-asking.md`). One paragraph says that ten
   questions were put to Claude Sonnet 4.5 on 2026-11-19, five times each, that the answers are
