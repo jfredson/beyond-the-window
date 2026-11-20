@@ -29,6 +29,13 @@ What it refuses (docs/first-version-choices.md, choice 18):
    there. Every other name is still refused there, both are still refused everywhere else on
    the About page and on every other page, and no model's name is allowed anywhere off an
    entry's page.
+   A second exception, since 2026-11-19: the Still Asking page names one model and its
+   developer in the one paragraph marked id="capture", which says that ten questions were put
+   to that model outside the record. John approved the paragraph
+   (docs/rulings/2026-11-19-capture-paragraph-on-still-asking.md), and his ruling of the same
+   day on what the site says about AI makes this the one thing it does say: when a model has
+   been asked. The two names are allowed in that paragraph and are still refused everywhere
+   else on that page.
 5. Since 2026-11-19, when the site was made listable as the sibling sites are: a page that asks
    search engines to leave it out, other than the page for a missing address; a page that does
    not give its own address at beyondthewindow.org; a robots file that turns search engines
@@ -120,6 +127,10 @@ BUILT_WITH_AI = [
      "a denial that an AI model took part"),
     (r"\bno AI model has been asked anything\b", "a sentence that reads as a denial"),
 ]
+# Rule 4's second exception: the Still Asking page, this paragraph, these two names.
+CAPTURE_PAGE = "/still-asking/"
+CAPTURE_PARAGRAPH = r'(?is)<p\b[^>]*\bid="capture"[^>]*>.*?</p>'
+CAPTURE_NAMES = r"\b(Claude Sonnet 4\.5|Anthropic)\b"
 MODEL_NAMES = (r"\b(claude|anthropic|openai|chatgpt|gpt|gemini|deepmind|google|llama|grok|xai|"
                r"mistral|copilot|microsoft|deepseek|opus|sonnet|haiku)\b")
 
@@ -183,6 +194,10 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
             if rel == ABOUT_PAGE:
                 without = re.sub(NAMED_DEVELOPER_PARAGRAPH,
                                  lambda m: re.sub(NAMED_DEVELOPER, " ", m.group(0)), raw, count=1)
+                names_text = visible_text(without, keep_cites=False)
+            elif rel == CAPTURE_PAGE:
+                without = re.sub(CAPTURE_PARAGRAPH,
+                                 lambda m: re.sub(CAPTURE_NAMES, " ", m.group(0)), raw, count=1)
                 names_text = visible_text(without, keep_cites=False)
             flag(MODEL_NAMES, "an AI model or developer named off an entry's page", names_text)
         for pattern, label in BUILT_WITH_AI:

@@ -8,7 +8,14 @@
 // the old sentence as one to keep, and he ruled the new line the same day: "No AI model has yet
 // been asked any of the questions this record will keep" (docs/rulings/2026-11-19-about-page-sentences-stand.md,
 // "Yes, they stand"). The headline and the other wordings on this page that follow from it are a
-// first version and are not ruled. Nothing here speaks of the sealed capture, which has not run. It is the one page that uses the second
+// first version and are not ruled. Since 2026-11-19 the page also says, in the one paragraph marked
+// id="capture", that ten questions were put to one model outside this record. John approved that
+// paragraph the same day ("Yes, as written", docs/rulings/2026-11-19-capture-paragraph-on-still-asking.md).
+// It says nothing of what the replies hold, because nobody has read them. Its words "is due to
+// withdraw it" are true only until 2026-11-30: on or after that day, once the withdrawal is
+// confirmed on the developer's own page, they become "withdrew it". That paragraph is the only
+// place off an entry's page where a model is named, and the built-site check allows the two
+// names there and nowhere else on this page. It is the one page that uses the second
 // meaning-colour, the dusk blue for what AI models said (docs/first-version-choices.md, choice 4).
 // No question wording appears here, and no answer, real or made up.
 import Base from '../layouts/Base.astro';
@@ -40,6 +47,16 @@ import Base from '../layouts/Base.astro';
     <p>
       Until that method exists, nothing is asked for Still Asking. A few questions put casually now would produce
       answers that could not be compared with anything later.
+    </p>
+    <p id="capture">
+      <strong>One thing has been asked, outside this record.</strong> On November 19th, 2026, ten
+      questions were put to <a href="https://www.anthropic.com/news/claude-sonnet-4-5">Claude Sonnet 4.5</a>,
+      five times each, shortly before its developer, <a href="https://www.anthropic.com/">Anthropic</a>,
+      is due to withdraw it on
+      <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">November 30th, 2026</a>,
+      so that its answers would exist after it was gone. No way of comparing answers had been
+      written, so they are not part of Still Asking. The answers are kept exactly as given. They
+      have not been read, they are not scored, and nothing on this site rests on them.
     </p>
 
     <h2>What an Answer Will Count For</h2>

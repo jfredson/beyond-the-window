@@ -982,3 +982,57 @@ at the top of the working documents.
 
 **The checks,** run after the change: 30 tests pass; the headline file matches the records and
 the count is 5; the build gives 18 pages; the built site passes.
+
+# Fourth commit, 2026-11-19: the paragraph about the capture on the Still Asking page
+
+Asked for by the master planning session, after John approved the paragraph
+(`docs/rulings/2026-11-19-capture-paragraph-on-still-asking.md`, "Yes, as written"). The
+replies were not opened or looked for.
+
+**The paragraph as it stands on the page,** after the second paragraph under "Why the Questions
+Have Not Been Asked", which ends by saying that nothing is asked for Still Asking:
+
+> **One thing has been asked, outside this record.** On November 19th, 2026, ten questions were
+> put to Claude Sonnet 4.5, five times each, shortly before its developer, Anthropic, is due to
+> withdraw it on November 30th, 2026, so that its answers would exist after it was gone. No way
+> of comparing answers had been written, so they are not part of Still Asking. The answers are
+> kept exactly as given. They have not been read, they are not scored, and nothing on this site
+> rests on them.
+
+**One change of wording, mine and not ruled:** "withdraws it" became "is due to withdraw it".
+The ruling's "were put ... shortly before its developer ... withdraws it" sets a past verb
+against a present one for something still to come. "Is due to withdraw" is true until
+2026-11-30 and says the withdrawal has not happened. On or after that day, once it is confirmed
+on Anthropic's page, the words become "withdrew it", as the ruling says.
+
+**The three links, each opened on 2026-11-19:**
+
+- "Claude Sonnet 4.5": `https://www.anthropic.com/news/claude-sonnet-4-5`, Anthropic's
+  announcement, titled "Introducing Claude Sonnet 4.5".
+- "Anthropic": `https://www.anthropic.com/`, the company's home page.
+- "November 30th, 2026": `https://platform.claude.com/docs/en/about-claude/model-deprecations`,
+  Anthropic's page of withdrawal dates. Its table gives the model `claude-sonnet-4-5-20250929`
+  the state "Deprecated", with the notice dated September 30, 2026 and the retirement dated
+  November 30, 2026.
+
+**One thing that page says that the paragraph does not.** The dates apply to the services
+Anthropic runs itself. The page says two services run by partners (Amazon Bedrock, and the
+Google Cloud service that Google manages) set their own dates. So "withdraw it" is true of
+Anthropic's own services, and the model may stay reachable elsewhere for longer. I did not
+change the sentence for this.
+
+**Whether the paragraph contradicts the headline.** It does not, read closely: the record's
+questions are not written yet, so none of them can have been asked, and the paragraph says its
+ten questions are outside the record. A quick reader could still stumble, because the line
+"Nothing yet. None of the questions has been put to any model." stands a few lines above "ten
+questions were put to Claude Sonnet 4.5". If John wants that closed, the smallest change is
+"None of this record's questions has been put to any model." I changed neither that line nor
+the headline.
+
+**The built-site check** (`scripts/check_site.py`) refused the two names, as its rule 4 is
+meant to. It now allows "Claude Sonnet 4.5" and "Anthropic" in the paragraph marked
+`id="capture"` on the Still Asking page, and nowhere else on that page. This is my call
+(decided by: agent), written up under choice 18 in `docs/first-version-choices.md`.
+
+**The checks,** run after the change: 30 tests pass; the headline file matches the records and
+the count is 5; the build gives 18 pages; the built site passes.

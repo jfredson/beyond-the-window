@@ -628,6 +628,16 @@ name is still refused elsewhere on About and on every other page, and no model's
 allowed off an entry's page. Each of those three refusals was tried on a copy of the built
 site. *Decided by: agent.* *Confidence:* high. *Standard* (row B11).
 
+*Added 2026-11-19:* a second exception to the rule against naming an AI model or its developer.
+The Still Asking page names Claude Sonnet 4.5 and Anthropic in the one paragraph marked
+`id="capture"`, which says that ten questions were put to that model outside the record. John
+approved the paragraph (`docs/rulings/2026-11-19-capture-paragraph-on-still-asking.md`, "Yes,
+as written"); the exception in the check follows from it and is not itself ruled. Both names
+are still refused everywhere else on that page, and every other name is refused in that
+paragraph. Each of those two refusals was tried on a copy of the built site. *Decided by:
+agent.* *Confidence:* high. *Judgment:* the alternative is to keep the paragraph free of names,
+which would leave a reader unable to tell which model was asked.
+
 *Added 2026-11-18:* it also refuses anything standing beside the number in the large type on
 the home page, a total in the headline part of the served file, and the count written as a
 share of the things on the list ("6 of 9", "six of the nine") on any page, so the ruling of

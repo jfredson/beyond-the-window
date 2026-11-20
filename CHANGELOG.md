@@ -5,6 +5,12 @@ number moved or that none did. Nothing is published, so there have been no publi
 
 ## 2026-11-19
 
+- **The Still Asking page says that one thing has been asked, outside the record**
+  (`docs/rulings/2026-11-19-capture-paragraph-on-still-asking.md`). One paragraph says that ten
+  questions were put to Claude Sonnet 4.5 on 2026-11-19, five times each, that the answers are
+  kept unread and unscored, and that nothing on the site rests on them. The built-site check
+  allows the model's and the developer's names in that one paragraph. No entry changed. No
+  number moved: the count is 5. Not pushed.
 - **The fixes after the full check were checked**
   (`docs/reviews/2026-11-19-check-of-the-last-fixes.md`). All eight entries with fixes are
   right against their sources, and each now carries the date its fixes were checked. No
