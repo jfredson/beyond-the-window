@@ -30,8 +30,6 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
   three new names in that one paragraph, and the README is brought up to date. No entry
   changed. No number moved: the count is 5. Not pushed.
 
-## 2026-11-20
-
 - **The fourteen searches behind the table of developers were made, on John's go
   (`docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md`). The count
   did not move: it is still 5, and the published pages are unchanged.** Three acts were found
