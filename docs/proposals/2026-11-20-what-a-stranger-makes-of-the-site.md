@@ -241,6 +241,92 @@ A remains the change that can be made now without reopening anything.
   Zeitgeist's four signs, each one checkable fact set against the record.
 - *Strongest alternative:* Option A, which changes little and keeps both rulings.
 
+## Decision 1, continued. Option C2: the same design with the readers' four fixes
+
+*Added later on 2026-11-20, at John's request* (`option-C2-01.jpg`, `option-C2-02.jpg`, page
+text in `option-C2-index.astro.txt`). Four changes from Option C:
+
+- **It opens on a concrete fact:** "One AI developer interviews its models before retiring
+  them, and keeps the record." Under it: "Nobody knows whether that matters to the models. This
+  is a record of what the world is doing in the meantime, by whom and when."
+- **One summary line:** "So far: one developer has acted. In the United States, the only laws
+  passed rule legal personhood out, and about one adult in six thinks sentient AI already
+  exists."
+- **Four readings, not three.** The researchers' figures have their own: "1%: is the chance AI
+  researchers gave in 2024 that an AI system has inner experience now. For the year 2100 they
+  said 70 percent." The developers' reading no longer carries three counts.
+- **The costs moved below the first screen,** under "Why keep this record". The window is gone
+  and the dated list follows the readings.
+
+The opening sentence needs a check before it could stand: the record supports that the
+developer has committed to interview each model and has done so in full at least once, and
+lists as not confirmed whether every retired model since was interviewed.
+
+**What fresh readers made of it** (first screen only):
+
+| | Option C | Option C2 |
+|---|---|---|
+| Could say what the site is about | both | both |
+| Could say what it is telling them today | both | both ("almost nobody is doing anything": Claude; "only one unnamed company is treating AI like it deserves a goodbye ... while the law explicitly says AI isn't a person": Gemini) |
+| Scroll or leave | Claude scroll, Gemini leave | Claude "a weak scroll", Gemini leave |
+| Fact they would repeat | the interview; the 17 percent | the researchers' 1 percent now and 70 percent by 2100 (Claude); the 17 percent (Gemini) |
+
+**What C2 fixed.** The puzzle-like paragraph is gone and neither reader stumbled on the
+opening. Neither confused the public's figure with the researchers' as a matter of who said
+what, though the Claude reader noted that 17 percent is a share of people and 1 percent is a
+chance, and they look alike.
+
+**What C2 did not fix, and one thing it made worse.**
+
+- **Neither reader was held.** Gemini's left again and the Claude reader's scroll was weak. On
+  the measure of scrolling, no from-scratch version beat Option B.
+- **"Nobody knows whether that matters to the models" worked against the page.** Gemini's
+  reader: "If it doesn't even matter to the AI, why should I care?" The Claude reader: it
+  "comes close to telling me it might not matter at all. That is honest, but it is also an
+  invitation to leave." The honest sentence, placed second, undoes the hook above it.
+- **The real reason to care turned out to be the last row.** The Claude reader: "The only
+  thing that made me sit up was the last row: researchers say 1% now, but 'For the year 2100
+  they said 70 percent.' That is the actual reason to care, because experts think this
+  probably becomes real, and it is buried at the very bottom."
+- **The name, for the fourth reader running.** "The headline is about one company and never
+  names it."
+- **"Record" means two things in three lines:** the site's record and the interview's record.
+
+## What four mock-ups and eight readings have settled, and what they have not
+
+Settled, as far as readers of this kind can settle anything:
+
+1. **Saying the subject in plain words fixes the first failure.** Every reader of every
+   mock-up could say what the site is about. No reader of the published page could.
+2. **Several readings the world moves, in place of one count, fix the second.** Only the
+   from-scratch versions let a reader say what the site is telling them today.
+3. **An argument at the top does not work, and nor does a statement of doubt.** The cost
+   paragraph failed twice and "nobody knows whether that matters" failed once.
+4. **Three facts carry all the interest:** a model interviewed before retirement; one adult in
+   six believing sentient AI already exists; and researchers' 1 percent now against 70 percent
+   by 2100. Of the three, the last is the one that supplies stakes, because it says the
+   question is expected to become real.
+5. **Readers want the developer's name.** All four Claude readers asked for it.
+
+Not settled:
+
+- **Whether any version holds a visitor.** Scroll-or-leave answers moved about with no clear
+  pattern, and they come from one impatient reader per model per version. This is the question
+  readers of this kind answer worst. A handful of real people shown each first screen for five
+  seconds would settle more than another mock-up.
+- **Whether the three readings read as a campaign.** Every reader summed them up as "almost
+  nobody is doing anything".
+
+**What I would try next, in words and not yet built.** Open on the stakes and the time
+together, then the concrete fact, and leave the doubt out of the second line:
+
+> AI researchers put the chance that an AI system has inner experience at 1 percent today and
+> 70 percent by 2100. This is a dated record of what the world is doing in the meantime.
+> One developer already interviews its models before retiring them.
+
+That opening rests on one survey of 582 researchers, taken once in 2024, and on its middle
+answer. The page would have to say so plainly beside it.
+
 ## Decision 2. Saying that all five come from one developer
 
 The home page says "at least one AI developer" and the list says "one developer" five times. A
