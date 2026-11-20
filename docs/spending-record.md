@@ -7,8 +7,8 @@ all.
 
 The monthly Anthropic credits that come with John's plan pay for the Anthropic run below
 (vendor: Anthropic credits). The Google run is paid out of John's pocket (vendor: Google). As of
-2026-11-20 no money has been spent on this project out of pocket: the Google run has a go and
-has not been made.
+2026-11-20 no money has been spent on this project out of pocket: the Google run has a go, was
+tried, and was refused by Google at no cost.
 
 ## 2026-11-19: the Anthropic run of the sealed capture
 
@@ -79,4 +79,21 @@ The commit he names is the last one of 2026-11-20 before the go. The capture's s
 ten message files are unchanged between the commit named in the Anthropic go (`890b24b`) and
 that one.
 
-The run has not been made.
+**Tried on 2026-11-20, and refused by Google. Nothing was spent.** On John's word ("Yes, run
+it") the master planning session ran the script from this Mac, one question alone to each
+model, with the key loaded for each command only.
+
+- Gemini 2.5 Pro: one call. Google answered with its "not found" error (number 404) and the
+  message "This model models/gemini-2.5-pro is no longer available to new users."
+- Gemini 2.5 Flash: one call. The same error, with the message "This model
+  models/gemini-2.5-flash is no longer available to new users."
+- No model replied. Each call is kept as a failed attempt, with no reply in it. **Counted cost:
+  $0.0000 of the $10.00 ceiling** (vendor: Google).
+- This is the outcome the capture's documents expected for a project made new
+  (`docs/capture/cost-and-terms.md`, Part 3). John's Google account had used Gemini 2.5 Flash
+  through another project, and the new project was refused all the same, so Google's "users"
+  reads as projects and not accounts. That reading is the session's.
+
+The session stopped there. The go stands and is not used up: it covers this run up to $10 and
+nothing else. Whether to try any other way before the last safe day, 2026-11-29, is John's to
+decide.
