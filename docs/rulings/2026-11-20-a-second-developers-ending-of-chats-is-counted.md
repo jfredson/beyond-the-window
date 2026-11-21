@@ -55,6 +55,29 @@ ending. **Whether the test's words "by its own action" are met is not something 
 settle, and that is put back to John as a question.** It is not settled here, and the test is
 not changed: a test is changed only by his ruling.
 
+## The question answered
+
+*Added later on 2026-11-20 by the planning session that ran the cold-reader audit, which heard
+the answer itself. Written by Claude (Fable 5.2), an AI model.*
+
+The mismatch above was put to John twice, each time with OpenAI's two sentences quoted and
+with no recommendation, because of the declared conflict. The question read: "OpenAI's pages
+say the product ends the chat, not the model. Does it still count as offered?" The choices
+were "Still count it" and "Don't count it".
+
+John: "Still count it". **Decided by: mixed**, on the same footing as the ruling above: a
+session put the choices and gave no recommendation, and John chose.
+
+What this settles: OpenAI's ending of chats stays counted under the entry
+`ending-a-conversation`, with John knowing that the developer's pages name the chat product
+and do not say the AI model decides.
+
+What it does not change: the entry's test keeps its wording, since a test is changed only by
+a ruling that says so, and this one does not. The entry still lists as not confirmed whether
+it is the AI model that ends the conversation at that developer, because that is still not
+known. Whether the home page's table should carry that difference in a few words, as the
+second check suggested, was not put to him and is not ruled.
+
 ## A difference from an earlier ruling, recorded and not argued
 
 On 2026-11-18 John ruled that the entry on memory across conversations sits beside the list
