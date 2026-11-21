@@ -1,6 +1,6 @@
 id = "self-report-checked"
 name = "A model's report about its own inner state is checked against an independent reading"
-description = "A model can be asked what is going on inside it, and it will answer, but the answer may be invented. Researchers who can read a model's internal activity directly can test this: they plant a known pattern inside the model and see whether the model notices and names it. The developer whose researchers ran such a test says its results suggest that models have \"some genuine capacity to monitor and control their own internal states\", and calls that capacity \"highly unreliable and limited in scope\". It says the results do not show whether any AI system might be conscious."
+description = "A model can be asked what is going on inside it, and it will answer, but the answer may be invented. Researchers who can read a model's internal activity directly can test this: they plant a known pattern inside the model and see whether the model notices and names it. The developer whose researchers ran such a test says its research \"provides evidence for some degree of introspective awareness\" in its models, and stresses that the ability \"is still highly unreliable and limited in scope\". It says the results do not show whether any AI system might be conscious."
 group = "Reports checked against the workings"
 test = "A published study shows a leading AI model correctly reporting an internal state that the researchers set or measured by means other than the model's own word, at a stated rate."
 settled_by = "A paper or a developer's research page giving the method and the rate. A study by someone other than the model's maker would settle a stronger version."
@@ -16,8 +16,9 @@ notes = "From entry 6 of docs/research/2026-11-17-first-entries.md."
 
 # The last two sentences of the description were rewritten on 2026-11-20, by John's ruling that
 # the reading of a correct report is given to whoever makes it ("Yes, attribute it",
-# docs/rulings/2026-11-20-reading-of-a-checked-report-is-attributed.md). The wording is a
-# session's and is not ruled. The developer's page (the source "introspection") and the paper
+# docs/rulings/2026-11-20-reading-of-a-checked-report-is-attributed.md). John ruled the wording
+# the same day ("Yes, closer wording"): both quotations are from one passage near the head of
+# the developer's page, opened again for it. The developer's page (the source "introspection") and the paper
 # it links were opened again that day for it. That source's `opened` date is left as it was,
 # because a figure in the headline file is read from it.
 [state]
