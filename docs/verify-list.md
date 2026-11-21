@@ -73,6 +73,23 @@ corrected wording is there.
     Anthropic are as the team page read on 2026-11-19; whether either is still so later is
     unchecked.
 
+## Added on 2026-11-21, with the Still Asking method proposal
+
+25. The proposal `docs/proposals/2026-11-21-still-asking-method.md`, Part 5, assumes from memory
+    that each of the three covered developers (Anthropic, OpenAI and Google) keeps a models page
+    of its own that names a most capable generally available model, so that "a new generation"
+    can be decided by a rule. No such page was opened. Before the first track's rule is ruled,
+    each developer's page is opened and the rule is reworded to fit what the pages say.
+26. The same proposal assumes from memory that a developer may let a user export or read what
+    its memory feature has stored. No developer's page was opened on this. The site's entry on
+    memory across conversations says the memory is under the user's control, which is not the
+    same thing.
+27. The same proposal, Part 4 and choice 1, assumes that a pinned model version is meant not to
+    change after release. No developer's page on version pinning was opened, and the family's
+    own record says a provider changed a preview model under a run (`docs/inheritance.md`, part
+    2, item 47). Each covered developer's page on model versions is opened before choice 1 is
+    put to John as settled fact.
+
 ## Cleared
 
 All by the session that wrote `docs/research/2026-11-17-first-entries.md`. Every address was

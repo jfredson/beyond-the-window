@@ -9,7 +9,21 @@ A model wrote this outline of how models should be questioned. That is the proje
 of interest at its plainest, and it is one reason the outline ends with a list of things only
 John can rule.
 
-> **A proposed change bears on this document.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` (PROPOSED 2026-11-17, not ruled) would give Still Asking two tracks, attach a card on who is answering to every answer, and follow answers up against later choices. Nothing below is changed until John rules.
+> **Brought into line with later rulings on 2026-11-21.** This note replaces one that said the
+> proposal `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` was not yet ruled.
+> John ruled it on 2026-11-20: Still Asking runs in two tracks, each answer carries a card on who
+> is answering, evidence is shown in a fixed order, and the first rule has five parts. He ruled
+> the card's wording on 2026-11-21 (`docs/rulings/2026-11-21-the-reshaped-card.md`). The
+> sections changed are the opening, "What it is for", Part 1 sections 2, 5 and 7, Part 3 item 3,
+> and Part 4. Each change carries a dated note naming its ruling. Who assigns the card's marks,
+> and how the two tracks run, is proposed in `docs/proposals/2026-11-21-still-asking-method.md`
+> and is not ruled.
+>
+> *A correction of fact, 2026-11-21.* The opening says "No model has been asked anything". That
+> was true on 2026-11-17. Under the sealed capture, an exception John ruled that day
+> (`docs/rulings/2026-11-17-sealed-capture.md`), ten questions were put to one model on
+> 2026-11-19 and to a second on 2026-11-20, as the Still Asking page says. Those answers are
+> outside Still Asking and feed neither track. Nothing has been asked for Still Asking itself.
 
 Row numbers such as "H2" point at `docs/inheritance.md`. Open question numbers are those in
 `docs/open-questions.md`.
@@ -26,6 +40,18 @@ time".
 
 What it is not for: deciding what any model wants. Under the project's first guideline, what a
 model says about itself settles nothing.
+
+*Ruled since; note added 2026-11-21.* The first guideline now has five parts
+(`docs/rulings/2026-11-20-first-rule-in-five-parts.md`, "Yes, both changes"; decided by: mixed).
+What a model says about itself is never counted **on its own word**; a report checked against
+an independent reading of the system's workings is its own kind of evidence, that the system can
+read and report an internal state, and not yet that the state is felt; and the weight given to
+a machine's word rises as it meets conditions fixed in advance. The conditions are the card's
+five (`docs/rulings/2026-11-21-the-reshaped-card.md`). Until the method for marking them is
+ruled, every answer is marked not assessed and every condition not measured. Still Asking also
+runs in two tracks (`docs/rulings/2026-11-20-still-asking-in-two-tracks.md`): the change across
+generations that John asked for is the first track; the second asks continuing individuals
+again and follows their answers up against what they later chose.
 
 ## Part 1. What a protocol would have to cover
 
@@ -47,6 +73,13 @@ allow anyone to say. The sentence that appears beside every published result.
 - Which unit is being asked: a set of weights, a named character across versions, or a single
   conversation (open question 1).
 - Whether openly released models that can be kept and run again are included.
+- *Added 2026-11-21, after the two-tracks ruling
+  (`docs/rulings/2026-11-20-still-asking-in-two-tracks.md`).* Who is asked in each track: each
+  new generation, asked fresh; and continuing individuals, asked again. What counts as a
+  continuing individual is not ruled; it rests on the card's conditions, and the proposal below
+  leans on the first. The unit question above also decides what the card on who is answering
+  describes. A proposal for both is `docs/proposals/2026-11-21-still-asking-method.md`, Part 5
+  and choice 1.
 
 ### 3. How each model is asked
 
@@ -83,6 +116,10 @@ allow anyone to say. The sentence that appears beside every published result.
   answers vary (part 2, item 50).
 - When an asking happens: on each major release, on a calendar, or both (open question 12).
 - What is done about a model that is retired before it was asked.
+- *Added 2026-11-21, after the two-tracks ruling.* In the second track: how often a continuing
+  individual is asked again, and how what it said it would choose is followed up against what it
+  later chose, with the follow-ups registered before the asking. Not ruled; proposed in
+  `docs/proposals/2026-11-21-still-asking-method.md`, Part 5.
 
 ### 6. What is kept
 
@@ -102,6 +139,16 @@ allow anyone to say. The sentence that appears beside every published result.
 - How agreement between sorters is measured and published, and what is done with a label that
   proves unreliable (row I2).
 - How a recurring disagreement becomes a new rule, tested on fresh answers (row I7).
+- *Added 2026-11-21, after the card ruling (`docs/rulings/2026-11-21-the-reshaped-card.md`).*
+  Every answer carries a card on who is answering: five conditions on the system that gave it,
+  and one line on the answer, "Would training alone explain this answer?", marked explained by
+  training, not fully explained (with the check that shows it), or not assessed. The card's
+  wording and tests are ruled. Who assigns each mark, on what evidence, and how a mark is
+  recorded and changed, are not; they are proposed in
+  `docs/proposals/2026-11-21-still-asking-method.md`. John ruled on 2026-11-20 that evidence on
+  every entry is shown in a fixed order and never summed
+  (`docs/rulings/2026-11-20-order-of-evidence.md`). Using the same order for the evidence behind
+  the card's marks is the proposal's step, not ruled.
 
 ### 8. What is fixed before a run
 
@@ -210,6 +257,13 @@ The kickoff names three, to be stated on Still Asking's page:
 2. Answers shift with wording.
 3. Models learned from human writing and may echo human wants.
 
+*Ruled since; note added 2026-11-21.* Two rulings answer the third weakness on each answer
+rather than only on the page. A match between what a model says and the starting list drawn
+from biological minds is treated as the least informative result
+(`docs/rulings/2026-11-20-two-rewordings.md`). And each answer carries the line "Would training
+alone explain this answer?" (`docs/rulings/2026-11-21-the-reshaped-card.md`). The words a reader
+sees for the first are not ruled.
+
 This review adds:
 
 4. **The echo.** Later models may have read the published questions and earlier answers (open
@@ -250,6 +304,20 @@ For John. Each is an open question or part of one.
 10. The question wording itself, after review.
 11. A Console workspace and key for the project, and the accounts with other developers.
 12. The estimate, the ceiling and the go for the first asking.
+
+*Notes added 2026-11-21, after the rulings of 2026-11-20 and 2026-11-21.* Item 1 is ruled in
+part: evidence is shown in a fixed order and never summed
+(`docs/rulings/2026-11-20-order-of-evidence.md`), each answer carries a card on who is answering
+with no single score (`docs/rulings/2026-11-21-the-reshaped-card.md`), and an answer "will
+never feed the count of things offered, or any other figure on the home page", the Still Asking
+page's sentence that John's go of 2026-11-20 covered
+(`docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md`). Open questions
+2 (what counts as wanting) and 4 (a headline at all) stay open for the rest. Item 2 (which unit
+is asked) now also decides what the card describes. One item is
+added:
+
+13. Who assigns each mark on the card, by what method, and how each track is run
+    (`docs/proposals/2026-11-21-still-asking-method.md`, PROPOSED 2026-11-21).
 
 ## The uncounted first entry
 

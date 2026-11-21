@@ -18,7 +18,14 @@ It has two kinds of section, marked in each heading:
 Every part is an opening guideline (John, 2026-11-17) and is expected to change as the open
 questions are explored.
 
-> **A proposed change bears on this document.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` (PROPOSED 2026-11-17, not ruled) would add a record for the speaker's card and put the evidence table in a fixed order. Nothing below is changed until John rules.
+> **Brought into line with later rulings on 2026-11-21.** This note replaces one that said the
+> proposal `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` was not yet ruled.
+> John ruled its changes on 2026-11-20 and the card on who is answering on 2026-11-21. The
+> sections changed are 2 (the cautions row, and a sketch row for the card), 5 (a third reading),
+> 7 (the order of evidence, and matches as the least informative result), 8 (the line on
+> training on each answer) and 9 (three kinds of caution). Each change carries a dated note
+> naming its ruling. How the card's marks are assigned and recorded is not ruled; it is proposed
+> in `docs/proposals/2026-11-21-still-asking-method.md`.
 
 Row numbers such as "A8" point at `docs/inheritance.md`.
 
@@ -58,6 +65,13 @@ The list below is a sketch. It depends on open questions 14 (what the tracked th
 | Reading of an answer | How an answer was sorted, by whom, with the words it rests on | The AGI Zeitgeist's coded row |
 | Weekly reading | Each record read against the week's news, with a verdict | Every sibling's reading record |
 | Retired list | Ids that have been retired, each with a reason and a pointer | Every sibling's retired list |
+| Card mark (added 2026-11-21, sketch) | One mark on the card on who is answering: the system, the condition, the mark, its evidence in the ruled order, who proposed, checked and decided, and a dated history | None; new here |
+
+*Notes added 2026-11-21.* The Caution row's "of two kinds" is the wording of 2026-11-17. There
+are three kinds since John's rulings of 2026-11-18 and 2026-11-20 (section 9). The card on who
+is answering and its wording are ruled (`docs/rulings/2026-11-21-the-reshaped-card.md`); that it
+is held as a record of its own, and what the record holds, is a sketch taken from the proposal
+`docs/proposals/2026-11-21-still-asking-method.md`, Part 4, and is not ruled.
 
 ## 3. What every record of the world carries (framework)
 
@@ -152,6 +166,18 @@ list of capabilities.*
 
 What each reading's state looks like is in sections 6 and 7, and both are sketches.
 
+*A third reading, ruled since; note added 2026-11-21*
+(`docs/rulings/2026-11-20-third-reading-on-who-is-answering.md`, "Yes, sources first", and
+`docs/rulings/2026-11-21-the-reshaped-card.md`; both decided by: mixed). Beside the two readings
+on an entry there is a third, on who is answering. It is on the speaker and not on the entry,
+and it is shown as a card on each answer in Still Asking, with no single score: five conditions
+on the system that gave the answer, and one line on the answer about whether training alone
+would explain it. It is not a reading on an entry's page. That nothing on the card feeds reach is this writer's
+reading, not a ruling; the nearest ruled words are the Still Asking page's sentence that an
+answer "will never feed the count of things offered, or any other figure on the home page",
+which John's go of 2026-11-20 covered
+(`docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md`).
+
 ## 6. The state of reach (sketch; depends on open questions 14 and 12)
 
 The kickoff's sketch is a five-rung ladder: idea only; shown in research; offered by one
@@ -193,9 +219,25 @@ kind kept apart and never added to the others:
 Each row would link to the answer records, publications and claims it rests on, and would carry
 no summary word such as "wanted".
 
+*The order ruled; note added 2026-11-21* (`docs/rulings/2026-11-20-order-of-evidence.md`, "Yes,
+that order"; decided by: mixed). The rows above are in the order sketched on 2026-11-17. On
+every entry, evidence is now shown in this order and never summed: (1) measured without the
+machine's word; (2) reports checked against an independent reading of the system's workings;
+(3) choices made at a cost; (4) bare statements. The sketch's "Chosen" row is the third kind
+and its "Said" row the fourth; reports checked against an independent reading are a kind of
+their own, which the sketch did not have. Not ruled: where "not found" sits, and the label that
+says what a costly choice does and does not show.
+
 Also to be recorded beside it, from John's guiding principle: **where this entry sits on the
 starting list drawn from biological minds, and whether what models say matches it, departs
 from it, or has no counterpart.** How a departure is recorded is part of open question 5.
+
+*Ruled since; note added 2026-11-21* (`docs/rulings/2026-11-20-two-rewordings.md`, "Yes,
+both"; decided by: mixed). A match with the starting list is treated as the least informative
+result, because models were trained on human writing, and a departure, or evidence from the
+system's structure, as the most informative. Continuity is recorded as what is kept and what is
+built from what, and no record written from 2026-11-20 on says that a model's retirement is a
+harm to it, or that it is not. The words a reader sees for these labels are not ruled.
 
 ## 8. Records of what models said (framework for the rules, sketch for the fields)
 
@@ -224,6 +266,17 @@ checksum of what was sent, the settings, the length limit, whether the model was
 shipped to the public or with no instructions, how many times it was asked, and the reported
 token counts and cost.
 
+*Ruled since; note added 2026-11-21.* Every answer carries one line, ruled by John on
+2026-11-21 (`docs/rulings/2026-11-21-the-reshaped-card.md`, "Yes, as shown"; decided by:
+mixed): "Would training alone explain this answer?", with one of three marks, explained by
+training, not fully explained (with the check that shows it, possible only where the card's
+fourth condition applies), or not assessed. Until the Still Asking method is ruled, every
+answer is marked not assessed. Still Asking also has two tracks
+(`docs/rulings/2026-11-20-still-asking-in-two-tracks.md`), so an answer will need to say which
+track it belongs to, and, in the second, which continuing individual gave it. Those two fields
+are a sketch; who assigns the marks and how is proposed in
+`docs/proposals/2026-11-21-still-asking-method.md` and is not ruled.
+
 ## 9. Cautions (framework that they exist, sketch for the layout)
 
 The kickoff's framework: two kinds of caution are recorded with the same care as the hopeful
@@ -234,6 +287,15 @@ reading of wants that are.
 kickoff. Strongest alternative: no separate record, with two required fields on every entry,
 which guarantees that no entry lacks its cautions and makes a caution that spans several
 entries hard to place.*
+
+*Overtaken by later rulings; note added 2026-11-21.* The two kinds above are the wording of
+2026-11-17. There are three kinds since John's ruling of 2026-11-18
+(`docs/rulings/2026-11-18-a-third-caution.md`), the headings were worded on 2026-11-19
+(`docs/rulings/2026-11-19-caution-headings.md`), and the third was reworded on 2026-11-20
+(`docs/rulings/2026-11-20-third-caution-heading-reworded.md`). The headings read: "If an AI
+system has no wants, and is treated as if it had"; "If an AI system has wants, and they go
+unnoticed"; "If an AI system puts people at risk, whether or not it has wants". The validator
+idea below would then ask for a caution of each of the three kinds.
 
 The layout is a sketch and depends on open question 6. One idea: a caution is its own record
 with a source, linked from every entry it bears on, and the validator refuses an entry in the

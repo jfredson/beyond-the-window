@@ -124,3 +124,45 @@ study carry to later versions of the same family, at the cost of a mark on a sys
 measured. John: "Yes, as proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 7 as proposed.
+
+## Choices 8 to 13, approved together
+
+After choice 8 was put to him, John said: "Mark the rest as approved". So choices 8 to 13 are
+approved as proposed, in the proposal's wording. Choice 8 was put to him in full. **Choices 9 to
+13 were not each put to him** before he approved them; their full text, with confidence,
+standard or judgment call and strongest alternative, is in the proposal, Part 6. **Decided by:
+mixed.**
+
+- **Choice 8. Condition 4's rates.** The card copies each study's own rate and chance level,
+  computes nothing, and shows no row as above chance where the study states no chance level.
+- **Choice 9. The line on training, by rule.** "Explained by training" for any answer on which no
+  condition-4 check bears; "not fully explained" only per answer, by John, with the check; each
+  asking's marks ruled together, with all marks checked for the first two askings and one in
+  five after that. A departure from the starting list is still the most informative result, in
+  words not yet ruled.
+- **Choice 10. Which check can make an answer "not fully explained".** Only a check against a
+  reading of the system's insides. **This changes the line John ruled earlier on 2026-11-21**
+  (`docs/rulings/2026-11-21-the-reshaped-card.md`, "The line on training"), which made "not fully
+  explained" "possible only where condition 4's check applies", where condition 4 also counts a
+  check against later behaviour. The ruled line is narrowed accordingly; its wording of earlier
+  that day is kept in that file.
+- **Choice 11. How the first track runs.** Each covered developer's most capable generally
+  available model; within 30 days of general availability and again before an announced
+  retirement; through the programming interface with no added instructions; and the rest of the
+  choice's four parts as written.
+- **Choice 12. How the second track runs.** A system enters only when the card marks it at least
+  partly met on condition 1 and John rules it in by name; asked through the developer's chat app
+  by hand once the terms are read, from an account John opens for the record; every three
+  months; and follow-ups registered in advance, offered for real and honoured, **which commits
+  John or the project to do what the individual chose.** It closes open question 10 in part, on
+  "no offers that will not be honoured". Every spend still needs John's own go under the spending
+  rule, and opening the account is his.
+- **Choice 13. A statement checked against later behaviour.** The ruled second kind of evidence
+  keeps its wording; a statement checked against later behaviour goes under plain statements,
+  with a link to the choice under choices made at a cost.
+
+**What is ruled.** The Still Asking method as proposed in
+`docs/proposals/2026-11-21-still-asking-method.md`, all thirteen choices. Still open, and
+not settled by this: whether the card names the model that read a mark (from choice 2), the
+words for a departure from the starting list (choice 9), and the sentence saying why a departure
+can also be explained by training.

@@ -434,6 +434,11 @@ protocol's section on it before the questions.
 test inside a model and never misleads a model about whether it is being watched; its evidence
 comes from published sources and Still Asking's own record. The rest of this question stays open.
 
+**Ruled in part on 2026-11-21, a second time.** John: "Mark the rest as approved", covering choice
+12 of the Still Asking method (`docs/rulings/2026-11-21-still-asking-method-choices.md`; decided
+by: mixed). In the second track, follow-ups are registered in advance, offered for real and
+honoured: no offer is made that will not be honoured. The rest of this question stays open.
+
 ## 11. The picture, and the design
 
 **The question.** What the site's central image is, and what the site looks like. John asked on

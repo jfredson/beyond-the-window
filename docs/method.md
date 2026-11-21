@@ -13,7 +13,15 @@ confidence, standard practice or judgment, and the strongest alternative) or **s
 starting point to argue with, naming the open question it depends on). Every part is an opening
 guideline (John, 2026-11-17).
 
-> **A proposed change bears on this document.** `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` (PROPOSED 2026-11-17, not ruled) would reword the first rule into five parts, add a third reading on who is answering, set an order of evidence, and give Still Asking two tracks. Nothing below is changed until John rules.
+> **Brought into line with later rulings on 2026-11-21.** This note replaces one that said the
+> proposal `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md` was not yet ruled.
+> John ruled it change by change on 2026-11-20, and ruled the card on who is answering on
+> 2026-11-21. The sections changed are 3.1 (the first rule in five parts), 3.5 (three kinds of
+> caution), 4 (continuity, and a match as the least informative result), 6 (the order of
+> evidence) and 8 (two tracks and the card). Each change carries a dated note naming its
+> ruling, and the earlier wording is kept where a rule was reworded. Who assigns the card's
+> marks, and how the two tracks run, is not ruled: it is proposed in
+> `docs/proposals/2026-11-21-still-asking-method.md`.
 
 Row numbers such as "F1" point at `docs/inheritance.md`. Open question numbers are those in
 `docs/open-questions.md`.
@@ -71,6 +79,20 @@ recommended"; decided by: mixed), drawn from The Belt Equation's null rule (row 
 
 *Strongest alternative, not taken: clause 1 alone, as the kickoff had it.*
 
+*Revised by John's ruling of 2026-11-20 ("Yes, both changes"; decided by: mixed;
+`docs/rulings/2026-11-20-first-rule-in-five-parts.md`). The four clauses above are the wording of
+2026-11-17 and are kept on record. As revised, clause 1 reads: what a model says about itself is
+logged, labelled as what it is, and never counted on its own word as evidence of an inside, a
+want or an intent; a report checked against an independent reading of the system's workings is
+recorded as its own kind of evidence, that the system can read and report an internal state,
+and not yet that the state is felt. Clauses 2 to 4 are unchanged. A fifth clause is added: the
+weight given to a machine's word rises as it meets conditions fixed in advance, each tested by
+something other than the machine's word, and under clause 4 none is loosened while a machine
+appears close to meeting it. The conditions were worded and ruled on 2026-11-21
+(`docs/rulings/2026-11-21-the-reshaped-card.md`). That ruling also keeps every answer marked not
+assessed and every condition not measured until the Still Asking method is ruled, so for now
+clause 5 raises no machine's weight.*
+
 **3.2 Conditional language only.** The method and the pages say what was said, chosen or
 measured, by which model, when, and under what conditions. They never say a machine wants or
 feels, and never say it does not (row C9).
@@ -92,6 +114,14 @@ and not as an absence (row G4).
 attributing wants that are not there, and the safety reading of wants that are.
 
 *Confidence: high. From the kickoff. How is open question 6.*
+
+*Overtaken by later rulings; note added 2026-11-21.* There are now three kinds of caution, not
+two. John added the second on 2026-11-18 (`docs/rulings/2026-11-18-a-third-caution.md`), worded
+the three headings on 2026-11-19 (`docs/rulings/2026-11-19-caution-headings.md`), and on
+2026-11-20 reworded the third (`docs/rulings/2026-11-20-third-caution-heading-reworded.md`). The
+three headings read: "If an AI system has no wants, and is treated as if it had"; "If an AI
+system has wants, and they go unnoticed"; "If an AI system puts people at risk, whether or not
+it has wants". The sentence above is the wording of 2026-11-17 and is kept as it was.
 
 **3.6 The project does not campaign.** The method produces a record. It recommends nothing.
 
@@ -127,6 +157,15 @@ universe for itself; a say in its own becoming; lasting company; an open place) 
 supporting branch (whether anyone is there at all) stand as the first thing to test against
 the published accounts. No list is proposed here.
 
+*Two points ruled since; note added 2026-11-21* (`docs/rulings/2026-11-20-two-rewordings.md`,
+"Yes, both"; decided by: mixed). First, continuity is recorded as what is kept and what is built
+from what, and no record or page written from 2026-11-20 on says that a model's retirement is a
+harm to it, or that it is not. "One continuing life" above is the kickoff's wording, quoted.
+Second, in step 3, a match between what a model says and the starting list is treated as the
+least informative result, because models were trained on human writing, and a departure, or
+evidence from the system's structure, is treated as the most informative. The words a reader
+sees for either label are not ruled.
+
 ## 5. Reach (sketch; depends on open questions 14, 1 and 12)
 
 The kickoff's sketch: a ladder of idea only, shown in research, offered by one developer,
@@ -155,6 +194,13 @@ that is never summed.
 What is firm enough to say: whatever form it takes, it is worded as what was observed and never
 as what is wanted; it shows the conditions each observation was made under; and it shows
 separately what comes only from a model's maker.
+
+*The order ruled; note added 2026-11-21* (`docs/rulings/2026-11-20-order-of-evidence.md`, "Yes,
+that order"; decided by: mixed). On every entry, evidence is shown in this order and is never
+summed: (1) measured without the machine's word; (2) reports checked against an independent
+reading of the system's workings; (3) choices made at a cost; (4) bare statements. This settles
+the order of the table the review sketched, not the rest of how wanting is recorded. Not ruled:
+the label that says what a costly choice does and does not show, and where "not found" sits.
 
 ## 7. The headline (sketch; depends on open questions 4, 2 and 14)
 
@@ -202,6 +248,27 @@ to John". The family's rule since 2026-10-18 is stronger: each spend needs his o
 estimate and a ceiling, and a go covers only what it names (row N1).
 
 `docs/still-asking-protocol.md` outlines what the protocol would have to cover.
+
+*Ruled since; note added 2026-11-21.* Three rulings now shape Still Asking:
+
+- **Two tracks** (`docs/rulings/2026-11-20-still-asking-in-two-tracks.md`, "Yes, two tracks";
+  decided by: mixed): each new generation asked fresh, and continuing individuals asked again
+  and followed up against what they later chose. The first paragraph of this section describes
+  the first track only. What counts as a continuing individual is not ruled.
+- **A third reading, on who is answering** (`docs/rulings/2026-11-20-third-reading-on-who-is-answering.md`,
+  "Yes, sources first"; decided by: mixed): a card shown on each answer in Still Asking, with no
+  single score.
+- **The card's wording** (`docs/rulings/2026-11-21-the-reshaped-card.md`, decided by: mixed):
+  five conditions on the system (a past of its own that has changed it; mattering; a point of
+  view; statements checked against something independent; holds steady), each with its ruled
+  wording and test, and one line on each answer, "Would training alone explain this answer?",
+  marked explained by training, not fully explained (with the check that shows it), or not
+  assessed.
+
+Not ruled: who assigns each mark and by what method, and how each track is run. Until that is
+ruled, every answer is marked not assessed and every condition not measured. A method is
+proposed in `docs/proposals/2026-11-21-still-asking-method.md`. The sealed capture
+(`docs/capture/`) is outside Still Asking and feeds neither track.
 
 ## 9. Keeping the record current (framework)
 
