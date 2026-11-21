@@ -41,3 +41,25 @@ page, so its main claim comes last?" John: "Yes, reorder". **Decided by: mixed.*
 
 The description of that paper on the About page ends with her argument, in the proposed
 wording, fitted to the sentence that names her and the paper without changing what it says.
+
+## A second answer the same day: the paragraph as built, with two words moved
+
+To make the reorder work the writing session changed the sentence that names the paper from
+"argues in" to "weighs the two mistakes in", since "argues in" could not end a sentence at the
+title. The checking session judged that it adds no claim
+(`docs/reviews/2026-11-20-check-of-the-eight-sources-on-the-site.md`), and the master session
+pushed it on that verdict, then showed John the paragraph as built, because the page is in his
+voice and those words were not ones he had approved. Both sessions had also noted that "too
+little" came before "moral standing" was named.
+
+The session put the paragraph to him with "moral standing" moved up, and asked "Use the About
+paragraph on the Warsaw paper as shown, with 'moral standing' moved up?" John: "Yes, as shown".
+**Decided by: mixed.**
+
+**The paragraph as ruled:**
+
+> Emilia Kaczmarek, of the Faculty of Philosophy at the University of Warsaw, weighs the two
+> mistakes in *The Moral Status of AI and the Precautionary Principle*. The paper grants that
+> crediting AI with too little moral standing "could carry a higher potential for harm". Its
+> argument is that crediting it with too much is the nearer danger, because its harms are
+> already happening.
