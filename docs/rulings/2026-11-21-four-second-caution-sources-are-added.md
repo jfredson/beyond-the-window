@@ -40,3 +40,16 @@ under the second heading, with its source, dates and ties.
 
 The other items (2, 4, 6, the held seventh, and the post on X), and the About page's
 second-caution sentence, which is put to John before anything is applied.
+
+## A second answer the same day: the About page's second-caution sentence, and its guard
+
+Adding the four takes the sentence "Of the 22 items recorded under the second caution, 12 come
+from Eleos AI Research ..." to 12 of 26, below half, where the build stops. The session proposed
+the same fix John ruled for the first caution's sentence on 2026-11-20
+(`docs/rulings/2026-11-20-eight-checked-sources-are-added.md`, its second answer): the words do
+not change and the figures follow the records, and the guard stops the build only when that
+group is no longer the largest single source under the second caution. *Strongest alternative:*
+reword the sentence to name the new mix. The question was "Keep the About page's second-caution
+sentence as written, reading 12 of 26, with the same guard as the first?" John: "Yes, keep it".
+**Decided by: mixed.**
+
