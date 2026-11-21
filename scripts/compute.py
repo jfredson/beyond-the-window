@@ -83,7 +83,7 @@ REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "pro
                 "added", "first_pass", "state", "sources"]
 OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
                 "verify", "checks", "only_the_developer", "acts", "measures", "searches",
-                "done_by", "found"]
+                "done_by", "found", "placement_note"]
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
@@ -405,6 +405,17 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
         bad("'constructed' is not true or false")
     if "notes" in rec and not isinstance(rec["notes"], str):
         bad("'notes' is not text")
+    # placement_note: one or two sentences saying what an entry's place beside the list rests
+    # on. The entry's page shows it straight after the reason for the placement. Added on
+    # 2026-11-20 for one entry (docs/rulings/2026-11-20-memory-entry-says-what-its-placement-rests-on.md).
+    # Most records have none. It is refused on an entry that is on the list, because the page
+    # shows no reason for a placement there and so has nowhere to put it.
+    if "placement_note" in rec:
+        if not _text(rec["placement_note"]):
+            bad("'placement_note' is not a sentence")
+        elif rec.get("beside") is not True:
+            bad("'placement_note' on an entry that is not beside the list, where the page gives "
+                "no reason for a placement to put it after")
     for field in ("verify", "limits"):
         if field in rec and not (isinstance(rec[field], list) and all(_text(v) for v in rec[field])):
             bad(f"'{field}' is not a list of sentences")

@@ -110,6 +110,8 @@ def entry_for_site(rec: dict, developers: dict[str, str]) -> dict:
         "description": rec["description"],
         "group": rec["group"],
         "beside": beside,
+        # Shown after the reason for the placement on the entry's own page; None on most records.
+        "placement_note": rec.get("placement_note"),
         "limits": list(rec.get("limits", [])),
         "test": rec["test"],
         "settled_by": rec["settled_by"],

@@ -88,6 +88,16 @@ Three additions proposed for this project:
   versions, or the single conversation. *Confidence: low. Judgment. It depends on open question
   1. Strongest alternative: leave it out until that question is explored.*
 
+**Added 2026-11-20: a note on what a placement rests on.** A record that sits beside the list
+may carry one optional field, `placement_note`: a sentence or two saying what its placement
+rests on. The entry's own page shows it straight after the reason for the placement, and
+nowhere else. Most records have none, and one has it today, the entry on memory across
+conversations, whose sentence John ruled
+(`docs/rulings/2026-11-20-memory-entry-says-what-its-placement-rests-on.md`). The records
+script refuses the field on an entry that is on the list, because its page gives no reason for
+a placement to put the sentence after. That the sentence is held in a field of its own, and
+not in the dated history or the group's sentence, was decided by a session (decided by: agent).
+
 ## 4. Ids (framework)
 
 - An id is plain lower-case words joined by hyphens, and is the last part of the record's page

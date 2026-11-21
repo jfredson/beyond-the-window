@@ -32,6 +32,7 @@ export type Entry = {
   description: string;
   group: string;
   beside: boolean; // about the setting; shown beside the list and never counted
+  placement_note: string | null; // what the placement rests on; shown after the reason for it
   limits: string[];
   test: string;
   settled_by: string;

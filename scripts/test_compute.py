@@ -336,6 +336,30 @@ class Export(unittest.TestCase):
         self.assertIs(out["entries"][0]["beside"], False)
         self.assertIsNone(out["entries"][0]["checks"])
 
+    def test_a_record_with_no_placement_note_builds_as_before_and_one_with_it_carries_it(self):
+        plain_rec = good("one-thing", offered=True)
+        self.assertEqual(errs(plain_rec), "")
+        groups = GROUPS + [{"name": "The setting", "beside": True}]
+        noted = good("another-thing"); noted["beside"] = True; noted["group"] = "The setting"
+        del noted["state"]["offered_today"]
+        noted["placement_note"] = "A constructed sentence on what the placement rests on."
+        self.assertEqual(c.validate(groups, [noted]), [])
+        computed = c.compute([plain_rec, noted])
+        head = {"computed_on": "2026-11-17", "last_read": computed["last_read"],
+                "headline": computed["headline"], "records": computed["records"]}
+        out = {e["id"]: e for e in x.build(groups, [plain_rec, noted], head)["entries"]}
+        self.assertIsNone(out["one-thing"]["placement_note"])
+        self.assertEqual(out["another-thing"]["placement_note"], noted["placement_note"])
+        # The note changes nothing that is counted.
+        self.assertEqual(computed["headline"], c.compute([plain_rec, {k: v for k, v in noted.items()
+                                                                      if k != "placement_note"}])["headline"])
+        # It is refused where the page has no reason for a placement to put it after, and
+        # when it is not a sentence.
+        on_the_list = good(); on_the_list["placement_note"] = "A constructed sentence."
+        self.assertIn("'placement_note' on an entry that is not beside the list", errs(on_the_list))
+        noted["placement_note"] = ["not", "text"]
+        self.assertIn("'placement_note' is not a sentence", "\n".join(c.validate(groups, [noted])))
+
 
 # ---- the rebuild: acts, measures, searches and the readings (PROPOSED 2026-11-20) -----------
 

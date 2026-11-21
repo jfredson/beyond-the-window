@@ -14,6 +14,10 @@ limits = [
   "Whether a kind of memory kept for the AI model itself is offered by any developer. None was found in the pages read. If one is found, it would be a new entry.",
 ]
 notes = "From entry 8 of docs/research/2026-11-17-first-entries.md."
+# Ruled by John on 2026-11-20, word for word ("Yes, add it",
+# docs/rulings/2026-11-20-memory-entry-says-what-its-placement-rests-on.md). The page shows it
+# straight after the reason the entry sits beside the list.
+placement_note = "This entry is placed by what the developers say the memory is for. That says nothing about what stored memory does to how a later conversation is built."
 
 [state]
 words = "Offered by at least three developers, the first since February 13th, 2024"

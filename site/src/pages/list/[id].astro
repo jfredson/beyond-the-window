@@ -117,6 +117,8 @@ const sourceLine = (src: Source) =>
           {whyBeside} So this entry is kept beside the list and is not counted among the
           things offered.
         </p>
+      )}{entry.beside && entry.placement_note && (
+        <p class="beside-note">{entry.placement_note}</p>
       )}
     </section>
 
