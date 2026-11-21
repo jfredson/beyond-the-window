@@ -1,12 +1,9 @@
 ---
 // The home page. It opens with the headline number, as the sibling sites do: John ruled so on
-// 2026-11-20 (docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md). The readings of
-// the rebuilt page of the same day stand beneath it. Which words stand beside the number is not
-// ruled: the build draws version A (the sentence ruled on 2026-11-19) unless HEADLINE_VERSION=B
-// asks for the plainer sentence proposed in docs/proposals/2026-11-20-headline-draft.md.
+// 2026-11-20 (docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md), and chose the
+// same day the plainer sentence drawn as version B in docs/proposals/2026-11-20-headline-draft.md.
+// The readings of the rebuilt page of the same day stand beneath it.
 import Rebuilt from '../components/Rebuilt.astro';
-
-const version = (process.env.HEADLINE_VERSION ?? 'A') as 'A' | 'B';
 ---
 
-<Rebuilt version={version} />
+<Rebuilt />

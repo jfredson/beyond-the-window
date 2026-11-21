@@ -235,3 +235,83 @@ pass, and the build and the site check pass for both versions.
 - A session that did not write the page checks it, including against John's published positions
   (the rule of 2026-11-20), and checks the two points under "Where the number comes from".
 - The switch is removed once a version is chosen, so the site has one home page.
+
+## After John's choice: version B, and the breakdown relabelled
+
+*Added 2026-11-20 by the same session, Claude (Opus 5.5). John chose version B the same day
+(decided by: mixed), as relayed by the master planning session; the ruling is recorded on `main`
+in `docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md`, "A second answer the same
+day". The pictures of version A above are kept as a record. The switch and version A's code are
+gone, so the site has one home page.*
+
+The master planning session asked for two more things: a breakdown whose figures no reader would
+add up wrongly, and a reading of the second developer's counted act at its source.
+
+### The breakdown: three ways drawn
+
+The figures in the first draft read 5, 1 and 0, which add to 6 while the count is 5, because the
+one thing two developers do is under both. Three ways of showing it, each at phone width, light,
+first screen:
+
+1. **A sentence in place of the boxes** (`breakdown-option-1-phone-light-first.jpg`): "All 5 by
+   one developer. One of them, ending a conversation, also by a second. None yet by the third
+   this record covers."
+2. **The same three boxes, with labels that say the overlap**
+   (`breakdown-option-2-phone-light-first.jpg`): "5, by one developer: all of them"; "1, by a
+   second: one of the same 5"; "0, by the third this record covers".
+3. **Boxes that add up to the count** (`breakdown-option-3-phone-light-first.jpg`): "4, done by
+   one developer only"; "1, done by two developers"; "0, done by three developers"; then "One
+   developer does all 5."
+
+**Recommended: option 2.** *Confidence:* moderate. It keeps the siblings' row of small figures,
+it opens with the fact the strangers found most striking (one developer does all five), and the
+second label says outright that its 1 is one of the same five, so no figure claims more than it
+counts. It is the one now on the branch. *Standard practice or judgment call:* judgment call; the
+look is The Upgrade Tree's. *Strongest alternative:* option 3, the only one whose figures add up
+to the number above them, as The Upgrade Tree's stages add up to its 35. It costs the striking
+fact a place in the row (it moves to a line underneath), and "0, done by three developers" is a
+figure a reader has to stop and think about. Option 1 is the plainest to say back, but it drops
+the siblings' look. If option 1 or 3 is chosen, the code for both was written and checked on
+2026-11-20 (each built and passed the site check) and can be put back from this description.
+
+### The second developer's counted act
+
+I opened both of OpenAI's pages on 2026-11-20.
+
+- The notice of 2026-10-30, [Community safety report and new protections for
+  teens](https://openai.com/index/community-safety-report-and-new-protections-for-teens/), says
+  the chat product "will be able to automatically end the chat", and that "the safeguards detailed
+  here will begin rolling out in the next few weeks". On 2026-10-30 it was announced to begin
+  later.
+- The help page, [Why ChatGPT ended your conversation or temporarily suspended your account over
+  concerns about violence](https://help.openai.com/articles/20001424), marked "Updated: yesterday"
+  when I opened it, says "These safety interventions are enabled for personal ChatGPT accounts
+  worldwide in Chat mode", and also that the feature "is gradually rolling out to accounts
+  worldwide and may not be activated on your account yet".
+
+**So on 2026-11-20 the change was in effect**, for personal accounts, though not yet switched on
+for every one of them. Under the ruled meaning of "offered" (`docs/rulings/2026-11-18-what-offered-today-means.md`:
+the developer "does the thing, provides it, or has publicly committed to
+it", and "a promise that has not yet taken effect is not counted"), it counts as something the
+developer does. It was not a promise only. The records already say this: the entry
+`ending-a-conversation` carries the help page as a source, and John ruled twice on 2026-11-20 to
+count it, the second time knowing that the developer's pages name the chat product and not the
+model as what ends the chat (`docs/rulings/2026-11-20-a-second-developers-ending-of-chats-is-counted.md`).
+My worry in the first draft came from reading the act's words alone, which date from the notice.
+The breakdown keeps its 1.
+
+Two things in the records that a checker may want to look at. Neither changes the count or the
+breakdown, and I changed nothing:
+
+1. **The date in the table of developers.** OpenAI's place reads "Since October 30th, 2026", the
+   date of the notice, as the ruling directs ("with the date of its public notice"). On that date
+   the change was announced to begin later. When it was switched on is not on either page; the
+   record shows only that it was on by 2026-11-20. Changing the date would need John's ruling,
+   since the ruling names it.
+2. **The act's words** ("will be able to end a chat ..., with the change to begin in the following
+   weeks") are true of the notice and still read as a promise. The record has no dated act for the
+   change taking effect, which is what is counted. Adding one would be a change to the records,
+   for a session that checks them.
+
+Neither is a reason to show 0. The test's words "by its own action" remain the open point, and
+John has ruled on it.

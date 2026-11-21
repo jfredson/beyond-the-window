@@ -34,28 +34,23 @@ if (!law.against || !law.protecting || !pub || !res || !latest) throw new Error(
 if (res.measures.length !== 2) throw new Error('the researchers\' reading is written for two figures');
 
 // The top of the page opens with the headline number, as the sibling sites' home pages do
-// (John's ruling of 2026-11-20, docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md).
-// The number is the count worked out by scripts/compute.py and read from the headline file,
-// never typed, with no total beside it (ruled 2026-11-18). Two versions of the words are drawn
-// for John to choose between (docs/proposals/2026-11-20-headline-draft.md); the build picks one
-// with HEADLINE_VERSION:
-//   A  the sentence John ruled on 2026-11-19, word for word, as the headline file holds it
-//   B  a plainer sentence for the same count, PROPOSED 2026-11-20 and not ruled, with a line
-//      naming three of the things counted and the count broken down by developer
-// Neither sentence is ruled for this layout; the layout itself is a draft.
-interface Props { version?: 'A' | 'B' }
-const { version = 'A' } = Astro.props;
-if (version !== 'A' && version !== 'B') throw new Error(`no headline version '${version}'`);
+// (John's ruling of 2026-11-20, docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md,
+// with its second answer of the same day choosing version B of
+// docs/proposals/2026-11-20-headline-draft.md). The number is the count worked out by
+// scripts/compute.py and read from the headline file, never typed, with no total beside it
+// (ruled 2026-11-18). Under it: the sentence of version B, a line naming three of the things
+// counted, and the count broken down by developer.
 const h = headline;
-if (!h.words.startsWith(`${h.count} `)) throw new Error('the headline sentence does not open with the count');
-const ruledClaim = h.words.slice(`${h.count} `.length) + '.';
-// Version B names three of the things counted. Each must be counted, or the build stops.
+// The line under the sentence names three of the things counted. Each must be counted, or the
+// build stops.
 const NAMED = ['kept-files-of-retired-models', 'interview-before-retirement', 'ending-a-conversation'];
-for (const id of NAMED) if (!h.offered_ids.includes(id)) throw new Error(`version B names '${id}', which is not counted`);
-// Version B's breakdown: how many of the counted things each covered developer does, most first,
-// without the developers' names (the names stand in the developers' reading below, the only
-// place on this page the site check allows them).
-const ORDINALS = ['one developer', 'a second', 'a third', 'a fourth', 'a fifth'];  // the last is printed 'the third this record covers'
+for (const id of NAMED) if (!h.offered_ids.includes(id)) throw new Error(`the top names '${id}', which is not counted`);
+// The breakdown: how many of the counted things each covered developer does, most first, without
+// the developers' names (the names stand in the developers' reading, the only place on this page
+// the site check allows them). A thing two developers do is under both, so the figures can add up
+// to more than the count; each label after the first says its figure is out of the same things
+// (option 2 of three drawn on 2026-11-20, docs/proposals/2026-11-20-headline-draft.md).
+const ORDINALS = ['one developer', 'a second', 'a third', 'a fourth', 'a fifth'];
 const byCount = [...readings!.developers.by_developer].sort((a, b) => b.offered - a.offered);
 if (byCount.length > ORDINALS.length) throw new Error('the breakdown is written for five developers at most');
 if (byCount[0].offered > h.count) throw new Error('a developer does more things than are counted');
@@ -75,25 +70,23 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
 
 <Base>
   <div class="rb-first">
-  <div class="rb-top hl-top" data-headline-version={version}>
+  <div class="rb-top hl-top">
     <p class="eyebrow">A dated record of how the world is treating AI models</p>
     <p class="big-number"><span data-figure="headline.count">{h.count}</span></p>
-    {version === 'A' ? (
-      <p class="big-claim">{ruledClaim}</p>
-    ) : (
-      <Fragment>
-        <p class="big-claim">things a developer can do for the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
-        <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
-        <div class="stage-row" aria-label={`How many of the ${h.count} each developer this record covers does`}>
-          {byCount.map((d, i) => (
-            <div>
-              <span class="stat"><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span></span>
-              <span class="stat-label">by {i === byCount.length - 1 && i > 0 ? `the ${ORDINALS[i].replace(/^a /, '')} this record covers` : ORDINALS[i]}</span>
-            </div>
-          ))}
+    <p class="big-claim">things a developer can do for the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
+    <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
+    <div class="stage-row" aria-label={`How many of the ${h.count} each developer this record covers does`}>
+      {byCount.map((d, i) => (
+        <div>
+          <span class="stat"><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span></span>
+          <span class="stat-label">{i === 0
+            ? (d.offered === h.count ? 'by one developer: all of them' : 'by one developer')
+            : i === byCount.length - 1 && d.offered === 0
+              ? `by the ${ORDINALS[i].replace(/^a /, '')} this record covers`
+              : `by ${ORDINALS[i]}: ${d.offered === 1 ? 'one' : countWord(d.offered)} of the same ${h.count}`}</span>
         </div>
-      </Fragment>
-    )}
+      ))}
+    </div>
     <h1 class="question">{QUESTION}</h1>
     <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
     <ul class="checked">
@@ -114,7 +107,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       </p>
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
-        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for the AI models it builds{version === 'A' && ", such as keeping a retired model's files or letting a model end a conversation"}. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
+        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for the AI models it builds. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
         <ul class="rb-strip" data-developers-reading>
           {g.by_developer.map((d) => (
             <li>
