@@ -70,7 +70,7 @@ apart from the new field, which is empty on twelve and filled on one.
 A new test covers the field: a record without it builds as before, one with it carries it,
 it changes nothing counted, and it is refused on an entry on the list or when it is not text.
 
-**Could it be misused?** Yes, in one way. Any session could add the field to one of the six
+**Could it be misused?** Yes, in one way. Any session could add the field to one of the five
 entries beside the list, and whatever it wrote would appear on that entry's page under the
 reason for its placement. On a scratch copy I added a constructed sentence making a claim to
 the entry on the public survey. The build finished and the site check passed.
