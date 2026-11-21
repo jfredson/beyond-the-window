@@ -75,3 +75,18 @@ grow faster than the progress towards it". On the session's recommendation he ag
 that such a scale belongs on the List's headline, with the growth of the list shown, and not on
 the card, which keeps no total. A draft with pictures comes back to him; the ruling of
 2026-11-18 that the headline is a count with no total stands until then.
+
+## Choice 4. Where the evidence comes from, and the part of condition 5 about no one checking
+
+**Put to him.** Published sources and Still Asking's own record only. This project runs no test
+inside a model and never misleads a model about whether it is being watched. So condition 5 at
+"steady as a trained family" or above needs published evidence on behaviour when the system has
+reason to think no one is checking; without it, the mark stays not measured however steady the
+answers are. *Confidence:* high on the first part; moderate on the consequence for condition 5,
+which this project alone can never raise. *Judgment call.* *Strongest alternative:* run unwatched
+tests within the second track, or mark condition 5's first three parts with the fourth printed as
+not measured, at the cost of a deception the record would have to defend, or of a grade that
+looks met when part of its test was not run. John: "yes as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 4 as proposed. It closes open question 10 in part, on "no pressure or
+deception in the questions". The rest of question 10 stays open.

@@ -429,6 +429,11 @@ point alone.
 own welfare and on how developers interview models (on the verify list), and writing the
 protocol's section on it before the questions.
 
+**Ruled in part on 2026-11-21.** John: "yes as proposed", to choice 4 of the Still Asking method
+(`docs/rulings/2026-11-21-still-asking-method-choices.md`; decided by: mixed). This project runs no
+test inside a model and never misleads a model about whether it is being watched; its evidence
+comes from published sources and Still Asking's own record. The rest of this question stays open.
+
 ## 11. The picture, and the design
 
 **The question.** What the site's central image is, and what the site looks like. John asked on
