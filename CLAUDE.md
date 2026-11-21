@@ -107,6 +107,11 @@ So:
    mixed; `docs/rulings/2026-11-19-caution-headings.md`): "If an AI system has no wants, and is
    treated as if it had", "If an AI system has wants, and they go unnoticed", "If an AI system
    has wants, and they put people at risk".*
+   *The third heading was reworded by John's ruling of 2026-11-20 ("Yes, reword it", then "Yes,
+   that wording"; decided by: mixed; `docs/rulings/2026-11-20-third-caution-heading-reworded.md`)
+   to "If an AI system puts people at risk, whether or not it has wants". The third kind of
+   caution is therefore the risk to people, whether or not wants are there, and no longer only
+   "the risk in wants that are".*
    *Confidence: high. Judgment call from the kickoff. Strongest alternative: a stated position,
    which would be more honest about the maintainer's leanings and would end the site's use as a
    record.*
