@@ -90,3 +90,14 @@ looks met when part of its test was not run. John: "yes as proposed". **Decided 
 
 **What is ruled.** Choice 4 as proposed. It closes open question 10 in part, on "no pressure or
 deception in the questions". The rest of question 10 stays open.
+
+## Choice 5. Four marks for conditions 1 to 3
+
+**Put to him.** Conditions 1, 2 and 3 each take one of four marks: met, partly met, not met, not
+measured. Conditions 2 and 3 are marked met or not met only from a published study that ran
+their removal test on the system. He was told the card ruling names only "partly met" and "not
+measured", so the four as a set are new. *Confidence:* moderate. *Judgment call.* *Strongest
+alternative:* only "not measured" and a quoted finding, at the cost of a card a reader cannot
+scan. John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 5 as proposed.
