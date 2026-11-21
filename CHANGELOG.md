@@ -9,6 +9,47 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **One fix after the second check of the rebuilt home page. Not published and not pushed. The
+  count did not move: it is still 5.** The second check
+  (`docs/reviews/2026-11-20-second-check-of-the-rebuilt-home-page.md`) read a chart the build
+  session could not. The entry on working for days now says that one developer's model, tested
+  in one programming language, did not rebuild the weeks-long program in any of three runs,
+  and that the other two developers' models substantially rebuilt it, passing at least 99
+  percent of its tests and never all of them.
+- **John's four rulings on the rebuilt home page applied on the working branch. Not published
+  and not pushed. The count did not move: it is still 5.** A second developer's ending of
+  chats is counted as offered, so the entry on ending a conversation now names two developers
+  (`docs/rulings/2026-11-20-a-second-developers-ending-of-chats-is-counted.md`); the count
+  does not move because that thing was already counted. The measurement of weeks-long tasks
+  is recorded and the entry on working for days stays "not shown"
+  (`docs/rulings/2026-11-20-weeks-long-measurement-recorded-entry-stays-not-shown.md`). One
+  developer's place for a withdrawal now says both facts from its notice
+  (`docs/rulings/2026-11-20-withdrawal-place-says-both-facts.md`). The go to publish covers
+  the page of acts, the feed and the reworded sentence on Still Asking. None of it is checked.
+- **Mends after the check of the rebuilt home page. Not published and not pushed. The count
+  did not move: it is still 5.** The check
+  (`docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md`) found two places where the
+  table of developers was contradicted by a public page. Both are mended in the records. The
+  entry on working for days now holds a second public measure, first reported on 2026-04-10,
+  and its three places no longer say nothing was found; its state line was reworded and it is
+  still not counted. The place for one developer's ending of chats no longer calls it a
+  promise not yet in effect. In both, whether the thing counts is left for John, and the page
+  says it is not decided. Also: words on the first screen that were used before they were
+  explained, three names linked, the footer's description, and the go to publish marked as
+  mixed. The mends are not checked:
+  `docs/proposals/2026-11-20-rebuilt-home-page-for-checking.md`, section 0.
+- **The rebuilt home page was put in place on the working branch, ready for a different
+  session's check. Not published and not pushed. The count did not move: it is still 5.**
+  John gave his go to publish it once checked
+  (`docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md`), which sets
+  aside, on the home page, the count at the top (ruled 2026-11-18) and the sentence beside it
+  (ruled 2026-11-19). The home page now opens with a sentence and several readings; every act
+  by date is at `/acts/`, with a feed at `/acts.xml` and a link preview picture. The opening
+  sentence was reworded to what the entry on interviews supports. One sentence on the Still
+  Asking page and one on each entry beside the list no longer speak of a number on the home
+  page. The check of the built site has a new rule 7 in place of the one that required the
+  count at the top. Which draft, and every sentence, is a session's choice and not John's:
+  `docs/proposals/2026-11-20-rebuilt-home-page-for-checking.md`.
 - **The Still Asking page says that two models have been asked, outside the record**
   (`docs/rulings/2026-11-20-capture-paragraph-names-gemini.md`). The paragraph now adds that
   the same ten questions were put to Gemini 2.5 Flash on 2026-11-20, five times each, and that
@@ -17,6 +58,28 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
   of $0.2130. The runs for OpenAI's models have not been made. The built-site check allows the
   three new names in that one paragraph, and the README is brought up to date. No entry
   changed. No number moved: the count is 5. Not pushed.
+
+- **The fourteen searches behind the table of developers were made, on John's go
+  (`docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md`). The count
+  did not move: it is still 5, and the published pages are unchanged.** Three acts were found
+  and written into two records, none of them counted as offered: two by OpenAI and one by
+  Google. Eleven places now say nothing found, each with the date and scope of its searches in
+  the record. No place is left unsearched, and no developer was found to have said it will not
+  do a thing. A third draft of the home page, `/draft/c/`, puts the researchers' figures on a
+  phone's first screen. All of it is PROPOSED and unchecked, on the working branch:
+  `docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md`.
+- **The rebuild, built as a draft on a working branch. The count did not move: it is still 5,
+  and the published pages are unchanged.** After John's three rulings of 2026-11-20
+  (`docs/rulings/2026-11-20-pursue-the-rebuild.md` and the two on developers), nineteen dated
+  acts were written into eleven records and three survey figures into the two survey records,
+  each from a source opened again that day. `scripts/compute.py` now checks them and works out
+  the readings of the rebuilt home page, which it writes into `data/headline.json` beside the
+  count. Draft pages stand at `/draft/`, `/draft/b/` and `/draft/acts/`, with a feed and a link
+  preview picture; no published page links to them, the sitemap leaves them out, and
+  `scripts/check_site.py` has four new rules (11 to 14) that hold them to the served file.
+  Everything is PROPOSED and unchecked: `docs/proposals/2026-11-20-rebuild-draft-built.md`
+  lists every new sentence, the fourteen places in the table of developers that still need a
+  search, and the decisions still open. No search for the record was made.
 
 ## 2026-11-19
 

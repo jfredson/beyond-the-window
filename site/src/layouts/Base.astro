@@ -13,7 +13,7 @@
 // to copy the siblings wherever possible, docs/rulings/2026-11-19-three-points-on-the-first-release.md).
 // Only the page for a missing address still asks to be left out, as on The Quiet Galaxy. The
 // page's own address and the text a link preview reads were added the same day, in The Quiet
-// Galaxy's form. There is no preview picture yet, so the card is the small kind with no picture.
+// Galaxy's form. The preview picture and the feed of acts were added on 2026-11-20.
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import { data, longDate, builtFrom, SITE_NAME } from '../lib/data';
@@ -26,9 +26,14 @@ interface Props {
 
 const {
   title = SITE_NAME,
-  description = 'A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.',
+  description = 'A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.',
   noindex = false,
 } = Astro.props;
+
+// The picture a link preview shows and the feed of acts, on every page since 2026-11-20. The
+// picture holds no figure (scripts/preview_picture.sh), so it does not go out of date.
+const image = '/preview.png';
+const feed = '/acts.xml';
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
@@ -68,7 +73,11 @@ const currentYear = new Date().getFullYear();
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" type="application/atom+xml" title={`${SITE_NAME}: every act, by date`} href={feed} />
   </head>
   <body>
     {data.constructed && (
@@ -82,13 +91,15 @@ const currentYear = new Date().getFullYear();
       <div class="container footer-grid">
         <div>
           <span class="footer-brand">Beyond the Window</span>
-          <p class="footer-tag">A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.</p>
+          <p class="footer-tag">A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.</p>
           <p class="footer-links">
             <a href="/list/">The list</a>
+            <a href="/acts/">Everything, by date</a>
+            <a href="/acts.xml">Feed</a>
             <a href="/still-asking/">Still Asking</a>
             <a href="/about/">About</a>
             <a href="/about/#not-known">What is not known yet</a>
-            <a href="/data/headline.json">The number as a file</a>
+            <a href="/data/headline.json">The figures as a file</a>
           </p>
           <p class="footer-meta">
             © {currentYear} <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>. Last built {longDate(data.exported_on)}{data.commit ? ` (version ${data.commit})` : ''} from {builtFrom()}.

@@ -136,3 +136,19 @@ added_to = 2026-11-19
 corrected = 2026-11-19
 additions_checked = 2026-11-19
 corrections_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+# Two things this record describes are not written as acts. The first developer's document
+# carries no date on its page, and an act needs one. The third document is from a developer the
+# record does not cover (ruled 2026-11-20, docs/rulings/2026-11-20-the-record-covers-three-developers.md).
+
+[[acts]]
+date = "2026-10-29"
+actor = "OpenAI"
+actor_kind = "developer"
+words = "publishes a version of its rules for its models, which says a model should make no confident claim about whether it has subjective experience or consciousness"
+source = "model-rules"
+read_on = 2026-11-20

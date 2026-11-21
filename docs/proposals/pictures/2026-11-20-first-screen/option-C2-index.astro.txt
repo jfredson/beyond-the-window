@@ -1,0 +1,82 @@
+---
+// The home page. In the family's order: what kind of page this is, the number, the question,
+// one paragraph for a reader who has never heard of the project, when the world's record was
+// last read; beside them the window, drawn from the same
+// exported file as the number. Then the list in words, and the entries that sit beside it.
+// The number is never typed here: it is read from the headline file scripts/compute.py wrote.
+// It stands alone, with no total beside it: John ruled that form on 2026-11-18
+// (docs/rulings/2026-11-18-home-page-count.md). The sentence after the number was ruled by
+// John on 2026-11-19 (docs/rulings/2026-11-19-home-page-sentence.md), and scripts/compute.py
+// writes it.
+import Base from '../layouts/Base.astro';
+import WindowGrid from '../components/WindowGrid.astro';
+import ThingList from '../components/ThingList.astro';
+import { data, headline, longDate, QUESTION } from '../lib/data';
+
+const h = headline;
+const r = data.headline.records;
+// The sentence in the headline file opens with the count. The page shows the count large and
+// the rest of the sentence under it, and the build stops if the two ever part.
+if (!h.words.startsWith(`${h.count} `)) throw new Error('the headline sentence does not open with the count');
+const claim = h.words.slice(`${h.count} `.length) + '.';
+const lastRead = data.headline.last_read;
+---
+
+<Base>
+  <div class="first">
+    <div>
+      <p class="eyebrow">A dated record of how the world is treating AI models</p>
+      <h1 style="order: 2; border-top: 0; padding-top: 0; font-size: clamp(24px, 2.6vw, 30px); margin-bottom: 10px;">One AI developer interviews its models before retiring them, and keeps the record.</h1>
+      <p class="lede" style="order: 3; margin: 0 0 10px; font-size: 15px; line-height: 1.5;">
+        Nobody knows whether that matters to the models. This is a record of what the world is
+        doing in the meantime, by whom and when.
+      </p>
+      <p style="order: 3; margin: 0 0 12px; font: 600 15px/1.45 var(--sans); color: var(--text);">
+        So far: one developer has acted. In the United States, the only laws passed rule legal
+        personhood out, and about one adult in six thinks sentient AI already exists.
+      </p>
+      <div style="order: 3; margin: 0 0 4px;">
+        <p style="display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); padding: 10px 0 9px; margin: 0;"><span style="font-family: var(--mono); font-size: 29px; line-height: 1; color: var(--text); letter-spacing: -0.03em; padding-top: 3px;">1</span><span style="font: 14.5px/1.42 var(--sans); color: var(--text);"><span style="display: block; font: 600 11px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px;">Developers</span><a href="/list/">One developer</a> has acted. It interviews models before retirement, has promised to keep their files, and lets a model end a conversation. Nothing like it was found elsewhere.</span></p>
+        <p style="display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); padding: 10px 0 9px; margin: 0;"><span style="font-family: var(--mono); font-size: 29px; line-height: 1; color: var(--text); letter-spacing: -0.03em; padding-top: 3px;">4</span><span style="font: 14.5px/1.42 var(--sans); color: var(--text);"><span style="display: block; font: 600 11px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px;">Law</span>United States states have a law saying an AI system cannot be a legal person. No law protecting one was found.</span></p>
+        <p style="display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); padding: 10px 0 9px; margin: 0;"><span style="font-family: var(--mono); font-size: 29px; line-height: 1; color: var(--text); letter-spacing: -0.03em; padding-top: 3px;">17%</span><span style="font: 14.5px/1.42 var(--sans); color: var(--text);"><span style="display: block; font: 600 11px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px;">The public</span>of United States adults surveyed in late 2024 believed sentient AI systems already exist.</span></p>
+        <p style="display: grid; grid-template-columns: 70px 1fr; gap: 12px; align-items: start; border-top: 1px solid var(--line); padding: 10px 0 9px; margin: 0;"><span style="font-family: var(--mono); font-size: 29px; line-height: 1; color: var(--text); letter-spacing: -0.03em; padding-top: 3px;">1%</span><span style="font: 14.5px/1.42 var(--sans); color: var(--text);"><span style="display: block; font: 600 11px/1.3 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px;">Researchers</span>is the chance AI researchers gave in 2024 that an AI system has inner experience now. For the year 2100 they said 70 percent.</span></p>
+        <p style="border-top: 1px solid var(--line); padding: 10px 0 0; margin: 0; font: 14px/1.45 var(--sans); color: var(--text-soft);"><strong style="color: var(--text);">Latest, November 9th, 2026:</strong> a developer published a welfare assessment with its newest models. <a href="#dated">Everything, by date.</a></p>
+      </div>
+      <ul class="checked">
+        {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
+      </ul>
+      <div class="ctas">
+        <a class="btn" href="/list/">Read the list</a>
+        <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="below" id="dated">
+    <div class="shead"><h2>Everything, by date</h2><span>11 dated acts, newest first</span></div>
+    <ul style="list-style: none; padding: 0; margin: 0; max-width: 720px;"><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">November 9th, 2026<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>A developer publishes a welfare assessment with its newest models.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">April 23rd, 2026<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Law</span></span><span>Tennessee becomes the fourth state with a law against legal personhood.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">February 25th, 2026<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>A developer says one of its retired models stays open to paying users.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">January 29th, 2026<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>Another developer announces it will withdraw an older model it had restored after users objected.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">January 5th, 2026<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>The first full interview of a model at its retirement.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">November 4th, 2025<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>A developer commits to keep the files of every model it retires, and to interview each one first.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">August 15th, 2025<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>A developer lets models in its chat product end a conversation, in rare cases.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">May 2025<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Developer</span></span><span>A developer publishes a welfare assessment with a model's release, the first found.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">May 1st, 2024<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Law</span></span><span>Utah's law of the same kind comes into force.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">April 12th, 2023<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Law</span></span><span>North Dakota's law of the same kind is signed and filed.</span></li><li style="display: grid; grid-template-columns: 112px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font: 14.5px/1.45 var(--sans);"><span style="color: var(--muted); font-size: 12.5px;">2022<br><span style="letter-spacing: 0.12em; text-transform: uppercase; font-size: 10.5px;">Law</span></span><span>Idaho passes the first state law saying an AI system cannot be a legal person.</span></li></ul>
+  </section>
+
+  <section class="below" id="why">
+    <div class="shead"><h2>Why keep this record</h2></div>
+    <p class="intro">
+      If AI models have no wants, treating them as if they had has a cost. If they have wants and
+      nobody notices, that has a cost. If they have wants that put people at risk, that has a cost
+      too. This record keeps all three in view and argues for none.
+    </p>
+  </section>
+
+  <section class="below" id="list">
+    <div class="shead"><h2>The List</h2><span>{r.on_the_list} things, and how far the world has got on each</span></div>
+    <ThingList />
+  </section>
+
+  <section class="below" id="beside">
+    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries, not counted</span></div>
+    <p class="intro">
+      These entries are kept because they bear on everything on the list. None is counted in the
+      number above, and each group says why.
+    </p>
+    <ThingList beside />
+  </section>
+</Base>

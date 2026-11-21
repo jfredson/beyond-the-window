@@ -131,3 +131,31 @@ corrected = 2026-11-19
 corrections_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2025-11-04"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "commits to keep the files of every model it has released to the public, for at least as long as the company exists"
+source = "commitments"
+read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "OpenAI"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, and its own page on retiring models, opened. The page describes three stages of a model's life and says nothing about what happens to a model's files. The searches returned users' proposals and a petition asking for such a commitment, and no statement by the developer. One lead was run down and not settled: the developer's chief executive posted a public farewell to one older model in April 2025 and is said to have written of saving its files. The post could not be opened. A magazine article of May 28th, 2025 that was opened says he was then asked about preserving that model and answered that the company had already considered it. That is one model and a remark, with no commitment and no stated time, so it would not meet this entry's test."
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, and its own page on retiring models, opened. The page says a model that is shut down is completely turned off and says nothing about its files. The searches returned a user's proposal on the developer's forum, and no statement by the developer."

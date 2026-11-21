@@ -79,3 +79,45 @@ changed = 2026-11-18
 changes_checked = 2026-11-18
 added_to = 2026-11-19
 additions_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2026-01-29"
+actor = "OpenAI"
+actor_kind = "developer"
+words = "announces that on February 13th, 2026 it will withdraw from its chat product an older model that it had earlier brought back after feedback from users"
+source = "older-models"
+withdraws = true
+read_on = 2026-11-20
+
+[[acts]]
+date = "2026-02-25"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "says a model it has retired stays open to all paying users of its chat product, and to developers on request"
+source = "update"
+read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for a retired model of the developer's that members of the public can still use, and its own page on retiring models, opened. The page says a model that is shut down is completely turned off and can no longer be used. The pages found cover the service for developers. Nothing was found either way about the developer's chat product."
+
+# Added 2026-11-20. John ruled that day that this developer's place in the table says both
+# facts, from the same notice ("Say both facts",
+# docs/rulings/2026-11-20-withdrawal-place-says-both-facts.md).
+[[found]]
+developer = "OpenAI"
+date = "2026-01-29"
+words = "its notice says it will withdraw an older model from its chat product, and that nothing changes for now in its service for developers"
+source = "older-models"
+counts = "no"

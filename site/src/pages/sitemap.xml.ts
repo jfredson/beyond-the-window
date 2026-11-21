@@ -7,7 +7,7 @@
 import type { APIRoute } from 'astro';
 import { data } from '../lib/data';
 
-const FIXED = ['/', '/list/', '/still-asking/', '/about/'];
+const FIXED = ['/', '/list/', '/acts/', '/still-asking/', '/about/'];
 
 export const GET: APIRoute = async ({ site }) => {
   const urls = [...FIXED, ...data.entries.map((e) => e.path)];

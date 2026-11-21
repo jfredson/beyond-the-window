@@ -81,3 +81,32 @@ added_to = 2026-11-19
 additions_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2024-02-13"
+actor = "OpenAI"
+actor_kind = "developer"
+words = "announces memory across conversations in its chat product"
+source = "memory-first"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2025-03-13"
+actor = "Google"
+actor_kind = "developer"
+words = "says paying subscribers can ask its assistant to refer to their past chats"
+source = "memory-second"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2025-09-11"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "announces memory across conversations in its chat product, first for work teams"
+source = "memory-third"
+read_on = 2026-11-20

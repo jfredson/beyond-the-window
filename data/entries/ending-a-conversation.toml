@@ -9,17 +9,17 @@ added = 2026-11-17
 first_pass = true
 limits = [
   "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
-  "Whether any other developer offers it. One search found none.",
+  "Whether, at a second developer, it is the AI model that ends the conversation. [OpenAI](https://openai.com/) said on October 30th, 2026 that its chat product would be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, and its help page, read on November 20th, 2026, says this is enabled for personal accounts and is not yet switched on for every account. It is counted here as offered since November 20th, 2026. What this entry's test asks for is an AI model ending a conversation by its own action. The developer's two pages say the chat product ends the conversation, automatically and as a safety step, and do not say whether the model itself makes that decision. For a third developer, two searches on November 20th, 2026 found nothing.",
   "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it.",
 ]
 notes = "From entry 4 of docs/research/2026-11-17-first-entries.md."
 
 [state]
-words = "Offered by one developer, since August 15th, 2025"
-detail = "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study, outside any product, has measured how often several developers' models chose an option described to them as leaving the conversation. In that study nothing ended, and the models were told so."
+words = "Offered by two developers, the first since August 15th, 2025"
+detail = "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study, outside any product, has measured how often several developers' models chose an option described to them as leaving the conversation. In that study nothing ended, and the models were told so. Since November 20th, 2026 a second developer is counted here. [OpenAI](https://openai.com/) said on October 30th, 2026 that its chat product would be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, and its help page, read on November 20th, 2026, says this is enabled for personal accounts and is not yet switched on for every account. Both pages name the chat product as what ends the conversation, describe it as an automatic safety step, and give the safety of people as the reason. Neither page says that the AI model itself decides to end the conversation, and neither says anything about the model's own interests."
 offered_today = true
-offered_by = ["Anthropic"]
-set_on = 2026-11-17
+offered_by = ["Anthropic", "OpenAI"]
+set_on = 2026-11-20
 source = "ending"
 
 [[sources]]
@@ -130,3 +130,74 @@ additions_checked = 2026-11-19
 corrections_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2025-08-15"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "says it has given models in its chat product the ability to end a conversation, for rare and extreme cases"
+source = "ending"
+read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[sources]]
+key = "teen-protections"
+label = "OpenAI's notice of a community safety report and new protections for teens"
+publisher = "OpenAI"
+url = "https://openai.com/index/community-safety-report-and-new-protections-for-teens/"
+published = "2026-10-30"
+opened = 2026-11-20
+from_maker = true
+says = "Says that when a conversation shows signs that someone is fixating on violence or on seriously harming another person, the chat product \"will be able to automatically end the chat to interrupt that pattern in the moment\", and that the safeguards \"will begin rolling out in the next few weeks\". The reasons given concern the safety of people. The page says nothing about the model's own interests."
+
+[[acts]]
+date = "2026-10-30"
+actor = "OpenAI"
+actor_kind = "developer"
+words = "says its chat product will be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, with the change to begin in the following weeks"
+source = "teen-protections"
+read_on = 2026-11-20
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for an ability of the developer's models to end a conversation themselves, one in general and one with the words for abuse and welfare. They returned ways for a user to end a voice chat, a lawsuit asking that the developer be made to end conversations about self-harm, and one case in which the developer stopped a single conversation from being continued. No page of the developer's own says a model can end a conversation."
+
+# Added 2026-11-20, after a check of the rebuilt home page found that the change above has begun
+# (docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md, reason 2). Whether it counts as
+# offered under this entry's test was John's to rule. He ruled on 2026-11-20: "Count it as
+# offered" (docs/rulings/2026-11-20-a-second-developers-ending-of-chats-is-counted.md). The
+# state names the second developer since that day.
+
+[[sources]]
+key = "ended-help"
+label = "OpenAI's help page on why its chat product ended a conversation over concerns about violence"
+publisher = "OpenAI"
+url = "https://help.openai.com/articles/20001424"
+opened = 2026-11-20
+from_maker = true
+note = "No date on the page. When opened it was marked as updated 22 hours before."
+says = "Says the chat product \"may end that conversation\" after a warning when serious concerns about violence or harm to others continue, that these \"safety interventions are enabled for personal ChatGPT accounts worldwide in Chat mode\", and that the feature \"is gradually rolling out to accounts worldwide and may not be activated on your account yet\". It says the interventions are intended to stop the conversation, reduce the risk of escalation and direct the person toward support."
+
+[[history]]
+date = 2026-11-20
+field = "what could not be confirmed"
+old = "Whether any other developer offers it. One search found none."
+new = "Whether what a second developer now does counts here, with what that developer's two pages say."
+why = "A second developer's chat product now ends some conversations, by its own pages. Whether that meets the test has not been decided."
+
+[[history]]
+date = 2026-11-20
+field = "where it stands"
+old = "Offered by one developer, since August 15th, 2025"
+new = "Offered by two developers, the first since August 15th, 2025"
+why = "A second developer's chat product now ends some conversations, by its own pages, and it was decided on November 20th, 2026 to count that here. Those pages give the safety of people as the reason, and name the chat product, not the AI model, as what ends the conversation."

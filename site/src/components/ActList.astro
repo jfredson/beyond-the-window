@@ -1,0 +1,46 @@
+---
+// Every act in the records, newest first (added 2026-11-20 with the rebuilt home page). Read from the readings scripts/compute.py wrote; nothing is typed. Each item is
+// marked with its act's address and date so that scripts/check_site.py can compare the page
+// with the served file.
+// Without `named`, a developer's act is printed as "A developer ...", because on the home page
+// developers are named in the developers' reading and nowhere else. With `named`, on the page
+// that lists the acts, the actor is named, linked, and the source is given.
+import { readings, data, worldDate } from '../lib/data';
+
+interface Props {
+  named?: boolean;
+}
+const { named = false } = Astro.props;
+const acts = readings?.acts ?? [];
+const KIND = { developer: 'Developer', lawmaker: 'Law', court: 'Court', researchers: 'Researchers' };
+// Where a name leads: a developer's page from data/developers.toml, or the page an act gives
+// for an actor that is not a developer. Each name is linked at its first mention in the list.
+const urls = new Map<string, string | null>((readings?.developers.by_developer ?? []).map((d) => [d.name, d.url]));
+for (const a of acts) if (a.actor_url && !urls.has(a.actor)) urls.set(a.actor, a.actor_url);
+const seen = new Set<string>();
+---
+
+<ul class={`rb-acts ${named ? 'named' : ''}`}>
+  {acts.map((a) => {
+    const first = !seen.has(a.actor);
+    seen.add(a.actor);
+    const url = urls.get(a.actor);
+    return (
+      <li id={named ? a.id : undefined} data-act={a.id} data-date={a.date}>
+        <span class="when">{worldDate(a.date)}<br /><span class="kind">{KIND[a.actor_kind]}</span></span>
+        <span>
+          {named ? (
+            <Fragment><span class="actor" data-actor={a.actor_kind}>{first && url ? <a href={url} rel="noopener">{a.actor}</a> : a.actor}</span>{` ${a.words}.`}</Fragment>
+          ) : (
+            <Fragment>{a.actor_kind === 'developer' ? 'A developer' : first && url ? <a href={url} rel="noopener">{a.actor}</a> : a.actor}{` ${a.words}.`}</Fragment>
+          )}
+          {a.withdraws && <span class="dim"> This act takes something back.</span>}
+          <span class="from">
+            {named && <Fragment>Source: <a href={a.source.url} rel="noopener"><cite>{a.source.label}</cite></a>, read on {worldDate(a.read_on)}. </Fragment>}
+            Entry: <a href={`/list/${a.entry}/`}>{a.entry_name}</a>
+          </span>
+        </span>
+      </li>
+    );
+  })}
+</ul>

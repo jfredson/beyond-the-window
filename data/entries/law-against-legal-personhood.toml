@@ -148,3 +148,40 @@ added_to = 2026-11-19
 additions_checked = 2026-11-19
 corrected = 2026-11-19
 corrections_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2022"
+actor = "Idaho"
+actor_kind = "lawmaker"
+words = "adds a section to its code saying that artificial intelligence shall not be granted personhood in the state"
+source = "idaho"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2023-04-12"
+actor = "North Dakota"
+actor_kind = "lawmaker"
+words = "files a bill signed by its governor, under which \"person\" in the state's code does not include artificial intelligence"
+source = "north-dakota-overview"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2024-05-01"
+actor = "Utah"
+actor_kind = "lawmaker"
+words = "has a section of its code come into force saying a governmental entity may not grant legal personhood to artificial intelligence"
+source = "utah"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2026-04-23"
+actor = "Tennessee"
+actor_kind = "lawmaker"
+words = "has its governor sign a bill under which \"person\" in the state's code does not include artificial intelligence"
+source = "tennessee"
+read_on = 2026-11-20

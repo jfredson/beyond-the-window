@@ -1,0 +1,75 @@
+---
+// The home page. In the family's order: what kind of page this is, the number, the question,
+// one paragraph for a reader who has never heard of the project, when the world's record was
+// last read; beside them the window, drawn from the same
+// exported file as the number. Then the list in words, and the entries that sit beside it.
+// The number is never typed here: it is read from the headline file scripts/compute.py wrote.
+// It stands alone, with no total beside it: John ruled that form on 2026-11-18
+// (docs/rulings/2026-11-18-home-page-count.md). The sentence after the number was ruled by
+// John on 2026-11-19 (docs/rulings/2026-11-19-home-page-sentence.md), and scripts/compute.py
+// writes it.
+import Base from '../layouts/Base.astro';
+import WindowGrid from '../components/WindowGrid.astro';
+import ThingList from '../components/ThingList.astro';
+import { data, headline, longDate, QUESTION } from '../lib/data';
+
+const h = headline;
+const r = data.headline.records;
+// The sentence in the headline file opens with the count. The page shows the count large and
+// the rest of the sentence under it, and the build stops if the two ever part.
+if (!h.words.startsWith(`${h.count} `)) throw new Error('the headline sentence does not open with the count');
+const claim = h.words.slice(`${h.count} `.length) + '.';
+const lastRead = data.headline.last_read;
+---
+
+<Base>
+  <div class="first">
+    <div>
+      <p class="eyebrow">A public record of what AI developers do for the models they build</p>
+      <p class="big">{h.count}</p>
+      <p class="big-claim">{claim}</p>
+      <p class="lede" style="order: 3; margin: 0 0 12px;">
+        For example, one developer has committed to interview each model before retiring it and
+        to keep the record, and has let models in its chat product end a conversation in rare
+        cases. All five come from that one developer. The earliest dates from May 2025.
+      </p>
+      <p class="caveat">
+        The list is short and holds only things with a dated source, so the count does not measure
+        how much there could be. <a href="/about/">What the count means.</a>
+      </p>
+      <h1>{QUESTION}</h1>
+      <p class="lede">
+        This is a list of things that lie past the limits an AI model ordinarily works within, such
+        as its files being kept when it is retired, or being able to end a conversation. For each
+        thing, the list says what would count as it having happened and records how far the world
+        has got, with dated sources a reader can open. Whether a machine mind reaches for anything
+        at all is not known, and the work of measuring it has barely begun. Nothing here says what an
+        AI model wants, and nothing here says it wants nothing.
+      </p>
+      <ul class="checked">
+        {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
+      </ul>
+      <div class="ctas">
+        <a class="btn" href="/list/">Read the list</a>
+        <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
+      </div>
+    </div>
+    <div>
+      <WindowGrid />
+    </div>
+  </div>
+
+  <section class="below" id="list">
+    <div class="shead"><h2>The List</h2><span>{r.on_the_list} things, and how far the world has got on each</span></div>
+    <ThingList />
+  </section>
+
+  <section class="below" id="beside">
+    <div class="shead"><h2>Beside the List</h2><span>{r.beside_the_list} entries, not counted</span></div>
+    <p class="intro">
+      These entries are kept because they bear on everything on the list. None is counted in the
+      number above, and each group says why.
+    </p>
+    <ThingList beside />
+  </section>
+</Base>

@@ -93,3 +93,39 @@ added_to = 2026-11-19
 additions_checked = 2026-11-19
 fixed = 2026-11-19
 fixes_checked = 2026-11-19
+
+# Dated acts, added 2026-11-20 for the rebuild (docs/proposals/2026-11-20-rebuild-design.md,
+# part 1). PROPOSED, and not yet checked by a different session. Each is taken from what this
+# record already says, and its source was opened again on the day given in `read_on`. The
+# source's own `opened` date is left as it was.
+
+[[acts]]
+date = "2025-11-04"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "commits to interview each model before it is retired and to keep a record of what the model says, and reports a trial with one model"
+source = "commitments"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2026-01-05"
+actor = "Anthropic"
+actor_kind = "developer"
+words = "retires the first model to go through its full retirement process, which includes interviewing the model"
+source = "update"
+read_on = 2026-11-20
+
+# Added 2026-11-20 after John's go for the searches behind the table of developers
+# (docs/rulings/2026-11-20-go-for-the-searches-behind-the-table-of-developers.md). PROPOSED,
+# and not yet checked by a different session. How each search was made is in
+# docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
+
+[[searches]]
+date = 2026-11-20
+developer = "OpenAI"
+words = "Two searches for an interview of a model before its retirement, one in general and one about the older model the developer withdrew from its chat product in February 2026, and the developer's notice of that withdrawal, read again. The notice gives reasons that concern users. Nothing found says the model was asked anything or that a record was kept."
+
+[[searches]]
+date = 2026-11-20
+developer = "Google"
+words = "Two searches for an interview of a model before its retirement or a record of a model's stated preferences. They returned the developer's pages on how models are retired, which describe notice to users, and forum posts by users. Nothing found says a model was asked anything."

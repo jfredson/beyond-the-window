@@ -47,6 +47,52 @@ export type Entry = {
   history: { date: string; field: string; old: string; new: string; why: string }[];
   sources: Source[];
 };
+// The readings of the rebuilt home page, a draft (PROPOSED 2026-11-20,
+// docs/proposals/2026-11-20-rebuild-design.md). Worked out by scripts/compute.py and read from
+// the same headline file as the count. No published page reads them.
+export type SourceRef = { key: string; label: string; publisher: string; url: string; opened: string };
+export type Act = {
+  id: string;
+  entry: string;
+  entry_name: string;
+  date: string; // a day, a month or a year, as the source gives it
+  actor: string;
+  actor_kind: 'developer' | 'lawmaker' | 'court' | 'researchers';
+  words: string;
+  withdraws: boolean;
+  about: string[]; // for an act by someone other than a developer: whose models it is about
+  actor_url: string | null; // the public page of an actor that is not a developer
+  source: SourceRef;
+  read_on: string;
+};
+export type CellKind = 'offered' | 'unruled' | 'not_counted' | 'taken_back' | 'nothing_found' | 'not_searched';
+export type Cell = { developer: string; kind: CellKind; date: string | null; words?: string };
+export type MeasureReading = {
+  entry: string;
+  date: string;
+  one_source: boolean;
+  measures: { value: number; unit: string; words: string; entry: string; source: SourceRef; read_on: string }[];
+};
+export type Readings = {
+  status: string;
+  developers: {
+    covered: string[];
+    things: number;
+    cells: number;
+    offering: number;
+    counts: Record<CellKind, number>;
+    by_developer: ({ name: string; url: string | null } & Record<CellKind, number>)[];
+    rows: { entry: string; name: string; cells: Cell[] }[];
+  };
+  law: {
+    against: { entry: string; count: number; places: { name: string; date: string }[]; first: string | null; latest: string | null } | null;
+    protecting: { entry: string; count: number; places: string[]; met: boolean; looked_on: string } | null;
+  };
+  public: MeasureReading | null;
+  researchers: MeasureReading | null;
+  latest: Act | null;
+  acts: Act[];
+};
 export type Group = { name: string; meaning: string; beside: boolean; entries: string[] };
 export type Window = {
   exported_on: string;
@@ -60,6 +106,7 @@ export type Window = {
     // is records.on_the_list, a plain fact about the records, never shown beside the count.
     headline: { count: number; words: string; offered_ids: string[] };
     records: { total: number; on_the_list: number; beside_the_list: number; first_pass: number; reviewed: number; left_out_unverified: number; constructed: boolean };
+    readings?: Readings | null;
   };
   groups: Group[];
   entries: Entry[];
@@ -67,6 +114,7 @@ export type Window = {
 
 export const data = windowJson as Window;
 export const headline = data.headline.headline;
+export const readings = data.headline.readings ?? null;
 export const entryById = new Map(data.entries.map((e) => [e.id, e]));
 // The groups on the list, and the one group that sits beside it.
 export const listGroups = data.groups.filter((g) => !g.beside);
@@ -87,6 +135,19 @@ export function worldDate(text: string): string {
   const ym = text.match(/^(\d{4})-(\d{2})$/);
   if (ym) return `${MONTHS[Number(ym[2]) - 1]} ${ym[1]}`;
   return text;
+}
+
+// A count a reader meets in a sentence: a word up to twelve, a figure after that.
+const COUNT_WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+export function countWord(n: number): string {
+  return n >= 0 && n < COUNT_WORDS.length ? COUNT_WORDS[n] : String(n);
+}
+
+// A date placed at its first day, so that acts dated to a day, a month or a year can be put in
+// order and given to a feed.
+export function startOf(text: string): string {
+  const [y, m = '01', d = '01'] = text.split('-');
+  return `${y}-${m}-${d}`;
 }
 
 export function sourceOf(entry: Entry, key: string): Source {
