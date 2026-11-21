@@ -20,7 +20,7 @@ import WindowGrid from './WindowGrid.astro';
 import ThingList from './ThingList.astro';
 import ActList from './ActList.astro';
 import '../styles/rebuild.css';
-import { data, headline, readings, entryById, longDate, worldDate, countWord, QUESTION } from '../lib/data';
+import { data, headline, readings, entryById, longDate, worldDate, countWord, QUESTION, fractionHistory } from '../lib/data';
 
 
 if (!readings) throw new Error('the headline file holds no readings; run scripts/compute.py');
@@ -62,6 +62,38 @@ const byCount = [...readings!.developers.by_developer].sort((a, b) => b.offered 
 if (byCount.length > ORDINALS.length) throw new Error('the breakdown is written for five developers at most');
 if (byCount[0].offered > h.count) throw new Error('a developer does more things than are counted');
 
+// PROPOSED 2026-11-21, not ruled (docs/proposals/2026-11-21-headline-fraction.md): the count
+// beside the number of things on the List, "5 of 8", in The Upgrade Tree's form ("28 of 35",
+// upgrade-tree/site/src/pages/index.astro: the second number smaller and quieter, inside the
+// same large type). This would replace John's ruling of 2026-11-18 of a count with no total
+// (docs/rulings/2026-11-18-home-page-count.md), which stands until he rules. Both numbers are read
+// from the headline file; the total is records.on_the_list, worked out by scripts/compute.py.
+const total = r.on_the_list;
+// The sentence beside the number. The ruled sentence ("things a developer can do in how it
+// treats the AI models it builds are done, or publicly committed to, by at least one developer
+// today") is untrue after "5 of 8": three of the 8 are not things a developer does in how it
+// treats its models (two measure what a model can do, one is a lawmaker's). So two alternatives
+// are drawn, and neither is chosen: HEADLINE_SENTENCE=b at build time shows the second.
+const SENTENCE = (import.meta.env.HEADLINE_SENTENCE ?? process.env.HEADLINE_SENTENCE) === 'b' ? 'b' : 'a';
+// The thing on the List that only a lawmaker can do, if it is on the List.
+const lawThing = law.protecting && entryById.get(law.protecting.entry);
+if (!lawThing || lawThing.beside) throw new Error('the line on the lawmaker\'s thing is written for a thing on the List');
+// What moved between two points of the history, in words, from the entries as they stand.
+const moved = (p: typeof fractionHistory[number], before: typeof fractionHistory[number] | undefined) => {
+  if (!before) return 'The first count.';
+  const name = (id: string) => entryById.get(id)?.name ?? id;
+  const parts: string[] = [];
+  let besideMoves = 0;
+  for (const id of p.left) {
+    if (entryById.get(id)?.beside) { besideMoves += 1; parts.push(`"${name(id)}" was moved beside the List, so it left both numbers.`); }
+    else parts.push(`"${name(id)}" stopped being counted.`);
+  }
+  for (const id of p.joined) parts.push(`"${name(id)}" began to be counted.`);
+  const rest = p.total - before.total + besideMoves;
+  if (rest > 0) parts.push(`${cap(countWord(rest))} ${rest === 1 ? 'thing was' : 'things were'} added to the List.`);
+  if (rest < 0) parts.push(`${cap(countWord(-rest))} ${rest === -1 ? 'thing left' : 'things left'} the List.`);
+  return parts.join(' ');
+};
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
 const cellWords = (kind: string, date: string | null, words?: string, by?: boolean) =>
@@ -83,8 +115,10 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
   </div>
   <div class="rb-first">
   <div class="rb-top hl-top">
-    <p class="big-number"><span data-figure="headline.count">{h.count}</span></p>
-    <p class="big-claim">things a developer can do in how it treats the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
+    <p class="big-number"><span data-figure="headline.count">{h.count}</span><small>of <span data-figure="records.on_the_list">{total}</span></small></p>
+    {SENTENCE === 'a'
+      ? <p class="big-claim">things on the List are done, or publicly committed to, by at least one developer today. Each of the {h.count} is something a developer can do in how it treats the AI models it builds.</p>
+      : <p class="big-claim">things found so far that an AI model might reach for are done, or publicly committed to, by at least one developer today.</p>}
     <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
     <div class="stage-row" aria-label={`How many of the ${h.count} each developer this record covers does`}>
       {byCount.map((d, i) => (
@@ -97,6 +131,20 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
               : `by ${ORDINALS[i]}: ${d.offered === 1 ? 'one' : countWord(d.offered)} of the same ${h.count}`}</span>
         </div>
       ))}
+    </div>
+    <div class="hl-known">
+      <p class="hl-law">One of the <span data-figure="records.on_the_list">{total}</span> is for lawmakers to do, not developers: <a href={`/list/${lawThing.id}/`}>{lawThing.name.charAt(0).toLowerCase() + lawThing.name.slice(1)}</a>. It is in the <span data-figure="records.on_the_list">{total}</span> because it is on the List, and it cannot be among the <span data-figure="headline.count">{h.count}</span>, which count only what developers do.</p>
+      <p class="hl-history-head">Both numbers, each time either has changed</p>
+      <ol class="hl-history" data-fraction-history>
+        {fractionHistory.map((p, i) => (
+          <li data-date={p.date} data-count={p.count} data-total={p.total}>
+            <span class="hl-when">{longDate(p.date)}</span>
+            <span class="hl-frac">{p.count} of {p.total}</span>
+            <span class="hl-what">{moved(p, fractionHistory[i - 1])}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="hl-grow">The <span data-figure="records.on_the_list">{total}</span> counts the things found so far that an AI model might reach for and that a dated public record can settle. It will grow as more are found and given a test. How a new thing joins the List is not settled yet.</p>
     </div>
     <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
     <ul class="checked">

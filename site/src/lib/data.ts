@@ -2,6 +2,11 @@
 // helpers the pages share. Nothing on the site reads the records themselves, and no page works
 // a number out: the count comes from the headline file that scripts/compute.py wrote.
 import windowJson from '../data/window.json';
+// The headline file itself, for its history only (PROPOSED 2026-11-21,
+// docs/proposals/2026-11-21-headline-fraction.md). The export does not carry the history into the
+// file above, so the page reads it from the file scripts/compute.py wrote, the same file the
+// site serves at /data/headline.json and the site check compares the page with.
+import headlineFile from '../../../data/headline.json';
 
 export const SITE_NAME = 'Beyond the Window';
 // The question as John ruled it on 2026-11-17 (docs/rulings/2026-11-17-kickoff-decisions.md).
@@ -118,6 +123,43 @@ export const data = windowJson as Window;
 export const headline = data.headline.headline;
 export const readings = data.headline.readings ?? null;
 export const entryById = new Map(data.entries.map((e) => [e.id, e]));
+
+// PROPOSED 2026-11-21 (docs/proposals/2026-11-21-headline-fraction.md): the count beside the
+// number of things on the List, and how both have moved. A point is kept for the first row of
+// the headline file's history and for every later row in which the count or the number of things
+// on the List differs from the point before it. Rows written before 2026-11-18 call the number on
+// the List "total" (scripts/compute.py, write_headline). The history is only ever added to, so
+// nothing here is typed: each point, and what moved between two points, is read from the file.
+type HistoryRow = { computed_on: string; count: number; on_the_list?: number; total?: number; offered_ids: string[] };
+export type FractionPoint = {
+  date: string;
+  count: number;
+  total: number;
+  // entries that stopped being counted, or began to be, since the point before
+  left: string[];
+  joined: string[];
+};
+export const fractionHistory: FractionPoint[] = (() => {
+  const points: FractionPoint[] = [];
+  let ids: string[] = [];
+  for (const row of (headlineFile as { history: HistoryRow[] }).history) {
+    const total = row.on_the_list ?? row.total;
+    if (typeof total !== 'number') throw new Error(`a history row of ${row.computed_on} holds no number of things on the list`);
+    const last = points[points.length - 1];
+    if (!last || last.count !== row.count || last.total !== total) {
+      points.push({
+        date: row.computed_on, count: row.count, total,
+        left: last ? ids.filter((id) => !row.offered_ids.includes(id)) : [],
+        joined: last ? row.offered_ids.filter((id) => !ids.includes(id)) : [],
+      });
+    }
+    ids = row.offered_ids;
+  }
+  const now = points[points.length - 1];
+  if (!now || now.count !== data.headline.headline.count || now.total !== data.headline.records.on_the_list)
+    throw new Error('the last point of the history is not the count and the number of things on the list today; run scripts/compute.py');
+  return points;
+})();
 // The groups on the list, and the one group that sits beside it.
 export const listGroups = data.groups.filter((g) => !g.beside);
 export const besideGroups = data.groups.filter((g) => g.beside);

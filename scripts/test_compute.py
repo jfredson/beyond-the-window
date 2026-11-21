@@ -1015,5 +1015,85 @@ class HomeHeadline(unittest.TestCase):
         self.assertTrue(s.headline_problems(page, 5))
 
 
+
+class HomeFraction(unittest.TestCase):
+    """Rule 7d as PROPOSED on 2026-11-21 (docs/proposals/2026-11-21-headline-fraction.md): the
+    count, then "of" and the number of things on the List; the List on the page holds that many
+    things; and the list of how both moved is read from the served file's history."""
+    BIG = ('<p class="big-number"><span data-figure="headline.count">5</span>'
+           '<small>of <span data-figure="records.on_the_list">8</span></small></p>')
+    HISTORY = [
+        {"computed_on": "2026-11-17", "count": 6, "total": 9, "offered_ids": []},
+        {"computed_on": "2026-11-18", "count": 6, "on_the_list": 9, "offered_ids": [], "words": "x"},
+        {"computed_on": "2026-11-18", "count": 5, "on_the_list": 8, "offered_ids": []},
+        {"computed_on": "2026-11-19", "count": 5, "on_the_list": 8, "offered_ids": [], "words": "y"},
+    ]
+    ROWS = ('<ol class="hl-history" data-fraction-history>'
+            '<li data-date="2026-11-17" data-count="6" data-total="9">November 17th, 2026 6 of 9</li>'
+            '<li data-date="2026-11-18" data-count="5" data-total="8">November 18th, 2026 5 of 8</li></ol>')
+    LIST = '<section class="below" id="list"><ul>' + "<li>a thing</li>" * 8 + "</ul></section>"
+
+    def page(self) -> str:
+        return HomeHeadline.GOOD.replace(
+            '<p class="big-number"><span data-figure="headline.count">5</span></p>', self.BIG
+        ).replace("</body>", self.ROWS + self.LIST + "</body>")
+
+    def known(self, page: str, count=5, total=8, history=None) -> list[str]:
+        return s.fraction_known_problems(page, count, total, self.HISTORY if history is None else history)
+
+    def test_the_fraction_with_the_count_first_passes(self):
+        self.assertEqual(s.headline_problems(self.page(), 5, 8), [])
+        self.assertEqual(self.known(self.page()), [])
+
+    def test_the_count_alone_is_refused_once_a_total_is_served(self):
+        self.assertTrue(s.headline_problems(HomeHeadline.GOOD, 5, 8))
+
+    def test_a_total_that_is_not_the_served_total_is_refused(self):
+        self.assertTrue(s.headline_problems(self.page(), 5, 9))
+        page = self.page().replace('on_the_list">8<', 'on_the_list">9<')
+        self.assertTrue(s.headline_problems(page, 5, 8))
+
+    def test_the_total_first_is_refused(self):
+        page = self.page().replace(self.BIG, '<p class="big-number"><span data-figure="records.on_the_list">8</span>'
+                                   '<small>of <span data-figure="headline.count">5</span></small></p>')
+        self.assertTrue(s.headline_problems(page, 5, 8))
+
+    def test_an_unmarked_total_is_refused(self):
+        page = self.page().replace(' data-figure="records.on_the_list"', "")
+        self.assertTrue(s.headline_problems(page, 5, 8))
+
+    def test_the_total_must_be_the_number_of_things_the_list_shows(self):
+        page = self.page().replace("<li>a thing</li>", "", 1)
+        self.assertTrue(any("the List on the page shows 7 things" in m for m in self.known(page)))
+
+    def test_the_history_must_be_the_points_in_the_served_file(self):
+        typed = self.page().replace('data-count="6" data-total="9"', 'data-count="6" data-total="10"')
+        self.assertTrue(self.known(typed))
+        dropped = self.page().replace('<li data-date="2026-11-17" data-count="6" data-total="9">November 17th, 2026 6 of 9</li>', "")
+        self.assertTrue(self.known(dropped))
+        reworded = self.page().replace("November 17th, 2026 6 of 9", "November 17th, 2026 six of ten")
+        self.assertTrue(self.known(reworded))
+        self.assertTrue(self.known(self.page().replace("data-fraction-history", "")))
+
+    def test_the_history_must_end_at_today(self):
+        self.assertTrue(self.known(self.page(), count=4, total=8))
+
+    def test_a_row_where_neither_number_moved_is_not_a_point(self):
+        self.assertEqual(s.history_points(self.HISTORY),
+                         [("2026-11-17", 6, 9), ("2026-11-18", 5, 8)])
+
+    def test_the_share_is_still_refused_outside_the_two_places(self):
+        with tempfile.TemporaryDirectory() as d:
+            dist = Path(d)
+            (dist / "index.html").write_text(self.page(), encoding="utf-8")
+            self.assertEqual(s.fraction_problems(dist, [dist / "index.html"], 5, 8), [])
+            (dist / "index.html").write_text(self.page().replace("</body>", "<p>5 of 8 things.</p></body>"),
+                                             encoding="utf-8")
+            self.assertTrue(s.fraction_problems(dist, [dist / "index.html"], 5, 8))
+            (dist / "about").mkdir()
+            (dist / "about" / "index.html").write_text(self.ROWS, encoding="utf-8")
+            self.assertTrue(s.fraction_problems(dist, [dist / "about" / "index.html"], 5, 8))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

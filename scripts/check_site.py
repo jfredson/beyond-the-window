@@ -79,6 +79,16 @@ What it refuses (docs/first-version-choices.md, choice 18):
       on a computer, so that a reading stood above the count on the screen while the source order
       still put the count first. The check cannot measure where the browser draws things; it
       refuses the page's structure that allows it.
+      PROPOSED on 2026-11-21 and not ruled (docs/proposals/2026-11-21-headline-fraction.md): the
+      large type holds the count and then, smaller, "of" and the number of things on the List, as
+      The Upgrade Tree shows "28 of 35". The count still comes first and is still the page's first
+      figure. The second number is marked records.on_the_list and must equal that figure in the
+      served file, which must in turn equal the number of things the List on the same page shows
+      (the items in the section marked id="list"). A count standing alone, a total that differs,
+      or a total standing first is refused. The list of how both numbers have moved (the list
+      marked data-fraction-history) must hold exactly the points read from the served file's
+      history: its first row, and every later row in which the count or the number on the List
+      changed, each with its date, and the last one today's figures.
 9. The first person ("I", "my", "mine", "me", "we", "our", "ours", "us") anywhere but the
    About page's opening block on who is asking (the block marked id="who"), which is in John's
    own first person. The rest of the site stays impersonal. The notice that
@@ -88,6 +98,10 @@ What it refuses (docs/first-version-choices.md, choice 18):
 8. The count written as a share of the things on the list ("6 of 9", "six of nine") on any
    page, or a total in the served headline. John ruled on 2026-11-18 that the count stands
    with no total beside it (docs/rulings/2026-11-18-home-page-count.md).
+   PROPOSED on 2026-11-21 and not ruled, with rule 7d's fraction: on the home page the large
+   type and the list of how both numbers have moved are left out of this search, because rule
+   7d checks each of their figures against the served file. Everywhere else, including the rest
+   of the home page, the share is still refused. The served headline still holds no total.
 10. A phrase saying that an AI model, or a working session of one, drafted or checked the site.
    John ruled on 2026-11-19 that public pages do not mention AI help in building the project
    (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md). The served headline
@@ -245,8 +259,66 @@ def as_number(text: str) -> float | None:
 BIG_NUMBER = r'(?is)<p\b[^>]*\bclass="big-number"[^>]*>(.*?)</p>'
 
 
-def headline_problems(raw: str, count: int) -> list[str]:
-    """Rule 7d: the home page's first figure is the computed count, alone in the large type."""
+FRACTION_HISTORY = r'(?is)<ol\b[^>]*\bdata-fraction-history\b[^>]*>.*?</ol>'
+LIST_SECTION = r'(?is)<section\b[^>]*\bid="list"[^>]*>.*?</section>'
+
+
+def history_points(history: list[dict]) -> list[tuple[str, int, int]]:
+    """The points the home page's list of how both numbers have moved must show, read from the
+    served file's history: the first row, and every later row in which the count or the number of
+    things on the list differs from the point before. Rows written before 2026-11-18 call that
+    number "total" (scripts/compute.py, write_headline)."""
+    points: list[tuple[str, int, int]] = []
+    for row in history:
+        total = row.get("on_the_list", row.get("total"))
+        if not points or (points[-1][1], points[-1][2]) != (row["count"], total):
+            points.append((row["computed_on"], row["count"], total))
+    return points
+
+
+def fraction_known_problems(raw: str, count: int, on_the_list: int,
+                            history: list[dict]) -> list[str]:
+    """Rule 7d, as proposed on 2026-11-21: the second number of the fraction is the number of
+    things the List on the page shows, and the list of how both moved is read from the file."""
+    rel = HOME_PAGE
+    problems = []
+    lists = list(re.finditer(LIST_SECTION, raw))
+    shown_things = len(re.findall(r"(?i)<li\b", lists[0].group(0))) if len(lists) == 1 else None
+    if shown_things is None:
+        problems.append(f"{rel}: the page should hold one List (a section marked id=\"list\"), "
+                        f"and {len(lists)} were found")
+    elif shown_things != on_the_list:
+        problems.append(f"{rel}: the List on the page shows {shown_things} things and the served "
+                        f"file says {on_the_list} are on it")
+    blocks = list(re.finditer(FRACTION_HISTORY, raw))
+    if len(blocks) != 1:
+        return problems + [f"{rel}: the page should hold one list of how both numbers have moved "
+                           f"(marked data-fraction-history), and {len(blocks)} were found"]
+    got = []
+    for li in re.findall(r"(?is)<li\b[^>]*>", blocks[0].group(0)):
+        attr = dict(re.findall(r'\bdata-(date|count|total)="([^"]*)"', li))
+        try:
+            got.append((attr.get("date", ""), int(attr.get("count", "")), int(attr.get("total", ""))))
+        except ValueError:
+            got.append((attr.get("date", ""), -1, -1))
+    want = history_points(history)
+    if got != want:
+        problems.append(f"{rel}: the list of how both numbers have moved does not hold the points "
+                        f"in the served file's history (listed {got}, served {want})")
+    for (date, n, m), li in zip(got, re.findall(r"(?is)<li\b[^>]*>(.*?)</li>", blocks[0].group(0))):
+        if not re.search(rf"\b{n} of {m}\b", " ".join(html.unescape(re.sub(r"<[^>]+>", " ", li)).split())):
+            problems.append(f"{rel}: the row of {date} in the list of how both numbers have moved "
+                            f"does not read \"{n} of {m}\"")
+    if not want or (want[-1][1], want[-1][2]) != (count, on_the_list):
+        problems.append(f"{rel}: the served file's history does not end at today's count and "
+                        f"number of things on the list")
+    return problems
+
+
+def headline_problems(raw: str, count: int, total: int | None = None) -> list[str]:
+    """Rule 7d: the home page's first figure is the computed count, first in the large type.
+    With `total` (as proposed on 2026-11-21), the large type must read "<count> of <total>", the
+    total smaller and marked; without it, the count stands alone, as ruled on 2026-11-18."""
     rel = HOME_PAGE
     body = raw.split("<body", 1)[-1]
     bigs = list(re.finditer(BIG_NUMBER, body))
@@ -255,14 +327,22 @@ def headline_problems(raw: str, count: int) -> list[str]:
                 f"{len(bigs)} were found"]
     big = bigs[0]
     problems = []
-    if not re.fullmatch(r'(?is)\s*<span\b[^>]*\bdata-figure="headline\.count"[^>]*>[^<]*</span>\s*',
-                        big.group(1)):
-        problems.append(f"{rel}: the number in the large type is not marked as the count, or "
-                        f"something stands beside it")
-    inner = " ".join(html.unescape(re.sub(r"<[^>]+>", "", big.group(1))).split())
-    if inner != str(count):
-        problems.append(f"{rel}: the large type reads \"{inner}\" and the count in "
-                        f"/data/headline.json is {count}, alone")
+    alone = r'\s*<span\b[^>]*\bdata-figure="headline\.count"[^>]*>[^<]*</span>\s*'
+    if total is None:
+        form, want = alone, str(count)
+    else:
+        form = (alone + r'<small>\s*of\s*<span\b[^>]*\bdata-figure="records\.on_the_list"[^>]*>'
+                r'[^<]*</span>\s*</small>\s*')
+        want = f"{count} of {total}"
+    if not re.fullmatch(r"(?is)" + form, big.group(1)):
+        problems.append(f"{rel}: the large type is not the count" + (
+            ", alone" if total is None else
+            " followed by \"of\" and the number of things on the list, each marked") +
+            ", or something else stands in it")
+    inner = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", big.group(1))).split())
+    if inner != want:
+        problems.append(f"{rel}: the large type reads \"{inner}\" and /data/headline.json "
+                        f"gives \"{want}\"")
     first_figure = re.search(r'\bdata-figure="([^"]+)"', body)
     if not first_figure or first_figure.group(1) != "headline.count":
         problems.append(f"{rel}: the first figure on the page is not the count "
@@ -287,7 +367,8 @@ def headline_problems(raw: str, count: int) -> list[str]:
     return problems
 
 
-def rebuilt_problems(dist: Path, rd: dict | None, count: int | None = None) -> list[str]:
+def rebuilt_problems(dist: Path, rd: dict | None, count: int | None = None,
+                     served: dict | None = None) -> list[str]:
     """Rule 7, parts a and b, and the half of rule 12 that asks for every covered developer."""
     problems: list[str] = []
     homes = [HOME_PAGE] if (dist / "index.html").is_file() else []
@@ -311,6 +392,9 @@ def rebuilt_problems(dist: Path, rd: dict | None, count: int | None = None) -> l
     want_figures = expected_figures(rd)
     if count is not None:
         want_figures["headline.count"] = count
+    total = served["records"]["on_the_list"] if served else None
+    if total is not None:
+        want_figures["records.on_the_list"] = total
     want_acts = [(a["id"], a["date"]) for a in rd["acts"]]
     want_cells = {(row["entry"], c["developer"]): (c["kind"], c["date"] or "")
                   for row in rd["developers"]["rows"] for c in row["cells"]}
@@ -336,9 +420,12 @@ def rebuilt_problems(dist: Path, rd: dict | None, count: int | None = None) -> l
 
     for rel in homes:
         raw = (dist / "index.html").read_text(encoding="utf-8")
-        figures(rel, raw, REQUIRED_FIGURES + (["headline.count"] if count is not None else []))
+        figures(rel, raw, REQUIRED_FIGURES + (["headline.count"] if count is not None else [])
+                + (["records.on_the_list"] if total is not None else []))
         if count is not None:
-            problems += headline_problems(raw, count)
+            problems += headline_problems(raw, count, total)
+            if total is not None and served is not None:
+                problems += fraction_known_problems(raw, count, total, served.get("history", []))
         acts(rel, raw)
         got_cells = {}
         for entry, row in re.findall(r'(?is)<tr\b[^>]*\bdata-entry="([^"]+)"[^>]*>(.*?)</tr>', raw):
@@ -406,7 +493,11 @@ def fraction_problems(dist: Path, pages: list[Path], count: int, on_the_list: in
     found = []
     for page in pages:
         rel = "/" + str(page.relative_to(dist)).replace("index.html", "")
-        text = " ".join(visible_text(page.read_text(encoding="utf-8"), keep_cites=False).split())
+        raw = page.read_text(encoding="utf-8")
+        if rel == HOME_PAGE:  # rule 7d checks these two places figure by figure (proposed)
+            raw = re.sub(BIG_NUMBER, " ", raw, count=1)
+            raw = re.sub(FRACTION_HISTORY, " ", raw, count=1)
+        text = " ".join(visible_text(raw, keep_cites=False).split())
         for m in re.finditer(pattern, text, re.I):
             snippet = text[max(0, m.start() - 40):m.end() + 40]
             found.append(f"{rel}: the count written as a share of the list: \"...{snippet}...\"")
@@ -517,6 +608,7 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     served = dist / "data" / "headline.json"
     home = dist / "index.html"
     count = None
+    served_file_data = None
     if not served.is_file():
         problems.append("/data/headline.json is not served")
     elif home.is_file():
@@ -535,7 +627,8 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
             problems.append("/data/headline.json: the headline holds a total beside the count")
         problems += fraction_problems(dist, pages, h["count"], file["records"]["on_the_list"])
         count = h.get("count")
-    problems += rebuilt_problems(dist, readings, count)
+        served_file_data = file
+    problems += rebuilt_problems(dist, readings, count, served_file_data)
     return problems, outside
 
 
