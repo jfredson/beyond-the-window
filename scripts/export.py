@@ -46,7 +46,10 @@ EVIDENCE_HEADINGS = {
 CAUTION_HEADINGS = {
     "attribution": "If an AI system has no wants, and is treated as if it had",
     "unnoticed": "If an AI system has wants, and they go unnoticed",
-    "safety": "If an AI system has wants, and they put people at risk",
+    # Reworded by John's ruling of 2026-11-20 ("Yes, that wording",
+    # docs/rulings/2026-11-20-third-caution-heading-reworded.md). Until then it read
+    # "If an AI system has wants, and they put people at risk".
+    "safety": "If an AI system puts people at risk, whether or not it has wants",
 }
 # What an entry page prints under a caution that holds nothing. Both sentences are a session's
 # draft of 2026-11-19 and are PROPOSED: the rulings of that day say what each must tell the

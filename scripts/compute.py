@@ -181,7 +181,8 @@ EVIDENCE_KINDS = ["measured", "checked-report", "choice", "statement"]
 # Three cautions on every entry (ruled by John 2026-11-18, docs/rulings/2026-11-18-a-third-caution.md):
 #   attribution: an AI system has no wants, and is treated as if it had;
 #   unnoticed:   an AI system has wants, and they go unnoticed;
-#   safety:      an AI system has wants, and they put people at risk.
+#   safety:      an AI system puts people at risk, whether or not it has wants (reworded by
+#                John's ruling of 2026-11-20; until then "has wants, and they put people at risk").
 # The names never appear on a page. The headings are in scripts/export.py.
 # The order here is the order an entry page shows them in. John ruled it on 2026-11-19
 # (docs/rulings/2026-11-19-order-of-the-three-cautions.md, "Your headings' order"). Until
