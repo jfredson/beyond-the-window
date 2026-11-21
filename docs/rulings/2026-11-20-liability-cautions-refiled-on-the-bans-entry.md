@@ -74,6 +74,26 @@ Under the third heading:
   could help AI systems, or the companies that make them, gain power through ownership and
   voting." (source `too-early`)
 
+## A third ruling the same day: the count on the About page moves
+
+The writing session stopped again before committing. Filing two cautions under the first
+heading changes a sentence on the About page from "Of the 16 items recorded under the first
+caution, 9 come from two essays by the head of Microsoft AI" to 9 of 18. A guard in the build,
+written on 2026-11-19, refuses to build once that writer's essays are half or less of what
+stands under the first heading, so that the page cannot go on naming him as the main source
+after the records stop showing it. Nine of 18 is exactly half. The master session had wrongly
+told the writing session that no count would move.
+
+The session put two ways forward to John: let the count move to 9 of 18 and loosen the guard to
+stop only below half, or file only one of the two cautions under the first heading (9 of 17),
+which departs from the ruled filing. It recommended the first, on the ground that the count
+moves because the record became more accurate. The question was "Let the About page's count
+move from 9 of 16 to 9 of 18?" John: "Yes, 9 of 18". **Decided by: mixed.**
+
+**What is ruled.** The About page's sentence reads 9 of 18, and the guard stops the build only
+when the share is below half. If it falls below half, the sentence goes back to John for
+rewording.
+
 ## Not covered by this ruling
 
 Any other caution on any entry, the three headings' wording, and the reader's other findings.
