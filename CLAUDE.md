@@ -125,6 +125,12 @@ So:
 
 7. **Corrections are public.** Once there is anything public, every correction is dated and
    stays visible.
+   *Narrowed by John's ruling of 2026-11-20 ("I don't think we need to keep a changelog of
+   wording updates"; decided by: John;
+   `docs/rulings/2026-11-20-no-changelog-of-wording-updates.md`). A change of wording gets no
+   public note, on a page or in the changelog. A correction of fact (a wrong date, number,
+   name, source or count) is still dated and stays visible. Where the line falls is the
+   session's reading, set out in that file.*
 
 ## Carried over from the family
 
