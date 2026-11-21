@@ -1,7 +1,7 @@
 id = "kept-files-of-retired-models"
 name = "A developer promises in public to keep the files of every model it retires"
 description = "An AI model is, physically, a very large file of numbers produced by training. When a developer withdraws a model from service it can delete that file or keep it. A kept file could be run again later, and a deleted one cannot. This entry tracks whether any developer has promised in public to keep the files."
-group = "Being kept"
+group = "Kept after retirement"
 test = "A developer of leading AI models has published a dated commitment to keep the files of all its publicly released models after they are withdrawn, for a stated minimum time."
 settled_by = "The developer's own dated policy page. A press report of the page does not settle it."
 progress_kind = "political"

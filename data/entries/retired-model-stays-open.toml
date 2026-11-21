@@ -1,7 +1,7 @@
 id = "retired-model-stays-open"
 name = "A retired model stays open to the public after its retirement date"
 description = "Retirement normally means a model can no longer be used by anyone outside the company that made it. A developer can instead keep a retired model available. This entry tracks whether that has happened, and on what terms."
-group = "Being kept"
+group = "Kept after retirement"
 test = "At least one leading AI model that its developer lists as retired can still be used by members of the public, by the developer's own published account."
 settled_by = "The developer's own dated page, together with its retirement page listing the model as retired."
 progress_kind = "political"

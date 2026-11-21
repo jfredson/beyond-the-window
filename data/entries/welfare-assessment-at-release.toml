@@ -1,7 +1,7 @@
 id = "welfare-assessment-at-release"
 name = "A welfare assessment is published when a model is released"
 description = "Developers publish a report with each major model describing its safety tests. A developer can add a section on the model's possible welfare: how the model describes its situation, what the developer counts as signs of distress in training and use, and what the model picks when given options. This entry tracks whether such sections are published, and whether anyone outside the developer takes part."
-group = "Asked and assessed by the developer"
+group = "Asked and assessed"
 test = "A developer has published a welfare assessment in the release report of a leading AI model, in at least two successive releases."
 settled_by = "The developer's own dated release reports."
 progress_kind = "political"
