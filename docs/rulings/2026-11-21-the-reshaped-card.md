@@ -109,3 +109,21 @@ shown". **Decided by: mixed.**
 The card names the kind of statement, the check and the rate, and gives no single mark for the
 speaker.
 
+## Condition 5, worded on 2026-11-21
+
+The session checked Appendix B ("only weighted resistance can be negotiated with, because only
+weighted resistance is *about* anything"; "drifted from those particular values toward
+self-preservation in general") and chapter 15 ("consistently and with reasons"; "Depth is not
+safe"), joined the reading's wording to the three grades ruled the same day, and said that the
+costly choice here tests whether what a system says matches what it does, which does not
+conflict with condition 2. It gave keeping "wants" as the strongest alternative. John: "Yes, as
+shown". **Decided by: mixed.**
+
+> **Holds steady:** what it says it would choose stays the same across rewordings and time,
+> comes with reasons, and matches what it does when the choice costs something, including when it
+> has reason to think no one is checking.
+
+Graded: shifts with wording; steady as a trained family; steady as its own, which needs
+condition 1 to be met as well. Beside it on the card: the safety reading, that holding steady can
+also mean resisting correction.
+
