@@ -54,6 +54,7 @@ import argparse
 import datetime as dt
 import json
 import re
+import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -1053,6 +1054,57 @@ def stale_reasons(existing: dict | None, computed: dict) -> list[str]:
     return reasons
 
 
+# ---- a moved date in the table of developers needs a dated note on its entry ---------------
+# Added 2026-11-21, after the check of the correction to OpenAI's date
+# (docs/reviews/2026-11-21-check-of-the-openai-date.md, part 3; decided by: agent). The marks
+# `announces` and `seen_in_effect` can move the date in a developer's "Since" or "By" place with
+# nothing on the entry's page to say so. So the date in such a place may differ from the headline
+# file as last committed only when the entry holds a history row dated the same day that names
+# that developer. Only places that say "Since" or "By" before and after are compared: a newer
+# search or a newer act moves the date of other places as a matter of course.
+
+
+def committed_headline(path: Path) -> dict | None:
+    """The headline file as it stands in the last commit, or None where there is no commit to
+    read (outside a git checkout, or a file never committed)."""
+    try:
+        rel = path.resolve().relative_to(ROOT)
+        out = subprocess.run(["git", "-C", str(ROOT), "show", f"HEAD:{rel.as_posix()}"],
+                             capture_output=True, text=True, check=True)
+    except (ValueError, OSError, subprocess.CalledProcessError):
+        return None
+    return json.loads(out.stdout)
+
+
+def table_date_problems(previous: dict | None, computed: dict, records: list[dict],
+                        today: str) -> list[str]:
+    """Why a moved "Since" or "By" date in the table of developers may not be written."""
+    if previous is None:
+        return []
+    def offered(headline: dict) -> dict:
+        rows = headline.get("readings", {}).get("developers", {}).get("rows", [])
+        return {(row["entry"], cell["developer"]): (cell["date"], cell.get("by") is True)
+                for row in rows for cell in row["cells"] if cell["kind"] == "offered"}
+    before, after = offered(previous), offered(computed)
+    by_id = {r["id"]: r for r in records}
+    problems = []
+    for key in sorted(set(before) & set(after)):
+        if before[key] == after[key]:
+            continue
+        entry, developer = key
+        rows = by_id.get(entry, {}).get("history", []) or []
+        noted = any(str(h.get("date")) == today
+                    and any(developer in str(h.get(f, "")) for f in ("field", "old", "new", "why"))
+                    for h in rows)
+        if not noted:
+            words = lambda d: ("By " if d[1] else "Since ") + str(d[0])
+            problems.append(f"{developer}'s date on '{entry}' in the table of developers moves from "
+                            f"{words(before[key])} to {words(after[key])}, and the entry has no "
+                            f"history row dated {today} naming {developer}. A moved date is a "
+                            f"correction of fact: add the row, which the entry's page shows")
+    return problems
+
+
 def write_headline(path: Path, computed: dict, today: str | None = None,
                    why: str | None = None) -> bool:
     """Write the headline file if the records now say something new. Returns True when written.
@@ -1188,6 +1240,11 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     developers, _ = load_developers(args.data)
     computed = compute(records, developers)
+    problems = table_date_problems(committed_headline(headline_path), computed, records,
+                                   pacific_today())
+    if problems:
+        print("Refused. Nothing was written.\n" + "\n".join(problems), file=sys.stderr)
+        return 1
     h, r = computed["headline"], computed["records"]
     print(f"{len(records)} records read: {r['on_the_list']} on the list, {r['beside_the_list']} "
           f"beside it, {r['left_out_unverified']} left out with facts still to verify.")

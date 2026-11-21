@@ -418,6 +418,63 @@ class Export(unittest.TestCase):
                       "\n".join(c.validate_record(changed, {g["name"]: g.get("beside") is True for g in groups})))
 
 
+
+class MovedTableDates(unittest.TestCase):
+    """A moved "Since" or "By" date in the table of developers needs a history row on its entry
+    dated the same day and naming the developer (added 2026-11-21, decided by: agent). These
+    tests use the real records, changed in memory only."""
+
+    def setUp(self):
+        _groups, self.records, problems = c.load(c.ROOT / "data")
+        self.assertEqual(problems, [])
+        self.developers, _ = c.load_developers(c.ROOT / "data")
+        self.now = c.compute(self.records, self.developers)
+
+    def _cell(self, headline, entry, developer):
+        row = next(r for r in headline["readings"]["developers"]["rows"] if r["entry"] == entry)
+        return next(x for x in row["cells"] if x["developer"] == developer)
+
+    def test_openais_corrected_cell_passes_with_its_history_row(self):
+        before = copy.deepcopy(self.now)
+        cell = self._cell(before, "ending-a-conversation", "OpenAI")
+        self.assertEqual((cell["date"], cell.get("by")), ("2026-11-20", True))
+        cell["date"] = "2026-10-30"; del cell["by"]  # as it stood before the correction
+        self.assertEqual(c.table_date_problems(before, self.now, self.records, "2026-11-21"), [])
+        # The same move on another day, with no row of that day, is refused.
+        self.assertTrue(c.table_date_problems(before, self.now, self.records, "2026-11-22"))
+
+    def test_an_announcement_mark_with_no_history_row_is_refused(self):
+        recs = copy.deepcopy(self.records)
+        rec = next(r for r in recs if r["id"] == "welfare-assessment-at-release")
+        first = min((a for a in rec["acts"] if a["actor"] == "Anthropic"),
+                    key=lambda a: c.start_of(a["date"]))
+        first["announces"] = True
+        later = c.compute(recs, self.developers)
+        problems = c.table_date_problems(self.now, later, recs, "2026-11-21")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("Anthropic's date on 'welfare-assessment-at-release'", problems[0])
+
+    def test_a_new_seen_in_effect_act_with_no_history_row_is_refused(self):
+        recs = copy.deepcopy(self.records)
+        rec = next(r for r in recs if r["id"] == "kept-files-of-retired-models")
+        for a in rec["acts"]:
+            if a["actor"] == "Anthropic":
+                a["seen_in_effect"] = True
+        later = c.compute(recs, self.developers)
+        self.assertEqual(self._cell(later, "kept-files-of-retired-models", "Anthropic").get("by"), True)
+        problems = c.table_date_problems(self.now, later, recs, "2026-11-21")
+        self.assertEqual(len(problems), 1)
+        self.assertIn("moves from Since", problems[0])
+        # With a row of that day naming the developer, it passes.
+        rec["history"] = list(rec.get("history", [])) + [{
+            "date": dt.date(2026, 11, 21), "field": "Anthropic's date in the table of developers",
+            "old": "x", "new": "y", "why": "Constructed for a test."}]
+        self.assertEqual(c.table_date_problems(self.now, later, recs, "2026-11-21"), [])
+
+    def test_no_committed_file_means_nothing_to_compare(self):
+        self.assertEqual(c.table_date_problems(None, self.now, self.records, "2026-11-21"), [])
+
+
 class FirstCautionSources(unittest.TestCase):
     """The About page's sentence on where the first caution's items come from. Ruled by John on
     2026-11-20: the build stops only when the writer it names is no longer the largest single

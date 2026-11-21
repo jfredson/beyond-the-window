@@ -111,7 +111,10 @@ known; where the table takes its date from such an act, it writes "By" with the 
 "Since". The marks were made for OpenAI's row on the entry about ending a conversation
 (`docs/rulings/2026-11-21-openai-date-corrected.md`). The records script refuses either mark on
 an act that is not a developer's or that takes something back, both on one act, and an entry
-marked as offered by a developer whose only act is an announcement. Decided by: agent.
+marked as offered by a developer whose only act is an announcement. Decided by: agent. Since a later
+check the same day, the records script and the export also refuse a "Since" or "By" date in
+the table that differs from the headline file as last committed, unless the entry holds a
+history row dated the same day naming that developer.
 
 ## 4. Ids (framework)
 

@@ -167,7 +167,10 @@ def main(argv: list[str] | None = None) -> int:
     headline_path = args.data / c.HEADLINE_NAME
     headline = c.read_headline(headline_path)
     developers, _ = c.load_developers(args.data)
-    reasons = c.stale_reasons(headline, c.compute(records, developers))
+    computed = c.compute(records, developers)
+    reasons = c.stale_reasons(headline, computed)
+    reasons += c.table_date_problems(c.committed_headline(headline_path), computed, records,
+                                     c.pacific_today())
     if reasons:
         print("Refused. Nothing was written: " + "; ".join(reasons)
               + ". Run scripts/compute.py first.", file=sys.stderr)
