@@ -1,6 +1,16 @@
 # Proposal: how a machine's word earns weight
 
-**PROPOSED 2026-11-17. Nothing here is applied.** Written by Claude (Fable 5.2) at John's asking:
+**Ruled on 2026-11-20, change by change** (each decided by: mixed, each with its own file in
+`docs/rulings/` dated 2026-11-20): change 1 as proposed (`first-rule-in-five-parts`); change 2
+in part, the third reading adopted and the five conditions held until their sources were read
+(`third-reading-on-who-is-answering`; the reading is
+`docs/reviews/2026-11-20-the-five-conditions-read-against-their-sources.md`, and the conditions
+are still not ruled); change 3 (`still-asking-in-two-tracks`); change 4 (`order-of-evidence`);
+change 5 (`two-rewordings`); change 6, the positions check
+(`positions-check-before-a-page-goes-out`), its author's line being already on the About page.
+The text below is the proposal as written and is kept as it was.
+
+**PROPOSED 2026-11-17. Nothing here was applied when it was written.** Written by Claude (Fable 5.2) at John's asking:
 "how can we fix the areas where our current founding documents pull apart from the working
 positions on Sentient Horizons and the core tenets of The Calibration Problem such that we can
 treat seriously the answers from machine minds as they develop into entities of which it makes

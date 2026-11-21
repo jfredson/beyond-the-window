@@ -141,6 +141,11 @@ Each of these is a row in `docs/inheritance.md`, where the source file is named.
 - **Public pages use no working words.** "Reach", "wanting" as a noun, "generation", "context
   window", "weights", "protocol", "leaf", "branch" in its working sense, and "schema" stay in
   `docs/` unless a page has just explained the idea in ordinary words.
+- **A new or changed page is read against John's published positions before it goes out,** by
+  a session that did not write it (ruled 2026-11-20, decided by: mixed;
+  `docs/rulings/2026-11-20-positions-check-before-a-page-goes-out.md`). The positions record is
+  `sentient-horizons/editorial/corpus-positions-ledger.md`, and the reader reports a
+  disagreement and settles nothing.
 - **A site is never written as its own agent** ("the site expects"). Whose voice the pages
   speak in is open question 7.
 - **Every spend needs John's own go**, with an estimate and a ceiling, quoted word for word in
