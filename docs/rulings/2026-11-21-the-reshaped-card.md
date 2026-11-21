@@ -41,3 +41,19 @@ training alone would explain it. It gives no single score.
 The exact wording of each condition and of the line on training, and the test for each. They
 are put to John one at a time, each checked against its source passage first. Nothing appears
 on the site until Still Asking has answers.
+
+## Condition 1, worded on 2026-11-21
+
+The session checked the two book passages first: chapter 15, "The system has not developed; the
+record has.", and chapter 6, "What a model lacks is not ancestry but biography." It put the
+reading's wording to John, with a stored record alone marked partly met, and chapter 6's five
+outward signs as the test. *Strongest alternative:* keep "a kept past". John: "Yes, as shown".
+**Decided by: mixed.**
+
+> **A past of its own that has changed it:** what happened to this system earlier shapes how it
+> acts now, and not only through a stored record it reads back.
+
+A system with only a stored record it reads back is marked partly met. The test is chapter 6's
+five signs: a reversal costs it something; it stays itself in new conditions; it declines some
+things; it fails in layers; it carries marks of what it went through.
+
