@@ -13,8 +13,9 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
   (`docs/rulings/2026-11-20-third-caution-heading-reworded.md`). It now reads "If an AI system
   puts people at risk, whether or not it has wants", where it read "If an AI system has wants,
   and they put people at risk". The first two headings are unchanged and no caution moved. One
-  sentence on the home page and one on the About page still give the third caution in the old
-  words, and wait for John's wording. No number moved: the count is 5. Not pushed.
+  sentence on the home page and one on the About page gave the third caution in the old words.
+  John ruled their wording the same day, and both now follow the new heading. No number moved:
+  the count is 5. Not pushed.
 - **Three cautions replace two on the entry about laws against legal personhood**
   (`docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md`). Two now stand
   under the first heading, which had nothing recorded, and one under the third. The sentence
