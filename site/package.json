@@ -7,12 +7,14 @@
     "export": "python3 ../scripts/compute.py --check && python3 ../scripts/export.py",
     "predev": "npm run export",
     "dev": "astro dev",
-    "prebuild": "npm run export",
+    "prebuild": "npm run export && python3 ../scripts/check_news.py",
     "build": "astro build",
     "postbuild": "python3 ../scripts/check_site.py",
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.6.0"
+    "@astrojs/rss": "^4.0.19",
+    "astro": "^5.6.0",
+    "markdown-it": "^15.0.3"
   }
 }

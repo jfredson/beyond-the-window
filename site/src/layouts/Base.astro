@@ -13,7 +13,10 @@
 // to copy the siblings wherever possible, docs/rulings/2026-11-19-three-points-on-the-first-release.md).
 // Only the page for a missing address still asks to be left out, as on The Quiet Galaxy. The
 // page's own address and the text a link preview reads were added the same day, in The Quiet
-// Galaxy's form. The preview picture and the feed of acts were added on 2026-11-20.
+// Galaxy's form. The preview picture and the feed of acts were added on 2026-11-20. On 2026-11-21
+// the news section added two things, in Outrunning Ageing's form: a page may pass its own preview
+// picture (a news post's card, once cards are drawn), and every page names the news feed beside
+// the feed of acts.
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import { data, longDate, builtFrom, SITE_NAME } from '../lib/data';
@@ -22,17 +25,18 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean; // the page for a missing address only
+  image?: string; // a page's own preview picture (a news post's card); the site's otherwise
 }
 
 const {
   title = SITE_NAME,
   description = 'A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.',
   noindex = false,
+  image = '/preview.png',
 } = Astro.props;
 
 // The picture a link preview shows and the feed of acts, on every page since 2026-11-20. The
 // picture holds no figure (scripts/preview_picture.sh), so it does not go out of date.
-const image = '/preview.png';
 const feed = '/acts.xml';
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -78,6 +82,7 @@ const currentYear = new Date().getFullYear();
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" type="application/atom+xml" title={`${SITE_NAME}: every act, by date`} href={feed} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} · News`} href="/news/feed.xml" />
   </head>
   <body>
     {data.constructed && (

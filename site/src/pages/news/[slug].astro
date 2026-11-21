@@ -1,0 +1,42 @@
+---
+// One news post (tracker pattern, rule 4.12): the eyebrow, the title as the finding, the lede,
+// the post itself, then the entries it names and its sources. Copied on 2026-11-21 from Outrunning
+// Ageing's site/src/pages/news/[slug].astro. Two changes: the record line links this site's entry
+// pages (the sibling also links a weekly reading and a story entry, which this site does not have),
+// and a made-up post (constructed: true) carries a notice saying so at its top.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import RecentNews from '../../components/RecentNews.astro';
+import '../../styles/news.css';
+import { longDate, entryById } from '../../lib/data';
+import { allPosts, cardIfDrawn, KIND_LABEL, type Post } from '../../lib/news';
+
+export async function getStaticPaths() {
+  return (await allPosts()).map((p) => ({ params: { slug: p.id }, props: { post: p } }));
+}
+const { post } = Astro.props as { post: Post };
+const { Content } = await render(post);
+const named = post.data.records.map((id) => entryById.get(id)).filter(Boolean);
+---
+
+<Base title={`${post.data.title} · Beyond the Window`} description={post.data.summary} image={cardIfDrawn(post)}>
+  <section class="hero wide">
+    <p class="eyebrow"><a href="/news/">News</a> · {longDate(post.data.date)} · {KIND_LABEL[post.data.kind]}</p>
+    <h1>{post.data.title}</h1>
+    <p class="lede">{post.data.summary}</p>
+  </section>
+  <div class="post-layout">
+  <article class="post">
+    {post.data.constructed && <p class="constructed-post">Constructed example, not a real post. Every word, date and source in it is made up, to show how a post looks.</p>}
+    <Content />
+    {post.data.kind !== 'start-here' && (named.length > 0 || post.data.sources.length > 0) && (
+      <section class="post-record">
+        {named.length > 0 && <p class="rec">The record: {named.map((e, i) => <>{i > 0 ? ' · ' : ''}<a href={e!.path}>{e!.name}</a></>)}.</p>}
+        {post.data.sources.length > 0 && <p class="post-sources">Sources: {post.data.sources.map((s, i) => <>{i > 0 ? ' · ' : ''}<a href={s.url} rel="noopener"><cite>{s.label}</cite></a></>)}.</p>}
+      </section>
+    )}
+    <p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a>.</p>
+  </article>
+  <RecentNews currentId={post.id} />
+  </div>
+</Base>

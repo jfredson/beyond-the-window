@@ -46,6 +46,12 @@ jobs:
         run: python3 scripts/compute.py --check
       - name: Run the tests of the record check and the export
         run: python3 scripts/test_compute.py
+      # Added 2026-11-21 with the news section, as on The Upgrade Tree: the news check's tests, then
+      # the check itself on the posts the site builds from. The build runs the check again first.
+      - name: Check the news posts
+        run: |
+          python3 scripts/test_news.py
+          python3 scripts/export.py && python3 scripts/check_news.py
       # The build runs the record check and the export again before it starts, and the check of
       # the built site after it ends (the "prebuild" and "postbuild" lines in site/package.json).
       - name: Install and build

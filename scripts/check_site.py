@@ -111,6 +111,13 @@ What it refuses (docs/first-version-choices.md, choice 18):
     stood before the rebuild and each entry's page already shows them.
 13. The phrase "from memory" on any page. A fact written without opening its source does not
     reach a public page, so the phrase on a page means a check was skipped.
+14. Since 2026-11-21, the news section (docs/proposals/2026-11-21-news-section.md): a built page
+    that shows a constructed example post (the notice marked class="constructed-post"), so a
+    made-up post cannot be published even by building with NEWS_POSTS pointed at
+    scripts/fixtures/news; a news feed (/news/feed.xml) that is not built, or that does not hold
+    one item for each post page under /news/; and a long dash in that feed. The news pages are
+    otherwise checked like every other page: rules 1 to 13 apply to them in full, so a post
+    names no AI model or developer and is not in the first person until John rules otherwise.
 """
 from __future__ import annotations
 
@@ -392,6 +399,32 @@ def fraction_problems(dist: Path, pages: list[Path], count: int, on_the_list: in
     return found
 
 
+NEWS_FEED = "news/feed.xml"
+CONSTRUCTED_POST = 'class="constructed-post"'
+
+
+def news_problems(dist: Path, pages: list[Path]) -> list[str]:
+    """Rule 14: no made-up post is built, and the news feed holds one item for each post page."""
+    problems: list[str] = []
+    posts = 0
+    for page in pages:
+        rel = "/" + str(page.relative_to(dist)).replace("index.html", "")
+        if CONSTRUCTED_POST in page.read_text(encoding="utf-8"):
+            problems.append(f"{rel}: shows a constructed example post; made-up posts are never published")
+        if re.match(r"^/news/[^/]+/$", rel):
+            posts += 1
+    feed = dist / NEWS_FEED
+    if not feed.is_file():
+        problems.append(f"/{NEWS_FEED}: the news feed is not built")
+        return problems
+    feed_text = feed.read_text(encoding="utf-8")
+    if feed_text.count("<item>") != posts:
+        problems.append(f"/{NEWS_FEED}: holds {feed_text.count('<item>')} item(s) for {posts} post page(s)")
+    if re.search("[\u2014\u2013]", feed_text):
+        problems.append(f"/{NEWS_FEED}: long dash")
+    return problems
+
+
 def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     problems: list[str] = []
     outside: dict[str, set[str]] = {}
@@ -515,6 +548,7 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
         problems += fraction_problems(dist, pages, h["count"], file["records"]["on_the_list"])
         count = h.get("count")
     problems += rebuilt_problems(dist, readings, count)
+    problems += news_problems(dist, pages)
     return problems, outside
 
 

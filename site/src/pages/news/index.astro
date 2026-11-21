@@ -1,0 +1,49 @@
+---
+// News: one post per event of note, newest first, with the opening post pinned at the top (tracker
+// pattern, rules 4.10 to 4.13; ruled by John 2026-10-18). Copied on 2026-11-21 from Outrunning
+// Ageing's site/src/pages/news/index.astro, the model the sibling sites copied. Its wording is
+// PROPOSED (docs/proposals/2026-11-21-news-section.md). The foot points at "Everything, by date",
+// which lists every dated act whether or not a post explains it, as the sibling's foot points at
+// its story so far.
+import Base from '../../layouts/Base.astro';
+import '../../styles/news.css';
+import { longDate } from '../../lib/data';
+import { datedPosts, opener, postPath, KIND_LABEL, wordCount } from '../../lib/news';
+
+const posts = await datedPosts();
+const start = await opener();
+---
+
+<Base title="News · Beyond the Window" description="What changed in the record, and why: one post for each change a reader would want explained, with what happened, where the record is, and what it changes on this site.">
+  <section class="hero">
+    <p class="eyebrow">News</p>
+    <h1>What changed in the record, and why</h1>
+    <p class="lede">A post is written when something a reader would want explained changes here: the count moving, where a thing on the list stands, an entry added, or the method changed. A post may also tell a story from the field that a reader would care about, whether or not it changes anything on this site. Each post says what happened, links its sources, and names the entries it is about.</p>
+  </section>
+
+  <section class="section">
+    {start && (
+      <div class="opener">
+        <span class="k">Start here</span>
+        <h3><a href={postPath(start)}>{start.data.title}</a></h3>
+        <p>{start.data.summary}</p>
+        <p class="meta">{longDate(start.data.date)} · about {Math.round(wordCount(start.body) / 100) * 100} words · <a href={postPath(start)}>read it</a></p>
+      </div>
+    )}
+    {posts.length === 0 ? (
+      <p class="empty-note">No post yet. The first is written the day something of note changes.</p>
+    ) : (
+      <ul class="news-list">
+        {posts.map((p) => (
+          <li class="news-item">
+            <time datetime={p.data.date}>{p.data.date}</time><span class="kind">{KIND_LABEL[p.data.kind]}</span>
+            <h3><a href={postPath(p)}>{p.data.title}</a></h3>
+            <p>{p.data.summary}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+    <p class="news-foot">Every dated act in the record, including the ones no post explains, is in <a href="/acts/">everything, by date</a>, newest first.</p>
+    <p class="news-follow">Follow the news: <a href="/news/feed.xml">the feed</a> · <a href="https://x.com/SentHorizons" rel="noopener">@SentHorizons on X</a> · <a href="https://www.reddit.com/r/SentientHorizons/" rel="noopener">r/SentientHorizons on Reddit</a>.</p>
+  </section>
+</Base>
