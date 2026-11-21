@@ -72,6 +72,13 @@ What it refuses (docs/first-version-choices.md, choice 18):
       total, no "of", nothing beside it inside the large type), and no other marked figure and
       no reading comes before it. Rule 8 still refuses the count written as a share of the list
       anywhere on the page.
+      Since 2026-11-21, when John ruled that the founding question opens the home page
+      (docs/rulings/2026-11-21-the-question-opens-the-home-page.md): the page's one h1, the
+      question, stands before the two columns (the element marked class="rb-first") and before
+      every reading. A question inside the columns would let the readings column start beside it
+      on a computer, so that a reading stood above the count on the screen while the source order
+      still put the count first. The check cannot measure where the browser draws things; it
+      refuses the page's structure that allows it.
 9. The first person ("I", "my", "mine", "me", "we", "our", "ours", "us") anywhere but the
    About page's opening block on who is asking (the block marked id="who"), which is in John's
    own first person. The rest of the site stays impersonal. The notice that
@@ -263,6 +270,20 @@ def headline_problems(raw: str, count: int) -> list[str]:
     reading = re.search(r'class="rb-reading', body)
     if reading and reading.start() < big.start():
         problems.append(f"{rel}: a reading stands above the count")
+    # The question opens the page in a row of its own, above the two columns (2026-11-21).
+    h1s = list(re.finditer(r'(?i)<h1\b', body))
+    if len(h1s) != 1:
+        problems.append(f"{rel}: the page should hold one h1, the question, and {len(h1s)} were found")
+    else:
+        h1 = h1s[0]
+        columns = re.search(r'(?i)<[a-z]+\b[^>]*\bclass="[^"]*\brb-first\b', body)
+        if columns and columns.start() < h1.start():
+            problems.append(f"{rel}: the question stands inside the two columns, so on a computer "
+                            f"a reading can stand beside it, above the count")
+        if reading and reading.start() < h1.start():
+            problems.append(f"{rel}: a reading stands above the question")
+        if big.start() < h1.start():
+            problems.append(f"{rel}: the count stands above the question")
     return problems
 
 

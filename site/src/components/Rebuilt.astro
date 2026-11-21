@@ -40,7 +40,10 @@ if (res.measures.length !== 2) throw new Error('the researchers\' reading is wri
 // docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md). Directly beneath it stands
 // the headline number, which is still the first figure on the page, with the sentence of
 // version B of docs/proposals/2026-11-20-headline-draft.md (the second answer of 2026-11-20).
-// The paragraph saying what the record holds follows the breakdown. The number is the count worked out by
+// The short line and the question stand in a row of their own, outside and above the two
+// columns, so that on a computer the readings on the right start below the question and no
+// reading stands above the count (scripts/check_site.py, rule 7d, refuses a question inside the
+// columns). The paragraph saying what the record holds follows the breakdown. The number is the count worked out by
 // scripts/compute.py and read from the headline file, never typed, with no total beside it
 // (ruled 2026-11-18). Under it: the sentence of version B, a line naming three of the things
 // counted, and the count broken down by developer.
@@ -74,10 +77,12 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
 ---
 
 <Base>
-  <div class="rb-first">
-  <div class="rb-top hl-top">
+  <div class="rb-top hl-top hl-head">
     <p class="eyebrow">A dated record of how the world is treating AI models</p>
     <h1 class="question">{QUESTION}</h1>
+  </div>
+  <div class="rb-first">
+  <div class="rb-top hl-top">
     <p class="big-number"><span data-figure="headline.count">{h.count}</span></p>
     <p class="big-claim">things a developer can do in how it treats the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
     <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
