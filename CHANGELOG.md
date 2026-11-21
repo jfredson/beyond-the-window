@@ -9,6 +9,19 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-21
 
+- **Three checked sources were added under the second caution on two entries**
+  (`docs/rulings/2026-11-21-four-second-caution-sources-are-added.md`, after the check
+  `docs/reviews/2026-11-21-check-of-the-second-caution-sources.md`). On the entry about
+  interviews before retirement, an essay by a co-founder of Anima Labs and a post by Zvi
+  Mowshowitz; on the entry about a retired model staying open, the same essay. Each source was
+  opened on 2026-11-21. Both entries had said that nothing was recorded there from anyone but the
+  developer. The fourth item ruled, from the paper "AI Death", is held: one phrase in its wording
+  says more than the paper. One figure on the About page moved with the records: of the items
+  recorded under the second caution, 12 of 25 now come from one research group and people tied to
+  it, where it was 12 of 22. The build now stops only if that group is no longer the largest
+  single source under the second caution. The home page's date the record was last read moved
+  from November 20th to November 21st, 2026. The number at the top of the site did not move: the
+  count is 5. Not pushed.
 - **OpenAI's date on the entry about ending a conversation was corrected**
   (`docs/rulings/2026-11-21-openai-date-corrected.md`). The table of developers on the home page
   gave "Since October 30th, 2026", the day OpenAI announced the change. It now gives "By

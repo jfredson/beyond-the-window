@@ -1193,6 +1193,57 @@ def first_caution_sources(records: list[dict]) -> tuple[int, int, dict[str, int]
     return from_writer, total, others
 
 
+# ---- the About page's sentence on where the second caution's items come from ---------------
+# The About page says how many items under the second caution come from Eleos AI Research, from
+# its head, or from people who advise it, work for it, or have written a report with its head.
+# John ruled on 2026-11-21 that the sentence keeps its words, its figures follow the records, and
+# the build stops only when that group is no longer the largest single source under the second
+# caution ("Yes, keep it", docs/rulings/2026-11-21-four-second-caution-sources-are-added.md).
+# This replaces "stops at half or less". When it stops, the sentence goes back to John for
+# rewording: do not loosen this without his ruling. The group's pages are the ones the About page
+# counts (the same pattern as `CIRCLE` there); every other source is one page, counted by its
+# address.
+SECOND_CAUTION_GROUP = (r"eleosai\.org|experiencemachines\.substack\.com|"
+                        r"arxiv\.org/abs/(2411\.00986|2311\.08576|2507\.06263|2506\.11945)|"
+                        r"a-philosophers-guide-to-ai-welfare|ai-consciousness-a-centrist-manifesto|"
+                        r"meditationsondigitalminds")
+
+
+def _caution_sources(records: list[dict], kind: str, mine: str) -> tuple[int, int, dict[str, int]]:
+    from_mine, total, others = 0, 0, {}
+    for rec in shown(records):
+        urls = {s["key"]: s["url"] for s in rec["sources"]}
+        for item in rec.get("cautions", []) or []:
+            if item.get("kind") != kind:
+                continue
+            total += 1
+            url = urls[item["source"]]
+            if re.search(mine, url):
+                from_mine += 1
+            else:
+                others[url] = others.get(url, 0) + 1
+    return from_mine, total, others
+
+
+def second_caution_sources(records: list[dict]) -> tuple[int, int, dict[str, int]]:
+    """How many items under the second caution come from the group the About page names, how
+    many there are in all, and how many come from each other page."""
+    return _caution_sources(records, "unnoticed", SECOND_CAUTION_GROUP)
+
+
+def second_caution_problem(records: list[dict]) -> str | None:
+    from_group, total, others = second_caution_sources(records)
+    if not others:
+        return None
+    url, most = max(others.items(), key=lambda kv: kv[1])
+    if most >= from_group:
+        return (f"the About page names one research group and people tied to it for {from_group} "
+                f"of the {total} items under the second caution, and another single source now has "
+                f"{most} ({url}). That group is no longer the largest single source, so the About "
+                "page's sentence goes back to John for rewording before the site is built")
+    return None
+
+
 def first_caution_problem(records: list[dict]) -> str | None:
     """None while the writer the About page names is the largest single source under the first
     caution. Otherwise the reason the build stops."""
@@ -1218,7 +1269,7 @@ def checked(data_dir: Path) -> tuple[list[dict], list[dict]]:
     # Only once every record is sound: the one rule that reads all the records together for a
     # sentence on the About page. It is here, and not among the rules for one record, so that
     # both the count and the export stop on it before any page is built.
-    problem = first_caution_problem(records)
+    problem = first_caution_problem(records) or second_caution_problem(records)
     if problem:
         raise Refused(problem)
     return groups, records

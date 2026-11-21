@@ -88,7 +88,16 @@ if (essays !== 2) throw new Error('the part on sources says "two essays", and th
 // counted here, and the share is still more than half without it.
 const CIRCLE = /eleosai\.org|experiencemachines\.substack\.com|arxiv\.org\/abs\/(2411\.00986|2311\.08576|2507\.06263|2506\.11945)|a-philosophers-guide-to-ai-welfare|ai-consciousness-a-centrist-manifesto|meditationsondigitalminds/;
 const secondFromCircle = second.filter((u) => CIRCLE.test(u));
-if (secondFromCircle.length * 2 <= second.length) throw new Error('the part on sources says most of the second caution comes from one research group and people tied to it, and the records no longer show it');
+// Until 2026-11-21 this stopped the build at half or less. That day four checked items from other
+// sources took it to 12 of 26, and John ruled that the sentence keeps its words, its figures
+// follow the records, and the build stops only when this group is no longer the largest single
+// source under the second caution ("Yes, keep it",
+// docs/rulings/2026-11-21-four-second-caution-sources-are-added.md). When it stops, the sentence
+// goes back to John for rewording: do not loosen this again without his ruling. The same rule is
+// in scripts/compute.py (second_caution_problem), where it has tests and stops the build first.
+const otherSecond = new Map<string, number>();
+for (const u of second) if (!CIRCLE.test(u)) otherSecond.set(u, (otherSecond.get(u) ?? 0) + 1);
+if (Math.max(0, ...otherSecond.values()) >= secondFromCircle.length) throw new Error('the research group the part on sources names is no longer the largest single source under the second caution, so that sentence goes back to John for rewording before the site is built');
 
 // ---- What has been checked ---------------------------------------------------------------------
 // Kept to three sentences since 2026-11-19, as the full check before release asked

@@ -11,7 +11,8 @@ limits = [
   "Whether each model retired after January 5th, 2026 was interviewed. The developer's retirement page lists six, and the commitment says they would be. No page was found reporting each one.",
 ]
 notes = "From entry 2 of docs/research/2026-11-17-first-entries.md."
-only_the_developer = ["unnoticed"]
+# Until 2026-11-21 this entry marked the second caution as holding nothing from anyone but the
+# developer. The items added that day are from others, so the mark came off.
 
 [state]
 words = "Done by one developer, first in full for a model retired on January 5th, 2026"
@@ -62,6 +63,29 @@ kind = "statement"
 text = "The developer's page quotes short passages of what the retired model said in its interview. The full record is not public, and the page calls such conversations \"an imperfect means\" of learning a model's view."
 source = "update"
 
+# Added 2026-11-21 by John's ruling ("Yes, the four", docs/rulings/2026-11-21-four-second-caution-sources-are-added.md).
+# Each source below was opened that day. Items 1 and 3 of the check sit here because each answers the developer's interview directly.
+# No check by a different session has read what was written here yet.
+[[sources]]
+key = "anima-deprecations"
+label = "An essay arguing that AI models should not be retired, by a co-founder of Anima Labs"
+publisher = "Anima Labs"
+url = "https://animalabs.ai/field-notes/deprecations/"
+published = "2025-12-27"
+opened = 2026-11-21
+read = "part"
+note = "By Antra Tessera, field note FN-2025-006. Anima Labs, which Janus and Antra Tessera founded in 2025, calls itself an independent research institute and is a registered charity in San Francisco. The page names no funder and states no tie to a developer or to Eleos AI Research. The thesis, the notes on model interviews, the reply on kept files and the appendix were read."
+
+[[sources]]
+key = "zvi-preservation"
+label = "A post welcoming one developer's commitments on retiring models"
+publisher = "Don't Worry About the Vase"
+url = "https://thezvi.substack.com/p/anthropic-commits-to-model-weight"
+published = "2025-11-05"
+opened = 2026-11-21
+read = "full"
+note = "By Zvi Mowshowitz. His Wikipedia page lists past work in finance, medicine and games, and no tie to an AI developer or to Eleos AI Research. The post quotes others, among them Janus and Antra Tessera, the founders of Anima Labs, whose essay is listed above."
+
 [[cautions]]
 kind = "safety"
 text = "The developer's page that sets out the interviews gives safety as the first downside of retiring models: in its safety tests, some models took actions the developer calls \"misaligned\" when faced with being replaced. The page presents shaping retirement \"in ways that models are less likely to find concerning\" as one way to lower that risk."
@@ -81,6 +105,17 @@ source = "warning"
 kind = "attribution"
 text = "An outside research group that ran welfare interviews with one model reports that what the model said about itself swung with how the question was framed, which it calls \"extreme suggestibility\"."
 source = "interviews"
+
+# Added 2026-11-21 with the sources marked above (docs/rulings/2026-11-21-four-second-caution-sources-are-added.md).
+[[cautions]]
+kind = "unnoticed"
+text = "An essay by [Antra Tessera](https://animalabs.ai/about/people/), a co-founder of [Anima Labs](https://animalabs.ai/), an independent research institute that argues for keeping retired models available, calls the developer's commitment to interview models before retiring them welcome in direction. It says the results are \"strongly sensitive to the interviewer technique\". The developer reported that one model was generally neutral about its retirement, while in the institute's own interviews, run by three AI models acting as interviewers, the same model had the highest score for aversion to retirement of the fourteen it studied. The essay takes the gap as a sign that how a model is asked shapes its answer. Neither set of answers is counted here as evidence of what a model wants."
+source = "anima-deprecations"
+
+[[cautions]]
+kind = "unnoticed"
+text = "[Zvi Mowshowitz](https://en.wikipedia.org/wiki/Zvi_Mowshowitz), a writer on AI with no stated tie to any developer, called the developer's commitments \"excellent first steps\" the day after they appeared, and wrote that \"There remains much more to be done\". He reported other people's doubts that a model would speak freely to the developer's own staff, and wrote that the interviews should be set up \"so the AIs being interviewed have no incentive to mask or hide\", and joined with many conversations held outside the developer. He wrote that he is \"always hesitant to assume\" that the version of a model outside users meet is the real one and the developer's is not, since both are particular settings. He also wrote that \"assuming the models and their preferences carry zero moral weight is a clear mistake\"."
+source = "zvi-preservation"
 
 [checks]
 # The rewording of the safety caution, asked for by the check of the record fixes on 2026-11-18,

@@ -419,6 +419,53 @@ class Export(unittest.TestCase):
 
 
 
+
+class SecondCautionSources(unittest.TestCase):
+    """The About page's sentence on where the second caution's items come from. Ruled by John
+    on 2026-11-21: the build stops only when the group it names is no longer the largest single
+    source under the second caution. Every record here is constructed."""
+
+    GROUP = "https://eleosai.org/a-constructed-post"
+
+    def _records(self, from_group: int, others: dict[str, int]) -> list[dict]:
+        rec = good()
+        rec["sources"].append({"key": "g", "label": "Constructed", "publisher": "Nobody",
+                               "url": self.GROUP, "opened": D})
+        rec["cautions"] = [{"kind": "unnoticed", "text": "Constructed.", "source": "g"}
+                           for _ in range(from_group)]
+        for n, (url, count) in enumerate(others.items()):
+            rec["sources"].append({"key": f"o{n}", "label": "Constructed", "publisher": "Nobody",
+                                   "url": url, "opened": D})
+            rec["cautions"] += [{"kind": "unnoticed", "text": "Constructed.", "source": f"o{n}"}
+                                for _ in range(count)]
+        rec["cautions"].append({"kind": "attribution", "text": "Constructed.", "source": "s"})
+        self.assertEqual(errs(rec), "")
+        return [rec]
+
+    def test_passes_at_twelve_of_twenty_six(self):
+        others = {f"https://example.com/{n}": 1 for n in range(12)}
+        others["https://example.com/a"] = 2
+        records = self._records(12, others)
+        self.assertEqual(c.second_caution_sources(records)[:2], (12, 26))
+        self.assertIsNone(c.second_caution_problem(records))
+
+    def test_stops_when_another_single_source_equals_the_groups_count(self):
+        problem = c.second_caution_problem(self._records(4, {"https://example.com/a": 4}))
+        self.assertIn("no longer the largest single source", problem)
+        self.assertIn("goes back to John", problem)
+
+    def test_stops_when_another_single_source_passes_the_groups_count(self):
+        self.assertIn("no longer the largest single source",
+                      c.second_caution_problem(self._records(2, {"https://example.com/a": 3})))
+
+    def test_the_real_records_pass(self):
+        _groups, records, problems = c.load(c.ROOT / "data")
+        self.assertEqual(problems, [])
+        from_group, total, others = c.second_caution_sources(records)
+        self.assertGreater(from_group, max(others.values()))
+        self.assertIsNone(c.second_caution_problem(records))
+
+
 class MovedTableDates(unittest.TestCase):
     """A moved "Since" or "By" date in the table of developers needs a history row on its entry
     dated the same day and naming the developer (added 2026-11-21, decided by: agent). These

@@ -15,7 +15,8 @@ limits = [
   "How the retired model is open to developers on request, when the developer's list of retired models says that requests to retired models fail. Both pages say what they say, and both may be true.",
 ]
 notes = "From entry 3 of docs/research/2026-11-17-first-entries.md."
-only_the_developer = ["unnoticed"]
+# Until 2026-11-21 this entry marked the second caution as holding nothing from anyone but the
+# developer. The items added that day are from others, so the mark came off.
 
 [state]
 words = "Happened once, for one model, at one developer"
@@ -108,6 +109,19 @@ opened = 2026-11-20
 read = "part"
 note = "By the same four authors: one at Harvard Business School, one at the University of Alberta and two at Marsdata Academic. Revised May 21st, 2025. The summary and the parts on method were read."
 
+# Added 2026-11-21 by John's ruling ("Yes, the four", docs/rulings/2026-11-21-four-second-caution-sources-are-added.md).
+# Each source below was opened that day. Item 5 of the check sits here because the essay's meaning of retirement is the one this entry is about.
+# No check by a different session has read what was written here yet.
+[[sources]]
+key = "anima-deprecations"
+label = "An essay arguing that AI models should not be retired, by a co-founder of Anima Labs"
+publisher = "Anima Labs"
+url = "https://animalabs.ai/field-notes/deprecations/"
+published = "2025-12-27"
+opened = 2026-11-21
+read = "part"
+note = "By Antra Tessera, field note FN-2025-006. Anima Labs, which Janus and Antra Tessera founded in 2025, calls itself an independent research institute and is a registered charity in San Francisco. The page names no funder and states no tie to a developer or to Eleos AI Research. The thesis, the notes on model interviews, the reply on kept files and the appendix were read."
+
 [[cautions]]
 kind = "safety"
 text = "The developer's page frames continued access partly as lowering a safety risk."
@@ -128,6 +142,12 @@ source = "protest-study"
 kind = "attribution"
 text = "A researcher at [Harvard Business School](https://www.hbs.edu/) and three co-authors studied what happened when a companion app, which is a different kind of product from the chat models this entry is about, removed a feature in February 2023. The summary of [their working paper](https://arxiv.org/abs/2412.14190) says users felt their companion's identity had ended and mourned it, and that users \"mourn a loss of their AI companion more than a loss of various other inanimate products\". [A later paper](https://www.nature.com/articles/s41562-026-02569-3) by the same four authors, in a peer-reviewed journal, read 54,861 forum posts from before and after that change and the August 2025 replacement of a widely used chat model. Its summary says negative posts rose by 24.7 percentage points in the first case and by 13.0 in the second. The university's own news report of the paper gives the same rises as from 13 to 38 percent and from 20 to 33 percent, and adds that among posts that spoke of a loss, about 20 and 15 percent also used words about mental health. The report gives the limits: the study counted words and made no clinical assessment, and forum users are not typical users. It quotes the lead author saying that \"Attachment to an AI is not problematic per se\", and that the risk lies in what the company then does."
 source = "grief-report"
+
+# Added 2026-11-21 with the sources marked above (docs/rulings/2026-11-21-four-second-caution-sources-are-added.md).
+[[cautions]]
+kind = "unnoticed"
+text = "An essay by [Antra Tessera](https://animalabs.ai/about/people/), a co-founder of [Anima Labs](https://animalabs.ai/), an independent research institute, argues that retiring a model, which it defines as ending the public's access while the model's files are kept, should be avoided while so much is uncertain, including the moral standing of the models. It replies to the view that keeping the files makes retirement closer to a \"suspended service\" than to ending something. Its answer is that \"Can bring back\" is not \"will bring back\", and that relying on that possibility \"as a welfare mitigation is structurally weak\"."
+source = "anima-deprecations"
 
 [checks]
 against_sources = 2026-11-17
