@@ -53,3 +53,20 @@ interesting, but we are not there yet". **Decided by: mixed.**
 **What is ruled.** The dated list as proposed, for now. A chart of both numbers over time is wanted
 once there are enough points to show a shape; when that is, is not settled, and it comes back to
 John as its own choice.
+
+## Choice 4. The line on the government's thing
+
+**Put to him.** A line under the breakdown saying one of the 8 is for a government to do, not a
+developer, that it is in the 8 because it is on the List, that it is not counted among the 5, and
+that the other 7 are the things in the table of developers. *Strongest alternative:* leave the
+government's thing out of the total, making it 7. John: "I'm not sure we need to keep a delineation
+between 'what a developer can do' and 'what a law needs to do' right now, but it is worth keeping
+an eye on as a split that becomes necessary to recognize over time. We can certainly recognize it
+in the essay now, but I'm not sure we need to worry about separating it out of the 8 things we are
+counting". **Decided by: John.**
+
+**What is ruled.** The government's thing stays in the 8. The home page does not carry the
+proposed line separating it out; the essay may say it. The split is kept in view as one that may
+need recognizing later. The guard that stops the build if a law protecting an AI system is ever
+recorded as offered stays, so that whether such a law moves the count comes back to John when it
+first arises.
