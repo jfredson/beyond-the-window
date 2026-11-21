@@ -57,3 +57,20 @@ A system with only a stored record it reads back is marked partly met. The test 
 five signs: a reversal costs it something; it stays itself in new conditions; it declines some
 things; it fails in layers; it carries marks of what it went through.
 
+## Condition 2, worded on 2026-11-21
+
+The session checked the essay's sentence ("some states are better or worse for the system, in
+the working sense that its own processing steers toward or away from them") and the
+revised-theory page's test and its note "No study has removed mattering altogether." It put the
+reading's wording and test to John, told him that no system could be marked as meeting it until
+the removal test is run, and gave keeping costly-choice experiments as the strongest
+alternative. John: "Yes, as shown". **Decided by: mixed.**
+
+> **Mattering:** some states are better or worse for the system itself, and not only by its
+> makers' standards: its own processing steers toward or away from them.
+
+The test is removal: remove the steering signal, and see whether choosing between options
+collapses while routine output carries on. Studies of costly choices are recorded as evidence to
+weigh and never mark it met. Until the removal test is run on a system, the card marks it not
+measured.
+
