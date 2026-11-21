@@ -40,3 +40,16 @@ alternative:* "5 / 8", or the 8 on a line of its own. He asked what the choice m
 plainly. John: "Yes". **Decided by: mixed.**
 
 **What is ruled.** Choice 2 as proposed.
+
+## Choice 3. How the movement of both numbers is shown
+
+**Put to him.** A short dated list on the home page, one row each time either number changed, with
+the reason in words generated from the entries; rows where only wording changed are left out. No
+chart yet, because two points show a slope that means nothing and cannot say why a number moved.
+*Confidence:* moderate. *Judgment call.* *Strongest alternative:* only a link to a dated page of
+changes, as The Upgrade Tree does. John: "I think a chart of the numbers over time would be very
+interesting, but we are not there yet". **Decided by: mixed.**
+
+**What is ruled.** The dated list as proposed, for now. A chart of both numbers over time is wanted
+once there are enough points to show a shape; when that is, is not settled, and it comes back to
+John as its own choice.
