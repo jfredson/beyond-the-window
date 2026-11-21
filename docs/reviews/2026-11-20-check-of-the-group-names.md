@@ -172,11 +172,13 @@ The build rewrote one line of `site/src/data/window.json`, which I left out of t
 
 ## What I did not do
 
-- I did not look at the pages in a browser at phone or desktop width. Two of the new names
-  are longer than the ones they replace ("Asked and assessed by the developer" and "Reports
-  checked against the workings"), and they sit in the window drawing and the list on the home
-  page. Whether they wrap well at phone width is worth one look before or just after the
-  push.
+- I looked at phone width (375 points wide) by measurement only, and not at desktop width. Two
+  of the new names are longer than the ones they replace ("Asked and assessed by the
+  developer" and "Reports checked against the workings"). On the home page each sits in a
+  narrow column beside its row of the window drawing, where the two long names wrap onto
+  several lines inside the column and nothing runs off the side. The home page, the list page
+  and an entry page under the longest name have no sideways scroll. I did not judge how the
+  wrapped names look.
 - I did not open the sources behind the entries again. I judged each name against the
   records' own words.
 
