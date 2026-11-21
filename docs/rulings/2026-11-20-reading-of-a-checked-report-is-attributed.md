@@ -38,3 +38,21 @@ page does. No sentence is added to the About page.
 The writing session opens the source and writes the sentence. If the source does not make the
 claim, it stops, and what the page does say is put to John. The wording is checked by a
 different session before it is published, and shown to John with the result.
+
+## The wording, ruled the same day
+
+The writing session wrote a first wording from the developer's page, and it went out after a
+check found it says no more than the page. The checking session
+(`docs/reviews/2026-11-20-check-of-three-small-rewordings.md`) offered a closer one: the first
+wording quoted a capacity "to monitor and control" internal states, while the entry covers only
+the monitoring, and joined two places on the page. The session put the closer wording to John
+and asked "Use the checker's closer wording for the developer's reading on the self-report
+entry?" John: "Yes, closer wording". **Decided by: mixed.**
+
+The end of the entry's description reads:
+
+> The developer whose researchers ran such a test says its research "provides evidence for
+> some degree of introspective awareness" in its models, and stresses that the ability "is
+> still highly unreliable and limited in scope". It says the results do not show whether any
+> AI system might be conscious.
+
