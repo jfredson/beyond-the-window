@@ -47,3 +47,10 @@ project's standing practice. What was put to John said "one more read by a sessi
   positions unless John said otherwise. That is the session's undertaking, not his ruling.
 - **What happens when a page and a position disagree.** The reader reports it. Whether the
   page or the position gives way is John's.
+
+## An exception, ruled 2026-11-21
+
+For a page publishing the sealed capture's answers, the reader reads the page's own text against
+the positions record and leaves the answers themselves out, so that no model reads them before
+they are public. John: "Yes, as proposed", to choice 11 of the comparison method (decided by:
+mixed; `docs/rulings/2026-11-21-sealed-capture-comparison-choices.md`).

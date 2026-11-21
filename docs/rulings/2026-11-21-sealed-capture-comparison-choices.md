@@ -145,3 +145,27 @@ call.* *Strongest alternative:* no quotes anywhere, only links into the full set
 proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 10 as proposed.
+
+## Choice 11. How the answers would be published, if John decides to
+
+**Put to him.** Whether and when stay John's. If he decides to publish: a script publishes every
+reply in the manifest, in the order asked, with failed attempts and models not asked listed in
+place and the labels on every page; each developer's terms are checked first; and if anything
+holds back any part of the set, nothing is published, for any model, until John rules. Before
+the page goes out, a session that did not write it reads the page's own text against the
+positions record, with the answers left out; a yes rules this as an exception to the ruling of
+2026-11-20 that a new or changed page is read against the positions record. *Confidence:*
+moderate to high on publishing by script; moderate on holding back everything. *Judgment call.*
+*Strongest alternatives:* a legal exception fixed in advance, with a withheld answer shown in
+place with its reason; and, for the reading, John or another person reads the whole page,
+answers included. John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 11 as proposed, including the exception to the positions-check ruling
+for the answers themselves.
+
+## The method, complete
+
+All eleven choices are ruled as proposed. The comparison method for the sealed capture is
+`docs/proposals/2026-11-21-sealed-capture-comparison-method.md` as it stood when ruled. Under
+choice 2 the first reading waits for Still Asking's questions to be written and committed and
+for the OpenAI run to be made or its last safe day (2026-12-09) to pass.
