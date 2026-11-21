@@ -30,3 +30,13 @@ sentence under it. John: "Yes, 5 of 8". **Decided by: mixed.**
 both computed from the records. This replaces `docs/rulings/2026-11-18-home-page-count.md` on the
 point of a total, which is kept on record. The older texts that describe the count as having no
 total are brought into line when the branch is merged.
+
+## Choice 2. How the fraction is shown
+
+**Put to him.** The Upgrade Tree's form: the count in the largest type, then "of 8" smaller and in a
+quieter colour on the same line, with a space before "of" inside the smaller type so a screen
+reader or copied text says "5 of 8". *Confidence:* high. *Standard practice.* *Strongest
+alternative:* "5 / 8", or the 8 on a line of its own. He asked what the choice meant and was told
+plainly. John: "Yes". **Decided by: mixed.**
+
+**What is ruled.** Choice 2 as proposed.
