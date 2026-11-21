@@ -965,10 +965,15 @@ class SiteCheck(unittest.TestCase):
 
 class HomeHeadline(unittest.TestCase):
     """Rule 7d of the site check: the first figure on the home page is the count, alone."""
-    GOOD = ('<html><body><p class="eyebrow">A record</p>'
+    # Since 2026-11-21 the question opens the page in a row of its own, above the two columns
+    # (docs/rulings/2026-11-21-the-question-opens-the-home-page.md).
+    GOOD = ('<html><body><div class="hl-head"><p class="eyebrow">A record</p>'
+            '<h1 class="question">A question?</h1></div>'
+            '<div class="rb-first"><div class="hl-top">'
             '<p class="big-number"><span data-figure="headline.count">5</span></p>'
-            '<p class="big-claim">things are counted.</p>'
-            '<p class="rb-reading"><span data-figure="researchers.0">1</span>%</p></body></html>')
+            '<p class="big-claim">things are counted.</p></div>'
+            '<div class="rb-side"><p class="rb-reading"><span data-figure="researchers.0">1</span>%</p>'
+            '</div></div></body></html>')
 
     def test_the_count_alone_and_first_passes(self):
         self.assertEqual(s.headline_problems(self.GOOD, 5), [])
@@ -991,6 +996,22 @@ class HomeHeadline(unittest.TestCase):
 
     def test_refuses_an_unmarked_count(self):
         page = self.GOOD.replace(' data-figure="headline.count"', "")
+        self.assertTrue(s.headline_problems(page, 5))
+
+    def test_refuses_the_question_inside_the_columns(self):
+        # The layout of the first draft of 2026-11-21: on a computer the readings column started
+        # beside the question, so a reading stood above the count on the screen.
+        page = self.GOOD.replace('<h1 class="question">A question?</h1></div>', '</div>').replace(
+            '<div class="hl-top">', '<div class="hl-top"><h1 class="question">A question?</h1>')
+        self.assertTrue(any("inside the two columns" in m for m in s.headline_problems(page, 5)))
+
+    def test_refuses_the_count_above_the_question(self):
+        page = self.GOOD.replace('<h1 class="question">A question?</h1>', '').replace(
+            '</body>', '<h1 class="question">A question?</h1></body>')
+        self.assertTrue(any("count stands above the question" in m for m in s.headline_problems(page, 5)))
+
+    def test_refuses_a_page_without_the_question(self):
+        page = self.GOOD.replace('<h1 class="question">A question?</h1>', '')
         self.assertTrue(s.headline_problems(page, 5))
 
 
