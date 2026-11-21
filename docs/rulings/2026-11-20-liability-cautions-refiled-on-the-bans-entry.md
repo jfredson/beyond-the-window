@@ -42,6 +42,38 @@ heading, with the split wording shown?" John: "Yes, as shown". **Decided by: mix
 The three sentences above replace the two cautions now sourced to `too-early` and
 `review-clause` on that entry, filed as shown.
 
+## Corrected the same day, by a second ruling
+
+The writing session opened both sources before changing the record, as asked, and stopped. The
+opinion piece says only that the sponsor of the bill in Oklahoma "framed it as preventing
+companies from shifting 'accidents onto the AI.'" That is the writer's report, in four quoted
+words; "blame" is not the page's word; and the news article the piece links to for the
+sponsor's own statement cannot be opened, because the outlet has closed. So the first sentence
+above, which the session had put to John, claimed more than its source: it dropped "the opinion
+piece reports" and made a reported framing into a stated aim. That error was the master
+session's. The article supports the other two sentences, with two details: it puts a third risk
+between them, so "a second risk" was the session's count, and on voting it says power might
+concentrate in the company as well as in the AI system.
+
+The session put corrected wording to John and asked "Use the corrected wording for the three
+cautions on the bans entry?" John: "Yes, corrected wording". **Decided by: mixed.**
+
+**What is ruled now, replacing the three sentences above.**
+
+Under the first heading:
+
+- "An opinion piece reports that the sponsor of the bill in Oklahoma framed it as preventing
+  companies from shifting "accidents onto the AI"." (source `review-clause`)
+- "The article arguing that the bans are premature also discusses a risk they are aimed at:
+  that laws granting AI systems legal status could shield their makers from liability."
+  (source `too-early`)
+
+Under the third heading:
+
+- "The article arguing that the bans are premature also discusses the risk that legal rights
+  could help AI systems, or the companies that make them, gain power through ownership and
+  voting." (source `too-early`)
+
 ## Not covered by this ruling
 
 Any other caution on any entry, the three headings' wording, and the reader's other findings.
