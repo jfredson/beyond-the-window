@@ -120,3 +120,16 @@ every question, and no difference written as a change in the models. *Confidence
 as proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 8 as proposed. No later asking is planned by it.
+
+## Choice 9. The capture, the Still Asking card and the List's headline
+
+**Put to him.** No capture answer carries a mark of any kind, not even "not assessed"; no
+capture answer or description of one is cited on a mark sheet, whether or not published; no card
+is shown beside the capture's answers; the capture's answers are never a baseline for Still
+Asking; and nothing from the capture feeds the List's headline, its scale of what is offered
+against what is known, or the list's growth. *Confidence:* high. *Standard practice* for keeping
+a record apart; *judgment call* on the published-source rule. *Strongest alternative:* show the
+line on training's general rule once on the capture's page. John: "Yes, as proposed". **Decided
+by: mixed.**
+
+**What is ruled.** Choice 9 as proposed.
