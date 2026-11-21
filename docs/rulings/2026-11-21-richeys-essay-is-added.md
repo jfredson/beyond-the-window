@@ -28,3 +28,14 @@ caution on the retired-model entry?" John: "Yes, Richey only". **Decided by: mix
 Richey's essay is added under the first heading on `retired-model-stays-open`, in the check's
 wording with its two small changes (part 1.1). The Register report and the item quoted in IEEE
 Spectrum are not added.
+
+## One clause as built, for John to know
+
+The check of the item (`docs/reviews/2026-11-21-check-of-richeys-item.md`) found it fit to
+publish, and noted one departure from the wording John ruled ("the check's wording with its two
+small changes"). That wording said the model "has nothing such a step could serve", which the
+check itself said were not Richey's words. On the master session's instruction the built sentence
+says instead that the developer is "choosing this framing because it serves them", which is
+Richey's own sentence and says less. **Decided by: agent.** John is told of it with the push; his
+ruling stands unless he says otherwise.
+
