@@ -79,3 +79,18 @@ beside it.
 **Not ruled.** The breakdown's final labels and figures after the two changes, which come back
 to John before anything is published.
 
+## A third answer the same day: the breakdown
+
+The drafting session drew three ways of labelling the breakdown so that its figures do not
+seem to add to 6 (one thing, ending a conversation, is done by two developers), and confirmed
+from OpenAI's help page that its change was in effect on 2026-11-20, so its figure of 1 holds
+under the ruled meaning of "offered". Option 2 keeps three small figures with labels that say
+the overlap; option 3 uses figures that add to 5 with a line "One developer does all 5."; option
+1 is a sentence. The session recommended option 2 at moderate confidence, with option 3 as the
+strongest alternative. The question was "Which breakdown should sit under the 5?" John:
+"Option 2". **Decided by: mixed.**
+
+**What is ruled.** Under the count and its sentence the home page shows three figures with
+these labels: "5, by one developer: all of them"; "1, by a second: one of the same 5"; "0, by
+the third this record covers". The figures are worked out from the records.
+
