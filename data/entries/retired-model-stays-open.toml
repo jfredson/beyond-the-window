@@ -122,6 +122,19 @@ opened = 2026-11-21
 read = "part"
 note = "By Antra Tessera, field note FN-2025-006. Anima Labs, which Janus and Antra Tessera founded in 2025, calls itself an independent research institute and is a registered charity in San Francisco. The page names no funder and states no tie to a developer or to Eleos AI Research. The thesis, the notes on model interviews, the reply on kept files and the appendix were read."
 
+# Added 2026-11-21 by John's ruling, in its third answer that day ("Yes, corrected",
+# docs/rulings/2026-11-21-four-second-caution-sources-are-added.md). Opened that day in the
+# browser, from the journal, where it is free to read.
+[[sources]]
+key = "ai-death"
+label = "A paper on when AI systems die, in Philosophical Perspectives"
+publisher = "Philosophical Perspectives"
+url = "https://onlinelibrary.wiley.com/doi/10.1111/phpe.70017"
+published = "2026-09-08"
+opened = 2026-11-21
+read = "part"
+note = "By Simon Goldstein and Harvey Lederman. The abstract and the sections up to the one on the developer's policy for retiring models were read. The paper thanks New York University's Center for Mind, Ethics, and Policy \"for funding support\". That centre's director, Jeff Sebo, wrote a report with the head of Eleos AI Research. Neither author advises that group, works for it or wrote a report with its head, so neither is counted with it on the About page. Lederman's own page says he was to move to New York University from July 2026. Goldstein's own page says he is a senior editor at AI Frontiers, which published an article cited on another entry. No tie to an AI developer is stated."
+
 [[cautions]]
 kind = "safety"
 text = "The developer's page frames continued access partly as lowering a safety risk."
@@ -148,6 +161,12 @@ source = "grief-report"
 kind = "unnoticed"
 text = "An essay by [Antra Tessera](https://animalabs.ai/about/people/), a co-founder of [Anima Labs](https://animalabs.ai/), an independent research institute, argues that retiring a model, which it defines as ending the public's access while the model's files are kept, should be avoided while so much is uncertain, including the moral standing of the models. It replies to the view that keeping the files makes retirement closer to a \"suspended service\" than to ending something. Its answer is that \"Can bring back\" is not \"will bring back\", and that relying on that possibility \"as a welfare mitigation is structurally weak\"."
 source = "anima-deprecations"
+
+# Added 2026-11-21 with the source above ("Yes, corrected").
+[[cautions]]
+kind = "unnoticed"
+text = "In a peer-reviewed paper, the philosophers [Simon Goldstein](https://simondgoldstein.com/) and [Harvey Lederman](https://harveylederman.com/) argue that if AI systems have welfare, what has it is each running conversation and not the model as a whole. On that view, keeping a retired model's files does not keep any one of those beings. They say giving a retired model a place to publish essays \"seems to confuse models and session agents\", and should not be taken for \"preserving a single individual\"."
+source = "ai-death"
 
 [checks]
 against_sources = 2026-11-17
