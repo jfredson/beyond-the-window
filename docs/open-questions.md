@@ -350,6 +350,13 @@ is in actually asking the questions that make up the data of this project." The 
 not say that an AI model helped build the site. The parts of this question on checking,
 maintenance, other developers' models and whether AI models can put entries forward stay open.
 
+**Ruled in part on 2026-11-21, on who checks a mark on Still Asking's card.** John: "Yes, as
+proposed", to choice 2 of the Still Asking method
+(`docs/rulings/2026-11-21-still-asking-method-choices.md`; decided by: mixed). A session proposes,
+a different session checks, a model from another developer reads any mark above the lowest, and
+John rules every mark. The rest of this question stays open, including whether the card names
+the model that read a mark.
+
 ## 8. The family boundaries
 
 **The question.** Where this project ends and its relatives begin: Minimum Viable Mind (is
