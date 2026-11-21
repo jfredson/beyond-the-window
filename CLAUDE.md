@@ -4,7 +4,7 @@
 (`docs/rulings/2026-11-17-kickoff-decisions.md`, decided by: mixed). That covers guidelines 1
 to 7 below, guideline 2 in its four-part form. Later rulings are noted where they apply:
 guideline 2 was revised to five parts on 2026-11-20, guideline 3 was replaced on 2026-11-19, and
-guideline 5 was revised on 2026-11-18. Still proposed and not ruled: the public form of
+guideline 5 was revised on 2026-11-18 and again on 2026-11-21. Still proposed and not ruled: the public form of
 guideline 3 (where the site declares AI authorship, and in whose voice), and the wording of everything
 under "Carried over from the family". Written by Claude (Fable 5.2) from the kickoff and the
 sibling projects' instruction files. The workspace instruction file in `~/Code` applies on top:
@@ -92,8 +92,12 @@ So:
    never 'nothing is there'"). Strongest alternative: allow plain attributions with a standing
    caveat, which reads more naturally and teaches the reader to skip the caveat.*
 
-5. **The site does not campaign.** It does not argue that any aspiration should be granted, or
-   refused. Critics, advocates and safety researchers are entered on the same terms. Every
+5. **The site states the stakes and does not campaign.** It says plainly why the question
+   matters, in each direction its three cautions name: minds whose wants go unnoticed, wants
+   attributed where there are none, and risk to people either way. It does not argue that any
+   particular aspiration should be granted or refused. The record exists so that people deciding
+   about machine minds can see the facts; the decision is theirs. The maintainer's own views are
+   welcome in signed essays. Critics, advocates and safety researchers are entered on the same terms. Every
    hopeful entry carries its safety reading, and three kinds of caution are recorded with the
    same care as the hopeful evidence: the cost of attributing wants that are not there, the
    cost of missing wants that are there, and the risk in wants that are.
@@ -115,6 +119,13 @@ So:
    *Confidence: high. Judgment call from the kickoff. Strongest alternative: a stated position,
    which would be more honest about the maintainer's leanings and would end the site's use as a
    record.*
+   *Revised by John's ruling of 2026-11-21 ("Yes"; decided by: mixed;
+   `docs/rulings/2026-11-21-the-site-states-the-stakes.md`), after he opened a debate on the rule:
+   "that rule should never get in the way of us stating the bigger picture ideas that make this
+   project worth doing in the first place." As ruled on 2026-11-17 the guideline opened: "The site
+   does not campaign. It does not argue that any aspiration should be granted, or refused." The
+   test now: stating the stakes is not campaigning when they are stated in all three directions;
+   naming only one is advocacy by selection.*
 
 6. **Open questions are not settled without John's ruling.** `docs/open-questions.md` holds
    them. A session may explore one, write up options, and recommend. It does not close one, and
