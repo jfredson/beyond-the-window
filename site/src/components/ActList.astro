@@ -13,7 +13,10 @@ interface Props {
 const { named = false } = Astro.props;
 const acts = readings?.acts ?? [];
 const KIND = { developer: 'Developer', lawmaker: 'Law', court: 'Court', researchers: 'Researchers' };
-const urls = new Map((readings?.developers.by_developer ?? []).map((d) => [d.name, d.url]));
+// Where a name leads: a developer's page from data/developers.toml, or the page an act gives
+// for an actor that is not a developer. Each name is linked at its first mention in the list.
+const urls = new Map<string, string | null>((readings?.developers.by_developer ?? []).map((d) => [d.name, d.url]));
+for (const a of acts) if (a.actor_url && !urls.has(a.actor)) urls.set(a.actor, a.actor_url);
 const seen = new Set<string>();
 ---
 
@@ -29,7 +32,7 @@ const seen = new Set<string>();
           {named ? (
             <Fragment><span class="actor" data-actor={a.actor_kind}>{first && url ? <a href={url} rel="noopener">{a.actor}</a> : a.actor}</span>{` ${a.words}.`}</Fragment>
           ) : (
-            <Fragment>{`${a.actor_kind === 'developer' ? 'A developer' : a.actor} ${a.words}.`}</Fragment>
+            <Fragment>{a.actor_kind === 'developer' ? 'A developer' : first && url ? <a href={url} rel="noopener">{a.actor}</a> : a.actor}{` ${a.words}.`}</Fragment>
           )}
           {a.withdraws && <span class="dim"> This act takes something back.</span>}
           <span class="from">

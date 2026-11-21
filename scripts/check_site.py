@@ -93,7 +93,14 @@ What it refuses (docs/first-version-choices.md, choice 18):
     (docs/rulings/2026-11-20-home-page-names-every-covered-developer.md), so each must be named
     in both. On the page that lists every act, a covered developer may be named as the actor of
     an act (the element marked class="actor") and nowhere else. That second allowance is a
-    session's and is not ruled. No AI model is named on either page.
+    session's and is not ruled. In the pages' own sentences no AI model is named on either
+    page. On the page of acts and in the feed a model's name does appear inside the label of a
+    source, which sits inside <cite> and is not checked for this rule, as on every page: a
+    label says what a source is, and two of the records' sources are about a named model (a
+    developer's update on one model's retirement, and another's notice withdrawing one). Until
+    2026-11-20 this note said flatly that no model is named on either page, which the labels
+    made untrue; the note was changed and the labels were not, because they are sources that
+    stood before the rebuild and each entry's page already shows them.
 13. The phrase "from memory" on any page. A fact written without opening its source does not
     reach a public page, so the phrase on a page means a check was skipped.
 """
@@ -182,7 +189,7 @@ REQUIRED_FIGURES = ["developers.covered", "developers.things", "developers.cells
                     "researchers.0", "researchers.1", "acts.count"]
 COUNT_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
                "ten", "eleven", "twelve"]
-CELL_KINDS = ["offered", "not_counted", "taken_back", "nothing_found", "not_searched"]
+CELL_KINDS = ["offered", "unruled", "not_counted", "taken_back", "nothing_found", "not_searched"]
 
 
 def expected_figures(rd: dict) -> dict[str, float]:

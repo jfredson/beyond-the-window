@@ -10,7 +10,8 @@ first_pass = true
 limits = [
   "Whether every release report between May 2025 and November 2026 has a welfare section. Only the first and the newest were opened, so the test, which asks for two releases in a row, is not settled beyond those two.",
   "Whether any outside group took part after 2025.",
-  "Whether any other developer's release report has such a section. None was found, and none was opened to check.",
+  "Whether any other developer's release report has such a section. On November 20th, 2026 the two newest release documents of [OpenAI](https://openai.com/) and of [Google](https://ai.google/) were opened, and none has one. Their earlier reports were not opened here.",
+  "Whether other developers study the welfare of their models without publishing an assessment at release. A [Financial Times](https://en.wikipedia.org/wiki/Financial_Times) report of June 2nd, 2026, read in a licensed Spanish copy, says [Google DeepMind](https://deepmind.google/) and two other companies had hired people for research on machine consciousness and AI welfare, on the word of several people familiar with the matter. That is research, and is not an assessment published with a model.",
 ]
 notes = "From entry 5 of docs/research/2026-11-17-first-entries.md. The item of evidence under 'choice', and the first under 'statement', are from the same two reports as cited in entry 7 of that document, which is not built. The 2026 item was under 'choice' until 2026-11-18, when the second check of the records showed that it reports answers to a described trade-off, not a choice made at a cost."
 
@@ -182,4 +183,24 @@ words = "Two searches for a welfare assessment or a stated position on model wel
 [[searches]]
 date = 2026-11-20
 developer = "Google"
-words = "Two searches for a welfare assessment or work on model welfare, and the developer's two newest release documents, opened: the model cards published on November 18th, 2026 and November 12th, 2026. Neither contains the word welfare. The developer's earlier model cards were not opened."
+words = "Two searches for a welfare assessment or work on model welfare, and the developer's two newest release documents, opened: the model cards published on November 18th, 2026 and November 12th, 2026. Neither contains the word welfare. The developer's earlier model cards were not opened. Nothing found here means no assessment published with a release. It does not mean the developer does no work on the subject: a newspaper report of June 2nd, 2026, opened in a licensed Spanish copy, says it has hired people for research on machine consciousness and AI welfare."
+
+# Added 2026-11-20 as context for the place in the table that says nothing was found for a
+# second developer (docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md, item 4).
+[[sources]]
+key = "labs-research"
+label = "A Financial Times report on AI developers widening their research on machine consciousness, in Diario Financiero"
+publisher = "Diario Financiero"
+url = "https://www.df.cl/internacional/ft/los-principales-laboratorios-de-ia-amplian-la-investigacion-sobre-la"
+published = "2026-06-02"
+opened = 2026-11-20
+kind = "coverage"
+note = "In Spanish. A licensed copy of a Financial Times report; the original was not opened."
+says = "Says three companies, among them Google DeepMind, had in recent months hired experts in psychology, ethics and philosophy as they widened research on machine consciousness and AI welfare, according to several people familiar with the matter."
+
+[[history]]
+date = 2026-11-20
+field = "what could not be confirmed"
+old = "Whether any other developer's release report has such a section. None was found, and none was opened to check."
+new = "The same question, now with the release documents that were opened, and a new line on research that is not published at release."
+why = "Two other developers' newest release documents were opened on November 20th, 2026. A newspaper report shows that a lack of a published assessment is not a lack of research."

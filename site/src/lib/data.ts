@@ -60,11 +60,13 @@ export type Act = {
   actor_kind: 'developer' | 'lawmaker' | 'court' | 'researchers';
   words: string;
   withdraws: boolean;
+  about: string[]; // for an act by someone other than a developer: whose models it is about
+  actor_url: string | null; // the public page of an actor that is not a developer
   source: SourceRef;
   read_on: string;
 };
-export type CellKind = 'offered' | 'not_counted' | 'taken_back' | 'nothing_found' | 'not_searched';
-export type Cell = { developer: string; kind: CellKind; date: string | null };
+export type CellKind = 'offered' | 'unruled' | 'not_counted' | 'taken_back' | 'nothing_found' | 'not_searched';
+export type Cell = { developer: string; kind: CellKind; date: string | null; words?: string };
 export type MeasureReading = {
   entry: string;
   date: string;

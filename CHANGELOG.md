@@ -9,6 +9,18 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **Mends after the check of the rebuilt home page. Not published and not pushed. The count
+  did not move: it is still 5.** The check
+  (`docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md`) found two places where the
+  table of developers was contradicted by a public page. Both are mended in the records. The
+  entry on working for days now holds a second public measure, first reported on 2026-04-10,
+  and its three places no longer say nothing was found; its state line was reworded and it is
+  still not counted. The place for one developer's ending of chats no longer calls it a
+  promise not yet in effect. In both, whether the thing counts is left for John, and the page
+  says it is not decided. Also: words on the first screen that were used before they were
+  explained, three names linked, the footer's description, and the go to publish marked as
+  mixed. The mends are not checked:
+  `docs/proposals/2026-11-20-rebuilt-home-page-for-checking.md`, section 0.
 - **The rebuilt home page was put in place on the working branch, ready for a different
   session's check. Not published and not pushed. The count did not move: it is still 5.**
   John gave his go to publish it once checked

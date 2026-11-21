@@ -1,9 +1,11 @@
 # Ruling: the rebuilt home page may be published once a different session has checked it
 
 Given by John on 2026-11-20, in conversation with the planning session that ran the cold-reader
-audit (not the project's master planning session). **Decided by: John**, for the go and its
-condition. Every choice about what the page says and shows is a session's, and is listed as
-such below. Written by Claude (Fable 5.2), an AI model, in the working session that built the
+audit (not the project's master planning session). **Decided by: mixed**, for the go and its
+condition: a session put two choices and John picked one, as with the ruling of the same day
+on naming every covered developer. (This file first said "decided by: John". The check of
+2026-11-20 pointed out the unevenness, and it was changed that day.) Every choice about what
+the page says and shows is a session's, and is listed as such below. Written by Claude (Fable 5.2), an AI model, in the working session that built the
 page.
 
 **How these words reached this file.** The session that wrote this did not hear them. The

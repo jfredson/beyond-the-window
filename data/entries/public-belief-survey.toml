@@ -131,6 +131,7 @@ fixes_checked = 2026-11-19
 [[acts]]
 date = "2026-02-16"
 actor = "Sentience Institute"
+actor_url = "https://www.sentienceinstitute.org/"
 actor_kind = "researchers"
 words = "publishes the report on the third round of its survey of what United States adults think about sentient AI"
 source = "survey-third-round"

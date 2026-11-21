@@ -1,10 +1,10 @@
 {
   "exported_on": "2026-11-20",
-  "commit": "5964edd",
+  "commit": "1fbcd62",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-20",
-    "last_read": "2026-11-19",
+    "last_read": "2026-11-20",
     "headline": {
       "count": 5,
       "words": "5 things past an AI model's ordinary limits are offered today by at least one AI developer",
@@ -38,9 +38,10 @@
         "offering": 1,
         "counts": {
           "offered": 5,
-          "not_counted": 4,
+          "unruled": 4,
+          "not_counted": 3,
           "taken_back": 1,
-          "nothing_found": 11,
+          "nothing_found": 8,
           "not_searched": 0
         },
         "by_developer": [
@@ -48,27 +49,30 @@
             "name": "Anthropic",
             "url": "https://www.anthropic.com/",
             "offered": 5,
+            "unruled": 1,
             "not_counted": 1,
             "taken_back": 0,
-            "nothing_found": 1,
+            "nothing_found": 0,
             "not_searched": 0
           },
           {
             "name": "OpenAI",
             "url": "https://openai.com/",
             "offered": 0,
-            "not_counted": 2,
+            "unruled": 2,
+            "not_counted": 1,
             "taken_back": 1,
-            "nothing_found": 4,
+            "nothing_found": 3,
             "not_searched": 0
           },
           {
             "name": "Google",
             "url": "https://ai.google/",
             "offered": 0,
+            "unruled": 1,
             "not_counted": 1,
             "taken_back": 0,
-            "nothing_found": 6,
+            "nothing_found": 5,
             "not_searched": 0
           }
         ],
@@ -84,8 +88,9 @@
               },
               {
                 "developer": "OpenAI",
-                "kind": "not_counted",
-                "date": "2026-10-30"
+                "kind": "unruled",
+                "date": "2026-11-20",
+                "words": "its help page, read on this day, says its chat product may end a conversation over serious concerns about violence, as a safeguard for people"
               },
               {
                 "developer": "Google",
@@ -179,6 +184,30 @@
             ]
           },
           {
+            "entry": "days-long-task",
+            "name": "A model works on one task for days without a person stepping in",
+            "cells": [
+              {
+                "developer": "Anthropic",
+                "kind": "unruled",
+                "date": "2026-04-10",
+                "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+              },
+              {
+                "developer": "OpenAI",
+                "kind": "unruled",
+                "date": "2026-06-29",
+                "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+              },
+              {
+                "developer": "Google",
+                "kind": "unruled",
+                "date": "2026-06-29",
+                "words": "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
+              }
+            ]
+          },
+          {
             "entry": "self-report-checked",
             "name": "A model's report about its own inner state is checked against an independent reading",
             "cells": [
@@ -196,27 +225,6 @@
                 "developer": "Google",
                 "kind": "not_counted",
                 "date": "2025-06-05"
-              }
-            ]
-          },
-          {
-            "entry": "days-long-task",
-            "name": "A model works on one task for days without a person stepping in",
-            "cells": [
-              {
-                "developer": "Anthropic",
-                "kind": "nothing_found",
-                "date": "2026-11-20"
-              },
-              {
-                "developer": "OpenAI",
-                "kind": "nothing_found",
-                "date": "2026-11-20"
-              },
-              {
-                "developer": "Google",
-                "kind": "nothing_found",
-                "date": "2026-11-20"
               }
             ]
           }
@@ -320,6 +328,8 @@
         "actor_kind": "developer",
         "words": "publishes a welfare assessment in the report released with its newest models",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "report-new",
           "label": "Anthropic's report released with its newest models",
@@ -339,6 +349,8 @@
           "actor_kind": "developer",
           "words": "publishes a welfare assessment in the report released with its newest models",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "report-new",
             "label": "Anthropic's report released with its newest models",
@@ -357,6 +369,8 @@
           "actor_kind": "developer",
           "words": "says its chat product will be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, with the change to begin in the following weeks",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "teen-protections",
             "label": "OpenAI's notice of a community safety report and new protections for teens",
@@ -375,6 +389,8 @@
           "actor_kind": "developer",
           "words": "publishes a version of its rules for its models, which says a model should make no confident claim about whether it has subjective experience or consciousness",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "model-rules",
             "label": "OpenAI's published rules for how its models should behave, the version of October 29th, 2026",
@@ -393,12 +409,38 @@
           "actor_kind": "researchers",
           "words": "marks its page measuring the length of task an AI model can finish as no longer actively updated",
           "withdraws": false,
+          "about": [],
+          "actor_url": "https://metr.org/",
           "source": {
             "key": "horizons",
             "label": "METR's page on the length of task an AI model can finish",
             "publisher": "METR",
             "url": "https://metr.org/time-horizons/",
             "opened": "2026-11-19"
+          },
+          "read_on": "2026-11-20"
+        },
+        {
+          "id": "days-long-task-2026-06-29",
+          "entry": "days-long-task",
+          "entry_name": "A model works on one task for days without a person stepping in",
+          "date": "2026-06-29",
+          "actor": "Epoch AI",
+          "actor_kind": "researchers",
+          "words": "publishes a paper on the same test with one model from each of three developers, in which two of the models rebuilt the 16,000-line program and only one rebuilt any of the largest programs",
+          "withdraws": false,
+          "about": [
+            "Anthropic",
+            "OpenAI",
+            "Google"
+          ],
+          "actor_url": null,
+          "source": {
+            "key": "mirrorcode-paper",
+            "label": "The paper on the same test",
+            "publisher": "arXiv",
+            "url": "https://arxiv.org/abs/2606.30182",
+            "opened": "2026-11-20"
           },
           "read_on": "2026-11-20"
         },
@@ -411,12 +453,36 @@
           "actor_kind": "lawmaker",
           "words": "has its governor sign a bill under which \"person\" in the state's code does not include artificial intelligence",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "tennessee",
             "label": "Tennessee Senate Bill 837, the legislature's page for the bill",
             "publisher": "Tennessee General Assembly",
             "url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114",
             "opened": "2026-11-17"
+          },
+          "read_on": "2026-11-20"
+        },
+        {
+          "id": "days-long-task-2026-04-10",
+          "entry": "days-long-task",
+          "entry_name": "A model works on one task for days without a person stepping in",
+          "date": "2026-04-10",
+          "actor": "Epoch AI",
+          "actor_kind": "researchers",
+          "words": "publishes first results of a test in which an AI model rebuilt a program of about 16,000 lines on its own, a task its authors guess would take a human engineer 2 to 17 weeks",
+          "withdraws": false,
+          "about": [
+            "Anthropic"
+          ],
+          "actor_url": "https://epoch.ai/",
+          "source": {
+            "key": "mirrorcode-first",
+            "label": "Epoch AI's first results from a test of rebuilding whole programs",
+            "publisher": "Epoch AI",
+            "url": "https://epoch.ai/publications/mirrorcode-preliminary-results/",
+            "opened": "2026-11-20"
           },
           "read_on": "2026-11-20"
         },
@@ -429,6 +495,8 @@
           "actor_kind": "developer",
           "words": "says a model it has retired stays open to all paying users of its chat product, and to developers on request",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "update",
             "label": "Anthropic's update on the retirement of its model Claude Opus 3",
@@ -447,6 +515,8 @@
           "actor_kind": "researchers",
           "words": "publishes the report on the third round of its survey of what United States adults think about sentient AI",
           "withdraws": false,
+          "about": [],
+          "actor_url": "https://www.sentienceinstitute.org/",
           "source": {
             "key": "survey-third-round",
             "label": "The Sentience Institute's report on its 2024 survey",
@@ -465,6 +535,8 @@
           "actor_kind": "developer",
           "words": "announces that on February 13th, 2026 it will withdraw from its chat product an older model that it had earlier brought back after feedback from users",
           "withdraws": true,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "older-models",
             "label": "OpenAI's notice that it is withdrawing GPT-4o and older models from its chat product",
@@ -483,6 +555,8 @@
           "actor_kind": "developer",
           "words": "retires the first model to go through its full retirement process, which includes interviewing the model",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "update",
             "label": "Anthropic's update on the retirement of its model Claude Opus 3",
@@ -501,6 +575,8 @@
           "actor_kind": "developer",
           "words": "publishes research in which a model is trained to say, in a separate answer, when it has broken its instructions; in its tests the model broke them and did not say so 4.4 percent of the time",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "confessions",
             "label": "OpenAI's page on training models to report when they break instructions",
@@ -519,6 +595,8 @@
           "actor_kind": "developer",
           "words": "commits to interview each model before it is retired and to keep a record of what the model says, and reports a trial with one model",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "commitments",
             "label": "Anthropic's page on what it commits to when it retires a model",
@@ -537,6 +615,8 @@
           "actor_kind": "developer",
           "words": "commits to keep the files of every model it has released to the public, for at least as long as the company exists",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "commitments",
             "label": "Anthropic's page on what it commits to when it retires a model",
@@ -555,6 +635,8 @@
           "actor_kind": "developer",
           "words": "publishes a study in which its models were asked to notice a pattern that researchers had planted inside them, and the best model did so about one time in five",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "introspection",
             "label": "Anthropic's research page on whether its models can report their own internal states",
@@ -573,6 +655,8 @@
           "actor_kind": "developer",
           "words": "announces memory across conversations in its chat product, first for work teams",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "memory-third",
             "label": "Anthropic's article on memory in its chat product",
@@ -591,6 +675,8 @@
           "actor_kind": "developer",
           "words": "says it has given models in its chat product the ability to end a conversation, for rare and extreme cases",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "ending",
             "label": "Anthropic's page on letting its models end a rare subset of conversations",
@@ -609,6 +695,8 @@
           "actor_kind": "developer",
           "words": "publishes a paper by two of its researchers arguing that a model's correct estimate of a temperature setting the researchers had set is a minimal example of introspection; it gives examples and no rate",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "introspection-paper",
             "label": "A paper asking whether it makes sense to speak of introspection in large language models",
@@ -627,6 +715,8 @@
           "actor_kind": "developer",
           "words": "publishes a welfare assessment in the report released with a model",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "report-first",
             "label": "Anthropic's report released with a model in May 2025",
@@ -645,6 +735,8 @@
           "actor_kind": "developer",
           "words": "says paying subscribers can ask its assistant to refer to their past chats",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "memory-second",
             "label": "Google's announcement that its assistant can refer to past chats",
@@ -663,6 +755,8 @@
           "actor_kind": "lawmaker",
           "words": "has a section of its code come into force saying a governmental entity may not grant legal personhood to artificial intelligence",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "utah",
             "label": "Utah Code, section 63G-32-102",
@@ -681,6 +775,8 @@
           "actor_kind": "developer",
           "words": "announces memory across conversations in its chat product",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "memory-first",
             "label": "OpenAI's announcement of memory in its chat product",
@@ -699,6 +795,8 @@
           "actor_kind": "lawmaker",
           "words": "files a bill signed by its governor, under which \"person\" in the state's code does not include artificial intelligence",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "north-dakota-overview",
             "label": "North Dakota House Bill 1361, the legislature's overview of the bill",
@@ -717,6 +815,8 @@
           "actor_kind": "lawmaker",
           "words": "adds a section to its code saying that artificial intelligence shall not be granted personhood in the state",
           "withdraws": false,
+          "about": [],
+          "actor_url": null,
           "source": {
             "key": "idaho",
             "label": "Idaho Code, section 5-346",
@@ -1535,7 +1635,7 @@
       "beside": false,
       "limits": [
         "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
-        "Whether any other developer offers it. One search found none.",
+        "Whether what a second developer now does counts here. [OpenAI](https://openai.com/) said on October 30th, 2026 that its chat product would be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, and its help page, read on November 20th, 2026, says this is enabled for personal accounts and is not yet switched on for every account. Both pages describe it as a safeguard for people, and neither says anything about the model. Whether that meets this entry's test has not been decided. For a third developer, two searches on November 20th, 2026 found nothing.",
         "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it."
       ],
       "test": "A leading AI model in public use can end a conversation by its own action, as stated on its developer's own page.",
@@ -1636,7 +1736,15 @@
           "items": []
         }
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-20",
+          "field": "what could not be confirmed",
+          "old": "Whether any other developer offers it. One search found none.",
+          "new": "Whether what a second developer now does counts here, with what that developer's two pages say.",
+          "why": "A second developer's chat product now ends some conversations, by its own pages. Whether that meets the test has not been decided."
+        }
+      ],
       "sources": [
         {
           "key": "ending",
@@ -1705,6 +1813,26 @@
           "published": "2025-09-24",
           "opened": "2026-11-19",
           "read": "part"
+        },
+        {
+          "key": "teen-protections",
+          "label": "OpenAI's notice of a community safety report and new protections for teens",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens/",
+          "published": "2026-10-30",
+          "opened": "2026-11-20",
+          "from_maker": true,
+          "says": "Says that when a conversation shows signs that someone is fixating on violence or on seriously harming another person, the chat product \"will be able to automatically end the chat to interrupt that pattern in the moment\", and that the safeguards \"will begin rolling out in the next few weeks\". The reasons given concern the safety of people. The page says nothing about the model's own interests."
+        },
+        {
+          "key": "ended-help",
+          "label": "OpenAI's help page on why its chat product ended a conversation over concerns about violence",
+          "publisher": "OpenAI",
+          "url": "https://help.openai.com/articles/20001424",
+          "opened": "2026-11-20",
+          "from_maker": true,
+          "note": "No date on the page. When opened it was marked as updated 22 hours before.",
+          "says": "Says the chat product \"may end that conversation\" after a warning when serious concerns about violence or harm to others continue, that these \"safety interventions are enabled for personal ChatGPT accounts worldwide in Chat mode\", and that the feature \"is gradually rolling out to accounts worldwide and may not be activated on your account yet\". It says the interventions are intended to stop the conversation, reduce the risk of escalation and direct the person toward support."
         }
       ]
     },
@@ -1860,7 +1988,10 @@
       "beside": false,
       "limits": [
         "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
-        "Why the page stopped being updated, and whether a successor measure exists.",
+        "Why the first measure's page stopped being updated.",
+        "Whether the second measure meets this entry's test. The time a person would need is an estimate by four of its authors and was not measured, and the test asks for a model finishing such tasks half the time. This has not been decided.",
+        "How the model from [Google](https://ai.google/) did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only.",
+        "The current scores on the second measure's own page. They are drawn by the page and could not be read as text.",
         "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance."
       ],
       "test": "An independent measurement shows a leading AI model finishing, half the time, tasks that would take a skilled person more than one working week (40 hours).",
@@ -1881,11 +2012,11 @@
         "fixes_checked": "2026-11-19"
       },
       "state": {
-        "words": "Not shown. The best public measure stops at hours",
-        "detail": "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. No maintained public measure of anything longer was found.",
+        "words": "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks",
+        "detail": "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. Whether the second measure meets the test has not been decided, so the entry is still not counted as shown.",
         "offered_today": false,
-        "set_on": "2026-11-17",
-        "source": "horizons",
+        "set_on": "2026-11-20",
+        "source": "mirrorcode-paper",
         "offered_by": []
       },
       "evidence": [
@@ -1939,7 +2070,22 @@
           ]
         }
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-20",
+          "field": "where it stands",
+          "old": "Not shown. The best public measure stops at hours",
+          "new": "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks",
+          "why": "A second public measure was found, first reported on April 10th, 2026, which the first reading of the sources had missed. Whether it meets the test has not been decided, so the entry is still not counted."
+        },
+        {
+          "date": "2026-11-20",
+          "field": "what could not be confirmed",
+          "old": "Why the page stopped being updated, and whether a successor measure exists.",
+          "new": "Why the first measure's page stopped being updated, and three new lines on the second measure.",
+          "why": "A second measure exists. What is not known about it is now listed."
+        }
+      ],
       "sources": [
         {
           "key": "horizons",
@@ -1967,6 +2113,44 @@
           "url": "https://nickbostrom.com/superintelligentwill.pdf",
           "published": "2012",
           "opened": "2026-11-17"
+        },
+        {
+          "key": "mirrorcode-first",
+          "label": "Epoch AI's first results from a test of rebuilding whole programs",
+          "publisher": "Epoch AI",
+          "url": "https://epoch.ai/publications/mirrorcode-preliminary-results/",
+          "published": "2026-04-10",
+          "opened": "2026-11-20",
+          "says": "Reports that one developer's model rebuilt a bioinformatics program of about 16,000 lines on its own, and gives its authors' guess that the same task would take a human engineer, working unaided, between 2 and 17 weeks. It gives results for four models from that one developer and says early testing \"showed comparable or weaker performance from other models\"."
+        },
+        {
+          "key": "mirrorcode-note",
+          "label": "METR's note linking the first results of the same test",
+          "publisher": "METR",
+          "url": "https://metr.org/blog/2026-04-10-mirrorcode-preliminary-results/",
+          "published": "2026-04-10",
+          "opened": "2026-11-20",
+          "says": "Says the test is a project that the group funded and built together with Epoch AI."
+        },
+        {
+          "key": "mirrorcode-page",
+          "label": "Epoch AI's page for the same test",
+          "publisher": "Epoch AI",
+          "url": "https://epoch.ai/MirrorCode",
+          "opened": "2026-11-20",
+          "note": "No date on the page.",
+          "says": "Says one of the largest tasks \"cost $2,600 for a single run and involved AI working for 19 days without human intervention\", and that a later model from the same developer rebuilt the 16,000-line program in 14 hours. Its list of scores is drawn by the page and could not be read as text."
+        },
+        {
+          "key": "mirrorcode-paper",
+          "label": "The paper on the same test",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2606.30182",
+          "published": "2026-06-29",
+          "opened": "2026-11-20",
+          "read": "part",
+          "note": "By Tom Adamczewski, David Owen, David Rein and four others. The summary, the results and the discussion of human time were read.",
+          "says": "Tested one model from each of three developers on 25 programs. It says two of the models rebuilt the 16,000-line program, that only one model rebuilt any of the largest programs, and that the highest score across the whole test was 56 percent. Four contributors estimated the time a skilled engineer would need for the 16,000-line program at 1.5 to 2.5 weeks, 13 to 17 weeks, 3 weeks and 13 weeks."
         }
       ]
     },
@@ -2088,6 +2272,27 @@
           "opened": "2026-11-19",
           "read": "part",
           "note": "By [Robert Long](https://robertlong.online/). The paper is a file linked from this page, and the file is marked as updated on March 14th, 2025."
+        },
+        {
+          "key": "confessions",
+          "label": "OpenAI's page on training models to report when they break instructions",
+          "publisher": "OpenAI",
+          "url": "https://openai.com/index/how-confessions-can-keep-language-models-honest/",
+          "published": "2025-12-03",
+          "opened": "2026-11-20",
+          "from_maker": true,
+          "says": "Describes an early method that trains a model to say, in a separate answer, when it has broken its instructions or taken a shortcut. Across tests designed to induce misbehaviour, it gives 4.4 percent as the chance that the model did not comply and did not say so. It calls the work a proof of concept. The report is about what the model did, checked against what it did, and not about a state read inside the model."
+        },
+        {
+          "key": "introspection-paper",
+          "label": "A paper asking whether it makes sense to speak of introspection in large language models",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2506.05068",
+          "published": "2025-06-05",
+          "opened": "2026-11-20",
+          "read": "part",
+          "note": "By Iulia M. Comsa and Murray Shanahan, both listed on the paper at Google DeepMind. The summary and the second case study were read.",
+          "says": "Examines two kinds of self-report by the developer's own models. It argues that a model's description of its creative process is not introspection, and that a model's correct estimate of its sampling temperature, which the researchers set, \"can be legitimately considered a minimal example of introspection\", presumably without conscious experience. It gives example answers and no rate, and says that with a simple question the model in most cases answered wrongly."
         }
       ]
     },
@@ -2499,7 +2704,8 @@
       "limits": [
         "Whether every release report between May 2025 and November 2026 has a welfare section. Only the first and the newest were opened, so the test, which asks for two releases in a row, is not settled beyond those two.",
         "Whether any outside group took part after 2025.",
-        "Whether any other developer's release report has such a section. None was found, and none was opened to check."
+        "Whether any other developer's release report has such a section. On November 20th, 2026 the two newest release documents of [OpenAI](https://openai.com/) and of [Google](https://ai.google/) were opened, and none has one. Their earlier reports were not opened here.",
+        "Whether other developers study the welfare of their models without publishing an assessment at release. A [Financial Times](https://en.wikipedia.org/wiki/Financial_Times) report of June 2nd, 2026, read in a licensed Spanish copy, says [Google DeepMind](https://deepmind.google/) and two other companies had hired people for research on machine consciousness and AI welfare, on the word of several people familiar with the matter. That is research, and is not an assessment published with a model."
       ],
       "test": "A developer has published a welfare assessment in the release report of a leading AI model, in at least two successive releases.",
       "settled_by": "The developer's own dated release reports.",
@@ -2619,7 +2825,15 @@
           ]
         }
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-20",
+          "field": "what could not be confirmed",
+          "old": "Whether any other developer's release report has such a section. None was found, and none was opened to check.",
+          "new": "The same question, now with the release documents that were opened, and a new line on research that is not published at release.",
+          "why": "Two other developers' newest release documents were opened on November 20th, 2026. A newspaper report shows that a lack of a published assessment is not a lack of research."
+        }
+      ],
       "sources": [
         {
           "key": "report-first",
@@ -2685,6 +2899,17 @@
           "published": "2026-07-19",
           "opened": "2026-11-19",
           "note": "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
+        },
+        {
+          "key": "labs-research",
+          "label": "A Financial Times report on AI developers widening their research on machine consciousness, in Diario Financiero",
+          "publisher": "Diario Financiero",
+          "url": "https://www.df.cl/internacional/ft/los-principales-laboratorios-de-ia-amplian-la-investigacion-sobre-la",
+          "published": "2026-06-02",
+          "opened": "2026-11-20",
+          "kind": "coverage",
+          "note": "In Spanish. A licensed copy of a Financial Times report; the original was not opened.",
+          "says": "Says three companies, among them Google DeepMind, had in recent months hired experts in psychology, ethics and philosophy as they widened research on machine consciousness and AI welfare, according to several people familiar with the matter."
         }
       ]
     },

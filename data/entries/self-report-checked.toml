@@ -96,7 +96,6 @@ url = "https://openai.com/index/how-confessions-can-keep-language-models-honest/
 published = "2025-12-03"
 opened = 2026-11-20
 from_maker = true
-draft = true
 says = "Describes an early method that trains a model to say, in a separate answer, when it has broken its instructions or taken a shortcut. Across tests designed to induce misbehaviour, it gives 4.4 percent as the chance that the model did not comply and did not say so. It calls the work a proof of concept. The report is about what the model did, checked against what it did, and not about a state read inside the model."
 
 [[sources]]
@@ -107,7 +106,6 @@ url = "https://arxiv.org/abs/2506.05068"
 published = "2025-06-05"
 opened = 2026-11-20
 read = "part"
-draft = true
 note = "By Iulia M. Comsa and Murray Shanahan, both listed on the paper at Google DeepMind. The summary and the second case study were read."
 says = "Examines two kinds of self-report by the developer's own models. It argues that a model's description of its creative process is not introspection, and that a model's correct estimate of its sampling temperature, which the researchers set, \"can be legitimately considered a minimal example of introspection\", presumably without conscious experience. It gives example answers and no rate, and says that with a simple question the model in most cases answered wrongly."
 

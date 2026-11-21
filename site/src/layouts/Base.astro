@@ -26,7 +26,7 @@ interface Props {
 
 const {
   title = SITE_NAME,
-  description = 'A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.',
+  description = 'A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.',
   noindex = false,
 } = Astro.props;
 
@@ -91,7 +91,7 @@ const currentYear = new Date().getFullYear();
       <div class="container footer-grid">
         <div>
           <span class="footer-brand">Beyond the Window</span>
-          <p class="footer-tag">A public list of things that lie past the present limits of AI models, with a record of how far the world has got on each one.</p>
+          <p class="footer-tag">A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.</p>
           <p class="footer-links">
             <a href="/list/">The list</a>
             <a href="/acts/">Everything, by date</a>
@@ -99,7 +99,7 @@ const currentYear = new Date().getFullYear();
             <a href="/still-asking/">Still Asking</a>
             <a href="/about/">About</a>
             <a href="/about/#not-known">What is not known yet</a>
-            <a href="/data/headline.json">The number as a file</a>
+            <a href="/data/headline.json">The figures as a file</a>
           </p>
           <p class="footer-meta">
             © {currentYear} <a href="https://johnandrewfredrickson.com/" rel="author">John Andrew Fredrickson</a>. Last built {longDate(data.exported_on)}{data.commit ? ` (version ${data.commit})` : ''} from {builtFrom()}.

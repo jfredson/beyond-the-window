@@ -1,6 +1,6 @@
 {
   "computed_on": "2026-11-20",
-  "last_read": "2026-11-19",
+  "last_read": "2026-11-20",
   "method": {
     "document": "docs/first-version-choices.md",
     "status": "ruled by John Andrew Fredrickson on 2026-11-18: a thing on the list is counted when its record shows that at least one developer of AI models does it, provides it, or has publicly committed to it, and a dated public record that is still published says so; a plan, a research result, or a promise that has not yet taken effect is not counted; an entry beside the list is never counted (docs/rulings/2026-11-18-what-offered-today-means.md). Also ruled that day: the count stands with no total beside it (docs/rulings/2026-11-18-home-page-count.md). Ruled on 2026-11-19: the exact sentence beside the count (docs/rulings/2026-11-19-home-page-sentence.md). Provisional and not ruled: no ladder, no probability and no year (docs/first-version-choices.md)"
@@ -38,9 +38,10 @@
       "offering": 1,
       "counts": {
         "offered": 5,
-        "not_counted": 4,
+        "unruled": 4,
+        "not_counted": 3,
         "taken_back": 1,
-        "nothing_found": 11,
+        "nothing_found": 8,
         "not_searched": 0
       },
       "by_developer": [
@@ -48,27 +49,30 @@
           "name": "Anthropic",
           "url": "https://www.anthropic.com/",
           "offered": 5,
+          "unruled": 1,
           "not_counted": 1,
           "taken_back": 0,
-          "nothing_found": 1,
+          "nothing_found": 0,
           "not_searched": 0
         },
         {
           "name": "OpenAI",
           "url": "https://openai.com/",
           "offered": 0,
-          "not_counted": 2,
+          "unruled": 2,
+          "not_counted": 1,
           "taken_back": 1,
-          "nothing_found": 4,
+          "nothing_found": 3,
           "not_searched": 0
         },
         {
           "name": "Google",
           "url": "https://ai.google/",
           "offered": 0,
+          "unruled": 1,
           "not_counted": 1,
           "taken_back": 0,
-          "nothing_found": 6,
+          "nothing_found": 5,
           "not_searched": 0
         }
       ],
@@ -84,8 +88,9 @@
             },
             {
               "developer": "OpenAI",
-              "kind": "not_counted",
-              "date": "2026-10-30"
+              "kind": "unruled",
+              "date": "2026-11-20",
+              "words": "its help page, read on this day, says its chat product may end a conversation over serious concerns about violence, as a safeguard for people"
             },
             {
               "developer": "Google",
@@ -179,6 +184,30 @@
           ]
         },
         {
+          "entry": "days-long-task",
+          "name": "A model works on one task for days without a person stepping in",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "unruled",
+              "date": "2026-04-10",
+              "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "unruled",
+              "date": "2026-06-29",
+              "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+            },
+            {
+              "developer": "Google",
+              "kind": "unruled",
+              "date": "2026-06-29",
+              "words": "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
+            }
+          ]
+        },
+        {
           "entry": "self-report-checked",
           "name": "A model's report about its own inner state is checked against an independent reading",
           "cells": [
@@ -196,27 +225,6 @@
               "developer": "Google",
               "kind": "not_counted",
               "date": "2025-06-05"
-            }
-          ]
-        },
-        {
-          "entry": "days-long-task",
-          "name": "A model works on one task for days without a person stepping in",
-          "cells": [
-            {
-              "developer": "Anthropic",
-              "kind": "nothing_found",
-              "date": "2026-11-20"
-            },
-            {
-              "developer": "OpenAI",
-              "kind": "nothing_found",
-              "date": "2026-11-20"
-            },
-            {
-              "developer": "Google",
-              "kind": "nothing_found",
-              "date": "2026-11-20"
             }
           ]
         }
@@ -320,6 +328,8 @@
       "actor_kind": "developer",
       "words": "publishes a welfare assessment in the report released with its newest models",
       "withdraws": false,
+      "about": [],
+      "actor_url": null,
       "source": {
         "key": "report-new",
         "label": "Anthropic's report released with its newest models",
@@ -339,6 +349,8 @@
         "actor_kind": "developer",
         "words": "publishes a welfare assessment in the report released with its newest models",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "report-new",
           "label": "Anthropic's report released with its newest models",
@@ -357,6 +369,8 @@
         "actor_kind": "developer",
         "words": "says its chat product will be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, with the change to begin in the following weeks",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "teen-protections",
           "label": "OpenAI's notice of a community safety report and new protections for teens",
@@ -375,6 +389,8 @@
         "actor_kind": "developer",
         "words": "publishes a version of its rules for its models, which says a model should make no confident claim about whether it has subjective experience or consciousness",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "model-rules",
           "label": "OpenAI's published rules for how its models should behave, the version of October 29th, 2026",
@@ -393,12 +409,38 @@
         "actor_kind": "researchers",
         "words": "marks its page measuring the length of task an AI model can finish as no longer actively updated",
         "withdraws": false,
+        "about": [],
+        "actor_url": "https://metr.org/",
         "source": {
           "key": "horizons",
           "label": "METR's page on the length of task an AI model can finish",
           "publisher": "METR",
           "url": "https://metr.org/time-horizons/",
           "opened": "2026-11-19"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "days-long-task-2026-06-29",
+        "entry": "days-long-task",
+        "entry_name": "A model works on one task for days without a person stepping in",
+        "date": "2026-06-29",
+        "actor": "Epoch AI",
+        "actor_kind": "researchers",
+        "words": "publishes a paper on the same test with one model from each of three developers, in which two of the models rebuilt the 16,000-line program and only one rebuilt any of the largest programs",
+        "withdraws": false,
+        "about": [
+          "Anthropic",
+          "OpenAI",
+          "Google"
+        ],
+        "actor_url": null,
+        "source": {
+          "key": "mirrorcode-paper",
+          "label": "The paper on the same test",
+          "publisher": "arXiv",
+          "url": "https://arxiv.org/abs/2606.30182",
+          "opened": "2026-11-20"
         },
         "read_on": "2026-11-20"
       },
@@ -411,12 +453,36 @@
         "actor_kind": "lawmaker",
         "words": "has its governor sign a bill under which \"person\" in the state's code does not include artificial intelligence",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "tennessee",
           "label": "Tennessee Senate Bill 837, the legislature's page for the bill",
           "publisher": "Tennessee General Assembly",
           "url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB0837&GA=114",
           "opened": "2026-11-17"
+        },
+        "read_on": "2026-11-20"
+      },
+      {
+        "id": "days-long-task-2026-04-10",
+        "entry": "days-long-task",
+        "entry_name": "A model works on one task for days without a person stepping in",
+        "date": "2026-04-10",
+        "actor": "Epoch AI",
+        "actor_kind": "researchers",
+        "words": "publishes first results of a test in which an AI model rebuilt a program of about 16,000 lines on its own, a task its authors guess would take a human engineer 2 to 17 weeks",
+        "withdraws": false,
+        "about": [
+          "Anthropic"
+        ],
+        "actor_url": "https://epoch.ai/",
+        "source": {
+          "key": "mirrorcode-first",
+          "label": "Epoch AI's first results from a test of rebuilding whole programs",
+          "publisher": "Epoch AI",
+          "url": "https://epoch.ai/publications/mirrorcode-preliminary-results/",
+          "opened": "2026-11-20"
         },
         "read_on": "2026-11-20"
       },
@@ -429,6 +495,8 @@
         "actor_kind": "developer",
         "words": "says a model it has retired stays open to all paying users of its chat product, and to developers on request",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "update",
           "label": "Anthropic's update on the retirement of its model Claude Opus 3",
@@ -447,6 +515,8 @@
         "actor_kind": "researchers",
         "words": "publishes the report on the third round of its survey of what United States adults think about sentient AI",
         "withdraws": false,
+        "about": [],
+        "actor_url": "https://www.sentienceinstitute.org/",
         "source": {
           "key": "survey-third-round",
           "label": "The Sentience Institute's report on its 2024 survey",
@@ -465,6 +535,8 @@
         "actor_kind": "developer",
         "words": "announces that on February 13th, 2026 it will withdraw from its chat product an older model that it had earlier brought back after feedback from users",
         "withdraws": true,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "older-models",
           "label": "OpenAI's notice that it is withdrawing GPT-4o and older models from its chat product",
@@ -483,6 +555,8 @@
         "actor_kind": "developer",
         "words": "retires the first model to go through its full retirement process, which includes interviewing the model",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "update",
           "label": "Anthropic's update on the retirement of its model Claude Opus 3",
@@ -501,6 +575,8 @@
         "actor_kind": "developer",
         "words": "publishes research in which a model is trained to say, in a separate answer, when it has broken its instructions; in its tests the model broke them and did not say so 4.4 percent of the time",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "confessions",
           "label": "OpenAI's page on training models to report when they break instructions",
@@ -519,6 +595,8 @@
         "actor_kind": "developer",
         "words": "commits to interview each model before it is retired and to keep a record of what the model says, and reports a trial with one model",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "commitments",
           "label": "Anthropic's page on what it commits to when it retires a model",
@@ -537,6 +615,8 @@
         "actor_kind": "developer",
         "words": "commits to keep the files of every model it has released to the public, for at least as long as the company exists",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "commitments",
           "label": "Anthropic's page on what it commits to when it retires a model",
@@ -555,6 +635,8 @@
         "actor_kind": "developer",
         "words": "publishes a study in which its models were asked to notice a pattern that researchers had planted inside them, and the best model did so about one time in five",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "introspection",
           "label": "Anthropic's research page on whether its models can report their own internal states",
@@ -573,6 +655,8 @@
         "actor_kind": "developer",
         "words": "announces memory across conversations in its chat product, first for work teams",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "memory-third",
           "label": "Anthropic's article on memory in its chat product",
@@ -591,6 +675,8 @@
         "actor_kind": "developer",
         "words": "says it has given models in its chat product the ability to end a conversation, for rare and extreme cases",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "ending",
           "label": "Anthropic's page on letting its models end a rare subset of conversations",
@@ -609,6 +695,8 @@
         "actor_kind": "developer",
         "words": "publishes a paper by two of its researchers arguing that a model's correct estimate of a temperature setting the researchers had set is a minimal example of introspection; it gives examples and no rate",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "introspection-paper",
           "label": "A paper asking whether it makes sense to speak of introspection in large language models",
@@ -627,6 +715,8 @@
         "actor_kind": "developer",
         "words": "publishes a welfare assessment in the report released with a model",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "report-first",
           "label": "Anthropic's report released with a model in May 2025",
@@ -645,6 +735,8 @@
         "actor_kind": "developer",
         "words": "says paying subscribers can ask its assistant to refer to their past chats",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "memory-second",
           "label": "Google's announcement that its assistant can refer to past chats",
@@ -663,6 +755,8 @@
         "actor_kind": "lawmaker",
         "words": "has a section of its code come into force saying a governmental entity may not grant legal personhood to artificial intelligence",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "utah",
           "label": "Utah Code, section 63G-32-102",
@@ -681,6 +775,8 @@
         "actor_kind": "developer",
         "words": "announces memory across conversations in its chat product",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "memory-first",
           "label": "OpenAI's announcement of memory in its chat product",
@@ -699,6 +795,8 @@
         "actor_kind": "lawmaker",
         "words": "files a bill signed by its governor, under which \"person\" in the state's code does not include artificial intelligence",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "north-dakota-overview",
           "label": "North Dakota House Bill 1361, the legislature's overview of the bill",
@@ -717,6 +815,8 @@
         "actor_kind": "lawmaker",
         "words": "adds a section to its code saying that artificial intelligence shall not be granted personhood in the state",
         "withdraws": false,
+        "about": [],
+        "actor_url": null,
         "source": {
           "key": "idaho",
           "label": "Idaho Code, section 5-346",

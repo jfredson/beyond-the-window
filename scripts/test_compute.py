@@ -480,8 +480,40 @@ class Readings(unittest.TestCase):
         # the second developer did nothing and was searched for nothing
         self.assertEqual({cs[1]["kind"] for cs in cells.values()}, {"not_searched"})
         self.assertEqual(g["offering"], 1)
-        self.assertEqual(g["counts"], {"offered": 1, "not_counted": 1, "taken_back": 1,
-                                       "nothing_found": 1, "not_searched": 4})
+        self.assertEqual(g["counts"], {"offered": 1, "unruled": 0, "not_counted": 1,
+                                       "taken_back": 1, "nothing_found": 1, "not_searched": 4})
+
+    def test_a_place_found_and_not_yet_ruled_says_so_and_is_never_counted(self):
+        recs = self.records()
+        recs[1]["unruled"] = [{"developer": "A made-up developer", "date": "2026-11-20",
+                               "words": "a made-up thing is in effect", "source": "s"}]
+        recs[3]["unruled"] = [{"developer": "Another made-up developer", "date": "2026-04",
+                               "words": "an outside group reports a made-up result", "source": "s"}]
+        self.assertEqual(c.validate(GROUPS, recs, DEVS), [])
+        g = c.developer_grid(recs, DEVS)
+        cells = {row["entry"]: row["cells"] for row in g["rows"]}
+        self.assertEqual((cells["a-thing-studied"][0]["kind"], cells["a-thing-studied"][0]["words"]),
+                         ("unruled", "a made-up thing is in effect"))
+        self.assertEqual(cells["a-thing-searched-for"][1]["kind"], "unruled")
+        self.assertEqual(g["counts"]["unruled"], 2)
+        self.assertEqual(c.compute(recs, DEVS)["headline"]["count"], 1)
+        # it cannot stand where the thing is already counted, and it needs a source
+        recs[0]["unruled"] = [{"developer": "A made-up developer", "date": "2026",
+                               "words": "x", "source": "nowhere"}]
+        said = "\n".join(c.validate(GROUPS, recs, DEVS))
+        self.assertIn("cannot be both counted and not yet ruled", said)
+        self.assertIn("unruled 1 names a source", said)
+
+    def test_an_act_by_researchers_can_say_whose_models_it_is_about(self):
+        rec = good(); rec["acts"] = [act(actor="A made-up group", kind="researchers",
+                                         about=["A made-up developer"],
+                                         actor_url="https://example.com/group")]
+        self.assertEqual(errs_with(rec), "")
+        self.assertEqual(c.all_acts([rec])[0]["about"], ["A made-up developer"])
+        rec["acts"][0]["about"] = ["Nobody listed"]
+        self.assertIn("'about' names 'Nobody listed'", errs_with(rec))
+        rec = good(); rec["acts"] = [act(about=["Another made-up developer"])]
+        self.assertIn("'about' on a developer's own act", errs_with(rec))
 
     def test_a_thing_for_lawmakers_is_not_a_row_of_the_grid(self):
         g = c.developer_grid(self.records(), DEVS)

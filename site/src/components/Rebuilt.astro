@@ -43,17 +43,17 @@ if (interviewers !== 1) throw new Error('the opening sentence is written for one
 
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
-const cellWords = (kind: string, date: string | null) =>
+const cellWords = (kind: string, date: string | null, words?: string) =>
   kind === 'offered' ? `Since ${date ? worldDate(date) : 'a date not recorded'}`
+  : kind === 'unruled' ? `${worldDate(date!)}: ${words}. Whether this counts is not decided yet.`
   : kind === 'not_counted' ? `${worldDate(date!)}, not counted as offered`
   : kind === 'taken_back' ? `Withdrawal: ${worldDate(date!)}`
   : kind === 'nothing_found' ? `Nothing found on ${worldDate(date!)}`
   : 'Not yet searched';
 const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A developer' : a.actor} ${a.words}.`;
-const description = 'A dated record of how the world is treating AI models: what developers, lawmakers and researchers have done, by whom and when.';
 ---
 
-<Base description={description}>
+<Base>
   <div class="rb-top">
     <p class="eyebrow">A dated record of how the world is treating AI models</p>
     <h1>{cap(countWord(interviewers))} AI developer has <a href="/list/interview-before-retirement/">committed to interview each of its models before retiring it</a>, and to keep the record.</h1>
@@ -62,22 +62,23 @@ const description = 'A dated record of how the world is treating AI models: what
     <div class="rb-readings">
       <p class="rb-reading rb-row">
           <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
-          <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span> percent {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>The entry.</a></span>
+          <span><span class="rb-label">Researchers</span>{res.measures[0].words}. <span data-figure="researchers.1">{res.measures[1].value}</span>% {res.measures[1].words}. {res.one_source && 'From one survey. '}<a href={`/list/${res.entry}/`}>More on this survey.</a></span>
       </p>
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
-        <p>This record covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
+        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for the AI models it builds, such as keeping a retired model's files or letting a model end a conversation. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
         <ul class="rb-strip" data-developers-reading>
           {g.by_developer.map((d) => (
             <li>
               <a href={d.url ?? undefined} rel="noopener">{d.name}</a>
-              <span class={d.offered > 0 ? 'has' : ''}>{d.offered > 0 ? <Fragment><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span> {d.offered === 1 ? 'thing' : 'things'} offered</Fragment> : 'Nothing recorded as offered'}</span>
-              {d.nothing_found > 0 && <span class="dim">Nothing found for <span data-figure={`developers.${d.name}.nothing_found`}>{d.nothing_found}</span> {d.nothing_found === 1 ? 'thing' : 'things'}</span>}
+              <span class={d.offered > 0 ? 'has' : ''}>{d.offered > 0 ? <Fragment><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span> in place or promised</Fragment> : 'None counted so far'}</span>
+              {d.unruled > 0 && <span class="dim"><span data-figure={`developers.${d.name}.unruled`}>{d.unruled}</span> found, not yet decided</span>}
+              {d.nothing_found > 0 && <span class="dim"><span data-figure={`developers.${d.name}.nothing_found`}>{d.nothing_found}</span> looked for, not found</span>}
               {d.not_searched > 0 && <span class="dim"><span data-figure={`developers.${d.name}.not_searched`}>{d.not_searched}</span> not yet searched</span>}
             </li>
           ))}
         </ul>
-        <p class="rb-note">{g.counts.not_searched > 0 ? 'Not yet searched means that nobody has looked, and not that nothing is there. ' : 'Nothing found means that searches made on a stated day found nothing. A search can miss what exists. '}<a href="#who-does-what">Who does what, thing by thing.</a></p>
+        <p class="rb-note">In place or promised means the developer does the thing or has publicly committed to it. Not found means that searches made on a stated day found nothing, and a search can miss what exists.{g.counts.unruled > 0 && ' Not yet decided means something was found, and whether it counts is open.'}{g.counts.not_searched > 0 && ' Not yet searched means that nobody has looked.'} <a href="#who-does-what">Who does what, thing by thing.</a></p>
       </div>
       <p class="rb-reading rb-row">
         <span class="rb-fig"><span data-figure="law.against.count">{law.against.count}</span></span>
@@ -85,14 +86,14 @@ const description = 'A dated record of how the world is treating AI models: what
       </p>
       <p class="rb-reading rb-row">
         <span class="rb-fig"><span data-figure="public.0">{pub.measures[0].value}</span>%</span>
-        <span><span class="rb-label">The public</span>{pub.measures[0].words}. {pub.one_source && 'From one survey. '}<a href={`/list/${pub.entry}/`}>The entry.</a></span>
+        <span><span class="rb-label">The public</span>{pub.measures[0].words}. {pub.one_source && 'From one survey. '}<a href={`/list/${pub.entry}/`}>More on this survey.</a></span>
       </p>
       <p class="rb-reading rb-latest"><strong>Latest, {worldDate(latest.date)}:</strong> {actSentence(latest)} <a href="#dated">Everything, by date.</a></p>
     </div>
 
     <ul class="checked">
       {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
-      <li class="world">The dated acts, the survey figures and the searches were written in on November 20th, 2026, each from a source or a search made that day.</li>
+      <li class="world">The dated acts, the survey figures and the searches were written in on November 20th, 2026, each from a source or a search made that day. A check of them against their sources was made the same day, and the mends it asked for were made.</li>
     </ul>
     <div class="ctas">
       <a class="btn" href="#list">Read the list</a>
@@ -101,15 +102,19 @@ const description = 'A dated record of how the world is treating AI models: what
   </div>
 
   <section class="below" id="who-does-what">
-    <div class="shead"><h2>Who does what</h2><span><span data-figure="developers.things">{g.things}</span> things a developer could do, <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers</span></div>
+    <div class="shead"><h2>Who does what</h2><span><span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for its models, <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers</span></div>
     <p class="intro">
-      Each row is a thing on the list that a developer could do. Each column is a developer this
-      record covers so far. A date is the developer's first act of that kind. Of the
+      Each row is one of the <span data-figure="developers.things">{countWord(g.things)}</span> things. Each column is a developer this record covers so
+      far. "Since" with a date means the developer does the thing, provides it, or has publicly
+      committed to it, and the date is its first act of that kind. Of the
       <span data-figure="developers.cells">{g.cells}</span> places in the table,
       <span data-figure="developers.nothing_found">{g.counts.nothing_found}</span> say nothing
       found. Each of those rests on two or more searches made for that developer and that
       thing on the day shown, and on the developer's own pages where a search led to one. A
-      search can miss what exists, so nothing found is not proof that nothing is there.
+      search can miss what exists, so nothing found is not proof that nothing is there. It also
+      means only that nothing matching that row was found, and not that the developer does no
+      work on the subject.
+      {g.counts.unruled > 0 && <Fragment> <span data-figure="developers.unruled">{g.counts.unruled}</span> places say what was found and that whether it counts is not decided yet.</Fragment>}
       {g.counts.not_searched > 0 && <Fragment> <span data-figure="developers.not_searched">{g.counts.not_searched}</span> places have not been searched yet.</Fragment>}
     </p>
     <table class="rb-grid" data-developers-reading>
@@ -123,14 +128,15 @@ const description = 'A dated record of how the world is treating AI models: what
         {g.rows.map((row) => (
           <tr data-entry={row.entry}>
             <th scope="row"><a href={`/list/${row.entry}/`}>{row.name}</a></th>
-            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date)}</td>)}
+            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date, c.words)}</td>)}
           </tr>
         ))}
       </tbody>
     </table>
     <p class="rb-note">
       "Not counted as offered" marks a research result, a plan, or a promise that has not yet
-      taken effect. "Withdrawal" marks an act that takes something back.
+      taken effect. "Withdrawal" marks an act that takes something back. Each row's name leads
+      to its page, with the sources.
       {!law.protecting.met && <Fragment> One thing on the list is a lawmaker's to do and not a developer's, so it has no row here: <a href={`/list/${law.protecting.entry}/`}>{entryById.get(law.protecting.entry)!.name.charAt(0).toLowerCase() + entryById.get(law.protecting.entry)!.name.slice(1)}</a>. It is counted under Law, above.</Fragment>}
     </p>
   </section>

@@ -9,17 +9,20 @@ added = 2026-11-17
 first_pass = true
 limits = [
   "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
-  "Why the page stopped being updated, and whether a successor measure exists.",
+  "Why the first measure's page stopped being updated.",
+  "Whether the second measure meets this entry's test. The time a person would need is an estimate by four of its authors and was not measured, and the test asks for a model finishing such tasks half the time. This has not been decided.",
+  "How the model from [Google](https://ai.google/) did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only.",
+  "The current scores on the second measure's own page. They are drawn by the page and could not be read as text.",
   "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance.",
 ]
 notes = "From entry 14 of docs/research/2026-11-17-first-entries.md. The research draft's sentence 'Years are far off on any reading' is left out: it is a judgment with no source."
 
 [state]
-words = "Not shown. The best public measure stops at hours"
-detail = "The group that publishes this measure says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. No maintained public measure of anything longer was found."
+words = "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks"
+detail = "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. Whether the second measure meets the test has not been decided, so the entry is still not counted as shown."
 offered_today = false
-set_on = 2026-11-17
-source = "horizons"
+set_on = 2026-11-20
+source = "mirrorcode-paper"
 
 [[sources]]
 key = "horizons"
@@ -77,6 +80,7 @@ fixes_checked = 2026-11-19
 [[acts]]
 date = "2026-09-08"
 actor = "METR"
+actor_url = "https://metr.org/"
 actor_kind = "researchers"
 words = "marks its page measuring the length of task an AI model can finish as no longer actively updated"
 source = "horizons"
@@ -87,17 +91,97 @@ read_on = 2026-11-20
 # and not yet checked by a different session. How each search was made is in
 # docs/proposals/2026-11-20-searches-behind-the-table-of-developers.md.
 
-[[searches]]
-date = 2026-11-20
+# Added 2026-11-20, after a check of the rebuilt home page found a public measurement the first
+# searches had missed (docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md, reason 1).
+# The three searches that said "nothing found" for this entry were wrong and are taken out.
+# Whether the measurement meets the test is John's to rule and is not ruled: `offered_today` is
+# untouched, and each developer's place is marked as found and not yet decided.
+
+[[sources]]
+key = "mirrorcode-first"
+label = "Epoch AI's first results from a test of rebuilding whole programs"
+publisher = "Epoch AI"
+url = "https://epoch.ai/publications/mirrorcode-preliminary-results/"
+published = "2026-04-10"
+opened = 2026-11-20
+says = "Reports that one developer's model rebuilt a bioinformatics program of about 16,000 lines on its own, and gives its authors' guess that the same task would take a human engineer, working unaided, between 2 and 17 weeks. It gives results for four models from that one developer and says early testing \"showed comparable or weaker performance from other models\"."
+
+[[sources]]
+key = "mirrorcode-note"
+label = "METR's note linking the first results of the same test"
+publisher = "METR"
+url = "https://metr.org/blog/2026-04-10-mirrorcode-preliminary-results/"
+published = "2026-04-10"
+opened = 2026-11-20
+says = "Says the test is a project that the group funded and built together with Epoch AI."
+
+[[sources]]
+key = "mirrorcode-page"
+label = "Epoch AI's page for the same test"
+publisher = "Epoch AI"
+url = "https://epoch.ai/MirrorCode"
+opened = 2026-11-20
+note = "No date on the page."
+says = "Says one of the largest tasks \"cost $2,600 for a single run and involved AI working for 19 days without human intervention\", and that a later model from the same developer rebuilt the 16,000-line program in 14 hours. Its list of scores is drawn by the page and could not be read as text."
+
+[[sources]]
+key = "mirrorcode-paper"
+label = "The paper on the same test"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2606.30182"
+published = "2026-06-29"
+opened = 2026-11-20
+read = "part"
+note = "By Tom Adamczewski, David Owen, David Rein and four others. The summary, the results and the discussion of human time were read."
+says = "Tested one model from each of three developers on 25 programs. It says two of the models rebuilt the 16,000-line program, that only one model rebuilt any of the largest programs, and that the highest score across the whole test was 56 percent. Four contributors estimated the time a skilled engineer would need for the 16,000-line program at 1.5 to 2.5 weeks, 13 to 17 weeks, 3 weeks and 13 weeks."
+
+[[acts]]
+date = "2026-04-10"
+actor = "Epoch AI"
+actor_url = "https://epoch.ai/"
+actor_kind = "researchers"
+about = ["Anthropic"]
+words = "publishes first results of a test in which an AI model rebuilt a program of about 16,000 lines on its own, a task its authors guess would take a human engineer 2 to 17 weeks"
+source = "mirrorcode-first"
+read_on = 2026-11-20
+
+[[acts]]
+date = "2026-06-29"
+actor = "Epoch AI"
+actor_kind = "researchers"
+about = ["Anthropic", "OpenAI", "Google"]
+words = "publishes a paper on the same test with one model from each of three developers, in which two of the models rebuilt the 16,000-line program and only one rebuilt any of the largest programs"
+source = "mirrorcode-paper"
+read_on = 2026-11-20
+
+[[unruled]]
 developer = "Anthropic"
-words = "The page of the research group that publishes this measure, read again, and two searches for any independent measurement of a model finishing tasks of more than 40 hours. The page says its measurements above 16 hours are unreliable with its present tasks, and it lists this developer's models among those measured. No measurement above 40 hours was found for any model."
+date = "2026-04-10"
+words = "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+source = "mirrorcode-first"
 
-[[searches]]
-date = 2026-11-20
+[[unruled]]
 developer = "OpenAI"
-words = "The page of the research group that publishes this measure, read again, and two searches for any independent measurement of a model finishing tasks of more than 40 hours. The page says its measurements above 16 hours are unreliable with its present tasks, and it lists this developer's models among those measured. No measurement above 40 hours was found for any model."
+date = "2026-06-29"
+words = "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+source = "mirrorcode-paper"
 
-[[searches]]
-date = 2026-11-20
+[[unruled]]
 developer = "Google"
-words = "The page of the research group that publishes this measure, read again, and two searches for any independent measurement of a model finishing tasks of more than 40 hours. The page says its measurements above 16 hours are unreliable with its present tasks, and it lists this developer's models among those measured. No measurement above 40 hours was found for any model."
+date = "2026-06-29"
+words = "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
+source = "mirrorcode-paper"
+
+[[history]]
+date = 2026-11-20
+field = "where it stands"
+old = "Not shown. The best public measure stops at hours"
+new = "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks"
+why = "A second public measure was found, first reported on April 10th, 2026, which the first reading of the sources had missed. Whether it meets the test has not been decided, so the entry is still not counted."
+
+[[history]]
+date = 2026-11-20
+field = "what could not be confirmed"
+old = "Why the page stopped being updated, and whether a successor measure exists."
+new = "Why the first measure's page stopped being updated, and three new lines on the second measure."
+why = "A second measure exists. What is not known about it is now listed."
