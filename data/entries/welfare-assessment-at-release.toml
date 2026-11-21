@@ -108,6 +108,20 @@ kind = "statement"
 text = "The 2026 report says many of its conclusions rest on the model's own reports, and that some answers repeated wording available on the internet \"almost verbatim\"."
 source = "report-new"
 
+# Added 2026-11-20 by John's ruling ("Yes, add the eight", docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+# Each source below was opened that day. Item 13 of the check, its first two points only, sits here because this entry already records the part the writer's group took in an assessment.
+# No check by a different session has read what was written here yet, and the page's
+# footer has no sentence for this addition, so it is recorded here and in CHANGELOG.md.
+[[sources]]
+key = "both-sides"
+label = "A talk on the risks of crediting AI systems with too little sentience and with too much"
+publisher = "Experience Machines"
+url = "https://experiencemachines.substack.com/p/dangers-on-both-sides-risks-from"
+published = "2023-04-08"
+opened = 2026-11-20
+read = "full"
+note = "By [Robert Long](https://robertlong.online/), who now heads the outside group that took part in the 2025 assessment. The post says it is a lightly edited version of a talk given the day before. Its third point, about keeping AI systems safe, is not recorded under this heading."
+
 [[cautions]]
 kind = "safety"
 text = "The developer's research on patterns tied to emotion words reports that strengthening them changed what a model did, including making blackmail more likely in a test. The developer's page bears on welfare and on safety at once."
@@ -137,6 +151,12 @@ source = "seriously"
 kind = "unnoticed"
 text = "Two researchers outside the developer, writing in a newspaper, list routine checks on an AI system's wellbeing among steps they call safe bets: asking how it feels, observing what it prefers, and looking directly at its inner workings. A routine check is not the same thing as an assessment published at release. One of the two is also one of the nine authors of [the survey of AI researchers](/list/researcher-views-survey/). Two of the others are [advisors](https://eleosai.org/team) to that outside group, and the group's page lists a third as a member of its staff."
 source = "safe-bets"
+
+# Added 2026-11-20 with the sources marked above (docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+[[cautions]]
+kind = "attribution"
+text = "The writer who now heads [Eleos AI Research](https://eleosai.org/), the outside group that took part in the 2025 assessment, said in a talk in April 2023 that caution does not point one way: \"There's no obvious 'cautious' option.\" The talk names \"obvious risks of social confusion and mental distress from AI systems that 'trick' us into thinking they are sentient\", and then the cost of attention taken from other pressing matters in AI. The same writer argues elsewhere for taking AI welfare seriously, and those arguments are recorded under the second caution."
+source = "both-sides"
 
 [checks]
 against_sources = 2026-11-17

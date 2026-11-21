@@ -77,6 +77,20 @@ opened = 2026-11-19
 read = "part"
 note = "By [Anil Seth](https://www.anilseth.com/)."
 
+# Added 2026-11-20 by John's ruling ("Yes, add the eight", docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+# Each source below was opened that day. Item 2 of the check sits here because the paper answers the argument, recorded on this entry under the second caution, that protective steps are a safe bet.
+# No check by a different session has read what was written here yet, and the page's
+# footer has no sentence for this addition, so it is recorded here and in CHANGELOG.md.
+[[sources]]
+key = "precaution"
+label = "A paper on the moral status of AI and the precautionary principle, in Diametros"
+publisher = "Diametros"
+url = "https://diametros.uj.edu.pl/diametros/article/view/2071"
+published = "2026-06-25"
+opened = 2026-11-20
+read = "full"
+note = "By Emilia Kaczmarek, of the [Faculty of Philosophy](https://filozofia.uw.edu.pl/en/) at the University of Warsaw. The paper states no funding and no tie to an AI developer. The About page cites the same paper."
+
 [[cautions]]
 kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that any such protection would make advanced AI harder to control."
@@ -101,6 +115,12 @@ source = "safe-bets"
 kind = "unnoticed"
 text = "Two philosophers argue that a wide range of theories of the mind, joined with leading theories of wellbeing, predict that some AI systems that exist today have wellbeing. They say they do not claim to have shown it conclusively. The possibility alone, they write, \"suggests that we are in danger of gravely immoral action\", and they conclude that the regulation of AI should be strengthened to allow for the possibility. The paper lists both at the Center for AI Safety, where the head of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, [worked earlier](https://eleosai.org/team)."
 source = "wellbeing"
+
+# Added 2026-11-20 with the sources marked above (docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+[[cautions]]
+kind = "attribution"
+text = "A philosopher at the [University of Warsaw](https://en.uw.edu.pl/), in a paper of 2026 in a peer-reviewed journal, questions the common view that when in doubt it is safer to treat an AI system as if it mattered morally. The paper argues that the costs of doing so wrongly are the nearer ones, because they are \"already materializing\". It lists three: care and resources moved away from those who clearly need them, lawmakers and the public distracted from more pressing questions about AI, and too much reliance on AI. It says that \"excessive focus on AI could divert attention and resources from pressing needs of entities with stronger moral status\", and its everyday example is \"time spent talking to a voicebot instead of calling a lonely family member\". The paper does not deny the opposite risk. It argues that this risk can be partly met by other reasons for treating AI systems decently, such as concern for one's own moral character, which do not need the system to matter in its own right. Its examples of present harm come from press reports, and it notes that \"AI psychosis\" is a media label and not an official diagnosis."
+source = "precaution"
 
 [checks]
 # The count of the declaration's signers, corrected in the commit applying the two must-fix records (bcf931b), has not been checked. The refiled caution was checked.

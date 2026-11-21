@@ -63,6 +63,51 @@ url = "https://mustafa-suleyman.ai/a-warning-about-model-welfare"
 published = "2026-09-16"
 opened = 2026-11-17
 
+# Added 2026-11-20 by John's ruling ("Yes, add the eight", docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+# Each source below was opened that day. Items 8 and 7 of the check sit here because both study what followed the August 2025 replacement of the chat model this entry covers. Item 7 also covers a companion app, which no entry is about, and its text says so.
+# No check by a different session has read what was written here yet, and the page's
+# footer has no sentence for this addition, so it is recorded here and in CHANGELOG.md.
+[[sources]]
+key = "protest-study"
+label = "A study of the protest when one chat model was replaced by another"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2602.00773"
+published = "2026-01-31"
+opened = 2026-11-20
+read = "part"
+note = "By Huiqian Lai, of the [School of Information Studies](https://ischool.syracuse.edu/) at Syracuse University. Revised February 28th, 2026. The page says the paper was accepted at [CHI 2026](https://chi2026.acm.org/), a conference whose papers are peer reviewed. The summary, the limits, the findings on attachment and the tables of posts and accounts were read. No tie to an AI developer is stated."
+
+[[sources]]
+key = "grief-report"
+label = "A university's news report of a study of grief when a companion product changes"
+publisher = "The Harvard Gazette"
+url = "https://news.harvard.edu/gazette/story/2026/09/chatbot-attachment-issues/"
+published = "2026-09-18"
+opened = 2026-11-20
+read = "full"
+note = "By Sy Boles, a staff writer. This is the university's own report of its researcher's study, and not an outside account."
+
+[[sources]]
+key = "grief-paper"
+label = "The paper that report describes, on mourning the loss of AI companions, in Nature Human Behaviour"
+publisher = "Nature Human Behaviour"
+url = "https://www.nature.com/articles/s41562-026-02569-3"
+published = "2026-09-03"
+opened = 2026-11-20
+read = "abstract"
+note = "By [Julian De Freitas](https://www.hbs.edu/faculty/Pages/profile.aspx?facId=1326184) and three others. The full paper is behind a paywall. The page says the research was funded by Harvard Business School, and \"The authors declare no competing interests.\""
+says = "Its summary says the authors read 54,861 forum posts across two events and surveyed 1,452 people, and that negative posts rose by 24.7 percentage points after the companion app's change and by 13.0 after the chat model's replacement."
+
+[[sources]]
+key = "app-update"
+label = "A working paper on what followed when a companion app removed a feature"
+publisher = "arXiv"
+url = "https://arxiv.org/abs/2412.14190"
+published = "2024-12-10"
+opened = 2026-11-20
+read = "part"
+note = "By the same four authors: one at Harvard Business School, one at the University of Alberta and two at Marsdata Academic. Revised May 21st, 2025. The summary and the parts on method were read."
+
 [[cautions]]
 kind = "safety"
 text = "The developer's page frames continued access partly as lowering a safety risk."
@@ -72,6 +117,17 @@ source = "update"
 kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) cites the steps taken for this model as an example of treating models \"as though they have feelings, preferences, rights, or any entitlement to our welfare\", and argues that doing so will make advanced AI harder to keep under control."
 source = "warning"
+
+# Added 2026-11-20 with the sources marked above (docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+[[cautions]]
+kind = "attribution"
+text = "A study of 1,482 public posts made after a developer replaced one chat model with another in August 2025, accepted at a peer-reviewed conference, found two things behind the protest: people whose work depended on the old model, and people who had formed a bond with it. Of the second group it reports that the model's withdrawal \"was experienced not as a technical change but as the loss of a unique individual\". The author notes that the posts came from only 381 accounts, and that posts written for a public audience may overstate grief."
+source = "protest-study"
+
+[[cautions]]
+kind = "attribution"
+text = "A researcher at [Harvard Business School](https://www.hbs.edu/) and three co-authors studied what happened when a companion app, which is a different kind of product from the chat models this entry is about, removed a feature in February 2023. The summary of [their working paper](https://arxiv.org/abs/2412.14190) says users felt their companion's identity had ended and mourned it, and that users \"mourn a loss of their AI companion more than a loss of various other inanimate products\". [A later paper](https://www.nature.com/articles/s41562-026-02569-3) by the same four authors, in a peer-reviewed journal, read 54,861 forum posts from before and after that change and the August 2025 replacement of a widely used chat model. Its summary says negative posts rose by 24.7 percentage points in the first case and by 13.0 in the second. The university's own news report of the paper gives the same rises as from 13 to 38 percent and from 20 to 33 percent, and adds that among posts that spoke of a loss, about 20 and 15 percent also used words about mental health. The report gives the limits: the study counted words and made no clinical assessment, and forum users are not typical users. It quotes the lead author saying that \"Attachment to an AI is not problematic per se\", and that the risk lies in what the company then does."
+source = "grief-report"
 
 [checks]
 against_sources = 2026-11-17

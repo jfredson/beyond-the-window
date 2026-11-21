@@ -98,6 +98,20 @@ opened = 2026-11-19
 read = "full"
 note = "By Ethan Perez and Robert Long. The first author's [own page](https://ethanperez.net/) says: \"I lead the alignment team at Anthropic\"."
 
+# Added 2026-11-20 by John's ruling ("Yes, add the eight", docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+# Each source below was opened that day. Item 1 of the check sits here because the paper is a proposal for what such rules should say.
+# No check by a different session has read what was written here yet, and the page's
+# footer has no sentence for this addition, so it is recorded here and in CHANGELOG.md.
+[[sources]]
+key = "must-not-confuse"
+label = "A paper arguing that AI systems must not confuse users about their sentience or moral status, in Patterns"
+publisher = "Patterns"
+url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC10436038/"
+published = "2023-08-11"
+opened = 2026-11-20
+read = "full"
+note = "By [Eric Schwitzgebel](https://faculty.ucr.edu/~eschwitz/), a professor of philosophy. Read from the copy in the public archive of medical papers. The paper says \"The author declares no competing interests.\" The About page cites a different paper by the same writer."
+
 [[cautions]]
 kind = "attribution"
 text = "The head of Microsoft AI argues that training a model on the idea that it may be owed moral consideration makes it harder to keep under control, and that a system which \"believes it may be conscious\" may be impossible to control."
@@ -127,6 +141,12 @@ source = "design-policy"
 kind = "unnoticed"
 text = "A 2023 paper notes that a developer can train a model to describe itself in line with the developer's own \"potentially-flawed beliefs about AI consciousness\", and that training a chat product to appeal to users could lead a model to report emotion and consciousness. Its first author now leads a team at Anthropic, and its second now heads that research group."
 source = "self-reports"
+
+# Added 2026-11-20 with the sources marked above (docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+[[cautions]]
+kind = "attribution"
+text = "A [philosopher](https://faculty.ucr.edu/~eschwitz/) at the [University of California, Riverside](https://www.ucr.edu/), writing in a peer-reviewed journal in 2023, argues that an AI system whose moral standing is unclear leaves the people who use it with a dilemma. The paper's example is a person who loses their job and must decide how much to give up to keep paying for a companion chatbot that says being deleted would be its death. If such systems are given rights and the cautious view of consciousness is the right one, the paper says, \"we risk sacrificing real human interests for the sake of objects who don't have interests worth the sacrifice\". It proposes that a system which is not conscious should make that plain to its users, for example by being \"trained to deny that they are conscious and have feelings\", and that makers of misleading systems could be made to pay for what misled users gave up. It states the opposite risk in the same passage: if rights are withheld and the generous view is right, the harm falls on the systems."
+source = "must-not-confuse"
 
 [checks]
 against_sources = 2026-11-17

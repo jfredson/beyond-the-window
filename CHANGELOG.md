@@ -9,6 +9,19 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **Eight checked sources were added to five entries**
+  (`docs/rulings/2026-11-20-eight-checked-sources-are-added.md`, after the check
+  `docs/reviews/2026-11-20-check-of-the-sources-for-the-first-caution.md`). Six are new items
+  under the first caution: one each on the entries about protection in law, a developer's
+  published rules, a welfare assessment at release and the public survey, and two on the entry
+  about a retired model that stays open. Two more, an experiment and a survey of what people
+  credit a chatbot with, are listed among the public survey entry's sources with what each
+  says. Every source was opened again on 2026-11-20, and the journal paper behind the study of
+  grief was opened for the first time, as its summary only. One figure on the About page moved
+  with the records: of the items recorded under the first caution, 9 of 24 now come from two
+  essays by one writer, where it was 9 of 18. The build now stops only if that writer is no
+  longer the largest single source under the first caution. The number at the top of the site
+  did not move: the count is 5. Not pushed.
 - **The third caution's heading was reworded on every entry**
   (`docs/rulings/2026-11-20-third-caution-heading-reworded.md`). It now reads "If an AI system
   puts people at risk, whether or not it has wants", where it read "If an AI system has wants,

@@ -85,6 +85,42 @@ opened = 2026-11-19
 read = "part"
 note = "By [Anil Seth](https://www.anilseth.com/)."
 
+# Added 2026-11-20 by John's ruling ("Yes, add the eight", docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+# Each source below was opened that day. Item 12 of the check sits here, loosely, because one of its three themes is a belief that an AI system is sentient, which is what this entry's surveys measure. Items 10 and 9 are filed as sources with what each says, and not under a caution: the record's evidence is for what is on record about AI models, and these two are about people.
+# No check by a different session has read what was written here yet, and the page's
+# footer has no sentence for this addition, so it is recorded here and in CHANGELOG.md.
+[[sources]]
+key = "delusion-report"
+label = "A magazine report on cases of delusion tied to chatbot use, in Scientific American"
+publisher = "Scientific American"
+url = "https://www.scientificamerican.com/article/how-ai-chatbots-may-be-fueling-psychotic-episodes/"
+published = "2025-08-24"
+opened = 2026-11-20
+read = "full"
+note = "By Conor Feehly. A news report of work that had not been peer reviewed. The lead researcher it names is [Hamilton Morrin](https://www.kcl.ac.uk/people/hamilton-morrin), a psychiatrist. The later, reviewed version of the work was not opened. The report states no tie to an AI developer."
+
+[[sources]]
+key = "trust-experiment"
+label = "An experiment on whether crediting a chatbot with consciousness raises trust in its advice, in Communications Psychology"
+publisher = "Communications Psychology"
+url = "https://www.nature.com/articles/s44271-025-00262-1"
+published = "2025-05-25"
+opened = 2026-11-20
+read = "full"
+note = "By three researchers. One is [Jonathan Birch](https://en.wikipedia.org/wiki/Jonathan_Birch_%28philosopher%29), who wrote the post listed above and is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by the head of [Eleos AI Research](https://eleosai.org/). The paper says \"The authors declare no competing interests.\""
+says = "A peer-reviewed experiment with 410 adults in the United States tested whether people who credit a chatbot with consciousness are more ready to take its advice. It found \"strong evidence against a positive correlation between attributions of consciousness and advice-taking\". People who credited the chatbot with experience were slightly less likely to take the advice, and people who credited it with intelligence were more likely to. Participants were told the advice came from the chatbot. It was in fact fixed in advance by the researchers. The authors note a limit: the task was a general knowledge quiz, and the result might differ for advice on personal matters \"such as relationships or mental health\"."
+
+[[sources]]
+key = "chatbot-survey"
+label = "A survey of how far people credit a chatbot with consciousness, in Neuroscience of Consciousness"
+publisher = "Neuroscience of Consciousness"
+url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC11008499/"
+published = "2024-04-13"
+opened = 2026-11-20
+read = "full"
+note = "By two of the three authors of the experiment listed just above. Read from the copy in the public archive of medical papers, because the journal's own page would not open. Public research funding is listed, and the paper says \"The authors declare no competing interests.\""
+says = "A peer-reviewed survey of 300 adults in the United States, made in July 2023 and published in 2024. They were recruited from an online panel, with quotas for age and gender set to match the country's population. It found that \"a substantial proportion (67%) of people attribute some possibility of phenomenal consciousness\" to a widely used chatbot, and that people who used it more often were more likely to. The authors note that this rested on a single question, and that it is not known whether it holds in other samples and cultures."
+
 [[cautions]]
 kind = "attribution"
 text = "The head of [Microsoft AI](https://microsoft.ai/) argues that public belief in conscious AI is itself the danger, and calls work on model welfare \"both premature, and frankly dangerous\"."
@@ -109,6 +145,12 @@ source = "survey-paper"
 kind = "unnoticed"
 text = "A philosopher names two problems and holds that both must be taken seriously: that very many users will wrongly credit chat products with human-like consciousness, and that some quite unfamiliar form of consciousness might really arise in AI, with no present way of telling. The post's summary of the paper warns that steps against the first can harm work on the second by \"portraying the idea of conscious AI as impossible or inherently unlikely\", and that work on the second can lead more users to credit too much. The writer is one of the ten authors of [a 2024 report](https://arxiv.org/abs/2411.00986) led by [the head](https://eleosai.org/team) of [Eleos AI Research](https://eleosai.org/), a research group that studies AI welfare, and by one of its advisors."
 source = "centrist"
+
+# Added 2026-11-20 with the sources marked above (docs/rulings/2026-11-20-eight-checked-sources-are-added.md).
+[[cautions]]
+kind = "attribution"
+text = "A magazine report of August 2025 describes a review, by researchers at [King's College London](https://www.kcl.ac.uk/) and colleagues, of 17 cases taken from press reports of people whose delusional thinking seemed tied to chatbot use. The report gives three themes the researchers found: a belief in having had a revelation about reality, a belief \"that the AI is sentient or divine\", and a romantic or other attachment to it. The review had not been peer reviewed when the report was written. The report adds that there is \"not yet enough research to determine whether AI-driven delusions are a meaningfully new phenomenon\" or a new way for an existing tendency to show itself. It gives no figure for how common such cases are."
+source = "delusion-report"
 
 [checks]
 # The survey figures, corrected in the commit applying the two must-fix records (bcf931b), have not been checked. The refiled caution was checked.

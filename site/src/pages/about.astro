@@ -54,7 +54,7 @@ if (byThatDeveloperAlone * 2 <= headline.count) throw new Error('the developer n
 // Where the first two cautions come from. John ruled on 2026-11-19 that the About page says it in
 // one statement (docs/rulings/2026-11-19-ties-between-sources-told-in-both-places.md). The page
 // gives each share as a count of items. The build stops if the second share falls to half or
-// less, and if the first falls below half.
+// less, and if the writer named for the first is no longer its largest single source.
 const under = (kind: string) => data.entries.flatMap((e) => (e.cautions.find((c) => c.kind === kind)?.items ?? []).map((it) => e.sources.find((s) => s.key === it.source)!.url));
 const first = under('attribution');
 const second = under('unnoticed');
@@ -62,12 +62,22 @@ const second = under('unnoticed');
 const FROM_THAT_HEAD = /^https:\/\/mustafa-suleyman\.ai\//;
 const firstFromHead = first.filter((u) => FROM_THAT_HEAD.test(u));
 const essays = new Set(firstFromHead).size;
-// Until 2026-11-20 this stopped the build at half or less. That day two items from other writers
-// were filed under the first caution, which made the share exactly half, 9 of 18, and John ruled
-// that the sentence stands with those figures and that the build stops only below half ("Yes, 9
-// of 18", docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md). Below half,
-// the sentence goes back to John for rewording: do not loosen this again without his ruling.
-if (firstFromHead.length * 2 < first.length) throw new Error('fewer than half of the items under the first caution now come from the one writer the part on sources names, so that sentence goes back to John for rewording before the site is built');
+// What stops the build has changed twice, each time by John's ruling. Until 2026-11-20 it
+// stopped at half or less. That day two items from other writers made the share exactly half,
+// 9 of 18, and he ruled that it stops only below half
+// (docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md). Later that day six
+// checked items from other sources made it 9 of 24, and he ruled that the sentence keeps its
+// words, its figures follow the records, and the build stops only when that writer is no longer
+// the largest single source under the first caution ("Yes, keep it",
+// docs/rulings/2026-11-20-eight-checked-sources-are-added.md). When it stops, the sentence goes
+// back to John for rewording: do not loosen this again without his ruling. His items are counted
+// together across his essays, and every other source is one page, counted by its address. The
+// same rule is in scripts/compute.py (first_caution_problem), where it has tests, and it stops
+// the build there first.
+const otherCounts = new Map<string, number>();
+for (const u of first) if (!FROM_THAT_HEAD.test(u)) otherCounts.set(u, (otherCounts.get(u) ?? 0) + 1);
+const largestOther = Math.max(0, ...otherCounts.values());
+if (largestOther >= firstFromHead.length) throw new Error('the one writer the part on sources names is no longer the largest single source under the first caution, so that sentence goes back to John for rewording before the site is built');
 if (essays !== 2) throw new Error('the part on sources says "two essays", and the records no longer show two');
 // The second: the research group's own pages; an essay and papers by its head; and papers and
 // essays by people who advise it, work for it, or have written a report with its head. Each tie

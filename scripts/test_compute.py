@@ -417,6 +417,63 @@ class Export(unittest.TestCase):
         self.assertIn("is not found word for word",
                       "\n".join(c.validate_record(changed, {g["name"]: g.get("beside") is True for g in groups})))
 
+
+class FirstCautionSources(unittest.TestCase):
+    """The About page's sentence on where the first caution's items come from. Ruled by John on
+    2026-11-20: the build stops only when the writer it names is no longer the largest single
+    source under the first caution. Every record here is constructed."""
+
+    WRITER = "https://mustafa-suleyman.ai/a-constructed-essay"
+
+    def _records(self, from_writer: int, others: dict[str, int]) -> list[dict]:
+        rec = good()
+        rec["sources"].append({"key": "w", "label": "Constructed", "publisher": "Nobody",
+                               "url": self.WRITER, "opened": D})
+        rec["cautions"] = [{"kind": "attribution", "text": "Constructed.", "source": "w"}
+                           for _ in range(from_writer)]
+        for n, (url, count) in enumerate(others.items()):
+            rec["sources"].append({"key": f"o{n}", "label": "Constructed", "publisher": "Nobody",
+                                   "url": url, "opened": D})
+            rec["cautions"] += [{"kind": "attribution", "text": "Constructed.", "source": f"o{n}"}
+                                for _ in range(count)]
+        # An item under another caution is never counted here.
+        rec["cautions"].append({"kind": "unnoticed", "text": "Constructed.", "source": "s"})
+        self.assertEqual(errs(rec), "")
+        return [rec]
+
+    def test_passes_at_nine_of_twenty_four_spread_over_other_sources(self):
+        others = {f"https://example.com/{n}": 1 for n in range(11)}
+        others.update({"https://example.com/a": 2, "https://example.com/b": 2})
+        records = self._records(9, others)
+        self.assertEqual(c.first_caution_sources(records)[:2], (9, 24))
+        self.assertIsNone(c.first_caution_problem(records))
+
+    def test_passes_below_half_while_the_writer_is_still_the_largest(self):
+        self.assertIsNone(c.first_caution_problem(self._records(3, {"https://example.com/a": 2,
+                                                                    "https://example.com/b": 2,
+                                                                    "https://example.com/c": 2})))
+
+    def test_stops_when_another_single_source_equals_the_writers_count(self):
+        problem = c.first_caution_problem(self._records(9, {"https://example.com/a": 9,
+                                                            "https://example.com/b": 1}))
+        self.assertIn("no longer the largest single source", problem)
+        self.assertIn("goes back to John", problem)
+        self.assertIn("https://example.com/a", problem)
+
+    def test_stops_when_another_single_source_passes_the_writers_count(self):
+        self.assertIn("no longer the largest single source",
+                      c.first_caution_problem(self._records(2, {"https://example.com/a": 3})))
+
+    def test_the_real_records_pass_and_give_the_about_pages_figures(self):
+        _groups, records, problems = c.load(c.ROOT / "data")
+        self.assertEqual(problems, [])
+        from_writer, total, others = c.first_caution_sources(records)
+        self.assertEqual((from_writer, total), (9, 24))
+        self.assertLess(max(others.values()), from_writer)
+        self.assertIsNone(c.first_caution_problem(records))
+        c.checked(c.ROOT / "data")  # the build's own way in, which would raise if it stopped
+
+
 # ---- the rebuild: acts, measures, searches and the readings (PROPOSED 2026-11-20) -----------
 
 DEVS = [{"name": "A made-up developer", "url": "https://example.com/a", "opened": D},

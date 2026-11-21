@@ -1082,6 +1082,53 @@ def write_headline(path: Path, computed: dict, today: str | None = None,
     return True
 
 
+# ---- the About page's sentence on where the first caution's items come from ----------------
+# The About page says how many of the items under the first caution come from two essays by one
+# writer, the head of one developer's AI group, and names that developer for it. John ruled on
+# 2026-11-20 that the sentence keeps its words, that its figures follow the records, and that
+# the build stops only when that writer is no longer the largest single source under the first
+# caution ("Yes, keep it", docs/rulings/2026-11-20-eight-checked-sources-are-added.md). This
+# replaces "stops only below half", and "half or less" before it. When it stops, the sentence
+# goes back to John for rewording: do not loosen this without his ruling.
+# The writer's items are counted together, across his essays. Every other source is one page,
+# counted by its address. So two pages by one other writer are counted apart: if that ever
+# matters, it is a reason to look again and not something this check sees.
+FIRST_CAUTION_WRITER = r"^https://mustafa-suleyman\.ai/"
+
+
+def first_caution_sources(records: list[dict]) -> tuple[int, int, dict[str, int]]:
+    """How many items under the first caution come from the writer the About page names, how
+    many there are in all, and how many come from each other page."""
+    from_writer, total, others = 0, 0, {}
+    for rec in shown(records):
+        urls = {s["key"]: s["url"] for s in rec["sources"]}
+        for item in rec.get("cautions", []) or []:
+            if item.get("kind") != "attribution":
+                continue
+            total += 1
+            url = urls[item["source"]]
+            if re.match(FIRST_CAUTION_WRITER, url):
+                from_writer += 1
+            else:
+                others[url] = others.get(url, 0) + 1
+    return from_writer, total, others
+
+
+def first_caution_problem(records: list[dict]) -> str | None:
+    """None while the writer the About page names is the largest single source under the first
+    caution. Otherwise the reason the build stops."""
+    from_writer, total, others = first_caution_sources(records)
+    if not others:
+        return None
+    url, most = max(others.items(), key=lambda kv: kv[1])
+    if most >= from_writer:
+        return (f"the About page names one writer for {from_writer} of the {total} items under the "
+                f"first caution, and another single source now has {most} ({url}). That writer is "
+                "no longer the largest single source, so the About page's sentence goes back to "
+                "John for rewording before the site is built")
+    return None
+
+
 def checked(data_dir: Path) -> tuple[list[dict], list[dict]]:
     """Load and validate, or raise Refused with every broken rule."""
     groups, records, errors = load(data_dir)
@@ -1089,6 +1136,12 @@ def checked(data_dir: Path) -> tuple[list[dict], list[dict]]:
     errors += dev_errors + validate(groups, records, developers)
     if errors:
         raise Refused("\n".join(errors))
+    # Only once every record is sound: the one rule that reads all the records together for a
+    # sentence on the About page. It is here, and not among the rules for one record, so that
+    # both the count and the export stop on it before any page is built.
+    problem = first_caution_problem(records)
+    if problem:
+        raise Refused(problem)
     return groups, records
 
 
