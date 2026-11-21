@@ -46,11 +46,27 @@ to the entries?" John: "Yes, add the eight". **Decided by: mixed.**
 The eight items are added, each in the checking session's wording where it gave a rewording,
 each on the entry the check names, each with its source, its dates and its writer's ties.
 
+## A second answer the same day: the About page's sentence, and its guard
+
+Adding the six cautions takes the About page's figures from 9 of 18 to 9 of 24. By John's
+ruling earlier that day (`docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md`,
+its third part) the build stops below half and the sentence goes back to him.
+
+The session proposed keeping the sentence exactly as written, since it states two numbers and
+never says "most", and changing what the guard watches: the build would stop only if the head
+of Microsoft AI is no longer the largest single source under the first caution, at which point
+the sentence comes back to John. *Confidence:* high. *Strongest alternative:* reword the
+sentence to name the new mix of sources, at the cost of a longer sentence and new wording to
+approve. The question was "Keep the About sentence as written, reading 9 of 24, with the guard
+set to 'largest single source'?" John: "Yes, keep it". **Decided by: mixed.**
+
+**What is ruled.** The sentence's words do not change; its figures follow the records. The
+guard stops the build only when that writer is no longer the largest single source under the
+first caution. This replaces "stops only below half".
+
 ## Not covered by this ruling
 
 - **The six items set aside** (the check's items 3, 4, 5, 6, 11 and 14), and whether the list
   should gain an entry on what a product must tell its users about what it is.
-- **The About page's sentence** on where the first caution's sources come from, which is put
-  to John before anything is applied.
 - **The journal paper behind item 7 that is still to be opened.** That part of the item waits
   until it is.
