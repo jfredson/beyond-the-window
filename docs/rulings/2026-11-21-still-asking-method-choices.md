@@ -113,3 +113,14 @@ cost of deciding now which two signs do not matter. John: "Yes, as proposed". **
 mixed.**
 
 **What is ruled.** Choice 6 as proposed: condition 1 is met only on all five signs.
+
+## Choice 7. Conditions 2 and 3, and studies of a related model
+
+**Put to him.** A removal study marks only the version it was run on. A study of another model
+from the same family is listed as evidence to weigh and changes no mark. Where a study on the
+version reports that choosing only partly collapses, the mark is partly met, with the study's
+own words beside it. *Confidence:* moderate. *Judgment call.* *Strongest alternative:* let a
+study carry to later versions of the same family, at the cost of a mark on a system nobody
+measured. John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 7 as proposed.
