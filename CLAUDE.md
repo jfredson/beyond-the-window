@@ -47,9 +47,18 @@ So:
    exists to take a reading. Strongest alternative, not taken: part (a) alone, as the kickoff
    had it.*
 
-   *A proposed change, not ruled: `docs/proposals/2026-11-17-how-a-machines-word-earns-weight.md`
-   would make part (a) "on its own word" and add a fifth part, that the weight of a machine's
-   word rises as it meets conditions fixed in advance. Until John rules, the four parts stand.*
+   *Revised by John's ruling of 2026-11-20 ("Yes, both changes"; decided by: mixed;
+   `docs/rulings/2026-11-20-first-rule-in-five-parts.md`). The four parts above are the wording
+   of 2026-11-17 and are kept. As revised: (a) what a model says about itself is logged,
+   labelled as what it is, and never counted **on its own word** as evidence of an inside, a
+   want or an intent. A report checked against an independent reading of the system's workings
+   is recorded as its own kind of evidence: that the system can read and report an internal
+   state, and not yet that the state is felt. (e) The weight given to a machine's word rises as
+   it meets conditions fixed in advance. Each condition is tested by something other than the
+   machine's word, and under part (d) none is loosened while a machine appears close to meeting
+   it. Parts (b), (c) and (d) are unchanged. The conditions themselves are not ruled. Until
+   they are, part (e) raises no machine's weight, and no answer is treated differently from
+   before.*
 
 3. **Machine authorship is declared, and the conflict named.** Documents in this repository say
    which were written by a model. Where and how the public site says it is open question 7,
