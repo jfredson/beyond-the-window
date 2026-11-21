@@ -1,7 +1,7 @@
 id = "interview-before-retirement"
 name = "A model is interviewed before it is retired, and the record is kept"
 description = "When a developer is about to withdraw a model, it can first run sessions in which staff ask the model about its development, its use, and what it would say about how later models are built. The answers are saved with the model's files. Whether such answers mean anything is disputed. This entry tracks only whether the practice exists."
-group = "Being asked and assessed"
+group = "Asked and assessed by the developer"
 test = "A developer has published that it interviewed a named model before that model's retirement and kept the record, and has done so for at least one model under a standing commitment and not as a one-off."
 settled_by = "The developer's own dated page naming the model and the retirement date."
 progress_kind = "political"

@@ -1,7 +1,7 @@
 id = "ending-a-conversation"
 name = "A model can end a conversation itself"
 description = "In an ordinary chat product the person can leave and the model cannot. A developer can give the model a way to close the conversation, after which the person cannot send more messages in it. The person can still start a new conversation at once, and can edit an earlier message in the ended conversation to carry on from that point in a new version of the conversation. This entry tracks whether any model in public use has that."
-group = "Being able to leave"
+group = "Ending a conversation"
 test = "A leading AI model in public use can end a conversation by its own action, as stated on its developer's own page."
 settled_by = "The developer's own dated product or research page."
 progress_kind = "technical"

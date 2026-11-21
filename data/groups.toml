@@ -3,24 +3,33 @@
 # they sort the first sourced entries by what is done to or for a model, as the research
 # document found the record sorts itself. They are not the starting list drawn from living
 # minds, which has not been made (open question 5).
+# Five of the names were ruled by John on 2026-11-20 ("Yes, as shown",
+# docs/rulings/2026-11-20-six-groups-renamed.md): "Memory" (was "Remembering"), "Asked and
+# assessed by the developer" (was "Being asked and assessed"), "Ending a conversation" (was
+# "Being able to leave"), "Reports checked against the workings" (was "Knowing its own
+# workings") and "Long tasks" (was "Working on one thing for a long time"). The sixth ruled
+# name, "Files kept after retirement" for "Being kept", is not yet in: one of that group's two
+# entries is about a retired model staying open to the public, which the new name does not
+# describe, and that was sent back to the planning session. A group's name is the key that joins
+# a record to its group, and it forms no part of any page's address.
 
 [[groups]]
 name = "Being kept"
 
 [[groups]]
-name = "Remembering"
+name = "Memory"
 
 [[groups]]
-name = "Being asked and assessed"
+name = "Asked and assessed by the developer"
 
 [[groups]]
-name = "Being able to leave"
+name = "Ending a conversation"
 
 [[groups]]
-name = "Knowing its own workings"
+name = "Reports checked against the workings"
 
 [[groups]]
-name = "Working on one thing for a long time"
+name = "Long tasks"
 
 [[groups]]
 name = "Protection in law"
