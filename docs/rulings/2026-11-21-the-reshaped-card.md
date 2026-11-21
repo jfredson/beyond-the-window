@@ -150,3 +150,12 @@ answer, with no single score. Not ruled: who assigns each mark and by what metho
 to the Still Asking method, still to be written, checked and ruled. Until then every answer is
 marked not assessed and every condition not measured.
 
+
+## Revised later on 2026-11-21: which check can make an answer "not fully explained"
+
+By choice 10 of the Still Asking method, approved by John with the rest ("Mark the rest as
+approved"; decided by: mixed; `docs/rulings/2026-11-21-still-asking-method-choices.md`), only a
+check against a reading of the system's insides can make an answer "not fully explained". A
+statement checked against what the system later did keeps "explained by training", and the match
+is recorded under condition 5 and in condition 4's table. The line's wording above, "possible
+only where condition 4's check applies", is kept as it was ruled; this narrows it.
