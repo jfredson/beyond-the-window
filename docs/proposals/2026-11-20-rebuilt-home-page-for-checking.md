@@ -13,6 +13,30 @@ unnamed. Sixteen of the 24 acts are by one of the three developers, and nine of 
 Anthropic's. The places where a choice bears on how a
 developer appears are marked below.
 
+## After the second check: one fix (added 2026-11-20)
+
+The second check (`docs/reviews/2026-11-20-second-check-of-the-rebuilt-home-page.md`) found
+the page fit to publish after one fix, which is made, in the checker's words. The sentences
+changed, all in `data/entries/days-long-task.toml`:
+
+| Where | Before | Now |
+|---|---|---|
+| Table, Google, working for days | "June 29th, 2026: an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read. Not counted." | "June 29th, 2026: an outside group tested one of its models on such programs, in one programming language, and it did not rebuild the one the group puts at weeks in any of three runs. Not counted." |
+| Table, Anthropic (April 10th, 2026) and OpenAI (June 29th, 2026), the same row | "...an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks. Not counted." | "...an outside group reports one of its models substantially rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks, passing at least 99 percent of its tests and never all of them. Not counted." |
+| The dated list, the act of 2026-06-29 | "...in which two of the models rebuilt the 16,000-line program and only one rebuilt any of the largest programs" | "...in which two of the models substantially rebuilt the 16,000-line program, passing at least 99 percent of its tests, and only one did as much for any of the largest programs" |
+| The entry's "not confirmed" line | "How the model from Google did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only." | "How the model from Google would do on the program the authors put at weeks in other programming languages. The paper tested it in one language only, and it did not rebuild that program in any of three runs." |
+| The entry's detail | "It says the models from Anthropic and OpenAI both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs." | "It says the models from Anthropic and OpenAI both substantially rebuilt that program, by which the paper means passing at least 99 percent of its tests. No model passed every test on it: the best runs passed 2,000 of 2,001. The model from Google, tested in one programming language, did not rebuild it in any of three runs. Only the model from Anthropic did as much for any of the largest programs." |
+
+What each rests on. The paper's text, which the build session read: the third model "was run
+in a single language (Python), also over three repetitions"; two models rebuilt the program
+"passing 99% of tests or more"; and the best runs "passed 2,000/2,001 tests". The paper's
+second figure, which the checking session and the planning session read and the build session
+did not: the third model at nought for that program at both thresholds.
+
+Not changed: the act of 2026-04-10 still says a model "rebuilt" the program, which is that
+earlier page's own claim ("successfully reimplemented"). The place stays found and not
+counted, and no count moves.
+
 ## Newest first: John's four rulings applied (added last on 2026-11-20)
 
 John ruled the four points the check left to him. Each is recorded in `docs/rulings/` with his

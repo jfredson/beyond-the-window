@@ -9,6 +9,13 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **One fix after the second check of the rebuilt home page. Not published and not pushed. The
+  count did not move: it is still 5.** The second check
+  (`docs/reviews/2026-11-20-second-check-of-the-rebuilt-home-page.md`) read a chart the build
+  session could not. The entry on working for days now says that one developer's model, tested
+  in one programming language, did not rebuild the weeks-long program in any of three runs,
+  and that the other two developers' models substantially rebuilt it, passing at least 99
+  percent of its tests and never all of them.
 - **John's four rulings on the rebuilt home page applied on the working branch. Not published
   and not pushed. The count did not move: it is still 5.** A second developer's ending of
   chats is counted as offered, so the entry on ending a conversation now names two developers

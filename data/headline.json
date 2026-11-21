@@ -191,19 +191,19 @@
               "developer": "Anthropic",
               "kind": "not_counted",
               "date": "2026-04-10",
-              "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+              "words": "an outside group reports one of its models substantially rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks, passing at least 99 percent of its tests and never all of them"
             },
             {
               "developer": "OpenAI",
               "kind": "not_counted",
               "date": "2026-06-29",
-              "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+              "words": "an outside group reports one of its models substantially rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks, passing at least 99 percent of its tests and never all of them"
             },
             {
               "developer": "Google",
               "kind": "not_counted",
               "date": "2026-06-29",
-              "words": "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
+              "words": "an outside group tested one of its models on such programs, in one programming language, and it did not rebuild the one the group puts at weeks in any of three runs"
             }
           ]
         },
@@ -427,7 +427,7 @@
         "date": "2026-06-29",
         "actor": "Epoch AI",
         "actor_kind": "researchers",
-        "words": "publishes a paper on the same test with one model from each of three developers, in which two of the models rebuilt the 16,000-line program and only one rebuilt any of the largest programs",
+        "words": "publishes a paper on the same test with one model from each of three developers, in which two of the models substantially rebuilt the 16,000-line program, passing at least 99 percent of its tests, and only one did as much for any of the largest programs",
         "withdraws": false,
         "about": [
           "Anthropic",

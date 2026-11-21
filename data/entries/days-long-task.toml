@@ -11,7 +11,7 @@ limits = [
   "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
   "Why the first measure's page stopped being updated.",
   "How long the second measure's tasks would take a person. The time is an estimate by four of its authors, between 1.5 and 17 weeks, and was not measured. The test asks for a model finishing such tasks half the time, and the paper does not give that.",
-  "How the model from [Google](https://ai.google/) did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only.",
+  "How the model from [Google](https://ai.google/) would do on the program the authors put at weeks in other programming languages. The paper tested it in one language only, and it did not rebuild that program in any of three runs.",
   "The current scores on the second measure's own page. They are drawn by the page and could not be read as text.",
   "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance.",
 ]
@@ -19,7 +19,7 @@ notes = "From entry 14 of docs/research/2026-11-17-first-entries.md. The researc
 
 [state]
 words = "Not shown. One public measure stops at hours. A second, of tasks its authors put at weeks, is recorded, and the entry stays as it was"
-detail = "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. So the second measure is recorded here and the entry stays as not shown, as decided on November 20th, 2026."
+detail = "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both substantially rebuilt that program, by which the paper means passing at least 99 percent of its tests. No model passed every test on it: the best runs passed 2,000 of 2,001. The model from [Google](https://ai.google/), tested in one programming language, did not rebuild it in any of three runs. Only the model from Anthropic did as much for any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. So the second measure is recorded here and the entry stays as not shown, as decided on November 20th, 2026."
 offered_today = false
 set_on = 2026-11-20
 source = "mirrorcode-paper"
@@ -135,8 +135,8 @@ url = "https://arxiv.org/abs/2606.30182"
 published = "2026-06-29"
 opened = 2026-11-20
 read = "part"
-note = "By Tom Adamczewski, David Owen, David Rein and four others. The summary, the results and the discussion of human time were read."
-says = "Tested one model from each of three developers on 25 programs. It says two of the models rebuilt the 16,000-line program, that only one model rebuilt any of the largest programs, and that the highest score across the whole test was 56 percent. Four contributors estimated the time a skilled engineer would need for the 16,000-line program at 1.5 to 2.5 weeks, 13 to 17 weeks, 3 weeks and 13 weeks."
+note = "By Tom Adamczewski, David Owen, David Rein and four others. The summary, the results, the second figure and the discussion of human time were read."
+says = "Tested one model from each of three developers on 25 programs. It says two of the models substantially rebuilt the 16,000-line program, meaning at least 99 percent of its tests passed, and that the best runs passed 2,000 of 2,001. It says the third model was run in a single programming language, over three repetitions; its second figure shows that model at nought for that program at both thresholds. It says only one model did as much for any of the largest programs, and that the highest score across the whole test was 56 percent. Four contributors estimated the time a skilled engineer would need for the 16,000-line program at 1.5 to 2.5 weeks, 13 to 17 weeks, 3 weeks and 13 weeks."
 
 [[acts]]
 date = "2026-04-10"
@@ -153,28 +153,28 @@ date = "2026-06-29"
 actor = "Epoch AI"
 actor_kind = "researchers"
 about = ["Anthropic", "OpenAI", "Google"]
-words = "publishes a paper on the same test with one model from each of three developers, in which two of the models rebuilt the 16,000-line program and only one rebuilt any of the largest programs"
+words = "publishes a paper on the same test with one model from each of three developers, in which two of the models substantially rebuilt the 16,000-line program, passing at least 99 percent of its tests, and only one did as much for any of the largest programs"
 source = "mirrorcode-paper"
 read_on = 2026-11-20
 
 [[found]]
 developer = "Anthropic"
 date = "2026-04-10"
-words = "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+words = "an outside group reports one of its models substantially rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks, passing at least 99 percent of its tests and never all of them"
 source = "mirrorcode-first"
 counts = "no"
 
 [[found]]
 developer = "OpenAI"
 date = "2026-06-29"
-words = "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
+words = "an outside group reports one of its models substantially rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks, passing at least 99 percent of its tests and never all of them"
 source = "mirrorcode-paper"
 counts = "no"
 
 [[found]]
 developer = "Google"
 date = "2026-06-29"
-words = "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
+words = "an outside group tested one of its models on such programs, in one programming language, and it did not rebuild the one the group puts at weeks in any of three runs"
 source = "mirrorcode-paper"
 counts = "no"
 
@@ -191,3 +191,17 @@ field = "what could not be confirmed"
 old = "Why the page stopped being updated, and whether a successor measure exists."
 new = "Why the first measure's page stopped being updated, and three new lines on the second measure."
 why = "A second measure exists. What is not known about it is now listed."
+
+# 2026-11-20, after the second check of the rebuilt home page
+# (docs/reviews/2026-11-20-second-check-of-the-rebuilt-home-page.md). The paper's second figure
+# was read in that check and again by the planning session: for the 16,000-line program the
+# share of runs passing every test, and passing at least 99 percent, was 0 and 100, 0 and 94,
+# and 0 and 0 for the three developers' models. The build session did not read the figure. It
+# confirmed in the paper's text the two details the figure does not show: the third model "was
+# run in a single language (Python), also over three repetitions".
+[[history]]
+date = 2026-11-20
+field = "what could not be confirmed"
+old = "How the model from Google did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only."
+new = "How the model from Google would do on that program in other programming languages. The paper tested it in one language only, and it did not rebuild that program in any of three runs."
+why = "The chart was read. The entry's words for the other two models were also made exact: they substantially rebuilt the program, passing at least 99 percent of its tests and never all of them."
