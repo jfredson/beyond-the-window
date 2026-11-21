@@ -60,3 +60,14 @@ proposed". **Decided by: mixed.**
 **What is ruled.** Choice 3 as proposed, including the reading that checking a description
 against published text is not sorting or summarising. It closes open question 7 in part, for the
 capture's answers: no model reads them while unpublished.
+
+## Choice 4. A second reader
+
+**Put to him.** None for now. If John wants one, or wants descriptions checked before the answers
+are public, a person, reading alone and writing descriptions before seeing his (option C). He
+was told that two independent readers being common practice is from memory and unchecked.
+*Confidence:* moderate. *Standard practice* for two readers; *judgment call* not to have one.
+*Strongest alternative:* a second person from the start, at the cost of a spend and a stranger
+reading the answers before they are published. John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 4 as proposed. Any second reader before publication is a person.
