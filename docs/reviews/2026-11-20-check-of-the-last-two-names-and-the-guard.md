@@ -139,7 +139,7 @@ I compared the site as last pushed (commit `8122de8`) with the site as it stands
   2026-11-20. Nothing here is applied", says a model wrote it and that it deserves a second
   look, draws on published sources only, and its longest quotation is 16 words. I did not
   check its sources. It changes no record and no page.
-- *The rulings:* seven ruling files are in the push, each with John's words quoted.
+- *The rulings:* five ruling files are in the push, each with John's words quoted.
 
 **Three things from my earlier checks still stand as written, and none holds up the push:**
 
