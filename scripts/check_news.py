@@ -28,7 +28,8 @@ and the story kind is Outrunning Ageing's of 2026-11-09.
 
 What counts as a dated change to an entry here (the sibling reads revisions, a rung reached and a
 weekly reading, none of which this site has): the day it was added; the day its present state was
-set; any dated line of its history; any day in its record of checks; and the date of any act in
+set; any dated line of its history; the days its record of checks says it was changed, added to,
+corrected or fixed (not the days it was only checked, which change nothing); and the date of any act in
 the record that belongs to it. An act dated only to a month or a year counts from the first day of
 that month or year.
 
@@ -62,6 +63,10 @@ PUBLISHED = ROOT / "site" / "src" / "content" / "news"
 KINDS = {"start-here", "count-moved", "state-changed", "entry-added", "method-changed", "story"}
 NO_RECORD_KINDS = {"start-here", "story"}  # the kinds that need not name an entry
 WINDOW_DAYS = 14
+# The keys of an entry's record of checks that say the entry changed. The others in that record
+# (against_sources, changes_checked, additions_checked, corrections_checked, fixes_checked) are the
+# days a session checked it, which are not changes (docs/reviews/2026-11-21-check-of-the-news-section.md, M3).
+CHANGE_KEYS = ("changed", "added_to", "corrected", "fixed")
 NAME_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-([a-z0-9]+(?:-[a-z0-9]+)*)\.md$")
 
 
@@ -99,8 +104,8 @@ def frontmatter(text: str) -> tuple[dict, str]:
             data[key] = []
         elif val.startswith("[") and val.endswith("]"):
             data[key] = [x.strip().strip('"') for x in val[1:-1].split(",") if x.strip()]
-        elif val in ("true", "false"):
-            data[key] = val == "true"
+        elif val.lower() in ("true", "false"):  # YAML reads True and true alike, and so does this
+            data[key] = val.lower() == "true"
         else:
             data[key] = val.strip('"')
     return data, body
@@ -138,7 +143,9 @@ def entry_dates(entry: dict, acts: list[dict]) -> list[str]:
     for h in entry.get("history") or []:
         if h.get("date"):
             dates.append(h["date"])
-    for v in (entry.get("checks") or {}).values():
+    checks = entry.get("checks") or {}
+    for key in CHANGE_KEYS:  # the days the entry changed, never the days it was only checked
+        v = checks.get(key)
         if isinstance(v, str) and re.match(r"^\d{4}-\d{2}-\d{2}$", v):
             dates.append(v)
     for a in acts:

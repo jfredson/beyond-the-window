@@ -27,6 +27,10 @@ WINDOW = {
          "history": [{"date": "2026-11-10"}], "checks": {"against_sources": "2026-01-05"}},
         {"id": "another-made-up-thing", "added": "2026-01-05", "state": {"set_on": "2026-01-05"},
          "history": [], "checks": None},
+        # changed 2026-01-05 and only checked since, on 2026-11-10 and 2026-11-11
+        {"id": "a-checked-thing", "added": "2026-01-05", "state": {"set_on": "2026-01-05"},
+         "history": [], "checks": {"against_sources": "2026-11-10", "changed": "2026-01-05",
+                                   "changes_checked": "2026-11-11"}},
     ],
     "headline": {"readings": {"acts": [{"entry": "another-made-up-thing", "date": "2026-06"}]}},
 }
@@ -111,6 +115,17 @@ class NewsCheck(unittest.TestCase):
         # one on 2026-11-25 is not.
         self.assertEqual(self.run_check({"2026-11-24-a-post.md": post(date="2026-11-24")}), [])
         self.assertTrue(self.run_check({"2026-11-25-a-post.md": post(date="2026-11-25")}))
+
+    def test_a_check_is_not_a_change(self):
+        only_checked = post(date="2026-11-12", records="a-checked-thing")
+        self.assertTrue(self.run_check({"2026-11-12-a-post.md": only_checked}))
+        changed = post(date="2026-01-10", records="a-checked-thing")
+        self.assertEqual(self.run_check({"2026-01-10-a-post.md": changed}), [])
+
+    def test_constructed_read_in_either_case(self):
+        made_up = post(extra="constructed: True")
+        problems = self.run_check({"2026-11-12-a-post.md": made_up}, published=True)
+        self.assertTrue(any("constructed" in p for p in problems))
 
     def test_an_act_counts_as_a_change_from_its_first_day(self):
         ok = post(date="2026-06-10", records="another-made-up-thing")

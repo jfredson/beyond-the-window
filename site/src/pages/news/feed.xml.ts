@@ -2,7 +2,7 @@
 // one has been drawn. Copied on 2026-11-21 from Outrunning Ageing's site/src/pages/news/feed.xml.ts.
 // It is a second feed beside the feed of acts (/acts.xml): that one lists every dated act as the
 // record holds it, and this one carries only the posts that explain something
-// (docs/proposals/2026-11-21-news-section.md, choice 3).
+// (docs/proposals/2026-11-21-news-section.md, part 2, B).
 import rss from '@astrojs/rss';
 import MarkdownIt from 'markdown-it';
 import type { APIContext } from 'astro';

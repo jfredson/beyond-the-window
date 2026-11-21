@@ -23,7 +23,7 @@ export const postPath = (p: Post) => `/news/${p.id}/`;
 export const cardPath = (p: Post) => `/news/${p.id}-card.png`;
 
 /** The post's own preview card when one has been drawn into public/news/, else nothing, and the
- * page keeps the site's picture. No card script exists here yet (the proposal, choice 6). */
+ * page keeps the site's picture. No card script exists here yet (docs/proposals/2026-11-21-news-section.md, part 2, C). */
 export function cardIfDrawn(p: Post): string | undefined {
   const file = path.join(process.cwd(), 'public', 'news', `${p.id}-card.png`);
   return fs.existsSync(file) ? cardPath(p) : undefined;
