@@ -53,3 +53,21 @@ reword the sentence to name the new mix. The question was "Keep the About page's
 sentence as written, reading 12 of 26, with the same guard as the first?" John: "Yes, keep it".
 **Decided by: mixed.**
 
+## A third answer the same day: the item from "AI Death", corrected
+
+The writing session opened the paper and stopped: the check's wording said "keeping a retired
+model's files, or keeping it open, does not keep any one of those beings", and the paper never
+discusses keeping a model open to the public. It does discuss kept files and the essays a retired
+model was given a place to publish, so the item still fits `retired-model-stays-open`. The
+session put the sentence to John without the three words. John: "Yes, corrected". **Decided by:
+mixed.**
+
+> In a peer-reviewed paper, the philosophers Simon Goldstein and Harvey Lederman argue that if AI
+> systems have welfare, what has it is each running conversation and not the model as a whole.
+> On that view, keeping a retired model's files does not keep any one of those beings. They say
+> giving a retired model a place to publish essays "seems to confuse models and session agents",
+> and should not be taken for "preserving a single individual".
+
+Before it goes in, a page of Harvey Lederman's own is opened before he is called a philosopher,
+and the funding tie to New York University's Center for Mind, Ethics, and Policy is stated.
+
