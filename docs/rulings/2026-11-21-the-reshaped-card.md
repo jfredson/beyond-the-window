@@ -74,3 +74,20 @@ collapses while routine output carries on. Studies of costly choices are recorde
 weigh and never mark it met. Until the removal test is run on a system, the card marks it not
 measured.
 
+## Condition 3, worded on 2026-11-21
+
+The session checked the essay's passage ("each new signal arrives either as the system's own
+doing or as something done to it. That is what gives a point of view, in the plain sense that
+things happen *to* someone."), its note "no one has yet run all of it on any system", and
+Appendix A's "is not yet a definition a test could use". It put the reading's wording to John,
+with the two limits stated on the card, and leaving the condition off the card until the test is
+run as the strongest alternative. John: "Yes, as shown". **Decided by: mixed.**
+
+> **A point of view:** it separates what it does from what happens to it, and its own
+> processing uses that difference.
+
+The test is the source's removal test: cut the signal marking which words are the system's own,
+leave the rest working, and look for a pattern of loss that differs from the loss that cutting
+off feedback alone would cause. The card states that no system has been measured on it, and that
+the source calls this a bet and not a finding.
+
