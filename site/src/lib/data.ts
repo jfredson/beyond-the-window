@@ -67,7 +67,8 @@ export type Act = {
   read_on: string;
 };
 export type CellKind = 'offered' | 'unruled' | 'not_counted' | 'taken_back' | 'nothing_found' | 'not_searched';
-export type Cell = { developer: string; kind: CellKind; date: string | null; words?: string };
+// `by`: the date is the day the thing was seen in effect, and the day it began is not known.
+export type Cell = { developer: string; kind: CellKind; date: string | null; words?: string; by?: boolean };
 export type MeasureReading = {
   entry: string;
   date: string;

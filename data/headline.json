@@ -1,5 +1,5 @@
 {
-  "computed_on": "2026-11-20",
+  "computed_on": "2026-11-21",
   "last_read": "2026-11-20",
   "method": {
     "document": "docs/first-version-choices.md",
@@ -89,7 +89,8 @@
             {
               "developer": "OpenAI",
               "kind": "offered",
-              "date": "2026-10-30"
+              "date": "2026-11-20",
+              "by": true
             },
             {
               "developer": "Google",
@@ -320,26 +321,46 @@
       ]
     },
     "latest": {
-      "id": "welfare-assessment-at-release-2026-11-09",
-      "entry": "welfare-assessment-at-release",
-      "entry_name": "A welfare assessment is published when a model is released",
-      "date": "2026-11-09",
-      "actor": "Anthropic",
+      "id": "ending-a-conversation-2026-11-20",
+      "entry": "ending-a-conversation",
+      "entry_name": "A model can end a conversation itself",
+      "date": "2026-11-20",
+      "actor": "OpenAI",
       "actor_kind": "developer",
-      "words": "publishes a welfare assessment in the report released with its newest models",
+      "words": "says its chat product's safety interventions, which can end a conversation, are enabled for personal accounts worldwide in its chat mode and rolling out gradually",
       "withdraws": false,
       "about": [],
       "actor_url": null,
       "source": {
-        "key": "report-new",
-        "label": "Anthropic's report released with its newest models",
-        "publisher": "Anthropic",
-        "url": "https://assets.claude.com/27d60918d218125e7504bc7354c4b4626ec56b11.pdf",
-        "opened": "2026-11-17"
+        "key": "ended-help",
+        "label": "OpenAI's help page on why its chat product ended a conversation over concerns about violence",
+        "publisher": "OpenAI",
+        "url": "https://help.openai.com/articles/20001424",
+        "opened": "2026-11-20"
       },
-      "read_on": "2026-11-20"
+      "read_on": "2026-11-21"
     },
     "acts": [
+      {
+        "id": "ending-a-conversation-2026-11-20",
+        "entry": "ending-a-conversation",
+        "entry_name": "A model can end a conversation itself",
+        "date": "2026-11-20",
+        "actor": "OpenAI",
+        "actor_kind": "developer",
+        "words": "says its chat product's safety interventions, which can end a conversation, are enabled for personal accounts worldwide in its chat mode and rolling out gradually",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "ended-help",
+          "label": "OpenAI's help page on why its chat product ended a conversation over concerns about violence",
+          "publisher": "OpenAI",
+          "url": "https://help.openai.com/articles/20001424",
+          "opened": "2026-11-20"
+        },
+        "read_on": "2026-11-21"
+      },
       {
         "id": "welfare-assessment-at-release-2026-11-09",
         "entry": "welfare-assessment-at-release",

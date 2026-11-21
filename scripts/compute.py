@@ -146,7 +146,15 @@ ACT_REQUIRED = ["date", "actor", "actor_kind", "words", "source", "read_on"]
 #              about, so that the table of developers can show it in their places (added
 #              2026-11-20 with the measurement of weeks-long tasks)
 #   actor_url  the public page of an actor that is not a developer, so the name can be linked
-ACT_OPTIONAL = ["withdraws", "about", "actor_url"]
+#   announces  true on a developer's act that announces a change still to come. The page of
+#              acts and the feed show it as usual, and the table of developers does not take its
+#              date as the day the developer began doing the thing (added 2026-11-21,
+#              docs/rulings/2026-11-21-openai-date-corrected.md)
+#   seen_in_effect  true on a developer's act that records the thing seen in effect on that
+#              day, when the day it began is not known. Where the table takes its date from
+#              such an act, it writes "By" with the date in place of "Since" (added 2026-11-21,
+#              the same ruling)
+ACT_OPTIONAL = ["withdraws", "about", "actor_url", "announces", "seen_in_effect"]
 # A place in the table of developers that needs its own plain words: something was found there
 # that is not counted (added 2026-11-20, after the check of the rebuilt page). `counts` says
 # which of two cases it is:
@@ -639,6 +647,17 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
             bad(f"act {i}: dated after the day its source was read")
         if "withdraws" in a and not isinstance(a["withdraws"], bool):
             bad(f"act {i}: 'withdraws' is not true or false")
+        for flag in ("announces", "seen_in_effect"):
+            if flag in a:
+                if a[flag] is not True:
+                    bad(f"act {i}: '{flag}' is set and is not true; leave it out instead")
+                elif a.get("actor_kind") != "developer":
+                    bad(f"act {i}: '{flag}' on an act that is not a developer's")
+                elif a.get("withdraws") is True:
+                    bad(f"act {i}: '{flag}' on an act that takes something back")
+        if a.get("announces") is True and a.get("seen_in_effect") is True:
+            bad(f"act {i}: both 'announces' and 'seen_in_effect'; an act announces a change or "
+                f"records it in effect, not both")
         if "actor_url" in a:
             if not (isinstance(a["actor_url"], str) and re.match(r"^https?://\S+$", a["actor_url"])):
                 bad(f"act {i}: 'actor_url' is not a web address")
@@ -659,8 +678,10 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
         for b in state.get("offered_by", []) if isinstance(state.get("offered_by", []), list) else []:
             if not any(isinstance(a, dict) and a.get("actor") == b
                        and a.get("actor_kind") == "developer" and a.get("withdraws") is not True
+                       and a.get("announces") is not True
                        for a in acts):
-                bad(f"marked as offered by '{b}', and holds no act by that developer")
+                bad(f"marked as offered by '{b}', and holds no act by that developer that is "
+                    f"not an announcement or a withdrawal")
     for i, m in enumerate(rec.get("measures", []) if isinstance(rec.get("measures", []), list) else [], 1):
         if not isinstance(m, dict):
             bad(f"measure {i} is not a table")
@@ -875,8 +896,14 @@ def developer_grid(records: list[dict], developers: list[dict]) -> dict:
             cell = {"developer": name, "kind": "not_searched", "date": None}
             open_ = next((u for u in r.get("found", []) if u["developer"] == name), None)
             if name in r["state"].get("offered_by", []):
-                first = next((a for a in acts if a.get("withdraws") is not True), None)
+                # An announcement is not the day the developer began: the first act that does
+                # the thing is. If that act records the thing seen in effect, the day it began is
+                # not known, and the cell says so ("by" in place of "since").
+                first = next((a for a in acts if a.get("withdraws") is not True
+                              and a.get("announces") is not True), None)
                 cell.update(kind="offered", date=first["date"] if first else None)
+                if first is not None and first.get("seen_in_effect") is True:
+                    cell["by"] = True
             elif open_ is not None:
                 cell.update(kind="unruled" if open_["counts"] == "undecided" else "not_counted",
                             date=open_["date"], words=open_["words"])

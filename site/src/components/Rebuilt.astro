@@ -57,8 +57,9 @@ if (byCount[0].offered > h.count) throw new Error('a developer does more things 
 
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
-const cellWords = (kind: string, date: string | null, words?: string) =>
-  kind === 'offered' ? `Since ${date ? worldDate(date) : 'a date not recorded'}`
+const cellWords = (kind: string, date: string | null, words?: string, by?: boolean) =>
+  kind === 'offered' && by ? `By ${worldDate(date!)}`
+  : kind === 'offered' ? `Since ${date ? worldDate(date) : 'a date not recorded'}`
   : kind === 'unruled' ? `${worldDate(date!)}: ${words}. Whether this counts is not decided yet.`
   : kind === 'not_counted' && words ? `${worldDate(date!)}: ${words}. Not counted.`
   : kind === 'not_counted' ? `${worldDate(date!)}, not counted as offered`
@@ -140,7 +141,8 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
     <p class="intro">
       Each row is one of the <span data-figure="developers.things">{countWord(g.things)}</span> things. Each column is a developer this record covers so
       far. "Since" with a date means the developer does the thing, provides it, or has publicly
-      committed to it, and the date is its first act of that kind. Of the
+      committed to it, and the date is its first act of that kind. "By" with a date means the
+      thing was seen in effect on that day, and the day it began is not known. Of the
       <span data-figure="developers.cells">{g.cells}</span> places in the table,
       <span data-figure="developers.nothing_found">{g.counts.nothing_found}</span> say nothing
       found. Each of those rests on two or more searches made for that developer and that
@@ -162,7 +164,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
         {g.rows.map((row) => (
           <tr data-entry={row.entry}>
             <th scope="row"><a href={`/list/${row.entry}/`}>{row.name}</a></th>
-            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date, c.words)}</td>)}
+            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date, c.words, c.by)}</td>)}
           </tr>
         ))}
       </tbody>

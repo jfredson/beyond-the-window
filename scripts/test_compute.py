@@ -620,6 +620,38 @@ class Readings(unittest.TestCase):
         self.assertEqual(g["counts"], {"offered": 1, "unruled": 0, "not_counted": 1,
                                        "taken_back": 1, "nothing_found": 1, "not_searched": 4})
 
+    def test_an_announcement_is_skipped_and_a_change_seen_in_effect_is_marked_by(self):
+        # Added 2026-11-21 (docs/rulings/2026-11-21-openai-date-corrected.md). Constructed.
+        recs = self.records()
+        recs[0]["acts"] = [act("2025-05", announces=True), act("2026-03-02", seen_in_effect=True)]
+        self.assertEqual(c.validate(GROUPS, recs, DEVS), [])
+        cell = {row["entry"]: row["cells"] for row in c.developer_grid(recs, DEVS)["rows"]}["a-thing-offered"][0]
+        self.assertEqual((cell["kind"], cell["date"], cell.get("by")), ("offered", "2026-03-02", True))
+        # The announcement is still an act: the page of acts and the feed show it.
+        self.assertIn("2025-05", [a["date"] for a in c.all_acts(recs)])
+
+    def test_without_the_seen_in_effect_mark_the_cell_says_since(self):
+        recs = self.records()
+        recs[0]["acts"] = [act("2025-05", announces=True), act("2026-03-02")]
+        cell = {row["entry"]: row["cells"] for row in c.developer_grid(recs, DEVS)["rows"]}["a-thing-offered"][0]
+        self.assertEqual((cell["date"], "by" in cell), ("2026-03-02", False))
+        # and with no marks at all the first act gives the date, as before
+        self.assertNotIn("by", {row["entry"]: row["cells"] for row in
+                                c.developer_grid(self.records(), DEVS)["rows"]}["a-thing-offered"][0])
+
+    def test_the_two_marks_are_refused_where_they_make_no_sense(self):
+        said = lambda acts: "\n".join(c.validate(GROUPS, [dict(self.records()[0], acts=acts)], DEVS))
+        self.assertIn("both 'announces' and 'seen_in_effect'",
+                      said([act("2025-05", announces=True, seen_in_effect=True), act("2026-03-02")]))
+        self.assertIn("'announces' is set and is not true", said([act("2025-05", announces=False)]))
+        self.assertIn("'seen_in_effect' on an act that takes something back",
+                      said([act("2025-05"), act("2026-03-02", withdraws=True, seen_in_effect=True)]))
+        self.assertIn("'announces' on an act that is not a developer's",
+                      said([act("2025-05"), act("2026-03-02", actor="Some researchers", kind="researchers",
+                                                announces=True, about=["A made-up developer"])]))
+        # An entry offered by a developer whose only act is an announcement has no day it began.
+        self.assertIn("not an announcement or a withdrawal", said([act("2025-05", announces=True)]))
+
     def test_a_place_found_and_not_counted_says_so_in_its_own_words(self):
         recs = self.records()
         recs[1]["found"] = [{"developer": "A made-up developer", "date": "2026-11-20",

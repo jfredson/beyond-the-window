@@ -166,6 +166,22 @@ actor_kind = "developer"
 words = "says its chat product will be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, with the change to begin in the following weeks"
 source = "teen-protections"
 read_on = 2026-11-20
+# Marked as an announcement on 2026-11-21: the table of developers does not take its date as the
+# day the change began (docs/rulings/2026-11-21-openai-date-corrected.md).
+announces = true
+
+# Added 2026-11-21, by John's ruling ("Yes, as proposed", and the words "Yes, both as shown";
+# docs/rulings/2026-11-21-openai-date-corrected.md). The help page has no date of its own; it was
+# first read on 2026-11-20 and read again for this act on 2026-11-21. The act is dated to the day
+# the change was first seen in effect, and the day it began is not known.
+[[acts]]
+date = "2026-11-20"
+actor = "OpenAI"
+actor_kind = "developer"
+words = "says its chat product's safety interventions, which can end a conversation, are enabled for personal accounts worldwide in its chat mode and rolling out gradually"
+source = "ended-help"
+read_on = 2026-11-21
+seen_in_effect = true
 
 [[searches]]
 date = 2026-11-20
@@ -201,3 +217,10 @@ field = "where it stands"
 old = "Offered by one developer, since August 15th, 2025"
 new = "Offered by two developers, the first since August 15th, 2025"
 why = "A second developer's chat product now ends some conversations, by its own pages, and it was decided on November 20th, 2026 to count that here. Those pages give the safety of people as the reason, and name the chat product, not the AI model, as what ends the conversation."
+
+[[history]]
+date = 2026-11-21
+field = "OpenAI's date in the table of developers"
+old = "Since October 30th, 2026"
+new = "By November 20th, 2026"
+why = "October 30th, 2026 was the day OpenAI announced the change. November 20th, 2026 is the day its help page was first seen to say the change was in effect, and the day it began is not known."

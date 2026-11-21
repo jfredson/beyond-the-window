@@ -103,6 +103,16 @@ refuses it unless the record names the ruling that approved it (`placement_note_
 file's name in `docs/rulings/`), that file exists, and the note stands in it word for word. A
 made-up sentence in the field no longer builds. Decided by: agent.
 
+**Added 2026-11-21: two marks on a developer's dated act.** `announces = true` marks an act that
+announces a change still to come. The page of acts and the feed show it as usual, and the table
+of developers does not take its date as the day the developer began. `seen_in_effect = true`
+marks an act that records the thing seen in effect on that day, when the day it began is not
+known; where the table takes its date from such an act, it writes "By" with the date in place of
+"Since". The marks were made for OpenAI's row on the entry about ending a conversation
+(`docs/rulings/2026-11-21-openai-date-corrected.md`). The records script refuses either mark on
+an act that is not a developer's or that takes something back, both on one act, and an entry
+marked as offered by a developer whose only act is an announcement. Decided by: agent.
+
 ## 4. Ids (framework)
 
 - An id is plain lower-case words joined by hyphens, and is the last part of the record's page

@@ -2,10 +2,21 @@
 
 Every change to the records, the method or the site gets a dated line here, saying which
 number moved or that none did. The site has been public at beyondthewindow.org since
-2026-11-19. Since then no entry has been corrected. Two wordings on the Still Asking page were
+2026-11-19. Since then one entry has been corrected, in the line for 2026-11-21 below. Two wordings on the Still Asking page were
 changed after it was public, and both are in the lines for 2026-11-19 below, with the words
 before and after in the ruling they name. The paragraph on that page about questions asked
 outside the record was replaced on 2026-11-20, and that is in the line for that day.
+
+## 2026-11-21
+
+- **OpenAI's date on the entry about ending a conversation was corrected**
+  (`docs/rulings/2026-11-21-openai-date-corrected.md`). The table of developers on the home page
+  gave "Since October 30th, 2026", the day OpenAI announced the change. It now gives "By
+  November 20th, 2026", the day OpenAI's help page was first seen to say the change was in
+  effect; the day it began is not known. A dated act records that, the act of October 30th
+  stays as the announcement, and the entry's page shows the correction under its changes. The
+  table's explanation says what "By" means. The number at the top of the site did not move: the
+  count is 5. Not pushed.
 
 ## 2026-11-20
 
