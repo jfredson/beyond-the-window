@@ -36,6 +36,27 @@ the comparison to animals?" John: "Yes, as shown". **Decided by: mixed.**
 
 The entry's description becomes the one sentence above, word for word, in place of its three.
 
+## Corrected the same day, by a second answer
+
+The writing session checked the ruled sentence against what the entry tracks and stopped. Read
+alone, "protected AI systems in law" covers any law that protects one, including laws that
+protect it as property, and such laws exist. The entry tracks protection "for its own sake"
+(its name), by a law or body "whose stated purpose includes the welfare or interests of AI
+systems themselves" (its test), and its state is "Not found". So the sentence beside "Not
+found" could read as false. The old opening had carried "for its own sake" through the
+comparison with animals. Also, "review the question" had no question before it. The sentence
+was the master session's, put to John without being checked against the entry's test.
+
+The session then read the entry's test and state itself and put a corrected sentence to John,
+asking "Add 'for their own sake' to the sentence for the entry on protection in law, as shown?"
+John: "Yes, as shown". **Decided by: mixed.**
+
+**What is ruled now, replacing the sentence above:**
+
+> This entry tracks whether any government has protected AI systems in law for their own sake,
+> without calling them persons, or has set up a body to review whether to do so as evidence
+> comes in.
+
 ## Not covered by this ruling
 
 The rest of the entry, including the source that points to the committee on animal sentience,
