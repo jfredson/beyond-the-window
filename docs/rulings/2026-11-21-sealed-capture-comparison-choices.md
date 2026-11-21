@@ -133,3 +133,15 @@ line on training's general rule once on the capture's page. John: "Yes, as propo
 by: mixed.**
 
 **What is ruled.** Choice 9 as proposed.
+
+## Choice 10. What may be said, and quoting
+
+**Put to him.** Descriptions of the reading sheet's kinds only; never published until every
+answer is; checked by a different session against the published answers and against John's
+published positions before they go out; quoting only once every answer is published, each quote
+linked to its whole answer, and never in a title, headline, share card, link preview or
+promotional post. *Confidence:* moderate to high, moderate on quotes in essays at all. *Judgment
+call.* *Strongest alternative:* no quotes anywhere, only links into the full set. John: "Yes, as
+proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 10 as proposed.
