@@ -93,6 +93,12 @@ they think about model identity; trying the candidate aspirations against each u
 which give a testable entry; and seeing what the first model answers say, if a protocol exists
 by then.
 
+**Ruled in part on 2026-11-21, for Still Asking's card only.** John: "Yes, as proposed", to
+choice 1 of the Still Asking method (`docs/rulings/2026-11-21-still-asking-method-choices.md`;
+decided by: mixed). In the first track the card describes the exact model version asked; in the
+second track it describes the named individual. Which unit an entry on the list describes stays
+open.
+
 ## 2. What counts as wanting?
 
 **The question.** Whether any observation can count as evidence that a system like this wants
