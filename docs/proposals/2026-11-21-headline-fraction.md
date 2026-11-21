@@ -137,9 +137,20 @@ file was last computed, with no change. The page shows the file's dates.
 - **Confidence:** moderate to high, because each clause is true of the records and the ruled
   meaning of counted, and the last clause joins the 8 to the "seven things" a reader meets in the
   developers' reading on the same screen.
-- **What it brings to light:** under the ruled meaning of counted (at least one developer does it
-  or has committed to it), this thing is never counted. So the fraction cannot reach 8 of 8 under
-  that meaning, even if a law is passed.
+- **What it brings to light, corrected after the re-check:** the ruled meaning of counted (at
+  least one developer does it or has committed to it) and the code disagree on this one thing. By
+  the ruled meaning it is never counted. But the code records a passed law by marking the thing
+  as offered today, the same mark the count reads, so recording a law would put it into the count
+  (the re-check showed "6 of 8" built and passed the site check). The first draft said the
+  fraction "cannot reach 8 of 8 under that meaning, even if a law is passed"; that went further
+  than the code holds and is withdrawn.
+- **Held in code now:** the page stops building if the government's thing is among the counted
+  entries, so "is not counted among the 5" cannot go false unnoticed. A scratch build with the
+  thing marked as offered stopped with that message.
+- **A question for John, not settled here:** if a government ever protects an AI system for its
+  own sake, should the headline move (6 of 8), or stay 5 of 8 with the law shown only in the law
+  reading? Until he rules, recording such a law stops the build, and the line or the count changes
+  by his answer.
 - **Standard practice or judgment call:** judgment call.
 - **Strongest alternative:** leave the government's thing out of the second number, which would
   then be 7, matching the table. Cost: the second number would no longer be "things on the List",
@@ -260,3 +271,14 @@ to be fixed and eight smaller ones.
 From the check's notes: note 1 (8 and seven on one page) was taken up in choice 4's line; note 2
 (each reason reads today's records) is recorded under choice 3; note 3 ("reach for" outside the
 question) is recorded under choice 6; note 4 is under choice 1; note 5 needs nothing here.
+
+## What the re-check changed
+
+The re-check of the fixes (the latest section of the same review) passed them on two conditions,
+both met here:
+
+- **A. Choice 4 corrected.** It no longer says the fraction cannot reach 8 of 8 even if a law is
+  passed; it says the ruled meaning and the code disagree, and puts the question to John.
+- **B. A build check for the reworded line.** `site/src/components/Rebuilt.astro` stops the build
+  if the government's thing is among the counted entries. It sits in the page, not in
+  `scripts/compute.py`, so the law reading's use of the same mark is left alone.

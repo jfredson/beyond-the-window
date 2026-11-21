@@ -78,6 +78,12 @@ const SENTENCE = (import.meta.env.HEADLINE_SENTENCE ?? process.env.HEADLINE_SENT
 // The thing on the List that only a lawmaker can do, if it is on the List.
 const lawThing = law.protecting && entryById.get(law.protecting.entry);
 if (!lawThing || lawThing.beside) throw new Error('the line on the lawmaker\'s thing is written for a thing on the List');
+// The line says the government's thing "is not counted among the 5". The count is every entry on
+// the List marked as offered today, and the law reading uses that same mark for a law passed, so
+// nothing in scripts/compute.py holds the thing out of the count. The build stops here instead,
+// which needs John's decision on whether a passed law moves the headline
+// (docs/reviews/2026-11-21-check-of-the-headline-fraction.md, re-check item B).
+if (h.offered_ids.includes(lawThing.id)) throw new Error(`'${lawThing.id}' is counted in the headline, and the line under the breakdown says it is not counted among the ${h.count}; whether a passed law should move the headline is John's to rule`);
 // The line says the other things on the List are the rows of the table of developers.
 if (g.things + 1 !== total) throw new Error('the List is no longer the table of developers and the one thing for a government; reword the line under the breakdown');
 // What moved between two points of the history, in words, from the entries as they stand.
