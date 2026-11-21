@@ -104,7 +104,10 @@ drawing script (`scripts/social-image.mjs --posts`) and its commit hook is work 
 first post (part 4).
 
 **D. The "Follow the news" line** (old choice 10). Built as every sibling has it, on the News page
-and under each post: the feed, @SentHorizons on X, r/SentientHorizons on Reddit.
+and under each post: the feed, @SentHorizons on X, r/SentientHorizons on Reddit. One gap is not
+settled: rule 4.15 also asks for a quiet "Follow on X" link in every tracker's footer, and no
+sibling's footer has one on its main branch, so the written rule and the family's practice differ.
+This site follows the practice for now and adds no footer link.
 
 **E. Made-up posts for drawing the pages, and the guard against publishing one** (old choice 11).
 Built. It follows this project's rule that nothing made up is written without "constructed"
@@ -253,28 +256,48 @@ that a post explains one.
 
 ### Question 6. How the family's rule on unchecked facts applies here
 
-(Old choice 12, its last part, restated.) The family's rule is wider than the first version said:
-"no post is published while any record on the site carries an open verify entry" (rule 4.11,
-pointing at rule 3.3 part 4), and this site's inventory takes it over as is (row L4). Two readings
-are possible here, because this site already keeps every record with something left to verify off
-the site entirely (`scripts/compute.py` shows only records with nothing to verify), and the news
-check refuses a post that names an entry the site does not show.
+(Old choice 12, its last part. Restated after the second check, review item M4: the earlier
+version called the loose reading the AGI Zeitgeist's, which had it the wrong way round.)
 
-- *Reading one, the strict one:* no post goes out while any record, shown or not, has anything left
-  to verify. On 2026-11-21 no record is waiting (the headline file counts none left out with
-  facts to verify), so the two readings agree today; they part the day a record is added with a
-  fact still to check, which would then hold every post until it is checked or dropped.
-- *Reading two, the Zeitgeist's:* the rule is about the records the site shows. Here those can
-  never carry an open fact, so the rule is already kept in code for every record; what is left is
-  that no fact in the post itself may be unchecked, which the writing session and the reading
-  against `docs/verify-list.md` hold by hand.
+**The rule.** "No post is published while any record on the site carries an open verify entry"
+(rule 4.11, pointing at rule 3.3 part 4, ruled by John on 2026-10-17). This site's inventory takes
+it over as is (row L4). An open verify entry is a fact set down before its source was opened.
 
-*Proposed:* reading two, because the site already shows no record with an open fact, and reading
-one would hold every post on records no reader can see.
-*Confidence:* moderate. *Judgment call* on how a family rule meets this site's stricter way of
-holding records back.
-*Strongest alternative:* reading one. Cost: whenever a record waits off the site, news waits on
-it, though no reader can see it.
+**The precedent is the strict one, and it is John's.** The AGI Zeitgeist's news check refuses
+every post while any claim file on that site carries an open verify line: in its own words, "the
+count across the site must be none", and "The rule is kept strict". It was added on John's ruling
+of 2026-11-09, after posts went out on 2026-10-19 and 2026-10-21 while ten checks were open
+(agi-zeitgeist, `scripts/check_news.py`; this site's inventory, part 2, lesson 9).
+
+**Why there are two readings here.** This site already keeps every record with a fact still to
+verify off the site entirely (`scripts/compute.py` shows only records with nothing to verify), so
+no record a reader can see ever carries an open entry.
+
+- *Reading one, the strict one, as on the Zeitgeist:* no post goes out while any record, shown or
+  held back, has a fact still to verify. It can be kept in code at once: the news check refuses
+  every post while the headline file's count of records left out with facts to verify is above
+  none. On 2026-11-21 that count is none, so the reading costs nothing today.
+- *Reading two, the loose one:* the rule is about the records a reader can see, which here can
+  never carry an open entry, so it is kept already; what is left is that no fact in the post
+  itself is unchecked, which the writing session holds by hand against `docs/verify-list.md`.
+
+**A third thing the rule does not settle.** Three entries today carry `some_unchecked` in their
+record of checks: changes were made after a second check, and that check did not cover all of
+them. Those are not facts set down before their source was opened, so they are not open verify
+entries in the rule's sense. They are facts not yet checked a second time.
+
+*Proposed:* reading one, kept in code by the news check as above, because it is the family's rule
+as John ruled it for the Zeitgeist, it costs nothing today, and it puts a guard in code where the
+loose reading puts one in a person's hands. On `some_unchecked`: it does not block posts across
+the site, but the news check refuses a post that names an entry carrying it, until the second
+check covers its changes, because a post sends readers to exactly that entry.
+*Confidence:* high on reading one, which follows John's own ruling; moderate on the treatment of
+`some_unchecked`, which is a judgment the rule does not cover.
+*Standard practice* for reading one (the Zeitgeist, 2026-11-09); a judgment for `some_unchecked`.
+*Strongest alternative:* reading two, with `some_unchecked` not counted. Cost: no guard in code;
+the day a record is held back with a fact to check, a post could go out, which is what happened
+on the Zeitgeist on 2026-10-19 and 2026-10-21. A second alternative, counting `some_unchecked`
+site-wide, would block every post today, for three entries no post need name.
 
 ## 4. To do before the first post, whatever is ruled
 
@@ -288,6 +311,7 @@ These need no ruling now; they are the work that should land before the opening 
    rule is that guards live in code once there is code. A short list of phrases, like rule 10's,
    is the likely first form.
 3. If question 5 is ruled as proposed, the "In the news" line and the act links.
+4. If question 6 is ruled as proposed, the two refusals in the news check.
 
 ## 5. What the build changed
 
@@ -309,6 +333,6 @@ These need no ruling now; they are the work that should land before the opening 
 - `scripts/fixtures/news/`: three made-up posts, each marked constructed, and a note on using them.
 - Pictures of the pages at phone and computer widths:
   `docs/proposals/pictures/2026-11-21-news-section/` (1 to 7 with the made-up posts; 8 and 9 the
-  News page as it would go live today, with no post). Pictures 8 and 9 were taken again after the
-check, with the News page's reworded opening paragraph (review item S3); pictures 1 to 3 still
+  News page as it would go live today, with no post). Pictures 8 and 9 were taken again after each
+check, with the News page's reworded opening paragraph (review items S3 and S5); pictures 1 to 3 still
 show the first wording, which is otherwise the same page.
