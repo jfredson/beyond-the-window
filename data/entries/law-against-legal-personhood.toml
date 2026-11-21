@@ -15,7 +15,7 @@ limits = [
   "The date the North Dakota governor signed the bill. The page cited shows only the date it was filed.",
   "Whether any country outside the United States has a similar statute. None was searched for.",
 ]
-notes = "From entry 9 of docs/research/2026-11-17-first-entries.md."
+notes = "From entry 9 of docs/research/2026-11-17-first-entries.md. On 2026-11-20 the opinion piece in The Regulatory Review and the article in AI Frontiers were opened again, and three cautions were filed in place of two, by John's ruling (docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md). The opinion piece links its sentence about the Oklahoma sponsor to a news article at san.com. That article could not be opened on 2026-11-20, because the outlet has closed and its address shows only a farewell notice. So the sponsor's own statement was not read, and the caution says what the opinion piece reports."
 
 [state]
 words = "Enacted in four United States states, the first in 2022"
@@ -81,7 +81,7 @@ label = "An opinion piece on state laws about AI consciousness, in The Regulator
 publisher = "The Regulatory Review"
 url = "https://www.theregreview.org/2026/06/29/rost-legislating-ai-consciousness-without-an-exit/"
 published = "2026-06-29"
-opened = 2026-11-19
+opened = 2026-11-20
 says = "Counts \"at least nine\" state legislatures with such bills introduced or enacted."
 
 [[sources]]
@@ -90,7 +90,7 @@ label = "An article arguing that the bans on AI personhood are premature, in AI 
 publisher = "AI Frontiers"
 url = "https://ai-frontiers.org/articles/its-too-early-to-ban-ai-personhood"
 published = "2026-09-01"
-opened = 2026-11-19
+opened = 2026-11-20
 note = "By Heather Alexander and [Lucius Caviola](https://luciuscaviola.com/)."
 
 [[sources]]
@@ -110,15 +110,24 @@ published = "2026-07-19"
 opened = 2026-11-19
 note = "By [William MacAskill](https://www.williammacaskill.com/) and [Lucius Caviola](https://luciuscaviola.com/)."
 
+# The next three cautions replaced two on 2026-11-20, by John's ruling ("Yes, corrected wording",
+# docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md). Both sources were
+# opened that day. No check by a different session has read them yet. The page's footer has no
+# sentence for this change, so it is recorded here and in CHANGELOG.md only.
 [[cautions]]
-kind = "safety"
-text = "The article arguing that the bans are premature also discusses the risk they are aimed at: that AI systems holding rights could be used by their makers to escape liability, or could gain power through ownership and voting."
+kind = "attribution"
+text = "An opinion piece reports that the sponsor of the bill in Oklahoma framed it as preventing companies from shifting \"accidents onto the AI\"."
+source = "review-clause"
+
+[[cautions]]
+kind = "attribution"
+text = "The article arguing that the bans are premature also discusses a risk they are aimed at: that laws granting AI systems legal status could shield their makers from liability."
 source = "too-early"
 
 [[cautions]]
 kind = "safety"
-text = "The opinion piece also reports one sponsor's stated aim of stopping companies from shifting blame onto the AI."
-source = "review-clause"
+text = "The article arguing that the bans are premature also discusses the risk that legal rights could help AI systems, or the companies that make them, gain power through ownership and voting."
+source = "too-early"
 
 [[cautions]]
 kind = "safety"

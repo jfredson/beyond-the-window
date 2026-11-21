@@ -9,6 +9,15 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **Three cautions replace two on the entry about laws against legal personhood**
+  (`docs/rulings/2026-11-20-liability-cautions-refiled-on-the-bans-entry.md`). Two now stand
+  under the first heading, which had nothing recorded, and one under the third. The sentence
+  about the Oklahoma sponsor now says that an opinion piece reports it, and quotes the piece's
+  own words. Both sources were opened again on 2026-11-20. One figure on the About page moved
+  with it, by the same ruling: of the items recorded under the first caution, 9 of 18 now come
+  from two essays by one writer, where it was 9 of 16. The build now stops only if that share
+  falls below half. The number at the top of the site did not move: the count is 5. Not
+  pushed.
 - **The three labels on entry pages lost the word "progress"**
   (`docs/rulings/2026-11-20-progress-dropped-from-the-kind-labels.md`). Each entry's page now
   shows "Technical", "Political" or "Cultural" where it showed "Technical progress",

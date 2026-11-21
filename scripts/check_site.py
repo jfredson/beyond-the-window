@@ -20,8 +20,9 @@ What it refuses (docs/first-version-choices.md, choice 18):
    sit inside <cite> on every page.
    One exception: the About page names two developers in its paragraph on where the record's
    sources come from (the paragraph marked id="sources") and nowhere else: the one whose own
-   pages most of the things counted rest on, and the one whose head wrote most of what stands
-   under the first caution. John's ruling of 2026-11-19
+   pages most of the things counted rest on, and the one whose head wrote most of what stood
+   under the first caution on 2026-11-19 (half of it since 2026-11-20, 9 items of 18; the About
+   page's own build stops below half). John's ruling of 2026-11-19
    (docs/rulings/2026-11-19-no-public-mention-of-ai-help-in-building.md) keeps those facts on
    the page as facts about sources. The second name was added on 2026-11-19, because a reader
    of the About page alone could not tell who "another developer" was
