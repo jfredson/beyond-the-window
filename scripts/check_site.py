@@ -65,6 +65,13 @@ What it refuses (docs/first-version-choices.md, choice 18):
       The feed holds one item for each act.
    c. The count itself is still served, and still equals the number of entries the served file
       lists as counted.
+   d. Since 2026-11-20, when John ruled that the home page opens with a headline number again
+      (docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md): the first figure on the
+      home page is the count. The page holds one number in the large type (class="big-number"),
+      it is marked as the count, it reads the count in the served file and nothing else (no
+      total, no "of", nothing beside it inside the large type), and no other marked figure and
+      no reading comes before it. Rule 8 still refuses the count written as a share of the list
+      anywhere on the page.
 9. The first person ("I", "my", "mine", "me", "we", "our", "ours", "us") anywhere but the
    About page's opening block on who is asking (the block marked id="who"), which is in John's
    own first person. The rest of the site stays impersonal. The notice that
@@ -228,7 +235,38 @@ def as_number(text: str) -> float | None:
         return None
 
 
-def rebuilt_problems(dist: Path, rd: dict | None) -> list[str]:
+BIG_NUMBER = r'(?is)<p\b[^>]*\bclass="big-number"[^>]*>(.*?)</p>'
+
+
+def headline_problems(raw: str, count: int) -> list[str]:
+    """Rule 7d: the home page's first figure is the computed count, alone in the large type."""
+    rel = HOME_PAGE
+    body = raw.split("<body", 1)[-1]
+    bigs = list(re.finditer(BIG_NUMBER, body))
+    if len(bigs) != 1:
+        return [f"{rel}: the page should hold one number in the large type, the count, and "
+                f"{len(bigs)} were found"]
+    big = bigs[0]
+    problems = []
+    if not re.fullmatch(r'(?is)\s*<span\b[^>]*\bdata-figure="headline\.count"[^>]*>[^<]*</span>\s*',
+                        big.group(1)):
+        problems.append(f"{rel}: the number in the large type is not marked as the count, or "
+                        f"something stands beside it")
+    inner = " ".join(html.unescape(re.sub(r"<[^>]+>", "", big.group(1))).split())
+    if inner != str(count):
+        problems.append(f"{rel}: the large type reads \"{inner}\" and the count in "
+                        f"/data/headline.json is {count}, alone")
+    first_figure = re.search(r'\bdata-figure="([^"]+)"', body)
+    if not first_figure or first_figure.group(1) != "headline.count":
+        problems.append(f"{rel}: the first figure on the page is not the count "
+                        f"({first_figure.group(1) if first_figure else 'none'} comes first)")
+    reading = re.search(r'class="rb-reading', body)
+    if reading and reading.start() < big.start():
+        problems.append(f"{rel}: a reading stands above the count")
+    return problems
+
+
+def rebuilt_problems(dist: Path, rd: dict | None, count: int | None = None) -> list[str]:
     """Rule 7, parts a and b, and the half of rule 12 that asks for every covered developer."""
     problems: list[str] = []
     homes = [HOME_PAGE] if (dist / "index.html").is_file() else []
@@ -250,6 +288,8 @@ def rebuilt_problems(dist: Path, rd: dict | None) -> list[str]:
             problems.append(f"/data/headline.json: the act '{a.get('id')}' is by a developer "
                             f"the record does not cover ({a.get('actor')})")
     want_figures = expected_figures(rd)
+    if count is not None:
+        want_figures["headline.count"] = count
     want_acts = [(a["id"], a["date"]) for a in rd["acts"]]
     want_cells = {(row["entry"], c["developer"]): (c["kind"], c["date"] or "")
                   for row in rd["developers"]["rows"] for c in row["cells"]}
@@ -275,7 +315,9 @@ def rebuilt_problems(dist: Path, rd: dict | None) -> list[str]:
 
     for rel in homes:
         raw = (dist / "index.html").read_text(encoding="utf-8")
-        figures(rel, raw, REQUIRED_FIGURES)
+        figures(rel, raw, REQUIRED_FIGURES + (["headline.count"] if count is not None else []))
+        if count is not None:
+            problems += headline_problems(raw, count)
         acts(rel, raw)
         got_cells = {}
         for entry, row in re.findall(r'(?is)<tr\b[^>]*\bdata-entry="([^"]+)"[^>]*>(.*?)</tr>', raw):
@@ -453,6 +495,7 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
     # the served file: what it must not say, and the count, which is still served (rule 7c)
     served = dist / "data" / "headline.json"
     home = dist / "index.html"
+    count = None
     if not served.is_file():
         problems.append("/data/headline.json is not served")
     elif home.is_file():
@@ -470,7 +513,8 @@ def check(dist: Path) -> tuple[list[str], dict[str, set[str]]]:
         if "total" in h:
             problems.append("/data/headline.json: the headline holds a total beside the count")
         problems += fraction_problems(dist, pages, h["count"], file["records"]["on_the_list"])
-    problems += rebuilt_problems(dist, readings)
+        count = h.get("count")
+    problems += rebuilt_problems(dist, readings, count)
     return problems, outside
 
 
