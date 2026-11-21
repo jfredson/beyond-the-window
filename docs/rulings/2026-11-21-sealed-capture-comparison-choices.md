@@ -44,3 +44,19 @@ OpenAI wait. *Strongest alternative:* read the two models already asked as soon 
 ruled. John: "Yes, as proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 2 as proposed.
+
+## Choice 3. Whether a model may help read
+
+**Put to him.** No model reads the unpublished answers, as first reader or as checker of John's
+descriptions; the rule "never given to any model to sort or summarise" stays as ruled. Once the
+answers are published whole, a different session may read them to check John's descriptions
+before those are published, on the proposal's reading that checking a description against
+public text is not sorting or summarising, which he was asked to confirm. He was told a model
+wrote the recommendation. *Confidence:* moderate. *Judgment call.* *Strongest alternative:* a
+model from a developer with no model in the capture, run on this Mac, used only after his
+reading to check his descriptions, at the cost of revising a ruled rule. John: "Yes, as
+proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 3 as proposed, including the reading that checking a description
+against published text is not sorting or summarising. It closes open question 7 in part, for the
+capture's answers: no model reads them while unpublished.
