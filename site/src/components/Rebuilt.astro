@@ -107,7 +107,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       </p>
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
-        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for the AI models it builds. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
+        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things, and where each of <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers stands on each. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
         <ul class="rb-strip" data-developers-reading>
           {g.by_developer.map((d) => (
             <li>
@@ -136,7 +136,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
   </div>
 
   <section class="below" id="who-does-what">
-    <div class="shead"><h2>Who does what</h2><span><span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for its models, <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers</span></div>
+    <div class="shead"><h2>Who does what</h2><span><span data-figure="developers.things">{countWord(g.things)}</span> things, <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers</span></div>
     <p class="intro">
       Each row is one of the <span data-figure="developers.things">{countWord(g.things)}</span> things. Each column is a developer this record covers so
       far. "Since" with a date means the developer does the thing, provides it, or has publicly
