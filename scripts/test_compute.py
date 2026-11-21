@@ -825,5 +825,36 @@ class SiteCheck(unittest.TestCase):
         self.assertIn("is by a developer the record does not cover", said)
 
 
+class HomeHeadline(unittest.TestCase):
+    """Rule 7d of the site check: the first figure on the home page is the count, alone."""
+    GOOD = ('<html><body><p class="eyebrow">A record</p>'
+            '<p class="big-number"><span data-figure="headline.count">5</span></p>'
+            '<p class="big-claim">things are counted.</p>'
+            '<p class="rb-reading"><span data-figure="researchers.0">1</span>%</p></body></html>')
+
+    def test_the_count_alone_and_first_passes(self):
+        self.assertEqual(s.headline_problems(self.GOOD, 5), [])
+
+    def test_refuses_a_number_that_is_not_the_count(self):
+        self.assertTrue(s.headline_problems(self.GOOD, 6))
+
+    def test_refuses_a_total_beside_the_count(self):
+        page = self.GOOD.replace(">5</span></p>", ">5</span><small>of 8</small></p>")
+        self.assertTrue(s.headline_problems(page, 5))
+
+    def test_refuses_a_page_whose_top_is_not_the_count(self):
+        page = self.GOOD.replace('<p class="big-number"><span data-figure="headline.count">5</span></p>', "")
+        self.assertTrue(s.headline_problems(page, 5))
+
+    def test_refuses_another_figure_or_a_reading_before_the_count(self):
+        page = self.GOOD.replace('<p class="eyebrow">A record</p>',
+                                 '<p class="rb-reading"><span data-figure="law.against.count">4</span></p>')
+        self.assertTrue(s.headline_problems(page, 5))
+
+    def test_refuses_an_unmarked_count(self):
+        page = self.GOOD.replace(' data-figure="headline.count"', "")
+        self.assertTrue(s.headline_problems(page, 5))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

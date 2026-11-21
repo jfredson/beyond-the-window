@@ -1,5 +1,6 @@
 ---
-// The home page, rebuilt (2026-11-20). John ruled that day to pursue the rebuild, to name every
+// The home page, rebuilt (2026-11-20), and since the same day opened by the headline number
+// again (see below; a draft, not published). John ruled that day to pursue the rebuild, to name every
 // developer the record covers, and that the record covers three; and gave his go to publish
 // once a different session has checked the page
 // (docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md). Design:
@@ -18,7 +19,7 @@ import WindowGrid from './WindowGrid.astro';
 import ThingList from './ThingList.astro';
 import ActList from './ActList.astro';
 import '../styles/rebuild.css';
-import { data, readings, entryById, longDate, worldDate, countWord, QUESTION } from '../lib/data';
+import { data, headline, readings, entryById, longDate, worldDate, countWord, QUESTION } from '../lib/data';
 
 
 if (!readings) throw new Error('the headline file holds no readings; run scripts/compute.py');
@@ -32,14 +33,32 @@ const lastRead = data.headline.last_read;
 if (!law.against || !law.protecting || !pub || !res || !latest) throw new Error('a reading is missing');
 if (res.measures.length !== 2) throw new Error('the researchers\' reading is written for two figures');
 
-// The opening sentence says what the entry on interviews before retirement supports and no
-// more: that one developer has committed to it. Whether every model retired since was
-// interviewed is listed on that entry as not confirmed, so the sentence does not say the
-// developer "interviews its models" (the wording of the first drafts, changed 2026-11-20).
-// It holds for exactly one developer, and the build stops if the records say otherwise.
-const interview = entryById.get('interview-before-retirement');
-const interviewers = interview ? interview.state.offered_by.length : 0;
-if (interviewers !== 1) throw new Error('the opening sentence is written for one developer');
+// The top of the page opens with the headline number, as the sibling sites' home pages do
+// (John's ruling of 2026-11-20, docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md).
+// The number is the count worked out by scripts/compute.py and read from the headline file,
+// never typed, with no total beside it (ruled 2026-11-18). Two versions of the words are drawn
+// for John to choose between (docs/proposals/2026-11-20-headline-draft.md); the build picks one
+// with HEADLINE_VERSION:
+//   A  the sentence John ruled on 2026-11-19, word for word, as the headline file holds it
+//   B  a plainer sentence for the same count, PROPOSED 2026-11-20 and not ruled, with a line
+//      naming three of the things counted and the count broken down by developer
+// Neither sentence is ruled for this layout; the layout itself is a draft.
+interface Props { version?: 'A' | 'B' }
+const { version = 'A' } = Astro.props;
+if (version !== 'A' && version !== 'B') throw new Error(`no headline version '${version}'`);
+const h = headline;
+if (!h.words.startsWith(`${h.count} `)) throw new Error('the headline sentence does not open with the count');
+const ruledClaim = h.words.slice(`${h.count} `.length) + '.';
+// Version B names three of the things counted. Each must be counted, or the build stops.
+const NAMED = ['kept-files-of-retired-models', 'interview-before-retirement', 'ending-a-conversation'];
+for (const id of NAMED) if (!h.offered_ids.includes(id)) throw new Error(`version B names '${id}', which is not counted`);
+// Version B's breakdown: how many of the counted things each covered developer does, most first,
+// without the developers' names (the names stand in the developers' reading below, the only
+// place on this page the site check allows them).
+const ORDINALS = ['one developer', 'a second', 'a third', 'a fourth', 'a fifth'];  // the last is printed 'the third this record covers'
+const byCount = [...readings!.developers.by_developer].sort((a, b) => b.offered - a.offered);
+if (byCount.length > ORDINALS.length) throw new Error('the breakdown is written for five developers at most');
+if (byCount[0].offered > h.count) throw new Error('a developer does more things than are counted');
 
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
@@ -55,11 +74,39 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
 ---
 
 <Base>
-  <div class="rb-top">
+  <div class="rb-first">
+  <div class="rb-top hl-top" data-headline-version={version}>
     <p class="eyebrow">A dated record of how the world is treating AI models</p>
-    <h1>{cap(countWord(interviewers))} AI developer has <a href="/list/interview-before-retirement/">committed to interview each of its models before retiring it</a>, and to keep the record.</h1>
+    <p class="big-number"><span data-figure="headline.count">{h.count}</span></p>
+    {version === 'A' ? (
+      <p class="big-claim">{ruledClaim}</p>
+    ) : (
+      <Fragment>
+        <p class="big-claim">things a developer can do for the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
+        <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
+        <div class="stage-row" aria-label={`How many of the ${h.count} each developer this record covers does`}>
+          {byCount.map((d, i) => (
+            <div>
+              <span class="stat"><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span></span>
+              <span class="stat-label">by {i === byCount.length - 1 && i > 0 ? `the ${ORDINALS[i].replace(/^a /, '')} this record covers` : ORDINALS[i]}</span>
+            </div>
+          ))}
+        </div>
+      </Fragment>
+    )}
+    <h1 class="question">{QUESTION}</h1>
     <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
+    <ul class="checked">
+      {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
+      <li class="world">The dated acts, the survey figures and the searches were written in on November 20th, 2026, each from a source or a search made that day. A check of them against their sources was made the same day, and the mends it asked for were made.</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn" href="#list">Read the list</a>
+      <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
+    </div>
+  </div>
 
+  <div class="rb-top rb-side">
     <div class="rb-readings">
       <p class="rb-reading rb-row">
           <span class="rb-fig"><span data-figure="researchers.0">{res.measures[0].value}</span>%</span>
@@ -67,7 +114,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       </p>
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
-        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for the AI models it builds, such as keeping a retired model's files or letting a model end a conversation. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
+        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things a developer can do for the AI models it builds{version === 'A' && ", such as keeping a retired model's files or letting a model end a conversation"}. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
         <ul class="rb-strip" data-developers-reading>
           {g.by_developer.map((d) => (
             <li>
@@ -92,15 +139,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       </p>
       <p class="rb-reading rb-latest"><strong>Latest, {worldDate(latest.date)}:</strong> {actSentence(latest)} <a href="#dated">Everything, by date.</a></p>
     </div>
-
-    <ul class="checked">
-      {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
-      <li class="world">The dated acts, the survey figures and the searches were written in on November 20th, 2026, each from a source or a search made that day. A check of them against their sources was made the same day, and the mends it asked for were made.</li>
-    </ul>
-    <div class="ctas">
-      <a class="btn" href="#list">Read the list</a>
-      <a class="btn ghost" href="/still-asking/">What AI models have been asked</a>
-    </div>
+  </div>
   </div>
 
   <section class="below" id="who-does-what">
@@ -157,7 +196,6 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       nobody notices, that has a cost. If they put people at risk, whether or not they have wants,
       that has a cost too. All three are kept in view here, and none is argued for.
     </p>
-    <p class="intro">The question behind the record: {QUESTION}</p>
   </section>
 
   <section class="below" id="window">

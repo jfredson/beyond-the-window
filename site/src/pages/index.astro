@@ -1,9 +1,12 @@
 ---
-// The home page: the rebuilt form, published under John's go of 2026-11-20 once a different
-// session has checked it (docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md).
-// Until then the home page opened with the count and its sentence (ruled 2026-11-18 and
-// 2026-11-19). The count is still worked out and still heads the page of the list.
+// The home page. It opens with the headline number, as the sibling sites do: John ruled so on
+// 2026-11-20 (docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md). The readings of
+// the rebuilt page of the same day stand beneath it. Which words stand beside the number is not
+// ruled: the build draws version A (the sentence ruled on 2026-11-19) unless HEADLINE_VERSION=B
+// asks for the plainer sentence proposed in docs/proposals/2026-11-20-headline-draft.md.
 import Rebuilt from '../components/Rebuilt.astro';
+
+const version = (process.env.HEADLINE_VERSION ?? 'A') as 'A' | 'B';
 ---
 
-<Rebuilt />
+<Rebuilt version={version} />
