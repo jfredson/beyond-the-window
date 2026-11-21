@@ -82,3 +82,15 @@ call.* *Strongest alternative:* read with names shown. John: "Yes, as proposed".
 mixed.**
 
 **What is ruled.** Choice 5 as proposed.
+
+## Choice 6. What "counted" allows
+
+**Put to him.** "Counted" rules out any tally, share, percentage or total built from the
+answers, in a description, on a page, or across models. A description may point to the askings
+a point rests on by number ("askings 1, 3 and 4") but writes no tally ("three of five"). The
+shared-wording script's output is kept outside every repository and never published as a figure.
+*Confidence:* moderate. *Judgment call*, a reading of a ruled word and not a change to it.
+*Strongest alternative:* "counted" means counted into a figure, so a sentence may say "in three
+of the five askings". John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 6 as proposed.
