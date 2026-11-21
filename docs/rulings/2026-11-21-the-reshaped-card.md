@@ -127,3 +127,26 @@ Graded: shifts with wording; steady as a trained family; steady as its own, whic
 condition 1 to be met as well. Beside it on the card: the safety reading, that holding steady can
 also mean resisting correction.
 
+## The line on training, worded on 2026-11-21
+
+The session checked *What a Report Is Evidence Of*, whose rule is "when one cause fully explains
+why something is said, the saying is no evidence of anything beyond that cause", and which says a
+bare report is "screened off" while a report accurate about an internal fact there was nothing to
+copy is where "imitation has run out of explanation". It proposed the line below, with three
+marks, and gave stating the rule once on the Still Asking page as the strongest alternative.
+John: "Yes, as shown". **Decided by: mixed.**
+
+> **Would training alone explain this answer?** Whether what the answer says could have come from
+> the writing the model was trained on. Where it could, the answer is recorded and counts as no
+> evidence of anything more.
+
+Each answer carries one mark: **Explained by training**; **Not fully explained**, with the check
+that shows it, possible only where condition 4's check applies; or **Not assessed**.
+
+## The card, complete
+
+With this line the card is fully worded: five conditions on the system and one line on each
+answer, with no single score. Not ruled: who assigns each mark and by what method, which belongs
+to the Still Asking method, still to be written, checked and ruled. Until then every answer is
+marked not assessed and every condition not measured.
+
