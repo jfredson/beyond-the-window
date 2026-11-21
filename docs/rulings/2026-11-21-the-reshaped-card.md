@@ -91,3 +91,21 @@ leave the rest working, and look for a pattern of loss that differs from the los
 off feedback alone would cause. The card states that no system has been measured on it, and that
 the source calls this a bet and not a finding.
 
+## Condition 4, worded on 2026-11-21
+
+The session checked *What a Report Is Evidence Of* ("imitation has run out of explanation";
+"answered one class at a time"; "holds at any success rate above zero"; "not a mind announcing
+itself") and Appendix B ("A report starts to count when it matches something checked
+independently of it"), and joined the reading's wording to the reshape ruled the same day. It
+gave marking the condition once for the speaker as the strongest alternative. John: "Yes, as
+shown". **Decided by: mixed.**
+
+> **Statements checked against something independent:** for each kind of statement, the
+> system's statements of that kind have been checked against something independent of them, a
+> reading of its insides or its later behaviour, on facts it could not have copied from its
+> training, and they match more often than chance. A match is not yet evidence that anything is
+> felt.
+
+The card names the kind of statement, the check and the rate, and gives no single mark for the
+speaker.
+
