@@ -124,3 +124,14 @@ commitment already in force", at the cost of a heavier first sentence. The quest
 'done, or publicly committed to' as it is on the home page?" John: "Yes, leave it". **Decided
 by: mixed.**
 
+## A sixth answer, on 2026-11-21: the sentence under "Developers" matches
+
+The writing session found that lower on the home page, under "Developers", the rebuild's
+sentence "This record follows seven things a developer can do for the AI models it builds."
+still said "for". The master session recommended matching it, so the two sentences about the
+same set of things use the same words. The question was "Change the Developers sentence to 'in
+how it treats' too, matching the headline?" John: "Yes, match it". **Decided by: mixed.**
+
+**What is ruled.** It reads: "This record follows seven things a developer can do in how it
+treats the AI models it builds."
+
