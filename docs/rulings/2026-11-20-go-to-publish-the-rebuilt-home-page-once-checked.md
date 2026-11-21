@@ -51,9 +51,33 @@ condition above.
 ## What it does not cover
 
 - **Spending.** It is not a go to spend money.
-- **Pushing before the check.** Nothing is pushed until the check is done, and only the
-  project's master planning session pushes.
+- **Pushing before the check.** Nothing is pushed until the check is done. (When this was
+  written only the project's master planning session pushed; see below for what John said
+  later the same day.)
 - **Any open question,** and anything about Still Asking.
+
+## Two things John said later the same day (added 2026-11-20)
+
+Both as relayed by the planning session. **Decided by: mixed** for the first; the second is
+his own words in answer to being told a rule.
+
+**The scope of the go.** The check of the rebuilt page asked whether a go given for "the
+rebuilt home page" also covers what came with it. The planning session asked John whether it
+covers the page of acts, the feed, and the reworded sentence on the Still Asking page ("It
+will never feed the count of things offered, or any other figure on the home page."). The
+choices included "Yes, all of it (Recommended)".
+
+John: "Yes, all of it (Recommended)".
+
+So the go covers the page of acts, the feed and that sentence, on the same condition of a
+check by a different session.
+
+**Who pushes.** The project's rule is that only its master planning session pushes
+(`CLAUDE.md`, under "Commit on `main`"). The planning session that ran the cold-reader audit
+told John of that rule. John: "You have full permission to push from here".
+
+So the push will be made by that planning session, on his word. This is a permission for that
+session and that push. The rule itself is not rewritten here.
 
 ## Choices John did not make himself
 

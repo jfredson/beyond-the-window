@@ -9,6 +9,16 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **John's four rulings on the rebuilt home page applied on the working branch. Not published
+  and not pushed. The count did not move: it is still 5.** A second developer's ending of
+  chats is counted as offered, so the entry on ending a conversation now names two developers
+  (`docs/rulings/2026-11-20-a-second-developers-ending-of-chats-is-counted.md`); the count
+  does not move because that thing was already counted. The measurement of weeks-long tasks
+  is recorded and the entry on working for days stays "not shown"
+  (`docs/rulings/2026-11-20-weeks-long-measurement-recorded-entry-stays-not-shown.md`). One
+  developer's place for a withdrawal now says both facts from its notice
+  (`docs/rulings/2026-11-20-withdrawal-place-says-both-facts.md`). The go to publish covers
+  the page of acts, the feed and the reworded sentence on Still Asking. None of it is checked.
 - **Mends after the check of the rebuilt home page. Not published and not pushed. The count
   did not move: it is still 5.** The check
   (`docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md`) found two places where the

@@ -483,26 +483,31 @@ class Readings(unittest.TestCase):
         self.assertEqual(g["counts"], {"offered": 1, "unruled": 0, "not_counted": 1,
                                        "taken_back": 1, "nothing_found": 1, "not_searched": 4})
 
-    def test_a_place_found_and_not_yet_ruled_says_so_and_is_never_counted(self):
+    def test_a_place_found_and_not_counted_says_so_in_its_own_words(self):
         recs = self.records()
-        recs[1]["unruled"] = [{"developer": "A made-up developer", "date": "2026-11-20",
-                               "words": "a made-up thing is in effect", "source": "s"}]
-        recs[3]["unruled"] = [{"developer": "Another made-up developer", "date": "2026-04",
-                               "words": "an outside group reports a made-up result", "source": "s"}]
+        recs[1]["found"] = [{"developer": "A made-up developer", "date": "2026-11-20",
+                             "words": "a made-up thing is in effect", "source": "s",
+                             "counts": "undecided"}]
+        recs[3]["found"] = [{"developer": "Another made-up developer", "date": "2026-04",
+                             "words": "an outside group reports a made-up result", "source": "s",
+                             "counts": "no"}]
         self.assertEqual(c.validate(GROUPS, recs, DEVS), [])
         g = c.developer_grid(recs, DEVS)
         cells = {row["entry"]: row["cells"] for row in g["rows"]}
         self.assertEqual((cells["a-thing-studied"][0]["kind"], cells["a-thing-studied"][0]["words"]),
                          ("unruled", "a made-up thing is in effect"))
-        self.assertEqual(cells["a-thing-searched-for"][1]["kind"], "unruled")
-        self.assertEqual(g["counts"]["unruled"], 2)
+        # once it is ruled not to count, the place keeps its own words and says so
+        self.assertEqual((cells["a-thing-searched-for"][1]["kind"], cells["a-thing-searched-for"][1]["words"]),
+                         ("not_counted", "an outside group reports a made-up result"))
+        self.assertEqual(g["counts"]["unruled"], 1)
         self.assertEqual(c.compute(recs, DEVS)["headline"]["count"], 1)
         # it cannot stand where the thing is already counted, and it needs a source
-        recs[0]["unruled"] = [{"developer": "A made-up developer", "date": "2026",
-                               "words": "x", "source": "nowhere"}]
+        recs[0]["found"] = [{"developer": "A made-up developer", "date": "2026",
+                             "words": "x", "source": "nowhere", "counts": "perhaps"}]
         said = "\n".join(c.validate(GROUPS, recs, DEVS))
-        self.assertIn("cannot be both counted and not yet ruled", said)
-        self.assertIn("unruled 1 names a source", said)
+        self.assertIn("cannot be both counted and written as found and not counted", said)
+        self.assertIn("found 1 names a source", said)
+        self.assertIn("counts 'perhaps' is not one of", said)
 
     def test_an_act_by_researchers_can_say_whose_models_it_is_about(self):
         rec = good(); rec["acts"] = [act(actor="A made-up group", kind="researchers",

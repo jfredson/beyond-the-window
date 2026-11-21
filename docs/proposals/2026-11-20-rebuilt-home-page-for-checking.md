@@ -13,6 +13,75 @@ unnamed. Sixteen of the 24 acts are by one of the three developers, and nine of 
 Anthropic's. The places where a choice bears on how a
 developer appears are marked below.
 
+## Newest first: John's four rulings applied (added last on 2026-11-20)
+
+John ruled the four points the check left to him. Each is recorded in `docs/rulings/` with his
+words as relayed, and applied on the branch. **None of this has been checked.** Where this
+section and the sections after it differ, this one is the newer.
+
+### What the second check needs to look at
+
+1. **`data/entries/ending-a-conversation.toml`.** OpenAI is now in the state's `offered_by`,
+   the state line reads "Offered by two developers, the first since August 15th, 2025", and
+   the detail and one "not confirmed" line say what OpenAI's two pages state does the ending.
+   Sources to open: OpenAI's notice of 2026-10-30 and its help page (no date; read 2026-11-20).
+   Ruling: `docs/rulings/2026-11-20-a-second-developers-ending-of-chats-is-counted.md`.
+2. **`data/entries/days-long-task.toml`.** The state line, the detail's last sentence, one
+   "not confirmed" line, and the three places, which now say what was found and "Not counted".
+   The four sources and two acts are as in section 0. Ruling:
+   `docs/rulings/2026-11-20-weeks-long-measurement-recorded-entry-stays-not-shown.md`.
+3. **`data/entries/retired-model-stays-open.toml`.** One new place for OpenAI that says both
+   facts. Source to open: OpenAI's notice of 2026-01-29, for both the withdrawal and the line
+   that nothing changes in its service for developers. Ruling:
+   `docs/rulings/2026-11-20-withdrawal-place-says-both-facts.md`.
+4. **`docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md`,** the new
+   section on the scope of the go and on who pushes.
+5. **The home page:** the three boxes, the note under them, the note under the table, and the
+   four places named below. Pictures: `docs/site-pictures/2026-11-20-rebuilt/`.
+6. **The About page,** which now reads "4 of the 5 things counted as offered rest on pages
+   published by the one developer that offers them". The sentence is worked out from the
+   records; nobody rewrote it. It is true of those four. A checker should say whether it still
+   reads fairly now that the fifth thing is offered by two developers.
+7. **The code:** a record's `[[found]]` place (it was `[[unruled]]` for one commit) with
+   `counts = "undecided"` or `"no"`, in `scripts/compute.py`, and its tests. 57 tests pass.
+8. **Everything in section 0 below,** which was also never checked: the mends themselves.
+
+### One question put back to John
+
+The entry's test asks for an AI model ending a conversation "by its own action". OpenAI's two
+pages say the chat product ends the conversation, automatically and as a safety step. They do
+not say whether the model itself makes that decision. His ruling to count it is applied, and
+the entry says what the pages say. Whether "by its own action" is met is not settled by the
+pages, and the ruling file puts it to him.
+
+### The sentences changed by the rulings
+
+| Where | Before | Now |
+|---|---|---|
+| OpenAI's box | "None counted so far", "2 found, not yet decided", "3 looked for, not found" | "1 in place or promised", "3 found, not counted", "3 looked for, not found" |
+| Anthropic's box | "5 in place or promised", "1 found, not yet decided" | "5 in place or promised", "2 found, not counted" |
+| Google's box | "None counted so far", "1 found, not yet decided", "5 looked for, not found" | "None counted so far", "2 found, not counted", "5 looked for, not found" |
+| Under the boxes | "...Not yet decided means something was found, and whether it counts is open..." | "In place or promised means the developer does the thing or has publicly committed to it. Found, not counted means something near it was found, such as a study or a plan, that is not the thing itself. Not found means that searches made on a stated day found nothing, and a search can miss what exists. Who does what, thing by thing." |
+| Table, OpenAI, ending a conversation | "November 20th, 2026: its help page ... Whether this counts is not decided yet." | "Since October 30th, 2026" |
+| Table, OpenAI, a retired model stays open | "Withdrawal: January 29th, 2026" | "January 29th, 2026: its notice says it will withdraw an older model from its chat product, and that nothing changes for now in its service for developers. Not counted." |
+| Table, working for days, all three | "...Whether this counts is not decided yet." | the same facts, ending "Not counted." |
+| Above the table | "...4 places say what was found and that whether it counts is not decided yet." | that sentence is gone; no place is undecided |
+| Under the table | "'Not counted as offered' marks a research result, a plan, or a promise that has not yet taken effect. 'Withdrawal' marks an act that takes something back." | "'Not counted' marks something found that is not the thing itself: a research result, a plan, a promise that has not yet taken effect, or a step that only comes near it." |
+| Entry on ending a conversation, state | "Offered by one developer, since August 15th, 2025" | "Offered by two developers, the first since August 15th, 2025" |
+| Entry on working for days, state | "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks" | "Not shown. One public measure stops at hours. A second, of tasks its authors put at weeks, is recorded, and the entry stays as it was" |
+
+The table now reads: 6 places counted (5 for Anthropic, 1 for OpenAI), 7 found and not
+counted, 8 nothing found, none undecided, none unsearched. The count of things offered by at
+least one developer is still 5.
+
+**"Since October 30th, 2026" for OpenAI** is the date of its public notice, which is how every
+"Since" in the table is dated (the first act of that kind). On that day the change had not
+begun. The entry's own page gives both dates. A checker may prefer a date for when it began;
+OpenAI's help page gives none.
+
+**The sentence in this file's opening about the conflict** was written when one developer had
+everything counted. One of the six counted places is now OpenAI's.
+
 ## 0. Mends made after the first check (added later on 2026-11-20)
 
 A session that wrote none of this checked the branch and found it not fit to publish yet, for

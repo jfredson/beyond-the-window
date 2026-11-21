@@ -46,6 +46,7 @@ const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
 const cellWords = (kind: string, date: string | null, words?: string) =>
   kind === 'offered' ? `Since ${date ? worldDate(date) : 'a date not recorded'}`
   : kind === 'unruled' ? `${worldDate(date!)}: ${words}. Whether this counts is not decided yet.`
+  : kind === 'not_counted' && words ? `${worldDate(date!)}: ${words}. Not counted.`
   : kind === 'not_counted' ? `${worldDate(date!)}, not counted as offered`
   : kind === 'taken_back' ? `Withdrawal: ${worldDate(date!)}`
   : kind === 'nothing_found' ? `Nothing found on ${worldDate(date!)}`
@@ -73,12 +74,13 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
               <a href={d.url ?? undefined} rel="noopener">{d.name}</a>
               <span class={d.offered > 0 ? 'has' : ''}>{d.offered > 0 ? <Fragment><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span> in place or promised</Fragment> : 'None counted so far'}</span>
               {d.unruled > 0 && <span class="dim"><span data-figure={`developers.${d.name}.unruled`}>{d.unruled}</span> found, not yet decided</span>}
+              {d.not_counted + d.taken_back > 0 && <span class="dim"><span data-figure={`developers.${d.name}.near`}>{d.not_counted + d.taken_back}</span> found, not counted</span>}
               {d.nothing_found > 0 && <span class="dim"><span data-figure={`developers.${d.name}.nothing_found`}>{d.nothing_found}</span> looked for, not found</span>}
               {d.not_searched > 0 && <span class="dim"><span data-figure={`developers.${d.name}.not_searched`}>{d.not_searched}</span> not yet searched</span>}
             </li>
           ))}
         </ul>
-        <p class="rb-note">In place or promised means the developer does the thing or has publicly committed to it. Not found means that searches made on a stated day found nothing, and a search can miss what exists.{g.counts.unruled > 0 && ' Not yet decided means something was found, and whether it counts is open.'}{g.counts.not_searched > 0 && ' Not yet searched means that nobody has looked.'} <a href="#who-does-what">Who does what, thing by thing.</a></p>
+        <p class="rb-note">In place or promised means the developer does the thing or has publicly committed to it. Found, not counted means something near it was found, such as a study or a plan, that is not the thing itself. Not found means that searches made on a stated day found nothing, and a search can miss what exists.{g.counts.unruled > 0 && ' Not yet decided means something was found, and whether it counts is open.'}{g.counts.not_searched > 0 && ' Not yet searched means that nobody has looked.'} <a href="#who-does-what">Who does what, thing by thing.</a></p>
       </div>
       <p class="rb-reading rb-row">
         <span class="rb-fig"><span data-figure="law.against.count">{law.against.count}</span></span>
@@ -134,8 +136,9 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       </tbody>
     </table>
     <p class="rb-note">
-      "Not counted as offered" marks a research result, a plan, or a promise that has not yet
-      taken effect. "Withdrawal" marks an act that takes something back. Each row's name leads
+      "Not counted" marks something found that is not the thing itself: a research result, a
+      plan, a promise that has not yet taken effect, or a step that only comes near it.
+      {g.counts.taken_back > 0 && ' "Withdrawal" marks an act that takes something back.'} Each row's name leads
       to its page, with the sources.
       {!law.protecting.met && <Fragment> One thing on the list is a lawmaker's to do and not a developer's, so it has no row here: <a href={`/list/${law.protecting.entry}/`}>{entryById.get(law.protecting.entry)!.name.charAt(0).toLowerCase() + entryById.get(law.protecting.entry)!.name.slice(1)}</a>. It is counted under Law, above.</Fragment>}
     </p>

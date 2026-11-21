@@ -83,7 +83,7 @@ REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "pro
                 "added", "first_pass", "state", "sources"]
 OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
                 "verify", "checks", "only_the_developer", "acts", "measures", "searches",
-                "done_by", "unruled"]
+                "done_by", "found"]
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
@@ -145,12 +145,18 @@ ACT_REQUIRED = ["date", "actor", "actor_kind", "words", "source", "read_on"]
 #              2026-11-20 with the measurement of weeks-long tasks)
 #   actor_url  the public page of an actor that is not a developer, so the name can be linked
 ACT_OPTIONAL = ["withdraws", "about", "actor_url"]
-# A place in the table of developers where something was found and whether it counts is John's
-# to rule and not yet ruled (added 2026-11-20, after the check of the rebuilt page). The place
-# then says what was found, plainly, and that it is not decided. It is never counted. `words`
-# is the plain fact, written to follow a date and to stand without a developer's name; `source`
-# is a source on the record that says it. The entry is taken out when John rules.
-UNRULED_REQUIRED = ["developer", "date", "words", "source"]
+# A place in the table of developers that needs its own plain words: something was found there
+# that is not counted (added 2026-11-20, after the check of the rebuilt page). `counts` says
+# which of two cases it is:
+#   "undecided"  whether it counts is John's to rule and not yet ruled; the place says what
+#                was found and that it is not decided
+#   "no"         John has ruled, or the ruling on what "offered today" means settles it, and
+#                it is not counted; the place says what was found and that it is not counted
+# A place that is counted is never written here: it is in the state's `offered_by`. `words` is
+# the plain fact, written to follow a date and to stand without a developer's name; `source`
+# is a source on the record that says it.
+FOUND_REQUIRED = ["developer", "date", "words", "source", "counts"]
+FOUND_COUNTS = ["undecided", "no"]
 ACTOR_KINDS = ["developer", "lawmaker", "court", "researchers"]
 # A measure: one figure from a survey, so that a figure on the home page is read from a record
 # and never typed. `words` is the rest of a sentence that opens with the figure. The design
@@ -459,7 +465,7 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
             return
         if not _is_date(s.get("opened")) or not isinstance(s.get("url"), str):
             bad(f"{what} rests on a source, '{key}', with no address or no date it was opened")
-        if s.get("draft") is True and not what.startswith(("act ", "measure ", "unruled ")):
+        if s.get("draft") is True and not what.startswith(("act ", "measure ", "found ")):
             bad(f"{what} rests on a source, '{key}', that is marked as a draft; only an act or "
                 f"a measure may, because a draft source is not on the published page")
 
@@ -667,35 +673,37 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
             bad(f"search {i}: no words saying what was looked for and where")
         if beside or rec.get("done_by", "developer") != "developer":
             bad(f"search {i}: this entry is not a thing a developer could do, so it has no cell to fill")
-    if "unruled" in rec and not isinstance(rec["unruled"], list):
-        bad("'unruled' is not a list")
-    for i, u in enumerate(rec.get("unruled", []) if isinstance(rec.get("unruled", []), list) else [], 1):
+    if "found" in rec and not isinstance(rec["found"], list):
+        bad("'found' is not a list")
+    for i, u in enumerate(rec.get("found", []) if isinstance(rec.get("found", []), list) else [], 1):
         if not isinstance(u, dict):
-            bad(f"unruled {i} is not a table")
+            bad(f"found {i} is not a table")
             continue
         for field in u:
-            if field not in UNRULED_REQUIRED:
-                bad(f"unruled {i}: unknown field '{field}'")
+            if field not in FOUND_REQUIRED:
+                bad(f"found {i}: unknown field '{field}'")
+        if u.get("counts") not in FOUND_COUNTS:
+            bad(f"found {i}: counts '{u.get('counts')}' is not one of {FOUND_COUNTS}")
         if not _text(u.get("developer")):
-            bad(f"unruled {i}: names no developer")
+            bad(f"found {i}: names no developer")
         elif developer_names is not None and u["developer"] not in developer_names:
-            bad(f"unruled {i}: developer '{u['developer']}' is not in developers.toml")
+            bad(f"found {i}: developer '{u['developer']}' is not in developers.toml")
         elif isinstance(state, dict) and u["developer"] in (state.get("offered_by") or []):
-            bad(f"unruled {i}: '{u['developer']}' is already named as offering this; a place "
-                f"cannot be both counted and not yet ruled")
+            bad(f"found {i}: '{u['developer']}' is already named as offering this; a place "
+                f"cannot be both counted and written as found and not counted")
         if start_of(u.get("date")) is None:
-            bad(f"unruled {i}: no date written as a day, a month or a year")
+            bad(f"found {i}: no date written as a day, a month or a year")
         if not _text(u.get("words")):
-            bad(f"unruled {i}: no words saying plainly what was found")
+            bad(f"found {i}: no words saying plainly what was found")
         else:
             if u["words"].rstrip().endswith("."):
-                bad(f"unruled {i}: the words end with a full stop; the page adds it")
+                bad(f"found {i}: the words end with a full stop; the page adds it")
             for name in sorted(developer_names or []):
                 if _text(name) and re.search(rf"\b{re.escape(name)}\b", u["words"]):
-                    bad(f"unruled {i}: the words name a developer ('{name}')")
-        dated_source(u.get("source"), f"unruled {i}")
+                    bad(f"found {i}: the words name a developer ('{name}')")
+        dated_source(u.get("source"), f"found {i}")
         if beside or rec.get("done_by", "developer") != "developer":
-            bad(f"unruled {i}: this entry is not a thing a developer could do, so it has no place to fill")
+            bad(f"found {i}: this entry is not a thing a developer could do, so it has no place to fill")
     for i, h in enumerate(rec.get("history", []) or [], 1):
         if not isinstance(h, dict):
             bad(f"history {i} is not a table")
@@ -809,9 +817,10 @@ def developer_grid(records: list[dict], developers: list[dict]) -> dict:
     A cell is one of five kinds, and the kind is read from the record, never judged here:
       offered        the record's state names the developer as offering the thing; the date is
                      that developer's first act that does not take something back
-      unruled        something was found, and whether it counts is John's to rule and not yet
-                     ruled; the place says what was found and that it is not decided
-      not_counted    the record holds an act by the developer, and does not count the thing as
+      unruled        the record holds a `found` place marked "undecided": something was found,
+                     and whether it counts is John's to rule and not yet ruled
+      not_counted    the record holds a `found` place marked "no", with its own words; or it
+                     holds an act by the developer, and does not count the thing as
                      offered (a research result, a plan, or a promise not yet in effect, under
                      the ruling of 2026-11-18 on what "offered today" means)
       taken_back     the developer's newest act on the record takes something back
@@ -832,12 +841,13 @@ def developer_grid(records: list[dict], developers: list[dict]) -> dict:
                           key=lambda a: start_of(a["date"]))
             searches = sorted(s["date"] for s in r.get("searches", []) if s["developer"] == name)
             cell = {"developer": name, "kind": "not_searched", "date": None}
-            open_ = next((u for u in r.get("unruled", []) if u["developer"] == name), None)
+            open_ = next((u for u in r.get("found", []) if u["developer"] == name), None)
             if name in r["state"].get("offered_by", []):
                 first = next((a for a in acts if a.get("withdraws") is not True), None)
                 cell.update(kind="offered", date=first["date"] if first else None)
             elif open_ is not None:
-                cell.update(kind="unruled", date=open_["date"], words=open_["words"])
+                cell.update(kind="unruled" if open_["counts"] == "undecided" else "not_counted",
+                            date=open_["date"], words=open_["words"])
             elif acts and acts[-1].get("withdraws") is True:
                 cell.update(kind="taken_back", date=acts[-1]["date"])
             elif acts:

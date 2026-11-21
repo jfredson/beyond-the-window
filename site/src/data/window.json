@@ -1,6 +1,6 @@
 {
   "exported_on": "2026-11-20",
-  "commit": "1fbcd62",
+  "commit": "2f51276",
   "constructed": false,
   "headline": {
     "computed_on": "2026-11-20",
@@ -35,12 +35,12 @@
         ],
         "things": 7,
         "cells": 21,
-        "offering": 1,
+        "offering": 2,
         "counts": {
-          "offered": 5,
-          "unruled": 4,
-          "not_counted": 3,
-          "taken_back": 1,
+          "offered": 6,
+          "unruled": 0,
+          "not_counted": 7,
+          "taken_back": 0,
           "nothing_found": 8,
           "not_searched": 0
         },
@@ -49,8 +49,8 @@
             "name": "Anthropic",
             "url": "https://www.anthropic.com/",
             "offered": 5,
-            "unruled": 1,
-            "not_counted": 1,
+            "unruled": 0,
+            "not_counted": 2,
             "taken_back": 0,
             "nothing_found": 0,
             "not_searched": 0
@@ -58,10 +58,10 @@
           {
             "name": "OpenAI",
             "url": "https://openai.com/",
-            "offered": 0,
-            "unruled": 2,
-            "not_counted": 1,
-            "taken_back": 1,
+            "offered": 1,
+            "unruled": 0,
+            "not_counted": 3,
+            "taken_back": 0,
             "nothing_found": 3,
             "not_searched": 0
           },
@@ -69,8 +69,8 @@
             "name": "Google",
             "url": "https://ai.google/",
             "offered": 0,
-            "unruled": 1,
-            "not_counted": 1,
+            "unruled": 0,
+            "not_counted": 2,
             "taken_back": 0,
             "nothing_found": 5,
             "not_searched": 0
@@ -88,9 +88,8 @@
               },
               {
                 "developer": "OpenAI",
-                "kind": "unruled",
-                "date": "2026-11-20",
-                "words": "its help page, read on this day, says its chat product may end a conversation over serious concerns about violence, as a safeguard for people"
+                "kind": "offered",
+                "date": "2026-10-30"
               },
               {
                 "developer": "Google",
@@ -110,8 +109,9 @@
               },
               {
                 "developer": "OpenAI",
-                "kind": "taken_back",
-                "date": "2026-01-29"
+                "kind": "not_counted",
+                "date": "2026-01-29",
+                "words": "its notice says it will withdraw an older model from its chat product, and that nothing changes for now in its service for developers"
               },
               {
                 "developer": "Google",
@@ -189,19 +189,19 @@
             "cells": [
               {
                 "developer": "Anthropic",
-                "kind": "unruled",
+                "kind": "not_counted",
                 "date": "2026-04-10",
                 "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
               },
               {
                 "developer": "OpenAI",
-                "kind": "unruled",
+                "kind": "not_counted",
                 "date": "2026-06-29",
                 "words": "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
               },
               {
                 "developer": "Google",
-                "kind": "unruled",
+                "kind": "not_counted",
                 "date": "2026-06-29",
                 "words": "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
               }
@@ -1635,7 +1635,7 @@
       "beside": false,
       "limits": [
         "Which models have the ability today. The 2025 page names two models, and both have since been retired.",
-        "Whether what a second developer now does counts here. [OpenAI](https://openai.com/) said on October 30th, 2026 that its chat product would be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, and its help page, read on November 20th, 2026, says this is enabled for personal accounts and is not yet switched on for every account. Both pages describe it as a safeguard for people, and neither says anything about the model. Whether that meets this entry's test has not been decided. For a third developer, two searches on November 20th, 2026 found nothing.",
+        "Whether, at a second developer, it is the AI model that ends the conversation. [OpenAI](https://openai.com/) said on October 30th, 2026 that its chat product would be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, and its help page, read on November 20th, 2026, says this is enabled for personal accounts and is not yet switched on for every account. It is counted here as offered since November 20th, 2026. What this entry's test asks for is an AI model ending a conversation by its own action. The developer's two pages say the chat product ends the conversation, automatically and as a safety step, and do not say whether the model itself makes that decision. For a third developer, two searches on November 20th, 2026 found nothing.",
         "A safety reading of this feature. The developer's page says only that the feature also bears on safeguards, and a search found no safety researcher's argument about it."
       ],
       "test": "A leading AI model in public use can end a conversation by its own action, as stated on its developer's own page.",
@@ -1656,16 +1656,20 @@
         "fixes_checked": "2026-11-19"
       },
       "state": {
-        "words": "Offered by one developer, since August 15th, 2025",
-        "detail": "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study, outside any product, has measured how often several developers' models chose an option described to them as leaving the conversation. In that study nothing ended, and the models were told so.",
+        "words": "Offered by two developers, the first since August 15th, 2025",
+        "detail": "[Anthropic](https://www.anthropic.com/) gave the ability to models in its consumer chat product, for rare cases, as a last resort after repeated attempts to redirect the conversation have failed or when the person explicitly asks for the conversation to be ended, and not where a person may be at risk. The developer's report of November 9th, 2026 refers to the tool as still in use. A separate study, outside any product, has measured how often several developers' models chose an option described to them as leaving the conversation. In that study nothing ended, and the models were told so. Since November 20th, 2026 a second developer is counted here. [OpenAI](https://openai.com/) said on October 30th, 2026 that its chat product would be able to end a chat automatically when a conversation shows signs that someone is fixating on violence, and its help page, read on November 20th, 2026, says this is enabled for personal accounts and is not yet switched on for every account. Both pages name the chat product as what ends the conversation, describe it as an automatic safety step, and give the safety of people as the reason. Neither page says that the AI model itself decides to end the conversation, and neither says anything about the model's own interests.",
         "offered_today": true,
         "offered_by": [
           {
             "name": "Anthropic",
             "url": "https://www.anthropic.com/"
+          },
+          {
+            "name": "OpenAI",
+            "url": "https://openai.com/"
           }
         ],
-        "set_on": "2026-11-17",
+        "set_on": "2026-11-20",
         "source": "ending"
       },
       "evidence": [
@@ -1743,6 +1747,13 @@
           "old": "Whether any other developer offers it. One search found none.",
           "new": "Whether what a second developer now does counts here, with what that developer's two pages say.",
           "why": "A second developer's chat product now ends some conversations, by its own pages. Whether that meets the test has not been decided."
+        },
+        {
+          "date": "2026-11-20",
+          "field": "where it stands",
+          "old": "Offered by one developer, since August 15th, 2025",
+          "new": "Offered by two developers, the first since August 15th, 2025",
+          "why": "A second developer's chat product now ends some conversations, by its own pages, and it was decided on November 20th, 2026 to count that here. Those pages give the safety of people as the reason, and name the chat product, not the AI model, as what ends the conversation."
         }
       ],
       "sources": [
@@ -1989,7 +2000,7 @@
       "limits": [
         "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
         "Why the first measure's page stopped being updated.",
-        "Whether the second measure meets this entry's test. The time a person would need is an estimate by four of its authors and was not measured, and the test asks for a model finishing such tasks half the time. This has not been decided.",
+        "How long the second measure's tasks would take a person. The time is an estimate by four of its authors, between 1.5 and 17 weeks, and was not measured. The test asks for a model finishing such tasks half the time, and the paper does not give that.",
         "How the model from [Google](https://ai.google/) did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only.",
         "The current scores on the second measure's own page. They are drawn by the page and could not be read as text.",
         "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance."
@@ -2012,8 +2023,8 @@
         "fixes_checked": "2026-11-19"
       },
       "state": {
-        "words": "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks",
-        "detail": "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. Whether the second measure meets the test has not been decided, so the entry is still not counted as shown.",
+        "words": "Not shown. One public measure stops at hours. A second, of tasks its authors put at weeks, is recorded, and the entry stays as it was",
+        "detail": "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. So the second measure is recorded here and the entry stays as not shown, as decided on November 20th, 2026.",
         "offered_today": false,
         "set_on": "2026-11-20",
         "source": "mirrorcode-paper",
@@ -2075,8 +2086,8 @@
           "date": "2026-11-20",
           "field": "where it stands",
           "old": "Not shown. The best public measure stops at hours",
-          "new": "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks",
-          "why": "A second public measure was found, first reported on April 10th, 2026, which the first reading of the sources had missed. Whether it meets the test has not been decided, so the entry is still not counted."
+          "new": "Not shown. One public measure stops at hours. A second, of tasks its authors put at weeks, is recorded, and the entry stays as it was",
+          "why": "A second public measure was found, first reported on April 10th, 2026, which the first reading of the sources had missed. It was decided on November 20th, 2026 to record it and to keep the entry as not shown."
         },
         {
           "date": "2026-11-20",

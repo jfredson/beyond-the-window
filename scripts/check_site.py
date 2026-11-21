@@ -206,6 +206,8 @@ def expected_figures(rd: dict) -> dict[str, float]:
         f[f"developers.{k}"] = g["counts"][k]
         for d in g["by_developer"]:
             f[f"developers.{d['name']}.{k}"] = d[k]
+            # found and not counted, of either kind: what a developer's box shows as one figure
+            f[f"developers.{d['name']}.near"] = d["not_counted"] + d["taken_back"]
     for half in ("against", "protecting"):
         if rd["law"].get(half):
             f[f"law.{half}.count"] = rd["law"][half]["count"]

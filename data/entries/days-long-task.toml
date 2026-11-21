@@ -10,7 +10,7 @@ first_pass = true
 limits = [
   "The current measured figures for the newest models. The page shows them in a chart that could not be read as text.",
   "Why the first measure's page stopped being updated.",
-  "Whether the second measure meets this entry's test. The time a person would need is an estimate by four of its authors and was not measured, and the test asks for a model finishing such tasks half the time. This has not been decided.",
+  "How long the second measure's tasks would take a person. The time is an estimate by four of its authors, between 1.5 and 17 weeks, and was not measured. The test asks for a model finishing such tasks half the time, and the paper does not give that.",
   "How the model from [Google](https://ai.google/) did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only.",
   "The current scores on the second measure's own page. They are drawn by the page and could not be read as text.",
   "The threshold of 40 hours is a choice made when this entry was drafted. Any threshold would do if fixed in advance.",
@@ -18,8 +18,8 @@ limits = [
 notes = "From entry 14 of docs/research/2026-11-17-first-entries.md. The research draft's sentence 'Years are far off on any reading' is left out: it is a judgment with no source."
 
 [state]
-words = "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks"
-detail = "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. Whether the second measure meets the test has not been decided, so the entry is still not counted as shown."
+words = "Not shown. One public measure stops at hours. A second, of tasks its authors put at weeks, is recorded, and the entry stays as it was"
+detail = "Two public measures bear on this. The group that publishes the first says its measurements above 16 hours are unreliable with its present set of tasks (noted May 8th, 2026), and on September 8th, 2026 it marked the page as no longer actively updated. A second measure, built by [Epoch AI](https://epoch.ai/) together with that group, was first reported on April 10th, 2026. In it a model from [Anthropic](https://www.anthropic.com/) rebuilt a program of about 16,000 lines on its own, working from the program's behaviour and without its source. Four of the authors estimated that a skilled engineer would need between 2 and 17 weeks for the same task. Their paper of June 29th, 2026 tested one model from each of three developers. It says the models from Anthropic and [OpenAI](https://openai.com/) both rebuilt that program, and that only the model from Anthropic rebuilt any of the largest programs. The time a person would need is the authors' estimate and was not measured, and this entry's test asks for a model finishing such tasks half the time. So the second measure is recorded here and the entry stays as not shown, as decided on November 20th, 2026."
 offered_today = false
 set_on = 2026-11-20
 source = "mirrorcode-paper"
@@ -94,8 +94,11 @@ read_on = 2026-11-20
 # Added 2026-11-20, after a check of the rebuilt home page found a public measurement the first
 # searches had missed (docs/reviews/2026-11-20-check-of-the-rebuilt-home-page.md, reason 1).
 # The three searches that said "nothing found" for this entry were wrong and are taken out.
-# Whether the measurement meets the test is John's to rule and is not ruled: `offered_today` is
-# untouched, and each developer's place is marked as found and not yet decided.
+# Whether the measurement changes the state was John's to rule. He ruled on 2026-11-20:
+# "Record it, keep "not shown""
+# (docs/rulings/2026-11-20-weeks-long-measurement-recorded-entry-stays-not-shown.md).
+# `offered_today` is untouched, and each developer's place says what was found and that it is
+# not counted.
 
 [[sources]]
 key = "mirrorcode-first"
@@ -154,30 +157,33 @@ words = "publishes a paper on the same test with one model from each of three de
 source = "mirrorcode-paper"
 read_on = 2026-11-20
 
-[[unruled]]
+[[found]]
 developer = "Anthropic"
 date = "2026-04-10"
 words = "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
 source = "mirrorcode-first"
+counts = "no"
 
-[[unruled]]
+[[found]]
 developer = "OpenAI"
 date = "2026-06-29"
 words = "an outside group reports one of its models rebuilding, on its own, a program the group guesses would take a person 2 to 17 weeks"
 source = "mirrorcode-paper"
+counts = "no"
 
-[[unruled]]
+[[found]]
 developer = "Google"
 date = "2026-06-29"
 words = "an outside group tested one of its models on such programs, and how it did on the one put at weeks is in a chart that was not read"
 source = "mirrorcode-paper"
+counts = "no"
 
 [[history]]
 date = 2026-11-20
 field = "where it stands"
 old = "Not shown. The best public measure stops at hours"
-new = "Not counted as shown. One public measure stops at hours, and a second reports tasks its authors put at weeks"
-why = "A second public measure was found, first reported on April 10th, 2026, which the first reading of the sources had missed. Whether it meets the test has not been decided, so the entry is still not counted."
+new = "Not shown. One public measure stops at hours. A second, of tasks its authors put at weeks, is recorded, and the entry stays as it was"
+why = "A second public measure was found, first reported on April 10th, 2026, which the first reading of the sources had missed. It was decided on November 20th, 2026 to record it and to keep the entry as not shown."
 
 [[history]]
 date = 2026-11-20

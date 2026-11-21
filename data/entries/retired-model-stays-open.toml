@@ -111,3 +111,13 @@ read_on = 2026-11-20
 date = 2026-11-20
 developer = "Google"
 words = "Two searches for a retired model of the developer's that members of the public can still use, and its own page on retiring models, opened. The page says a model that is shut down is completely turned off and can no longer be used. The pages found cover the service for developers. Nothing was found either way about the developer's chat product."
+
+# Added 2026-11-20. John ruled that day that this developer's place in the table says both
+# facts, from the same notice ("Say both facts",
+# docs/rulings/2026-11-20-withdrawal-place-says-both-facts.md).
+[[found]]
+developer = "OpenAI"
+date = "2026-01-29"
+words = "its notice says it will withdraw an older model from its chat product, and that nothing changes for now in its service for developers"
+source = "older-models"
+counts = "no"
