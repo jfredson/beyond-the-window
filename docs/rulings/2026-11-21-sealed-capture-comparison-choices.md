@@ -106,3 +106,17 @@ on the boxes. *Strongest alternative:* no fixed sheet. John: "Yes, as proposed".
 mixed.**
 
 **What is ruled.** Choice 7 as proposed.
+
+## Choice 8. Terms for later models, if a later asking is ever ruled
+
+**Put to him.** No later asking is planned, and a yes plans none. If one is ever ruled, it is
+compared on the terms in Part 2: the same bytes and settings, five askings, the three dates (the
+developer's list published 2026-11-09, the questions public 2026-11-19, the answers' publication
+if any) and the model's stated training cut-off beside every comparison, question 10 read first,
+a shared-wording script before reading, the caution about what a later model may have read on
+every question, and no difference written as a change in the models. *Confidence:* moderate.
+*Standard practice* for fixing terms before the evidence; *judgment call* on the steps.
+*Strongest alternative:* leave the terms unwritten until a later asking is proposed. John: "Yes,
+as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 8 as proposed. No later asking is planned by it.
