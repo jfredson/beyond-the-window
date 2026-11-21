@@ -45,6 +45,23 @@ The three headings read:
 The first two are unchanged. The third's wording of 2026-11-19, "If an AI system has wants, and
 they put people at risk", is kept on record here and in the earlier ruling. No caution moves.
 
+## A third answer the same day: two sentences that describe the heading
+
+The writing session changed the heading and found two sentences that still gave the third
+caution in the old words. It reworded neither. The session put both to John with only the third
+caution changed in each, and asked "Use the new third caution wording in the two sentences on
+the home and About pages, as shown?" John: "Yes, both as shown". **Decided by: mixed.**
+
+- **Home page, under "Why keep this record".** The third sentence changes from "If they have
+  wants that put people at risk, that has a cost too." to "If they put people at risk, whether
+  or not they have wants, that has a cost too." The rest of the paragraph is unchanged.
+- **About page.** The last clause of the sentence on the three cautions changes from "if it has
+  wants, and they put people at risk." to "if it puts people at risk, whether or not it has
+  wants." The rest is unchanged.
+
+A further sentence on the About page, "That is a larger matter than the wants the three
+headings speak of", was shown to him as still true and left as it is.
+
 ## Not covered by this ruling
 
 - Any sentence elsewhere on the site that quotes or leans on the old heading. The writing
