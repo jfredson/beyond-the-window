@@ -49,3 +49,29 @@ as proposed. John: "Yes, as proposed". **Decided by: mixed.**
 mark, for the card's marks only. Still open: whether a human outside reader checks the method,
 whether John or another person sorts a sample of answers, whose voice the pages speak in, and
 whether the card names the model that read a mark.
+
+## Choice 3. What a met mark does
+
+**Put to him.** A mark is shown on the card and nothing more. It is never summed and never feeds
+a figure, and nothing a system asks for is acted on because of its card. The one further effect
+is where an answer is filed in the order of evidence: an answer marked "not fully explained" on
+the line on training is filed among reports checked against an independent reading, every other
+answer among plain statements. He was told this filing leans on choices 10 and 13 and follows
+whatever he rules there. Asked why marks are never summed, he was given four reasons: the marks
+are on different scales; a total reads as a verdict that part (c) of the first rule says nothing
+gives yet; the headline counts what developers do, not what models say; and a figure that
+answers can move can be trained. *Confidence:* high on never summed and never feeding a figure;
+moderate on "nothing more". *Judgment call.* *Strongest alternative:* let a system meeting
+enough conditions put forward entries the list lacks, at the cost of deciding now what "enough"
+is. John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 3 as proposed. It closes open question 19 in part: a Still Asking
+answer's weight is shown and never acted on. Still open: whether the conditions are also tracked
+as things on the list, and whether a system meeting them may ever put forward entries.
+
+**Arising the same day, not part of this choice.** John liked "showing a scale of progress
+towards known objectives while also recognizing that the scale of known objectives will always
+grow faster than the progress towards it". On the session's recommendation he agreed ("Yes")
+that such a scale belongs on the List's headline, with the growth of the list shown, and not on
+the card, which keeps no total. A draft with pictures comes back to him; the ruling of
+2026-11-18 that the headline is a count with no total stands until then.

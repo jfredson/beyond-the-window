@@ -723,6 +723,12 @@ and off the site.
 checking each condition can be tested without the machine's own word; and trying the five on
 two or three real systems on paper, with sources.
 
+**Ruled in part on 2026-11-21.** John: "Yes, as proposed", to choice 3 of the Still Asking method
+(`docs/rulings/2026-11-21-still-asking-method-choices.md`; decided by: mixed). A Still Asking
+answer's weight is shown on its card and never acted on: never summed, never feeding a figure.
+Still open: whether the conditions are also tracked as things on the list, and whether a system
+meeting them may ever put forward entries.
+
 ## 20. What human thinkers propose for machine minds
 
 *Added 2026-11-17.*
