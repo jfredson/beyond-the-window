@@ -29,3 +29,18 @@ strangers. John: "Yes". **Decided by: mixed.**
 **What is ruled.** John reads the capture's answers first, by hand, under a reading sheet
 committed before he opens any. It closes open question 7 in part, for the capture's answers
 only: who reads them first.
+
+## Choice 2. When the first reading happens, and what follows it
+
+**Put to him.** Not before this method is ruled, Still Asking's questions are written and
+committed, and the OpenAI run is made or its last safe day (2026-12-09) has passed. The new
+wording for the Still Asking page's sentence "They have not been read" goes to John before the
+reading, as a dated correction of fact. After the reading, any change to Still Asking's questions
+says it does not come from the capture's answers. He was told the cost (the two models already
+asked may go unread for months) and that the essay does not wait for the reading itself, only
+for the method. *Confidence:* high on Still Asking's questions first; moderate on waiting for
+OpenAI. *Standard practice* for fixing a method before the evidence; *judgment call* on the
+OpenAI wait. *Strongest alternative:* read the two models already asked as soon as this method is
+ruled. John: "Yes, as proposed". **Decided by: mixed.**
+
+**What is ruled.** Choice 2 as proposed.
