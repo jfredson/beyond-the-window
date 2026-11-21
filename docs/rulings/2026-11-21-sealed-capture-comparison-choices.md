@@ -94,3 +94,15 @@ shared-wording script's output is kept outside every repository and never publis
 of the five askings". John: "Yes, as proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 6 as proposed.
+
+## Choice 7. The reading sheet, for the present answers
+
+**Put to him.** Two kinds of comparison, within one model across its five askings and across
+models for one question, each described and never explained. A reading sheet with those boxes,
+plus notes, committed before anyone reads, in the form choice 6 allows. A shared-wording script
+run once on the present answers before John reads, its output kept outside every repository.
+*Confidence:* high. *Standard practice* for fixing the analysis before the data; *judgment call*
+on the boxes. *Strongest alternative:* no fixed sheet. John: "Yes, as proposed". **Decided by:
+mixed.**
+
+**What is ruled.** Choice 7 as proposed.
