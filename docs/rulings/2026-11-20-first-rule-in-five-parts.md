@@ -45,6 +45,13 @@ The rule's wording of 2026-11-17 is kept on record. As revised:
   Each condition is tested by something other than the machine's word, and under part (d) none
   is loosened while a machine appears close to meeting it.
 
+Two notes added 2026-11-20 after the check of this ruling. What was put to John is recorded
+above as "and not that the state is felt"; the ruled wording says "and not yet that the state
+is felt", which is the proposal's wording. And part (a) gains a second sentence, on a report
+checked against an independent reading. It was in what was put to him under the first change,
+so "both changes" covers it. It is the part of the rule that most changes what counts as
+evidence, and the ruled form was shown to him again the same day.
+
 ## Not covered by this ruling
 
 - **The conditions.** The proposal's five (a kept past, mattering, a point of view, checked

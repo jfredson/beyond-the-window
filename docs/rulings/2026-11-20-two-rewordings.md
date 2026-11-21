@@ -29,6 +29,14 @@ that is public on 2026-11-20. Both bind what is written next.
 - *Strongest alternative:* the first alone, at the cost that when Still Asking begins the
   answers most likely to be quoted are the ones that sound most human, with nothing on the
   page saying why that is weak evidence.
+- *Corrected 2026-11-20, after the check of this ruling*
+  (`docs/reviews/2026-11-20-check-of-the-rulings-on-a-machines-word.md`): the reading supports
+  half of the second rewording. Its words on the source are that the most human-sounding
+  signals are the least telling ones, and that the source "does not say a departure from the
+  human list is the most informative result". So "a match is the least informative result"
+  rests on the source, and "a departure is the most informative" is the proposal's own step.
+  John ruled both after being told the reading supported the rewording as a whole. He was told
+  of this correction the same day, and his ruling stands unless he says otherwise.
 - *A caution he was given:* "least informative" and "most informative" are strong labels on a
   public page, and the exact words a reader sees come to him before they go anywhere.
 
@@ -37,8 +45,11 @@ and matches as the weakest result?" John: "Yes, both". **Decided by: mixed.**
 
 ## What is ruled
 
-1. Continuity is recorded as what is kept and what is built from what. No document or page
-   says that a model's retirement is a harm to it, or that it is not.
+1. Continuity is recorded as what is kept and what is built from what. No record or page
+   written from now on says that a model's retirement is a harm to it, or that it is not.
+   (This sentence first read "No document or page says", which is wider than what was put to
+   him and would have reached the kickoff copy, which is not changed. Narrowed 2026-11-20 after
+   the check.)
 2. A match between what a model says and the starting list drawn from biological minds is
    treated as the least informative result. A departure, or evidence from the system's
    structure, is treated as the most informative.

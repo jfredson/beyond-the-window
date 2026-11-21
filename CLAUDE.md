@@ -2,7 +2,9 @@
 
 **Ruled in part on 2026-11-17.** John ruled the kickoff's seven decisions that day
 (`docs/rulings/2026-11-17-kickoff-decisions.md`, decided by: mixed). That covers guidelines 1
-to 7 below, guideline 2 in its four-part form. Still proposed and not ruled: the public form of
+to 7 below, guideline 2 in its four-part form. Later rulings are noted where they apply:
+guideline 2 was revised to five parts on 2026-11-20, guideline 3 was replaced on 2026-11-19, and
+guideline 5 was revised on 2026-11-18. Still proposed and not ruled: the public form of
 guideline 3 (where the site declares AI authorship, and in whose voice), and the wording of everything
 under "Carried over from the family". Written by Claude (Fable 5.2) from the kickoff and the
 sibling projects' instruction files. The workspace instruction file in `~/Code` applies on top:
@@ -142,7 +144,8 @@ Each of these is a row in `docs/inheritance.md`, where the source file is named.
   window", "weights", "protocol", "leaf", "branch" in its working sense, and "schema" stay in
   `docs/` unless a page has just explained the idea in ordinary words.
 - **A new or changed page is read against John's published positions before it goes out,** by
-  a session that did not write it (ruled 2026-11-20, decided by: mixed;
+  a session that did not write it (ruled 2026-11-20, decided by: mixed, the choice of reader
+  being the session's;
   `docs/rulings/2026-11-20-positions-check-before-a-page-goes-out.md`). The positions record is
   `sentient-horizons/editorial/corpus-positions-ledger.md`, and the reader reports a
   disagreement and settles nothing.

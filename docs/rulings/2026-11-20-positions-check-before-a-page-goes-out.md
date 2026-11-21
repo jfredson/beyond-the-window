@@ -37,8 +37,9 @@ goes out?" John: "Yes, check each page". **Decided by: mixed.**
 
 ## What is ruled
 
-A new or changed page is read against the positions record before it is published, by a
-session that did not write the page.
+A new or changed page is read against the positions record before it is published. That the
+reader is a session that did not write the page is the session's addition, following the
+project's standing practice. What was put to John said "one more read by a session".
 
 ## Not covered by this ruling
 
