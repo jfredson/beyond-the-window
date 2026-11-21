@@ -357,6 +357,11 @@ a different session checks, a model from another developer reads any mark above 
 John rules every mark. The rest of this question stays open, including whether the card names
 the model that read a mark.
 
+**Ruled in part on 2026-11-21, a second time.** John: "Yes", to choice 1 of the comparison method
+for the sealed capture (`docs/rulings/2026-11-21-sealed-capture-comparison-choices.md`; decided
+by: mixed). John reads the capture's answers first, by hand, under a reading sheet committed
+before he opens any. The rest of this question stays open.
+
 ## 8. The family boundaries
 
 **The question.** Where this project ends and its relatives begin: Minimum Viable Mind (is
