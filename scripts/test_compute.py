@@ -10,6 +10,7 @@ from __future__ import annotations
 import copy
 import datetime as dt
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -1020,8 +1021,8 @@ class HomeFraction(unittest.TestCase):
     """Rule 7d as PROPOSED on 2026-11-21 (docs/proposals/2026-11-21-headline-fraction.md): the
     count, then "of" and the number of things on the List; the List on the page holds that many
     things; and the list of how both moved is read from the served file's history."""
-    BIG = ('<p class="big-number"><span data-figure="headline.count">5</span>'
-           '<small>of <span data-figure="records.on_the_list">8</span></small></p>')
+    BIG = ('<p class="big-number"><span data-figure="headline.count">5</span> '
+           '<small> of <span data-figure="records.on_the_list">8</span></small></p>')
     HISTORY = [
         {"computed_on": "2026-11-17", "count": 6, "total": 9, "offered_ids": []},
         {"computed_on": "2026-11-18", "count": 6, "on_the_list": 9, "offered_ids": [], "words": "x"},
@@ -1029,8 +1030,10 @@ class HomeFraction(unittest.TestCase):
         {"computed_on": "2026-11-19", "count": 5, "on_the_list": 8, "offered_ids": [], "words": "y"},
     ]
     ROWS = ('<ol class="hl-history" data-fraction-history>'
-            '<li data-date="2026-11-17" data-count="6" data-total="9">November 17th, 2026 6 of 9</li>'
-            '<li data-date="2026-11-18" data-count="5" data-total="8">November 18th, 2026 5 of 8</li></ol>')
+            '<li data-date="2026-11-17" data-count="6" data-total="9">November 17th, 2026 '
+            '<span class="hl-frac">6 of 9</span> <span class="hl-what">The first count.</span></li>'
+            '<li data-date="2026-11-18" data-count="5" data-total="8">November 18th, 2026 '
+            '<span class="hl-frac">5 of 8</span> <span class="hl-what">A thing moved.</span></li></ol>')
     LIST = '<section class="below" id="list"><ul>' + "<li>a thing</li>" * 8 + "</ul></section>"
 
     def page(self) -> str:
@@ -1069,9 +1072,9 @@ class HomeFraction(unittest.TestCase):
     def test_the_history_must_be_the_points_in_the_served_file(self):
         typed = self.page().replace('data-count="6" data-total="9"', 'data-count="6" data-total="10"')
         self.assertTrue(self.known(typed))
-        dropped = self.page().replace('<li data-date="2026-11-17" data-count="6" data-total="9">November 17th, 2026 6 of 9</li>', "")
+        dropped = re.sub(r'<li data-date="2026-11-17".*?</li>', "", self.page())
         self.assertTrue(self.known(dropped))
-        reworded = self.page().replace("November 17th, 2026 6 of 9", "November 17th, 2026 six of ten")
+        reworded = self.page().replace(">6 of 9<", ">six of ten<")
         self.assertTrue(self.known(reworded))
         self.assertTrue(self.known(self.page().replace("data-fraction-history", "")))
 
@@ -1088,6 +1091,11 @@ class HomeFraction(unittest.TestCase):
             (dist / "index.html").write_text(self.page(), encoding="utf-8")
             self.assertEqual(s.fraction_problems(dist, [dist / "index.html"], 5, 8), [])
             (dist / "index.html").write_text(self.page().replace("</body>", "<p>5 of 8 things.</p></body>"),
+                                             encoding="utf-8")
+            self.assertTrue(s.fraction_problems(dist, [dist / "index.html"], 5, 8))
+            # a share written into the reason beside a row is still refused (the check of
+            # 2026-11-21, must fix 1)
+            (dist / "index.html").write_text(self.page().replace("A thing moved.", "Now 5 of 8."),
                                              encoding="utf-8")
             self.assertTrue(s.fraction_problems(dist, [dist / "index.html"], 5, 8))
             (dist / "about").mkdir()

@@ -99,8 +99,9 @@ What it refuses (docs/first-version-choices.md, choice 18):
    page, or a total in the served headline. John ruled on 2026-11-18 that the count stands
    with no total beside it (docs/rulings/2026-11-18-home-page-count.md).
    PROPOSED on 2026-11-21 and not ruled, with rule 7d's fraction: on the home page the large
-   type and the list of how both numbers have moved are left out of this search, because rule
-   7d checks each of their figures against the served file. Everywhere else, including the rest
+   type, and the one figure of each row of the list of how both numbers have moved (the element
+   marked class="hl-frac"), are left out of this search, because rule 7d checks each of them
+   against the served file. The reason beside each row is still searched. Everywhere else, including the rest
    of the home page, the share is still refused. The served headline still holds no total.
 10. A phrase saying that an AI model, or a working session of one, drafted or checked the site.
    John ruled on 2026-11-19 that public pages do not mention AI help in building the project
@@ -260,6 +261,7 @@ BIG_NUMBER = r'(?is)<p\b[^>]*\bclass="big-number"[^>]*>(.*?)</p>'
 
 
 FRACTION_HISTORY = r'(?is)<ol\b[^>]*\bdata-fraction-history\b[^>]*>.*?</ol>'
+HISTORY_FIGURE = r'(?is)<span\b[^>]*\bclass="hl-frac"[^>]*>[^<]*</span>'
 LIST_SECTION = r'(?is)<section\b[^>]*\bid="list"[^>]*>.*?</section>'
 
 
@@ -306,7 +308,9 @@ def fraction_known_problems(raw: str, count: int, on_the_list: int,
         problems.append(f"{rel}: the list of how both numbers have moved does not hold the points "
                         f"in the served file's history (listed {got}, served {want})")
     for (date, n, m), li in zip(got, re.findall(r"(?is)<li\b[^>]*>(.*?)</li>", blocks[0].group(0))):
-        if not re.search(rf"\b{n} of {m}\b", " ".join(html.unescape(re.sub(r"<[^>]+>", " ", li)).split())):
+        figs = re.findall(HISTORY_FIGURE, li)
+        shown_fig = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", figs[0])).split()) if len(figs) == 1 else None
+        if shown_fig != f"{n} of {m}":
             problems.append(f"{rel}: the row of {date} in the list of how both numbers have moved "
                             f"does not read \"{n} of {m}\"")
     if not want or (want[-1][1], want[-1][2]) != (count, on_the_list):
@@ -494,9 +498,13 @@ def fraction_problems(dist: Path, pages: list[Path], count: int, on_the_list: in
     for page in pages:
         rel = "/" + str(page.relative_to(dist)).replace("index.html", "")
         raw = page.read_text(encoding="utf-8")
-        if rel == HOME_PAGE:  # rule 7d checks these two places figure by figure (proposed)
+        if rel == HOME_PAGE:  # rule 7d checks these figures one by one (proposed)
             raw = re.sub(BIG_NUMBER, " ", raw, count=1)
-            raw = re.sub(FRACTION_HISTORY, " ", raw, count=1)
+            # Only the figure of each row of the list of how both moved, never the reason beside
+            # it, which rule 7d does not check (docs/reviews/2026-11-21-check-of-the-headline-
+            # fraction.md, must fix 1).
+            raw = re.sub(FRACTION_HISTORY,
+                         lambda m: re.sub(HISTORY_FIGURE, " ", m.group(0)), raw, count=1)
         text = " ".join(visible_text(raw, keep_cites=False).split())
         for m in re.finditer(pattern, text, re.I):
             snippet = text[max(0, m.start() - 40):m.end() + 40]

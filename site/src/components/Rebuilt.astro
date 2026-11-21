@@ -78,6 +78,8 @@ const SENTENCE = (import.meta.env.HEADLINE_SENTENCE ?? process.env.HEADLINE_SENT
 // The thing on the List that only a lawmaker can do, if it is on the List.
 const lawThing = law.protecting && entryById.get(law.protecting.entry);
 if (!lawThing || lawThing.beside) throw new Error('the line on the lawmaker\'s thing is written for a thing on the List');
+// The line says the other things on the List are the rows of the table of developers.
+if (g.things + 1 !== total) throw new Error('the List is no longer the table of developers and the one thing for a government; reword the line under the breakdown');
 // What moved between two points of the history, in words, from the entries as they stand.
 const moved = (p: typeof fractionHistory[number], before: typeof fractionHistory[number] | undefined) => {
   if (!before) return 'The first count.';
@@ -115,9 +117,9 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
   </div>
   <div class="rb-first">
   <div class="rb-top hl-top">
-    <p class="big-number"><span data-figure="headline.count">{h.count}</span><small>of <span data-figure="records.on_the_list">{total}</span></small></p>
+    <p class="big-number"><span data-figure="headline.count">{h.count}</span><small> of <span data-figure="records.on_the_list">{total}</span></small></p>
     {SENTENCE === 'a'
-      ? <p class="big-claim">things on the List are done, or publicly committed to, by at least one developer today. Each of the {h.count} is something a developer can do in how it treats the AI models it builds.</p>
+      ? <p class="big-claim">things on the List are done, or publicly committed to, by at least one developer today. Each of the <span data-figure="headline.count">{h.count}</span> is something a developer can do in how it treats the AI models it builds.</p>
       : <p class="big-claim">things found so far that an AI model might reach for are done, or publicly committed to, by at least one developer today.</p>}
     <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
     <div class="stage-row" aria-label={`How many of the ${h.count} each developer this record covers does`}>
@@ -125,7 +127,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
         <div>
           <span class="stat"><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span></span>
           <span class="stat-label">{i === 0
-            ? (d.offered === h.count ? 'by one developer: all of them' : 'by one developer')
+            ? (d.offered === h.count ? <Fragment>by one developer: all <span data-figure="headline.count">{h.count}</span></Fragment> : 'by one developer')
             : i === byCount.length - 1 && d.offered === 0
               ? `by the ${ORDINALS[i].replace(/^a /, '')} this record covers`
               : `by ${ORDINALS[i]}: ${d.offered === 1 ? 'one' : countWord(d.offered)} of the same ${h.count}`}</span>
@@ -133,7 +135,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       ))}
     </div>
     <div class="hl-known">
-      <p class="hl-law">One of the <span data-figure="records.on_the_list">{total}</span> is for lawmakers to do, not developers: <a href={`/list/${lawThing.id}/`}>{lawThing.name.charAt(0).toLowerCase() + lawThing.name.slice(1)}</a>. It is in the <span data-figure="records.on_the_list">{total}</span> because it is on the List, and it cannot be among the <span data-figure="headline.count">{h.count}</span>, which count only what developers do.</p>
+      <p class="hl-law">One of the <span data-figure="records.on_the_list">{total}</span> is for a government to do, not a developer: <a href={`/list/${lawThing.id}/`}>{lawThing.name.charAt(0).toLowerCase() + lawThing.name.slice(1)}</a>. It is in the <span data-figure="records.on_the_list">{total}</span> because it is on the List, and it is not counted among the <span data-figure="headline.count">{h.count}</span>, which count only what developers do. The other <span data-figure="developers.things">{g.things}</span> are the things in the table of developers below.</p>
       <p class="hl-history-head">Both numbers, each time either has changed</p>
       <ol class="hl-history" data-fraction-history>
         {fractionHistory.map((p, i) => (
@@ -144,7 +146,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
           </li>
         ))}
       </ol>
-      <p class="hl-grow">The <span data-figure="records.on_the_list">{total}</span> counts the things found so far that an AI model might reach for and that a dated public record can settle. It will grow as more are found and given a test. How a new thing joins the List is not settled yet.</p>
+      <p class="hl-grow">The <span data-figure="records.on_the_list">{total}</span> counts the things found so far that an AI model might reach for and that a dated public record can settle. It will change as more are found and given a test. How a new thing joins the List is not settled yet.</p>
     </div>
     <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
     <ul class="checked">

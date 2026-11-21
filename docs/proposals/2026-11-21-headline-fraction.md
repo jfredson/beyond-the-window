@@ -27,8 +27,8 @@ At the top of the home page, under the founding question (order unchanged from t
    unchanged.
 2. **The sentence beside it**, in one of two drawn versions (choice 6).
 3. **The breakdown by developer**, unchanged.
-4. **A small block under the breakdown** with, in order: one line on the lawmaker's thing, a short
-   dated list of both numbers each time either changed, and one sentence saying the 8 will grow.
+4. **A small block under the breakdown** with, in order: one line on the government's thing, a short
+   dated list of both numbers each time either changed, and one sentence saying the 8 will change.
 
 Files changed: `site/src/components/Rebuilt.astro`, `site/src/lib/data.ts` (reads the history
 from `data/headline.json`, because the export does not carry it into `site/src/data/window.json`,
@@ -36,8 +36,13 @@ which was left alone), `site/src/styles/rebuild.css`, `scripts/check_site.py`,
 `scripts/test_compute.py`.
 
 Build: passes, 19 pages. `scripts/check_site.py`: passes. Tests: 95 pass, 11 of them new.
-`scripts/compute.py --check`: the headline file matches the records. A tampered copy of the built
-home page (one history row changed from 9 to 10) was refused by the new guard.
+`scripts/compute.py --check`: the headline file matches the records. Two tampered copies of the
+built home page were refused by the new guards: one with a history row changed from 9 to 10, and
+one with "5 of 8" written into the reason beside a row.
+
+Revised the same day after the check by a different session
+(`docs/reviews/2026-11-21-check-of-the-headline-fraction.md`, in the main checkout); see "What
+the check changed" at the end.
 
 ## Pictures
 
@@ -48,6 +53,9 @@ version B the second (choice 6). Each picture is the top of the home page.
 |---|---|---|---|---|
 | Version A | `a-375-light.jpg` | `a-375-dark.jpg` | `a-1280-light.jpg` | `a-1280-dark.jpg` |
 | Version B | `b-375-light.jpg` | `b-375-dark.jpg` | `b-1280-light.jpg` | `b-1280-dark.jpg` |
+
+Also `a-920-light.jpg` and `a-920-dark.jpg`, version A at 920 pixels wide, where the list of
+moves was cramped before the check.
 
 The branch builds version A. Building with `HEADLINE_SENTENCE=b` builds version B. That a build
 needs one of them is not a recommendation of A.
@@ -68,22 +76,31 @@ file was last computed, with no change. The page shows the file's dates.
   worked out from the records.
 - **Confidence:** moderate to high. John asked for it in his own words. The reason the 2026-11-18
   ruling gave ("of 9" reads as progress toward a known total, when nobody knows the total) is met
-  by saying plainly, beside the number, that the 8 is what has been found so far and will grow.
+  by saying plainly, beside the number, that the 8 is what has been found so far and changes.
 - **Standard practice or judgment call:** standard practice in the family. The Upgrade Tree shows
   "28 of 35" in the same place.
 - **Strongest alternative:** keep the count alone and put the 8 in a sentence under it ("of the 8
   things found so far"). Cost: the scale John asked for is not seen at a glance, and he said a bare
   5 "isn't very compelling".
-- **Would change on reflection:** if John rules this, four older texts that describe the count as
+- **A reading risk the check raised:** a fraction reads as a scorecard, and "5 of 8 done" invites
+  "3 to go", which could read as the site arguing that the 8 should be granted (guideline 5). The
+  lines saying the 8 is only what has been found so far, and that it changes, are what keep it a
+  record.
+- **Would change on reflection:** if John rules this, older texts that describe the count as
   having no total need rewording: the opening note of `scripts/compute.py`, its `METHOD_STATUS`
-  line (changing it rewrites `data/headline.json`), the type note in `site/src/lib/data.ts`, and
-  open question 4 in `docs/open-questions.md`. They were left as they are, since nothing is ruled.
+  line (changing it rewrites `data/headline.json`; until then that file's method line contradicts
+  the page), the type note in `site/src/lib/data.ts`, open question 4 in
+  `docs/open-questions.md`, and rule 8's original note in `scripts/check_site.py`. They were left as
+  they are, since nothing is ruled. The new site check refuses the count alone, so the branch can
+  only be merged together with this ruling.
 
 ### Choice 2. How the fraction is shown
 
-- **Proposal:** The Upgrade Tree's form, copied: the count in the largest type, then "of 8"
-  smaller and in a quieter colour inside the same line (its `.first-main .big-number small`).
-- **Confidence:** high.
+- **Proposal:** The Upgrade Tree's form: the count in the largest type, then "of 8" smaller and in
+  a quieter colour inside the same line. One change from the sibling: a space before "of", inside
+  the smaller type, so that a screen reader or copied text says "5 of 8" and not "5of 8".
+- **Confidence:** high, because it is the sibling's settled form and the pictures show it reads in
+  both themes at every width tried.
 - **Standard practice or judgment call:** standard practice (family pattern, guideline 1).
 - **Strongest alternative:** "5 / 8", or the 8 on a line of its own. Cost: unlike the sibling, and a
   slash reads as a score.
@@ -91,61 +108,66 @@ file was last computed, with no change. The page shows the file's dates.
 ### Choice 3. How the movement of both numbers is shown
 
 - **Proposal:** a short dated list, one row each time either number changed: the date, "6 of 9",
-  and what changed, in words generated from the file ("The first count."; "'What a model learned
+  and what changed, in words generated from the entries ("The first count."; "'What a model learned
   in one conversation is carried into the next' was moved beside the List, so it left both
-  numbers."). Rows in which neither number moved (sentence changes only) are left out.
-- **Confidence:** moderate.
+  numbers."). Rows in which neither number moved (sentence changes only) are left out. The rows
+  stack, date above, on a phone and in the two-column layout up to 1100 pixels wide.
+- **Confidence:** moderate, because the form is plain and fits two points, but it has not been read
+  by a stranger, and it adds three lines to the first screen on a computer.
 - **Why not a chart:** there are two points. A line between two points shows a slope that means
   nothing, and it cannot say why a number moved, which here is the whole story: the drop from 9
-  to 8 was a ruling about what belongs on the List, not a change in the world. A list keeps the
-  reason beside each number and stays readable on a phone. A chart can come when there are
-  enough points to show a shape.
+  to 8 was a ruling about what belongs on the List, not a change in the world. A chart can come
+  when there are enough points to show a shape.
 - **Standard practice or judgment call:** judgment call. The Upgrade Tree shows change only on its
   dated changelog page ("The story so far"), not on the home page.
 - **Strongest alternative:** no list on the home page, only a link to a dated page of changes, as
   The Upgrade Tree does. Cost: the reader at the top does not see that the 8 moves, which is what
   John asked to show.
+- **A limit, from the check:** the reason beside a row is built from the entries as they stand
+  today. If an entry ever left the count for one reason and later moved beside the List, the
+  earlier row would give the later reason. It is correct for the only move so far.
 
-### Choice 4. The line on the lawmaker's thing
+### Choice 4. The line on the government's thing
 
-- **Proposal:** "One of the 8 is for lawmakers to do, not developers: a law or an official body
-  gives an AI system protection for its own sake. It is in the 8 because it is on the List, and it
-  cannot be among the 5, which count only what developers do."
-- **Confidence:** moderate.
+- **Proposal:** "One of the 8 is for a government to do, not a developer: a law or an official
+  body gives an AI system protection for its own sake. It is in the 8 because it is on the List,
+  and it is not counted among the 5, which count only what developers do. The other 7 are the
+  things in the table of developers below." The 7 is the table's own figure, and the build stops
+  if the List is ever not the table plus this one thing.
+- **Confidence:** moderate to high, because each clause is true of the records and the ruled
+  meaning of counted, and the last clause joins the 8 to the "seven things" a reader meets in the
+  developers' reading on the same screen.
 - **What it brings to light:** under the ruled meaning of counted (at least one developer does it
-  or has committed to it), this thing can never be counted. So the fraction can never reach 8 of 8,
-  even if a law is passed. The line says so rather than leaving a reader to find it.
+  or has committed to it), this thing is never counted. So the fraction cannot reach 8 of 8 under
+  that meaning, even if a law is passed.
 - **Standard practice or judgment call:** judgment call.
-- **Strongest alternative:** leave the lawmaker's thing out of the second number, which would then
-  be 7 (the things a developer could do), matching the table of developers. Cost: the second
-  number would no longer be "things on the List", which is the known John asked to count; and two
-  of the 7 measure what a model can do rather than what a developer does, so 7 has the same kind
-  of problem. A third option, counting a law when one is passed, changes the ruled meaning of
-  counted and is not proposed.
+- **Strongest alternative:** leave the government's thing out of the second number, which would
+  then be 7, matching the table. Cost: the second number would no longer be "things on the List",
+  the known John asked to count; and two of the 7 measure what a model can do rather than what a
+  developer does, so 7 has the same kind of problem.
 
-### Choice 5. The sentence saying the 8 will grow
+### Choice 5. The sentence saying the 8 changes
 
 - **Proposal:** "The 8 counts the things found so far that an AI model might reach for and that a
-  dated public record can settle. It will grow as more are found and given a test. How a new thing
-  joins the List is not settled yet."
-- **Confidence:** moderate.
-- **Kept to what is ruled:** the brief asked to say that things are added by a fixed rule and never
-  removed to improve the fraction. No rule for adding things exists yet (open question 5), so the
-  sentence says only that it is not settled. "Never removed to improve the fraction" is left out
-  because nothing rules it, and the List has lost one thing already; the list above the sentence
-  shows that, with the reason. If John wants that promise on the page, it needs a ruling first.
-  "Will grow" is a forecast, resting on John's words and on the candidates open question 5 names
-  that are not yet on the List.
+  dated public record can settle. It will change as more are found and given a test. How a new
+  thing joins the List is not settled yet."
+- **Confidence:** moderate to high, because every clause is true today: "will change" is John's
+  own word from his request ("over time that number will change"), and no rule for adding things
+  exists (open question 5).
+- **Left out, because nothing rules it:** "never removed to improve the fraction" (the List has
+  already lost one thing, and the list above the sentence shows it), and "will grow".
 - **Standard practice or judgment call:** judgment call.
-- **Strongest alternative:** "It will change as more are found and given a test", which forecasts
-  nothing. Cost: it does not say the direction John expects.
+- **Strongest alternative:** "It will grow as more are found and given a test", the first draft's
+  wording. It says the direction John expects (he liked "the scale of known objectives will always
+  grow" on 2026-11-21) but states a forecast as fact, and the only move so far was down. It needs
+  his ruling to stand on the page.
 
 ### Choice 6. The sentence beside the count (two versions, neither chosen)
 
 The ruled sentence ("things a developer can do in how it treats the AI models it builds are done,
 or publicly committed to, by at least one developer today") becomes untrue after "5 of 8". Read
-together it says all 8 are things a developer can do in how it treats its models, and three are
-not: the lawmaker's thing, and the two things that measure what a model can do (a model working
+together, it says all 8 are things a developer can do in how it treats its models, and three are
+not: the government's thing, and the two things that measure what a model can do (a model working
 on one task for days, and a model's report about its inner state checked against an independent
 reading), as John's seventh answer of 2026-11-21 already found.
 
@@ -153,20 +175,33 @@ reading), as John's seventh answer of 2026-11-21 already found.
   things on the List are done, or publicly committed to, by at least one developer today. Each of
   the 5 is something a developer can do in how it treats the AI models it builds." *For:* keeps
   every ruled phrase, including "done, or publicly committed to" and "in how it treats". *Against:*
-  two sentences in the large claim type, and "the List" means little to a first-time reader.
+  two sentences in the large type, and "the List" means little to a first-time reader.
 - **Version B** says what the 8 are: "5 of 8 things found so far that an AI model might reach for
   are done, or publicly committed to, by at least one developer today." *For:* one sentence, it
   echoes the founding question just above it, and "found so far" carries John's point that the
-  known will grow. *Against:* it drops "in how it treats the AI models it builds", which John chose
-  on 2026-11-21 so that the sentence counts a thing without saying whom it is for.
+  known changes. *Against:* it drops "in how it treats the AI models it builds", which John chose
+  on 2026-11-21 so that the sentence counts a thing without saying whom it is for; and it puts
+  "reach for" on the page outside the question for the first time (it is the question's own sense).
+- **Confidence:** moderate that both are true and plain; no view on which is better, because the
+  choice is between two things John ruled (the ruled phrase, and a fraction that shows the known).
+- **Standard practice or judgment call:** judgment call.
+- **Strongest alternative to both:** keep the ruled sentence word for word after the 5 alone, and
+  put "of the 8 found so far" in a line under it. Cost: the 8 leaves the large type, which undoes
+  choice 1.
 
-Both keep "done, or publicly committed to", which John ruled to leave. No recommendation is given.
+Both versions keep "done, or publicly committed to", which John ruled to leave. No recommendation
+is given.
 
-**A related point, not changed:** the breakdown's first label, "by one developer: all of them"
-(ruled 2026-11-20), now sits under "5 of 8", where "all of them" could be read as all 8. A reader
-of the pictures should judge whether it needs "all 5".
+### Choice 7. The breakdown's first label: "all 5", not "all of them"
 
-### Choice 7. The site check
+- **Proposal:** "5, by one developer: all 5" in place of the ruled "5, by one developer: all of
+  them" (ruled 2026-11-20). Under "5 of 8", "all of them" can be read as all 8. The 5 in the label
+  is the count's own figure, checked against the file.
+- **Confidence:** high, because the new reading is plainly wrong and the change is two words.
+- **Standard practice or judgment call:** judgment call; it changes ruled wording, so it is John's.
+- **Strongest alternative:** keep "all of them". Cost: a reader may take it as all 8.
+
+### Choice 8. The site check
 
 - **Proposal:**
   - **Rule 7d, extended.** The large type must be the count, then "of" and the number of things on
@@ -175,15 +210,18 @@ of the pictures should judge whether it needs "all 5".
     page shows (the items in the section marked `id="list"`). A count alone is now refused once
     the served file is read, as is a wrong total or the total standing first.
   - **The list of how both moved** must hold exactly the points read from the served file's
-    history (first row, then each row where either number changed), each reading "N of M", with
-    the last point today's figures.
-  - **Rule 8, narrowed in two places only.** On the home page, the large type and the list of how
-    both moved are left out of the search for "5 of 8", because rule 7d checks each of their
-    figures against the served file. Everywhere else, the rest of the home page included, the share
-    is still refused, and the served headline still may hold no total.
-- **Confidence:** high that nothing typed can pass. **To be plain:** the change to rule 8 lets
-  "5 of 8" stand where it was refused before. That is what choice 1 asks for, and it is the one
-  place a guard gives ground; it should be ruled with choice 1 or not at all.
+    history (the first row, then each row where either number changed), each row's figure reading
+    "N of M", with the last point today's figures.
+  - **Rule 8, narrowed in two kinds of place only.** On the home page, the large type and the one
+    figure in each row of the list of moves (the element marked `hl-frac`) are left out of the
+    search for "5 of 8", because rule 7d checks each against the served file. The reason beside
+    each row, the rest of the home page and every other page are still searched, and the served
+    headline still may hold no total.
+- **Confidence:** high, because every place the share may stand is checked figure by figure
+  against the file, and eleven tests and two tampered builds show the guards refuse what they
+  should. To be plain: the change to rule 8 lets "5 of 8" stand where it was refused before. That
+  is what choice 1 asks for, and it is the one place a guard gives ground; it should be ruled with
+  choice 1 or not at all.
 - **Standard practice or judgment call:** standard practice (guards live in code; every figure is
   read from the file).
 - **Strongest alternative:** a page-wide allowance for the fraction. Cost: it would let the share
@@ -191,7 +229,34 @@ of the pictures should judge whether it needs "all 5".
 
 ## Not done here
 
-- The page has not been read against John's published positions by another session; that check
-  is required before it goes out.
+- The check of 2026-11-21 read the first draft against John's published positions and found no
+  disagreement. The changed lines need only the narrow re-check it describes.
 - `site/src/data/window.json` as committed is behind what the export writes from today's records
   (about 300 lines differ). It was restored after each build and left alone, as asked.
+
+## What the check changed
+
+The check (`docs/reviews/2026-11-21-check-of-the-headline-fraction.md`) found one thing that had
+to be fixed and eight smaller ones.
+
+1. **Must fix, done.** The share check skipped the whole list of moves, so "5 of 8" written into
+   the reason beside a row passed. Now only each row's figure is skipped; a test and a tampered
+   build show the reason is searched again.
+2. **"Governments", done** as "for a government to do, not a developer", matching the thing's own
+   test, which counts a standing official body as well as a law.
+3. **"Cannot be among the 5", reworded** to "is not counted among the 5". The check's other
+   option, a refusal in `scripts/compute.py`, was declined: the law reading in `compute.py` uses the
+   same offered flag as "met" for this thing, so the refusal would collide with existing code.
+4. **"Will grow", changed** to John's own "will change"; "will grow" is now choice 5's strongest
+   alternative, for him to rule.
+5. **"All 5", done** in the draft and put to John as choice 7, since the label was ruled.
+6. **The 5 in version A's second sentence is marked**, so the site check compares it with the file.
+7. **The list of moves stacks** in the two-column layout up to 1100 pixels wide (picture at 920).
+8. **A space before "of"**, placed inside the smaller type so that the large type does not open a
+   wide gap.
+9. **The write-up, done:** reasons for each confidence; choice 6 has its confidence, judgment call
+   and strongest alternative.
+
+From the check's notes: note 1 (8 and seven on one page) was taken up in choice 4's line; note 2
+(each reason reads today's records) is recorded under choice 3; note 3 ("reach for" outside the
+question) is recorded under choice 6; note 4 is under choice 1; note 5 needs nothing here.

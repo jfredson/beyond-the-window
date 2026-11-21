@@ -88,7 +88,7 @@
    .first-main .big-number small): smaller and quieter, inside the same large type. Under the
    breakdown, a small block on the 8: the lawmaker's thing, how both numbers have moved, and that
    the 8 will grow. It takes the rule that stood above the paragraph after the breakdown. */
-.hl-top .big-number small { font-size: 0.38em; color: var(--muted); letter-spacing: -0.01em; margin-left: 0.18em; }
+.hl-top .big-number small { font-size: 0.38em; color: var(--muted); letter-spacing: -0.01em; margin-left: 0; } /* the space before "of" sits inside, at the small size, so text read aloud or copied says "5 of 8" */
 .hl-known { padding-top: 14px; border-top: 1px solid var(--line); max-width: 600px; margin: 0 0 16px; font: 14px/1.5 var(--sans); color: var(--text-soft); }
 .hl-known p { margin: 0 0 10px; }
 .hl-known .hl-history-head { font: 600 11px/1.4 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
@@ -97,7 +97,10 @@
 .hl-history .hl-when { color: var(--muted); }
 .hl-history .hl-frac { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 500; color: var(--text); }
 .hl-known + .lede { padding-top: 14px; border-top: 1px solid var(--line); max-width: 600px; }
-@media (max-width: 600px) {
+/* The rows stack (date above, figure and reason below) on a phone and wherever the left column
+   is narrow: in the two-column layout up to 1100 pixels wide the reason was squeezed into a strip
+   about 150 pixels wide (docs/reviews/2026-11-21-check-of-the-headline-fraction.md, item 7). */
+@media (max-width: 600px), (min-width: 901px) and (max-width: 1100px) {
   .hl-history li { grid-template-columns: 4em minmax(0, 1fr); }
   .hl-history .hl-when { grid-column: 1 / -1; }
 }
