@@ -135,3 +135,21 @@ how it treats' too, matching the headline?" John: "Yes, match it". **Decided by:
 **What is ruled.** It reads: "This record follows seven things a developer can do in how it
 treats the AI models it builds."
 
+## A seventh answer, on 2026-11-21: the Developers sentence, corrected
+
+The writing session checked the sixth answer's wording against the seven things in the
+developers' table and stopped: two of them, a model working on one task for days and a model's
+report about its own inner state checked against an independent reading, are measures of what
+a model can do, not something a developer does in how it treats its model. So "in how it
+treats" would be untrue of them, as "for" already was. It also found a third phrasing of the
+same seven in the table's heading: "seven things a developer can do for its models, three
+developers". The master session proposed wording that makes no claim about what kind of thing
+each is, with taking the two measures out of the table as the strongest alternative. The
+question was put in the message as "This record follows seven things, and where each of three
+developers stands on each." John: "Yes, take that wording". **Decided by: mixed.**
+
+**What is ruled, replacing the sixth answer's wording.** Under "Developers": "This record
+follows seven things, and where each of three developers stands on each." The table's heading:
+"seven things, three developers". The headline sentence beside the count keeps "in how it
+treats", which counts only the five and holds for each.
+
