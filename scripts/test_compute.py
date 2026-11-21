@@ -572,7 +572,9 @@ class FirstCautionSources(unittest.TestCase):
         _groups, records, problems = c.load(c.ROOT / "data")
         self.assertEqual(problems, [])
         from_writer, total, others = c.first_caution_sources(records)
-        self.assertEqual((from_writer, total), (9, 24))
+        # The About page's figures as the records give them: 9 of 25 since 2026-11-21, when
+        # Sean Richey's essay was added (docs/rulings/2026-11-21-richeys-essay-is-added.md).
+        self.assertEqual((from_writer, total), (9, 25))
         self.assertLess(max(others.values()), from_writer)
         self.assertIsNone(c.first_caution_problem(records))
         c.checked(c.ROOT / "data")  # the build's own way in, which would raise if it stopped

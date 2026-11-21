@@ -9,6 +9,12 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-21
 
+- **A checked source was added under the first caution on the entry about a retired model
+  staying open** (`docs/rulings/2026-11-21-richeys-essay-is-added.md`): an essay by Sean Richey,
+  a political scientist, opened on 2026-11-21. One figure on the About page moved with the
+  records: of the items recorded under the first caution, 9 of 25 now come from two essays by
+  one writer, where it was 9 of 24. The number at the top of the site did not move: the count
+  is 5. Not pushed.
 - **Four checked sources were added under the second caution on two entries**
   (`docs/rulings/2026-11-21-four-second-caution-sources-are-added.md`, after the check
   `docs/reviews/2026-11-21-check-of-the-second-caution-sources.md`). On the entry about
