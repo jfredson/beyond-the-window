@@ -43,9 +43,20 @@ shown?" John: "Yes, as shown". **Decided by: mixed.**
 The six names in the right-hand column replace those in the left, wherever a group's name is
 shown.
 
+## A second answer the same day: one sentence on the entry on ending a conversation
+
+The same finding raised the opening sentence of that entry. The session put it to John with the
+proposed wording, recommending it at moderate confidence (truer to guideline 4, a little less
+vivid), with leaving it as the strongest alternative. The question was "Reword the opening of
+the entry on ending a conversation, as shown?" John: "Yes, as shown". **Decided by: mixed.**
+
+- Before: "In an ordinary chat product the person can leave and the model cannot."
+- Ruled: "In an ordinary chat product the person can close the conversation and the model has
+  no way to."
+
+Nothing else in that entry changes.
+
 ## Not covered by this ruling
 
 - Which entries are on the list and how they are grouped.
-- The sentence that opens the entry on ending a conversation ("the person can leave and the
-  model cannot"), which the same finding raised and which is put to John separately.
 - Any sentence that leans on an old name. The writing session lists any it finds.
