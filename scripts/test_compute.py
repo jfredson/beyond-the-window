@@ -336,30 +336,86 @@ class Export(unittest.TestCase):
         self.assertIs(out["entries"][0]["beside"], False)
         self.assertIsNone(out["entries"][0]["checks"])
 
-    def test_a_record_with_no_placement_note_builds_as_before_and_one_with_it_carries_it(self):
-        plain_rec = good("one-thing", offered=True)
-        self.assertEqual(errs(plain_rec), "")
+    def _beside_with_note(self, rulings: Path) -> tuple[list[dict], dict]:
+        """A constructed record beside the list, with a note and a constructed ruling that
+        holds the note across a line break, inside a quoted passage."""
+        (rulings / "2026-01-01-a-constructed-ruling.md").write_text(
+            "# A constructed ruling\n\n> A constructed sentence on what the\n> placement rests on.\n",
+            encoding="utf-8")
         groups = GROUPS + [{"name": "The setting", "beside": True}]
         noted = good("another-thing"); noted["beside"] = True; noted["group"] = "The setting"
         del noted["state"]["offered_today"]
         noted["placement_note"] = "A constructed sentence on what the placement rests on."
-        self.assertEqual(c.validate(groups, [noted]), [])
-        computed = c.compute([plain_rec, noted])
-        head = {"computed_on": "2026-11-17", "last_read": computed["last_read"],
-                "headline": computed["headline"], "records": computed["records"]}
-        out = {e["id"]: e for e in x.build(groups, [plain_rec, noted], head)["entries"]}
-        self.assertIsNone(out["one-thing"]["placement_note"])
-        self.assertEqual(out["another-thing"]["placement_note"], noted["placement_note"])
-        # The note changes nothing that is counted.
-        self.assertEqual(computed["headline"], c.compute([plain_rec, {k: v for k, v in noted.items()
-                                                                      if k != "placement_note"}])["headline"])
-        # It is refused where the page has no reason for a placement to put it after, and
-        # when it is not a sentence.
-        on_the_list = good(); on_the_list["placement_note"] = "A constructed sentence."
-        self.assertIn("'placement_note' on an entry that is not beside the list", errs(on_the_list))
-        noted["placement_note"] = ["not", "text"]
-        self.assertIn("'placement_note' is not a sentence", "\n".join(c.validate(groups, [noted])))
+        noted["placement_note_ruling"] = "2026-01-01-a-constructed-ruling.md"
+        return groups, noted
 
+    def test_a_record_with_no_placement_note_builds_as_before_and_one_with_it_carries_it(self):
+        kept = c.RULINGS_DIR
+        with tempfile.TemporaryDirectory() as d:
+            c.RULINGS_DIR = Path(d)
+            try:
+                groups, noted = self._beside_with_note(Path(d))
+                plain_rec = good("one-thing", offered=True)
+                self.assertEqual(errs(plain_rec), "")
+                self.assertEqual(c.validate(groups, [noted]), [])
+                computed = c.compute([plain_rec, noted])
+                head = {"computed_on": "2026-11-17", "last_read": computed["last_read"],
+                        "headline": computed["headline"], "records": computed["records"]}
+                out = {e["id"]: e for e in x.build(groups, [plain_rec, noted], head)["entries"]}
+                self.assertIsNone(out["one-thing"]["placement_note"])
+                self.assertEqual(out["another-thing"]["placement_note"], noted["placement_note"])
+                self.assertNotIn("placement_note_ruling", out["another-thing"])
+                # The note changes nothing that is counted.
+                bare = {k: v for k, v in noted.items() if not k.startswith("placement_note")}
+                self.assertEqual(computed["headline"], c.compute([plain_rec, bare])["headline"])
+            finally:
+                c.RULINGS_DIR = kept
+
+    def test_a_placement_note_is_refused_unless_a_ruling_holds_it_word_for_word(self):
+        kept = c.RULINGS_DIR
+        with tempfile.TemporaryDirectory() as d:
+            c.RULINGS_DIR = Path(d)
+            try:
+                groups, noted = self._beside_with_note(Path(d))
+                said = lambda rec: "\n".join(c.validate(groups, [rec]))
+                self.assertEqual(said(noted), "")
+                # No ruling named.
+                rec = copy.deepcopy(noted); del rec["placement_note_ruling"]
+                self.assertIn("'placement_note' with no 'placement_note_ruling'", said(rec))
+                # A name that is not a plain file name in the rulings folder.
+                rec = copy.deepcopy(noted); rec["placement_note_ruling"] = "../compute.py"
+                self.assertIn("'placement_note' with no 'placement_note_ruling'", said(rec))
+                # A ruling that does not exist.
+                rec = copy.deepcopy(noted); rec["placement_note_ruling"] = "2026-01-02-no-such-ruling.md"
+                self.assertIn("docs/rulings/ holds no such file", said(rec))
+                # A sentence the ruling does not hold, by one word.
+                rec = copy.deepcopy(noted)
+                rec["placement_note"] = "A made-up sentence on what the placement rests on."
+                self.assertIn("is not found word for word in the ruling it names", said(rec))
+                # A ruling named with no note.
+                rec = copy.deepcopy(noted); del rec["placement_note"]
+                self.assertIn("'placement_note_ruling' with no 'placement_note'", said(rec))
+                # On the list, and not a sentence: refused as before.
+                on_the_list = good(); on_the_list["placement_note"] = noted["placement_note"]
+                on_the_list["placement_note_ruling"] = noted["placement_note_ruling"]
+                self.assertIn("'placement_note' on an entry that is not beside the list", errs(on_the_list))
+                rec = copy.deepcopy(noted); rec["placement_note"] = ["not", "text"]
+                self.assertIn("'placement_note' is not a sentence", said(rec))
+            finally:
+                c.RULINGS_DIR = kept
+
+    def test_the_real_memory_entry_passes_with_its_real_ruling(self):
+        groups, records, problems = c.load(c.ROOT / "data")
+        self.assertEqual(problems, [])
+        memory = next(r for r in records if r["id"] == "memory-across-conversations")
+        self.assertTrue((c.RULINGS_DIR / memory["placement_note_ruling"]).is_file())
+        self.assertEqual(c.validate_record(memory, {g["name"]: g.get("beside") is True for g in groups}), [])
+        self.assertEqual([r["id"] for r in records if "placement_note" in r], ["memory-across-conversations"])
+        # The same record with one word of the sentence changed is refused.
+        changed = copy.deepcopy(memory)
+        changed["placement_note"] = changed["placement_note"].replace("says nothing", "says little")
+        self.assertIn("is not found word for word",
+                      "\n".join(c.validate_record(changed, {g["name"]: g.get("beside") is True for g in groups})))
 
 # ---- the rebuild: acts, measures, searches and the readings (PROPOSED 2026-11-20) -----------
 

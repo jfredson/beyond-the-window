@@ -60,6 +60,8 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
+# Where John's rulings are kept, one dated file each. A placement note must be found in one.
+RULINGS_DIR = ROOT / "docs" / "rulings"
 DEFAULT_DATA = ROOT / "data"
 HEADLINE_NAME = "headline.json"
 PACIFIC = ZoneInfo("America/Los_Angeles")
@@ -83,7 +85,7 @@ REQUIRED_TOP = ["id", "name", "description", "group", "test", "settled_by", "pro
                 "added", "first_pass", "state", "sources"]
 OPTIONAL_TOP = ["beside", "limits", "constructed", "notes", "evidence", "cautions", "history",
                 "verify", "checks", "only_the_developer", "acts", "measures", "searches",
-                "done_by", "found", "placement_note"]
+                "done_by", "found", "placement_note", "placement_note_ruling"]
 STATE_REQUIRED = ["words", "set_on", "source"]
 STATE_OPTIONAL = ["offered_today", "offered_by", "detail"]
 SOURCE_REQUIRED = ["key", "label", "publisher", "url", "opened"]
@@ -410,12 +412,30 @@ def validate_record(rec: dict, group_names: dict[str, bool], developer_names: se
     # 2026-11-20 for one entry (docs/rulings/2026-11-20-memory-entry-says-what-its-placement-rests-on.md).
     # Most records have none. It is refused on an entry that is on the list, because the page
     # shows no reason for a placement there and so has nowhere to put it.
+    # Since 2026-11-20 the note is also refused unless the record names the ruling that approved
+    # it (placement_note_ruling, the file's name in docs/rulings/), that file exists, and the
+    # note stands in it word for word. A check had shown that a made-up sentence in this field
+    # built and passed, and the note is public wording that only John's ruling puts on a page.
+    # Line breaks and the ">" of a quoted passage are set aside before the two are compared.
     if "placement_note" in rec:
         if not _text(rec["placement_note"]):
             bad("'placement_note' is not a sentence")
         elif rec.get("beside") is not True:
             bad("'placement_note' on an entry that is not beside the list, where the page gives "
                 "no reason for a placement to put it after")
+        else:
+            ruling = rec.get("placement_note_ruling")
+            if not (isinstance(ruling, str) and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.-]*\.md", ruling)):
+                bad("'placement_note' with no 'placement_note_ruling' naming the file in "
+                    "docs/rulings/ that approved the sentence")
+            elif not (RULINGS_DIR / ruling).is_file():
+                bad(f"'placement_note_ruling' names '{ruling}', and docs/rulings/ holds no such file")
+            else:
+                said = " ".join(re.sub(r"(?m)^\s*>\s?", "", (RULINGS_DIR / ruling).read_text(encoding="utf-8")).split())
+                if " ".join(rec["placement_note"].split()) not in said:
+                    bad(f"'placement_note' is not found word for word in the ruling it names, '{ruling}'")
+    elif "placement_note_ruling" in rec:
+        bad("'placement_note_ruling' with no 'placement_note' for it to approve")
     for field in ("verify", "limits"):
         if field in rec and not (isinstance(rec[field], list) and all(_text(v) for v in rec[field])):
             bad(f"'{field}' is not a list of sentences")

@@ -98,6 +98,11 @@ script refuses the field on an entry that is on the list, because its page gives
 a placement to put the sentence after. That the sentence is held in a field of its own, and
 not in the dated history or the group's sentence, was decided by a session (decided by: agent).
 
+*Added the same day, after a check:* the note is public wording, so the records script also
+refuses it unless the record names the ruling that approved it (`placement_note_ruling`, the
+file's name in `docs/rulings/`), that file exists, and the note stands in it word for word. A
+made-up sentence in the field no longer builds. Decided by: agent.
+
 ## 4. Ids (framework)
 
 - An id is plain lower-case words joined by hyphens, and is the last part of the record's page
