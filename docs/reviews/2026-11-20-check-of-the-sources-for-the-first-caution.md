@@ -321,8 +321,9 @@ move these figures.
 
 ## Does the list as a whole lean?
 
-- **It leans toward one kind of harm.** Ten of the fourteen are about companion products and
-  the people who use them. The records are mostly about general chat models and what their
+- **It leans toward one kind of harm.** Six of the fourteen are about companion products
+  (items 3, 4, 5, 6, 7 and 14), and three more are about harm to people who use chatbots
+  (items 8, 11 and 12). The records are mostly about general chat models and what their
   developers do. Put on those entries, the studies could suggest a link their sources do not
   make. The proposal says this of itself, and it is right.
 - **It does not lean toward dismissal.** It keeps the item that cuts the other way, two of
