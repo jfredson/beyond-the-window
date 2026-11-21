@@ -49,3 +49,33 @@ rebuild's readings may stay beneath it.
   published. Nothing reaches the live site until he has seen it.
 - **The fraction.** The Upgrade Tree shows "28 of 35"; this site's ruling of 2026-11-18 is a
   count with no total beside it. That ruling stands unless John changes it.
+
+## A second answer the same day: version B
+
+A session built two drafts on the branch `claude/headline-draft-df7958`
+(`docs/proposals/2026-11-20-headline-draft.md`, pictures in
+`docs/proposals/pictures/2026-11-20-headline-draft/` on that branch). Both open with the short
+line "A dated record of how the world is treating AI models", the computed count of 5, and the
+founding question, with the rebuild's readings beneath and the site check again refusing a home
+page whose first figure is not that count.
+
+- **Version A:** John's sentence of 2026-11-19 word for word.
+- **Version B:** "things a developer can do for the AI models it builds are done, or publicly
+  committed to, by at least one developer today", then a line naming three of the five things,
+  then a breakdown by developer ("5 by one developer, 1 by a second, 0 by the third this record
+  covers").
+
+The session recommended B at moderate confidence, with two changes first: the breakdown adds to
+6 while the count is 5, because one thing is done by two developers; and the second developer's
+"1" may still be a promise not in effect (its page says the change will "begin in the following
+weeks"). The strongest case for A was that it is his ruled wording and B adds a third phrase for
+"offered" to the site. The question was "Which version should open the home page?" John:
+"Version B". **Decided by: mixed.**
+
+**What is ruled.** Version B opens the home page, replacing the sentence ruled on 2026-11-19,
+which is kept on record in its own file. The count stays as ruled on 2026-11-18, with no total
+beside it.
+
+**Not ruled.** The breakdown's final labels and figures after the two changes, which come back
+to John before anything is published.
+
