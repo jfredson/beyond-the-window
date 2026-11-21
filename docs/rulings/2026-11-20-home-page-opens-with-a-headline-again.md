@@ -112,3 +112,15 @@ mixed.**
 treats the AI models it builds are done, or publicly committed to, by at least one developer
 today." The writing session checks it against all five counted entries before it is published.
 
+## A fifth answer, on 2026-11-21: "done, or publicly committed to" stays
+
+The same check (part 2) noted that the list page's meaning of offered is stricter ("a promise
+that has not yet taken effect is not counted ... A commitment that is in force today is
+counted") than the home page's "done, or publicly committed to". The master session recommended
+leaving it, because the sentence describes the five counted things and is true of all five
+(four done, one a commitment in force), it does not claim every promise is counted, and the
+exact meaning is one tap away on the list page. *Strongest alternative:* "done, or under a public
+commitment already in force", at the cost of a heavier first sentence. The question was "Leave
+'done, or publicly committed to' as it is on the home page?" John: "Yes, leave it". **Decided
+by: mixed.**
+
