@@ -56,5 +56,8 @@ tried again, on this ruling.
   *Added 2026-11-20, after the check of the run's record:* that the earlier go carries over to
   this second try is the session's reading. John was not told so before he ruled. He was told
   in the session's next message ("Your go and your 'Yes, run it' already cover this run"), and
-  he then made and saved the new key.
+  he then made and saved the new key. *Added later on 2026-11-20:* the session put the question
+  to him after the run: "Did your go of 'Google, up to $10' cover the second try through the
+  older project?" John: "You have my go". That is his word, given after the $0.2130 was spent,
+  that the spending had his go.
 - The guideline itself, which stands for every other call.

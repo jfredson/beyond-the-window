@@ -131,6 +131,10 @@ the rest for the model that answered.
   was set aside by the ruling named above: the key was new and used for nothing else, and the
   Google project it belongs to was made for other work.
 
+Asked after the run whether his go of "Google, up to $10" covered this second try, which the
+capture's step list had not foreseen, John said: "You have my go" (2026-11-20;
+`docs/rulings/2026-11-20-google-run-through-an-older-project.md`).
+
 Still for John: compare the total with the cost Google shows for that project, and delete the
 two keys made for this capture once he is content (the one in the new project, which Google
 would not serve, and the one in the older project).
