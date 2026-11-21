@@ -56,6 +56,25 @@ the entry on ending a conversation, as shown?" John: "Yes, as shown". **Decided 
 
 Nothing else in that entry changes.
 
+## A third answer the same day: two names corrected
+
+Two of the six names ruled above turned out not to be true of every entry in their groups. The
+session had put them to John without checking each against its entries.
+
+- **"Files kept after retirement".** The writing session held it back: one entry in that group
+  is about a retired model staying open to the public.
+- **"Asked and assessed by the developer".** The checking session found
+  (`docs/reviews/2026-11-20-check-of-the-group-names.md`) that the entry on a welfare
+  assessment published at release says "One outside group took part in the first".
+
+The session proposed "Kept after retirement" and "Asked and assessed", each true of both
+entries in its group by the checking session's reading, and asked "Use 'Kept after retirement'
+and 'Asked and assessed' for the two group names still open?" John: "Yes, both names".
+**Decided by: mixed.**
+
+**The six names as now ruled:** Kept after retirement; Memory; Asked and assessed; Ending a
+conversation; Reports checked against the workings; Long tasks.
+
 ## Not covered by this ruling
 
 - Which entries are on the list and how they are grouped.
