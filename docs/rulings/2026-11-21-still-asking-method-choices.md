@@ -101,3 +101,15 @@ alternative:* only "not measured" and a quoted finding, at the cost of a card a 
 scan. John: "Yes, as proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 5 as proposed.
+
+## Choice 6. Condition 1's marks
+
+**Put to him.** Training never meets condition 1; not met where documentation says nothing
+carries over; partly met for a stored record read back, or for some but not all of chapter 6's
+five signs; met only when all five signs are shown for this system's own past by evidence other
+than its word. *Confidence:* moderate, since "all five" is the session's reading of how strict
+the ruled test should be. *Judgment call.* *Strongest alternative:* met on three of five, at the
+cost of deciding now which two signs do not matter. John: "Yes, as proposed". **Decided by:
+mixed.**
+
+**What is ruled.** Choice 6 as proposed: condition 1 is met only on all five signs.
