@@ -9,6 +9,11 @@ outside the record was replaced on 2026-11-20, and that is in the line for that 
 
 ## 2026-11-20
 
+- **The three labels on entry pages lost the word "progress"**
+  (`docs/rulings/2026-11-20-progress-dropped-from-the-kind-labels.md`). Each entry's page now
+  shows "Technical", "Political" or "Cultural" where it showed "Technical progress",
+  "Political progress" or "Cultural progress". The records' own field keeps its name. No entry
+  changed. No number moved: the count is 5. Not pushed.
 - **One fix after the second check of the rebuilt home page. Not published and not pushed. The
   count did not move: it is still 5.** The second check
   (`docs/reviews/2026-11-20-second-check-of-the-rebuilt-home-page.md`) read a chart the build

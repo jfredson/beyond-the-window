@@ -24,7 +24,9 @@ export function getStaticPaths() {
 const { entry } = Astro.props as { entry: Entry };
 const s = entry.state;
 const stateSource = sourceOf(entry, s.source);
-const kindWords = { technical: 'Technical progress', political: 'Political progress', cultural: 'Cultural progress' }[entry.progress_kind];
+// The three labels lost the word "progress" on 2026-11-20, by John's ruling ("Yes, drop it",
+// docs/rulings/2026-11-20-progress-dropped-from-the-kind-labels.md). The records' field keeps its name.
+const kindWords = { technical: 'Technical', political: 'Political', cultural: 'Cultural' }[entry.progress_kind];
 const by = s.offered_by;
 const anyEvidence = entry.evidence.some((k) => k.items.length > 0);
 // What this record's checks were, read from its own record, so that no page claims a check,
