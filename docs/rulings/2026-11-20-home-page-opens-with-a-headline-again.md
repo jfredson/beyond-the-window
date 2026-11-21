@@ -94,3 +94,21 @@ strongest alternative. The question was "Which breakdown should sit under the 5?
 these labels: "5, by one developer: all of them"; "1, by a second: one of the same 5"; "0, by
 the third this record covers". The figures are worked out from the records.
 
+## A fourth answer, on 2026-11-21: "in how it treats"
+
+After the page went out (John: "Yes, publish now"), the check of the restored headline
+(`docs/reviews/2026-11-20-check-of-the-restored-headline.md`, part 5) noted that OpenAI's own
+pages describe its chat ending as a safety step for people, and that the entry says neither page
+has the model decide or mentions the model's interests, so "for the AI models it builds" says
+more than that developer says. The checker suggested "about"; the master session judged that
+"about" reads as fixing a fault, and proposed instead "in how it treats", which counts the thing
+without saying whom it is for and matches the short line above it. *Confidence:* moderate; the
+wording was the session's and not yet checked against the five entries. *Strongest
+alternative:* keep "for", which four of the five things plainly fit. The question was "Change
+'for the AI models it builds' in the headline sentence?" John: "Yes, change it". **Decided by:
+mixed.**
+
+**What is ruled.** The sentence beside the count reads: "things a developer can do in how it
+treats the AI models it builds are done, or publicly committed to, by at least one developer
+today." The writing session checks it against all five counted entries before it is published.
+
