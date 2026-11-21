@@ -68,3 +68,10 @@ headings speak of", was shown to him as still true and left as it is.
   session lists any it finds, and new wording there goes to John first.
 - Guideline 5 in `CLAUDE.md`, which names the three kinds of caution in its own words ("the
   risk in wants that are"). It is brought into line with this ruling as a dated note.
+- **Six cautions under the first heading that now also fit the third.** The check of this
+  change (`docs/reviews/2026-11-20-check-of-the-third-caution-heading.md`, part 3) found six,
+  all from the two essays by the head of Microsoft AI, that speak of a risk to people. They
+  stay under the first heading, because the cost each names comes from treating a system as
+  more than it is. **Decided by: agent** (the master planning session, on the checking
+  session's advice), so that a later session does not refile them one at a time. Moving any
+  would also move the count on the About page, so a move goes to John.
