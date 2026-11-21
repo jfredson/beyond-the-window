@@ -71,3 +71,14 @@ was told that two independent readers being common practice is from memory and u
 reading the answers before they are published. John: "Yes, as proposed". **Decided by: mixed.**
 
 **What is ruled.** Choice 4 as proposed. Any second reader before publication is a person.
+
+## Choice 5. Hiding the models' names while reading
+
+**Put to him.** A script hides each model's name behind a letter, shuffles the models' order
+within each question, and keeps the key apart, outside every repository, until John's
+descriptions for that question are written. He was told the hiding is partial and that its
+being common practice is from memory and unchecked. *Confidence:* low to moderate. *Judgment
+call.* *Strongest alternative:* read with names shown. John: "Yes, as proposed". **Decided by:
+mixed.**
+
+**What is ruled.** Choice 5 as proposed.
