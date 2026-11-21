@@ -34,3 +34,27 @@ proposed". **Decided by: mixed.**
 ## What is ruled
 
 The three changes above. The count does not move.
+
+## A second answer the same day: two wordings, and how the table shows "By"
+
+The writing session stopped before changing anything. The table takes each developer's date from
+that developer's first act on the entry, so adding the new act alone would leave "Since October
+30th, 2026" in place. To show "By", the act of 2026-10-30 is marked as an announcement that the
+table's date skips, the new act is marked as the change seen in effect with no known start date,
+and the table writes "By" where that mark is set and "Since" elsewhere. That mechanism is the
+master session's call. **Decided by: agent.**
+
+Two wordings went to John. First, the help page says the interventions are enabled "for personal
+ChatGPT accounts worldwide in Chat mode" and do not apply in business workspaces or voice mode,
+so the ruled act words said a little more than the page. Second, the table's explanation covered
+only "Since". The question was whether to approve both as shown. John: "Yes, both as shown".
+**Decided by: mixed.**
+
+**What is ruled.**
+
+- The new act's words: "says its chat product's safety interventions, which can end a
+  conversation, are enabled for personal accounts worldwide in its chat mode and rolling out
+  gradually".
+- A line in the table's explanation, beside the one for "Since": ""By" with a date means the
+  thing was seen in effect on that day, and the day it began is not known."
+
