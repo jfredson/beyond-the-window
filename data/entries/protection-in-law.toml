@@ -1,6 +1,6 @@
 id = "protection-in-law"
 name = "A law or an official body gives an AI system protection for its own sake"
-description = "Laws protect animals from cruelty without calling them persons. The same could be done for AI systems, or a government could set up a body to review the question as evidence comes in. This entry tracks whether any government has done either."
+description = "This entry tracks whether any government has protected AI systems in law for their own sake, without calling them persons, or has set up a body to review whether to do so as evidence comes in."
 group = "Protection in law"
 test = "A national or state government has enacted a law, or set up a standing official body, whose stated purpose includes the welfare or interests of AI systems themselves."
 settled_by = "The statute, or the body's founding document, on a government site."
