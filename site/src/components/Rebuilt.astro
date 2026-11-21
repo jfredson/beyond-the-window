@@ -1,6 +1,7 @@
 ---
-// The home page, rebuilt (2026-11-20), and since the same day opened by the headline number
-// again (see below; a draft, not published). John ruled that day to pursue the rebuild, to name every
+// The home page, rebuilt (2026-11-20), opened by the headline number again the same day, and
+// since 2026-11-21 opened by the founding question, with the number directly beneath it (see
+// below). John ruled that day to pursue the rebuild, to name every
 // developer the record covers, and that the record covers three; and gave his go to publish
 // once a different session has checked the page
 // (docs/rulings/2026-11-20-go-to-publish-the-rebuilt-home-page-once-checked.md). Design:
@@ -33,10 +34,13 @@ const lastRead = data.headline.last_read;
 if (!law.against || !law.protecting || !pub || !res || !latest) throw new Error('a reading is missing');
 if (res.measures.length !== 2) throw new Error('the researchers\' reading is written for two figures');
 
-// The top of the page opens with the headline number, as the sibling sites' home pages do
-// (John's ruling of 2026-11-20, docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md,
-// with its second answer of the same day choosing version B of
-// docs/proposals/2026-11-20-headline-draft.md). The number is the count worked out by
+// The top of the page opens with the founding question as its headline, on every screen, with
+// the short line saying what the site is just above it (John's ruling of 2026-11-21,
+// docs/rulings/2026-11-21-the-question-opens-the-home-page.md, amending his ruling of 2026-11-20,
+// docs/rulings/2026-11-20-home-page-opens-with-a-headline-again.md). Directly beneath it stands
+// the headline number, which is still the first figure on the page, with the sentence of
+// version B of docs/proposals/2026-11-20-headline-draft.md (the second answer of 2026-11-20).
+// The paragraph saying what the record holds follows the breakdown. The number is the count worked out by
 // scripts/compute.py and read from the headline file, never typed, with no total beside it
 // (ruled 2026-11-18). Under it: the sentence of version B, a line naming three of the things
 // counted, and the count broken down by developer.
@@ -73,6 +77,7 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
   <div class="rb-first">
   <div class="rb-top hl-top">
     <p class="eyebrow">A dated record of how the world is treating AI models</p>
+    <h1 class="question">{QUESTION}</h1>
     <p class="big-number"><span data-figure="headline.count">{h.count}</span></p>
     <p class="big-claim">things a developer can do in how it treats the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
     <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
@@ -88,7 +93,6 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
         </div>
       ))}
     </div>
-    <h1 class="question">{QUESTION}</h1>
     <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
     <ul class="checked">
       {lastRead && <li class="world">The world's record was last read on {longDate(lastRead)}. All {r.total} entries are a first pass. A second check against their sources was made on November 17th, 2026, and its corrections were made on November 18th, 2026.</li>}
