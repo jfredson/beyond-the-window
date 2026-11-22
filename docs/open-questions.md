@@ -393,6 +393,27 @@ anyone is there and only points across.
 session did not read; drafting the boundary paragraphs; and deciding whether the supporting
 branch is a branch here at all or only a set of links.
 
+**A relative this question did not name: The Quiet Galaxy.** *Added 2026-11-21 on John's "Yes,
+add it", to choice 1 of the proposal `docs/proposals/2026-11-21-two-ends-of-one-arc.md`
+(decided by: mixed). Adding the paragraph is ruled. The idea in it is not, and stays open here.*
+The Quiet Galaxy asks why we see no one else in the sky. One answer in John's writing (position
+25 of the Sentient Horizons positions record) is that minds which last learn to hold back and go
+quiet. The same record holds the opposite reading open beside it: going quiet may be failure, a
+mind wearing away or collapsing inward. Either way, the answer is a claim about which direction
+minds take as they grow more capable. Nobody can watch alien minds grow up. People can watch
+machine minds being built, one model at a time, and this project is a dated record of what they
+are offered and what they say. So this project and The Quiet Galaxy may be two ends of one arc.
+That extends position 53, which already treats recognising an alien mind and recognising a
+machine mind as one problem at two distances. A mind that turns inward could be holding back by
+its own choice, breaking down, or doing what it was trained to do. A telescope cannot tell those
+three apart, and this record is the only one where they might one day be told apart. **The
+objections travel with it.** Training may explain every restrained answer (question 3), and that
+is the strongest objection. "One arc" is an analogy, not a finding. Signs against holding back
+count as much as signs for it. Nothing in the record bears on it yet. And a few years of models
+is a thin slice of a civilisation's millions of years. Nothing on a public page rests on this
+paragraph. A test of what would count for, against or as collapse would be written in advance,
+with the Still Asking method, before any answer is read as bearing on it.
+
 ## 9. Writing to the subject
 
 **The question.** What changes when some readers are the minds being described, since public

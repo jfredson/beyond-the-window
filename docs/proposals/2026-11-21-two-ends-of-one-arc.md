@@ -1,6 +1,6 @@
 # Proposal: Beyond the Window and The Quiet Galaxy as two ends of one arc
 
-**PROPOSED 2026-11-21. Nothing here is applied, and nothing is ruled.** Written by Claude
+**PROPOSED 2026-11-21. Choice 1 is ruled and applied; the idea itself and choices 2 to 4 are not.** On 2026-11-21 John said "Yes, add it" to choice 1, and the paragraph is now in open question 8 of `docs/open-questions.md` (decided by: mixed). Written by Claude
 (Opus 5.5), an AI model made by Anthropic, at John's asking. In a conversation on 2026-11-21
 Claude was asked which insight across all the projects it finds most exciting. It read this
 project's founding documents and the Sentient Horizons positions record, and its answer
