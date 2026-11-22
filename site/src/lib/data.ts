@@ -83,7 +83,7 @@ export type Readings = {
     cells: number;
     offering: number;
     counts: Record<CellKind, number>;
-    by_developer: ({ name: string; url: string | null } & Record<CellKind, number>)[];
+    by_developer: ({ name: string; url: string | null; also_called?: string | null } & Record<CellKind, number>)[];
     rows: { entry: string; name: string; cells: Cell[] }[];
   };
   law: {

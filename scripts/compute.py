@@ -293,12 +293,20 @@ def load_developers(data_dir: Path) -> tuple[list[dict], list[str]]:
             errors.append(f"developers.toml: developer {i} has no name")
             continue
         for field in d:
-            if field not in ("name", "url", "opened"):
+            if field not in ("name", "url", "opened", "also_called", "note"):
                 errors.append(f"developers.toml: '{d['name']}' has an unknown field '{field}'")
         if not (isinstance(d.get("url"), str) and re.match(r"^https?://\S+$", d["url"])):
             errors.append(f"developers.toml: '{d['name']}' has no web address")
         if not _is_date(d.get("opened")):
             errors.append(f"developers.toml: '{d['name']}' has no date its page was opened")
+        # Added 2026-11-21 with the six developers the top-ten rule brought in
+        # (docs/rulings/2026-11-21-which-developers-choices.md). `also_called` is a second name
+        # the page shows beside the first, in brackets (Zhipu trades as Z.ai). `note` says
+        # something about the name or the page a reader of this file should know, and is not
+        # shown on any page. Decided by: agent.
+        for field in ("also_called", "note"):
+            if field in d and not _text(d[field]):
+                errors.append(f"developers.toml: '{d['name']}' has an empty '{field}'")
     return devs, errors
 
 
@@ -925,7 +933,7 @@ def developer_grid(records: list[dict], developers: list[dict]) -> dict:
     by_developer = []
     for d in developers:
         mine = [c for row in rows for c in row["cells"] if c["developer"] == d["name"]]
-        by_developer.append({"name": d["name"], "url": d.get("url"),
+        by_developer.append({"name": d["name"], "url": d.get("url"), "also_called": d.get("also_called"),
                              **{k: sum(1 for c in mine if c["kind"] == k) for k in kinds}})
     return {
         "covered": names,

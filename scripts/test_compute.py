@@ -1015,5 +1015,33 @@ class HomeHeadline(unittest.TestCase):
         self.assertTrue(s.headline_problems(page, 5))
 
 
+
+class SecondNames(unittest.TestCase):
+    """A developer may carry a second name and a note (added 2026-11-21 with the six developers
+    the top-ten rule brought in; decided by: agent)."""
+
+    def _load(self, text):
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "developers.toml").write_text(text, encoding="utf-8")
+            return c.load_developers(Path(d))
+
+    def test_a_second_name_and_a_note_are_read(self):
+        devs, errs = self._load('[[developers]]\nname = "Zhipu"\nalso_called = "Z.ai"\n'
+                                'url = "https://z.ai/"\nopened = 2026-11-21\nnote = "A note."\n')
+        self.assertEqual(errs, [])
+        self.assertEqual(devs[0]["also_called"], "Z.ai")
+
+    def test_an_empty_second_name_is_refused(self):
+        _devs, errs = self._load('[[developers]]\nname = "Zhipu"\nalso_called = " "\n'
+                                 'url = "https://z.ai/"\nopened = 2026-11-21\n')
+        self.assertIn("has an empty 'also_called'", "\n".join(errs))
+
+    def test_the_grid_carries_the_second_name(self):
+        _groups, records, _ = c.load(c.ROOT / "data")
+        devs, _ = c.load_developers(c.ROOT / "data")
+        g = c.compute(records, devs)["readings"]["developers"]
+        zhipu = next(d for d in g["by_developer"] if d["name"] == "Zhipu")
+        self.assertEqual(zhipu["also_called"], "Z.ai")
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

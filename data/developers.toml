@@ -16,3 +16,42 @@ opened = 2026-11-17
 name = "Google"
 url = "https://ai.google/"
 opened = 2026-11-17
+
+# The six below were added on 2026-11-21 by John's ruling that the record covers every developer
+# whose best model is in the top ten of at least two of three named rankings, read that day
+# (docs/rulings/2026-11-21-which-developers-choices.md, choice 2, "Yes, all nine"; decided by:
+# mixed). Each page is the one the proposal opened on 2026-11-21
+# (docs/proposals/2026-11-21-which-developers-the-record-covers.md, Part 2), in the order the
+# proposal lists them. The names are the ones the record shows.
+
+[[developers]]
+name = "Meta"
+url = "https://ai.meta.com/"
+opened = 2026-11-21
+
+[[developers]]
+name = "Moonshot"
+url = "https://www.moonshot.ai/"
+opened = 2026-11-21
+
+[[developers]]
+name = "Alibaba"
+url = "https://qwen.ai/"
+opened = 2026-11-21
+
+[[developers]]
+name = "DeepSeek"
+url = "https://www.deepseek.com/"
+opened = 2026-11-21
+
+[[developers]]
+name = "xAI"
+url = "https://x.ai/"
+opened = 2026-11-21
+note = "Its site now carries the name SpaceX Super Intelligence: a news page on x.ai opened on 2026-11-21 (https://x.ai/news/grok-4-7, dated 2026-09-21; the home page refused the fetch that day) calls the model \"SpaceXSI's most powerful model\" and has the footer \"© 2026 SpaceX Super Intelligence LLC\". Its release reports say \"SpaceXAI is a doing-business-as (DBA) name of XAI LLC\", which does not match the footer, so the company's legal name is uncertain. By news reports opened the same day, SpaceX bought xAI (NBC News, 2026-02-02), xAI was renamed SpaceXAI (Engadget, 2026-07-07), and SpaceXAI was to be renamed SpaceXSI (Fox Business, 2026-10-04). The record keeps the name xAI, which one of the three rankings uses; two call it SpaceXAI. Marked for the checker."
+
+[[developers]]
+name = "Zhipu"
+also_called = "Z.ai"
+url = "https://z.ai/"
+opened = 2026-11-21

@@ -57,11 +57,29 @@ for (const id of NAMED) if (!h.offered_ids.includes(id)) throw new Error(`the to
 // the site check allows them). A thing two developers do is under both, so the figures can add up
 // to more than the count; each label after the first says its figure is out of the same things
 // (option 2 of three drawn on 2026-11-20, docs/proposals/2026-11-20-headline-draft.md).
-const ORDINALS = ['one developer', 'a second', 'a third', 'a fourth', 'a fifth'];
+// Extended to nine on 2026-11-21, when the record came to cover nine developers
+// (docs/rulings/2026-11-21-which-developers-choices.md). Decided by: agent.
+const ORDINALS = ['one developer', 'a second', 'a third', 'a fourth', 'a fifth', 'a sixth', 'a seventh', 'an eighth', 'a ninth'];
 const byCount = [...readings!.developers.by_developer].sort((a, b) => b.offered - a.offered);
-if (byCount.length > ORDINALS.length) throw new Error('the breakdown is written for five developers at most');
+if (byCount.length > ORDINALS.length) throw new Error('the breakdown is written for nine developers at most');
+// PROPOSED 2026-11-21, wording not ruled. With nine developers, seven of whom have nothing
+// counted, a box each read "by a third: no of the same 5" and so on. The developers with nothing
+// counted now share one box, "by the other seven this record covers", which is the wording the
+// last box already used when one developer had nothing counted. Decided by: agent.
+const firstNone = byCount.findIndex((d) => d.offered === 0);
+const noneCount = firstNone > 0 && byCount.length - firstNone > 1 ? byCount.slice(firstNone) : [];
+const shownCount = noneCount.length ? byCount.slice(0, firstNone) : byCount;
 if (byCount[0].offered > h.count) throw new Error('a developer does more things than are counted');
 
+// A developer's name as the developers' reading shows it, with a second name in brackets where it
+// has one (Zhipu trades as Z.ai; added 2026-11-21).
+const devName = (d: { name: string; also_called?: string | null }) => d.also_called ? `${d.name} (${d.also_called})` : d.name;
+const alsoCalled = new Map(g.by_developer.map((d) => [d.name, devName(d)]));
+// PROPOSED 2026-11-21, wording not ruled: the sentence saying who is covered names the rule John
+// ruled that day (docs/rulings/2026-11-21-which-developers-choices.md, choice 2) and the day the
+// rankings were read. Until then it said "It covers three developers so far". The date is the
+// day the rankings were read, and changes only when they are read again.
+const RANKINGS_READ = '2026-11-21';
 const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const things = (n: number) => (n === 1 ? '1 thing' : `${n} things`);
 const cellWords = (kind: string, date: string | null, words?: string, by?: boolean) =>
@@ -87,16 +105,22 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
     <p class="big-claim">things a developer can do in how it treats the AI models it builds are done, or publicly committed to, by at least one developer today.</p>
     <p class="hl-among">Among them: <a href="/list/kept-files-of-retired-models/">keeping a retired model's files</a>, <a href="/list/interview-before-retirement/">interviewing a model before retiring it</a>, and <a href="/list/ending-a-conversation/">letting a model end a conversation</a>.</p>
     <div class="stage-row" aria-label={`How many of the ${h.count} each developer this record covers does`}>
-      {byCount.map((d, i) => (
+      {shownCount.map((d, i) => (
         <div>
           <span class="stat"><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span></span>
           <span class="stat-label">{i === 0
             ? (d.offered === h.count ? 'by one developer: all of them' : 'by one developer')
             : i === byCount.length - 1 && d.offered === 0
-              ? `by the ${ORDINALS[i].replace(/^a /, '')} this record covers`
+              ? `by the ${ORDINALS[i].replace(/^an? /, '')} this record covers`
               : `by ${ORDINALS[i]}: ${d.offered === 1 ? 'one' : countWord(d.offered)} of the same ${h.count}`}</span>
         </div>
       ))}
+      {noneCount.length > 1 && (
+        <div>
+          <span class="stat">0</span>
+          <span class="stat-label">by the other {countWord(noneCount.length)} this record covers</span>
+        </div>
+      )}
     </div>
     <p class="lede">This record holds what has been done about AI models, by whom and when, each with a source a reader can open.</p>
     <ul class="checked">
@@ -117,11 +141,11 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       </p>
       <div class="rb-reading rb-devs">
         <span class="rb-label">Developers</span>
-        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things, and where each of <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers stands on each. It covers <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers so far. Other developers are not covered yet.</p>
+        <p>This record follows <span data-figure="developers.things">{countWord(g.things)}</span> things, and where each of <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers stands on each. It covers the <span data-figure="developers.covered">{countWord(g.covered.length)}</span> developers whose best AI model is in the top ten of at least two of three public rankings, <a href="https://arena.ai/leaderboard/chat/text?rankBy=labs" rel="noopener">Arena</a>, <a href="https://artificialanalysis.ai/leaderboards/models" rel="noopener">Artificial Analysis</a> and <a href="https://epoch.ai/eci" rel="noopener">Epoch AI</a>, read on {longDate(RANKINGS_READ)}. Other developers are not covered yet.</p>
         <ul class="rb-strip" data-developers-reading>
           {g.by_developer.map((d) => (
             <li>
-              <a href={d.url ?? undefined} rel="noopener">{d.name}</a>
+              <a href={d.url ?? undefined} rel="noopener">{devName(d)}</a>
               <span class={d.offered > 0 ? 'has' : ''}>{d.offered > 0 ? <Fragment><span data-figure={`developers.${d.name}.offered`}>{d.offered}</span> in place or promised</Fragment> : 'None counted so far'}</span>
               {d.unruled > 0 && <span class="dim"><span data-figure={`developers.${d.name}.unruled`}>{d.unruled}</span> found, not yet decided</span>}
               {d.not_counted + d.taken_back > 0 && <span class="dim"><span data-figure={`developers.${d.name}.near`}>{d.not_counted + d.taken_back}</span> found, not counted</span>}
@@ -166,14 +190,14 @@ const actSentence = (a: typeof latest) => `${a.actor_kind === 'developer' ? 'A d
       <thead>
         <tr>
           <th scope="col">Thing</th>
-          {g.by_developer.map((d) => <th scope="col"><a href={d.url ?? undefined} rel="noopener">{d.name}</a></th>)}
+          {g.by_developer.map((d) => <th scope="col"><a href={d.url ?? undefined} rel="noopener">{devName(d)}</a></th>)}
         </tr>
       </thead>
       <tbody>
         {g.rows.map((row) => (
           <tr data-entry={row.entry}>
             <th scope="row"><a href={`/list/${row.entry}/`}>{row.name}</a></th>
-            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date, c.words, c.by)}</td>)}
+            {row.cells.map((c) => <td class={`k-${c.kind}`} data-dev={c.developer} data-label={alsoCalled.get(c.developer) ?? c.developer} data-kind={c.kind} data-date={c.date ?? ''}>{cellWords(c.kind, c.date, c.words, c.by)}</td>)}
           </tr>
         ))}
       </tbody>
