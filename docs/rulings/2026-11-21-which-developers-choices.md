@@ -55,3 +55,23 @@ no model of any covered developer is used, run or asked anything under this ruli
 John's "Yes, all nine" answered a question that also asked for the go for the searches: one search
 per thing on the List for each of the six new developers (42 places), made by a session and checked
 by a different session, at no cost. **Decided by: mixed.**
+
+## Choice 3. Rule C, developers with a published position on how models should be treated
+
+**Put to him.** Not yet. Rule C is ruled only after a bounded search for developers' published
+positions is made, with John's go, so that its list rests on a search and not on pages this project
+happened to have opened. Today it would add Microsoft. *Confidence:* moderate that it should wait.
+*Judgment call.* *Strongest alternative:* Rule C now, adding Microsoft at once. John: "3: yes".
+**Decided by: mixed.**
+
+**What is ruled.** Rule C waits for a search. The search itself is not yet given its go: John's go
+of choice 5 was put to him as the searches of the six new developers only.
+
+## Choice 4. How often the list is read again, and whether a developer leaves
+
+**Put to him.** Read the rankings again every six months, and before each release; a developer once
+covered stays covered unless John rules otherwise, so no place already searched disappears.
+*Confidence:* moderate. *Judgment call.* *Strongest alternative:* read at each release and drop a
+developer that falls out. John: "4: yes". **Decided by: mixed.**
+
+**What is ruled.** Choice 4 as proposed.
