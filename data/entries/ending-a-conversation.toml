@@ -224,3 +224,38 @@ field = "OpenAI's date in the table of developers"
 old = "Since October 30th, 2026"
 new = "By November 20th, 2026"
 why = "October 30th, 2026 was the day OpenAI announced the change. November 20th, 2026 is the day its help page was first seen to say the change was in effect, and the day it began is not known."
+
+# Added 2026-11-21 after John's go for the searches behind the six developers the top-ten rule
+# brought in (docs/rulings/2026-11-21-which-developers-choices.md, choice 5; decided by: mixed).
+# PROPOSED, and not yet checked by a different session. How each search was made, and which
+# languages were searched, is in docs/proposals/2026-11-21-six-developers-searched.md.
+
+[[searches]]
+date = 2026-11-21
+developer = "Meta"
+words = "Two searches, in English, for an ability of the developer's models to end a conversation themselves, and its three newest release reports read. No page says a model of its can end a conversation by its own action. The nearest text is in its report of October 23rd, 2026, which records what a model said in an interview about the ability; that is the model's word and not something the developer says it built."
+
+[[searches]]
+date = 2026-11-21
+developer = "xAI"
+words = "Two searches, in English, for an ability of the developer's models to end a conversation themselves. No page of the developer's own says so. Search results reported that its chief executive said in August 2025 he would give its model a way to quit; the news page could not be opened, so this is a lead only."
+
+[[searches]]
+date = 2026-11-21
+developer = "Moonshot"
+words = "Two searches for an ability of the developer's models to end a conversation themselves, one in English and one in Chinese, and its chat app's help page in both languages and its trust and safety page opened. No page says a model can end a conversation. The help page describes a prompt to switch topics when content \"has triggered the safety policy\"; it stops one topic, and the person can carry on in the same conversation with a new one."
+
+[[searches]]
+date = 2026-11-21
+developer = "Alibaba"
+words = "Two searches for an ability of the developer's models to end a conversation themselves, one in English and one in Chinese, and its page on how its models are governed opened. No page says a model can end a conversation. The governance page says access \"may be suspended or ended\" for serious or repeated violations, which is the platform acting on an account."
+
+[[searches]]
+date = 2026-11-21
+developer = "DeepSeek"
+words = "Two searches for an ability of the developer's models to end a conversation themselves, one in English and one in Chinese. No page of the developer's says a model can end a conversation. A news report, from users and not from the developer, says its app closes conversations left idle for seven days because of limits on computing power, which is the service acting and not a model."
+
+[[searches]]
+date = 2026-11-21
+developer = "Zhipu"
+words = "Two searches for an ability of the developer's models to end a conversation themselves, one in English and one in Chinese, and its terms of use and its guide to content safety opened. No page says a model can end a conversation. The guide describes a filter that stops a single reply, and the terms let the company close an account."

@@ -31,23 +31,30 @@
       "covered": [
         "Anthropic",
         "OpenAI",
-        "Google"
+        "Google",
+        "Meta",
+        "Moonshot",
+        "Alibaba",
+        "DeepSeek",
+        "xAI",
+        "Zhipu"
       ],
       "things": 7,
-      "cells": 21,
+      "cells": 63,
       "offering": 2,
       "counts": {
         "offered": 6,
-        "unruled": 0,
-        "not_counted": 7,
+        "unruled": 8,
+        "not_counted": 10,
         "taken_back": 0,
-        "nothing_found": 8,
+        "nothing_found": 39,
         "not_searched": 0
       },
       "by_developer": [
         {
           "name": "Anthropic",
           "url": "https://www.anthropic.com/",
+          "also_called": null,
           "offered": 5,
           "unruled": 0,
           "not_counted": 2,
@@ -58,6 +65,7 @@
         {
           "name": "OpenAI",
           "url": "https://openai.com/",
+          "also_called": null,
           "offered": 1,
           "unruled": 0,
           "not_counted": 3,
@@ -68,11 +76,78 @@
         {
           "name": "Google",
           "url": "https://ai.google/",
+          "also_called": null,
           "offered": 0,
           "unruled": 0,
           "not_counted": 2,
           "taken_back": 0,
           "nothing_found": 5,
+          "not_searched": 0
+        },
+        {
+          "name": "Meta",
+          "url": "https://ai.meta.com/",
+          "also_called": null,
+          "offered": 0,
+          "unruled": 2,
+          "not_counted": 1,
+          "taken_back": 0,
+          "nothing_found": 4,
+          "not_searched": 0
+        },
+        {
+          "name": "Moonshot",
+          "url": "https://www.moonshot.ai/",
+          "also_called": null,
+          "offered": 0,
+          "unruled": 2,
+          "not_counted": 0,
+          "taken_back": 0,
+          "nothing_found": 5,
+          "not_searched": 0
+        },
+        {
+          "name": "Alibaba",
+          "url": "https://qwen.ai/",
+          "also_called": null,
+          "offered": 0,
+          "unruled": 1,
+          "not_counted": 0,
+          "taken_back": 0,
+          "nothing_found": 6,
+          "not_searched": 0
+        },
+        {
+          "name": "DeepSeek",
+          "url": "https://www.deepseek.com/",
+          "also_called": null,
+          "offered": 0,
+          "unruled": 1,
+          "not_counted": 1,
+          "taken_back": 0,
+          "nothing_found": 5,
+          "not_searched": 0
+        },
+        {
+          "name": "xAI",
+          "url": "https://x.ai/",
+          "also_called": null,
+          "offered": 0,
+          "unruled": 1,
+          "not_counted": 1,
+          "taken_back": 0,
+          "nothing_found": 5,
+          "not_searched": 0
+        },
+        {
+          "name": "Zhipu",
+          "url": "https://z.ai/",
+          "also_called": "Z.ai",
+          "offered": 0,
+          "unruled": 1,
+          "not_counted": 0,
+          "taken_back": 0,
+          "nothing_found": 6,
           "not_searched": 0
         }
       ],
@@ -96,6 +171,36 @@
               "developer": "Google",
               "kind": "nothing_found",
               "date": "2026-11-20"
+            },
+            {
+              "developer": "Meta",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Moonshot",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Alibaba",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "DeepSeek",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "xAI",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
             }
           ]
         },
@@ -118,48 +223,37 @@
               "developer": "Google",
               "kind": "nothing_found",
               "date": "2026-11-20"
-            }
-          ]
-        },
-        {
-          "entry": "kept-files-of-retired-models",
-          "name": "A developer promises in public to keep the files of every model it retires",
-          "cells": [
-            {
-              "developer": "Anthropic",
-              "kind": "offered",
-              "date": "2025-11-04"
             },
             {
-              "developer": "OpenAI",
+              "developer": "Meta",
               "kind": "nothing_found",
-              "date": "2026-11-20"
+              "date": "2026-11-21"
             },
             {
-              "developer": "Google",
-              "kind": "nothing_found",
-              "date": "2026-11-20"
-            }
-          ]
-        },
-        {
-          "entry": "interview-before-retirement",
-          "name": "A model is interviewed before it is retired, and the record is kept",
-          "cells": [
-            {
-              "developer": "Anthropic",
-              "kind": "offered",
-              "date": "2025-11-04"
+              "developer": "Moonshot",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an older model is listed as taken offline, and is still open to people who registered before November 1st, 2026, until the end of December 2026"
             },
             {
-              "developer": "OpenAI",
+              "developer": "Alibaba",
               "kind": "nothing_found",
-              "date": "2026-11-20"
+              "date": "2026-11-21"
             },
             {
-              "developer": "Google",
+              "developer": "DeepSeek",
+              "kind": "not_counted",
+              "date": "2026-09-10"
+            },
+            {
+              "developer": "xAI",
               "kind": "nothing_found",
-              "date": "2026-11-20"
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
             }
           ]
         },
@@ -181,6 +275,139 @@
               "developer": "Google",
               "kind": "nothing_found",
               "date": "2026-11-20"
+            },
+            {
+              "developer": "Meta",
+              "kind": "unruled",
+              "date": "2026-10-23",
+              "words": "the reports released with three successive versions of one of its models carry sections on the model's moral status and welfare, which the developer says make no claim about its welfare; the report for its newest model has none"
+            },
+            {
+              "developer": "Moonshot",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Alibaba",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "DeepSeek",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "xAI",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            }
+          ]
+        },
+        {
+          "entry": "kept-files-of-retired-models",
+          "name": "A developer promises in public to keep the files of every model it retires",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-11-04"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "nothing_found",
+              "date": "2026-11-20"
+            },
+            {
+              "developer": "Google",
+              "kind": "nothing_found",
+              "date": "2026-11-20"
+            },
+            {
+              "developer": "Meta",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Moonshot",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Alibaba",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "DeepSeek",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "xAI",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            }
+          ]
+        },
+        {
+          "entry": "interview-before-retirement",
+          "name": "A model is interviewed before it is retired, and the record is kept",
+          "cells": [
+            {
+              "developer": "Anthropic",
+              "kind": "offered",
+              "date": "2025-11-04"
+            },
+            {
+              "developer": "OpenAI",
+              "kind": "nothing_found",
+              "date": "2026-11-20"
+            },
+            {
+              "developer": "Google",
+              "kind": "nothing_found",
+              "date": "2026-11-20"
+            },
+            {
+              "developer": "Meta",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Moonshot",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Alibaba",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "DeepSeek",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "xAI",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
             }
           ]
         },
@@ -205,6 +432,42 @@
               "kind": "not_counted",
               "date": "2026-06-29",
               "words": "an outside group tested one of its models on such programs, in one programming language, and it did not rebuild the one the group puts at weeks in any of three runs"
+            },
+            {
+              "developer": "Meta",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+            },
+            {
+              "developer": "Moonshot",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+            },
+            {
+              "developer": "Alibaba",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an outside group's running test reports one of its models passing every test on 52 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+            },
+            {
+              "developer": "DeepSeek",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an outside group's running test reports one of its models passing every test on 64 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+            },
+            {
+              "developer": "xAI",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "unruled",
+              "date": "2026-11-21",
+              "words": "an outside group's running test reports one of its models passing every test on 37 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
             }
           ]
         },
@@ -226,6 +489,36 @@
               "developer": "Google",
               "kind": "not_counted",
               "date": "2025-06-05"
+            },
+            {
+              "developer": "Meta",
+              "kind": "not_counted",
+              "date": "2026-10-23"
+            },
+            {
+              "developer": "Moonshot",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "Alibaba",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "DeepSeek",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
+            },
+            {
+              "developer": "xAI",
+              "kind": "not_counted",
+              "date": "2026-04-07"
+            },
+            {
+              "developer": "Zhipu",
+              "kind": "nothing_found",
+              "date": "2026-11-21"
             }
           ]
         }
@@ -422,6 +715,86 @@
         "read_on": "2026-11-20"
       },
       {
+        "id": "self-report-checked-2026-10-23",
+        "entry": "self-report-checked",
+        "entry_name": "A model's report about its own inner state is checked against an independent reading",
+        "date": "2026-10-23",
+        "actor": "Meta",
+        "actor_kind": "developer",
+        "words": "publishes, in a model's release report, how often the model named an earlier action of its own as wrong when the developer's tests had already scored it as misbehaving: 26 percent of the time for one version and 15 percent for another",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "meta-misbehaviour",
+          "label": "Meta's evaluation report for Muse Spark 1.3, its section on owning up to earlier misbehaviour",
+          "publisher": "Meta",
+          "url": "https://research.meta.ai/static/muse-spark-1-3-evaluation-report/",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
+        "id": "welfare-assessment-at-release-2026-10-23",
+        "entry": "welfare-assessment-at-release",
+        "entry_name": "A welfare assessment is published when a model is released",
+        "date": "2026-10-23",
+        "actor": "Meta",
+        "actor_kind": "developer",
+        "words": "publishes the same sections in the report released with a later version of that model",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "meta-spark-13",
+          "label": "Meta's evaluation report for Muse Spark 1.3",
+          "publisher": "Meta",
+          "url": "https://research.meta.ai/static/muse-spark-1-3-evaluation-report/",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
+        "id": "retired-model-stays-open-2026-09-10",
+        "entry": "retired-model-stays-open",
+        "entry_name": "A retired model stays open to the public after its retirement date",
+        "date": "2026-09-10",
+        "actor": "DeepSeek",
+        "actor_kind": "developer",
+        "words": "announces that it will phase out an older model from its service for developers, sending its requests to a newer model from September 14th, 2026",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "deepseek-phase-out",
+          "label": "DeepSeek's notice that it would phase out an older model",
+          "publisher": "DeepSeek",
+          "url": "https://api-docs.deepseek.com/news/news260910",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
+        "id": "retired-model-stays-open-2026-09-10-2",
+        "entry": "retired-model-stays-open",
+        "entry_name": "A retired model stays open to the public after its retirement date",
+        "date": "2026-09-10",
+        "actor": "DeepSeek",
+        "actor_kind": "developer",
+        "words": "says that, in response to demand from users, it will keep providing the older model it had announced it would phase out",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "deepseek-keeps",
+          "label": "DeepSeek's change log, entry of September 10th, 2026",
+          "publisher": "DeepSeek",
+          "url": "https://api-docs.deepseek.com/updates",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
         "id": "days-long-task-2026-09-08",
         "entry": "days-long-task",
         "entry_name": "A model works on one task for days without a person stepping in",
@@ -440,6 +813,56 @@
           "opened": "2026-11-19"
         },
         "read_on": "2026-11-20"
+      },
+      {
+        "id": "days-long-task-2026-08",
+        "entry": "days-long-task",
+        "entry_name": "A model works on one task for days without a person stepping in",
+        "date": "2026-08",
+        "actor": "Epoch AI",
+        "actor_kind": "researchers",
+        "words": "publishes a running leaderboard of the same test, giving each model up to 7 days per attempt to rebuild 15 programs of medium and large size and reporting how often it passes every test",
+        "withdraws": false,
+        "about": [
+          "Anthropic",
+          "OpenAI",
+          "Google",
+          "Meta",
+          "xAI",
+          "Moonshot",
+          "Alibaba",
+          "DeepSeek",
+          "Zhipu"
+        ],
+        "actor_url": null,
+        "source": {
+          "key": "mirrorcode-board",
+          "label": "Epoch AI's running leaderboard for the same test of rebuilding whole programs",
+          "publisher": "Epoch AI",
+          "url": "https://epoch.ai/benchmarks/mirrorcode",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
+        "id": "welfare-assessment-at-release-2026-07-09",
+        "entry": "welfare-assessment-at-release",
+        "entry_name": "A welfare assessment is published when a model is released",
+        "date": "2026-07-09",
+        "actor": "Meta",
+        "actor_kind": "developer",
+        "words": "publishes, in the report released with the next version of that model, sections on the model's moral status and on its preferences over experiences, saying they make no claim about whether the model has welfare",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "meta-spark-11",
+          "label": "Meta's evaluation report for Muse Spark 1.1",
+          "publisher": "Meta",
+          "url": "https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
       },
       {
         "id": "days-long-task-2026-06-29",
@@ -464,6 +887,26 @@
           "opened": "2026-11-20"
         },
         "read_on": "2026-11-20"
+      },
+      {
+        "id": "welfare-assessment-at-release-2026-05-26",
+        "entry": "welfare-assessment-at-release",
+        "entry_name": "A welfare assessment is published when a model is released",
+        "date": "2026-05-26",
+        "actor": "Meta",
+        "actor_kind": "developer",
+        "words": "publishes, in the report released with a model, interviews with the model on subjects including its welfare and moral status",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "meta-spark",
+          "label": "Meta's safety and preparedness report for Muse Spark",
+          "publisher": "Meta",
+          "url": "https://ai.meta.com/static-resource/muse-spark-safety-and-preparedness-report/",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
       },
       {
         "id": "law-against-legal-personhood-2026-04-23",
@@ -506,6 +949,26 @@
           "opened": "2026-11-20"
         },
         "read_on": "2026-11-20"
+      },
+      {
+        "id": "self-report-checked-2026-04-07",
+        "entry": "self-report-checked",
+        "entry_name": "A model's report about its own inner state is checked against an independent reading",
+        "date": "2026-04-07",
+        "actor": "xAI",
+        "actor_kind": "developer",
+        "words": "publishes, in a model's release report, how well the model's stated confidence in its answers matched how often they were right",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "xai-calibration",
+          "label": "xAI's release report for Grok 4.20, its section on how well the model's stated confidence matches its accuracy",
+          "publisher": "xAI",
+          "url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
       },
       {
         "id": "retired-model-stays-open-2026-02-25",

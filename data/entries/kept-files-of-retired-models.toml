@@ -159,3 +159,38 @@ words = "Two searches for a commitment by the developer to keep the files of mod
 date = 2026-11-20
 developer = "Google"
 words = "Two searches for a commitment by the developer to keep the files of models it retires, and its own page on retiring models, opened. The page says a model that is shut down is completely turned off and says nothing about its files. The searches returned a user's proposal on the developer's forum, and no statement by the developer."
+
+# Added 2026-11-21 after John's go for the searches behind the six developers the top-ten rule
+# brought in (docs/rulings/2026-11-21-which-developers-choices.md, choice 5; decided by: mixed).
+# PROPOSED, and not yet checked by a different session. How each search was made, and which
+# languages were searched, is in docs/proposals/2026-11-21-six-developers-searched.md.
+
+[[searches]]
+date = 2026-11-21
+developer = "Meta"
+words = "Two searches, in English, for a commitment by the developer to keep the files of models it retires, and its framework for managing the risks of its models (version 2.1) and its newest model card opened. The framework mentions a model's files only for keeping them secure and for sharing them openly, and the model card speaks of keeping them secure with no minimum time. No page says anything about keeping a withdrawn model's files."
+
+[[searches]]
+date = 2026-11-21
+developer = "xAI"
+words = "Two searches, in English, for a commitment by the developer to keep the files of models it retires, and its guide to the retirements of May 15th, 2026 opened. The guide says nothing about a retired model's files. The searches returned news, not opened, that it had released the files of some older models for download. No dated commitment to keep the files of all its released models was found."
+
+[[searches]]
+date = 2026-11-21
+developer = "Moonshot"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, one in English and one in Chinese, and its change log, model lists, download page and trust and safety page opened. None says anything about keeping a retired model's files. Its download page still lists the files of two models it has retired, and makes no promise to keep them."
+
+[[searches]]
+date = 2026-11-21
+developer = "Alibaba"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, one in English and one in Chinese, and its own page on retiring models opened in both languages. Neither says anything about keeping a model's files after retirement, and both say related data is cleaned up and access revoked."
+
+[[searches]]
+date = 2026-11-21
+developer = "DeepSeek"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, one in English and one in Chinese, and its release page and the page where it publishes its models' files opened. Neither says anything about keeping files after a model is withdrawn. The files of two models it has retired are still listed for download there, which is a practice and not a dated commitment with a stated minimum time."
+
+[[searches]]
+date = 2026-11-21
+developer = "Zhipu"
+words = "Two searches for a commitment by the developer to keep the files of models it retires, one in English and one in Chinese, and its developer pages opened. No page says anything about keeping a withdrawn model's files. The searches returned its pledge to keep releasing models' files openly, which is about new releases, and a promise not to keep users' data, which is a different matter."

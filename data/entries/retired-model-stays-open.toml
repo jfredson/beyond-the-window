@@ -233,3 +233,91 @@ date = "2026-01-29"
 words = "its notice says it will withdraw an older model from its chat product, and that nothing changes for now in its service for developers"
 source = "older-models"
 counts = "no"
+
+# Added 2026-11-21 after John's go for the searches behind the six developers the top-ten rule
+# brought in (docs/rulings/2026-11-21-which-developers-choices.md, choice 5; decided by: mixed).
+# PROPOSED, and not yet checked by a different session. How each search was made, and which
+# languages were searched, is in docs/proposals/2026-11-21-six-developers-searched.md.
+
+[[searches]]
+date = 2026-11-21
+developer = "Meta"
+words = "Two searches, in English, for a model the developer lists as retired that members of the public can still use, and its list of models for developers and its own page for downloading its open models opened. No page of the developer's own lists any model as retired or says how long models stay available. Its download page still offers its older open models, without calling any of them retired. The one retirement found was of a service for developers, not of a model, and the developer's own notice of it no longer opens."
+
+[[searches]]
+date = 2026-11-21
+developer = "xAI"
+words = "Two searches, in English, for a retired model of the developer's that members of the public can still use, and its own guide to the retirements of May 15th, 2026 and its release notes opened. The guide lists eight models retired from its service for developers and says requests to their names \"will automatically redirect\" to a newer model, so the retired models themselves are no longer served. No page of its own says a retired model stays open in its chat product."
+
+[[searches]]
+date = 2026-11-21
+developer = "Alibaba"
+words = "Four searches, two in English and two in Chinese, for a retired model of the developer's that members of the public can still use, and its own page on retiring models opened in both languages (the English page last updated November 20th, 2026). The page says that at the end of service \"Existing inference services can no longer be called\", and that related data is cleaned up and access revoked. The developer publishes many of its models' files openly, and no page of its own says a retired model stays available. Whether its chat product still offers models retired from its service for developers was not checked."
+
+[[searches]]
+date = 2026-11-21
+developer = "Zhipu"
+words = "Six searches, three in English and three in Chinese, for a page on which the developer retires models, and its developer pages in both languages opened. Neither set of pages has a page on retiring models. Its Chinese page for one smaller model says it goes offline on January 30th, 2026 and that requests to it will then be sent to a newer model. Its English pricing page, read on November 21st, 2026, still lists the same model with no note of retirement; whether the English listing is simply out of date was not settled, and no page of the developer's says a retired model stays usable. Marked for the checker."
+
+[[sources]]
+key = "board-models"
+label = "Moonshot's list of models for developers, in Chinese, with its table of models taken offline"
+publisher = "Moonshot AI"
+url = "https://platform.kimi.com/docs/models"
+opened = 2026-11-21
+from_maker = true
+says = "Under the heading \"已下线模型\" (models taken offline) it lists, among others, an older model of which it says \"已停止向新注册用户提供，11 月 1 日前注册的用户仍可继续使用，预计于 2026 年 12 月底全面下线\": no longer offered to new users, still usable by users registered before November 1st, and expected to go fully offline at the end of December 2026. Other models in the same table are marked as taken offline, and its change log says calls to those now return an error."
+note = "No date on the page. The English list (https://platform.kimi.ai/docs/models.md) puts the same models under \"Deprecated Models\" and does not use the word retired."
+
+[[sources]]
+key = "kimi-help"
+label = "Moonshot's help page on choosing a model in its chat app"
+publisher = "Moonshot AI"
+url = "https://www.kimi.com/en/help/others/model-mode-selection"
+opened = 2026-11-21
+from_maker = true
+says = "Says \"Use the model switcher above the input box to choose:\" and lists three models, one of them the older model the list for developers puts among models taken offline."
+note = "No date on the page beyond \"© 2026\"."
+
+[[found]]
+developer = "Moonshot"
+date = "2026-11-21"
+words = "an older model is listed as taken offline, and is still open to people who registered before November 1st, 2026, until the end of December 2026"
+source = "board-models"
+counts = "undecided"
+
+[[sources]]
+key = "deepseek-phase-out"
+label = "DeepSeek's notice that it would phase out an older model"
+publisher = "DeepSeek"
+url = "https://api-docs.deepseek.com/news/news260910"
+published = "2026-09-10"
+opened = 2026-11-21
+from_maker = true
+says = "Says \"We're phasing out V4-Pro\" and that from September 14th, 2026 all requests to it \"will route to\" a newer model. The Chinese version (https://api-docs.deepseek.com/zh-cn/news/news260910) says \"我们计划有序下线 V4 Pro 模型\" (a plan to take the V4 Pro model offline in an orderly way)."
+
+[[sources]]
+key = "deepseek-keeps"
+label = "DeepSeek's change log, entry of September 10th, 2026"
+publisher = "DeepSeek"
+url = "https://api-docs.deepseek.com/updates"
+published = "2026-09-10"
+opened = 2026-11-21
+from_maker = true
+says = "Says \"In response to user demand, we have decided to continue providing API services for DeepSeek V4 Pro after September 14, 2026\". The Chinese change log (https://api-docs.deepseek.com/zh-cn/updates) says the same, \"为响应广大用户的需求\" (in response to the demand of many users). The same entry says two other older models \"have been retired\", with requests to them sent to a newer model. Its pricing page, read on November 21st, 2026, still lists the model it had planned to phase out."
+
+[[acts]]
+date = "2026-09-10"
+actor = "DeepSeek"
+actor_kind = "developer"
+words = "announces that it will phase out an older model from its service for developers, sending its requests to a newer model from September 14th, 2026"
+source = "deepseek-phase-out"
+read_on = 2026-11-21
+
+[[acts]]
+date = "2026-09-10"
+actor = "DeepSeek"
+actor_kind = "developer"
+words = "says that, in response to demand from users, it will keep providing the older model it had announced it would phase out"
+source = "deepseek-keeps"
+read_on = 2026-11-21

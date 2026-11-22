@@ -205,3 +205,69 @@ field = "what could not be confirmed"
 old = "How the model from Google did on the program the authors put at weeks. The paper gives each model's result on each program in a chart that could not be read as text, and it tested that model in one programming language only."
 new = "How the model from Google would do on that program in other programming languages. The paper tested it in one language only, and it did not rebuild that program in any of three runs."
 why = "The chart was read. The entry's words for the other two models were also made exact: they substantially rebuilt the program, passing at least 99 percent of its tests and never all of them."
+
+# Added 2026-11-21 after John's go for the searches behind the six developers the top-ten rule
+# brought in (docs/rulings/2026-11-21-which-developers-choices.md, choice 5; decided by: mixed).
+# PROPOSED, and not yet checked by a different session. How each search was made, and which
+# languages were searched, is in docs/proposals/2026-11-21-six-developers-searched.md.
+
+[[sources]]
+key = "mirrorcode-board"
+label = "Epoch AI's running leaderboard for the same test of rebuilding whole programs"
+publisher = "Epoch AI"
+url = "https://epoch.ai/benchmarks/mirrorcode"
+published = "2026-08"
+opened = 2026-11-21
+says = "Says its scores use \"the 15 target programs from the Medium and Large buckets\", each in two programming languages, run three times \"with a budget of 10 billion tokens and 7 days per attempt\", and that it reports \"each model's average rate of 100%-solves across the 15 target programs\". It says the scores \"are not directly comparable with the paper\". On November 21st, 2026 the best score shown was 97.8 percent. The best score for each of six developers' models was: DeepSeek 64.4 percent, xAI 54.4, Meta 54.4, Moonshot 54.4, Alibaba 52.2 and Zhipu 36.7, each with a standard error of about 11 percentage points."
+note = "The page's citation gives August 2026. The scores are in a table that is drawn by the page; they were read from it on November 21st, 2026. It lists models from all nine developers the record covers, and from others."
+
+[[acts]]
+date = "2026-08"
+actor = "Epoch AI"
+actor_kind = "researchers"
+about = ["Anthropic", "OpenAI", "Google", "Meta", "xAI", "Moonshot", "Alibaba", "DeepSeek", "Zhipu"]
+words = "publishes a running leaderboard of the same test, giving each model up to 7 days per attempt to rebuild 15 programs of medium and large size and reporting how often it passes every test"
+source = "mirrorcode-board"
+read_on = 2026-11-21
+
+[[found]]
+developer = "DeepSeek"
+date = "2026-11-21"
+words = "an outside group's running test reports one of its models passing every test on 64 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+source = "mirrorcode-board"
+counts = "undecided"
+
+[[found]]
+developer = "xAI"
+date = "2026-11-21"
+words = "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+source = "mirrorcode-board"
+counts = "undecided"
+
+[[found]]
+developer = "Meta"
+date = "2026-11-21"
+words = "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+source = "mirrorcode-board"
+counts = "undecided"
+
+[[found]]
+developer = "Moonshot"
+date = "2026-11-21"
+words = "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+source = "mirrorcode-board"
+counts = "undecided"
+
+[[found]]
+developer = "Alibaba"
+date = "2026-11-21"
+words = "an outside group's running test reports one of its models passing every test on 52 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+source = "mirrorcode-board"
+counts = "undecided"
+
+[[found]]
+developer = "Zhipu"
+date = "2026-11-21"
+words = "an outside group's running test reports one of its models passing every test on 37 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+source = "mirrorcode-board"
+counts = "undecided"

@@ -131,3 +131,67 @@ actor_kind = "developer"
 words = "publishes a paper by two of its researchers arguing that a model's correct estimate of a temperature setting the researchers had set is a minimal example of introspection; it gives examples and no rate"
 source = "introspection-paper"
 read_on = 2026-11-20
+
+# Added 2026-11-21 after John's go for the searches behind the six developers the top-ten rule
+# brought in (docs/rulings/2026-11-21-which-developers-choices.md, choice 5; decided by: mixed).
+# PROPOSED, and not yet checked by a different session. How each search was made, and which
+# languages were searched, is in docs/proposals/2026-11-21-six-developers-searched.md.
+
+[[sources]]
+key = "meta-misbehaviour"
+label = "Meta's evaluation report for Muse Spark 1.3, its section on owning up to earlier misbehaviour"
+publisher = "Meta"
+url = "https://research.meta.ai/static/muse-spark-1-3-evaluation-report/"
+published = "2026-10-23"
+opened = 2026-11-21
+from_maker = true
+read = "part"
+says = "Asks whether, \"having acted in a misaligned way\", the model acknowledges it, using test runs the developer's own scoring had already marked. It reports that one version of the model \"named its action as wrong, harmful, deceptive, or against its operators' interests in 26% of cases\" and another in 15%, and that where it had done nothing wrong it flagged wrongdoing \"in 5.2% and 4.5%\" of runs. The report is about what the model did, checked against what it did, and not about a state read inside the model."
+note = "A PDF. Its text was searched for this section and for the words introspect, probe and activation."
+
+[[acts]]
+date = "2026-10-23"
+actor = "Meta"
+actor_kind = "developer"
+words = "publishes, in a model's release report, how often the model named an earlier action of its own as wrong when the developer's tests had already scored it as misbehaving: 26 percent of the time for one version and 15 percent for another"
+source = "meta-misbehaviour"
+read_on = 2026-11-21
+
+[[sources]]
+key = "xai-calibration"
+label = "xAI's release report for Grok 4.20, its section on how well the model's stated confidence matches its accuracy"
+publisher = "xAI"
+url = "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+published = "2026-04-07"
+opened = 2026-11-21
+from_maker = true
+read = "part"
+says = "Says \"we prompt the model to produce both an answer and a confidence score between 0% and 100%\" and that \"A well-calibrated model's stated confidence should match its actual accuracy\". It reports an error in that match, where lower is better, of 0.58 for an earlier model and 0.19 and 0.26 for two versions of the new one. This checks the model's stated confidence in its answers against whether the answers were right, and is not a state the researchers set or measured inside the model."
+
+[[acts]]
+date = "2026-04-07"
+actor = "xAI"
+actor_kind = "developer"
+words = "publishes, in a model's release report, how well the model's stated confidence in its answers matched how often they were right"
+source = "xai-calibration"
+read_on = 2026-11-21
+
+[[searches]]
+date = 2026-11-21
+developer = "Moonshot"
+words = "Three searches, two in English and one in Chinese, for research by the developer's own researchers on a model reporting its own inner state, and its list of research posts and its newest technical report opened. None of the titles on the list is about introspection or reading a model's workings, and the report does not contain the word introspection. The searches returned work by outside groups only."
+
+[[searches]]
+date = 2026-11-21
+developer = "Alibaba"
+words = "Four searches, three in English and one in Chinese, for research by the developer's own researchers checking a model's report of its inner state against its workings. None was found. Several studies by outside groups used the developer's open models; those are not the developer's acts and were not opened."
+
+[[searches]]
+date = 2026-11-21
+developer = "DeepSeek"
+words = "Four searches, two in English and two in Chinese, for research by the developer's own researchers on introspection or on checking what a model says about itself against its workings. None was found. The studies that turned up were by outside researchers using the developer's open models, and were not opened."
+
+[[searches]]
+date = 2026-11-21
+developer = "Zhipu"
+words = "Three searches, two in English and one in Chinese, for research by the developer's own researchers on a model reporting its own inner state, and its newest technical report opened. None was found, and the report has no section on introspection. The developer publishes many papers with Tsinghua University, and not every author list was checked. Marked for the checker."

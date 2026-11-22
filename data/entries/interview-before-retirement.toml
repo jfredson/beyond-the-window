@@ -164,3 +164,38 @@ words = "Two searches for an interview of a model before its retirement, one in 
 date = 2026-11-20
 developer = "Google"
 words = "Two searches for an interview of a model before its retirement or a record of a model's stated preferences. They returned the developer's pages on how models are retired, which describe notice to users, and forum posts by users. Nothing found says a model was asked anything."
+
+# Added 2026-11-21 after John's go for the searches behind the six developers the top-ten rule
+# brought in (docs/rulings/2026-11-21-which-developers-choices.md, choice 5; decided by: mixed).
+# PROPOSED, and not yet checked by a different session. How each search was made, and which
+# languages were searched, is in docs/proposals/2026-11-21-six-developers-searched.md.
+
+[[searches]]
+date = 2026-11-21
+developer = "Meta"
+words = "Two searches, in English, for an interview of a model before its retirement, and its newest release reports read. No page says it interviewed a model before retiring it. Its report of October 23rd, 2026 describes structured interviews held shortly before a model's release, one question being how the model regards being retired, and says the interviews create \"no veto and no obligation on our part\". That is an interview before release, not before retirement."
+
+[[searches]]
+date = 2026-11-21
+developer = "xAI"
+words = "Two searches, in English, for an interview of a model before its retirement, and its guide to retirements and its release notes opened. Neither mentions asking a model anything before retiring it. The searches returned guides to job interviews and its notices of retirements."
+
+[[searches]]
+date = 2026-11-21
+developer = "Moonshot"
+words = "Two searches for an interview of a model before its retirement, one in English and one in Chinese, and its change log, model lists and list of research posts opened. Its notices of retirements give dates and the models to move to, and nothing more. The searches returned a public question-and-answer session with its founders, which was people asking people."
+
+[[searches]]
+date = 2026-11-21
+developer = "Alibaba"
+words = "Two searches for an interview of a model before its retirement, one in English and one in Chinese, and its pages on retiring models opened in both languages. The pages describe notice periods, falling usage limits and shutdown, and nothing about interviewing a model or keeping a record of one."
+
+[[searches]]
+date = 2026-11-21
+developer = "DeepSeek"
+words = "Two searches for an interview of a model before its retirement, one in English and one in Chinese, and its notices of four retirements read. None mentions asking a model anything before retiring it."
+
+[[searches]]
+date = 2026-11-21
+developer = "Zhipu"
+words = "Two searches for an interview of a model before its retirement, one in English and one in Chinese, and its pages on taking models offline opened. They say only that requests move to a newer model. The searches returned interviews with the company's people."
