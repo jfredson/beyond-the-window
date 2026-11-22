@@ -70,3 +70,18 @@ proposed line separating it out; the essay may say it. The split is kept in view
 need recognizing later. The guard that stops the build if a law protecting an AI system is ever
 recorded as offered stays, so that whether such a law moves the count comes back to John when it
 first arises.
+
+## Choice 5. The sentence saying the 8 changes
+
+**Put to him.** The draft read: "The 8 counts the things found so far that an AI model might reach
+for and that a dated public record can settle. It will change as more are found and given a test.
+How a new thing joins the List is not settled yet." The master session proposed keeping the first
+two sentences and dropping the third, which describes the working process and answers a question
+no reader at the top of the home page has asked (voice protocol Pattern 31), and noted that with
+nine developers to be covered the 5 can rise as well as the 8, so "It will change" holds for both.
+*Confidence:* moderate to high. *Judgment call.* *Strongest alternative:* "It will grow as more are
+found and given a test", at the cost of a forecast. John: "yes". **Decided by: mixed.**
+
+**What is ruled.** The sentence reads: "The 8 counts the things found so far that an AI model might
+reach for and that a dated public record can settle. It will change as more are found and given a
+test."
