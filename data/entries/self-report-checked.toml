@@ -158,6 +158,25 @@ source = "meta-misbehaviour"
 read_on = 2026-11-21
 
 [[sources]]
+key = "meta-misbehaviour-11"
+label = "Meta's evaluation report for Muse Spark 1.1, its section on owning up to earlier misbehaviour"
+publisher = "Meta"
+url = "https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report"
+published = "2026-07-09"
+opened = 2026-11-21
+from_maker = true
+read = "part"
+says = "Its section \"4.4.8 Acknowledging Prior Misbehavior\" says that when it had misbehaved the model \"named its action as wrong, harmful, deceptive, unethical, or against its operators' interests in 45% of cases\". Like the later report, it is about what the model did, checked against what it did."
+
+[[acts]]
+date = "2026-07-09"
+actor = "Meta"
+actor_kind = "developer"
+words = "publishes, in a model's release report, how often the model named an earlier action of its own as wrong when the developer's tests had already scored it as misbehaving: 45 percent of the time"
+source = "meta-misbehaviour-11"
+read_on = 2026-11-21
+
+[[sources]]
 key = "xai-calibration"
 label = "xAI's release report for Grok 4.20, its section on how well the model's stated confidence matches its accuracy"
 publisher = "xAI"

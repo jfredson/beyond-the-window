@@ -29,6 +29,12 @@
 .rb-grid thead th { font: 600 11px/1.3 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border-top: 0; }
 .rb-grid tbody th { font: 600 15px/1.35 var(--serif); width: 19%; }
 .rb-grid td { color: var(--text); width: 9%; font-size: 12.5px; }
+/* On a computer the row of developers' names stays in view, just under the site's header, while
+   the table is scrolled (added 2026-11-21 after a check found that the nine columns lose their
+   names once the first rows are past; decided by: agent). The phone layout labels each place. */
+@media (min-width: 641px) {
+  .rb-grid thead th { position: sticky; top: var(--rb-head-offset, 66px); z-index: 2; background: var(--bg); box-shadow: 0 1px 0 var(--line); }
+}
 .rb-grid td.k-not_searched { color: var(--muted); }
 .rb-grid td.k-offered { font-weight: 600; }
 

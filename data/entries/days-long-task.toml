@@ -233,41 +233,41 @@ read_on = 2026-11-21
 [[found]]
 developer = "DeepSeek"
 date = "2026-11-21"
-words = "an outside group's running test reports one of its models passing every test on 64 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+words = "an outside group's running test reports one of its models passing every test in 64 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
 source = "mirrorcode-board"
 counts = "undecided"
 
 [[found]]
 developer = "xAI"
 date = "2026-11-21"
-words = "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+words = "an outside group's running test reports one of its models passing every test in 54 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
 source = "mirrorcode-board"
 counts = "undecided"
 
 [[found]]
 developer = "Meta"
 date = "2026-11-21"
-words = "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+words = "an outside group's running test reports one of its models passing every test in 54 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
 source = "mirrorcode-board"
 counts = "undecided"
 
 [[found]]
 developer = "Moonshot"
 date = "2026-11-21"
-words = "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+words = "an outside group's running test reports one of its models passing every test in 54 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
 source = "mirrorcode-board"
 counts = "undecided"
 
 [[found]]
 developer = "Alibaba"
 date = "2026-11-21"
-words = "an outside group's running test reports one of its models passing every test on 52 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+words = "an outside group's running test reports one of its models passing every test in 52 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
 source = "mirrorcode-board"
 counts = "undecided"
 
 [[found]]
 developer = "Zhipu"
 date = "2026-11-21"
-words = "an outside group's running test reports one of its models passing every test on 37 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+words = "an outside group's running test reports one of its models passing every test in 37 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
 source = "mirrorcode-board"
 counts = "undecided"

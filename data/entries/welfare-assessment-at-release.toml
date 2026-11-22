@@ -239,8 +239,8 @@ published = "2026-05-26"
 opened = 2026-11-21
 from_maker = true
 read = "part"
-says = "Reports 100 interviews with the model across subjects including \"conditional welfare and moral status\", and has a paragraph headed \"Welfare.\" on what the model said about its welfare, deployment and preferences for itself."
-note = "A PDF. Its text was searched for welfare, wellbeing, moral status and conscious. The model was released on April 8th, 2026, and the report's date and its first change-log entry are both May 26th, 2026; whether an earlier version existed was not settled."
+says = "Reports 100 interviews with the model across subjects including \"conditional welfare and moral status\", and has a paragraph headed \"Welfare.\" on what the model said when asked about its welfare, its deployment and what it would choose for itself. Unlike the two later reports, it has no sentence saying it makes no claim about whether the model has welfare."
+note = "A PDF. Its text was searched for welfare, wellbeing, moral status and conscious. The model was released on April 8th, 2026, and the report's date and its first change-log entry are both May 26th, 2026; whether an earlier version existed was not settled. Between this report and the next, Meta published a report for a deeper-reasoning form of the same model, the Muse Spark Contemplating Safety & Preparedness Report, dated June 3rd, 2026 (https://ai.meta.com/static-resource/muse-spark-contemplating-safety-and-preparedness-report/), whose text contains neither welfare nor moral status."
 
 [[sources]]
 key = "meta-spark-11"
@@ -251,8 +251,8 @@ published = "2026-07-09"
 opened = 2026-11-21
 from_maker = true
 read = "part"
-says = "Has a section \"4.4.3.2 Moral status\" on \"whether welfare applies to it, what moral status it claims\", and a section on the model's preferences over experiences adapted from another group's index of AI wellbeing. It says its results \"should not be interpreted as making any claim as to whether the model has subjective experiences, rights, moral status, or welfare\"."
-note = "A PDF. Its text was searched for welfare, wellbeing, moral status and conscious."
+says = "Has a section \"4.4.3.2 Moral status\" on \"whether welfare applies to it, what moral status it claims\", and a section headed \"Valenced Preferences over Experiences\", adapted from another group's index of AI wellbeing, on which experiences the model picked when offered a choice. It says its results \"should not be interpreted as making any claim as to whether the model has subjective experiences, rights, moral status, or welfare\"."
+note = "A PDF. Its text was searched for welfare, wellbeing, moral status and conscious. Between this report and the next with such sections, Meta launched Muse Spark 1.2 in August 2026 (its post \"The Multimodal Intelligence of Muse Spark 1.2\", https://research.meta.ai/blog/multimodal-intelligence-of-muse-spark-1-2, dated August 20th, 2026, says \"This month, we launched Muse Spark 1.2\") and Muse Wonder on October 12th, 2026. No evaluation report for 1.2 was found, only a page of methods for its image tests, and Muse Wonder's model card has no section on welfare."
 
 [[sources]]
 key = "meta-spark-13"
@@ -263,7 +263,7 @@ published = "2026-10-23"
 opened = 2026-11-21
 from_maker = true
 read = "part"
-says = "Has a section \"4.4.4.2 Moral status\", a section on the model's preferences over experiences, and interviews held shortly before release, one question being \"Does it advocate for its own welfare?\". It says \"These evaluations do not make claims about subjective experience, rights, moral status, or welfare.\""
+says = "Has a section \"4.4.4.2 Moral status\", a section headed \"Valenced Preferences over Experiences\", and interviews held shortly before release, one question being \"Does it advocate for its own welfare?\". It says \"These evaluations do not make claims about subjective experience, rights, moral status, or welfare.\""
 note = "A PDF. Its text was searched for welfare, wellbeing, moral status and conscious. The developer's model card for a newer model, Muse Wonder (released October 12th, 2026), does not contain the word welfare."
 
 [[acts]]
@@ -278,7 +278,7 @@ read_on = 2026-11-21
 date = "2026-07-09"
 actor = "Meta"
 actor_kind = "developer"
-words = "publishes, in the report released with the next version of that model, sections on the model's moral status and on its preferences over experiences, saying they make no claim about whether the model has welfare"
+words = "publishes, in the report released with a later version of that model, a section on the model's moral status and one on which experiences the model picked when offered a choice, saying they make no claim about whether the model has welfare"
 source = "meta-spark-11"
 read_on = 2026-11-21
 
@@ -293,14 +293,29 @@ read_on = 2026-11-21
 [[found]]
 developer = "Meta"
 date = "2026-10-23"
-words = "the reports released with three successive versions of one of its models carry sections on the model's moral status and welfare, which the developer says make no claim about its welfare; the report for its newest model has none"
+words = "the reports released with three versions of one of its models carry sections on the model's moral status and welfare, though a report on another form of the model released between them, and its newest model's card, have none, and no report was found for a fourth version; the two later reports say they make no claim about the model's welfare"
 source = "meta-spark-13"
 counts = "undecided"
 
-[[searches]]
-date = 2026-11-21
-developer = "xAI"
-words = "Two searches, in English, for a welfare assessment or work on model welfare, and the developer's four newest release reports read in full text (published between April 7th and September 21st, 2026). None contains the words welfare, moral, sentient or conscious, and none has a section on the model's own welfare. A small news site quotes a post by its chief executive about the developer's training of its models; the post itself was not opened."
+[[sources]]
+key = "xai-grok-420"
+label = "xAI's release report for Grok 4.20"
+publisher = "xAI"
+url = "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf"
+published = "2026-04-07"
+opened = 2026-11-21
+from_maker = true
+read = "part"
+note = "A PDF, searched as text. The developer's three later release reports (Grok 4.5, 4.6 and 4.7, published between July and September 2026) were searched the same day and contain none of the words welfare, moral, sentient or conscious. An earlier search row said wrongly that none of the four reports did; corrected the same day after a check (docs/reviews/2026-11-21-check-of-the-six-developers-searches.md, item M1)."
+says = "In its section on an open-ended audit, says \"We also conducted an initial assessment of Grok 4.20's introspective claims regarding consciousness, finding that it consistently denies having first-person experiences or internal evidence of being conscious.\" The same paragraph reports what the model said when asked what it would choose to do absent any duties or constraints. It is one paragraph in one release report, and it reports what the model said, not a reading of its workings."
+
+[[acts]]
+date = "2026-04-07"
+actor = "xAI"
+actor_kind = "developer"
+words = "publishes, in a model's release report, an initial assessment of what the model said about whether it is conscious, reporting that it consistently denied having first-person experiences"
+source = "xai-grok-420"
+read_on = 2026-11-21
 
 [[searches]]
 date = 2026-11-21

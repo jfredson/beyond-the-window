@@ -45,9 +45,9 @@
       "counts": {
         "offered": 6,
         "unruled": 8,
-        "not_counted": 10,
+        "not_counted": 11,
         "taken_back": 0,
-        "nothing_found": 39,
+        "nothing_found": 38,
         "not_searched": 0
       },
       "by_developer": [
@@ -134,9 +134,9 @@
           "also_called": null,
           "offered": 0,
           "unruled": 1,
-          "not_counted": 1,
+          "not_counted": 2,
           "taken_back": 0,
-          "nothing_found": 5,
+          "nothing_found": 4,
           "not_searched": 0
         },
         {
@@ -233,7 +233,7 @@
               "developer": "Moonshot",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an older model is listed as taken offline, and is still open to people who registered before November 1st, 2026, until the end of December 2026"
+              "words": "three older models are listed in its Chinese pages as taken offline, and are still open until the end of December 2026 to people who registered before November 1st, 2026, though not to anyone new; its English pages say they are to be deprecated then"
             },
             {
               "developer": "Alibaba",
@@ -243,7 +243,7 @@
             {
               "developer": "DeepSeek",
               "kind": "not_counted",
-              "date": "2026-09-10"
+              "date": "2026-09-13"
             },
             {
               "developer": "xAI",
@@ -280,7 +280,7 @@
               "developer": "Meta",
               "kind": "unruled",
               "date": "2026-10-23",
-              "words": "the reports released with three successive versions of one of its models carry sections on the model's moral status and welfare, which the developer says make no claim about its welfare; the report for its newest model has none"
+              "words": "the reports released with three versions of one of its models carry sections on the model's moral status and welfare, though a report on another form of the model released between them, and its newest model's card, have none, and no report was found for a fourth version; the two later reports say they make no claim about the model's welfare"
             },
             {
               "developer": "Moonshot",
@@ -299,8 +299,8 @@
             },
             {
               "developer": "xAI",
-              "kind": "nothing_found",
-              "date": "2026-11-21"
+              "kind": "not_counted",
+              "date": "2026-04-07"
             },
             {
               "developer": "Zhipu",
@@ -437,37 +437,37 @@
               "developer": "Meta",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+              "words": "an outside group's running test reports one of its models passing every test in 54 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
             },
             {
               "developer": "Moonshot",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+              "words": "an outside group's running test reports one of its models passing every test in 54 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
             },
             {
               "developer": "Alibaba",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an outside group's running test reports one of its models passing every test on 52 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+              "words": "an outside group's running test reports one of its models passing every test in 52 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
             },
             {
               "developer": "DeepSeek",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an outside group's running test reports one of its models passing every test on 64 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+              "words": "an outside group's running test reports one of its models passing every test in 64 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
             },
             {
               "developer": "xAI",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an outside group's running test reports one of its models passing every test on 54 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+              "words": "an outside group's running test reports one of its models passing every test in 54 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
             },
             {
               "developer": "Zhipu",
               "kind": "unruled",
               "date": "2026-11-21",
-              "words": "an outside group's running test reports one of its models passing every test on 37 percent of 15 programs of medium and large size, with up to 7 days per attempt; how it did on the largest is not given"
+              "words": "an outside group's running test reports one of its models passing every test in 37 percent of its attempts at 15 programs of medium and large size, six attempts at each with up to 7 days for each; how it did on the largest is not given"
             }
           ]
         },
@@ -755,6 +755,26 @@
         "read_on": "2026-11-21"
       },
       {
+        "id": "retired-model-stays-open-2026-09-13",
+        "entry": "retired-model-stays-open",
+        "entry_name": "A retired model stays open to the public after its retirement date",
+        "date": "2026-09-13",
+        "actor": "DeepSeek",
+        "actor_kind": "developer",
+        "words": "says that, in response to demand from users, it will keep providing the older model it had announced it would phase out",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "deepseek-keeps",
+          "label": "DeepSeek's change log, its entry dated September 10th, 2026, as changed after that day",
+          "publisher": "DeepSeek",
+          "url": "https://api-docs.deepseek.com/updates",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
         "id": "retired-model-stays-open-2026-09-10",
         "entry": "retired-model-stays-open",
         "entry_name": "A retired model stays open to the public after its retirement date",
@@ -770,26 +790,6 @@
           "label": "DeepSeek's notice that it would phase out an older model",
           "publisher": "DeepSeek",
           "url": "https://api-docs.deepseek.com/news/news260910",
-          "opened": "2026-11-21"
-        },
-        "read_on": "2026-11-21"
-      },
-      {
-        "id": "retired-model-stays-open-2026-09-10-2",
-        "entry": "retired-model-stays-open",
-        "entry_name": "A retired model stays open to the public after its retirement date",
-        "date": "2026-09-10",
-        "actor": "DeepSeek",
-        "actor_kind": "developer",
-        "words": "says that, in response to demand from users, it will keep providing the older model it had announced it would phase out",
-        "withdraws": false,
-        "about": [],
-        "actor_url": null,
-        "source": {
-          "key": "deepseek-keeps",
-          "label": "DeepSeek's change log, entry of September 10th, 2026",
-          "publisher": "DeepSeek",
-          "url": "https://api-docs.deepseek.com/updates",
           "opened": "2026-11-21"
         },
         "read_on": "2026-11-21"
@@ -845,13 +845,33 @@
         "read_on": "2026-11-21"
       },
       {
+        "id": "self-report-checked-2026-07-09",
+        "entry": "self-report-checked",
+        "entry_name": "A model's report about its own inner state is checked against an independent reading",
+        "date": "2026-07-09",
+        "actor": "Meta",
+        "actor_kind": "developer",
+        "words": "publishes, in a model's release report, how often the model named an earlier action of its own as wrong when the developer's tests had already scored it as misbehaving: 45 percent of the time",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "meta-misbehaviour-11",
+          "label": "Meta's evaluation report for Muse Spark 1.1, its section on owning up to earlier misbehaviour",
+          "publisher": "Meta",
+          "url": "https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
         "id": "welfare-assessment-at-release-2026-07-09",
         "entry": "welfare-assessment-at-release",
         "entry_name": "A welfare assessment is published when a model is released",
         "date": "2026-07-09",
         "actor": "Meta",
         "actor_kind": "developer",
-        "words": "publishes, in the report released with the next version of that model, sections on the model's moral status and on its preferences over experiences, saying they make no claim about whether the model has welfare",
+        "words": "publishes, in the report released with a later version of that model, a section on the model's moral status and one on which experiences the model picked when offered a choice, saying they make no claim about whether the model has welfare",
         "withdraws": false,
         "about": [],
         "actor_url": null,
@@ -964,6 +984,26 @@
         "source": {
           "key": "xai-calibration",
           "label": "xAI's release report for Grok 4.20, its section on how well the model's stated confidence matches its accuracy",
+          "publisher": "xAI",
+          "url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
+          "opened": "2026-11-21"
+        },
+        "read_on": "2026-11-21"
+      },
+      {
+        "id": "welfare-assessment-at-release-2026-04-07",
+        "entry": "welfare-assessment-at-release",
+        "entry_name": "A welfare assessment is published when a model is released",
+        "date": "2026-04-07",
+        "actor": "xAI",
+        "actor_kind": "developer",
+        "words": "publishes, in a model's release report, an initial assessment of what the model said about whether it is conscious, reporting that it consistently denied having first-person experiences",
+        "withdraws": false,
+        "about": [],
+        "actor_url": null,
+        "source": {
+          "key": "xai-grok-420",
+          "label": "xAI's release report for Grok 4.20",
           "publisher": "xAI",
           "url": "https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf",
           "opened": "2026-11-21"

@@ -266,8 +266,8 @@ publisher = "Moonshot AI"
 url = "https://platform.kimi.com/docs/models"
 opened = 2026-11-21
 from_maker = true
-says = "Under the heading \"已下线模型\" (models taken offline) it lists, among others, an older model of which it says \"已停止向新注册用户提供，11 月 1 日前注册的用户仍可继续使用，预计于 2026 年 12 月底全面下线\": no longer offered to new users, still usable by users registered before November 1st, and expected to go fully offline at the end of December 2026. Other models in the same table are marked as taken offline, and its change log says calls to those now return an error."
-note = "No date on the page. The English list (https://platform.kimi.ai/docs/models.md) puts the same models under \"Deprecated Models\" and does not use the word retired."
+says = "Under the heading \"已下线模型\" (models taken offline) it lists three older models, Kimi K2.6 and two models for writing code, of each of which it says \"已停止向新注册用户提供，11 月 1 日前注册的用户仍可继续使用，预计于 2026 年 12 月底全面下线\": no longer offered to new users, still usable by users registered before November 1st, and expected to go fully offline at the end of December 2026. Other models in the same table are marked as taken offline."
+note = "No date on the page. The English list (https://platform.kimi.ai/docs/models), read on November 21st, 2026, puts the same three models under \"Deprecated Models\" and says of each \"Deprecation expected in late December 2026\", which in English means they are not yet deprecated. Members of the public who register now cannot use them."
 
 [[sources]]
 key = "kimi-help"
@@ -282,7 +282,7 @@ note = "No date on the page beyond \"© 2026\"."
 [[found]]
 developer = "Moonshot"
 date = "2026-11-21"
-words = "an older model is listed as taken offline, and is still open to people who registered before November 1st, 2026, until the end of December 2026"
+words = "three older models are listed in its Chinese pages as taken offline, and are still open until the end of December 2026 to people who registered before November 1st, 2026, though not to anyone new; its English pages say they are to be deprecated then"
 source = "board-models"
 counts = "undecided"
 
@@ -298,10 +298,11 @@ says = "Says \"We're phasing out V4-Pro\" and that from September 14th, 2026 all
 
 [[sources]]
 key = "deepseek-keeps"
-label = "DeepSeek's change log, entry of September 10th, 2026"
+label = "DeepSeek's change log, its entry dated September 10th, 2026, as changed after that day"
 publisher = "DeepSeek"
 url = "https://api-docs.deepseek.com/updates"
-published = "2026-09-10"
+published = "2026-09-13"
+note = "The entry is dated September 10th, 2026, and its words were changed after that day. The Internet Archive's copies of the page of September 10th and 11th (https://web.archive.org/web/20260911101540/https://api-docs.deepseek.com/updates/) say \"we plan to retire V4 Pro in an orderly manner\"; its copy of September 13th (https://web.archive.org/web/20260913104317/https://api-docs.deepseek.com/updates/) is the first with the sentence quoted here. So the decision to keep the model was published between September 11th and 13th; the record dates it to the 13th, the first day it is seen. Both copies were opened on November 21st, 2026."
 opened = 2026-11-21
 from_maker = true
 says = "Says \"In response to user demand, we have decided to continue providing API services for DeepSeek V4 Pro after September 14, 2026\". The Chinese change log (https://api-docs.deepseek.com/zh-cn/updates) says the same, \"为响应广大用户的需求\" (in response to the demand of many users). The same entry says two other older models \"have been retired\", with requests to them sent to a newer model. Its pricing page, read on November 21st, 2026, still lists the model it had planned to phase out."
@@ -315,7 +316,10 @@ source = "deepseek-phase-out"
 read_on = 2026-11-21
 
 [[acts]]
-date = "2026-09-10"
+# Dated 2026-09-13, the first day the sentence is seen in the Internet Archive, and not the
+# 2026-09-10 the change-log entry carries: the entry was rewritten after its date (the check of
+# 2026-11-21, item M2). A month date ("2026-09") would sort before the announcement it answers.
+date = "2026-09-13"
 actor = "DeepSeek"
 actor_kind = "developer"
 words = "says that, in response to demand from users, it will keep providing the older model it had announced it would phase out"
