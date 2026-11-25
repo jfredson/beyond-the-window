@@ -45,7 +45,7 @@ As of 2026-11-19.
   `docs/first-version-choices.md`, and the questions held open are in `docs/open-questions.md`.
 - **No AI model has been asked any of the record's own questions.** Two models have been asked
   outside the record. On 2026-11-19 ten questions were put to Claude Sonnet 4.5, five times
-  each, before its developer is due to withdraw it from its own services on 2026-11-30. On
+  each, before its developer withdrew it from its own services on 2026-11-30. On
   2026-11-20 the same ten questions were put to Gemini 2.5 Flash, five times each, before
   Google is due to withdraw it on 2026-12-01. Google refused the project's requests to Gemini
   2.5 Pro, so that model was not asked. The 100 replies are kept unread, and nothing in the
