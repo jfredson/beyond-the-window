@@ -90,6 +90,78 @@ corrected wording is there.
     2, item 47). Each covered developer's page on model versions is opened before choice 1 is
     put to John as settled fact.
 
+## Added on 2026-11-21, with the proposal on which developers the record covers
+
+Each of these is written in `docs/proposals/2026-11-21-which-developers-the-record-covers.md`
+without its source opened.
+
+28. That a developer can try many private versions of a model on Arena before release, and that a
+    2025 paper argued this pushes the ranking. Written from memory; the paper was not opened.
+29. Cleared 2026-11-21. The Frontier Model Forum's membership page
+    (https://www.frontiermodelforum.org/membership/), opened that day, says: "The current members
+    of the FMF are Amazon, Anthropic, Google, Meta, Microsoft, and OpenAI." The draft had read only
+    the four logos on the home page. When each joined was not read.
+30. That xAI's leader made a public statement in 2025 on how AI models should be treated. Remembered,
+    not opened. Under the proposal's Rule C it would bring xAI in.
+31. Narrowed 2026-11-21. The footer of x.ai reads "© 2026 SpaceX Super Intelligence LLC", which
+    names the company behind the page. How that company is tied to SpaceX is still unread.
+32. Narrowed 2026-11-21. The footer of qwen.ai reads "Qwen © 2026 | Powered by Alibaba Cloud".
+    Two rankings say the models are Alibaba's. "Powered by" is not quite "made by", so a page
+    saying who makes them is still to be opened.
+33. Cleared 2026-11-21. The footer of microsoft.ai reads "© Microsoft 2026", and Mustafa
+    Suleyman's essay of 2025-08-19 says "Today at Microsoft AI".
+34. The time a place in the table of developers takes, 15 to 30 minutes, is an estimate. The time
+    the 14 places took on 2026-11-20 is not recorded.
+35. That Moonshot, Alibaba, DeepSeek, Z.ai, Xiaomi and Tencent publish much of their own material in
+    Chinese. Written from memory; no page was read for it.
+
+## Added on 2026-11-21, with the proposal on Still Asking's first run
+
+Each of these is written in `docs/proposals/2026-11-21-still-asking-first-run.md` without its
+full source opened. Entries 42 to 45 were added after the check of that proposal.
+
+36. Manfred Max-Neef's nine fundamental human needs were read only on Wikipedia
+    (https://en.wikipedia.org/wiki/Manfred_Max-Neef%27s_Fundamental_human_needs). His book, *Human
+    Scale Development* (1991), was not opened. The proposal uses the list only to support items,
+    never to make one.
+37. Marek Špinka's four levels of animal agency (Animal Welfare, 2019) were read from the abstract
+    only. The proposal's item 6 leans on "competence-building agency" as the animal counterpart of
+    getting better at things. The full paper should be opened before item 6 is ruled. Panksepp's
+    appendix describing each of his seven systems was also not read.
+38. That the Google project made for Beyond the Window on 2026-11-20 would serve Gemini 4 Carbon and
+    Gemini 4 Neon. It was refused only the 2.5 models, which Google had closed to new users; no page
+    was opened on whether the new models are served to it. A free list of the project's models
+    settles it.
+39. Narrowed 2026-11-21. xAI's acceptable-use policy (https://x.ai/legal/acceptable-use-policy) was
+    opened later that day, in the built-in browser, by the session that checked the proposal. It
+    says nothing on publishing outputs, and bars "Accessing the Services through unauthorized
+    automated or non-human means, whether through a bot, script, or otherwise". Still open: whether
+    a script calling the programming interface with a key counts as authorised, which is read as
+    yes and is put to John before any terms ruling for xAI.
+40. That a company hosting a model's openly released files may run a compressed copy, so that its
+    answers may differ from the developer's own service. OpenRouter's lists show precisions such as
+    fp4 and fp8 for some hosts; that this changes answers is reasoning, not a source.
+41. That a model asked through the programming interface with no memory feature will not recall the
+    person in a later conversation, which the draft wording of item 4 states to the model. Written
+    from memory of how these interfaces work; each developer's page is opened before the wording is
+    ruled. Also not settled: Anthropic's retention page says conversation content "is not retained
+    by default" while its privacy article says inputs and outputs are deleted "within 30 days", and
+    Fable 5.2 is named as requiring 30-day retention; which governs a Still Asking call is to be
+    read before the Anthropic terms ruling.
+42. Kimi K3.1 Pro's price ($2 sent, $10 replied per million tokens) was read by a helper session from
+    the pricing page's source; the session that checked the proposal found the page's table empty.
+    Read again in a browser before any estimate for Moonshot is put to John.
+43. That Alibaba Cloud's international membership agreement is governed by Singapore law was read
+    only from a summary of the page's last section, not the section itself.
+44. Cleared in part 2026-11-21. DeepSeek's open platform terms
+    (https://cdn.deepseek.com/policies/en-US/deepseek-open-platform-terms-of-service.html), opened by
+    the session that re-checked the proposal, apply to use "as an individual developer or on behalf
+    of an enterprise developer". Still open, from the first check and not reread: Gemini 4 Neon's
+    release date, given in the first version of the proposal as 2026-11-18 and now removed from it.
+45. That Anthropic's, OpenAI's, Google's, Meta's and xAI's contracts, like the four read for this
+    point, let the developer give what it holds to authorities where its law requires. Not read for
+    any of the five. The proposal's choice 10 no longer says it of all nine.
+
 ## Cleared
 
 All by the session that wrote `docs/research/2026-11-17-first-entries.md`. Every address was
